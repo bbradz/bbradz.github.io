@@ -11,6 +11,11 @@ header {
     background-color: #f3f3f3;
 }
 
+.landingpage-button {
+    color: inherit;
+    text-decoration: none;
+}
+
 .header-horizontal {
     display: flex;
     align-items: stretch;
