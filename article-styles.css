@@ -59,6 +59,10 @@ header h3 {
   margin-top: 0px;
 }
 
+.nav a {
+  text-decoration: none;
+}
+
 article h3 {
   margin-top: 15px;
   margin-bottom: 0px;
