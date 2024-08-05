@@ -38,11 +38,17 @@
         <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 2,855</strong></p>
         <div class="nav" style="font-size: 14px;">
             <ol>
+                <li><a href="#A">What makes an idea worthwhile?</a></li>
+                <li><a href="#B">What is a Optimizer</a></li>
+                <li><a href="#C">Avoiding Credibility Collapse from flawed Criterion</a>
+                <li><a href="#D">Algoperf's Testing Regime</a></li>
+                <li><a href="#E">On the tradeoffs of Algoperf's Design</a></li>
             </ol>
         </div>
 
         <hr>
 
+        <a name="A"></a>
         <p>What makes an idea <i>worthwhile</i>? </p>
         
         <p>Everyone and their mom is talking about AI, publication counts are rising to 
@@ -67,6 +73,7 @@
         the evaluation of something as multidimensional as a optimizer and may provide a look into the 
         contours of where the work on optimizers is moving of late.</p>
 
+        <a name="B"></a>
         <h3> What is a Optimizer </h3>
 
         <p>Implementing a AI training pipeline front to end entails a huge swath of moving parts from 
@@ -130,6 +137,7 @@
         are improving on eachother or better suited for particular tasks comes into direct 
         unavoidable focus.
 
+        <a name="C"></a>
         <h3>Avoiding Credibility Collapse from flawed Criterion</h3>
 
         The fundamental problem <i>Algoperf</i> rises to address is that no matter the paper you
@@ -252,7 +260,8 @@
             </ol>
         </div>
 
-        <h3>Algoperf Testing Regime</h3>
+        <a name="D"></a>
+        <h3>Algoperf's Testing Regime</h3>
 
         <p><i>Algoperf</i> operates by compiling a aggregate benchmark score of the time-to-result for a relevant real-world task 
         where the timer is stopped when training reaches a pre-specified goal rate of error on the model's validation / test sets 
@@ -290,6 +299,7 @@
         and therefore is bounded to be within the range \([0, 1]\). Not bad right?
         </p>
 
+        <a name="E"></a>
         <h3>On the tradeoffs of Algoperf's Design</h3>
 
         <p>What makes a idea worthwhile? <i>Algoperf</i> with performance ratios and something akin to: 
