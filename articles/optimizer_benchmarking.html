@@ -35,7 +35,7 @@
 
     <main>
         <h1 style="font-size: 32px; margin-bottom: 0px;">Challenges in Optimizer Benchmarking</h1>
-        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 2,525</strong></p>
+        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 2,855</strong></p>
         <div class="nav" style="font-size: 14px;">
             <ol>
             </ol>
@@ -59,17 +59,18 @@
         ''Algoperf: Training Algorithms'' benchmark, promising a new and exciting API framework for 
         quantifying and comparing a growing field of optimizer algorithms.</p>
 
-        <p>With the recent release of the <a href="https://mlcommons.org/2024/08/mlc-algoperf-benchmark-competition/#">inaugural results</a> for the ''Algoperf'' benchmark 
-        I'm hoping to spend some time today breaking down how the ''Algoperf'' benchmark really works to quantifying as best as it can 
+        <p>With the <a href="https://mlcommons.org/2024/08/mlc-algoperf-benchmark-competition/#">inaugural results</a> for the <i>Algoperf</i> benchmark 
+        having been released only a few days ago
+        I'm hoping to spend some time today breaking down how exactly the <i>Algoperf</i> benchmark really works to quantify as best as it can 
         what <i>performance</i> really mean for optimizers. This can hopefully be both a educational 
-        opportunity to put the finger on the pulse of where some this new and exciting benchmark is taking 
+        opportunity to put the finger on the pulse of where this new and exciting benchmark is taking 
         the evaluation of something as multidimensional as a optimizer and may provide a look into the 
         contours of where the work on optimizers is moving of late.</p>
 
         <h3> What is a Optimizer </h3>
 
         <p>Implementing a AI training pipeline front to end entails a huge swath of moving parts from 
-        a dataset to model architecture, loss function, and of course our focus today optimizers. 
+        dataset through model architecture to a loss function and of course, our focus today, optimizers. 
         Optimizers always struck me as a underdiscussed part of AI research as literally billions
         of dollars are burnt quarter after quarter on training increasingly giant and complicated
         models to eek out bits of performance and the choice of optimizer algorithm for your AI
@@ -86,9 +87,9 @@
         </div>
 
         <p>If you aren't deeply emeshed into AI training it would be worthwhile to provide a brief
-        description of what a optimizer is even doing in the first place: Optimizer algorithms are
+        description of what an optimizer even serves to do in the first place: Optimizer algorithms are
         responsible for taking <i>how wrong</i> a AI is at the task it's trying to get good at and
-        translates that measurement of error into how far each and every parameter dial in your 
+        translating that measurement of error into how far each and every parameter dial in your 
         AI model should be turned to try and <i>bring that error down</i>. Pretty important work.</p>
 
         <p>Technically, when training a model we're given:</p>
@@ -102,7 +103,7 @@
                 output \( f(x, \theta) \) and the true output \(y\)</li>
             </ol>
         </div>
-        The goal is then to find the optimal parameters \(\theta*\) that minimizes the loss
+        The goal is then to find the optimal parameters \( \theta^{*} \) that minimizes the loss
         function over the dataset:
 
         \[ \theta^* = \arg\min_{\theta} \frac{1}{N} \sum_{i=1}^N L(f(x_i; \theta), y_i) \]
@@ -114,10 +115,10 @@
 
         A common metaphor for this in physical space is to imagine the landscape of possible model
         parameter settings as a complex mountain range. When we first initialize a model it's located
-        <i>somewhere</i> in this forest of possibile parameter settings and we need some intelligent
+        <i>somewhere</i> in this forest of all possible model parameter settings and we need some intelligent
         method to descend down out of that dark forest towards the society at the bottom of the valley, wherever
         that is. In this way a optimizer is a boiling down of the instincts of a seasoned hiker, a set
-        of hard learned rules which we can lean on as we blindly feel your way down the mountain-side to a luxurious life in the valley. 
+        of hard learned rules which we can lean on as we blindly feel our way down the mountain-side towards a luxurious life in the valley. 
         And oh how luxurious it is, the VC talking heads at Sequoia capital who bankroll a tremendous amount of innovation in The Valley 
         recently estimated that roughly <a href="https://www.sequoiacap.com/article/ais-600b-question/">$200 billion in CAPEX</a> 
         was burnt in Q1 of 2024 on the GPUs and Electricity needed to, in large part, run the calculations of parameter 
@@ -131,7 +132,7 @@
 
         <h3>Avoiding Credibility Collapse from flawed Criterion</h3>
 
-        The fundamental problem ''Algoperf'' rises to address is that no matter the paper you
+        The fundamental problem <i>Algoperf</i> rises to address is that no matter the paper you
         choose to pick out from a crowd you'll likely find some line in there talking about how "[their] 
         Algorithm A outperforms Algorithm B by C%" and while at a glance those types of sentences seem to attribute
         some reason to use a author's algorithm over it's competitors. Digging in deeper, papers are
@@ -141,11 +142,15 @@
 
         In actuality it's exceedingly difficult to figure out which Optimizer is going to be better
         as a default pick for your AI training experiments or how to set up your optimizer for the specific
-        project which your working on. Without a benchmark consensus becomes fractured and the forest is
-        lost for the trees of which optimizers seem to be working best and on which tasks. ''Algoperf''
-        uses this as the fundamental challenge which it aims to quantify and clarify in it's benchmarking.
+        project which your working on. WAs benchmarks for optimizers have fallen behind the conversation, consensus 
+        has shattered and the forest has been lost for the trees so to say. How to design a optimizer which can 
+        work on a wide range of tasks, or even just knowledge of which optimizers are truly durably most useful 
+        for particular use cases has receded into the cloud of industry secrets as conversation stalls out on 
+        vague and untested claims and the inertia of unknowingly replicating a one-off author’s choice carries 
+        forward unbeknownst to the repercussions of said choices. This is the fundamental challenge which 
+        <i>Algoperf</i> aims to quantify and clarify in it's benchmarking.
 
-        The ''Algoperf'' teams points out four fundamentally problematic dimensions along which previous
+        The <i>Algoperf</i> teams points out four fundamentally problematic dimensions along which previous
         attempts to quantify comparisons of Optimization algorithms in the field have strayed from being
         maximally informative. 
 
@@ -155,7 +160,7 @@
                     <p>
                         One of the fundamental strengths which a optimization algorithm can claim over it's
                     peers is that it will guide your model to the minimum achievable loss quicker than the 
-                    alternative choices. But the ''Algoperf'' team highlights how in many of the papers 
+                    alternative choices. But the <i>Algoperf</i> team highlights how in many of the papers 
                     describing why to use one optimization algorithm choice over another arguments
                     resort to the language of generalities (Ex: "frequently delivers faster convergence") as
                     opposed to more specific measurements of how reliably faster convergence actually is. In
@@ -164,7 +169,7 @@
                     stop training and compare the two.
                     </p>
                     <p>
-                        ''Algoperf'' chooses to measure training speed via picking for
+                        <i>Algoperf</i> chooses to measure training speed via picking for
                     every included workload a "near-state-of-art" out-of-distribution error rate as a 
                     useful heuristic standard to compare every optimization algorithm against.
                     </p>
@@ -201,7 +206,7 @@
                         </p>
                     </div>
                     <p>
-                        ``Algoperf'' chooses to address this by folding the model architecture
+                        <i>Algoperf</i> chooses to address this by folding the model architecture
                         into the workload itself and essentially holding the architecture constant for a task 
                         in order to preserve more apples-to-apples comparative ability across optimizers on the 
                         same task.
@@ -260,10 +265,10 @@
 
         <p>In order to evaluate any particular optimizing algorithm a runtime budget is picked alongside a maximum runtime before stopping, this is usually four thirds
         of the baseline runtime set by testing that runtime budget on standard optimizers, and a validation loss cutoff is set based on how far those generic optimizers
-        on that workload were found by Algoperf to on average end out on validation and testing loss.</p>
+        on that workload were found by <i>Algoperf</i> to on average end out on validation and testing loss.</p>
 
-        <p>As for getting one number to rule them all to evaluate a optimizer by, Algoperf has it's own way of quantifying that as well:
-        Algoperf asks the questions of what fraction of workloads a optimizer is within some ratio of having the best training time on that workload.
+        <p>As for getting one number to rule them all to evaluate a optimizer by, <i>Algoperf</i> has it's own way of quantifying that as well:
+        <i>Algoperf</i> asks the questions of what fraction of workloads a optimizer is within some ratio of having the best training time on that workload.
         Given the raw training time \(t_{s,w} \) for a set of \(k \) submissions \(S = \{s_1, s_2, ... s_k\} \) measured on a set of \(n \) workloads 
         \(W = \{w_1, w_2, ... w_n \} \) the performance of submission \(\bar s \) on workload \(\bar w \) the performance ratio of that submission
         on that workload becomes:
@@ -285,24 +290,50 @@
         and therefore is bounded to be within the range \([0, 1]\). Not bad right?
         </p>
 
-        <h3>Results & Musings on Benchmarks</h3>
+        <h3>On the tradeoffs of Algoperf's Design</h3>
 
         <p>What makes a idea worthwhile? <i>Algoperf</i> with performance ratios and something akin to: 
         "if it figures out a way to get the tasks we care about done quicker". I really enjoyed digging into (and doing a lot of synthesizing 
-        to boil down) this nearly 100 page paper today and am generally awed by the knowledge of optimizer design on display by it's 
+        for the purpose of boiling down) this nearly 100 page paper today and am generally awed by the knowledge of optimizer design on display by it's 
         authors as well as the extreme attentiveness to other efforts in the field to put benchmarks to optimizers and where they've fallen 
         down before <i>Algoperf</i>.</p>
 
-        <p>A article on benchmarking couldn't be resolved whole heartedly without an acknowledgment of the elephant in the room, that being 
+        <p>An article like this on the topic of benchmarking couldn't be honestly resolved without an acknowledgment of the elephant in the room, that being 
         that in reality most Optimizers end out becoming the norm not based on their pure efficiency to train the model the quickest but instead
-        some combination of social inertia, ease of use, general applicability to the tasks that matter, and most importantly use in the Training
-        runs which really attract the big bucks. <i>Algoperf</i> attempts to define a predefined set of tasks to measure models against and a
+        some combination of ease of use and general applicability across multiple prioritized tasks aka those training
+        runs which really attract the big bucks. <i>Algoperf</i> attempts to outline a predefined set of tasks to measure models against and a
         predefined set of hardware to run those models on but in actuality the tasks which matter is a moving target roughly tracking the mass of
         CAPEX and space where models need to be built, it would be fascinating to see a <i>Algoperf</i> which adapts it's relevant workload over
         time and keeps track of which submissions manage to, through the changes in that workload makeup, keep boiling their way up to the
-        top of comparative performance. I also can't help but notice that the specifying of hardware set up may begin to fly in the face of the
-        practicalities of project tradeoffs as the hardware field diversifies into niche customized AI accelerators for specific models and
-        hardware changes around the models.
+        top of comparative performance. I also can't help but notice that the specifying of a hardware set up may begin to misrepresent the realities of 
+        a optimizers applicability in the field as niche customized AI accelerators for specific models and hardware changes around models become more
+        and more dominant in-industry.
+        </p>
+
+        <p>One front of benchmarking which, if I were advising the <i>Algoperf</i> team, I would advise more explicity evaluation stems from the simple
+        observation that the relevant workloads change over time as what is interesting, unsolved, and prioritized in-industry adapts. If <i>Algoperf</i>
+        maintains operation long into the future, as I hope it will, and the workloads which matter diverge from what's currently being compared against
+        it appears like the <i>Algoperf</i> team would benefit from setting out some set of rules for at which point a workload drops out of relevance
+        or a new one becomes justifiable to include. Once that work has been done the team at <i>Algoperf</i> could the add into their benchmark score a 
+        term which accounts for how consistently across the change of workloads over time a optimizer was able to maintain a high benchmarking score, 
+        providing a sort of barometer for how persistently beneficial a optimizer has been throughout the general changes in workloads over time. 
+        This can be described poetically using the same Expotential Moving Average (EMA) formula which plays such importance in many optimizer algorithms. 
+        Given a set, \( \varrho = \{ \rho_{1}^{S}, \rho_{2}^{S}, ..., \rho_{n}^{S} \} \) of \(n \) benchmark evaluations conducted on some set of optimizers \(S \), 
+        then that team at <i>Algoperf</i> could define the following momentum-of-performance term:
+        </p>
+
+        \[
+            \alpha(t) = 
+            \begin{cases} 
+            \rho_{1}^{S} & \text{if } t = 1 \\
+            \beta \cdot \rho_{t-1}^{S} + (1 - \beta) \cdot \rho_{t}^{S} & \text{if } t > 1 
+            \end{cases}
+
+        \]
+        
+        <p>
+        If this hasn't been considered I think it should be as it would take <i>Algoperf</i>  beyond a "simple" evaluation of many optimizers on one set of
+        workloads towards telling the community which optimizers prove themselves to be reliably useful even as the workload changes over time. 
         </p>
 
         <p>Times are interesting and overall <i>Algoperf</i> provides a invaluable tool for sorting through the noise and learning to understand
