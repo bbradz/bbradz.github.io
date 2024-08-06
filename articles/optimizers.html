@@ -1,0 +1,109 @@
+<p>
+    The Applied Mathematics of the Current Crop of NN Optimizers
+
+    The Goal of a Optimizer is to get a NN from the point of random initialization to the 
+    highest accuracy / lowest error possible. I will run through the optimizers mentioned in
+    the most recent inaugural release of the new <i>Algoperf</i> benchmark to classify,
+    describe, and compare the functionality instilled in the design of these varying 
+    optimizers. 
+
+    - First order
+    - Second order
+    - Information-geometric order
+        - Fisher-Rao metric
+        - Bregman metric
+
+    Geometric & Probabilistic terms
+
+    Further possible Optimization developments:
+    - Fractional order
+    - Bilevel
+    - Gradient-free
+        - graph
+        - spiking
+        - complex-value
+        - quantum
+        - wavelet neural network
+
+    Timeline:
+    - First-order
+        - What is the regret bound formula?
+        - SGD-Type
+            - Instances: 
+                - SGD (Stochastic Gradient Descent)
+                - SGDM Nesterov
+                - AdaGrad
+                - AdaGrad-Norm
+                - RMSProp (Root Mean Square Propogation)
+                - AdaDelta
+                - NAG (Nesterov Accelerated Gradient)
+                - SGDW
+                - SGCP (SGD with Projection)
+                - QHM (Quasi-hyperbolic momentum algorithm)
+            - Popular in Convolution, RNN, Autoencoder, GNNs but has significant issues
+            with not observing properties of the loss function which impact reaching the
+            global minimum, particularly deadly in deep networks where Adam proliferates.
+        - Adam-Type
+            - Instances:
+                - Adam (Adaptive Moment Estimate)
+                - AdamW
+                - Adam Projection (AdamP)
+                - QHAdam (Quasi-hyperbolic Adam)
+                - NAdam (Nesterov Accelerated Gradient Adam)
+                - RAdam (Rectified Adam)
+                - DiffGrad
+                - Yogi
+                - AdaBelief
+                - AdaBound
+                - AdamInject
+            - Popular in Deep Convolutional Networks, Recurrent Networks, and spiking but
+            runs into issues in non-real valued NNs (quantum, complex, quaternion) which 
+            lead to the proposal of PNM-Type optimizers.
+
+            AdaPNM
+
+        - PNM-Type (Positive-Negative Momentum)
+            - Instances:
+                - Heavy Ball (HB)
+                - Adan (Adaptive Nesterov Momentum)
+
+        - Exponential Moving Averages
+            - Momentum & Nesterov condition come into consideration
+                -> Higher convergence & accuracy in fewer iterations
+            - Known to not work on certain shapes of functions:
+            Rastrigin, Rosenbrouck, and Ackley functions
+            - Built for multi-extreme functions & bias-correcting estimates
+
+        - Second-order needed to train Physics Informed NNs which work on differential equations
+
+    - Second-order
+        - Take into account not only the gradients but the convexity of the objective
+        function aka Hessian
+        - Newton Algorithms
+            - Newton-MR (Newton Minimum Residual)
+        - Krylov methods (CG, MINRES, GMRES)
+        - Quasi-Newton Algorithms
+            - Approximations of the Hessian utilized to try and speed of minimization process.
+            - BCFGS (and L-BCFGS it's memory limited version)
+            - SR1 (and L-SR1 it's memory limited version)
+            - Apollo
+            - AdaHessian
+
+        - Higher overhead but avoids local extremes for better convergences
+        - Not used in real-valued NNs usually because high time consumption outweighing
+        convergence rate. In large part the inspiration for Geometric minimization.
+
+    - Information-Geometric Minimization
+        - Takes into account the geometric structure of the surface to encapsulate more 
+        full information for less computational cost.
+        - Utilize probability distribution manifolds
+
+        - Natural Gradient-Descent (Fisher-Rao / Fisher information matrix)
+        - Mirror Descent (Bregman)
+
+    - Fractional-order
+        - Riemann–Liouville, Caputo, and Grunwald–Letnikov derivatives
+        - ...and their corresponding generalizations
+    - Gradient-free Optimizers
+
+</p>
