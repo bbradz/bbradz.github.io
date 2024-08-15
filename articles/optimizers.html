@@ -34,8 +34,8 @@
     </header>
 
     <main>
-        <h1 style="font-size: 32px; margin-bottom: 0px;">Challenges in Optimizer Benchmarking</h1>
-        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 7,271</strong></p>
+        <h1 style="font-size: 32px; margin-bottom: 0px;">Optimizers 🥾 ⎯ Towards a full Taxonomy</h1>
+        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 7,366</strong></p>
         <div class="nav" style="font-size: 14px;">
             <ol>
                 <li><a href="#A">Prelude</a></li>
@@ -316,8 +316,8 @@
         meaning that extreme or misrepresentative initial gradients can often lead to our model having overly conservative or aggressive 
         step sizes for the entire rest of it's training process.</p>
 
-        <p>One change which can be made to AdaGrad is to again change how we put together a running sum of our gradients and to rethink how we
-        use that running sum of gradients to update our parameters. This is the alteration which we observe one version in 
+        <p>One change which can be made to AdaGrad is to again change how we put together our running sum of gradients and rethink how we
+        use that running sum of gradients for our weight updates. This is the alteration which we observe one version in 
         the AdaDelta algorithm. </p>
 
         <p><b>AdaDelta</b> puts together a exponentially decaying running sum of the square of the gradients and a 
@@ -642,6 +642,16 @@
         and a third EMA for roughly where each element in each EMA would have placed the subsequent gradient which is 
         used to scale the learning rate applied for updating \(\theta \). </p>
 
+        <div class="centered-item-holder">
+            <img src="../pics/Advanced_optimizations_Saddle.gif" alt=""
+            style="max-width:550px;max-height:400px;">
+            <p class="small-text" style="max-width:450px;">
+                Quick animation I wipped up, inspired by the Luisdamed's Gradient Descent Visualization notebook
+                comparing the performance of a few select First-order SGD and Adam type optimizers
+                <a href="https://colab.research.google.com/drive/1_nQEYD2D-b3wnuSb5bYZ2zYh1-KVyllo?usp=sharing">(Colab)</a>.
+            </p>
+        </div>
+
         <p>That settles the full account of the general standouts in the field of First-Order optimizers. Phew!
         First-Order optimizers are extremely well suited for pattern recognition, time-series prediction, and object 
         classifiction which is why they absolutely dominate so much of the day-to-day models being implemented in-industry
@@ -670,13 +680,20 @@
         <p>Where the gradient of a surface tells you the derivative of that surface with respect to a single variable, the
         Hessian is square matrix of every second-order partial derivative of the following form:</p>
 
-        <pic></pic>
+        \[
+            \mathbf{H}_f = \text{Hess} = \nabla^2f = \begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+            \frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+            \end{bmatrix}
+
+        \]
         
-        <p>The consideration of the Hessian in descending the valleys of our weight-space's is called the <i>Newton method</i> 
-        and spawns the <i>Newton Algorithms</i> for Second-order optimization. Netwon optimization increases accuracy on 
-        functions with multiple local minimums and given that \(\text{Hess}(\theta_t) = \nabla^2f(\theta_t) \) builds the 
-        following update rule for it's simplest implementation, Newton minimum residual (Newton-MR) or to use a metaphor, 
-        the SGD of Second-Order optimization:</p>
+        <p>Explicit consideration of the Hessian in descending our weight-space valley is called the <i>Newton method</i> 
+        and spawns the <i>Newton Algorithms</i> for second-order optimization. Netwon optimization allows for increased accuracy on 
+        functions with multiple local minimums and builds the following update rule for it's simplest implementation,
+         Newton minimum residual (Newton-MR), the metaphorical SGD of Second-Order optimizers:</p>
 
         \[ \theta_{t+1} = \theta_t - [\nabla^2f(\theta_t)]^{-1}\nabla f(\theta_t) \]
 
@@ -732,20 +749,23 @@
         \end{gather}
         \]
 
-        <p>This has the helpful memory efficient adaptation of BFGS-L which, instead of storing both \(V_t \), \(\rho_t \), \(H_t \) matrices
-        we instead perform \(m \) BFGS updates using our \(m \) most recent curvature pairs which are the only points kept in
-        persistent memory to reconstruct an approximation of \(H_{t+1} \). Another Quasi-Newtonian method for approximating 
-        the Hessian matrix is SR-1 which has it's own accompanying low-memory implementation and doesn't make as strong assumptions
-        about the nature of the Hessian of our problem (specifically that it isn't necessarily positive definite) meaning that 
-        it is more flexible but in practice often leads to more unstable learning as deals with a unnecessarily broad search space.</p>
+        <p>On it's face BFGS has a computational complexity of only \(\mathcal{O}(n^2) \), a vast improvement
+        over Newton-MR which comparatively requires roughly \(\mathcal{O}(n^3) \). Additionally BFGS has a helpful 
+        memory-efficient adaptation called <i>BFGS-L</i> which, instead of storing all three \(V_t \), \(\rho_t \), and \(H_t \) matrices
+        between updates instead performs \(m \) BFGS updates using only the \(m \) most recent curvature pairs to reconstruct an approximation 
+        of \(H_{t+1} \).</p>
+
+        <p>Another Quasi-Newtonian method for approximating the Hessian matrix is SR-1 which has it's own accompanying 
+        low-memory implementation and doesn't make as strong assumptions about the nature of the Hessian of our problem (specifically that it 
+        isn't necessarily positive definite) meaning that it is more flexible but in practice often leads to more unstable learning as deals 
+        with a unnecessarily broad search space.</p>
 
         <p>BFGS and SR-1 both have issues with memory consumption as they compose their square Hessian via storing, go figure, 
         interim values requiring square memory space. Because of this there have been a few more popular Quasi-Newtonian methods 
         showing more practicality on larger networks developed with the express purpose of keeping memory requirement linear.</p> 
 
         <p>The first linear memory Quasi-Newtonian optimizer builds on the base of Adam-Type moment estimation to store and 
-        update a running estimate of the diagonal of the Hessian, Apollo. Apollo handles all three challenging function types
-        and dramatically accelerates the minimization process over it's fully Newtonian cousins. The following is it's algorithm:</p>
+        update a running estimate of the diagonal of the Hessian: <b>Apollo</b>, the following is it's algorithm:</p>
 
         \[ 
         \begin{gather}
@@ -758,11 +778,11 @@
         \end{gather}
         \]
 
-        <p>The second linear memory Quasi-Newtonian optimizer is AdaHessian. AdaHessian compiling via the fast 
-        Hutchinson method the curvature matrix of the diagonal of the Hessian, then dampens the variations of that Hessian 
-        approximation each iteration via block diagonal averaging and across iterations via a root mean square EMA. </p>
-
-        <p>The following is it's algorithm: </p>
+        <p>Apollo handles all three challenging function types and dramatically accelerates the minimization process over 
+        it's fully Newtonian cousins. The second linear memory Quasi-Newtonian optimizer is <b>AdaHessian</b>. AdaHessian compiles
+        the curvature matrix of the diagonal of the Hessian via the fast Hutchinson method, then dampens the variations of 
+        that Hessian approximation each iteration via block diagonal averaging and across iterations via a root mean square EMA. 
+        This breaks down to the following update rule: </p>
 
         \[ 
         \begin{gather}
@@ -774,9 +794,10 @@
         \]
         
         <p>After understanding both Apollo and AdaHessian we wrap up our forray into Quasi-Newtonian optimizers which 
-        in the process wraps up our breakdown of Second-order optimizers as well. While Quasi-Newtonian optimizers have 
-        found some applications for their higher convergence rate they still today prove generally unsuitable for deep 
-        convolutional, reccurent, or spiked NNs because of their high time consumption. In many ways the story of Second-Order
+        in the process wraps up our breakdown of Second-order optimizers as a whole! While Quasi-Newtonian optimizers have 
+        found some applications for their higher convergence rates still they prove generally to be unsuitable for deep 
+        convolutional, reccurent, or spiked NNs because despite their runtime cuts compared to fully Newtonian options
+        their time consumption is still, at a practical level, just far too high. In many ways the story of Second-Order
         optimizers is the story of optimizers as a field coming up against the fundamentally difficult challenge of 
         optimizer design: how to encapsulate better geometric reasoning with less effort. This leads us to third and final
         category of optimization algorithms, one which brings in a few heavier techniques in geometry, probability, and 
@@ -788,6 +809,11 @@
         <p>Information geometry is formulation of model fitting as a decision of which parameters to choose from a 
         family of parametric models and in the field of Information-Geometric optimizers there are two main choices which
         stick out as meaningfully different: Natural Gradient Descent and Mirror Descent. </p>
+
+        <div class="centered-item-holder">
+            <img src="../pics/Screenshot 2024-08-15 at 2.27.36 PM.png" alt=""
+            style="max-width:300px;max-height:400px;">
+        </div>
         
         <p>Natural Gradient Descent describes the following set-up for that parametric selection. Let \((\mathcal{M}^n, g) \)
         be a Riemannian manifold where \(\mathcal{M} \) is a topological space expressed in the local coordinate system
@@ -821,12 +847,21 @@
         replace second-order optimizers due to its convergence rate and time consumption but isn't the only 
         Information-Geometric approach generating steam on the menu, we can also turn to Mirror Descent. </p>
 
+        <div class="centered-item-holder">
+            <img src="../pics/Screenshot 2024-08-15 at 3.08.10 PM.png" alt=""
+            style="max-width:500px;max-height:300px;">
+            <p class="small-text" style="max-width:400px;">
+                Schematic representation of stochastic mirror descent's dual space navigation 
+                <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/e6ba70fc093b4ce912d769ede1ceeba8-Paper.pdf">(Source)</a>
+            </p>
+        </div>
+
         <p>Instead of operating on one Hessian manifold, Mirror Descent formulates Natural Gradient Descent on a dual 
-        Hessian manifold as equivalent to Bregman mirror descent on a Hessian manifold allowing for gradient steps
+        Hessian manifold (equivalent to Bregman mirror descent on a Hessian manifold) allowing for gradient steps
         in dual space and a seeking of the global minimum according to the duality of the probability distribution
         manifold. Stochastic Mirror Descent (SMD) has been shown to reach a high accuracy in training the image
         recognition ResNet18 model and promises to improve loss function minimization in convolutional, graph, and 
-        recurretn NNs of huge architectures as well providing some hope that given further work we may yet see another
+        recurrent NNs of huge architectures as well providing some hope that given further work we may yet see another
         innovation in form of optimizer algorithms in regular practice in-industry. Additionally, mirror descent 
         can be equipped with adaptive moment estimation and other first-order optimization methods to open up all of
         the experimentation being done there to a whole new field of formulating the challenge. </p>
