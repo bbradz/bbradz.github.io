@@ -98,7 +98,7 @@ article p {
 
 .responsive-image-med {
   max-width: 500px;
-  max-height: 450px;
+  max-height: 550px;
   width: 100%; /* Ensures image scales down on smaller screens */
   height: auto;
 }
