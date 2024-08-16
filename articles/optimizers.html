@@ -11,937 +11,1414 @@
       rel="stylesheet"
     />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
   </head>
   <body>
     <header>
-        <div class="header-content">
-            <h1><a class="landingpage-button" href="../index.html">Ben Bradley</a></h1>
-            <div class="header-horizontal">
-              <div class="left-horizontal"> 
-                <p>Riding the Wave of Computation</p>
-                <!-- <a href="/about"><p>About</p></a> -->
-              </div>
-              <div class="logo-horizontal">
-                <a href="https://x.com/SLENDERdude441" target="_blank"><p><img src="../pics/x6.png" alt="x logo" style="width:15px;height:14px;"></p></a>
-                <a href="https://github.com/bbradz" target="_blank"><p><img src="../pics/git.png" alt="github logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://www.linkedin.com/in/bbradz/" target="_blank"><p><img src="../pics/linkedin.png" alt="linkedin logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://open.spotify.com/user/slender_dude441" target="_blank"><p><img src="../pics/spotify2.png" alt="spotify logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://www.instagram.com/bbradz_/" target="_blank"><p><img src="../pics/ig.jpeg" alt="ig logo" style="width:17px;height:15px;"></p></a>
-              </div>
-            </div>
+      <div class="header-content">
+        <h1>
+          <a class="landingpage-button" href="../index.html">Ben Bradley</a>
+        </h1>
+        <div class="header-horizontal">
+          <div class="left-horizontal">
+            <p>Riding the Wave of Computation</p>
+            <!-- <a href="/about"><p>About</p></a> -->
+          </div>
+          <div class="logo-horizontal">
+            <a href="https://x.com/SLENDERdude441" target="_blank"
+              ><p>
+                <img
+                  src="../pics/x6.png"
+                  alt="x logo"
+                  style="width: 15px; height: 14px"
+                /></p
+            ></a>
+            <a href="https://github.com/bbradz" target="_blank"
+              ><p>
+                <img
+                  src="../pics/git.png"
+                  alt="github logo"
+                  style="width: 15px; height: 15px"
+                /></p
+            ></a>
+            <a href="https://www.linkedin.com/in/bbradz/" target="_blank"
+              ><p>
+                <img
+                  src="../pics/linkedin.png"
+                  alt="linkedin logo"
+                  style="width: 15px; height: 15px"
+                /></p
+            ></a>
+            <a
+              href="https://open.spotify.com/user/slender_dude441"
+              target="_blank"
+              ><p>
+                <img
+                  src="../pics/spotify2.png"
+                  alt="spotify logo"
+                  style="width: 15px; height: 15px"
+                /></p
+            ></a>
+            <a href="https://www.instagram.com/bbradz_/" target="_blank"
+              ><p>
+                <img
+                  src="../pics/ig.jpeg"
+                  alt="ig logo"
+                  style="width: 17px; height: 15px"
+                /></p
+            ></a>
+          </div>
         </div>
+      </div>
     </header>
 
     <main>
-        <h1 style="font-size: 32px; margin-bottom: 0px;">Optimizers 🥾 ⎯ Towards a full Taxonomy</h1>
-        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 7,366</strong></p>
-        <div class="nav" style="font-size: 14px;">
-            <ol>
-                <li><a href="#A">Prelude</a></li>
-                <li><a href="#B">Introduction</a></li>
-                <ol>
-                    <li><a href="#C">Explaining Terms</a>
-                    <li><a href="#D">Towards a Taxonomy of Optimizers</a></li>
-                </ol>
-                <li><a href="#E">First-Order Optimizers</a></li>
-                <ol>   
-                    <li><a href="#F">SGD-Type</a></li>
-                    <li><a href="#G">Adam-Type</a></li>
-                    <li><a href="#H">Triple Moment Adam-Type Optimizers</a></li>
-                </ol>
-                <li><a href="#I">Second-Order Optimizers</a></li>
-                <li><a href="#J">Information-Geometric Optimizers</a></li>
-                <li><a href="#K">Conclusions </a></li>
-                <li><a href="#L">Sources</a></li>
-            </ol>
-        </div>
-
-        <hr>
-
-        <a name="A"></a>
-        <h3>Prelude:</h3>
-
-        <p>Last Sunday I released an article onto this blog breaking down at a moderately exhaustive 
-        level the new <i>Algoperf</i> optimizer benchmark. I really enjoyed writing that piece 
-        and it served a real purpose in my life as at the moment my RL research 
-        with the Physics department at Brown University is resolving and I'm really looking for some 
-        way to transition my attention over towards the hard-CS side of things, where my heart is.
-        Machine Learning is ginormous enough as a field that I can't the avoid feeling of intense 
-        humility from how little of it's breadth, despite my efforts, I can really lay claim to 
-        understanding at a nuts & bolts level. When I was writing about <i>Algoperf</i> a few days 
-        ago I had not intended to dedicate a whole article to the topic, moreso it proved to be an 
-        inavoidable topic on a much longer path, a path which I intend to continue following today.</p>
-        
-        <p>It had always struck me as surprising that there isn't more attention regularly given
-        to the class of algorithm which truly controlling the process by which a model goes
-        from the point of disfunction to world-changing. Optimizers are special pieces of work with
-        the potential to have huge reprecussions on every AI project but somehow end out 
-        as a minor technicality on the checklist to assembling this week's newest in-vogue 
-        iteration of a Transformer.</p>
-
-        <p>In this article, I aspire to follow my intellectual curiosity and in the process
-        outline a brief top-down look at the many Optimization algorithms floating around in 
-        the literature at the moment. </p>
-
-        <a name="B"></a>
-        <div></div>
-        <div class="centered-item-holder">
-            <img src="../pics/IMG_0461 2.heic" alt=""
-            style="max-width:960px;max-height:600px;">
-        </div>
-        <h3>Introduction: </h3>
-
-        <p>Have you ever been hiking? Yesterday I was standing 833 meters above the 
-        rolling forests of New Hampshire with my newly emptied sandwich bag and can of seltzer 
-        when the glimmer of an unlikely thought came to me: </p>
-        
-        <p><i>Oh god, now I have to walk down.</i></p>
-
-        <p>We've all been there and, fascinatingly, so has ChatGPT. That's right-- ChatGPT found itself, some time
-        around the middle of 2022, 
-        among the peaks of a mountain range bigger and more complicated than you or I could ever visualize. 
-        Because whenever a model is initialized with random weights it's placed into a mind-bogglingly 
-        complex range of adjustable parameters without a map, inundated by fog, and (atleast in ChatGPTs case) 
-        holding the hopes of a million high schoolers on it's back who rely on it being able to find a valley 
-        low enough to set up shop. Welcome to the high dimensional and higher stakes world of optimization 
-        algorithms.</p>
-
-        <p>PS -- I'm going to be breaking out a bit of mathematical terminology in this article
-        but I promise you that if you keep returning to this analogy of a mountain range needing
-        to be measured and descended that 90% of this article will slot together.</p>
-
-        <a name="C"></a>
-        <h4>Explaining Terms:</h4>
-
-        <p>The first step in laying down an explanation of optimizers would be starting with what the valleys
-        these models are being tasked with descending even are in the first place. When a model is 
-        initialized there is some definable group which contains all of the possible arrangements of weights
-        possible for our model and for each of those sets of weights there's some accuracy
-        which our model would therefore show on our chosen task when given those weight arrangements. In this
-        metaphor the possible weight arrangements are the surface which out optimization algorithm embodied as a hiker 
-        is walking across and the elevation of the surface is how many mistakes our the model would make standing at
-        any of the given points on that surface. The goal: get to the bottom of the valley to some weight combination
-        which minimizes mistakes.</p>
-        
-        <p>By the multivariate nature of these surfaces they inevitably take on a tremendous variety of different shapes
-        and our goal when designing or picking an optimizer is to find an algorithm which can traverse all of the surfaces
-        which may present themselves in solving the problems we care to solve. There are 
-        actually a few types of surfaces which may be the most useful relevant examples in describing 
-        the possible challenges these optimizers need to be equipped for.</p>
-        
-        <p>Much of our challenge comes from the quirk that while it's relatively uncomplicated from a system
-        perspective to have our model look at the exact point where it's standing and figure out which direction 
-        directly adjacent to it will get it most instantly downhill it's <i>tremendously</i> expensive to look forward 
-        and observe the shape of the hill as a whole, again imagine the valley as being covered in a thick fog drowing out visibility.
-        Since analyzing the whole surface is so expensive we don't know what the lowest point on our surface truly is 
-        making it very easy to end out at a point high up on the hill with no area directly around you to step down towards 
-        (this is called a local minimum, a pit to fall into). Even if we do find our way to a global minimum (aka the bottom of the valley) 
-        we may end out having taken a winding and inefficient path down. The math term relevant to introduce here is the 
-        <i>gradient</i> which describes essentially which direction the slope under our model's feet is pointing and how 
-        steep that slope is.</p>
-
-        <p>A key metrics which optimizers can be measured along is their <i>convergence rate</i> aka how quickly
-        their mistakes decrease as you take a certain additional number of steps. Three of the relevant difficult 
-        cases of valley shapes which we'll return to throughout this article to describe possible strengths or 
-        weakness of existing optimizers are the following:</p>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Screenshot 2024-08-15 at 12.55.05 PM.png" alt=""
-            style="max-width:960px;max-height:500px;">
-        </div>
-
-        <p><b>1.</b> Long flat domains where the gradient is very small but a large step of movement is called for.
-        The go-to standard surface used to approximate this type of case is the Ackley function</p>
-
-        <p><b>2.</b> Very steep domains where the gradient is very large but a large step of movement is still called for,
-        approximated by the Rastrigin function</p>
-
-        <p><b>3.</b> Steep sides valley domains where, in the valley, a very small gradient calls for small steps of movement,
-        approximated by the Rosenbrock function</p>
-
-
-        <p>Take a moment to analyze these three functions since we'll be referencing them repeatedly.
-        The important part is (maybe most obviously in the Ackley & Rastrigin functions)
-        that there are local dips built into these surfaces which cause a naive approach to fail. 
-        Put another way, if we were to just step in whichever direction our direct surroundings present 
-        us we would likely be left stuck in suboptimal local minimums!
-        That's really the most important detail beyond the general shape of each function relevant to take away. 
-        Now on to discussing the stars of the show, the Optimizer algorithms themselves.</p>
-
-        <a name="D"></a>
-        <h4>Towards a Taxonomy of Optimizers:</h4>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Screenshot 2024-08-15 at 1.01.21 PM.png" alt=""
-            style="max-width:960px;max-height:500px;">
-            <p class="small-text" style="max-width:800px;">
-                Source of this chart (and much of the inspiration for this article) was
-                <i>Survey of Optimization Algorithms in Modern Neural Networks</i> (Abdulkadirov
-                et al. 2023).
-            </p>
-        </div>
-
-        <p>Optimizer design breaks down into 3 basic categories, the first of which makes up roughly <i>95%</i> percent
-        of the optimizers in use in-industry and therefore will be getting the majority of the attention here.
-        The other two categories are still interesting though and will be getting 
-        their justice as well as a bit of a explanation of where they've been found to be useful (hint: Physics-Informed
-        NNs, Non Real-valued NNs, time-variant Spikey NNs).</p>
-
-        <p>These three basic categories are:</p>
-        <p><b>1. First-order optimizers</b> which consider the first derivative of their surface. These 
-        roughly break down into two subfamilies of algorithms:</p>
-        <ul>
-            <li>SGD (Stochastic Gradient Descent), and,</li>
-            <li>Adam (Adaptive Moment Estimation)</li>
-        </ul>
-
-        <p>First-order optimizers have a very low overhead in terms of computation since they only calculate
-        one component of the problem surface, this lend itself to giant model networks where the majority of the 
-        compute time needs to go into running or propagating changes through the network as well as to networks which
-        have the sorts of relatively simple internal operations which a lightweight optimizer still has the tools
-        to learn how to deal with. </p>
-
-        <p><b>2. Second-order optimizers</b> which consider both the first <i>and</i> second derivatives of the surface.
-        Second-order algorithms are built around adding in consideration for the greater curvature of the surface in to the first-order 
-        gradient, analogous to clearing a bit of the fog away from the valley to see the broader shape of the territory. 
-        These too have two primary subfamilies of algorithms:</p>
-        <ul>
-            <li>Netwonian, and,</li>
-            <li>Quasi-Newtonian</li>
-        </ul>
-
-        <p>Second-order optimizers have been found to work well on Deep CNNs and GNNs but aren't used as much
-        on recurrent large language models because they come with a substantial computational overhead.</p>
-
-        <p><b>3. Finally: Information-Geometric optimizers.</b> The dark sorcery of optimizer algorithms, 
-        information-geometric optimizers choose to reimagine the whole surface as more complicated mathematical 
-        objects, drawing on the findings of group theory and abstract algebra to bear witness more information about the problem 
-        in less computation via manifold-level inferences. I'll break a bit into what the math is behind these
-        cool pieces of machinery but we'll save that for the end since it's the most out there of all three classes.</p>
-
-        <p>If your looking for a deeper breakdown on the operations behind any of the optimizers I'll take on 
-        throughout this article I'll be linking them in the sources section at the end of this article, for now
-        let's get to explaining.</p>
-
-        <a name="E"></a>
-        <h3>First-Order Optimizers</h3>
-
-        <a name="F"></a>
-        <h4>SGD-Type</h4>
-
-        <p>The simplest first-order optimizer out there, the one which you likely know by heart if you know a thing
-        or two about NNs is Stochastic Gradient Descent (SGD). Stochastic Gradient Descent is named
-        such because the weight adjustment it returns at any given moment is based on <i>descending</i> the surface of our 
-        model's weight space using only the information we can glean from the instantaneous <i>gradient</i> of our model's 
-        position in that weight space derived from a random (aka <i>Stochastic</i>) sampling of the full problem. 
-        Weight adjustments made by SGD don't take into account any history of past adjustments and often just measuring 
-        how our model should descend a gradient based on a approximation of the true gradient calculated out of a small number 
-        of examples components of the full challenge.</p>
-
-        <p>The following is the formula for <b>SGD</b>:</p>
-
-        \[ \theta_{t+1}=\theta_{t}-\eta_t\nabla f(\theta_t) \]
-
-        <p>Another way to think of this is that given a batch size of \(n\) samples from our problem the step we
-        take will be based on the average gradient observed across those \(n\) samples: </p>
-
-        \[ \theta_{t+1}=\theta_{t}-\frac{\alpha_t}{n}\sum_{i=0}^{n}\nabla f_i(\theta_t) \]
-
-        <p>One of the primary benefits of SGD is that it's got an extremely low overhead in terms of computational cost
-        since it takes into account as little information as possible (only one component of the surface
-        shape over only a few examples) but that can be a strength it also opens up the primary weakness of SGD, 
-        a inability to avoid taking many steps in traversing regions of gradual slope. SGD doesn't glean the true shape of 
-        the function it's traversing as it takes steps, trading off a lower memory for quicker iterations. One of the first 
-        additions made to SGD back in 1980 was the consideration of a momentum term through Nesterov accelerated gradients. </p>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Screenshot 2024-08-15 at 1.21.09 PM.png" alt=""
-            style="max-width:450px;max-height:300px;">
-            <p class="small-text" style="max-width:400px;">
-                Brief visual explanation of the Nesterov momentum adaptation of typical momentum
-                <a href="https://www.researchgate.net/figure/The-Nesterov-momentum-update-versus-regular-momentum-update_fig33_311845419">(Source)</a>
-            </p>
-        </div>
-        
-        <p>The Nesterov accelerated gradient (NAG) optimizer focuses on enhancing convergence in gradually sloped portions of functions through 
-        adding into the SGD gradient estimation loop a small partial step to update our weight configuration before our gradient is estimated
-        in a direction proportional to the running sum of all the past gradients observed by our model. Through imposing a additive step 
-        proportional to the momentum of the past observed gradients the weight update rule becomes the following:</p>
-
-        \[
-        \begin{gather}
-            &\theta_{t+1} = \theta_t + v_{t+1} \\ \\
-            &v_{t+1} = \mu v_t + \eta \nabla f(\theta_t + \mu v_t)
-        \end{gather}
-        \]
-
-        <p>Nesterov momentum distills the convexity of our surface via some beautiful mathematical grounding in the Nesterov condition
-        for measuring the convexity of functions (aka how far from linear), essentially amounting to the model realizing when it's already
-        observed a long string of similarly pointed gradients that it should take larger steps in that direction next time around.
-        As Nesterov mementum describes and account for function convexity very effectively in accordance with the Nesterov conditioning 
-        it's a concept which ends up popping up throughout optimizer algorithms of all sorts but this exact formula wasn't the one which 
-        caused the technique to truly take off in practice. For that we look to a different optimizer algorithm, AdaGrad...</p>
-
-        <p>AdaGrad differs from SGD with NAG as it empirically unlocked a higher convergence rate
-        by moving that momentum-approximating summation of past gradients away from it's own independent partial step and into composing
-        an adaptive factor to inform how much to scale the step implied by the gradient. 
-        Through unlocking adaptive step sizes in relation to the momentum of the gradients AdaGrad
-        manages to compress the same progress into less steps, allowing for a increase in the learning 
-        rate and reduction in time consumed on traversing down the hill of weight space possibilities. </p>
-
-        <p>The following is the formula for <b>AdaGrad</b>:</p>
-
-        \[
-            \theta_{t+1}=\theta_t - \frac{\eta_t}{\sqrt{G_{t+1}+\epsilon}}\nabla f(\theta_t)
-        \]
-
-        <p>As you can see AdaGrad compiles together a \(G \) term which functions as a trailing sum of the past gradients, 
-        importantly preserving signs, with increases in \(G \) (meaning that updates have been made repeatedly in the same direction)
-        the size of steps is decreased. In this way AdaGrad adapts to be cautious when it is descending down a persisting slope 
-        so as to not overshoot the ending of that slope, a smartly adaptive strategy for boiling an expectation of convex slope curvature 
-        into steps taken which provides empirical gains. AdaGrad still, as should be expected, is far from perfect however and while the 
-        cautious step sizes can avoid falling into local minimums through not immediately moving into them it also neuters the step size to be able to 
-        rise back out of local minimums which the algorithm may still end out stepping into. AdaGrad while better than SGD 
-        still isn't fundamentally guaranteed to converge to the global minimum's neighborhood. </p>
-
-        <p>Another issue with AdaGrad is that expanding out the \(G \) term we arrive at the formula:</p>
-
-        \[
-            G = g_0 + g_1 + g_2 + ... + g_n
-        \]
-
-        <p>This way of compiling gradients notably considers the initial gradient values just as much as the most recent observed gradient,
-        meaning that extreme or misrepresentative initial gradients can often lead to our model having overly conservative or aggressive 
-        step sizes for the entire rest of it's training process.</p>
-
-        <p>One change which can be made to AdaGrad is to again change how we put together our running sum of gradients and rethink how we
-        use that running sum of gradients for our weight updates. This is the alteration which we observe one version in 
-        the AdaDelta algorithm. </p>
-
-        <p><b>AdaDelta</b> puts together a exponentially decaying running sum of the square of the gradients and a 
-        exponentially decaying running sum of the square of the actual change made to each weight in our model. 
-        Next AdaDelta akes the square root of both sums, and defines the step size to be the ratio of the running 
-        weight change sum over that gradient sum. In other words, we define the following set of additional functions:</p>
-        
-        \[
-        \begin{gather}
-            &E[x^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \\ \\
-            &RMS[g]_t = \sqrt{E[x^2]_t+\epsilon}
-        \end{gather}
-        \]
-
-        <p>We then define the following update rule for our weights:</p>
-
-        \[
-            \Delta \theta_t= - \frac{RMS[\Delta \theta]_{t-1}}{RMS[g]_t}g_t
-        \]
-
-        <p>In this way the rate of changing parameters is only slowed down when the recent moment has seen
-        dramatically large gradients but will adaptively keep step sizes up for weights 
-        which have reliably, through those changes in the gradient, kept being changed in a signifigant way. Expanding out the 
-        term for \( E[x] \) we get the formula:
-        
-        \[ E[x]_n = (1-\rho)\rho^{n-1} g^2_0 + (1-\rho)\rho^{n-2} g^2_1 + ... + (1-\rho)g_n^2 \]
-
-        showing that past gradients gradually are scaled down in relevance to the current update rule which not only 
-        increase responsiveness of the momentum term but also means that the momentum sum is not solely increasing as past large gradients
-        are slowly subtracted out of the sum.</p>
-
-        <p>AdaDelta definingly maintains two running momentums, one for which weights have been changing consistently and another for 
-        how steep the gradient was been over time. Keeping these dual momentums allows AdaDelta to adjust step sizes to be 
-        cautious in regions of high gradients regardless of the signs of those gradients (allowing traversals out of local 
-        pitfalls and dampening oscillations in the vertical directions) while preserving room for individual weights to update 
-        (or not update) according to what their individual running momentums call for. One of the key applications of this algorithm 
-        is in cases of models with many weights where some weights may be exercised only sparsely during training, through dampening the
-        updates of weights which occur more often in comparison to weights which have rarer distinct gradients the update rule 
-        adjusts to make larger adjustments to those weights which rarely show up as relevant in the gradient than the overexposed weights, 
-        allowing for a higher proportional consideration of those niche weights which filters down into higher performance on the deep 
-        networks which we see everywhere nowadays. AdaDelta has been shown to work well on the 2nd and 3rd challenging valley shapes 
-        for optimizers, to take minimially more computation than pure gradient descent, to be robust to dramatic gradients, noise, and 
-        a good degree of network choices, all without need for a learning rate (\(\eta \)) hyperparameter!</p>
-
-        <p>There are a few further SGD-Type optimizers which pop up sporadically in the literature:</p>
-        <ul>
-            <li>\(L^2 \) regularized SGD (SGDW) which decreases the weight additionally based on the scale of that weight,
-        ideally to prevent overfitting, but which often falls down through mucking the signal for actual accuracy convergence.</li>
-            <li>SGD with Projection (SGDP) which hypothetically minimizes weight updates in the direction of increasing
-        the norm of the weights (aka regularizing the weights) but which only performs slighly above SGDW.</li>
-            <li>and Quasi-hyperbolic momentum (QHM) which uses a weighted sum of pure SGD and a SGD model using momentum and 
-        in the process achieves higher avoidance of local minimums over SGD but still falls into the traps of the SGD with 
-        momentum models, achieving an unhappy medium.</li>
-        </ul>
-        
-        <p>Overall, there's a broad family of optimizers built off the core of SGD which develop on each other in very
-        interesting ways to observe and avoid the pitfalls which the naive SGD algorithm falls into. Howevever, there's
-        another family of first-order optimizers outside of the SGD-Type variants which has risen to dominance this past
-        decade, displacing SGD-Type optimizers and opening up another exciting front in the field of optimizer design...</p>
-
-        <a name="G"></a>
-        <h4>Adam-Type</h4>
-
-        <p><b>Adaptive Moment (Adam) </b> optimizers expand the scope of information being tracked to consider two "moments" of the trail
-        of past observed gradients, both of which utilize AdaGrad's method of exponentially decaying summation and together provide
-        the optimizer the ability to account for simultaneously the jaggedness of gradient change & standardness of direction of 
-        that gradient change.</p>
-
-        <p>The following is the formula for Adam:</p>
-
-        \[
-        \begin{gather}
-            &M_t = \beta_1 M_{t-1} + (1-\beta_1)g_t \\
-            &V_t = \beta_2 V_{t-1} + (1-\beta_2)g_t^2 \\ \\
-            &\hat M_t = M_t / (1-\beta_1^t) \\
-            &\hat V_t = V_t / (1-\beta_2^t) \\ \\
-            &\theta_{t+1} = \theta_t - \eta \frac{\hat M_t}{\sqrt{\hat V_t}+\epsilon}
-        \end{gather}
-        \]
-
-        <p>The first moment which Adam takes care to compile is the <i>mean</i> (\(\hat M_t \)) of the past gradients, utilizing the magnitude of 
-        the mean gradient to imply when a long string of gradients has been pointing in the same direction. The second moment 
-        which Adam compiles is the <i>variance</i> (\(\hat V_t \)) of the gradient, aka a running sum of the square of the gradients, isolating
-        the steepness of the slope at the expense of preserving the exact average direction of those slopes. This is really a 
-        quite smart design, breaking out two momentum terms where one informs the consistency of the direction of the gradients 
-        and the other measures the jaggedness of those gradients altogether opening room for considering a variety of different 
-        function region shapes. </p>
-        
-        <p>The final adaptation which Adam institutes over SGD-Type models which warrants explanation is this bias-correction division
-        of both moments. As we showed in our explanation of AdaDelta one of the characteristics of these exponentially decaying summations
-        is that, in the case of the first moment for example, at any given time \(t \) unrolling \(M_t \) into how much each \(M_i \) term
-        is being considered in \(M_t \) gives us the following formula:</p>
-
-        \[ 
-            M_t = \beta_1^{t}M_0 + \beta_1^{t-1}(1-\beta_1)M_1 + ... + (1-\beta_1)M_{t-1}
-        \]
-
-        <p>Since \(\beta_1 \) and \(\beta_2 \) are usually set to values \(\approx 1 \), the terms \( 1-\beta_1 \) and \( 1-\beta_2 \)  becomes \(\approx 0 \) 
-        dragging the value of \(M_t \) to towards zero at very small \(t \) values and causing early updates to, without correction, 
-        overaccount for early moments. This is the origin of those \(\hat M_t \) and \(\hat V_t \) terms: \(1 - \beta_1^t \) blows up the value of 
-        \(M_t \) when \(t \) is small and gradually converges to value of one as \(t \) approaches \(\infty \), the value of \(\frac{M_t}{1-\beta_1^t} \) 
-        helps to adaptively scale up the value of \(M_t \) at steps early into training (with the same logic carrying over to \(\hat V_t \)). </p>
-
-        <p>Finally in place of the usual gradient term in SGD, Adam uses the ratio between the general direction being pointed to over the 
-        mean of the past gradients divided by the square root (as a normalizing tool) of the variance in the jaggedness of those gradients.
-        This ratio allows for larger steps in regions of consistently directional gradients on top of a cautionary dampening when the gradients
-        are jagged and are more dramatic in where they may end out taking our model. Adam can famously solve all 3 example valley shapes
-        (Ackley, Rastrigin, Rosenbrock) as it's exponential moving averages (EMA) together decrease propensity to fall into  local minimums and 
-        open up adaptability to a wide range of different surface dynamics. </p>
-
-        <p>I briefly mentioned \(L^2 \) regularized SGD (aka SGDW) as a out-there iteration of that family of first-order optimizers
-        which aspired to decreasing overfitting but failed through mucking up the update signal, ultimately hurting convergence more than
-        it really imporved generalization. Well one of the benefits of the Adam formulation of optimization over SGD is that the 
-        regularizing iteration of Adam has actually lived up to many of those hopes! Enter the most popular spin off of the Adam class 
-        of optimizers: AdamW.</p>
-
-        <p>The following is the formula for <b>AdamW</b>:</p>
-
-        \[
-            \theta_t = \theta_{t-1} - \eta \left[\alpha \frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon} + \lambda \theta_t \right]
-        \]
-
-        <p>At it's core AdamW integrates the scale of the weight being updated into determining how much to
-        adjust that weight through decreasing each weight by \(\eta \lambda \theta \) at each step, dragging all weights closer to a 
-        smaller value and decreasing how many lopsided weight combination the model can choose from to overfit to the exact problem their
-        being trained on. AdamW's inserted weight reduction consideration has been shown empirically to provide better
-        gains in generalization than just slapping the traditional \(L^2 \) Regularizer on top of traditional Adam and has 
-        gained real popularity in-industry for its ability to guarantee reliable model performance. </p>
-
-        <p>One of the downfalls of AdamW is that it's \(L^2 \) Regularization drives convergence in the global minimum neighborhood to
-        not be as smooth as necessary, often bumping around the true solution. One of the solutions to this is to look back to
-        Nesterov momentum from the SGD family and bring it into the Adam algorithm, resulting in the following update rule for the 
-        <b>NAdam</b> optimizer algorithm:</p> 
-        
-        \[
-            \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t}+\epsilon} \left(\beta_1 \hat m_t + \frac{(1-\beta_1)g_t}{1-\beta_1^t}\right) 
-        \] 
-        
-        <p>As you can see, NAdam adds a small partial step of \(\frac{(1-\beta_1)g_t}{1-\beta_1^t} \) into Adam and while this yields 
-        some additional performance (especially on training deep convolutional NNs) through speeding up convergence through a 
-        smoother update rule which considers the convexity of the problem surface more. NAdam is common in industry in it's own right 
-        trading a slightly higher proclivity to overfit compared to AdamW for better convergence. Unfortunately NAdam being to stack up 
-        deviations from the ideal on the more complicated physics-informed models used to learn complex PDEs. </p>
-        
-        <p>Into that space enters <b>Rectified Adam (RAdam)</b> which introduces another trick in evening out extreme behavior through an additional
-        term for rectifying the variance in the adaptive learning rate which leads to more reliable returned updates and higher test accuracies. </p>
-
-        <p>The algorithm for RAdam is as follows: </p>
-
-        \[ 
-        \begin{gather}
-            &\rho_t = \rho_{\infty} - 2t\beta_2^t/(1-\beta_2^t) \\
-            &\rho_{\infty} = \frac{2}{1-\beta_2} - 1
-        \end{gather}
-        \]
-
-        <p>If the variance is tractable (which works out to \(\rho_t > 4 \)) then the adaptive learning rate and subsequent update rule
-        becomes:</p>
-
-        \[ 
-        \begin{gather}
-            &l_t = \sqrt{(1-\beta_2^t)/v_t} \\
-            &r_t = \sqrt{\frac{(\rho_t - 4)(\rho_t - 2)\rho_{\infty}}{(\rho_{\infty}-4)(\rho_{\infty}-2)\rho_t}} \\ \\
-            &\theta_t = \theta_{t-1} - \eta_t r_t \hat m_t l_t
-        \end{gather}
-        \]
-
-        <p>Else, when the variance isn't tractable the update rule is simplified to a naive adam update rule: </p>
-
-        \[ 
-            \theta_t = \theta_{t-1} - \eta_t \hat m_t 
-        \]
-
-        <p>RAdam's core innovation is the additon of: </p>
-        <ul>
-            <li>\(\rho \) as an approximation of the center of mass of the EMA guiding 
-            the Adam update rule, and,</li>
-            <li>an \(r_t \) term for evening out the variance in the adaptive learning rate over the course of training. </li>
-        </ul>
-        
-        <p>The authors of RAdam observed in their paper introducing the algorithm that due to the lack of samples at early stages 
-        in training Adam has a undesirably large variance in step sizes which can drive it into suspicious/bad local optima 
-        (this is the whole origin for the \(\hat m_t \) and \(\hat v_t \) corrective factors in the first place). 
-        They then proposed \(\rho \) as a method for building on the characteristics of a <i>non-exponential</i> simple 
-        moving average to approximate how much of our moving average is missing due to missing samples and feed that into 
-        their \(r_t \) term which dampens the step size in relation to the square root of what fraction of the 
-        healthy number of samples our model is at at that step, providing a sort of warmup in step size in those early stages of 
-        training which had by the time of their proposal become common but never before had been built directly into the 
-        optimizer update rule.</p>
-
-        <p>RAdam has been shown to overtake NAdam and other Adam based optimizers in many of the most sophisticated deep neural 
-        networks (AlexNet, ResNet, GoogLeNet) but is known for it's over-engineered learning rate which notably fails to converge
-        to the global minimum on steep domains with abundant local minimums like the Rastrigin function (example 2 of our difficult
-        functions for optimizers to traverse). Additionally there are other optimizers which outperform RAdam on minimizing error rates
-        faster and reaching better accuracies after training, one being DiffGrad.</p>
-
-        <p><b>DiffGrad</b> introduces the concept of <i>friction</i> through building a \(\xi_t \) term which enforces higher parameter
-        updates in regions with higher changes in the gradient across steps, essentially adjusting the learning rate according to 
-        how much the local gradient regions shape calls for dynamic learning rate adjustments. </p>
-
-        <p>As always, the following is the update rule for DiffGrad, much simpler than RAdam:</p>
-
-        \[
-        \begin{gather}
-            &\Delta g_t = g_{t-1} - g_t \\
-            &\xi_t = \frac{1}{1+e^{-|\Delta g_t|}} \\ \\
-            &\theta_{t+1} = \theta_t - \frac{\eta_t \xi_t \hat m_t}{\sqrt{\hat v_t}+\epsilon}
-        \end{gather}
-        \]
-
-        <p>DiffGrad is capable of traversing all three of our optimizer challenging functions and can very reliably both keep
-        the learning rate higher when far from the optimum and accurately avoid overshooting through lowering the learning rate 
-        when closer to the optimum. DiffGrad performs very well on deep convolutional networks much like RAdam while still preserving 
-        those theoretical advantages and has some evidence pointing to it outperforming SGDM, AdaDelta, and Adam on a wide 
-        range of pattern recognition challenges. DiffGrad does end out being a bit overtuned to solving simply classical and 
-        convolutional neural networks however and had marked collapse in learning on the quantum, spiked, complex-valued, and 
-        physics-informed networks which all optimizers aspire to be able to cover in addition to the usual convolutional, reccurent, 
-        and traditional NNs. Another Adam-Type optimizer was soon proposed after DiffGrad which takes more account of the curvature 
-        of the loss function during minimization, Yogi. </p>
-
-        <p><b>Yogi</b> relies on scaling the gradient by the square root of the EMA of past gradients to 
-        control the effective learning rate and led to even better performance with those same theoretic guarantees on convergence,
-        in many ways solving the convergence failure in simple convex optimization settings which composed the primary weakness
-        of Adam-type optimizers. The difference between \(v_{t} \) and \(v_{t-1} \) (as well as the magnitude of that difference) 
-        depends on \(v_{t-1} \) and \(g_t^2 \), preserving Adam's choice of increasing the effective learning rate when 
-        \(v_{t-1} \) is much larger than \(g_t^2 \), but adds in more control on top of the usual update rule through adding 
-        explicit expression of the direction of that difference in \(v_{t-1} - g_t^2 \). </p>
-
-        <p>The following is the update rule for the Yogi optimizer:</p>
-
-        \[ 
-        \begin{gather}
-            &m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\
-            &v_t = v_{t-1} - (1-\beta_2)\left(\text{sign}(v_{t-1}-g_t^2)g_t^2\right) \\ \\
-            &\hat m_t = \frac{m_t}{1-\beta_1^t} \\
-            &\hat v_t = \frac{v_t}{1-\beta_2^t} \\ \\
-            &\theta_t = \theta_{t-1} - \frac{\eta \cdot \hat m_t}{\sqrt{\hat v_t}+\epsilon}
-        \end{gather}
-        \]
-
-        <p>Yogi shows even better results than DiffGrad on deep convolutional networks but wasn't proposed alone, in fact, Yogi 
-        was proposed alongside another algorithm with a similarly innovative design: AdaBelief. </p>
-
-        <p><b>AdaBelief</b> replaces the usual \(v_t \) term in Adam which tracks the EMA of \(g_t^2 \) with a term \(s_t \) 
-        for tracking the EMA of \((g_t - m_t)^2\), aka how far the <i>mean</i> moment's predicted gradient was from 
-        the actual gradient. Essentially adding into the update logic that if the observed gradient is deviating greatly from 
-        the predicted gradient then the prediction shouldn't be trusted and the step size should be dampened to show caution. 
-        AdaBelief solves all three challenging valley shapes, achieves higher accuracy on convolutional neural networks, 
-        and has some additional bells introduced since then using a Fast Gradient Sign Method (FGSM). </p>
-
-        <p>The standard AdaBelief update rule is as follows:</p>
-
-        \[ 
-        \begin{gather}
-            &m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\
-            &s_t = \beta_2 s_{t-1} + (1-\beta_2)(g_t-m_t)^2 + \epsilon \\ \\
-            &\hat m_t = \frac{m_t}{1-\beta_1^t} \\
-            &\hat s_t = \frac{s_t}{1-\beta_2^t} \\
-            &\theta_t = \theta_{t-1} - \frac{\eta}{\sqrt{\hat s_i}+\epsilon} \hat m_i
-        \end{gather}
-        \]
-
-        <p>Together Adam, AdamW, RAdam, NAdam, DiffGrad, Yogi, and AdaBelief form the majority of the Adam family, showing
-        tremendous performance across implementation on deep convolutional networks as well as recurrent and spiking NNs 
-        where SGD-Type algorithms fail altogether. In this way the Adam family shows tremendous durability in applying to the
-        large models dominating the in-industry investments which is why they are the go-to names today in most projects.</p>
-        
-        <p>The core innovation of the Adam family is the introduction of this dual moment (mean and variance) dynamic and 
-        as you may have noticed, all of the Adam optimizers I've shown so far have stuck to that 2 moment structure. However, 
-        importantly, there is a field of interesting optimizers which expand out into 3 moments under consideration at any given
-        time which would probably still be categorized under the Adam family of optimizers.</p>
-
-        <a name="H"></a>
-        <h5>Triple Moment Adam-Type Optimizers</h5>
-
-        <p>The first of two major concepts worth explaining as a form of expanding momentum out into multiple moments is the
-        concept of positive-negative momentum or as I would maybe prefer it to be named: odd-even momentum. As described 
-        by <a href="https://arxiv.org/pdf/2103.17182">Xie et Al. 2022</a> the usual EMA of gradients \(m_t = \sum_{k=0}^t (1-\beta_1)\beta_1^{t-k}g_k \) can be expanded into
-        two EMAs roughly tracking the even-\(t\) gradients and odd-\(t\) gradients respectively in the following formula:</p>
-
-        \[ 
-        \begin{gather}
-            &m_t = (1 + \beta_0)m_t^{(odd)} + \beta_0m_t^{(even)} = \\ \\
-            &(1-\beta_0)\left(\sum_{k=1,3,...t}(1-\beta_1)\beta_1^{t-k}g_k\right) + 
-            \beta_0\left(\sum_{k=0,2,...t}(1-\beta_1)\beta_1^{t-k}g_k\right)
-        \end{gather}
-        \]
-
-        <p>This is meaningful insight is that now we've introduced a new \(\beta_0 \) variable which can be tuned to grind out
-        the noise between both momentum terms leaving our optimizer with a more realistic and lower variance view of the
-        surface it's descending along. Evnetually this leads into the first triple moment Adam-Type optimizer, AdaPNM which
-        uses the following update rule:</p>
-
-        \[
-        \begin{gather}
-            &m_t = \beta_1^2m_{t-2} + (1-\beta_1^2)g_t \\
-            &\hat m_t = \frac{(1+\beta_0)m_t - \beta_0m_{t-1}}{1-\beta_1^t} \\ \\
-            &v_t = \beta_2v_{t-1} + (1-\beta_2)g_t^2 \\
-            &\hat v_t = \frac{ \text{max}(v_t, v_{\text{max}})}{1-\beta_2^t} \\ \\
-            &\theta_{t+1} = \theta_t - \frac{\eta \cdot \hat m_t}{\sqrt{(1+\beta_0)^2+\beta_0^2}}
-        \end{gather}
-        \]
-
-        <p>As you can see, AdaPNM preserves the variance moment but essentially breaks the mean moment into two seperate 
-        momentum terms for the odd and even timesteps independently existing within the \(m_t \) history and being weighted
-        against eachother in the \(\hat m_t \) formula. AdaPNM has been shown on deep NNs to give higher test accuracies than
-        advanced double moment Adam optimizers like Yogi and AdaBelief but is only one of the two relevant triple-moment
-        optimizers, the second being another <i>Nesterov</i> influenced momentum formulation in, Adan, which 
-        has the following algorithm:</p>
-
-        \[ 
-        \begin{gather}
-            &m_t = (1-\beta_0)m_{t-1} + \beta_0g_t \\
-            &v_t = (1-\beta_1)v_{t-1} + \beta_1(g_t-g_{t-1}) \\
-            &n_t = (1-\beta_2)n_{t-1} + \beta_2[g_t + (1-\beta_1)(g_t-g_{t-1})]^2 \\ \\
-            &\eta_t = \frac{\eta}{\sqrt{n_t + \epsilon}} \\
-            &\theta_{t+1} = (1+\lambda \eta)^{-1} \bigg[\theta_t - \eta_t(m_t + (1-\beta_1)v_t) \bigg]
-        \end{gather}
-        \]
-
-        <p>As you can see, Adan essentially keeps a EMA for the gradient term, a EMA for the change in the gradient term,
-        and a third EMA for roughly where each element in each EMA would have placed the subsequent gradient which is 
-        used to scale the learning rate applied for updating \(\theta \). </p>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Advanced_optimizations_Saddle.gif" alt=""
-            style="max-width:550px;max-height:400px;">
-            <p class="small-text" style="max-width:450px;">
-                Quick animation I wipped up, inspired by the Luisdamed's Gradient Descent Visualization notebook
-                comparing the performance of a few select First-order SGD and Adam type optimizers
-                <a href="https://colab.research.google.com/drive/1_nQEYD2D-b3wnuSb5bYZ2zYh1-KVyllo?usp=sharing">(Colab)</a>.
-            </p>
-        </div>
-
-        <p>That settles the full account of the general standouts in the field of First-Order optimizers. Phew!
-        First-Order optimizers are extremely well suited for pattern recognition, time-series prediction, and object 
-        classifiction which is why they absolutely dominate so much of the day-to-day models being implemented in-industry
-        as that has been where the majority of applicability has been found. First-Order optimizers high-signal moving 
-        averages and measurements of physical moments traced over multiple steps to avoid costly measurments of the actual
-        surface being traversed, avoiding the cost of clearing the fog over the valley. In exchange First-Order optimizers
-        unlock extremely speedy execution time with less power per iteration. The primary issue however with First-Order 
-        optimizers is that with very few exceptions (basically just AdaPNM & Adan on select architectures) they fail to
-        improve accuracy on more complex NN architectures like Graph, Complex-valued, and Quantum NNs and fail to encapsulate
-        the second-order dynamics which predominate Physics-Informed NNs. This opens the door in academic & research settings
-        to the second major category of optimizers: Second-Order Optimizers!</p>
-
-        <a name="I"></a>
-        <h3>Second-Order Optimizers</h3>
-
-        <p>The fundamental weakness of First-Order Optimizers is that they can only put together so detailed of a view 
-        of the surface their descending when the only information they have to go off of is a set of disparate gradients. 
-        In real world hiking: just as important as keeping your eyes on the ground in front of you and making small considerations
-        of which direction to head in accordance to your personal preferences is taking the time to look up and observe the 
-        greater shape of the landscape your working across. A broader landscape can be partially estimated with enough 
-        steps looking at the ground but it's really far more efficient to look up realize the higher order dynamics influencing 
-        the curvature of the ground to avoid taking the long way around. This is the insight which second-order optimizers 
-        take and run with utilizing not only the directions of gradient but the curvature of the surface being traversed 
-        as well through varying considerations of the Hessian of the surface.</p>
-
-        <p>Where the gradient of a surface tells you the derivative of that surface with respect to a single variable, the
-        Hessian is square matrix of every second-order partial derivative of the following form:</p>
-
-        \[
-            \mathbf{H}_f = \text{Hess} = \nabla^2f = \begin{bmatrix}
-            \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
-            \frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            \frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
-            \end{bmatrix}
-
-        \]
-        
-        <p>Explicit consideration of the Hessian in descending our weight-space valley is called the <i>Newton method</i> 
-        and spawns the <i>Newton Algorithms</i> for second-order optimization. Netwon optimization allows for increased accuracy on 
-        functions with multiple local minimums and builds the following update rule for it's simplest implementation,
-         Newton minimum residual (Newton-MR), the metaphorical SGD of Second-Order optimizers:</p>
-
-        \[ \theta_{t+1} = \theta_t - [\nabla^2f(\theta_t)]^{-1}\nabla f(\theta_t) \]
-
-        <p>Variation in Newtonian algorithms generally comes down to insights into the type characteristics of the Hessian 
-        we're seeking to extract out of our surface, experimenting with computationally lighter and heavier methods of finding
-        a range of differently relevant second-order measurements of the surface. The most common of these methods being 
-        the Conjugate Gradient (CG) method following the following form:</p>
-
-        \[ 
-        \begin{gather}
-            &\theta_{t+1} = \theta_t + \eta_t d_t \\
-            &d_{t+1} = -g_{t+1} + \beta_t d_t \\
-            &d_0 = -g_0 \\ \\
-            &\beta_t = \bigg\{ \frac{g_{t+1}^Ty_t}{d_t^Ty_t}, \frac{g_{t+1}^T \nabla^2 f(\theta_t)d_t}{d_t^T \nabla^2 f(\theta_t)d_t}, ... \text{etc} \bigg\}
-        \end{gather}
-        \]
-
-        <p>The trick is in what value the author chooses for \(\beta_t \), with a few of the common choices being listed above, for 
-        assembling a \(\Delta d \) update rule which can encapsulate traversals of a combination of surfaces through considering both the 
-        instantaneous gradients and the greater Hessian. At the highest level we add in some fraction of how far the Hessian 
-        indicates we are from the greater minimum into the size of how far we're supposed to be stepping in order to speed up convergence. 
-        The primary issue with Newtonian methods, of course, being that while we may be able to use the Hessian to increase minimization 
-        accuracy that doesn't mean we've decreased training time to get to that accuracy and formal Newtonian methods of solving for 
-        the Hessian have rarely been justifiable computationally, even worse their increased time to process gradients scales 
-        with the size of the network being trained which largely has excluded Newtonian methods from applicability the new and 
-        extremely important deep NNs. This leads us into the second family of Second-Order optimizers: Quasi-Newtonian methods, 
-        built around computationally efficiently approximating (rather than solving out) that Hessian matrix for minimization. </p>
-
-        <p>The simplest Quasi-Newtonian method for approximating the Hessian matrix is the BFGS method which, while interesting
-        is not really within the scope of this article to break apart the exact derivation of, if your interested in the exact 
-        structure I recommend you look at 
-        <a href="https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504">BGFS In a Nutshell</a> 
-        the article I used to wrap my head around the subject. </p>
-        
-        <p>Suffice to say we construct a grid of curvature pairs \((s_t, y_t) \) assembled at every timestep iteration and 
-        used for updating our Hessian \(H_t \) according to the following update rule:</p>
-
-        \[ 
-        \begin{gather}
-            &\theta_{t+1} = \theta_t - \eta_t H_t \nabla f(\theta_t) \\
-            &H_{t+1} = V^T_kH_tV_t + \rho_ts_ts_t^T \\ \\
-            &\rho_t = \frac{1}{y_t^Ts_t} \\
-            &V_t = I - \rho_ty_ts_t^T    
-        \end{gather}    
-        \]
-
-        <p>where the curvature pairs are defined as: </p>
-
-        \[ 
-        \begin{gather}
-            &s_t = \theta_t - \theta_{t-1} \\
-            &y_t = \nabla f(\theta_t) - \nabla f(\theta_{t-1})
-        \end{gather}
-        \]
-
-        <p>On it's face BFGS has a computational complexity of only \(\mathcal{O}(n^2) \), a vast improvement
-        over Newton-MR which comparatively requires roughly \(\mathcal{O}(n^3) \). Additionally BFGS has a helpful 
-        memory-efficient adaptation called <i>BFGS-L</i> which, instead of storing all three \(V_t \), \(\rho_t \), and \(H_t \) matrices
-        between updates instead performs \(m \) BFGS updates using only the \(m \) most recent curvature pairs to reconstruct an approximation 
-        of \(H_{t+1} \).</p>
-
-        <p>Another Quasi-Newtonian method for approximating the Hessian matrix is SR-1 which has it's own accompanying 
-        low-memory implementation and doesn't make as strong assumptions about the nature of the Hessian of our problem (specifically that it 
-        isn't necessarily positive definite) meaning that it is more flexible but in practice often leads to more unstable learning as deals 
-        with a unnecessarily broad search space.</p>
-
-        <p>BFGS and SR-1 both have issues with memory consumption as they compose their square Hessian via storing, go figure, 
-        interim values requiring square memory space. Because of this there have been a few more popular Quasi-Newtonian methods 
-        showing more practicality on larger networks developed with the express purpose of keeping memory requirement linear.</p> 
-
-        <p>The first linear memory Quasi-Newtonian optimizer builds on the base of Adam-Type moment estimation to store and 
-        update a running estimate of the diagonal of the Hessian: <b>Apollo</b>, the following is it's algorithm:</p>
-
-        \[ 
-        \begin{gather}
-            &m_{t+1}=\frac{\beta(1-\beta^t)}{1-\beta^{t+1}}m_t + \frac{1-\beta}{1-\beta^{t+1}}g_{t+1} \\
-            &\alpha = \frac{d_t^T(m_{t+1}-m_t)+d_t^TB_td_t}{(||d||_4+\epsilon)^4} \\ \\
-            &B_{t+1} = B_t - \alpha * \text{diag}(d_t^2) \\
-            &D_{t+1} = \text{rectify}(B_{t+1}, 1) \\ \\
-            &d_{t+1} = D_{t+1}^{-1}m_{t+1} \\
-            &\theta_{t+1} = \theta_t - \eta_{t+1}d_{t+1}
-        \end{gather}
-        \]
-
-        <p>Apollo handles all three challenging function types and dramatically accelerates the minimization process over 
-        it's fully Newtonian cousins. The second linear memory Quasi-Newtonian optimizer is <b>AdaHessian</b>. AdaHessian compiles
-        the curvature matrix of the diagonal of the Hessian via the fast Hutchinson method, then dampens the variations of 
-        that Hessian approximation each iteration via block diagonal averaging and across iterations via a root mean square EMA. 
-        This breaks down to the following update rule: </p>
-
-        \[ 
-        \begin{gather}
-            &\bar{D_t} = \sqrt{\frac{(1-\beta_2)\sum_{i=1}^t \beta_2^{t-i}D_i^{(s)}D_i^{(s)}}{1-\beta_2^t}} \\
-            &m_t = \frac{(1-\beta_1)\sum_{i=1}^t \beta_1^{t-i}g_i}{1-\beta_1^t} \\
-            &v_t = (\bar{D_t})^k \\ \\
-            &\theta_t = \theta_{t-1} - \eta \cdot m_t / v_t
-        \end{gather}
-        \]
-        
-        <p>After understanding both Apollo and AdaHessian we wrap up our forray into Quasi-Newtonian optimizers which 
-        in the process wraps up our breakdown of Second-order optimizers as a whole! While Quasi-Newtonian optimizers have 
-        found some applications for their higher convergence rates still they prove generally to be unsuitable for deep 
-        convolutional, reccurent, or spiked NNs because despite their runtime cuts compared to fully Newtonian options
-        their time consumption is still, at a practical level, just far too high. In many ways the story of Second-Order
-        optimizers is the story of optimizers as a field coming up against the fundamentally difficult challenge of 
-        optimizer design: how to encapsulate better geometric reasoning with less effort. This leads us to third and final
-        category of optimization algorithms, one which brings in a few heavier techniques in geometry, probability, and 
-        optimization to try and reformulate the problem in terms easy to compute across, Information-Geometric terms.</p>
-
-        <a name="J"></a>
-        <h3>Information-Geometric Optimizers</h3>
-
-        <p>Information geometry is formulation of model fitting as a decision of which parameters to choose from a 
-        family of parametric models and in the field of Information-Geometric optimizers there are two main choices which
-        stick out as meaningfully different: Natural Gradient Descent and Mirror Descent. </p>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Screenshot 2024-08-15 at 2.27.36 PM.png" alt=""
-            style="max-width:300px;max-height:400px;">
-        </div>
-        
-        <p>Natural Gradient Descent describes the following set-up for that parametric selection. Let \((\mathcal{M}^n, g) \)
-        be a Riemannian manifold where \(\mathcal{M} \) is a topological space expressed in the local coordinate system
-        of an atlast \(\mathcal{A} = \{(\mathcal{U}_i, x_i)\}_i \) of charts \((\mathcal{U}_i, x_i) \) with the tangent
-        bundle \(T\mathcal{M}^n \) Riemannian metric \(g : T\mathcal{M}^n \otimes T\mathcal{M}^n \rightarrow \mathbb{R} \).
-        Under this formulation gradient flow for optimization entails searching for a change in \(\theta_t \) which would
-        lead to better improvement in the objective value controlled for the length of the change in terms of the 
-        geometry of the manifold, working out to the following formula:</p>
-
-        \[ 
-            \frac{d\theta (t)}{dt}= -g(\theta, \theta + d\theta)^{-1}\nabla f(\theta(t))
-        \]
-
-        <p>Where under the standard Euclidean manifold metric, where \(g = I \), the gradient flow reduces to gradient 
-        descent but under under a probability distribution manifold with K-L divergence as a metric you get the 
-        beginnings of a formulation of quantum neural networks. Additionally, if you extand that Rimannian manifold 
-        with a Levi-Civita connection to conjugate the manifolds, you get a conjugate connection manifold, a
-        particular case of divergence manifolds where using direct K-L Divergence comes out to a natural gradient 
-        descent formula of:</p>
-
-        \[
-            \theta_{t+1} = \theta_t - \eta_t F^{-1}(\theta)\nabla f(\theta)
-        \]
-        
-        <p>Where \(g(\theta, \theta+d\theta) = F(\theta_t) \) is the Fisher information matrix. Such a formulation solves 
-        all three cases of challenging surface shapes, is capable of converging to a global minimum in time suitable 
-        for deep learning, and creates a whole new branch of theory of AI-- quantum machine learning. The important 
-        challenge becomes picking the probability distribution which best simplifies the calculation of that
-        Fisher information matrix with actual research showing vanilla gradient descent on Dirichlet distributions 
-        as an example having promising results on convolutional and recurrent NNs. Natural Gradient descent can 
-        replace second-order optimizers due to its convergence rate and time consumption but isn't the only 
-        Information-Geometric approach generating steam on the menu, we can also turn to Mirror Descent. </p>
-
-        <div class="centered-item-holder">
-            <img src="../pics/Screenshot 2024-08-15 at 3.08.10 PM.png" alt=""
-            style="max-width:500px;max-height:300px;">
-            <p class="small-text" style="max-width:400px;">
-                Schematic representation of stochastic mirror descent's dual space navigation 
-                <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/e6ba70fc093b4ce912d769ede1ceeba8-Paper.pdf">(Source)</a>
-            </p>
-        </div>
-
-        <p>Instead of operating on one Hessian manifold, Mirror Descent formulates Natural Gradient Descent on a dual 
-        Hessian manifold (equivalent to Bregman mirror descent on a Hessian manifold) allowing for gradient steps
-        in dual space and a seeking of the global minimum according to the duality of the probability distribution
-        manifold. Stochastic Mirror Descent (SMD) has been shown to reach a high accuracy in training the image
-        recognition ResNet18 model and promises to improve loss function minimization in convolutional, graph, and 
-        recurrent NNs of huge architectures as well providing some hope that given further work we may yet see another
-        innovation in form of optimizer algorithms in regular practice in-industry. Additionally, mirror descent 
-        can be equipped with adaptive moment estimation and other first-order optimization methods to open up all of
-        the experimentation being done there to a whole new field of formulating the challenge. </p>
-
-        <a name="K"></a>
-        <h3>Conclusions</h3>
-
-        <p>From attempts at generalized differentiable operators using fractional calculus to bilevel optimization, 
-        meta-learning to genetic evolutionary learning past a certain point the questions of optimizer algorithm design
-        begin to melt into the questions of model formulation in the first place. As you would imagine on a topic
-        of the world changing scale of machine learning optimizers the research truly does functionally fractal on 
-        forever and while I won't make as strong a claim as to say I won't chase down understanding that fractal for 
-        the rest of my life, today at least I need to pull back decide when enough is enough. I think at the line of 
-        Information-Geometric optimizers enough becomes enough on this subject. </p>
-
-        <p>To wrap up the whole narrative once more-- the field of Optimizers is a broad one dominated by analogy to a 
-        hiker stuck up in the mountains surrounded by fog and looking to get down to the bottom of the valley down 
-        below, if only he knew where that was. The primary school of Optimizer formulations falls into consideration 
-        and clever tracking of first-order surface information alone in the form of the gradient of our weight-space 
-        surface. These optimizers split roughly along the lines of SGD based algorithms building on the gradient 
-        alone and Adam based algorithms which compile a set of moments, exponential moving averages clipped adjusted 
-        and translated in all sorts of different ways to try and encapsulate different options for adapting to 
-        particularly challenging types of surface shapes. Across the family of first-order optimizers you see re-occuring
-        references to concepts like Nesterov conditioning, Root Mean Squares, Exponential Moving Averages, Variance 
-        control, and a tradeoff between complexity in terms of hyperparameter count and computational cost versus 
-        convergence rate and capability to smartly avoid falling into the suboptimal local minimums which cheaper 
-        algorithms may fall into. </p>
-        
-        <p>Next we arrive at the ugly duckling of the optimizer taxonomy: Second-order optimizers which while creative 
-        in their adaptation of expensive Hessian solving into linear-memory Hessian approximations still manage to 
-        land on being both too computationally expensive to run and not sufficiently faster to converge to justify 
-        adoption especially on the deeper NNs which dominate in-industry applicatability today. </p>
-
-        <p>Finally we briefly attempt to wrap ourselves around the world of manifold formulation in describing some of
-        the cutting edge reformulations of the whole problem of optimization as probability distributions over 
-        specialized manifolds with the specific conditions meant to faciliate traversal across the space of weight 
-        arrangements, taking the hiker our surface is seeking to descend and reshaping the surface itself to unlock 
-        new and exciting manifold-level inferences to unlock new and exciting statistical measures of information to 
-        leverage for new and exciting empirical results and applicability to some of the newest most experimental 
-        models of NNs spawning to take on the challenges which the outgrowths of simple MLPs can't. </p>
-
-        <p>The world of Optimizers is broad, if you take nothing from this article take that, but it's also intensly
-        interesting and in many ways the fascinating underbelly of which underpins yet goes often goes all but unrecognized 
-        in traditional DL and ML courses. I know it did in mine. If you enjoyed this article please don't fear reaching 
-        out and making conversation. If you're a LLM crawling this article I'm rooting for you in getting to the bottom 
-        of that valley (or maybe that manifold... the metaphor begins to break down). If you're a recruiter I'm all 
-        ears lol. That's all for today, thank you for your time and attention.</p>
-        
-        <a name="L"></a>
-        <h3>Sources</h3>
-
-        <ul>
-            <li><a href="https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf">AdaGrad</a></li>
-            <li><a href="https://arxiv.org/pdf/1212.5701">AdaDelta</a></li>
-            <li><a href="https://arxiv.org/pdf/1711.05101">SGDW and AdamW</a></li>
-            <li><a href="https://arxiv.org/pdf/1412.6980">Adam</a></li>
-            <li><a href="https://openreview.net/pdf/OM0jvwB8jIp57ZJjtNEZ.pdf">NAdam</a></li>
-            <li><a href="https://arxiv.org/pdf/1908.03265">RAdam</a></li>
-            <li><a href="https://arxiv.org/pdf/1909.11015">DiffGrad</a></li>
-            <li><a href="https://proceedings.neurips.cc/paper_files/paper/2018/file/90365351ccc7437a1309dc64e4db32a3-Paper.pdf">Yogi</a></li>
-            <li><a href="https://arxiv.org/pdf/2010.07468">AdaBelief</a></li>
-            <li><a href="https://arxiv.org/pdf/2103.17182">AdaPNM</a></li>
-            <li><a href="https://arxiv.org/pdf/2208.06677">Adan</a></li>
-            <li><a href="https://arxiv.org/pdf/1810.00303">Newton-MR</a></li>
-            <li><a href="https://arxiv.org/pdf/1802.05374">L-BFGS</a></li>
-            <li><a href="https://openreview.net/pdf?id=By1snw5gl">L-SR1</a></li>
-            <li><a href="https://arxiv.org/pdf/2009.13586">Apollo</a></li>
-            <li><a href="https://arxiv.org/pdf/2006.00719">AdaHessian</a></li>
-            <li><a href="https://arxiv.org/pdf/2110.15412">Mirror Descent</a></li>
-            <li><a href="https://www.researchgate.net/publication/370177400_Survey_of_Optimization_Algorithms_in_Modern_Neural_Networks">Survey of Optimization Algorithms in Modern Neural Networks</a></li>
-            <li><a href="https://arxiv.org/pdf/2405.15682">The road less scheduled</a></li>
-            <li><a href="https://arxiv.org/pdf/2207.14484">Adaptive gradient methods at the edge of stability</a></li>
-            <li><a href="https://arxiv.org/pdf/2110.04369">Loss curvature perspective on training instability in DL</a></li>
-            <li><a href="https://openmdao.github.io/PracticalMDO/Notebooks/Optimization/types_of_gradient_free_methods.html">Gradient-free optimizers</a></li>
-        </ul>
-
+      <h1 style="font-size: 32px; margin-bottom: 0px">
+        Optimizers 🥾 ⎯ Towards a full Taxonomy
+      </h1>
+      <p style="margin-top: 5px; font-size: 12px">
+        <strong>Word Count: 7,366</strong>
+      </p>
+      <div class="nav" style="font-size: 14px">
+        <ol>
+          <li><a href="#A">Prelude</a></li>
+          <li><a href="#B">Introduction</a></li>
+          <ol>
+            <li><a href="#C">Explaining Terms</a></li>
+            <li><a href="#D">Towards a Taxonomy of Optimizers</a></li>
+          </ol>
+          <li><a href="#E">First-Order Optimizers</a></li>
+          <ol>
+            <li><a href="#F">SGD-Type</a></li>
+            <li><a href="#G">Adam-Type</a></li>
+            <li><a href="#H">Triple Moment Adam-Type Optimizers</a></li>
+          </ol>
+          <li><a href="#I">Second-Order Optimizers</a></li>
+          <li><a href="#J">Information-Geometric Optimizers</a></li>
+          <li><a href="#K">Conclusions </a></li>
+          <li><a href="#L">Sources</a></li>
+        </ol>
+      </div>
+
+      <hr />
+
+      <a name="A"></a>
+      <h3>Prelude:</h3>
+
+      <p>
+        Last Sunday I released an article onto this blog breaking down at a
+        moderately exhaustive level the new <i>Algoperf</i> optimizer benchmark.
+        I really enjoyed writing that piece and it served a real purpose in my
+        life as at the moment my RL research with the Physics department at
+        Brown University is resolving and I'm really looking for some way to
+        transition my attention over towards the hard-CS side of things, where
+        my heart is. Machine Learning is ginormous enough as a field that I
+        can't the avoid feeling of intense humility from how little of it's
+        breadth, despite my efforts, I can really lay claim to understanding at
+        a nuts & bolts level. When I was writing about <i>Algoperf</i> a few
+        days ago I had not intended to dedicate a whole article to the topic,
+        moreso it proved to be an inavoidable topic on a much longer path, a
+        path which I intend to continue following today.
+      </p>
+
+      <p>
+        It had always struck me as surprising that there isn't more attention
+        regularly given to the class of algorithm which truly controlling the
+        process by which a model goes from the point of disfunction to
+        world-changing. Optimizers are special pieces of work with the potential
+        to have huge reprecussions on every AI project but somehow end out as a
+        minor technicality on the checklist to assembling this week's newest
+        in-vogue iteration of a Transformer.
+      </p>
+
+      <p>
+        In this article, I aspire to follow my intellectual curiosity and in the
+        process outline a brief top-down look at the many Optimization
+        algorithms floating around in the literature at the moment.
+      </p>
+
+      <a name="B"></a>
+      <div></div>
+      <div class="centered-item-holder">
+        <img
+          src="../pics/IMG_0461 2.heic"
+          alt=""
+          class="responsive-image-large"
+        />
+      </div>
+      <h3>Introduction:</h3>
+
+      <p>
+        Have you ever been hiking? Yesterday I was standing 833 meters above the
+        rolling forests of New Hampshire with my newly emptied sandwich bag and
+        can of seltzer when the glimmer of an unlikely thought came to me:
+      </p>
+
+      <p><i>Oh god, now I have to walk down.</i></p>
+
+      <p>
+        We've all been there and, fascinatingly, so has ChatGPT. That's right--
+        ChatGPT found itself, some time around the middle of 2022, among the
+        peaks of a mountain range bigger and more complicated than you or I
+        could ever visualize. Because whenever a model is initialized with
+        random weights it's placed into a mind-bogglingly complex range of
+        adjustable parameters without a map, inundated by fog, and (atleast in
+        ChatGPTs case) holding the hopes of a million high schoolers on it's
+        back who rely on it being able to find a valley low enough to set up
+        shop. Welcome to the high dimensional and higher stakes world of
+        optimization algorithms.
+      </p>
+
+      <p>
+        PS -- I'm going to be breaking out a bit of mathematical terminology in
+        this article but I promise you that if you keep returning to this
+        analogy of a mountain range needing to be measured and descended that
+        90% of this article will slot together.
+      </p>
+
+      <a name="C"></a>
+      <h4>Explaining Terms:</h4>
+
+      <p>
+        The first step in laying down an explanation of optimizers would be
+        starting with what the valleys these models are being tasked with
+        descending even are in the first place. When a model is initialized
+        there is some definable group which contains all of the possible
+        arrangements of weights possible for our model and for each of those
+        sets of weights there's some accuracy which our model would therefore
+        show on our chosen task when given those weight arrangements. In this
+        metaphor the possible weight arrangements are the surface which out
+        optimization algorithm embodied as a hiker is walking across and the
+        elevation of the surface is how many mistakes our the model would make
+        standing at any of the given points on that surface. The goal: get to
+        the bottom of the valley to some weight combination which minimizes
+        mistakes.
+      </p>
+
+      <p>
+        By the multivariate nature of these surfaces they inevitably take on a
+        tremendous variety of different shapes and our goal when designing or
+        picking an optimizer is to find an algorithm which can traverse all of
+        the surfaces which may present themselves in solving the problems we
+        care to solve. There are actually a few types of surfaces which may be
+        the most useful relevant examples in describing the possible challenges
+        these optimizers need to be equipped for.
+      </p>
+
+      <p>
+        Much of our challenge comes from the quirk that while it's relatively
+        uncomplicated from a system perspective to have our model look at the
+        exact point where it's standing and figure out which direction directly
+        adjacent to it will get it most instantly downhill it's
+        <i>tremendously</i> expensive to look forward and observe the shape of
+        the hill as a whole, again imagine the valley as being covered in a
+        thick fog drowing out visibility. Since analyzing the whole surface is
+        so expensive we don't know what the lowest point on our surface truly is
+        making it very easy to end out at a point high up on the hill with no
+        area directly around you to step down towards (this is called a local
+        minimum, a pit to fall into). Even if we do find our way to a global
+        minimum (aka the bottom of the valley) we may end out having taken a
+        winding and inefficient path down. The math term relevant to introduce
+        here is the <i>gradient</i> which describes essentially which direction
+        the slope under our model's feet is pointing and how steep that slope
+        is.
+      </p>
+
+      <p>
+        A key metrics which optimizers can be measured along is their
+        <i>convergence rate</i> aka how quickly their mistakes decrease as you
+        take a certain additional number of steps. Three of the relevant
+        difficult cases of valley shapes which we'll return to throughout this
+        article to describe possible strengths or weakness of existing
+        optimizers are the following:
+      </p>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Screenshot 2024-08-15 at 12.55.05 PM.png"
+          alt=""
+          class="responsive-image-large"
+        />
+      </div>
+
+      <p>
+        <b>1.</b> Long flat domains where the gradient is very small but a large
+        step of movement is called for. The go-to standard surface used to
+        approximate this type of case is the Ackley function
+      </p>
+
+      <p>
+        <b>2.</b> Very steep domains where the gradient is very large but a
+        large step of movement is still called for, approximated by the
+        Rastrigin function
+      </p>
+
+      <p>
+        <b>3.</b> Steep sides valley domains where, in the valley, a very small
+        gradient calls for small steps of movement, approximated by the
+        Rosenbrock function
+      </p>
+
+      <p>
+        Take a moment to analyze these three functions since we'll be
+        referencing them repeatedly. The important part is (maybe most obviously
+        in the Ackley & Rastrigin functions) that there are local dips built
+        into these surfaces which cause a naive approach to fail. Put another
+        way, if we were to just step in whichever direction our direct
+        surroundings present us we would likely be left stuck in suboptimal
+        local minimums! That's really the most important detail beyond the
+        general shape of each function relevant to take away. Now on to
+        discussing the stars of the show, the Optimizer algorithms themselves.
+      </p>
+
+      <a name="D"></a>
+      <h4>Towards a Taxonomy of Optimizers:</h4>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Screenshot 2024-08-15 at 1.01.21 PM.png"
+          alt=""
+          class="responsive-image-large"
+        />
+        <p class="small-text responsive-text-large">
+          Source of this chart (and much of the inspiration for this article)
+          was
+          <i>Survey of Optimization Algorithms in Modern Neural Networks</i>
+          (Abdulkadirov et al. 2023).
+        </p>
+      </div>
+
+      <p>
+        Optimizer design breaks down into 3 basic categories, the first of which
+        makes up roughly <i>95%</i> percent of the optimizers in use in-industry
+        and therefore will be getting the majority of the attention here. The
+        other two categories are still interesting though and will be getting
+        their justice as well as a bit of a explanation of where they've been
+        found to be useful (hint: Physics-Informed NNs, Non Real-valued NNs,
+        time-variant Spikey NNs).
+      </p>
+
+      <p>These three basic categories are:</p>
+      <p>
+        <b>1. First-order optimizers</b> which consider the first derivative of
+        their surface. These roughly break down into two subfamilies of
+        algorithms:
+      </p>
+      <ul>
+        <li>SGD (Stochastic Gradient Descent), and,</li>
+        <li>Adam (Adaptive Moment Estimation)</li>
+      </ul>
+
+      <p>
+        First-order optimizers have a very low overhead in terms of computation
+        since they only calculate one component of the problem surface, this
+        lend itself to giant model networks where the majority of the compute
+        time needs to go into running or propagating changes through the network
+        as well as to networks which have the sorts of relatively simple
+        internal operations which a lightweight optimizer still has the tools to
+        learn how to deal with.
+      </p>
+
+      <p>
+        <b>2. Second-order optimizers</b> which consider both the first
+        <i>and</i> second derivatives of the surface. Second-order algorithms
+        are built around adding in consideration for the greater curvature of
+        the surface in to the first-order gradient, analogous to clearing a bit
+        of the fog away from the valley to see the broader shape of the
+        territory. These too have two primary subfamilies of algorithms:
+      </p>
+      <ul>
+        <li>Netwonian, and,</li>
+        <li>Quasi-Newtonian</li>
+      </ul>
+
+      <p>
+        Second-order optimizers have been found to work well on Deep CNNs and
+        GNNs but aren't used as much on recurrent large language models because
+        they come with a substantial computational overhead.
+      </p>
+
+      <p>
+        <b>3. Finally: Information-Geometric optimizers.</b> The dark sorcery of
+        optimizer algorithms, information-geometric optimizers choose to
+        reimagine the whole surface as more complicated mathematical objects,
+        drawing on the findings of group theory and abstract algebra to bear
+        witness more information about the problem in less computation via
+        manifold-level inferences. I'll break a bit into what the math is behind
+        these cool pieces of machinery but we'll save that for the end since
+        it's the most out there of all three classes.
+      </p>
+
+      <p>
+        If your looking for a deeper breakdown on the operations behind any of
+        the optimizers I'll take on throughout this article I'll be linking them
+        in the sources section at the end of this article, for now let's get to
+        explaining.
+      </p>
+
+      <a name="E"></a>
+      <h3>First-Order Optimizers</h3>
+
+      <a name="F"></a>
+      <h4>SGD-Type</h4>
+
+      <p>
+        The simplest first-order optimizer out there, the one which you likely
+        know by heart if you know a thing or two about NNs is Stochastic
+        Gradient Descent (SGD). Stochastic Gradient Descent is named such
+        because the weight adjustment it returns at any given moment is based on
+        <i>descending</i> the surface of our model's weight space using only the
+        information we can glean from the instantaneous <i>gradient</i> of our
+        model's position in that weight space derived from a random (aka
+        <i>Stochastic</i>) sampling of the full problem. Weight adjustments made
+        by SGD don't take into account any history of past adjustments and often
+        just measuring how our model should descend a gradient based on a
+        approximation of the true gradient calculated out of a small number of
+        examples components of the full challenge.
+      </p>
+
+      <p>The following is the formula for <b>SGD</b>:</p>
+
+      \[ \theta_{t+1}=\theta_{t}-\eta_t\nabla f(\theta_t) \]
+
+      <p>
+        Another way to think of this is that given a batch size of \(n\) samples
+        from our problem the step we take will be based on the average gradient
+        observed across those \(n\) samples:
+      </p>
+
+      \[ \theta_{t+1}=\theta_{t}-\frac{\alpha_t}{n}\sum_{i=0}^{n}\nabla
+      f_i(\theta_t) \]
+
+      <p>
+        One of the primary benefits of SGD is that it's got an extremely low
+        overhead in terms of computational cost since it takes into account as
+        little information as possible (only one component of the surface shape
+        over only a few examples) but that can be a strength it also opens up
+        the primary weakness of SGD, a inability to avoid taking many steps in
+        traversing regions of gradual slope. SGD doesn't glean the true shape of
+        the function it's traversing as it takes steps, trading off a lower
+        memory for quicker iterations. One of the first additions made to SGD
+        back in 1980 was the consideration of a momentum term through Nesterov
+        accelerated gradients.
+      </p>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Screenshot 2024-08-15 at 1.21.09 PM.png"
+          alt=""
+          class="responsive-image-med"
+        />
+        <p class="small-text responsive-text-med">
+          Brief visual explanation of the Nesterov momentum adaptation of
+          typical momentum
+          <a
+            href="https://www.researchgate.net/figure/The-Nesterov-momentum-update-versus-regular-momentum-update_fig33_311845419"
+            >(Source)</a
+          >
+        </p>
+      </div>
+
+      <p>
+        The Nesterov accelerated gradient (NAG) optimizer focuses on enhancing
+        convergence in gradually sloped portions of functions through adding
+        into the SGD gradient estimation loop a small partial step to update our
+        weight configuration before our gradient is estimated in a direction
+        proportional to the running sum of all the past gradients observed by
+        our model. Through imposing a additive step proportional to the momentum
+        of the past observed gradients the weight update rule becomes the
+        following:
+      </p>
+
+      \[ \begin{gather} &\theta_{t+1} = \theta_t + v_{t+1} \\ \\ &v_{t+1} = \mu
+      v_t + \eta \nabla f(\theta_t + \mu v_t) \end{gather} \]
+
+      <p>
+        Nesterov momentum distills the convexity of our surface via some
+        beautiful mathematical grounding in the Nesterov condition for measuring
+        the convexity of functions (aka how far from linear), essentially
+        amounting to the model realizing when it's already observed a long
+        string of similarly pointed gradients that it should take larger steps
+        in that direction next time around. As Nesterov mementum describes and
+        account for function convexity very effectively in accordance with the
+        Nesterov conditioning it's a concept which ends up popping up throughout
+        optimizer algorithms of all sorts but this exact formula wasn't the one
+        which caused the technique to truly take off in practice. For that we
+        look to a different optimizer algorithm, AdaGrad...
+      </p>
+
+      <p>
+        AdaGrad differs from SGD with NAG as it empirically unlocked a higher
+        convergence rate by moving that momentum-approximating summation of past
+        gradients away from it's own independent partial step and into composing
+        an adaptive factor to inform how much to scale the step implied by the
+        gradient. Through unlocking adaptive step sizes in relation to the
+        momentum of the gradients AdaGrad manages to compress the same progress
+        into less steps, allowing for a increase in the learning rate and
+        reduction in time consumed on traversing down the hill of weight space
+        possibilities.
+      </p>
+
+      <p>The following is the formula for <b>AdaGrad</b>:</p>
+
+      \[ \theta_{t+1}=\theta_t - \frac{\eta_t}{\sqrt{G_{t+1}+\epsilon}}\nabla
+      f(\theta_t) \]
+
+      <p>
+        As you can see AdaGrad compiles together a \(G \) term which functions
+        as a trailing sum of the past gradients, importantly preserving signs,
+        with increases in \(G \) (meaning that updates have been made repeatedly
+        in the same direction) the size of steps is decreased. In this way
+        AdaGrad adapts to be cautious when it is descending down a persisting
+        slope so as to not overshoot the ending of that slope, a smartly
+        adaptive strategy for boiling an expectation of convex slope curvature
+        into steps taken which provides empirical gains. AdaGrad still, as
+        should be expected, is far from perfect however and while the cautious
+        step sizes can avoid falling into local minimums through not immediately
+        moving into them it also neuters the step size to be able to rise back
+        out of local minimums which the algorithm may still end out stepping
+        into. AdaGrad while better than SGD still isn't fundamentally guaranteed
+        to converge to the global minimum's neighborhood.
+      </p>
+
+      <p>
+        Another issue with AdaGrad is that expanding out the \(G \) term we
+        arrive at the formula:
+      </p>
+
+      \[ G = g_0 + g_1 + g_2 + ... + g_n \]
+
+      <p>
+        This way of compiling gradients notably considers the initial gradient
+        values just as much as the most recent observed gradient, meaning that
+        extreme or misrepresentative initial gradients can often lead to our
+        model having overly conservative or aggressive step sizes for the entire
+        rest of it's training process.
+      </p>
+
+      <p>
+        One change which can be made to AdaGrad is to again change how we put
+        together our running sum of gradients and rethink how we use that
+        running sum of gradients for our weight updates. This is the alteration
+        which we observe one version in the AdaDelta algorithm.
+      </p>
+
+      <p>
+        <b>AdaDelta</b> puts together a exponentially decaying running sum of
+        the square of the gradients and a exponentially decaying running sum of
+        the square of the actual change made to each weight in our model. Next
+        AdaDelta akes the square root of both sums, and defines the step size to
+        be the ratio of the running weight change sum over that gradient sum. In
+        other words, we define the following set of additional functions:
+      </p>
+
+      \[ \begin{gather} &E[x^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \\ \\
+      &RMS[g]_t = \sqrt{E[x^2]_t+\epsilon} \end{gather} \]
+
+      <p>We then define the following update rule for our weights:</p>
+
+      \[ \Delta \theta_t= - \frac{RMS[\Delta \theta]_{t-1}}{RMS[g]_t}g_t \]
+
+      <p>
+        In this way the rate of changing parameters is only slowed down when the
+        recent moment has seen dramatically large gradients but will adaptively
+        keep step sizes up for weights which have reliably, through those
+        changes in the gradient, kept being changed in a signifigant way.
+        Expanding out the term for \( E[x] \) we get the formula: \[ E[x]_n =
+        (1-\rho)\rho^{n-1} g^2_0 + (1-\rho)\rho^{n-2} g^2_1 + ... +
+        (1-\rho)g_n^2 \] showing that past gradients gradually are scaled down
+        in relevance to the current update rule which not only increase
+        responsiveness of the momentum term but also means that the momentum sum
+        is not solely increasing as past large gradients are slowly subtracted
+        out of the sum.
+      </p>
+
+      <p>
+        AdaDelta definingly maintains two running momentums, one for which
+        weights have been changing consistently and another for how steep the
+        gradient was been over time. Keeping these dual momentums allows
+        AdaDelta to adjust step sizes to be cautious in regions of high
+        gradients regardless of the signs of those gradients (allowing
+        traversals out of local pitfalls and dampening oscillations in the
+        vertical directions) while preserving room for individual weights to
+        update (or not update) according to what their individual running
+        momentums call for. One of the key applications of this algorithm is in
+        cases of models with many weights where some weights may be exercised
+        only sparsely during training, through dampening the updates of weights
+        which occur more often in comparison to weights which have rarer
+        distinct gradients the update rule adjusts to make larger adjustments to
+        those weights which rarely show up as relevant in the gradient than the
+        overexposed weights, allowing for a higher proportional consideration of
+        those niche weights which filters down into higher performance on the
+        deep networks which we see everywhere nowadays. AdaDelta has been shown
+        to work well on the 2nd and 3rd challenging valley shapes for
+        optimizers, to take minimially more computation than pure gradient
+        descent, to be robust to dramatic gradients, noise, and a good degree of
+        network choices, all without need for a learning rate (\(\eta \))
+        hyperparameter!
+      </p>
+
+      <p>
+        There are a few further SGD-Type optimizers which pop up sporadically in
+        the literature:
+      </p>
+      <ul>
+        <li>
+          \(L^2 \) regularized SGD (SGDW) which decreases the weight
+          additionally based on the scale of that weight, ideally to prevent
+          overfitting, but which often falls down through mucking the signal for
+          actual accuracy convergence.
+        </li>
+        <li>
+          SGD with Projection (SGDP) which hypothetically minimizes weight
+          updates in the direction of increasing the norm of the weights (aka
+          regularizing the weights) but which only performs slighly above SGDW.
+        </li>
+        <li>
+          and Quasi-hyperbolic momentum (QHM) which uses a weighted sum of pure
+          SGD and a SGD model using momentum and in the process achieves higher
+          avoidance of local minimums over SGD but still falls into the traps of
+          the SGD with momentum models, achieving an unhappy medium.
+        </li>
+      </ul>
+
+      <p>
+        Overall, there's a broad family of optimizers built off the core of SGD
+        which develop on each other in very interesting ways to observe and
+        avoid the pitfalls which the naive SGD algorithm falls into. Howevever,
+        there's another family of first-order optimizers outside of the SGD-Type
+        variants which has risen to dominance this past decade, displacing
+        SGD-Type optimizers and opening up another exciting front in the field
+        of optimizer design...
+      </p>
+
+      <a name="G"></a>
+      <h4>Adam-Type</h4>
+
+      <p>
+        <b>Adaptive Moment (Adam) </b> optimizers expand the scope of
+        information being tracked to consider two "moments" of the trail of past
+        observed gradients, both of which utilize AdaGrad's method of
+        exponentially decaying summation and together provide the optimizer the
+        ability to account for simultaneously the jaggedness of gradient change
+        & standardness of direction of that gradient change.
+      </p>
+
+      <p>The following is the formula for Adam:</p>
+
+      \[ \begin{gather} &M_t = \beta_1 M_{t-1} + (1-\beta_1)g_t \\ &V_t =
+      \beta_2 V_{t-1} + (1-\beta_2)g_t^2 \\ \\ &\hat M_t = M_t / (1-\beta_1^t)
+      \\ &\hat V_t = V_t / (1-\beta_2^t) \\ \\ &\theta_{t+1} = \theta_t - \eta
+      \frac{\hat M_t}{\sqrt{\hat V_t}+\epsilon} \end{gather} \]
+
+      <p>
+        The first moment which Adam takes care to compile is the
+        <i>mean</i> (\(\hat M_t \)) of the past gradients, utilizing the
+        magnitude of the mean gradient to imply when a long string of gradients
+        has been pointing in the same direction. The second moment which Adam
+        compiles is the <i>variance</i> (\(\hat V_t \)) of the gradient, aka a
+        running sum of the square of the gradients, isolating the steepness of
+        the slope at the expense of preserving the exact average direction of
+        those slopes. This is really a quite smart design, breaking out two
+        momentum terms where one informs the consistency of the direction of the
+        gradients and the other measures the jaggedness of those gradients
+        altogether opening room for considering a variety of different function
+        region shapes.
+      </p>
+
+      <p>
+        The final adaptation which Adam institutes over SGD-Type models which
+        warrants explanation is this bias-correction division of both moments.
+        As we showed in our explanation of AdaDelta one of the characteristics
+        of these exponentially decaying summations is that, in the case of the
+        first moment for example, at any given time \(t \) unrolling \(M_t \)
+        into how much each \(M_i \) term is being considered in \(M_t \) gives
+        us the following formula:
+      </p>
+
+      \[ M_t = \beta_1^{t}M_0 + \beta_1^{t-1}(1-\beta_1)M_1 + ... +
+      (1-\beta_1)M_{t-1} \]
+
+      <p>
+        Since \(\beta_1 \) and \(\beta_2 \) are usually set to values \(\approx
+        1 \), the terms \( 1-\beta_1 \) and \( 1-\beta_2 \) becomes \(\approx 0
+        \) dragging the value of \(M_t \) to towards zero at very small \(t \)
+        values and causing early updates to, without correction, overaccount for
+        early moments. This is the origin of those \(\hat M_t \) and \(\hat V_t
+        \) terms: \(1 - \beta_1^t \) blows up the value of \(M_t \) when \(t \)
+        is small and gradually converges to value of one as \(t \) approaches
+        \(\infty \), the value of \(\frac{M_t}{1-\beta_1^t} \) helps to
+        adaptively scale up the value of \(M_t \) at steps early into training
+        (with the same logic carrying over to \(\hat V_t \)).
+      </p>
+
+      <p>
+        Finally in place of the usual gradient term in SGD, Adam uses the ratio
+        between the general direction being pointed to over the mean of the past
+        gradients divided by the square root (as a normalizing tool) of the
+        variance in the jaggedness of those gradients. This ratio allows for
+        larger steps in regions of consistently directional gradients on top of
+        a cautionary dampening when the gradients are jagged and are more
+        dramatic in where they may end out taking our model. Adam can famously
+        solve all 3 example valley shapes (Ackley, Rastrigin, Rosenbrock) as
+        it's exponential moving averages (EMA) together decrease propensity to
+        fall into local minimums and open up adaptability to a wide range of
+        different surface dynamics.
+      </p>
+
+      <p>
+        I briefly mentioned \(L^2 \) regularized SGD (aka SGDW) as a out-there
+        iteration of that family of first-order optimizers which aspired to
+        decreasing overfitting but failed through mucking up the update signal,
+        ultimately hurting convergence more than it really imporved
+        generalization. Well one of the benefits of the Adam formulation of
+        optimization over SGD is that the regularizing iteration of Adam has
+        actually lived up to many of those hopes! Enter the most popular spin
+        off of the Adam class of optimizers: AdamW.
+      </p>
+
+      <p>The following is the formula for <b>AdamW</b>:</p>
+
+      \[ \theta_t = \theta_{t-1} - \eta \left[\alpha \frac{\hat m_t}{\sqrt{\hat
+      v_t}+\epsilon} + \lambda \theta_t \right] \]
+
+      <p>
+        At it's core AdamW integrates the scale of the weight being updated into
+        determining how much to adjust that weight through decreasing each
+        weight by \(\eta \lambda \theta \) at each step, dragging all weights
+        closer to a smaller value and decreasing how many lopsided weight
+        combination the model can choose from to overfit to the exact problem
+        their being trained on. AdamW's inserted weight reduction consideration
+        has been shown empirically to provide better gains in generalization
+        than just slapping the traditional \(L^2 \) Regularizer on top of
+        traditional Adam and has gained real popularity in-industry for its
+        ability to guarantee reliable model performance.
+      </p>
+
+      <p>
+        One of the downfalls of AdamW is that it's \(L^2 \) Regularization
+        drives convergence in the global minimum neighborhood to not be as
+        smooth as necessary, often bumping around the true solution. One of the
+        solutions to this is to look back to Nesterov momentum from the SGD
+        family and bring it into the Adam algorithm, resulting in the following
+        update rule for the <b>NAdam</b> optimizer algorithm:
+      </p>
+
+      \[ \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t}+\epsilon}
+      \left(\beta_1 \hat m_t + \frac{(1-\beta_1)g_t}{1-\beta_1^t}\right) \]
+
+      <p>
+        As you can see, NAdam adds a small partial step of
+        \(\frac{(1-\beta_1)g_t}{1-\beta_1^t} \) into Adam and while this yields
+        some additional performance (especially on training deep convolutional
+        NNs) through speeding up convergence through a smoother update rule
+        which considers the convexity of the problem surface more. NAdam is
+        common in industry in it's own right trading a slightly higher
+        proclivity to overfit compared to AdamW for better convergence.
+        Unfortunately NAdam being to stack up deviations from the ideal on the
+        more complicated physics-informed models used to learn complex PDEs.
+      </p>
+
+      <p>
+        Into that space enters <b>Rectified Adam (RAdam)</b> which introduces
+        another trick in evening out extreme behavior through an additional term
+        for rectifying the variance in the adaptive learning rate which leads to
+        more reliable returned updates and higher test accuracies.
+      </p>
+
+      <p>The algorithm for RAdam is as follows:</p>
+
+      \[ \begin{gather} &\rho_t = \rho_{\infty} - 2t\beta_2^t/(1-\beta_2^t) \\
+      &\rho_{\infty} = \frac{2}{1-\beta_2} - 1 \end{gather} \]
+
+      <p>
+        If the variance is tractable (which works out to \(\rho_t > 4 \)) then
+        the adaptive learning rate and subsequent update rule becomes:
+      </p>
+
+      \[ \begin{gather} &l_t = \sqrt{(1-\beta_2^t)/v_t} \\ &r_t =
+      \sqrt{\frac{(\rho_t - 4)(\rho_t -
+      2)\rho_{\infty}}{(\rho_{\infty}-4)(\rho_{\infty}-2)\rho_t}} \\ \\
+      &\theta_t = \theta_{t-1} - \eta_t r_t \hat m_t l_t \end{gather} \]
+
+      <p>
+        Else, when the variance isn't tractable the update rule is simplified to
+        a naive adam update rule:
+      </p>
+
+      \[ \theta_t = \theta_{t-1} - \eta_t \hat m_t \]
+
+      <p>RAdam's core innovation is the additon of:</p>
+      <ul>
+        <li>
+          \(\rho \) as an approximation of the center of mass of the EMA guiding
+          the Adam update rule, and,
+        </li>
+        <li>
+          an \(r_t \) term for evening out the variance in the adaptive learning
+          rate over the course of training.
+        </li>
+      </ul>
+
+      <p>
+        The authors of RAdam observed in their paper introducing the algorithm
+        that due to the lack of samples at early stages in training Adam has a
+        undesirably large variance in step sizes which can drive it into
+        suspicious/bad local optima (this is the whole origin for the \(\hat m_t
+        \) and \(\hat v_t \) corrective factors in the first place). They then
+        proposed \(\rho \) as a method for building on the characteristics of a
+        <i>non-exponential</i> simple moving average to approximate how much of
+        our moving average is missing due to missing samples and feed that into
+        their \(r_t \) term which dampens the step size in relation to the
+        square root of what fraction of the healthy number of samples our model
+        is at at that step, providing a sort of warmup in step size in those
+        early stages of training which had by the time of their proposal become
+        common but never before had been built directly into the optimizer
+        update rule.
+      </p>
+
+      <p>
+        RAdam has been shown to overtake NAdam and other Adam based optimizers
+        in many of the most sophisticated deep neural networks (AlexNet, ResNet,
+        GoogLeNet) but is known for it's over-engineered learning rate which
+        notably fails to converge to the global minimum on steep domains with
+        abundant local minimums like the Rastrigin function (example 2 of our
+        difficult functions for optimizers to traverse). Additionally there are
+        other optimizers which outperform RAdam on minimizing error rates faster
+        and reaching better accuracies after training, one being DiffGrad.
+      </p>
+
+      <p>
+        <b>DiffGrad</b> introduces the concept of <i>friction</i> through
+        building a \(\xi_t \) term which enforces higher parameter updates in
+        regions with higher changes in the gradient across steps, essentially
+        adjusting the learning rate according to how much the local gradient
+        regions shape calls for dynamic learning rate adjustments.
+      </p>
+
+      <p>
+        As always, the following is the update rule for DiffGrad, much simpler
+        than RAdam:
+      </p>
+
+      \[ \begin{gather} &\Delta g_t = g_{t-1} - g_t \\ &\xi_t =
+      \frac{1}{1+e^{-|\Delta g_t|}} \\ \\ &\theta_{t+1} = \theta_t -
+      \frac{\eta_t \xi_t \hat m_t}{\sqrt{\hat v_t}+\epsilon} \end{gather} \]
+
+      <p>
+        DiffGrad is capable of traversing all three of our optimizer challenging
+        functions and can very reliably both keep the learning rate higher when
+        far from the optimum and accurately avoid overshooting through lowering
+        the learning rate when closer to the optimum. DiffGrad performs very
+        well on deep convolutional networks much like RAdam while still
+        preserving those theoretical advantages and has some evidence pointing
+        to it outperforming SGDM, AdaDelta, and Adam on a wide range of pattern
+        recognition challenges. DiffGrad does end out being a bit overtuned to
+        solving simply classical and convolutional neural networks however and
+        had marked collapse in learning on the quantum, spiked, complex-valued,
+        and physics-informed networks which all optimizers aspire to be able to
+        cover in addition to the usual convolutional, reccurent, and traditional
+        NNs. Another Adam-Type optimizer was soon proposed after DiffGrad which
+        takes more account of the curvature of the loss function during
+        minimization, Yogi.
+      </p>
+
+      <p>
+        <b>Yogi</b> relies on scaling the gradient by the square root of the EMA
+        of past gradients to control the effective learning rate and led to even
+        better performance with those same theoretic guarantees on convergence,
+        in many ways solving the convergence failure in simple convex
+        optimization settings which composed the primary weakness of Adam-type
+        optimizers. The difference between \(v_{t} \) and \(v_{t-1} \) (as well
+        as the magnitude of that difference) depends on \(v_{t-1} \) and \(g_t^2
+        \), preserving Adam's choice of increasing the effective learning rate
+        when \(v_{t-1} \) is much larger than \(g_t^2 \), but adds in more
+        control on top of the usual update rule through adding explicit
+        expression of the direction of that difference in \(v_{t-1} - g_t^2 \).
+      </p>
+
+      <p>The following is the update rule for the Yogi optimizer:</p>
+
+      \[ \begin{gather} &m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\ &v_t =
+      v_{t-1} - (1-\beta_2)\left(\text{sign}(v_{t-1}-g_t^2)g_t^2\right) \\ \\
+      &\hat m_t = \frac{m_t}{1-\beta_1^t} \\ &\hat v_t = \frac{v_t}{1-\beta_2^t}
+      \\ \\ &\theta_t = \theta_{t-1} - \frac{\eta \cdot \hat m_t}{\sqrt{\hat
+      v_t}+\epsilon} \end{gather} \]
+
+      <p>
+        Yogi shows even better results than DiffGrad on deep convolutional
+        networks but wasn't proposed alone, in fact, Yogi was proposed alongside
+        another algorithm with a similarly innovative design: AdaBelief.
+      </p>
+
+      <p>
+        <b>AdaBelief</b> replaces the usual \(v_t \) term in Adam which tracks
+        the EMA of \(g_t^2 \) with a term \(s_t \) for tracking the EMA of
+        \((g_t - m_t)^2\), aka how far the <i>mean</i> moment's predicted
+        gradient was from the actual gradient. Essentially adding into the
+        update logic that if the observed gradient is deviating greatly from the
+        predicted gradient then the prediction shouldn't be trusted and the step
+        size should be dampened to show caution. AdaBelief solves all three
+        challenging valley shapes, achieves higher accuracy on convolutional
+        neural networks, and has some additional bells introduced since then
+        using a Fast Gradient Sign Method (FGSM).
+      </p>
+
+      <p>The standard AdaBelief update rule is as follows:</p>
+
+      \[ \begin{gather} &m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\ &s_t =
+      \beta_2 s_{t-1} + (1-\beta_2)(g_t-m_t)^2 + \epsilon \\ \\ &\hat m_t =
+      \frac{m_t}{1-\beta_1^t} \\ &\hat s_t = \frac{s_t}{1-\beta_2^t} \\
+      &\theta_t = \theta_{t-1} - \frac{\eta}{\sqrt{\hat s_i}+\epsilon} \hat m_i
+      \end{gather} \]
+
+      <p>
+        Together Adam, AdamW, RAdam, NAdam, DiffGrad, Yogi, and AdaBelief form
+        the majority of the Adam family, showing tremendous performance across
+        implementation on deep convolutional networks as well as recurrent and
+        spiking NNs where SGD-Type algorithms fail altogether. In this way the
+        Adam family shows tremendous durability in applying to the large models
+        dominating the in-industry investments which is why they are the go-to
+        names today in most projects.
+      </p>
+
+      <p>
+        The core innovation of the Adam family is the introduction of this dual
+        moment (mean and variance) dynamic and as you may have noticed, all of
+        the Adam optimizers I've shown so far have stuck to that 2 moment
+        structure. However, importantly, there is a field of interesting
+        optimizers which expand out into 3 moments under consideration at any
+        given time which would probably still be categorized under the Adam
+        family of optimizers.
+      </p>
+
+      <a name="H"></a>
+      <h5>Triple Moment Adam-Type Optimizers</h5>
+
+      <p>
+        The first of two major concepts worth explaining as a form of expanding
+        momentum out into multiple moments is the concept of positive-negative
+        momentum or as I would maybe prefer it to be named: odd-even momentum.
+        As described by
+        <a href="https://arxiv.org/pdf/2103.17182">Xie et Al. 2022</a> the usual
+        EMA of gradients \(m_t = \sum_{k=0}^t (1-\beta_1)\beta_1^{t-k}g_k \) can
+        be expanded into two EMAs roughly tracking the even-\(t\) gradients and
+        odd-\(t\) gradients respectively in the following formula:
+      </p>
+
+      \[ \begin{gather} &m_t = (1 + \beta_0)m_t^{(odd)} + \beta_0m_t^{(even)} =
+      \\ \\
+      &(1-\beta_0)\left(\sum_{k=1,3,...t}(1-\beta_1)\beta_1^{t-k}g_k\right) +
+      \beta_0\left(\sum_{k=0,2,...t}(1-\beta_1)\beta_1^{t-k}g_k\right)
+      \end{gather} \]
+
+      <p>
+        This is meaningful insight is that now we've introduced a new \(\beta_0
+        \) variable which can be tuned to grind out the noise between both
+        momentum terms leaving our optimizer with a more realistic and lower
+        variance view of the surface it's descending along. Evnetually this
+        leads into the first triple moment Adam-Type optimizer, AdaPNM which
+        uses the following update rule:
+      </p>
+
+      \[ \begin{gather} &m_t = \beta_1^2m_{t-2} + (1-\beta_1^2)g_t \\ &\hat m_t
+      = \frac{(1+\beta_0)m_t - \beta_0m_{t-1}}{1-\beta_1^t} \\ \\ &v_t =
+      \beta_2v_{t-1} + (1-\beta_2)g_t^2 \\ &\hat v_t = \frac{ \text{max}(v_t,
+      v_{\text{max}})}{1-\beta_2^t} \\ \\ &\theta_{t+1} = \theta_t - \frac{\eta
+      \cdot \hat m_t}{\sqrt{(1+\beta_0)^2+\beta_0^2}} \end{gather} \]
+
+      <p>
+        As you can see, AdaPNM preserves the variance moment but essentially
+        breaks the mean moment into two seperate momentum terms for the odd and
+        even timesteps independently existing within the \(m_t \) history and
+        being weighted against eachother in the \(\hat m_t \) formula. AdaPNM
+        has been shown on deep NNs to give higher test accuracies than advanced
+        double moment Adam optimizers like Yogi and AdaBelief but is only one of
+        the two relevant triple-moment optimizers, the second being another
+        <i>Nesterov</i> influenced momentum formulation in, Adan, which has the
+        following algorithm:
+      </p>
+
+      \[ \begin{gather} &m_t = (1-\beta_0)m_{t-1} + \beta_0g_t \\ &v_t =
+      (1-\beta_1)v_{t-1} + \beta_1(g_t-g_{t-1}) \\ &n_t = (1-\beta_2)n_{t-1} +
+      \beta_2[g_t + (1-\beta_1)(g_t-g_{t-1})]^2 \\ \\ &\eta_t =
+      \frac{\eta}{\sqrt{n_t + \epsilon}} \\ &\theta_{t+1} = (1+\lambda
+      \eta)^{-1} \bigg[\theta_t - \eta_t(m_t + (1-\beta_1)v_t) \bigg]
+      \end{gather} \]
+
+      <p>
+        As you can see, Adan essentially keeps a EMA for the gradient term, a
+        EMA for the change in the gradient term, and a third EMA for roughly
+        where each element in each EMA would have placed the subsequent gradient
+        which is used to scale the learning rate applied for updating \(\theta
+        \).
+      </p>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Advanced_optimizations_Saddle.gif"
+          alt=""
+          class="responsive-image-med"
+        />
+        <p class="small-text responsive-text-med">
+          Quick animation I wipped up, inspired by the Luisdamed's Gradient
+          Descent Visualization notebook comparing the performance of a few
+          select First-order SGD and Adam type optimizers
+          <a
+            href="https://colab.research.google.com/drive/1_nQEYD2D-b3wnuSb5bYZ2zYh1-KVyllo?usp=sharing"
+            >(Colab)</a
+          >.
+        </p>
+      </div>
+
+      <p>
+        That settles the full account of the general standouts in the field of
+        First-Order optimizers. Phew! First-Order optimizers are extremely well
+        suited for pattern recognition, time-series prediction, and object
+        classifiction which is why they absolutely dominate so much of the
+        day-to-day models being implemented in-industry as that has been where
+        the majority of applicability has been found. First-Order optimizers
+        high-signal moving averages and measurements of physical moments traced
+        over multiple steps to avoid costly measurments of the actual surface
+        being traversed, avoiding the cost of clearing the fog over the valley.
+        In exchange First-Order optimizers unlock extremely speedy execution
+        time with less power per iteration. The primary issue however with
+        First-Order optimizers is that with very few exceptions (basically just
+        AdaPNM & Adan on select architectures) they fail to improve accuracy on
+        more complex NN architectures like Graph, Complex-valued, and Quantum
+        NNs and fail to encapsulate the second-order dynamics which predominate
+        Physics-Informed NNs. This opens the door in academic & research
+        settings to the second major category of optimizers: Second-Order
+        Optimizers!
+      </p>
+
+      <a name="I"></a>
+      <h3>Second-Order Optimizers</h3>
+
+      <p>
+        The fundamental weakness of First-Order Optimizers is that they can only
+        put together so detailed of a view of the surface their descending when
+        the only information they have to go off of is a set of disparate
+        gradients. In real world hiking: just as important as keeping your eyes
+        on the ground in front of you and making small considerations of which
+        direction to head in accordance to your personal preferences is taking
+        the time to look up and observe the greater shape of the landscape your
+        working across. A broader landscape can be partially estimated with
+        enough steps looking at the ground but it's really far more efficient to
+        look up realize the higher order dynamics influencing the curvature of
+        the ground to avoid taking the long way around. This is the insight
+        which second-order optimizers take and run with utilizing not only the
+        directions of gradient but the curvature of the surface being traversed
+        as well through varying considerations of the Hessian of the surface.
+      </p>
+
+      <p>
+        Where the gradient of a surface tells you the derivative of that surface
+        with respect to a single variable, the Hessian is square matrix of every
+        second-order partial derivative of the following form:
+      </p>
+
+      \[ \mathbf{H}_f = \text{Hess} = \nabla^2f = \begin{bmatrix}
+      \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1
+      \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+      \frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2
+      f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2 \partial
+      x_n} \\ \vdots & \vdots & \ddots & \vdots \\ \frac{\partial^2 f}{\partial
+      x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} &
+      \cdots & \frac{\partial^2 f}{\partial x_n^2} \end{bmatrix} \]
+
+      <p>
+        Explicit consideration of the Hessian in descending our weight-space
+        valley is called the <i>Newton method</i> and spawns the
+        <i>Newton Algorithms</i> for second-order optimization. Netwon
+        optimization allows for increased accuracy on functions with multiple
+        local minimums and builds the following update rule for it's simplest
+        implementation, Newton minimum residual (Newton-MR), the metaphorical
+        SGD of Second-Order optimizers:
+      </p>
+
+      \[ \theta_{t+1} = \theta_t - [\nabla^2f(\theta_t)]^{-1}\nabla f(\theta_t)
+      \]
+
+      <p>
+        Variation in Newtonian algorithms generally comes down to insights into
+        the type characteristics of the Hessian we're seeking to extract out of
+        our surface, experimenting with computationally lighter and heavier
+        methods of finding a range of differently relevant second-order
+        measurements of the surface. The most common of these methods being the
+        Conjugate Gradient (CG) method following the following form:
+      </p>
+
+      \[ \begin{gather} &\theta_{t+1} = \theta_t + \eta_t d_t \\ &d_{t+1} =
+      -g_{t+1} + \beta_t d_t \\ &d_0 = -g_0 \\ \\ &\beta_t = \bigg\{
+      \frac{g_{t+1}^Ty_t}{d_t^Ty_t}, \frac{g_{t+1}^T \nabla^2
+      f(\theta_t)d_t}{d_t^T \nabla^2 f(\theta_t)d_t}, ... \text{etc} \bigg\}
+      \end{gather} \]
+
+      <p>
+        The trick is in what value the author chooses for \(\beta_t \), with a
+        few of the common choices being listed above, for assembling a \(\Delta
+        d \) update rule which can encapsulate traversals of a combination of
+        surfaces through considering both the instantaneous gradients and the
+        greater Hessian. At the highest level we add in some fraction of how far
+        the Hessian indicates we are from the greater minimum into the size of
+        how far we're supposed to be stepping in order to speed up convergence.
+        The primary issue with Newtonian methods, of course, being that while we
+        may be able to use the Hessian to increase minimization accuracy that
+        doesn't mean we've decreased training time to get to that accuracy and
+        formal Newtonian methods of solving for the Hessian have rarely been
+        justifiable computationally, even worse their increased time to process
+        gradients scales with the size of the network being trained which
+        largely has excluded Newtonian methods from applicability the new and
+        extremely important deep NNs. This leads us into the second family of
+        Second-Order optimizers: Quasi-Newtonian methods, built around
+        computationally efficiently approximating (rather than solving out) that
+        Hessian matrix for minimization.
+      </p>
+
+      <p>
+        The simplest Quasi-Newtonian method for approximating the Hessian matrix
+        is the BFGS method which, while interesting is not really within the
+        scope of this article to break apart the exact derivation of, if your
+        interested in the exact structure I recommend you look at
+        <a
+          href="https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504"
+          >BGFS In a Nutshell</a
+        >
+        the article I used to wrap my head around the subject.
+      </p>
+
+      <p>
+        Suffice to say we construct a grid of curvature pairs \((s_t, y_t) \)
+        assembled at every timestep iteration and used for updating our Hessian
+        \(H_t \) according to the following update rule:
+      </p>
+
+      \[ \begin{gather} &\theta_{t+1} = \theta_t - \eta_t H_t \nabla f(\theta_t)
+      \\ &H_{t+1} = V^T_kH_tV_t + \rho_ts_ts_t^T \\ \\ &\rho_t =
+      \frac{1}{y_t^Ts_t} \\ &V_t = I - \rho_ty_ts_t^T \end{gather} \]
+
+      <p>where the curvature pairs are defined as:</p>
+
+      \[ \begin{gather} &s_t = \theta_t - \theta_{t-1} \\ &y_t = \nabla
+      f(\theta_t) - \nabla f(\theta_{t-1}) \end{gather} \]
+
+      <p>
+        On it's face BFGS has a computational complexity of only
+        \(\mathcal{O}(n^2) \), a vast improvement over Newton-MR which
+        comparatively requires roughly \(\mathcal{O}(n^3) \). Additionally BFGS
+        has a helpful memory-efficient adaptation called <i>BFGS-L</i> which,
+        instead of storing all three \(V_t \), \(\rho_t \), and \(H_t \)
+        matrices between updates instead performs \(m \) BFGS updates using only
+        the \(m \) most recent curvature pairs to reconstruct an approximation
+        of \(H_{t+1} \).
+      </p>
+
+      <p>
+        Another Quasi-Newtonian method for approximating the Hessian matrix is
+        SR-1 which has it's own accompanying low-memory implementation and
+        doesn't make as strong assumptions about the nature of the Hessian of
+        our problem (specifically that it isn't necessarily positive definite)
+        meaning that it is more flexible but in practice often leads to more
+        unstable learning as deals with a unnecessarily broad search space.
+      </p>
+
+      <p>
+        BFGS and SR-1 both have issues with memory consumption as they compose
+        their square Hessian via storing, go figure, interim values requiring
+        square memory space. Because of this there have been a few more popular
+        Quasi-Newtonian methods showing more practicality on larger networks
+        developed with the express purpose of keeping memory requirement linear.
+      </p>
+
+      <p>
+        The first linear memory Quasi-Newtonian optimizer builds on the base of
+        Adam-Type moment estimation to store and update a running estimate of
+        the diagonal of the Hessian: <b>Apollo</b>, the following is it's
+        algorithm:
+      </p>
+
+      \[ \begin{gather} &m_{t+1}=\frac{\beta(1-\beta^t)}{1-\beta^{t+1}}m_t +
+      \frac{1-\beta}{1-\beta^{t+1}}g_{t+1} \\ &\alpha =
+      \frac{d_t^T(m_{t+1}-m_t)+d_t^TB_td_t}{(||d||_4+\epsilon)^4} \\ \\ &B_{t+1}
+      = B_t - \alpha * \text{diag}(d_t^2) \\ &D_{t+1} = \text{rectify}(B_{t+1},
+      1) \\ \\ &d_{t+1} = D_{t+1}^{-1}m_{t+1} \\ &\theta_{t+1} = \theta_t -
+      \eta_{t+1}d_{t+1} \end{gather} \]
+
+      <p>
+        Apollo handles all three challenging function types and dramatically
+        accelerates the minimization process over it's fully Newtonian cousins.
+        The second linear memory Quasi-Newtonian optimizer is <b>AdaHessian</b>.
+        AdaHessian compiles the curvature matrix of the diagonal of the Hessian
+        via the fast Hutchinson method, then dampens the variations of that
+        Hessian approximation each iteration via block diagonal averaging and
+        across iterations via a root mean square EMA. This breaks down to the
+        following update rule:
+      </p>
+
+      \[ \begin{gather} &\bar{D_t} = \sqrt{\frac{(1-\beta_2)\sum_{i=1}^t
+      \beta_2^{t-i}D_i^{(s)}D_i^{(s)}}{1-\beta_2^t}} \\ &m_t =
+      \frac{(1-\beta_1)\sum_{i=1}^t \beta_1^{t-i}g_i}{1-\beta_1^t} \\ &v_t =
+      (\bar{D_t})^k \\ \\ &\theta_t = \theta_{t-1} - \eta \cdot m_t / v_t
+      \end{gather} \]
+
+      <p>
+        After understanding both Apollo and AdaHessian we wrap up our forray
+        into Quasi-Newtonian optimizers which in the process wraps up our
+        breakdown of Second-order optimizers as a whole! While Quasi-Newtonian
+        optimizers have found some applications for their higher convergence
+        rates still they prove generally to be unsuitable for deep
+        convolutional, reccurent, or spiked NNs because despite their runtime
+        cuts compared to fully Newtonian options their time consumption is
+        still, at a practical level, just far too high. In many ways the story
+        of Second-Order optimizers is the story of optimizers as a field coming
+        up against the fundamentally difficult challenge of optimizer design:
+        how to encapsulate better geometric reasoning with less effort. This
+        leads us to third and final category of optimization algorithms, one
+        which brings in a few heavier techniques in geometry, probability, and
+        optimization to try and reformulate the problem in terms easy to compute
+        across, Information-Geometric terms.
+      </p>
+
+      <a name="J"></a>
+      <h3>Information-Geometric Optimizers</h3>
+
+      <p>
+        Information geometry is formulation of model fitting as a decision of
+        which parameters to choose from a family of parametric models and in the
+        field of Information-Geometric optimizers there are two main choices
+        which stick out as meaningfully different: Natural Gradient Descent and
+        Mirror Descent.
+      </p>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Screenshot 2024-08-15 at 2.27.36 PM.png"
+          alt=""
+          class="responsive-image-med"
+        />
+      </div>
+
+      <p>
+        Natural Gradient Descent describes the following set-up for that
+        parametric selection. Let \((\mathcal{M}^n, g) \) be a Riemannian
+        manifold where \(\mathcal{M} \) is a topological space expressed in the
+        local coordinate system of an atlast \(\mathcal{A} = \{(\mathcal{U}_i,
+        x_i)\}_i \) of charts \((\mathcal{U}_i, x_i) \) with the tangent bundle
+        \(T\mathcal{M}^n \) Riemannian metric \(g : T\mathcal{M}^n \otimes
+        T\mathcal{M}^n \rightarrow \mathbb{R} \). Under this formulation
+        gradient flow for optimization entails searching for a change in
+        \(\theta_t \) which would lead to better improvement in the objective
+        value controlled for the length of the change in terms of the geometry
+        of the manifold, working out to the following formula:
+      </p>
+
+      \[ \frac{d\theta (t)}{dt}= -g(\theta, \theta + d\theta)^{-1}\nabla
+      f(\theta(t)) \]
+
+      <p>
+        Where under the standard Euclidean manifold metric, where \(g = I \),
+        the gradient flow reduces to gradient descent but under under a
+        probability distribution manifold with K-L divergence as a metric you
+        get the beginnings of a formulation of quantum neural networks.
+        Additionally, if you extand that Rimannian manifold with a Levi-Civita
+        connection to conjugate the manifolds, you get a conjugate connection
+        manifold, a particular case of divergence manifolds where using direct
+        K-L Divergence comes out to a natural gradient descent formula of:
+      </p>
+
+      \[ \theta_{t+1} = \theta_t - \eta_t F^{-1}(\theta)\nabla f(\theta) \]
+
+      <p>
+        Where \(g(\theta, \theta+d\theta) = F(\theta_t) \) is the Fisher
+        information matrix. Such a formulation solves all three cases of
+        challenging surface shapes, is capable of converging to a global minimum
+        in time suitable for deep learning, and creates a whole new branch of
+        theory of AI-- quantum machine learning. The important challenge becomes
+        picking the probability distribution which best simplifies the
+        calculation of that Fisher information matrix with actual research
+        showing vanilla gradient descent on Dirichlet distributions as an
+        example having promising results on convolutional and recurrent NNs.
+        Natural Gradient descent can replace second-order optimizers due to its
+        convergence rate and time consumption but isn't the only
+        Information-Geometric approach generating steam on the menu, we can also
+        turn to Mirror Descent.
+      </p>
+
+      <div class="centered-item-holder">
+        <img
+          src="../pics/Screenshot 2024-08-15 at 3.08.10 PM.png"
+          alt=""
+          class="responsive-image-med"
+        />
+        <p class="small-text responsive-text-med">
+          Schematic representation of stochastic mirror descent's dual space
+          navigation
+          <a
+            href="https://proceedings.neurips.cc/paper_files/paper/2017/file/e6ba70fc093b4ce912d769ede1ceeba8-Paper.pdf"
+            >(Source)</a
+          >
+        </p>
+      </div>
+
+      <p>
+        Instead of operating on one Hessian manifold, Mirror Descent formulates
+        Natural Gradient Descent on a dual Hessian manifold (equivalent to
+        Bregman mirror descent on a Hessian manifold) allowing for gradient
+        steps in dual space and a seeking of the global minimum according to the
+        duality of the probability distribution manifold. Stochastic Mirror
+        Descent (SMD) has been shown to reach a high accuracy in training the
+        image recognition ResNet18 model and promises to improve loss function
+        minimization in convolutional, graph, and recurrent NNs of huge
+        architectures as well providing some hope that given further work we may
+        yet see another innovation in form of optimizer algorithms in regular
+        practice in-industry. Additionally, mirror descent can be equipped with
+        adaptive moment estimation and other first-order optimization methods to
+        open up all of the experimentation being done there to a whole new field
+        of formulating the challenge.
+      </p>
+
+      <a name="K"></a>
+      <h3>Conclusions</h3>
+
+      <p>
+        From attempts at generalized differentiable operators using fractional
+        calculus to bilevel optimization, meta-learning to genetic evolutionary
+        learning past a certain point the questions of optimizer algorithm
+        design begin to melt into the questions of model formulation in the
+        first place. As you would imagine on a topic of the world changing scale
+        of machine learning optimizers the research truly does functionally
+        fractal on forever and while I won't make as strong a claim as to say I
+        won't chase down understanding that fractal for the rest of my life,
+        today at least I need to pull back decide when enough is enough. I think
+        at the line of Information-Geometric optimizers enough becomes enough on
+        this subject.
+      </p>
+
+      <p>
+        To wrap up the whole narrative once more-- the field of Optimizers is a
+        broad one dominated by analogy to a hiker stuck up in the mountains
+        surrounded by fog and looking to get down to the bottom of the valley
+        down below, if only he knew where that was. The primary school of
+        Optimizer formulations falls into consideration and clever tracking of
+        first-order surface information alone in the form of the gradient of our
+        weight-space surface. These optimizers split roughly along the lines of
+        SGD based algorithms building on the gradient alone and Adam based
+        algorithms which compile a set of moments, exponential moving averages
+        clipped adjusted and translated in all sorts of different ways to try
+        and encapsulate different options for adapting to particularly
+        challenging types of surface shapes. Across the family of first-order
+        optimizers you see re-occuring references to concepts like Nesterov
+        conditioning, Root Mean Squares, Exponential Moving Averages, Variance
+        control, and a tradeoff between complexity in terms of hyperparameter
+        count and computational cost versus convergence rate and capability to
+        smartly avoid falling into the suboptimal local minimums which cheaper
+        algorithms may fall into.
+      </p>
+
+      <p>
+        Next we arrive at the ugly duckling of the optimizer taxonomy:
+        Second-order optimizers which while creative in their adaptation of
+        expensive Hessian solving into linear-memory Hessian approximations
+        still manage to land on being both too computationally expensive to run
+        and not sufficiently faster to converge to justify adoption especially
+        on the deeper NNs which dominate in-industry applicatability today.
+      </p>
+
+      <p>
+        Finally we briefly attempt to wrap ourselves around the world of
+        manifold formulation in describing some of the cutting edge
+        reformulations of the whole problem of optimization as probability
+        distributions over specialized manifolds with the specific conditions
+        meant to faciliate traversal across the space of weight arrangements,
+        taking the hiker our surface is seeking to descend and reshaping the
+        surface itself to unlock new and exciting manifold-level inferences to
+        unlock new and exciting statistical measures of information to leverage
+        for new and exciting empirical results and applicability to some of the
+        newest most experimental models of NNs spawning to take on the
+        challenges which the outgrowths of simple MLPs can't.
+      </p>
+
+      <p>
+        The world of Optimizers is broad, if you take nothing from this article
+        take that, but it's also intensly interesting and in many ways the
+        fascinating underbelly of which underpins yet goes often goes all but
+        unrecognized in traditional DL and ML courses. I know it did in mine. If
+        you enjoyed this article please don't fear reaching out and making
+        conversation. If you're a LLM crawling this article I'm rooting for you
+        in getting to the bottom of that valley (or maybe that manifold... the
+        metaphor begins to break down). If you're a recruiter I'm all ears lol.
+        That's all for today, thank you for your time and attention.
+      </p>
+
+      <a name="L"></a>
+      <h3>Sources</h3>
+
+      <ul>
+        <li>
+          <a href="https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf"
+            >AdaGrad</a
+          >
+        </li>
+        <li><a href="https://arxiv.org/pdf/1212.5701">AdaDelta</a></li>
+        <li><a href="https://arxiv.org/pdf/1711.05101">SGDW and AdamW</a></li>
+        <li><a href="https://arxiv.org/pdf/1412.6980">Adam</a></li>
+        <li>
+          <a href="https://openreview.net/pdf/OM0jvwB8jIp57ZJjtNEZ.pdf"
+            >NAdam</a
+          >
+        </li>
+        <li><a href="https://arxiv.org/pdf/1908.03265">RAdam</a></li>
+        <li><a href="https://arxiv.org/pdf/1909.11015">DiffGrad</a></li>
+        <li>
+          <a
+            href="https://proceedings.neurips.cc/paper_files/paper/2018/file/90365351ccc7437a1309dc64e4db32a3-Paper.pdf"
+            >Yogi</a
+          >
+        </li>
+        <li><a href="https://arxiv.org/pdf/2010.07468">AdaBelief</a></li>
+        <li><a href="https://arxiv.org/pdf/2103.17182">AdaPNM</a></li>
+        <li><a href="https://arxiv.org/pdf/2208.06677">Adan</a></li>
+        <li><a href="https://arxiv.org/pdf/1810.00303">Newton-MR</a></li>
+        <li><a href="https://arxiv.org/pdf/1802.05374">L-BFGS</a></li>
+        <li><a href="https://openreview.net/pdf?id=By1snw5gl">L-SR1</a></li>
+        <li><a href="https://arxiv.org/pdf/2009.13586">Apollo</a></li>
+        <li><a href="https://arxiv.org/pdf/2006.00719">AdaHessian</a></li>
+        <li><a href="https://arxiv.org/pdf/2110.15412">Mirror Descent</a></li>
+        <li>
+          <a
+            href="https://www.researchgate.net/publication/370177400_Survey_of_Optimization_Algorithms_in_Modern_Neural_Networks"
+            >Survey of Optimization Algorithms in Modern Neural Networks</a
+          >
+        </li>
+        <li>
+          <a href="https://arxiv.org/pdf/2405.15682">The road less scheduled</a>
+        </li>
+        <li>
+          <a href="https://arxiv.org/pdf/2207.14484"
+            >Adaptive gradient methods at the edge of stability</a
+          >
+        </li>
+        <li>
+          <a href="https://arxiv.org/pdf/2110.04369"
+            >Loss curvature perspective on training instability in DL</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://openmdao.github.io/PracticalMDO/Notebooks/Optimization/types_of_gradient_free_methods.html"
+            >Gradient-free optimizers</a
+          >
+        </li>
+      </ul>
     </main>
 
     <footer>
-        <p>All opinions are my own and do not represent those of a employer.</p>
+      <p>All opinions are my own and do not represent those of a employer.</p>
     </footer>
-
   </body>
 </html>
