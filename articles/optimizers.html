@@ -186,16 +186,18 @@
         The first step in laying down an explanation of optimizers would be
         starting with what the valleys these models are being tasked with
         descending even are in the first place. When a model is initialized
-        there is some definable group which contains all of the possible
-        arrangements of weights possible for our model and for each of those
-        sets of weights there's some accuracy which our model would therefore
-        show on our chosen task when given those weight arrangements. In this
-        metaphor the possible weight arrangements are the surface which out
-        optimization algorithm embodied as a hiker is walking across and the
-        elevation of the surface is how many mistakes our the model would make
-        standing at any of the given points on that surface. The goal: get to
-        the bottom of the valley to some weight combination which minimizes
-        mistakes.
+        there's a definable group of all the possible
+        arrangements of weights possible for our model where for each of those
+        weights there's some accuracy our model would therefore show on our chosen 
+        task when assigned that particular of weight arragement. In this
+        metaphor the possible weight arrangements is the metaphorical surface, 
+        the random initialization of those weights is the point on that surface our
+        hiker starts at, our optimization algorithm embodied is the method 
+        our hiker is set to follow in order to descend the elevation of our surface, 
+        and our elevation at any given point on that surface is the number of mistakes 
+        our model is making at each of those weight arrangements along the surface. 
+        The goal: Get to the bottom of the valley to some weight combination 
+        which minimizes mistakes.
       </p>
 
       <p>
