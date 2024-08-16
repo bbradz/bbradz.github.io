@@ -1165,18 +1165,28 @@
       <p>
         After understanding both Apollo and AdaHessian we wrap up our forray
         into Quasi-Newtonian optimizers which in the process wraps up our
-        breakdown of Second-order optimizers as a whole! While Quasi-Newtonian
-        optimizers have found some applications for their higher convergence
-        rates still they prove generally to be unsuitable for deep
-        convolutional, reccurent, or spiked NNs because despite their runtime
-        cuts compared to fully Newtonian options their time consumption is
-        still, at a practical level, just far too high. In many ways the story
-        of Second-Order optimizers is the story of optimizers as a field coming
-        up against the fundamentally difficult challenge of optimizer design:
-        how to encapsulate better geometric reasoning with less effort. This
-        leads us to third and final category of optimization algorithms, one
-        which brings in a few heavier techniques in geometry, probability, and
-        optimization to try and reformulate the problem in terms easy to compute
+        breakdown of Second-order optimizers as a whole! 
+        
+        Quasi-Newtonian optimizers like Apollo and AdaHessian have found 
+        some applications for their higher convergence as practical choices on 
+        standard convolutional NNs and recurrent networks where time and/or 
+        power consumption isn't as critical. Both Newtonian (L-BFGS / SR1)
+        and Quasi-Newtonian (Apollo / AdaHessian) have also been found to show
+        superior results over First-order options particularly on Physics-Informed
+        NNs (PINNs) where one needs to analyze the loss function as well as 
+        initial and boundary conditions. Unfortunately, on more complicated 
+        NNs and much of the giant LLMs of today the higher time consumption 
+        becomes prohibitive in comparison to any benefits in convergence which 
+        moving from First to Second-order optimizers might yield. 
+
+        In many ways the story
+        of Second-Order optimizers is the same story which optimizers as a field 
+        comes up against over and over, that being the fundamental challenge of 
+        optimizer design: how to encapsulate better geometric reasoning (aka 
+        better convergence on complex landscapes) into less effort. This leads us 
+        to our third and final category of optimization algorithms, one which 
+        brings in a few heavier techniques in geometry, probability, and 
+        optimization to try and reformulate the problem in terms easier to compute
         across, Information-Geometric terms.
       </p>
 
