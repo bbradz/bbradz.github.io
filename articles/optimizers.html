@@ -455,8 +455,8 @@
         AdaGrad differs from SGD with NAG as it empirically unlocked a higher
         convergence rate by moving that momentum-approximating summation of past
         gradients away from it's own independent partial step and into composing
-        an adaptive factor to inform how much to scale the step implied by the
-        gradient. Through unlocking adaptive step sizes in relation to the
+        an adaptive factor to inform how a scaling of the step size. 
+        Through unlocking adaptive step sizes in relation to the
         momentum of the gradients AdaGrad manages to compress the same progress
         into less steps, allowing for a increase in the learning rate and
         reduction in time consumed on traversing down the hill of weight space
