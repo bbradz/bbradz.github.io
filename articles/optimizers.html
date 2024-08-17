@@ -255,26 +255,27 @@
       <p>
         <b>1.</b> Long flat domains where the gradient is very small but a large
         step of movement is called for. The go-to standard surface used to
-        approximate this type of case is the Ackley function
+        approximate this type of case is the Ackley function.
       </p>
 
       <p>
         <b>2.</b> Very steep domains where the gradient is very large but a
         large step of movement is still called for, approximated by the
-        Rastrigin function
+        Rastrigin function.
       </p>
 
       <p>
         <b>3.</b> Steep sided valley domains where, in the valley, a very small
         gradient calls for small steps of movement, approximated by the
-        Rosenbrock function
+        Rosenbrock function.
       </p>
 
       <p>
         Take a moment to analyze these three functions since we'll be
-        referencing them repeatedly. The important part is (maybe most obviously
-        in the Ackley & Rastrigin functions) that there are local dips built
-        into these surfaces which cause a naive approach to fail. Put another
+        referencing them repeatedly. One of the important parts is (looking at 
+        the Ackley & Rastrigin functions) that there are local dips built
+        into these surfaces which cause naive approaches of following the fastest 
+        immediate direction downward to fail. Put another
         way, if we were to just step in whichever direction our direct
         surroundings present us we would likely be left stuck in suboptimal
         local minimums! That's really the most important detail beyond the
@@ -301,12 +302,13 @@
 
       <p>
         Optimizer design breaks down into 3 basic categories, the first of which
-        makes up roughly <i>95%</i> percent of the optimizers in use in-industry
+        makes up by completely abritraty approximation roughly <i>95%</i> 
+        percent of the optimizers in use today in-industry
         and therefore will be getting the majority of the attention here. The
         other two categories are still interesting though and will be getting
-        their justice as well as a bit of a explanation of where they've been
+        their justice alongside as a bit of a explanation of where they've been
         found to be useful (hint: Physics-Informed NNs, Non Real-valued NNs,
-        time-variant Spikey NNs).
+        time-variant Spikey NNs).`
       </p>
 
       <p>These three basic categories are:</p>
