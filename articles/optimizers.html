@@ -461,15 +461,14 @@
       </p>
 
       <p>
-        AdaGrad differs from SGD with NAG as it empirically unlocked a higher
-        convergence rate by moving that momentum-approximating summation of past
+        AdaGrad differs from SGD with NAG as it unlocked a higher convergence 
+        rate through moving that momentum-approximating summation of past
         gradients away from it's own independent partial step and into composing
-        an adaptive factor to inform how a scaling of the step size. 
-        Through unlocking adaptive step sizes in relation to the
-        momentum of the gradients AdaGrad manages to compress the same progress
-        into less steps, allowing for a increase in the learning rate and
-        reduction in time consumed on traversing down the hill of weight space
-        possibilities.
+        an adaptive factor for informing a scaling of the step size. 
+        By unlocking adaptive step sizes in relation to the momentum of 
+        the past gradients AdaGrad manages to compress the same amount of progress
+        into less steps, allowing for an increase in the learning rate and
+        reduction in time consumed.
       </p>
 
       <p>The following is the formula for <b>AdaGrad</b>:</p>
@@ -480,18 +479,18 @@
       <p>
         As you can see AdaGrad compiles together a \(G \) term which functions
         as a trailing sum of the past gradients, importantly preserving signs,
-        with increases in \(G \) (meaning that updates have been made repeatedly
-        in the same direction) the size of steps is decreased. In this way
-        AdaGrad adapts to be cautious when it is descending down a persisting
+        where increases in \(G \) (meaning that updates have been made repeatedly
+        in the same direction) translate to decrease in size of steps taken. In this way
+        AdaGrad adapts to be cautious when it's descending down a persistant
         slope so as to not overshoot the ending of that slope, a smartly
-        adaptive strategy for boiling an expectation of convex slope curvature
-        into steps taken which provides empirical gains. AdaGrad still, as
-        should be expected, is far from perfect however and while the cautious
-        step sizes can avoid falling into local minimums through not immediately
-        moving into them it also neuters the step size to be able to rise back
-        out of local minimums which the algorithm may still end out stepping
-        into. AdaGrad while better than SGD still isn't fundamentally guaranteed
-        to converge to the global minimum's neighborhood.
+        adaptive strategy for boiling the expected convexity of a slope's curvature
+        into the steps actually along that slope, again, providing empirical gains. 
+        AdaGrad still, as should be expected, is far from perfect however and thinking about the 
+        case of local minimums while those cautious step sizes can avoid falling into 
+        local minimums through not immediately moving into them into those local minimum 
+        bowls it also neuters the step size to be able to rise back out when the algorithm 
+        does mess up and step in a local minimum. AdaGrad, therefore, while better than SGD 
+        still isn't fundamentally guaranteed to converge to the global minimum's neighborhood.
       </p>
 
       <p>
@@ -502,26 +501,26 @@
       \[ G = g_0 + g_1 + g_2 + ... + g_n \]
 
       <p>
-        This way of compiling gradients notably considers the initial gradient
-        values just as much as the most recent observed gradient, meaning that
+        This way of compiling gradients worryingly considers the initial gradient
+        values equally to the most recent observed gradients, meaning that
         extreme or misrepresentative initial gradients can often lead to our
         model having overly conservative or aggressive step sizes for the entire
-        rest of it's training process.
+        rest of their training process.
       </p>
 
       <p>
-        One change which can be made to AdaGrad is to again change how we put
-        together our running sum of gradients and rethink how we use that
-        running sum of gradients for our weight updates. This is the alteration
-        which we observe one version in the AdaDelta algorithm.
+        One change which can be made to AdaGrad is, again, to change how we put
+        together our running sum of gradients and rethink how we utilize that
+        running sum for our weight updates. This is the alteration we observe one 
+        version of in the AdaDelta algorithm.
       </p>
 
       <p>
-        <b>AdaDelta</b> puts together a exponentially decaying running sum of
+        <b>AdaDelta</b> puts together an exponentially decaying running sum of
         the square of the gradients and a exponentially decaying running sum of
-        the square of the actual change made to each weight in our model. Next
-        AdaDelta akes the square root of both sums, and defines the step size to
-        be the ratio of the running weight change sum over that gradient sum. In
+        the square of the actual changes made to each weight in our model. Next
+        AdaDelta takes the square root of both sums, and defines the step size to
+        be the ratio of the running weight change sum over the gradient sum. In
         other words, we define the following set of additional functions:
       </p>
 
