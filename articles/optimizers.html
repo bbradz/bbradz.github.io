@@ -670,27 +670,27 @@
 
       <p>
         Finally in place of the usual gradient term in SGD, Adam uses the ratio
-        between the general direction being pointed to over the mean of the past
+        between that general direction being pointed to over the mean of the past
         gradients divided by the square root (as a normalizing tool) of the
         variance in the jaggedness of those gradients. This ratio allows for
         larger steps in regions of consistently directional gradients on top of
-        a cautionary dampening when the gradients are jagged and are more
-        dramatic in where they may end out taking our model. Adam can famously
+        a cautionary dampening when the gradients are jagged and might be taking 
+        our model in more dramatic directions if followed fully. Adam can famously
         solve all 3 example valley shapes (Ackley, Rastrigin, Rosenbrock) as
-        it's exponential moving averages (EMA) together decrease propensity to
+        it's exponential moving averages (EMA) together decreases propensity to
         fall into local minimums and open up adaptability to a wide range of
         different surface dynamics.
       </p>
 
       <p>
-        I briefly mentioned \(L^2 \) regularized SGD (aka SGDW) as a out-there
-        iteration of that family of first-order optimizers which aspired to
+        I briefly mentioned \(L^2 \) regularized SGD (aka SGDW) as an out-there
+        iteration of the SGD family of first-order optimizers. SGDW aspired to
         decreasing overfitting but failed through mucking up the update signal,
-        ultimately hurting convergence more than it really imporved
-        generalization. Well one of the benefits of the Adam formulation of
-        optimization over SGD is that the regularizing iteration of Adam has
-        actually lived up to many of those hopes! Enter the most popular spin
-        off of the Adam class of optimizers: AdamW.
+        hurting convergence more than it served to improve generalization. 
+        Well one of the benefits of the Adam formulation of optimization over 
+        SGD is that the self-regularizing version of Adam has actually managed 
+        to live up to those hopes! Enter the most popular spin off of the Adam 
+        class of optimizers: AdamW.
       </p>
 
       <p>The following is the formula for <b>AdamW</b>:</p>
