@@ -554,13 +554,16 @@
         traversals out of local pitfalls and dampening oscillations in the
         vertical directions) while preserving room for individual weights to
         update (or not update) according to what their individual running
-        momentums call for. One of the key applications of this algorithm is in
+        momentums call for. 
+      </p>
+      <p>
+        One of the key applications of this algorithm is in
         cases of models with many weights where some weights may be exercised
         only sparsely during training, through dampening the updates of weights
         which occur more often in comparison to weights which have rarer
-        distinct gradients the update rule adjusts to make larger adjustments to
-        those weights which rarely show up as relevant in the gradient than the
-        overexposed weights, allowing for a higher proportional consideration of
+        distinct gradients, the update rule compensates to make larger adjustments to
+        those weights which rarely show up as relevant compared to those let's say
+        <i>overexposed</i> weights, this allows for a higher proportional consideration of
         those niche weights which filters down into higher performance on the
         deep networks which we see everywhere nowadays. AdaDelta has been shown
         to work well on the 2nd and 3rd challenging valley shapes for
