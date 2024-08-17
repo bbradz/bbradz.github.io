@@ -196,17 +196,17 @@
       <h4>Explaining Terms:</h4>
 
       <p>
-        The first step in laying down an explanation of optimizers would be
-        starting with what the valleys these models are being tasked with
-        descending even are in the first place. When a model is initialized
-        there's a definable group of all the possible
-        arrangements of weights possible for our model where for each of those
-        weights there's some accuracy our model would therefore show on our chosen 
-        task when assigned that particular of weight arragement. In this
-        metaphor the possible weight arrangements is the metaphorical surface, 
+        The first step in this explanation probably ought be laying 
+        down a bit of an explanation of what optimizers would be, starting with 
+        what the valleys these models are being tasked with descending even are 
+        in the first place. When a model is initialized there's a definable group containing all the possible
+        arrangements of weights our model could possible take on and for each of those
+        weights there's some accuracy our model would show on our chosen task 
+        if it were assigned that particular arrangment of weights. In this
+        metaphor the domain of possible weight arrangements is our metaphorical surface, 
         the random initialization of those weights is the point on that surface our
-        hiker starts at, our optimization algorithm embodied is the method 
-        our hiker is set to follow in order to descend the elevation of our surface, 
+        hiker starts at, our optimization algorithm is the method our hiker is set 
+        to follow in order to descend the elevation of our surface, 
         and our elevation at any given point on that surface is the number of mistakes 
         our model is making at each of those weight arrangements along the surface. 
         The goal: Get to the bottom of the valley to some weight combination 
@@ -215,34 +215,33 @@
 
       <p>
         Much of our challenge comes from the quirk that while it's relatively
-        uncomplicated from a system perspective to have our model look at the
+        uncomplicated from a computational cost perspective to have our model look at the
         exact point where it's standing and figure out which direction directly
         adjacent to it will get it most instantly downhill it's
         <i>tremendously</i> expensive to look forward and observe the shape of
         the hill as a whole, again imagine the valley as being covered in a
-        thick fog drowing out visibility. Since analyzing the whole surface is
-        so expensive we don't know what the lowest point on our surface truly is
-        making it very easy to end out at a point high up on the hill with no
-        area directly around you to step down towards (this is called a local
-        minimum, a pit to fall into). Even if we do find our way to a global
-        minimum (aka the bottom of the valley) we may end out having taken a
-        winding and inefficient path down. The math term relevant to introduce
-        here is the <i>gradient</i> which describes essentially which direction
-        the slope under our model's feet is pointing and how steep that slope
-        is.
+        thick fog drowning out all visibility. Since analyzing the whole surface is
+        so expensive we don't actually know what the lowest point on our surface is
+        which makes it easy even some relatively simple valley shapes to descend into 
+        a bowl which while not the lowest possible point doesn't have any direct path 
+        down out, this is called a local minimum, a sort of pit we risk falling into. 
+        Even if we do find our way to a global minimum (aka the bottom of the valley) 
+        we may end out having taken a winding and inefficient path down. 
+        The math term relevant to introduce here is the <i>gradient</i> which 
+        describes essentially which direction the slope under our model's feet 
+        is pointing and how steep that slope is.
       </p>
 
       <p>
         By the multivariate nature of these surfaces they inevitably take on a
         tremendous variety of different shapes and our goal when designing or
         picking an optimizer is to find an algorithm which can traverse all of
-        the surfaces which present themselves in the process of solving these
-        problems we care to solve. There are quite a few types of surfaces which 
-        may be useful \ relevant examples in describing the possible challenges 
-        these optimizers need to be equipped for. Three of the most commonly 
-        referred to difficult cases of surface shapes which we'll return to 
-        throughout this article, which describe possible strengths or weakness of
-        existing optimizers, are the following:
+        the surfaces relevant in solving the problems we care to solve. 
+        There are quite a few types of surfaces which may be useful \ relevant
+        examples in describing the possible challenges these optimizers need 
+        to be equipped for. Three of the most commonly referred to challenge 
+        surface shapes (which we'll return to throughout this article) for
+        existing optimizers, being the following:
       </p>
 
       <div class="centered-item-holder">
