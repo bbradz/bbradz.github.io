@@ -826,16 +826,20 @@
         far from the optimum and accurately avoid overshooting through lowering
         the learning rate when closer to the optimum. DiffGrad performs very
         well on deep convolutional networks much like RAdam while still
-        preserving those theoretical advantages and has some evidence pointing
-        to it outperforming SGDM, AdaDelta, and Adam on a wide range of pattern
-        recognition challenges. DiffGrad does end out being a bit overtuned to
-        solving simply classical and convolutional neural networks however and
-        had marked collapse in learning on the quantum, spiked, complex-valued,
-        and physics-informed networks which all optimizers aspire to be able to
-        cover in addition to the usual convolutional, reccurent, and traditional
-        NNs. Another Adam-Type optimizer was soon proposed after DiffGrad which
-        takes more account of the curvature of the loss function during
-        minimization, Yogi.
+        preserving the theoretical advantages on our chosen challenge function 
+        shapes. DiffGrad also has some evidence pointing to it outperforming 
+        SGDM, AdaDelta, and Adam on a wide range of pattern recognition challenges. 
+      </p>
+      <p>
+        DiffGrad does end out being a bit overtuned to solving simply classical 
+        and convolutional neural networks however and (to be fair, much like all of 
+        the First-Order optimizers) shows marked collapse in learning 
+        on more complex NNs. When analyzed on the quantum, spiked, complex-valued, 
+        and physics-informed networks which all optimizers should aspire to be 
+        able to cover in addition to the usual convolutional, reccurent, and 
+        traditional NNs it too failed to show efficient convergence. Another Adam-Type 
+        optimizer was soon proposed after DiffGrad which takes more account of 
+        the curvature of the loss function during minimization, Yogi.
       </p>
 
       <p>
