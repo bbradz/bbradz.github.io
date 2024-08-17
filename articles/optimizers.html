@@ -449,15 +449,15 @@
       <p>
         Nesterov momentum distills the convexity of our surface via some
         beautiful mathematical grounding in the Nesterov condition for measuring
-        the convexity of functions (aka how far from linear), essentially
-        amounting to the model realizing when it's already observed a long
-        string of similarly pointed gradients that it should take larger steps
+        the convexity of functions (aka how far from linear our function is), essentially
+        amounting to the model realizing that when it already observed a long
+        string of similarly pointed gradients it should take larger steps
         in that direction next time around. As Nesterov mementum describes and
-        account for function convexity very effectively in accordance with the
-        Nesterov conditioning it's a concept which ends up popping up throughout
-        optimizer algorithms of all sorts but this exact formula wasn't the one
-        which caused the technique to truly take off in practice. For that we
-        look to a different optimizer algorithm, AdaGrad...
+        accounts for function convexity very effectively through it's roots in the
+        Nesterov condition it's a concept which ends up popping up throughout
+        all sorts of optimizer algorithms but this exact formula wasn't the primary 
+        one which caused the technique of momentum to truly take off in practice. 
+        For that we look to a different optimizer algorithm, AdaGrad...
       </p>
 
       <p>
