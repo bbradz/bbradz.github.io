@@ -699,16 +699,16 @@
       v_t}+\epsilon} + \lambda \theta_t \right] \]
 
       <p>
-        At it's core AdamW integrates the scale of the weight being updated into
-        determining how much to adjust that weight through decreasing each
-        weight by \(\eta \lambda \theta \) at each step, dragging all weights
-        closer to a smaller value and decreasing how many lopsided weight
-        combination the model can choose from to overfit to the exact problem
-        their being trained on. AdamW's inserted weight reduction consideration
-        has been shown empirically to provide better gains in generalization
-        than just slapping the traditional \(L^2 \) Regularizer on top of
-        traditional Adam and has gained real popularity in-industry for its
-        ability to guarantee reliable model performance.
+        At it's core: AdamW integrates the scale of each weight being updated into
+        determining how much to adjust that weight by, decreasing each
+        weight by \(\eta \lambda \theta \) at each step and dragging all weights
+        closer to value around zero which propensity to take on a lopsided weight
+        combination for overfitting to the exact problem our model is being trained 
+        on. AdamW's inserted weight reduction consideration has been shown 
+        empirically to provide better gains in generalization than just slapping 
+        the traditional \(L^2 \) Regularizer on top of traditional Adam and has 
+        gained real popularity in-industry for its ability to guarantee reliable 
+        model performance.
       </p>
 
       <p>
@@ -717,7 +717,7 @@
         smooth as necessary, often bumping around the true solution. One of the
         solutions to this is to look back to Nesterov momentum from the SGD
         family and bring it into the Adam algorithm, resulting in the following
-        update rule for the <b>NAdam</b> optimizer algorithm:
+        update rule, titled <b>NAdam</b>:
       </p>
 
       \[ \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t}+\epsilon}
@@ -727,19 +727,19 @@
         As you can see, NAdam adds a small partial step of
         \(\frac{(1-\beta_1)g_t}{1-\beta_1^t} \) into Adam and while this yields
         some additional performance (especially on training deep convolutional
-        NNs) through speeding up convergence through a smoother update rule
-        which considers the convexity of the problem surface more. NAdam is
-        common in industry in it's own right trading a slightly higher
-        proclivity to overfit compared to AdamW for better convergence.
-        Unfortunately NAdam being to stack up deviations from the ideal on the
-        more complicated physics-informed models used to learn complex PDEs.
+        NNs) through speedier convergence from a smoother update rule capable 
+        of further considering the convexity of the problem surface. NAdam is
+        common in industry in it's own right for trading a slightly higher
+        proclivity to overfit compared to AdamW for a bit of better convergence.
+        Unfortunately NAdam has been known to begin to stack up deviations from the 
+        ideal on more complicated physics-informed models used to learn complex PDEs.
       </p>
 
       <p>
         Into that space enters <b>Rectified Adam (RAdam)</b> which introduces
         another trick in evening out extreme behavior through an additional term
-        for rectifying the variance in the adaptive learning rate which leads to
-        more reliable returned updates and higher test accuracies.
+        aimed at rectifying the variance in our adaptive learning rate and in the process
+        provoking more reliable returned updates and higher test accuracies.
       </p>
 
       <p>The algorithm for RAdam is as follows:</p>
@@ -777,20 +777,19 @@
       </ul>
 
       <p>
-        The authors of RAdam observed in their paper introducing the algorithm
-        that due to the lack of samples at early stages in training Adam has a
+        The authors of RAdam observed when introducing the algorithm
+        that due to the lack of samples at early stages in training Adam has an
         undesirably large variance in step sizes which can drive it into
-        suspicious/bad local optima (this is the whole origin for the \(\hat m_t
+        suspicious / bad local optima (this is the whole origin for the \(\hat m_t
         \) and \(\hat v_t \) corrective factors in the first place). They then
         proposed \(\rho \) as a method for building on the characteristics of a
         <i>non-exponential</i> simple moving average to approximate how much of
         our moving average is missing due to missing samples and feed that into
-        their \(r_t \) term which dampens the step size in relation to the
+        their \(r_t \) term, dampening the step size in relation to the
         square root of what fraction of the healthy number of samples our model
-        is at at that step, providing a sort of warmup in step size in those
+        is at at that timestep and providing a sort of warmup in step size in those
         early stages of training which had by the time of their proposal become
-        common but never before had been built directly into the optimizer
-        update rule.
+        common but never before been built directly into the optimizer update rule.
       </p>
 
       <p>
