@@ -532,17 +532,17 @@
       \[ \Delta \theta_t= - \frac{RMS[\Delta \theta]_{t-1}}{RMS[g]_t}g_t \]
 
       <p>
-        In this way the rate of changing parameters is only slowed down when the
-        recent moment has seen dramatically large gradients but will adaptively
-        keep step sizes up for weights which have reliably, through those
-        changes in the gradient, kept being changed in a signifigant way.
+        In this way the rate of changing parameters is only slowed down when in
+        recent memory there was dramatically larger gradients but our algorithm
+        gains the capacity to adaptively keep step sizes up for those weights 
+        which have reliably, through those changes in the gradient, kept being 
+        changed in a signifigant way.
         Expanding out the term for \( E[x] \) we get the formula: \[ E[x]_n =
         (1-\rho)\rho^{n-1} g^2_0 + (1-\rho)\rho^{n-2} g^2_1 + ... +
-        (1-\rho)g_n^2 \] showing that past gradients gradually are scaled down
-        in relevance to the current update rule which not only increase
-        responsiveness of the momentum term but also means that the momentum sum
-        is not solely increasing as past large gradients are slowly subtracted
-        out of the sum.
+        (1-\rho)g_n^2 \] showing that (given that \(\rho < 1 \)) past gradients 
+        gradually are scaled down in relevance to the current update rule as 
+        they're weighting in the full running sum is slowly decrease timestep by 
+        timestep.  
       </p>
 
       <p>
