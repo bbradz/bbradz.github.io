@@ -628,17 +628,18 @@
 
       <p>
         The first moment which Adam takes care to compile is the
-        <i>mean</i> (\(\hat M_t \)) of the past gradients, utilizing the
-        magnitude of the mean gradient to imply when a long string of gradients
-        has been pointing in the same direction. The second moment which Adam
+        <i>mean</i> (\(\hat M_t \)) of the past gradients, which is 
+        generally taken to imply when a long string of gradients has been 
+        pointing in the same direction. The second moment which Adam
         compiles is the <i>variance</i> (\(\hat V_t \)) of the gradient, aka a
         running sum of the square of the gradients, isolating the steepness of
-        the slope at the expense of preserving the exact average direction of
-        those slopes. This is really a quite smart design, breaking out two
-        momentum terms where one informs the consistency of the direction of the
-        gradients and the other measures the jaggedness of those gradients
-        altogether opening room for considering a variety of different function
-        region shapes.
+        the slope our model is traversing at the expense of preserving the exact 
+        average direction of those slopes. 
+        This is really a quite smart design, breaking out two momentum terms 
+        where each informs tracks what information the other is leaving aside, 
+        aka the consistency of the direction of the gradients and the jaggedness 
+        of those gradients. Through this design Adam's family of optimizers opens up 
+        room for considering a variety of different function regions.
       </p>
 
       <p>
@@ -662,8 +663,8 @@
         early moments. This is the origin of those \(\hat M_t \) and \(\hat V_t
         \) terms: \(1 - \beta_1^t \) blows up the value of \(M_t \) when \(t \)
         is small and gradually converges to value of one as \(t \) approaches
-        \(\infty \), the value of \(\frac{M_t}{1-\beta_1^t} \) helps to
-        adaptively scale up the value of \(M_t \) at steps early into training
+        \(\infty \) meaning that the value of \(\frac{M_t}{1-\beta_1^t} \)
+        adaptivelys scale up the value of \(M_t \) earlier into it's training
         (with the same logic carrying over to \(\hat V_t \)).
       </p>
 
