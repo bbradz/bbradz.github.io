@@ -346,18 +346,19 @@
       </ul>
 
       <p>
-        Second-order optimizers have been found to work well on Deep CNNs and
-        GNNs but aren't used as much on recurrent large language models because
-        they come with a substantial computational overhead.
+        Second-order optimizers seem to have been found to work well on Deep CNNs and
+        GNNs but aren't used as much on most of the large networks in use today 
+        because of the signifigant computational overhead in calculating (or even 
+        approximating) that second-order view on the problem.  
       </p>
 
       <p>
         <b>3. Finally, Information-Geometric optimizers.</b> The dark sorcery of
         optimizer algorithms, information-geometric optimizers choose to
         reimagine the whole surface as more complicated mathematical objects,
-        drawing on the findings of group theory and abstract algebra to bear
+        drawing on various branches of differential geometry and abstract algebra to bear
         witness more information about the problem in less computation via
-        manifold-level inferences. I'll break a bit into what the math is behind
+        manifold-level inference. I'll break a bit into the math behind
         these cool pieces of machinery but we'll save that for the end since
         it's the most out there of all three classes.
       </p>
