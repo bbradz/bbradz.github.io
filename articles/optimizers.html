@@ -378,16 +378,16 @@
 
       <p>
         The simplest first-order optimizer out there, the one which you likely
-        know by heart if you know a thing or two about NNs is Stochastic
+        know by heart if you know a thing or two about NNs, is Stochastic
         Gradient Descent (SGD). Stochastic Gradient Descent is named such
         because the weight adjustment it returns at any given moment is based on
         <i>descending</i> the surface of our model's weight space using only the
         information we can glean from the instantaneous <i>gradient</i> of our
         model's position in that weight space derived from a random (aka
         <i>Stochastic</i>) sampling of the full problem. Weight adjustments made
-        by SGD don't take into account any history of past adjustments and often
-        just measuring how our model should descend a gradient based on a
-        approximation of the true gradient calculated out of a small number of
+        by pure SGD don't take into account any history of past adjustments. Moreover 
+        SGD often just measure how our model should descend the gradient based on a
+        approximation of the true gradient gleaned from a small number of
         examples components of the full challenge.
       </p>
 
@@ -408,13 +408,13 @@
         One of the primary benefits of SGD is that it's got an extremely low
         overhead in terms of computational cost since it takes into account as
         little information as possible (only one component of the surface shape
-        over only a few examples) but that can be a strength it also opens up
-        the primary weakness of SGD, a inability to avoid taking many steps in
-        traversing regions of gradual slope. SGD doesn't glean the true shape of
-        the function it's traversing as it takes steps, trading off a lower
-        memory for quicker iterations. One of the first additions made to SGD
-        back in 1980 was the consideration of a momentum term through Nesterov
-        accelerated gradients.
+        over only a few examples) but unfortunately that strength simultaneously opens up
+        the primary weakness of SGD, a tendency to get trapped in bowls or 
+        regions of consistent small gradients where step sizes become miniscule. 
+        SGD doesn't glean the true shape of the function it's traversing 
+        as it takes steps trading off a lower memory for quicker iterations. 
+        One of the first additions made to SGD back in 1980 was the consideration 
+        of a momentum term through Nesterov accelerated gradients.
       </p>
 
       <div class="centered-item-holder">
@@ -434,12 +434,11 @@
       </div>
 
       <p>
-        The Nesterov accelerated gradient (NAG) optimizer focuses on enhancing
+        Nesterov accelerated gradient (NAG) optimization focuses on enhancing
         convergence in gradually sloped portions of functions through adding
-        into the SGD gradient estimation loop a small partial step to update our
-        weight configuration before our gradient is estimated in a direction
+        into the SGD gradient estimation loop a small partial step in a direction
         proportional to the running sum of all the past gradients observed by
-        our model. Through imposing a additive step proportional to the momentum
+        our model. Through imposing an additive step proportional to the momentum
         of the past observed gradients the weight update rule becomes the
         following:
       </p>
