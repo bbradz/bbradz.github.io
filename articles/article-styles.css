@@ -155,3 +155,8 @@ footer {
   overflow-x: auto;
   overflow-y: hidden;
 }
+
+.twitter-tweet {
+    max-width: 400px; /* Adjust this value to shrink the tweet further */
+    width: 100%;
+}
