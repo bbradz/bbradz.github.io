@@ -152,13 +152,13 @@
 
         \[
         \begin{gather}
-            &\bar G_t = \alpha \bar G_{t-1} + (1-\alpha)G_t \\
-            &L_t = L_{t-1} + \bar G_t \bar G_t^T \\
-            &R_t = R_{t-1} + \bar G_t^T \bar G_t \\ \\ 
+            &\overline{G}_t = \alpha \overline{G}_{t-1} + (1-\alpha)\overline{G}_t \\
+            &L_t = L_{t-1} + \overline{G}_t \overline{G}_t^T \\
+            &R_t = R_{t-1} + \overline{G}_t^T \overline{G}_t \\ \\ 
             &L_0 = \epsilon I \\
             &R_0 = \epsilon I \\
             &\overline{G}_0 = 0 \\ \\
-            & \theta_{t+1} = \theta_t - \eta_t \overline{\mathbf{A}}_t^{-1/2} G_t
+            & \theta_{t+1} = \theta_t - \eta_t \overline{\mathbf{A}}_t^{-1/2} \overline{G}_t
         \end{gather}
         \]
 
