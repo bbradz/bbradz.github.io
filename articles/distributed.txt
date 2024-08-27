@@ -1,0 +1,150 @@
+Cover
+
+3D Parallelism
+1. Model Parallelism (Megatron-LM)
+    > Intralayer (vertical) splitting
+    > Complimentary to pipeline parallelism
+        > Huge performance stacking
+        > Split up each model into L vertical slices, M layer-level slices, N data batches
+        allowing for LxMxN devices training 1 model
+    > Put M% of the whole model, across every layer so as to preserve the end-to-end 
+    functionality using just a slice of the model, onto each device and then run in 
+    parallel.
+        > How? Careful understanding of how to break up layer operations. The greatest 
+        difficulty arises in cases where you need to run an operation across all of the
+        model layer to get each component of the next, or where you need to sum across 
+        a whole layer. 
+            > Pic
+        > Goal: Avoid need for synchronization to allow parallel model execution. 
+    > Achieved 76% scaling efficiency (aka ~24% idle)
+    > Activation Checkpointing: As activations at each layer are needed for backward 
+    pass naively storing every activation causes vertical split memory requirements
+    to skyrocket, to resolve this we store only every N activations where on the 
+    backward pass we recalculate activations (i-1)N to iN from the (i-1)th checkpoint.
+    > inter-GPU bandwidth versus inter-Server bandwidth: Synchronizations may 
+    be more efficient if kept within each server. 
+2. Pipeline Parallelism (GPipe)
+    > Interlayer (horizontal) splitting
+    > Put M layers onto each device running each device in sequence
+    > CON: Device idle time! "Bubbles" where earlier layer devices are idle 
+    waiting on later layer devices to run and send back their results. 
+        > Solution: "Micro-batching" -- break up data into batches which allows 
+        for feeding results forward then running same device on next data batch,
+        preserving activity. PRO: Idle time scaling reduces as data scales beyond
+        model size. 
+    > Empirically found number of microbatches M should be >= 4K where K is the 
+    number of devices. Leading to near linear scaling of throughput. 
+    > Pic
+3. Data Parallelism
+    > Copy & Paste network across N devices
+    > Split data in N parts
+    > Forward pass + Calculate gradients through all N devices
+    > Sum up gradients on another device (reduce into device + scatter to N devices)
+    > PRO: Higher throughput, CON: Relies on network fitting on a single device
+
+
+4. Mixed Precision Training
+    > Store single-precision masterweights but do forward & backward pass in
+    half-precision. Why? Because sometimes a signifigant portion of weight 
+    gradients have exponents which become zero in FP16. 
+        > CON: Memory cost of storing copy of weights
+        > PRO: Smaller memory cost for all of the activations in backward + forward 
+        pass which by default makes up the majority of overhead.
+        > WORKAROUND: Gradient Scaling: some gradients go to zero in lower-precision, 
+        to counteract this all of the gradients can be scaled by some factor 
+        (8x was used in the paper) to bring them back into the FP16 range. 
+        This can be achieved through scaling the loss value by that factor before 
+        backward pass. 
+        > CON: Of the 3 NN arithmetic categories: Vector dot-product, Reductions, 
+        Point-wise... Reductions & Vector dot-products should (always and often, 
+        respectively) be done in FP32. 
+    > Historically have used single-precision FP32 for weights but lower precision
+    stills works and can keep the same accuracy. Lower precision (Mixed Precision uses 
+    half-precision FP16) not only takes lower memory but also executes faster! 
+    > FP16 vs BFloat16: Higher space for exponent, allowing range over precision
+        > Pic 
+
+5. ZeRO
+    (https://arxiv.org/pdf/1910.02054)
+    (https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/)
+
+    > Where Did All The Memory Go? 
+        > MP splits models vertically, working well within a single node where inter-GPU 
+        bandwidth can be used but efficiency quickly degrades beyond a single node! (5%
+        of hardware peak when tests on 40B which requires 2 DGX-2 nodes). Majority of 
+        memory taken by optimizer states (momentum & variances) with the remaining memory
+        being activations, temporary buffers, fragmented unusable residual states.
+    > Zero-DP
+        > Partition model states instead of replicating them. Dynamic communication 
+        scheduling exploiting temporal axis of model. 
+            > Optimizer partitioning (P_os) = 4x memory reduction w same communication
+            > Add Grad partitioning (P_os+g) = 8x memory reduction w same communication 
+            > Add Param partition (P_os+g+p) = Linear memory reduction w num of devices 
+            split across, so if on N=64 GPUs then 64x memory reduction w 50% increase in 
+            communication volume. 
+            > Pic 
+            > Using all 3 stages, ZeRO can train 1T param on 1024 NVIDIA GPUs as 1T w Adam 
+            requires 16TB of memory aka 16GB per GPU although then *time* becomes the bound
+            as training time reaches >1 year. 
+    > Zero-R
+        > Tackles secondary memory bottleneck of Activations, Temporary Buffers, Fragmented 
+        unusable Residual states without even bringing in checkpointing from MP. 
+            > Activation checkpoint partitioning across GPUs + offloading to CPU when possible
+            > Define appropriate buffer size
+            > Proactively manage memory based on tensor lifetimes to prevent memory fragmentation
+    > Introduces Deepspeed library
+    > ZeRO-Offload
+        (https://arxiv.org/pdf/2101.06840)
+        > Offload norm calculations & weight updates (aka operations which do not scale with
+        number of data points which rely on GPU parallelized speed-ups) to CPU, 
+        maximizing memory savings on GPU while minimizing CPU compute bottleneck and data 
+        movement to/from GPU
+        > fp32 model states + fp16 gradients put on CPU memory to compute parameter updates, 
+        fp16 model states + fwd & bkwd passes are done on GPU
+            > Pic
+            > Pic
+    > 1-bit Adam:
+        (https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
+        (https://arxiv.org/pdf/2102.02888)
+        > As variance stabilizes through training, you can run Adam for warmup phase then 
+        save the variance approached and use that repeatedly throughout later training 
+        as you switch to SGD w Momentum which has much lower memory overhead. 
+        > Preserves Adam training loss w 5.48x throughput speedup aka communication volume 
+        reduction
+    > Sparse Attention 
+        (https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
+        (https://medium.com/@vishal09vns/sparse-attention-dad17691478c)
+        > 10x longer input sequences, 6x execution speed w comparable accuracy
+        > Deepspeed Kernels 1.5-3x faster execution than other SOTA sparse attention kernels
+    > ZeRO-Infinity
+        (https://arxiv.org/pdf/2104.07857)
+        (https://www.microsoft.com/en-us/research/blog/zero-infinity-and-deepspeed-unlocking-unprecedented-model-scale-for-deep-learning-training/)
+        > Offloads partitioned model states to CPU or NVME which (on DGX-2 systems) have 
+        3x and 50x the storage compared to GPU
+        > Adds smart compute-communication overlap engine to limit communication latency 
+        automatically for abitrary model architectures
+        > Offload all activation history to CPU
+    > ZeRO++
+        (https://arxiv.org/pdf/2306.10209)
+        > Resolves throughput bottleneck from gathering weights in fwd, bcwd, gradient avg
+        steps through:
+            > Block-quantization based all-gather
+                > Pic
+            > Hierarchical Weight Partitioning (hpZ)
+                > Pic
+            > All-to-All based quantized gradient averaging 
+        > 2.4x consistent speedup on GPT-3 training over ZeRO & similar throughput on x1/4
+        lower bandwidth cluster
+
+
+
+6. Hardware Aware Modle Design (Flash Attention)
+    > Online softmax (Milakov & Gimelshein, Rabe & Staats)
+    > Tiling (classical)
+    > Recomputation (classical)
+
+
+Why Care? If you training above 1.5B params you need >32GB of VRAM which most do 
+not have which means you need to split up operation across GPUs. 
+
+Dynamic Loss Scaling
