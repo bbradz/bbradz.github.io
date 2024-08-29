@@ -110,24 +110,24 @@
         <h3>Introduction</h3>
 
         <p>
-            The joy of working in and following the Tech industry is that it's constantly changing,
-            what worked a decade ago becomes outclassed on every front by new and innovative techniques
-            which inspire everyone to rise to the new moment, update their understandings, and 
-            remain constant learners. 
+            The joy of working in and following Tech is that it's constantly changing,
+            what worked a decade ago is rapidly outclassed by new and innovative techniques
+            which inspire everyone to remain constant learners and rise to every new moment. 
         </p>
         <p>
-            From C to ChatGPT, Assembly to
+            From C to ChatGPT, Assembly to A Million 
             <a href="https://www.independent.co.uk/news/science/apollo-11-moon-landing-mobile-phones-smartphone-iphone-a8988351.html">
-            million of Apollo's</a> in your pocket the face of modern
-            computation is defined by change on a decade-by-decade, year-by-year, even month-by-month 
-            basis. So what about today, what is the new evolution coming as I type these words? The era of 
-            Hyperscalers. The Tech landscape of today is one where seven giants congregated around
-            immense moats of: network effects, wells of proprietary data, CAPEX 
+            Apollo's</a> in every pocket, the face of modern computation is defined 
+            by decade-by-decade, year-by-year, and even month-by-month change. 
+            What about today? What's the evolution driving the reinvention of Tech even
+            as I type these words? It's difficult not to argue: The Era of the Hyperscalers. 
+            
+            Seven giants congregated around immense moats of network effects, wells of proprietary data, CAPEX 
             equivalent to G7 economies, and little helpings of 
             <a href="https://www.theverge.com/2024/8/5/24155520/judge-rules-on-us-doj-v-google-antitrust-search-suit">
-            incest</a> concentrate (only using a slight amount of exageration) literally all of 
-            the capital under seven corporate projects with the rest of the economy left stagnant 
-            and hanging tight for the ride.
+            incest</a> have concentrated (to exagerate only slightly) the whole world's capital 
+            under seven corporate projects with the remaining economy left stagnant 
+            and hanging on for the ride.
         </p>
         <div class="centered-item-holder">
             <img
@@ -137,36 +137,40 @@
             />
         </div>
         <p>
-            While the impact of computation's reinvention of work at every level of the economy 
-            continues to provide a comet of growth in a economy otherwise dominated by stagnation 
-            one can't help but wonder how the food chain of value moved away from a world where the 
-            peak of The Valley was Apple's compressions of computation into our pockets and back 
-            towards a IBM-style scaling of data centers so quick that it promises to render even the 
+            While the impact of computation's reinvention of work continues to provide 
+            a comet of growth streaking across an economy otherwise stagnant one can't 
+            help but wonder how the food chain of value became so topsy-turvy. How 
+            and when exactly did we move away from a world where the peak of The 
+            Valley was Apple's compressions of all the world's information into our
+            pockets and return to a IBM-style centralization of compute power so 
+            swift that it renders even the 
             <a href="https://www.washingtonpost.com/business/2024/03/07/ai-data-centers-power/">
-            electric grid itself dwarfed</a>. When did we move from the era of Jobs to that of
-            Jensen?
+            electric grid</a> itself dwarfed. 
+            When did we move from the era of Jobs to that of Jensen?
         </p>
         <p>
             Spoiler alert, I can't answer that question-- but <i>maybe</i> I can provide a
-            helpful angle of context for considering the question! In today's article I will look 
-            into one of the ingredients behind the modern era of Hyperscalers, where trillion dollar 
-            companies are minted out of the mad rush to put as many NVIDIA GPUs under one roof as 
-            possible, the techniques behind scaling Model Training to distributed Data Center 
-            scale computing. 
+            helpful angle of context in considering it! For today's article I'll look 
+            into one of the driving factors behind our modern era of Hyperscalers where trillion dollar 
+            companies are minted in the mad rush to cluster as many NVIDIA GPUs under one roof as 
+            feasible: the techniques behind scaling model training to distributed Data Center 
+            Scale computing. 
         </p>
 
         <a name="B"></a>
         <h3>Motivation</h3>
 
         <p>
-            In the early 2020s the literature around model performance began to shift as researches
-            at firms like Google and particularly OpenAI began to discover the now everpresent 
-            model <a href="https://arxiv.org/pdf/2001.08361"><b>Scaling Laws</b></a> (Kaplan et al. 2020). 
-            Deep Learning had been picking up steam since 2012 when AlexNet topped the ImageNet 
-            charts for CNN performance, proving deep models could displace expert systems even on complex 
-            image recognition tasks, but the real spark starts at at the discovery of these "Scaling 
-            Laws for Neural Language Models" which observed that the accuracy of language models drops 
-            smoothly with every logarithmic scaling of model size, dataset size, or compute spent.
+            In the early 2020s the literature around model performance began to shift when researchers
+            at firms like Google and OpenAI (where the executives seemed to catch on the quickest) 
+            began to discover the now everpresent 
+            <a href="https://arxiv.org/pdf/2001.08361"><b>Model Scaling Laws</b></a> (Kaplan et al. 2020). 
+            Deep Learning had been picking up steam since 2012 when AlexNet topped ImageNet 
+            and proved deep models able to displace expert systems on complex image recognition 
+            tasks but the real spark was the discovery of these "Scaling Laws for Neural 
+            Language Models". Slowly, those in the know began to realize with startling precision 
+            and predictability how the error rates of language models drops smoothly 
+            with every logarithmic scaling of: A. model size, B. dataset size, and C. compute sunk.
         </p>
         <div class="centered-item-holder">
             <img
@@ -177,43 +181,45 @@
         </div>
         <p>
             Since that paper internets worth of data, countries worth of compute, and mountainously 
-            large models have bloomed under literally 100s of billions worth of CAPEX as everyone 
-            in Tech races to dump dollars into a dynamic which seems to leave whichever agent has the 
-            most resources to drive into a model with a winner-take-all trend in performance. 
+            large models have bloomed under the light of 100s of billions worth of CAPEX. Everyone 
+            in Tech has raced to dump dollars into a dynamic of model performance growth which seems 
+            to leave whoever has the most resources for driving into training with a winner-take-all 
+            trend in performance. A snowball of CAPEX which everyone who's anyone in the world of 
+            tech could justify shovelling more and more cash into. 
         </p>
         <p>
-            We're going to focus on those model sizes, because part and parcel of this arms race for 
-            the winner-take-all model capable of solving tasks at never before seen levels of complexity 
-            has been the ballooning of model scale, one of those 3 Scaling Law factors for driving 
-            increased performance. The issue? The cutting-edge Large Language Models of today contain
+            We'll focus particularly on that ballooing in model size since the 
+            cutting-edge Large Language Models of today contain
             <a href="https://www.constellationr.com/blog-news/insights/meta-launches-llama-31-450b-and-zuckerberg-its-personal">
             450 billion</a> and 
             <a href="https://the-decoder.com/gpt-4-architecture-datasets-costs-and-more-leaked/">
-            1.7 trillion</a> parameters roughly between Meta and OpenAI which 
-            translates to some 14.4TB to 54.4TB in memory for storing all of those parameters in memory 
-            in the historically standard FP32 format where each parameter takes up 32 bytes of memory. 
-            Additionally, in the process of training a model for each parameter you end up with these 
-            extra values you need to store, multiple per parameter, which are necessary for the cutting 
-            edge optimizers driving training the performance which brings that Trillion dollar performance, 
-            meaning the training of these models should take at it's core approaching 100TB of memory.
-            The catch-- NVIDIAs largest GPU reaching industrial buyers at scale today maxes out at 
-            80GB of memory, almost three order of magnitude below where these cutting edge models are 
-            today. That means that there is not a self-contained GPU on Earth capable of training 
-            a ChatGPT or LLama3, but nonetheless they're here, the delta-- we have figured out 
-            new and evolving ways to connect together multiple computing platforms into unified platforms 
-            for distributed training driving the cutting edge of computation off of individual chips 
-            and into warehouses of 1,000s of chips. 
+            1.7 trillion</a> parameters roughly between Meta and OpenAI. The issue? 
+            Given the standard FP32 datatype for each parameter (aka 4 bytes of memory per weight)
+            that translates into some 14.4 to 54.4TB for storing model parameters alone! 
+            Additionally, in the process of training a model each parameter ends up with multiple 
+            additional values tied to it and in need of being stored. Necessary for running the cutting 
+            edge optimizers which drive Trillion dollar performance is a explosion of memory footprint 
+            by entire multiples of the already ballooning model parameter count, causing training 
+            at it's core to approach up to 100TB of memory required for the model of today.
+            The catch of course is that NVIDIAs largest GPUs max out at 80GB of on-device 
+            memory, almost three order of magnitude below how much modern models require. 
+            There isn't a self-contained GPU on Earth capable of training a ChatGPT 
+            or LLama3 on it's own but by popular demand we continue to forge these models at bigger 
+            and bigger scales, the delta-- we've figured out new and evolving ways to connect 
+            together multiple computing platforms into unified platforms for distributed 
+            training and drive the cutting edge of computation off of individual chips 
+            into warehouses of 1,000s of chips. 
         </p>
         
         <a name="C"></a>
         <h3>Baseline Physical Tradeoffs</h3>
         <p>
-            If your anything like me this is about the time where your brain starts to fade out and 
-            lose interest because <i>~HEY~ I'm into AI for the mental models and abstracting problem solving 
+            If your anything like me this is probably about the time when your brain fades away and 
+            loses interest because <i>~HEY~ I'm into AI for the mental models, for abstracting problem solving, 
             not for the
             <a href="https://www.youtube.com/@Asianometry">photolithography </a> or
             <a href="https://en.wikipedia.org/wiki/InfiniBand">network topologies</a>, that's for the 
-            Hardware guys to worry about</i>. I can understand the feeling but not only is it probably 
+            Hardware guys</i>. I understand the feeling. Not only is it probably 
             good for you to brush up on the Hardware game from time to time but the physical dynamics 
             of the split systems these models are computing on really does matter for the code-level
             implementation of training these models. Silicon informs everything, fortunately there 
@@ -221,22 +227,22 @@
         </p>
         <p>
             The core of these distributed model training runs is a hierarchy of systems within systems 
-            which we'll simplify through starting at the basic unit of a single V100 GPU. 
-            GPUs are the smallest units meaning that individually they only have 1 GPU worth of memory
-            (~32GB) but also have the higher internal data transfer speeds of roughly 900GB/s. Going 
-            up a unit your looking at the DGX-2 rig, which holds 16 V100s aka 512GB of GPU memory alongisde 
+            which we can simplify by starting at the unit of a single V100 GPU and zooming out. 
+            GPUs are the smallest units as they individually have 1 GPU worth of memory
+            (~32GB) but have higher internal data transfer speeds of roughly 900GB/s. Going 
+            up a unit your looking at the DGX-2 rig which holds 16 V100s aka 512GB of GPU memory alongisde 
             1.5TB of system memory but has a data transfer rate between it's internal V100s of roughly 
-            300GB/s. Finally we go the final level up to the level of interconnecting multiple DGX-2 
-            rigs where the memory scales up to the 100TB levels of Trillion dollar Hyperscalers but 
-            where the transfer speed of data between rigs comes down to a <i>mere</i> 100GB/s. These 
+            300GB/s. Finally we rise the highest unit: connecting together multiple DGX-2 rigs as 
+            one where the memory scales up to the 100TB levels of Trillion dollar Hyperscalers but 
+            where the transfer speed of data between rigs comes down to a mere 100GB/s. These 
             numbers 
             <a href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf">
             [1]</a>
-            change and if I were writing this article in 4 years then NVIDIA would be (maybe) 4 
-            generations of exponential improvement ahead of every one of these numbers but the point is 
-            that the physics of data transfer and system size, combined with the cost of scaling 
-            up cutting edge connection speeds and scaling down huge amounts of memory has generally 
-            split the nature of distributed training into a game of understanding the resources 
+            change and if I were writing this article in 4 years then NVIDIA would be multiple
+            generations of exponential improvement ahead on all these numbers but the point is 
+            the physics of data transfer and system size, combined with the cost of scaling 
+            up cutting edge connection speeds and scaling down huge amounts of memory define 
+            the core challenges of distributed training. The game is understanding the resources 
             available at each unit-scale, understanding the benefits and tradeoffs of utilizing 
             higher unit-scales, and cleverly structuring of every phase of training to get as 
             many of the positives of scale while avoiding it's downsides. 
@@ -258,11 +264,12 @@
             where they bring down some of the costs of trying to plug a bunch of GPUs together.
         </p>
         <p>
-            But while buying more GPUs provides you the gunpowder for the booms necessary for 
-            GPT-Tier training it doesn't get you there alone, for that you need a technique for 
-            spreading training across all of those GPUs, a technique aware of the structure of 
-            the system it's being trained on. For this we unlock the meat of this article:  
-            the big box of parallel training techniques. 
+            But while buying more GPUs provides you the gunpowder necessary for 
+            GPT-Tier training it doesn't get you there by default, you need a technique for 
+            actually spreading the training across all those GPUs and communicating between 
+            them. You need a technique aware of the structure of the system it's being 
+            trained on. For this we turn to the meat of this article: the big box of 
+            parallel training techniques. 
         </p>
 
         <a name="D"></a>
@@ -310,12 +317,9 @@
             the number of datapoints to compute across but it doesn't get the full job done.
         </p>
         <p>
-            If you've been paying attention you were probably becoming a little confused as
-            I explained this strategy because, if you remember from earlier the primary, 
-            sure one of the things scaling exponentially in the modern era of Scaling Laws 
-            is dataset size, which Data Parallelism helps to address, but the primary issue 
-            today is really the issue with that \(M \) term itself not fitting onto a single 
-            device anymore.
+            If you've been paying attention your probably a little confused right now
+            however because the primary issue today is really that \(M \) term 
+            not fitting onto a single device, not the \(D \) term. 
         </p>
         <div class="centered-item-holder">
             <img
@@ -325,13 +329,13 @@
             />
         </div>
         <p>
-            While Data Parallelism is absolutely a dimension of splitting work up along which 
-            we'll return to in later descriptions as it helps to bring a level of training 
-            throughput invaluable at all scales of training it's naive application wouldn't
-            work as the whole problem is our inability to fit the whole model onto one device.
-            To tackle this hard problem of distributed training we look to the two other 
-            dimensions of distribution techniques which provide options for splitting the model 
-            itself across devices.
+            While Data Parallelism is absolutely a dimension to split work along which 
+            we'll return to later to bring training throughput up at all training scales
+            once we have the model size problem pinned down it doesn't address the 
+            core issue, our inability to fit the whole model onto one device. To 
+            tackle this harder problem of distributed training we look to the two 
+            other dimensions of distribution techniques which provide options for 
+            splitting the model itself across devices.
         </p>
 
         <a name="F"></a>
@@ -952,13 +956,22 @@
         </p>
         <p><b>3. 1-bit Adam </b></p>
         <p>
-            Since empirical evidence shows the variance state variable generated by training a model 
-            on the traditional Adam algorithm begins to stabilize to a relatively constant 
-            value early on in training one can run Adam for only a brief warmup phase at the 
-            beginning of training and then store that variance once (preventing having to 
-            re-evaluate and store more copies of that variance) and switch to cheaper optimizers 
-            with much smaller memory footprints, like SGD with Momentum, without sacrificing 
-            performance.
+            Much like in the case of Weight Quantization, one way of saving communication 
+            costs on sending optimizer states between devices is to compress the information 
+            from those optimizer states during transfer. Unfortunately, the most efficient 
+            data compression algorithms only work on optimizers where the update rule is 
+            linearly dependent on the gradients while the high detailed weight updates which 
+            lead to the highest model accuracy after training come from optimizers like Adam 
+            which introduce factors beyond that linear causation. However, since empirical 
+            findings show that the non-linear component of Adam (aka it's variance term) 
+            begins to stabilize to a relatively constant value early on into training one can 
+            subject themselves to the slower communication costs for a short warmup period in 
+            the beginning of training then save that variance value which their model 
+            converged to and switch to a linear optimizer for the rest of training corrected 
+            by that saved variance term. Therefore weight compression can be utilized for 
+            the majority of training and the memory overhead of storing all of the optimizer 
+            states can be brought down, resulting in communication volume reducing by up to 
+            \(\times 5 \) without a drop in convergence efficiency.
         </p>
         <p>
             ZeRO is a project title, not a technique in and of itself, but the techniques which 
