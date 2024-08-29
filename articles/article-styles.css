@@ -160,3 +160,8 @@ footer {
     max-width: 400px; /* Adjust this value to shrink the tweet further */
     width: 100%;
 }
+
+.vertical-padding {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
