@@ -390,11 +390,11 @@
             of throughput. 
         </p>
         <p>
-            There's a broad class of approaches to reducing this Bubble ratio even further with
-            the primary approach today for traditional Pipeline Parallelism which I've come across
-            being WPipe from <a href="https://openreview.net/pdf?id=cw-EmNq5zfD">Yang et al. 2022</a> 
-            which brings Bubble Ratio down to zero at the expense of higher memory requirements at 
-            any given time across the sum of the devices:
+            There's a broad class of approaches to reducing this Bubble ratio even further though with
+            the primary approach I've come across being WPipe from 
+            <a href="https://openreview.net/pdf?id=cw-EmNq5zfD">Yang et al. 2022</a> 
+            which brings the Bubble Ratio down to zero at the expense of higher memory 
+            requirements at any given time across the sum of the devices:
         </p>
         <div class="centered-item-holder">
             <img
@@ -510,8 +510,9 @@
             You may have noticed that the memory requirements of a single DGX-2 node of 16 V100 
             GPUs still isn't large enough to hold an entire GPT level model training at once, 
             in order to get to the trillion parameter scales of 2024 Hyperscalers have moved to 
-            that highest unit of Data Center spacing, inter-Node which is far less efficient 
-            at a data transportation level than Intra-Node and especially Intra-GPU data transfer.
+            operating at the  highest unit of Data Center scale, <i>inter-Node</i> training which 
+            is far less efficient at a data transportation level than Intra-Node and 
+            especially Intra-GPU data transfer.
         </p>
         <div class="centered-item-holder">
             <img
@@ -944,9 +945,9 @@
         <p>
             This is a dynamic known as sparsity and through writing up careful GPU-level 
             kernels one can choose to not operate on the full grid but instead only on some 
-            subset of the grid which they find to contain as many of those strong signals as 
-            possible and as few of those zeros. Through a custom sparse attention kernel LLM
-            training can be scaled to \(\times 10 \) longer sequence lengths and \(\times 6 \)
+            subset of the grid which they find to contain as many of those strong (and as few zero) 
+            signals as possible. Through a custom sparse attention kernel LLM training 
+            can be scaled to \(\times 10 \) longer sequence lengths and \(\times 6 \)
             execution speeds without jeopardizing model error rate.
         </p>
         <p><b>3. 1-bit Adam </b></p>
