@@ -34,6 +34,11 @@ header {
     gap: 4px;
 }
 
+header p.todo {
+    margin-top: 7px !important;
+    margin-bottom: 0px !important;
+}
+
 header h1 {
     margin-bottom: 0px;
 }
