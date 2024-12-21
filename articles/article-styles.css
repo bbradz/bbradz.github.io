@@ -350,3 +350,11 @@ pre[class*="language-"] {
 .copy-button:hover svg {
   opacity: 1;
 }
+
+.old-timey {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.2em; /* Optional: Adjust size */
+    font-style: italic; /* Optional: Adds an old-timey flair */
+    color: #555; /* Optional: Adjust color to suit the aesthetic */
+    text-align: center;
+}
