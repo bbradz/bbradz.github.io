@@ -96,7 +96,7 @@
           <ol>
             <li><a href="#E">Data parallelism</a></li>
             <li><a href="#F">Pipeline parallelism</a></li>
-            <li><a href="#G">Model parallelism</a></li>
+            <li><a href="#G">Tensor parallelism</a></li>
           </ol>
           <li><a href="#H">What even is a Parameter?</a></li>
           <li>
@@ -472,13 +472,13 @@
         clever spacing, run in near parallel. But in many ways, that clever
         spacing is only necessary because models are inherently sequential
         algorithms temporally across their Forward & Backward passes. This is the
-        observation that Model parallelism builds on to introduce the third
+        observation that Tensor parallelism builds on to introduce the third
         dimension of 3D parallelism for splitting up model training, no longer
         splitting our models horizontally but instead splitting them vertically.
       </p>
 
       <a name="G"></a>
-      <h4>Model parallelism</h4>
+      <h4>Tensor parallelism</h4>
 
       <p>
         Splitting models vertically means making our cuts at the intra-layer
@@ -486,14 +486,14 @@
         model design: avoiding designs that require pooling. Much like in the
         case of Data Parallelism, where we needed to ship information from every
         device to one central GPU for computing the average gradient across data
-        batches, Model parallelism not only requires that same pooling of average
+        batches, Tensor parallelism not only requires that same pooling of average
         gradients across each vertical slice of our model but also, depending on
         model architecture, requires that pooling of data to one GPU for every
         layer of our model, which only operates when all of the information in
         that layer is operated across.
       </p>
       <p>
-        Model Parallelism only first became feasible under the Megatron-LM
+        Tensor Parallelism only first became feasible under the Megatron-LM
         algorithm
         <a href="https://arxiv.org/pdf/1909.08053">(Shoeybi et al. 2020)</a>,
         which outlined methods for breaking up densely connected MLP layers and
@@ -504,17 +504,17 @@
         <img src="../pics/Pic 3.png" alt="" class="responsive-image-med" />
       </div>
       <p>
-        However, in many ways, the fundamental challenge of Model Parallelism is
+        However, in many ways, the fundamental challenge of Tensor Parallelism is
         working around this inevitable cost of pooling, which is sometimes the
         exact point of a layer in a model (in the case of BatchNorm or Pooling
         layers) and often is necessary for nonlinear functions (Ex: GeLU), which
         occur all across modern architectures. As long as the Physics of data
         transfer make data transfer across devices (especially at the largest
         unit sizes of Data Center scale training) this will be a primary issue
-        that Model Parallelism runs up against.
+        that Tensor Parallelism runs up against.
       </p>
       <p>
-        The other challenge of Model Parallelism, which we've up until now mostly
+        The other challenge of Tensor Parallelism, which we've up until now mostly
         avoided discussing, is that to update the parameters of each layer in our
         Backward pass, we need to use the activation values of that layer. Coming
         out of the chain rule, the activation value of a layer becomes a
@@ -527,7 +527,7 @@
       </p>
       <p>
         Much like Micro-batching helped in reducing the issue of Bubble Ratio for
-        Pipeline Parallelism, Model Parallelism's confrontation with activation
+        Pipeline Parallelism, Tensor Parallelism's confrontation with activation
         value storage can be reduced through trading off more computation for
         lower memory footprint in a process called <i>Checkpointing</i>. With the
         knowledge that as we increase the number of vertical slices we make in
@@ -636,7 +636,7 @@
         pays off over time through lower memory overhead in every corner of our
         training process. In reality, the majority of the overhead of memory
         costs for training comes from the memory incurred by storing past
-        activations (as we confronted in the previous Model Parallelism section),
+        activations (as we confronted in the previous Tensor Parallelism section),
         so by adopting FP16 half-precision values for our entire Fwd & Bwd passes,
         we reduce the vast majority of the memory overhead we're worrying about.
         Not only does FP16 take only half the memory space, but since it's
@@ -746,7 +746,7 @@
       </p>
       <p>
         One of the fundamental axes of 3D Parallelism is the vertical split,
-        i.e., Model Parallelism (MP). While MP works well within a single node,
+        i.e., Tensor Parallelism (MP). While MP works well within a single node,
         where inter-GPU bandwidth is more efficient, that efficiency quickly
         degrades once the scale of the system being trained reaches beyond a
         single node. Empirical tests from Microsoft regarding training a
