@@ -746,7 +746,7 @@
       </p>
       <p>
         One of the fundamental axes of 3D Parallelism is the vertical split,
-        i.e., Tensor Parallelism (MP). While MP works well within a single node,
+        i.e., Tensor Parallelism (TP). While TP works well within a single node,
         where inter-GPU bandwidth is more efficient, that efficiency quickly
         degrades once the scale of the system being trained reaches beyond a
         single node. Empirical tests from Microsoft regarding training a
@@ -759,6 +759,7 @@
         to store for our Backward pass, in practice, the majority of memory is
         usually taken by the states of our optimizer!
       </p>
+      <p>Enter-- Optimizer parallelism.</p>
       <p>
         If you feel like you may want to brush up on Optimizers, now is the time
         for me to highlight that I actually just wrote a three-part series on
