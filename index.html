@@ -1,179 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bb.radz</title>
-    <link rel="icon" type="image/x-icon" href="pics/pattern.ico" />
-    <link rel="stylesheet" href="landingpage-styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="./landing-style.css" />
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <h1><a class="landingpage-button" href="index.html">Ben Bradley</a></h1>
-        <p class="todo">
-          <i
-            >#TODO: SVD, Transformer Family, DeepSeek, DiSTRO, Symbolic
-            Regression, What If you opened the 54 Yottabyte ZIP file</i
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-section">
+        <p href="/about" class="logo">BBradz</p>
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-        </p>
-        <div class="header-horizontal">
-          <div class="left-horizontal">
-            <p>Riding the Wave of Computation</p>
-            <!-- <a href="/about"><p>About</p></a> -->
-          </div>
-          <div class="logo-horizontal">
-            <a href="https://x.com/SLENDERdude441" target="_blank"
-              ><p>
-                <img
-                  src="pics/x6.png"
-                  alt="x logo"
-                  style="width: 15px; height: 14px"
-                /></p
-            ></a>
-            <a href="https://github.com/bbradz" target="_blank"
-              ><p>
-                <img
-                  src="pics/git.png"
-                  alt="github logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.linkedin.com/in/bbradz/" target="_blank"
-              ><p>
-                <img
-                  src="pics/linkedin.png"
-                  alt="linkedin logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a
-              href="https://open.spotify.com/user/slender_dude441"
-              target="_blank"
-              ><p>
-                <img
-                  src="pics/spotify2.png"
-                  alt="spotify logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.instagram.com/bbradz_/" target="_blank"
-              ><p>
-                <img
-                  src="pics/ig.jpeg"
-                  alt="ig logo"
-                  style="width: 17px; height: 15px"
-                /></p
-            ></a>
-          </div>
-        </div>
-      </div>
-    </header>
-    <hr />
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
 
-    <main>
-      <section>
-        <article>
-          <h3>
-            <a href="../articles/new_monetarism.html"
-              >The Next School of Economic Thought<span style="color: red">
-                [post]</span
-              ></a
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav-links">
+        <a href="./index.html" class="nav-link">Posts</a>
+        <a href="./reading.html" class="nav-link">Library</a>
+        <a href="/profile" class="nav-link">Psychological Profile</a>
+        <a href="./about.html" class="nav-link">About</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <main>
+        <!-- Optimizers Series -->
+        <section class="series">
+          <div
+            class="series-header"
+            onclick="toggleSection(this.parentElement)"
+          >
+            <h2 class="series-title">Optimizer Algorithms</h2>
+            <svg
+              class="collapse-icon plus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>On the history of Economic Thought and it's next step forward</p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/tazi.html"
-              >Brown Research Symposium Poster<span style="color: green">
-                [pdf]</span
-              ></a
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <svg
+              class="collapse-icon minus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>
-            Physics-Informed Proximal Policy Optimizer for Space Game navigation
-          </p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/distributed.html"
-              >From Jobs To Jensen <span style="color: red"> [post]</span></a
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+          <div class="series-content">
+            <div class="posts">
+              <a href="./posts/optimizer_benchmarking.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">
+                    Challenges in Optimizer Benchmarking
+                  </h3>
+                  <p class="post-description">
+                    Looking at the <i>Algoperf</i> benchmark and challenges in
+                    measuring empirical direction in the crowded field of
+                    Optimizers.
+                  </p>
+                  <div class="metadata">
+                    <span>January 5, 2025</span> ·
+                    <span>14 min read (2.9K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Optimization</span>
+                  </div>
+                </div>
+              </a>
+
+              <a href="./posts/optimizers.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">
+                    Optimizers 🥾 ⎯ Towards a full Taxonomy
+                  </h3>
+                  <p class="post-description">
+                    Categorizing & Explaining the standout choices in the field
+                    of Neural Networks Parameter Optimization Algorithms.
+                  </p>
+                  <div class="metadata">
+                    <span>September 14, 2024</span> ·
+                    <span>37 min read (7.4K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Optimization</span>
+                  </div>
+                </div>
+              </a>
+
+              <a href="./posts/shampoo.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">Shampoo clears the competition!</h3>
+                  <p class="post-description">
+                    Digging into one of the Optimization algorithms making
+                    waves.
+                  </p>
+                  <div class="metadata">
+                    <span>August 19, 2024</span> ·
+                    <span>8 min read (1.5K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Optimization</span>
+                    <span class="tag">Stochastic Calculus</span>
+                    <span class="tag">Research</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Distributed Systems Series -->
+        <section class="series">
+          <div
+            class="series-header"
+            onclick="toggleSection(this.parentElement)"
+          >
+            <h2 class="series-title">Distributed Systems</h2>
+            <svg
+              class="collapse-icon plus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>
-            A little explainer on some of the Distributed Training techniques
-            undergirding the new LLM Era
-          </p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/shampoo.html"
-              >[3/3] Shampoo clears the competition!
-              <span style="color: red"> [post]</span></a
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <svg
+              class="collapse-icon minus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>Digging into an optimizer quickly climbing up the charts</p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/optimizers.html"
-              >[2/3] Optimizers ⎯ Towards a full Taxonomy
-              <span style="color: red"> [post]</span></a
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+          <div class="series-content">
+            <div class="posts">
+              <a href="./posts/distributed.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">From Jobs To Jensen</h3>
+                  <p class="post-description">
+                    A little explainer on some of the Distributed Training
+                    techniques undergirding the new LLM Era
+                  </p>
+                  <div class="metadata">
+                    <span>October 13th, 2024</span> ·
+                    <span>37 min read (7.2K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Parallelism</span>
+                    <span class="tag">Computing</span>
+                    <span class="tag">Deep Learning</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Economics & Society Section -->
+        <section class="series">
+          <div
+            class="series-header"
+            onclick="toggleSection(this.parentElement)"
+          >
+            <h2 class="series-title">Economic Issues</h2>
+            <svg
+              class="collapse-icon plus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>
-            Categorizing & Explaining the standouts in the field of Neural
-            Network Optimizers
-          </p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/optimizer_benchmarking.html"
-              >[1/3] Challenges in Optimizer Benchmarking
-              <span style="color: red"> [post]</span></a
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <svg
+              class="collapse-icon minus-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-          </h3>
-          <p>How do you measure an Idea?</p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/dl.html"
-              >TweetGCN<span style="color: green"> [pdf]</span></a
-            >
-          </h3>
-          <p>A Graph Convolutional Network Approach to Tweet Classification</p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/energy.html"
-              >Matter & Motion <span style="color: red"> [post]</span></a
-            >
-          </h3>
-          <p>
-            On Wright's Law, Energy trends, and the mechanics of our modern
-            world
-          </p>
-        </article>
-        <article>
-          <h3>
-            <a href="../articles/suburbia.html"
-              >Suburbia → Density <span style="color: red"> [post]</span></a
-            >
-          </h3>
-          <p>
-            Applying the lens of Economics to exhaustively break down the
-            failure of America's car-centric sprawl
-          </p>
-        </article>
-      </section>
-    </main>
-    <footer>
-      <p>All opinions are my own and do not represent those of an employer.</p>
-    </footer>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+          <div class="series-content">
+            <div class="posts">
+              <a href="./posts/new_monetarism.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">
+                    The Next School of Economic Thought
+                  </h3>
+                  <p class="post-description">
+                    On the history of Economic Thought and it's next step
+                    forward
+                  </p>
+                  <div class="metadata">
+                    <span>December 2nd, 2024</span> ·
+                    <span>21 min read (4K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Economics</span>
+                    <span class="tag">Politics</span>
+                  </div>
+                </div>
+              </a>
+
+              <a href="./posts/energy.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">Matter &amp; Motion</h3>
+                  <p class="post-description">
+                    On Wright's Law, Energy trends, and the mechanics of our
+                    modern world
+                  </p>
+                  <div class="metadata">
+                    <span>February 21st, 2024</span> ·
+                    <span>9 min read (1.7K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Energy</span>
+                    <span class="tag">Green Tech</span>
+                    <span class="tag">Sustainability</span>
+                  </div>
+                </div>
+              </a>
+
+              <a href="./posts/suburbia.html" class="post-card">
+                <div class="post-main">
+                  <h3 class="post-title">Suburbia 🤮 → Density 🔥</h3>
+                  <p class="post-description">
+                    Applying the lens of Economics to exhaustively break down
+                    the failure of America's car-centric sprawl
+                  </p>
+                  <div class="metadata">
+                    <span>February 17th, 2022</span> ·
+                    <span>35 min read (7.8K words)</span>
+                  </div>
+                  <div class="tags">
+                    <span class="tag">Housing</span>
+                    <span class="tag">Urban Planning</span>
+                    <span class="tag">Economics</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Scroll-to-top Button -->
+    <div
+      id="scrollToTop"
+      class="fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer"
+      onclick="scrollToTop()"
+    >
+      <div class="bg-zinc-800 hover:bg-zinc-700 rounded-full p-3 shadow-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-zinc-200"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <canvas
+      id="gameOfLife"
+      class="game-of-life"
+      width="200"
+      height="400"
+    ></canvas>
+    <script>
+      // Existing functionality.js content remains...
+
+      // New function for toggling sections
+      function toggleSection(section) {
+        section.classList.toggle("collapsed");
+
+        // Find the collapse icon and rotate it
+        const icon = section.querySelector(".collapse-icon");
+        if (section.classList.contains("collapsed")) {
+          icon.style.transform = "rotate(-90deg)";
+        } else {
+          icon.style.transform = "rotate(0deg)";
+        }
+      }
+
+      // Optional: Add function to collapse all sections
+      function collapseAll() {
+        document.querySelectorAll(".series").forEach((section) => {
+          section.classList.add("collapsed");
+          const icon = section.querySelector(".collapse-icon");
+          icon.style.transform = "rotate(-90deg)";
+        });
+      }
+
+      // Optional: Add function to expand all sections
+      function expandAll() {
+        document.querySelectorAll(".series").forEach((section) => {
+          section.classList.remove("collapsed");
+          const icon = section.querySelector(".collapse-icon");
+          icon.style.transform = "rotate(0deg)";
+        });
+      }
+    </script>
+    <script src="functionality.js"></script>
   </body>
 </html>

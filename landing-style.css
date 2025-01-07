@@ -1,0 +1,414 @@
+/* Theme variables */
+:root {
+  --bg-color: rgb(15, 14, 15);
+  --text-color: rgb(244, 244, 245);
+  --nav-color: rgba(255, 255, 255, 0.7);
+  --header-bg: rgb(15, 14, 15);
+  --toc-bg: rgb(39, 39, 42);
+  --toc-hover: rgb(63, 63, 70);
+  --code-bg: #1a1b26;
+  --table-border: rgba(40, 40, 45, 0.7);
+  --table-header-bg: rgb(18, 18, 20);
+  --table-row-odd: rgb(25, 25, 28);
+  --table-row-even: rgb(35, 35, 38);
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --nav-color: rgba(36, 41, 47, 0.7);
+  --header-bg: #ffffff;
+  --toc-bg: #f6f8fa;
+  --toc-hover: #ebedef;
+  --code-bg: #1a1b26;
+  --table-border: #d0d7de;
+  --table-header-bg: #f6f8fa;
+  --table-row-odd: #ffffff;
+  --table-row-even: #f6f8fa;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 50px;
+}
+
+/* Header styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--header-bg);
+  z-index: 1;
+  padding: 1rem 2rem;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.series {
+  margin-bottom: 1rem;
+}
+
+.series-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: var(--header-bg);
+  border: 1px solid var(--table-border);
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.series-header:hover {
+  background-color: var(--toc-bg);
+}
+
+.series-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.collapse-icon {
+  transition: transform 0.3s ease;
+  stroke: var(--text-color);
+}
+
+.collapsed .plus-icon {
+  display: block;
+}
+
+.collapsed .minus-icon {
+  display: none;
+}
+
+.plus-icon {
+  display: none;
+}
+
+.minus-icon {
+  display: block;
+}
+
+.series-content {
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+  padding-top: 0.2rem;
+}
+
+.collapsed .series-content {
+  max-height: 0;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: "IcelandWinterstorm", sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--nav-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.nav-link:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+  padding-top: 70px;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.welcome-section p {
+  font-size: 1.1rem;
+  color: var(--nav-color);
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.social-link {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+}
+
+.social-link svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--text-color);
+}
+
+/* Blog posts */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-card {
+  background: var(--header-bg);
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  margin-top: 0.2rem;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--nav-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.post-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.post-description {
+  color: var(--nav-color);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.metadata {
+  color: var(--nav-color);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--toc-bg);
+  color: var(--text-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.logo-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+.logo-horizontal .social-link {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-horizontal .social-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.logo-horizontal .social-link svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--text-color);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-color);
+  stroke-width: 2;
+  fill: none;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: block;
+}
+
+/* Scroll to top button */
+#scrollToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 9999px;
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#scrollToTop svg {
+  stroke: var(--text-color);
+}
+
+/* Game of Life canvas */
+.game-of-life {
+  position: fixed;
+  top: 50px;
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Hide game of life when content might overflow */
+@media (max-width: 1200px) {
+  .game-of-life {
+    display: none;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    margin-top: 100px;
+  }
+  }
+
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  .post-card {
+    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+
+
+@font-face {
+  font-family: "IcelandWinterstorm";
+  src: url("fonts/Roman SD.ttf") format("opentype");
+}

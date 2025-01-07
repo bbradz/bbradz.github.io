@@ -1,85 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bb.radz</title>
-    <link rel="icon" type="image/x-icon" href="../pics/pattern.ico" />
-    <link rel="stylesheet" href="article-styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>bb.radz suburbia 🤮 → density 🔥</title>
   </head>
   <body>
-    <header>
-        <div class="header-content">
-            <h1><a class="landingpage-button" href="../index.html">Ben Bradley</a></h1>
-            <div class="header-horizontal">
-              <div class="left-horizontal"> 
-                <p>Riding the Wave of Computation</p>
-                <!-- <a href="/about"><p>About</p></a> -->
-              </div>
-              <div class="logo-horizontal">
-                <a href="https://x.com/SLENDERdude441" target="_blank"><p><img src="../pics/x6.png" alt="x logo" style="width:15px;height:14px;"></p></a>
-                <a href="https://github.com/bbradz" target="_blank"><p><img src="../pics/git.png" alt="github logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://www.linkedin.com/in/bbradz/" target="_blank"><p><img src="../pics/linkedin.png" alt="linkedin logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://open.spotify.com/user/slender_dude441" target="_blank"><p><img src="../pics/spotify2.png" alt="spotify logo" style="width:15px;height:15px;"></p></a>
-                <a href="https://www.instagram.com/bbradz_/" target="_blank"><p><img src="../pics/ig.jpeg" alt="ig logo" style="width:17px;height:15px;"></p></a>
-              </div>
-            </div>
-        </div>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-section">
+        <a href="/about" class="logo">BBradz</a>
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          <!-- Theme toggle icons -->
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Posts</a>
+        <a href="../reading.html" class="nav-link">Library</a>
+        <a href="/profile" class="nav-link">Psychological Profile</a>
+        <a href="../about.html" class="nav-link">About</a>
+      </nav>
     </header>
 
-    <main>
-        <h1 style="font-size: 32px; margin-bottom: 0px;">Suburbia 🤮 → Density 🔥</h1>
-        <p style="margin-top: 5px; font-size: 12px;"><strong>Word Count: 7,763</strong></p>
-        <div class="nav" style="font-size: 14px;">
-            <ol>
-                <li><a href="#A">Prologue</a></li>
-                <li><a href="#B">Why This is So Important</a></li>
-                <li><a href="#C">Why Car Based Suburbia Sucks</a>
-                <ol type="i">
-                    <li><a href="#D">Financially</a></li>
-                    <ol type="a">
-                        <li><span class="hljs-string"><a href="#E">Societally</a></span></li>
-                        <li><span class="hljs-string"><a href="#F">Individually</a></span></li>
-                    </ol>
-                    <li><a href="#G">Environmentally</a></li>
-                    <ol type="a">
-                        <li><span class="hljs-string"><a href="#H">Emissions</a></span></li>
-                        <li><span class="hljs-string"><a href="#I">Environmental Destruction</a></span></li>
-                        <li><span class="hljs-string"><a href="#J">Water</a></span></li>
-                    </ol>
-                </ol></li>
-                <li><a href="#K">Stepping Back; The Broken Economics of Suburbia</a></li>
-                <li><a href="#L">Some Policy Recommendations to Address Them…</a></li>
-                <li><a href="#M">What’s Breaking American Cities?</a>
-                <ol type="i">
-                    <li><a href="#N">A Backbreaking Undersupply of Housing</a></li>
-                    <li><a href="#O">The Impact of cities’ Housing Undersupply</a></li>
-                    <li><a href="#P">We Need Strong Cities.</a></li>
-                    <li><a href="#Q">The True Cost...</a></li>
-                </ol></li>
-                <li><a href="#R">How to Fix It</a></li>
-                <li><a href="#S">Recommended Reading</a></li>
-                <li><a href="#T">[+] Addendum : Why We Can’t Build</a></li>
-                <li><a href="#U">Further Related Readings</a></li>
-            </ol>
+    <!-- Article Container -->
+    <div class="container">
+      <h1 id="title">Suburbia 🤮 → Density 🔥</h1>
+
+      <!-- Article Metadata -->
+      <div class="header-content">
+        <div class="header-left">
+          <div class="metadata">
+            Ben Bradley, February 17th, 2022 • 35 min read (7.8K words)
+          </div>
+          <div class="tags">
+            <span class="tag">Housing</span>
+            <span class="tag">Urban Planning</span>
+            <span class="tag">Economics</span>
+          </div>
         </div>
-        <hr>
+        <a href="#" class="back-link" onclick="history.back(); return false;">Back</a>
+
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="toc-container" onclick="toggleTOC()">
+        <div class="toc-header">
+          <span>▶</span>
+          <span><b>Table of Contents</b></span>
+        </div>
+        <div class="toc-content" id="toc">
+          <ol>
+            <li><a href="#A">Prologue</a></li>
+            <li><a href="#B">Why This is So Important</a></li>
+            <li>
+              <a href="#C">Why Car Based Suburbia Sucks</a>
+              <ol>
+                <li>
+                  <a href="#D">Financially</a>
+                  <ol>
+                    <li><a href="#E">Societally</a></li>
+                    <li><a href="#F">Individually</a></li>
+                  </ol>
+                </li>
+                <li>
+                  <a href="#G">Environmentally</a>
+                  <ol>
+                    <li><a href="#H">Emissions</a></li>
+                    <li><a href="#I">Environmental Destruction</a></li>
+                    <li><a href="#J">Water</a></li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+            <li>
+              <a href="#K">Stepping Back; The Broken Economics of Suburbia</a>
+            </li>
+            <li>
+              <a href="#L">Some Policy Recommendations to Address Them…</a>
+            </li>
+            <li>
+              <a href="#M">What's Breaking American Cities?</a>
+              <ol>
+                <li><a href="#N">A Backbreaking Undersupply of Housing</a></li>
+                <li>
+                  <a href="#O">The Impact of Cities' Housing Undersupply</a>
+                </li>
+                <li><a href="#P">We Need Strong Cities.</a></li>
+                <li><a href="#Q">The True Cost...</a></li>
+              </ol>
+            </li>
+            <li><a href="#R">How to Fix It</a></li>
+            <li><a href="#S">Recommended Reading</a></li>
+            <li><a href="#T">[+] Addendum : Why We Can't Build</a></li>
+            <li><a href="#U">Further Related Readings</a></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        <!-- Main content from the original article -->
         <div class="centered-item-holder">
-            <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8820a595-f1f3-4622-b7cb-0127081f16b1_1200x800.jpeg" alt=""
-            style="max-width:960px;max-height:550px;">
-            <p class="small-text" style="max-width:800px;">
-                Pictured: The most in-demand & valuable land in the US (aka SF), 
-                lovingly covered in 1 to 2 story relics of the 60s— just 
-                <em>itching</em> to be developed 🤤 
-            </p>
+          <img
+            src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8820a595-f1f3-4622-b7cb-0127081f16b1_1200x800.jpeg"
+            alt="San Francisco urban landscape"
+          />
+          <p class="small-text">
+            Pictured: The most in-demand & valuable land in the US (aka SF),
+            lovingly covered in 1 to 2 story relics of the 60s— just
+            <em>itching</em> to be developed 🤤
+          </p>
         </div>
 
-        <a name="A"></a>
-        <h1 id="prologue">Prologue</h1>
+        <h1 id="A">Prologue</h1>
+
         <p>
             February 17th, 2022: As I sit typing away on my school-provided 
             MacBook the computer’s clock reads 12:57am and my mind, to be 
@@ -138,8 +201,7 @@
             okay. let’s get started.
         </p>
 
-        <a name="B"></a>
-        <h1 id="why-this-is-so-important-">Why This is So Important:</h1>
+        <h1 id="B">Why This is So Important:</h1>
         <p>
             <em>“We shape our buildings; thereafter they shape us.” -Winston Churchill, 1943</em>
         </p>
@@ -260,8 +322,7 @@
             </div>
         </p>
 
-        <a name="C"></a>
-        <h1 id="why-car-based-suburbia-sucks-">Why Car-based Suburbia Sucks:</h1>
+        <h1 id="C">Why Car-based Suburbia Sucks:</h1>
         <p>
             <div class="centered-item-holder">
                 <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf8a9bbf-ec36-4dbe-a699-926c6d7ef580_1200x800.jpeg" alt=""
@@ -311,16 +372,14 @@
             process, and Suburbia, turned out to be:
         </p>
 
-        <a name="D"></a>
-        <h2 id="-i-financially">(i) Financially</h2>
+        <h2 id="D">(i) Financially</h2>
         <p>
             First we need to understand that not only is Suburbia financially 
             unsustainable at a personal level but, crucially, it’s financially 
             catastrophic societally as well.
         </p>
 
-        <a name="E"></a>
-        <h4 id="-i-a-societally-">(i-a) Societally:</h4>
+        <h4 id="E">(i-a) Societally:</h4>
         <p>
             <div class="centered-item-holder">
                 <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4b74835-8b30-4e8a-9593-7b524e24011c_1203x586.png" alt=""
@@ -491,8 +550,7 @@
             into the hole.
         </p>
 
-        <a name="F"></a>
-        <h4 id="-i-b-individually-">(i-b) Individually:</h4>
+        <h4 id="F">(i-b) Individually:</h4>
         <p>
             At an individual level it doesn’t look that much rosier either as in 
             the last decades, CBS Evening News and the Brookings Institute 
@@ -612,8 +670,7 @@
             That’s a lot of mullah. <strong>$1.7-2 trillion nationally!</strong>
         </p>
 
-        <a name="G"></a>
-        <h2 id="-ii-environmentally">(ii) Environmentally</h2>
+        <h2 id="G">(ii) Environmentally</h2>
         <p>
             Secondly, between CO2 Emission, Habitat Destruction, Biodiversity 
             Loss, Energy Efficiency, and Chemical Pollution, by almost every 
@@ -681,7 +738,7 @@
         </p>
 
         <a name="H"></a>
-        <h4 id="-ii-a-emissions-">(ii-a) Emissions:</h4>
+        <h4 id="H">(ii-a) Emissions:</h4>
         <p>
             Suburbs are <strong>inevitably</strong> by their <em>very structure</em> 
             the worst emitters of any type of living in the country, worse than 
@@ -813,7 +870,7 @@
         </p>
 
         <a name="I"></a>
-        <h4 id="-ii-b-environmental-destruction-">(ii-b) Environmental Destruction:</h4>
+        <h4 id="I">(ii-b) Environmental Destruction:</h4>
         <p>
             What about all of the chemicals needed to fend off bugs from those 
             lawns to keep them green and pristine for the neighbors? The United 
@@ -853,8 +910,7 @@
             </div>
         </p>
 
-        <a name="J"></a>
-        <h4 id="-ii-c-water-">(ii-c) Water:</h4>
+        <h4 id="J">(ii-c) Water:</h4>
         <p>
             Outdoor water usage to maintain lawns and gardens gobbles up 
             <strong><a href="https://www.epa.gov/watersense/outdoors">
@@ -882,8 +938,7 @@
             </div>
         </p>
 
-        <a name="K"></a>
-        <h2 id="stepping-back-the-broken-economics-of-suburbia-">Stepping back; The Broken Economics of Suburbia:</h2>
+        <h2 id="K">Stepping back; The Broken Economics of Suburbia:</h2>
         <p>
             Essentially every single issue associated with Suburbia stems from 
             one Economic phenomenon, a phenomenon which we’ve left untreated and 
@@ -1006,8 +1061,7 @@
                 10s of millions of Americans: <strong>Taxes</strong>.
             </p>
 
-        <a name="L"></a>
-        <h4 id="some-policy-recommendations-to-address-them-">Some Policy Recommendations to Address them…</h4>
+        <h4 id="L">Some Policy Recommendations to Address them…</h4>
         <ol>
             <li>Land-Value Taxes (LVT)</li>
             <li>A much higher Gas Tax ($3+ per gallon)</li>
@@ -1055,10 +1109,8 @@
             Let’s get into it.
         </p>
 
-        <a name="M"></a>
-        <h1 id="what-s-breaking-american-cities-">What’s breaking American cities?</h1>
-        <a name="N"></a>
-        <h2 id="a-backbreaking-undersupply-of-housing">A backbreaking undersupply of Housing</h2>
+        <h1 id="M">What’s breaking American cities?</h1>
+        <h2 id="N">A backbreaking undersupply of Housing</h2>
         <p>
             In order to shift away from Suburban life towards restoring our 
             high-density Urban cores to their past glory we need to take a look 
@@ -1109,8 +1161,8 @@
                 style="max-width:960px;max-height:500px;">
             </div>
         </p>
-        <a name="O"></a>
-        <h2 id="the-impact-of-cities-housing-undersupply">The Impact of cities’ Housing Undersupply</h2>
+
+        <h2 id="O">The Impact of Cities’ Housing Undersupply</h2>
         <p>
             Not only are the <strong>Suburbs regionally surrounding these major 
             cities seeing demand skyrocke</strong>t in order to accommodate those 
@@ -1175,8 +1227,7 @@
             growth</strong> which we as a country rely on in order to thrive and 
             prosper.
         </p>
-        <a name="P"></a>
-        <h3 id="we-need-strong-cities-">We Need Strong Cities.</h3>
+        <h3 id="P">We Need Strong Cities.</h3>
         <p>
             Academics of all types from Economists to Urbanists all love to talk 
             about the importance of the clustered networks of individuals and 
@@ -1262,8 +1313,7 @@
             <strong><a href="https://www.worksinprogress.co/issue/clusters-rule-everything-around-me/">3x the national average</a></strong> 
             in rent in order to live in places like Silicon Valley or Manhattan.
         </p>
-        <a name="Q"></a>
-        <h3 id="the-true-cost-">The True Cost…</h3>
+        <h3 id="Q">The True Cost…</h3>
         <p>
             Those <strong>aggregate costs of the misallocation of labor</strong> 
             being <strong>pushed away from tech clusters by the high costs of 
@@ -1284,8 +1334,7 @@
             communities. It’s driving down productivity. It’s costing us 
             trillions.**</strong>
         </p>
-        <a name="R"></a>
-        <h3 id="how-to-fix-it-">How to fix it:</h3>
+        <h3 id="R">How to fix it:</h3>
         <p>
             I. <strong>Build more housing!</strong> Studies show that building 
             literally any type of housing from 
@@ -1335,8 +1384,7 @@
             who stand to profit from restricted housing supply and higher home 
             prices) often isn’t in the interests of the general public.
         </p>
-        <a name="S"></a>
-        <h2 id="recommended-reading">Recommended Reading</h2>
+        <h2 id="S">Recommended Reading</h2>
         <ul>
             <li><a href="https://www.stockingblue.com/article/194/per-capita-road-coverage-in-eu-and-us-states/">StockingBlue</a></li>
             <li><a href="https://infrastructurereportcard.org/cat-item/roads/">InfrastructureReportCard</a></li>
@@ -1355,8 +1403,7 @@
             <li>Video: <a href="https://www.youtube.com/watch?v=y_SXXTBypIg&amp;list=PLJp5q-R0lZ0_FCUbeVWK6OGLN69ehUTVa">NotJustBike’s Strong Towns 1-6</a></li>
         </ul>
 
-        <a name="T"></a>
-        <h2 id="-addendum-why-we-can-t-build">[+] Addendum : Why We Can’t Build</h2>
+        <h2 id="T">[+] Addendum : Why We Can’t Build</h2>
         <p>March 29th, 2023</p>
         <p>
             This entire post could be, curtly, summarized as: complaining about 
@@ -1467,24 +1514,166 @@
             country.
         </p>
 
-        <a name="U"></a>
-        <h3 id="further-related-readings">Further Related Readings</h3>
-        <ul>
-            <li><a href="https://www.theatlantic.com/ideas/archive/2021/03/signature-environmental-law-hurts-housing/618264/">Progressives need to Embrace Progress</a> - Noahpinion</li>
-            <li><a href="http://file///Users/benbradley/Zotero/storage/WMXTMX94/proxy.html">How Californians are Weaponizing Environmental Law</a> - The Atlantic</li>
-            <li><a href="https://www.theatlantic.com/ideas/archive/2022/10/environmentalists-nimby-permitting-reform-nepa/671775/">Not Everyone Should Have a Say</a> - The Atlantic</li>
-            <li><a href="https://www.niskanencenter.org/wp-content/uploads/2021/08/CATF_Niskanen_CleanEnergyInfrastructure_Report.pdf">How Are we Gonna Build all the Clean Energy?</a> - Niskansen Center</li>
-            <li><a href="https://www.rstreet.org/research/addressing-nepa-related-infrastructure-delays/">Addressing NEPA related Infrastructure Delays</a> - R Street</li>
-            <li><a href="https://www.liberalcurrents.com/the-case-for-abolishing-the-national-environmental-policy-act/">The Case for Abolishing NEPA</a> - Liberal Currents</li>
-            <li><a href="https://progress.institute/environmental-review/">How to Stop Environmental Review from Harming the Environment</a> - IfP</li>
-            <li><a href="https://www.thecgo.org/benchmark/much-more-than-you-ever-wanted-to-know-about-nepa/">Much more than you ever wanted to know about NEPA</a> - CGO</li>
-            <li><a href="https://www.progressivepolicy.org/wp-content/uploads/2022/09/Americas-Clean-Energy-Transition-Requires-Permitting-Reform-Bledsoe-Sykes-21.9.22.pdf">US’ Clean Energy transition requires permitting reform</a> - PPI</li>
-        </ul>
-    </main>
+      </div>
 
-    <footer>
-        <p>All opinions are my own and do not represent those of an employer.</p>
-    </footer>
+      <!-- References -->
+      <h2 id="U">References</h2>
+      <div class="references">
+            <div class="bullet">
+            <span>1.</span>
+            Smith, N.
+            <a href="https://www.theatlantic.com/ideas/archive/2021/03/signature-environmental-law-hurts-housing/618264/" style="color: inherit; text-decoration: underline;">Progressives need to Embrace Progress</a>.
+            The Atlantic, 2021.
+            </div>
 
+            <div class="bullet">
+            <span>2.</span>
+            <a href="http://file///Users/benbradley/Zotero/storage/WMXTMX94/proxy.html" style="color: inherit; text-decoration: underline;">How Californians are Weaponizing Environmental Law</a>.
+            The Atlantic.
+            </div>
+
+            <div class="bullet">
+            <span>3.</span>
+            <a href="https://www.theatlantic.com/ideas/archive/2022/10/environmentalists-nimby-permitting-reform-nepa/671775/" style="color: inherit; text-decoration: underline;">Not Everyone Should Have a Say</a>.
+            The Atlantic, 2022.
+            </div>
+
+            <div class="bullet">
+            <span>4.</span>
+            <a href="https://www.niskanencenter.org/wp-content/uploads/2021/08/CATF_Niskanen_CleanEnergyInfrastructure_Report.pdf" style="color: inherit; text-decoration: underline;">How Are we Gonna Build all the Clean Energy?</a>.
+            Niskansen Center, 2021.
+            </div>
+
+            <div class="bullet">
+            <span>5.</span>
+            <a href="https://www.rstreet.org/research/addressing-nepa-related-infrastructure-delays/" style="color: inherit; text-decoration: underline;">Addressing NEPA related Infrastructure Delays</a>.
+            R Street.
+            </div>
+
+            <div class="bullet">
+            <span>6.</span>
+            <a href="https://www.liberalcurrents.com/the-case-for-abolishing-the-national-environmental-policy-act/" style="color: inherit; text-decoration: underline;">The Case for Abolishing NEPA</a>.
+            Liberal Currents.
+            </div>
+
+            <div class="bullet">
+            <span>7.</span>
+            <a href="https://progress.institute/environmental-review/" style="color: inherit; text-decoration: underline;">How to Stop Environmental Review from Harming the Environment</a>.
+            Institute for Progress.
+            </div>
+
+            <div class="bullet">
+            <span>8.</span>
+            <a href="https://www.thecgo.org/benchmark/much-more-than-you-ever-wanted-to-know-about-nepa/" style="color: inherit; text-decoration: underline;">Much more than you ever wanted to know about NEPA</a>.
+            Center for Growth and Opportunity.
+            </div>
+
+            <div class="bullet">
+            <span>9.</span>
+            Bledsoe, P., Sykes, J.
+            <a href="https://www.progressivepolicy.org/wp-content/uploads/2022/09/Americas-Clean-Energy-Transition-Requires-Permitting-Reform-Bledsoe-Sykes-21.9.22.pdf" style="color: inherit; text-decoration: underline;">US' Clean Energy transition requires permitting reform</a>.
+            Progressive Policy Institute, 2022.
+            </div>
+      </div>
+
+      <!-- Citation -->
+      <p>To cite this blog post, please use:</p>
+        <div class="code-container citation-code" onmousemove="handleMouseMove(event, 'citation-copy-button')">
+        <div class="code-content">
+            <button id="citation-copy-button" class="copy-button" onclick="copyCitation(event)">
+            <svg id="citation-copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg id="citation-check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            </button>
+            <pre><code><span class="keyword">@misc</span><span class="operator">{</span>bradley-suburbia-density-2022,
+        <span class="parameter">title</span> <span class="operator">=</span> <span class="string">{Suburbia → Density: The Case Against Car-Based Urban Sprawl}</span>,
+        <span class="parameter">author</span> <span class="operator">=</span> <span class="string">{Bradley, Ben}</span>,
+        <span class="parameter">howpublished</span> <span class="operator">=</span> <span class="string">\url{bbradz.github.com}</span>,
+        <span class="parameter">year</span> <span class="operator">=</span> <span class="string">{2022}</span>,
+        <span class="parameter">month</span> <span class="operator">=</span> <span class="string">{feb}</span>,
+        <span class="parameter">note</span> <span class="operator">=</span> <span class="string">{Blog post}</span>
+        <span class="operator">}</span></code></pre>
+        </div>
+        </div>
+    </div>
+
+    <!-- Scroll-to-top Button -->
+    <div
+      id="scrollToTop"
+      class="fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer"
+      onclick="scrollToTop()"
+    >
+      <div class="bg-zinc-800 hover:bg-zinc-700 rounded-full p-3 shadow-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-zinc-200"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Sidebar TOC -->
+    <div id="sidebar-toc" class="sidebar-toc">
+    <div class="sidebar-toc-content">
+        <div class="sidebar-toc-header">Contents</div>
+        <div class="sidebar-toc-links">
+        <ol>
+            <li><a href="#A">Prologue</a></li>
+            <li><a href="#B">Why This is So Important</a></li>
+            <li>
+            <a href="#C">Why Car Based Suburbia Sucks</a>
+            <ol>
+                <li>
+                <a href="#D">Financially</a>
+                <ol>
+                    <li><a href="#E">Societally</a></li>
+                    <li><a href="#F">Individually</a></li>
+                </ol>
+                </li>
+                <li>
+                <a href="#G">Environmentally</a>
+                <ol>
+                    <li><a href="#H">Emissions</a></li>
+                    <li><a href="#I">Environmental Destruction</a></li>
+                    <li><a href="#J">Water</a></li>
+                </ol>
+                </li>
+            </ol>
+            </li>
+            <li><a href="#K">Stepping Back; The Broken Economics of Suburbia</a></li>
+            <li><a href="#L">Some Policy Recommendations to Address Them…</a></li>
+            <li>
+            <a href="#M">What's Breaking American Cities?</a>
+            <ol>
+                <li><a href="#N">A Backbreaking Undersupply of Housing</a></li>
+                <li><a href="#O">The Impact of Cities' Housing Undersupply</a></li>
+                <li><a href="#P">We Need Strong Cities.</a></li>
+                <li><a href="#Q">The True Cost...</a></li>
+            </ol>
+            </li>
+            <li><a href="#R">How to Fix It</a></li>
+            <li><a href="#S">Recommended Reading</a></li>
+            <li><a href="#T">[+] Addendum : Why We Can't Build</a></li>
+            <li><a href="#U">References</a></li>
+        </ol>
+        </div>
+    </div>
+    </div>
+
+    <canvas id="gameOfLife" class="game-of-life" width="200" height="400"></canvas>
+    <script src="../functionality.js"></script>
   </body>
 </html>

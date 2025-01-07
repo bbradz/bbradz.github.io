@@ -1,123 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bb.radz</title>
-    <link rel="icon" type="image/x-icon" href="../pics/pattern.ico" />
-    <link rel="stylesheet" href="article-styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>bb.radz jobs to jensen</title>
+    <link rel="stylesheet" href="../styles.css" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script
       id="MathJax-script"
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
-      integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
   </head>
+
   <body>
-    <header>
-      <div class="header-content">
-        <h1>
-          <a class="landingpage-button" href="../index.html">Ben Bradley</a>
-        </h1>
-        <div class="header-horizontal">
-          <div class="left-horizontal">
-            <p>Riding the Wave of Computation</p>
-            <!-- <a href="/about"><p>About</p></a> -->
-          </div>
-          <div class="logo-horizontal">
-            <a href="https://x.com/SLENDERdude441" target="_blank"
-              ><p>
-                <img
-                  src="../pics/x6.png"
-                  alt="x logo"
-                  style="width: 15px; height: 14px"
-                /></p
-            ></a>
-            <a href="https://github.com/bbradz" target="_blank"
-              ><p>
-                <img
-                  src="../pics/git.png"
-                  alt="github logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.linkedin.com/in/bbradz/" target="_blank"
-              ><p>
-                <img
-                  src="../pics/linkedin.png"
-                  alt="linkedin logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a
-              href="https://open.spotify.com/user/slender_dude441"
-              target="_blank"
-              ><p>
-                <img
-                  src="../pics/spotify2.png"
-                  alt="spotify logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.instagram.com/bbradz_/" target="_blank"
-              ><p>
-                <img
-                  src="../pics/ig.jpeg"
-                  alt="ig logo"
-                  style="width: 17px; height: 15px"
-                /></p
-            ></a>
-          </div>
-        </div>
+    <!-- Header (mirroring the template) -->
+    <header class="header">
+      <div class="logo-section">
+        <a href="/about" class="logo">BBradz</a>
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Posts</a>
+        <a href="../reading.html" class="nav-link">Library</a>
+        <a href="/profile" class="nav-link">Psychological Profile</a>
+        <a href="../about.html" class="nav-link">About</a>
+      </nav>
     </header>
 
-    <main>
-      <h1 style="font-size: 32px; margin-bottom: 0px">From Jobs To Jensen</h1>
-      <p style="margin-top: 5px; font-size: 12px">
-        <strong>Word Count: 7,144</strong>
-      </p>
-      <div class="nav" style="font-size: 14px">
-        <ol>
-          <li><a href="#A">Introduction</a></li>
-          <li><a href="#B">Motivation</a></li>
-          <li><a href="#C">Baseline Physical Tradeoffs</a></li>
-          <li><a href="#D">3D Parallelism</a></li>
-          <ol>
-            <li><a href="#E">Data parallelism</a></li>
-            <li><a href="#F">Pipeline parallelism</a></li>
-            <li><a href="#G">Tensor parallelism</a></li>
-          </ol>
-          <li><a href="#H">What even is a Parameter?</a></li>
-          <li>
-            <a href="#I"
-              >ZeRO-- Seriously Tackling Where 3D Parallelism Fails</a
-            >
-          </li>
-          <ol>
-            <li><a href="#J">Off-GPU, Intra-Node</a></li>
-            <li><a href="#K">Further Miscellaneous ZeRO</a></li>
-          </ol>
-          <li><a href="#L">Conclusion</a></li>
-          <li><a href="#M">Sources</a></li>
-        </ol>
+    <!-- Main Container for the article -->
+    <div class="container">
+      <h1 id="title">From Jobs To Jensen</h1>
+
+      <!-- Article Metadata -->
+      <div class="header-content">
+        <div class="header-left">
+          <div class="metadata">
+            Ben Bradley, Oct 13th, 2024 • 37 min read (7.2K words)
+          </div>
+          <div class="tags">
+            <span class="tag">Parallelism</span>
+            <span class="tag">Computing</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+        </div>
+        <a href="#" class="back-link" onclick="history.back(); return false;">Back</a>
+
       </div>
 
-      <hr />
+      <!-- Main Table of Contents -->
+      <div class="toc-container" onclick="toggleTOC()">
+        <div class="toc-header">
+          <span>▶</span>
+          <span><b>Table of Contents</b></span>
+        </div>
+        <div class="toc-content" id="toc">
+          <a href="#A">Introduction</a>
+          <a href="#B">Motivation</a>
+          <a href="#C">Baseline Physical Tradeoffs</a>
+          <a href="#D">3D Parallelism</a>
+          <a href="#E">Data parallelism</a>
+          <a href="#F">Pipeline parallelism</a>
+          <a href="#G">Tensor parallelism</a>
+          <a href="#H">What even is a Parameter?</a>
+          <a href="#I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</a>
+          <a href="#J">Off-GPU, Intra-Node</a>
+          <a href="#K">Further Miscellaneous ZeRO</a>
+          <a href="#L">Conclusion</a>
+          <a href="#M">Sources</a>
+        </div>
+      </div>
 
-      <a name="A"></a>
-      <h3>Introduction</h3>
-
+      <h4 id="A">Introduction</h4>
       <p>
         The joy of working in and following Tech is that it's constantly
         changing. What worked a decade ago is rapidly outclassed by new and
@@ -150,7 +134,7 @@
         stagnant and hanging on for the ride.
       </p>
       <div class="centered-item-holder">
-        <img src="../pics/Pic 0.webp" alt="" class="responsive-image-medlarge" />
+        <img src=".../pics/Pic 0.webp" alt="" class="responsive-image-medlarge" />
       </div>
       <p>
         While the impact of computation's reinvention of work continues to
@@ -177,8 +161,7 @@
         Scale computing.
       </p>
 
-      <a name="B"></a>
-      <h3>Motivation</h3>
+      <h2 id="B">Motivation</h2>
 
       <p>
         In the early 2020s, the literature around model performance began to
@@ -197,7 +180,7 @@
         C. compute sunk.
       </p>
       <div class="centered-item-holder">
-        <img src="../pics/Pic 16.png" alt="" class="responsive-image-med" />
+        <img src=".../pics/Pic 16.png" alt="" class="responsive-image-med" />
       </div>
       <p>
         Since that paper, internets worth of data, countries worth of compute,
@@ -242,8 +225,7 @@
         individual chips and into warehouses of thousands of chips.
       </p>
 
-      <a name="C"></a>
-      <h3>Baseline Physical Tradeoffs</h3>
+      <h2 id="C">Baseline Physical Tradeoffs</h2>
       <p>
         If you're anything like me, this is probably about the time when your
         brain fades away and loses interest because <i>~HEY~ I'm into AI for the
@@ -263,14 +245,14 @@
         systems within systems, which we can simplify by starting at the unit of
         a single V100 GPU and zooming out. GPUs are the smallest units, as they
         individually have 1 GPU worth of memory (~32GB), but they have higher
-        internal data transfer speeds of roughly 900GB/s. Going up a unit, you're
-        looking at the DGX-2 rig, which holds 16 V100s (i.e., 512GB of GPU memory
-        alongside 1.5TB of system memory) but has a data transfer rate between
-        its internal V100s of roughly 300GB/s. Finally, we rise to the highest
-        unit: connecting together multiple DGX-2 rigs as one, where the memory
-        scales up to the 100TB levels of Trillion-dollar Hyperscalers, but where
-        the transfer speed of data between rigs comes down to a mere 100GB/s.
-        These numbers
+        internal data transfer speeds of roughly 900GB/s. Going up a unit,
+        you're looking at the DGX-2 rig, which holds 16 V100s (i.e., 512GB of GPU
+        memory alongside 1.5TB of system memory) but has a data transfer rate
+        between its internal V100s of roughly 300GB/s. Finally, we rise to the
+        highest unit: connecting together multiple DGX-2 rigs as one, where the
+        memory scales up to the 100TB levels of Trillion-dollar Hyperscalers,
+        but where the transfer speed of data between rigs comes down to a mere
+        100GB/s. These numbers
         <a
           href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf"
         >
@@ -294,8 +276,8 @@
         <i>This</i> is why NVIDIA has catapulted to trillions in value, why
         Google's homegrown TPU computing platform is so lucrative, and why the
         rest of the Hyperscalers are hoovering up any top-of-class GPU they can
-        find to slot into their warehouses. Not only is there immense pressure to
-        crush more and more performance into less and less space, but there's
+        find to slot into their warehouses. Not only is there immense pressure
+        to crush more and more performance into less and less space, but there's
         also immense pressure to figure out how to scale the solutions currently
         so expensive that they can only be used at small scales to those
         warehouse scales where they bring down some of the costs of trying to
@@ -310,8 +292,7 @@
         this article: the big box of parallel training techniques.
       </p>
 
-      <a name="D"></a>
-
+      <h2 id="D">3D Parallelism</h2>
       <p>
         There are three fundamental techniques for parallel training, which come
         together under the title of <b>3D Parallelism</b> as the distinguishing
@@ -320,8 +301,7 @@
         complexity:
       </p>
 
-      <a name="E"></a>
-      <h4>Data parallelism</h4>
+      <h3 id="E">Data parallelism</h3>
 
       <p>
         Data parallelism is when you have \(N\) devices to do computing on, so
@@ -329,27 +309,57 @@
         to train on into \(N\) batches, and then train the full model on its own
         assigned batch of data on each device.
       </p>
-      <div class="centered-item-holder">
-        <div class="responsive-image-medlarge">
-            <pre class="language-js">
-                <code class="language-js">
-                    rand_loader = DataLoader(dataset=RandomDataset(input_size, data_size),
-                            batch_size=batch_size, shuffle=True
-                            
-                    model = Model(input_size, output_size)
-                    // dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-                    model = nn.DataParallel(model)
-                    model.to(device)
+        <div class="code-container" onmousemove="handleMouseMove(event)">
+        <div class="code-content">
+            <button class="copy-button" onclick="copyCode(event)">
+            <svg
+                id="copy-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
+            </svg>
+            <svg
+                id="check-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="display: none"
+            >
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            </button>
+            <pre><code><span class="function">rand_loader</span> = <span class="class">DataLoader</span>(<span class="parameter">dataset=RandomDataset(input_size, data_size)</span>,
+                <span class="parameter">batch_size=batch_size</span>, <span class="parameter">shuffle=True</span>)
 
-                    for data in rand_loader:
-                        input = data.to(device)
-                        output = model(input)
-                        print("Outside: input size", input.size(),
-                            "output_size", output.size())
-                </code>
-            </pre>
+        <span class="function">model</span> = <span class="class">Model</span>(<span class="parameter">input_size</span>, <span class="parameter">output_size</span>)
+        <span class="comment">// dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs</span>
+        <span class="function">model</span> = <span class="class">nn.DataParallel</span>(<span class="parameter">model</span>)
+        <span class="function">model</span>.to(<span class="parameter">device</span>)
+
+        <span class="keyword">for</span> <span class="parameter">data</span> <span class="keyword">in</span> <span class="function">rand_loader</span>:
+            <span class="function">input</span> = <span class="parameter">data.to(device)</span>
+            <span class="function">output</span> = <span class="function">model(input)</span>
+            <span class="function">print</span>(<span class="string">"Outside: input size"</span>, <span class="function">input.size()</span>,
+                <span class="string">"output_size"</span>, <span class="function">output.size()</span>)</code></pre>
         </div>
-      </div>
+        </div>
       <p>
         There's one catch, however, a catch inherent to model training, which
         distributed training inherently comes up against on top of the existing
@@ -357,26 +367,26 @@
       </p>
       <p>
         Training a simple one-layer Neural Network on even just 1 GPU has two
-        fundamental steps: the Forward pass, during which our model takes in data
-        and passes the output of the \(i\)th layer as input to the \(i+1\)th
-        layer up until the final layer when the output of the whole model is
-        produced, and the Backward pass, during which the gradient of the error
-        of our model's Forward pass output is passed backward through the chain
-        rule to update every layer up until the first one where the original
-        input came in. The rub is that to calculate the true gradient for
-        propagation in the Backward pass, you need to pool together the outputs
-        from every device to derive the average update implied by the error on
-        each sub-batch of data. Luckily, GPUs are relatively fast at this, but it
-        does require shipping the outputs from every device through an operation
-        called <i>All-Reduce</i> to one of our GPUs, which can then average them
-        into one final gradient and ship them back to all of the devices through
-        a <i>Broadcast</i> operation. In this way, Data parallelism definitely
-        speeds up training (barring some extremely poor data transfer speed
-        between devices) as it allows you to reduce the scale of computation &
-        memory consumption per device down to \(\mathcal{O}(M)\) from
-        \(\mathcal{O}(DM)\), where \(M\) is the number of parameters and \(D\) is
-        the number of data points to compute across, but it doesn't get the full
-        job done.
+        fundamental steps: the Forward pass, during which our model takes in
+        data and passes the output of the \(i\)th layer as input to the
+        \(i+1\)th layer up until the final layer when the output of the whole
+        model is produced, and the Backward pass, during which the gradient of
+        the error of our model's Forward pass output is passed backward through
+        the chain rule to update every layer up until the first one where the
+        original input came in. The rub is that to calculate the true gradient
+        for propagation in the Backward pass, you need to pool together the
+        outputs from every device to derive the average update implied by the
+        error on each sub-batch of data. Luckily, GPUs are relatively fast at
+        this, but it does require shipping the outputs from every device through
+        an operation called <i>All-Reduce</i> to one of our GPUs, which can then
+        average them into one final gradient and ship them back to all of the
+        devices through a <i>Broadcast</i> operation. In this way, Data
+        parallelism definitely speeds up training (barring some extremely poor
+        data transfer speed between devices) as it allows you to reduce the
+        scale of computation & memory consumption per device down to
+        \(\mathcal{O}(M)\) from \(\mathcal{O}(DM)\), where \(M\) is the number
+        of parameters and \(D\) is the number of data points to compute across,
+        but it doesn't get the full job done.
       </p>
       <p>
         If you've been paying attention, you're probably a little confused right
@@ -391,31 +401,30 @@
         which we'll return later to bring training throughput up at all training
         scales once we have the model size problem pinned down, it doesn't
         address the core issue: our inability to fit the whole model onto one
-        device. To tackle this harder problem of distributed training, we look to
-        the two other dimensions of distribution techniques, which provide
+        device. To tackle this harder problem of distributed training, we look
+        to the two other dimensions of distribution techniques, which provide
         options for splitting the model itself across devices.
       </p>
 
-      <a name="F"></a>
-      <h4>Pipeline parallelism</h4>
+      <h3 id="F">Pipeline parallelism</h3>
 
       <p>
         The clearest path for splitting up model execution across devices is to
-        split the layers of our model off in groups and send each of those layers
-        to its own device. Given \(N\) devices, we could cleanly take a model
-        with \(N\) layers and assign each layer to its own device.
+        split the layers of our model off in groups and send each of those
+        layers to its own device. Given \(N\) devices, we could cleanly take a
+        model with \(N\) layers and assign each layer to its own device.
       </p>
       <p>
-        Next, we return to the trusty Forward & Backward passes, fundamental
-        operations of training Neural Network models of any size. To pull off our
-        Forward pass, we would need to input into the device containing the
-        earliest layer block of our model our dataset to be trained on. Then,
-        once that device produces an output, ship that data over to the device
-        for layer block 2, then layer block 3, until our final layer outputs (this
-        time helpfully already on one device) the full error on our dataset, which
-        can then on-device be turned into a gradient before our backward pass
-        tracks its way across our devices backward for that Backward pass of
-        parameter updating.
+        Next, we return to the trusty Forward &amp; Backward passes,
+        fundamental operations of training Neural Network models of any size. To
+        pull off our Forward pass, we would need to input into the device
+        containing the earliest layer block of our model our dataset to be
+        trained on. Then, once that device produces an output, ship that data
+        over to the device for layer block 2, then layer block 3, until our
+        final layer outputs (this time helpfully already on one device) the full
+        error on our dataset, which can then on-device be turned into a gradient
+        before our backward pass tracks its way across our devices backward for
+        that Backward pass of parameter updating.
       </p>
       <p>
         This technique is called <b>Pipeline Parallelism</b>. While it avoids
@@ -424,33 +433,33 @@
         speeds between each block of layers.
       </p>
       <p>
-        Another downside of Pipeline Parallelism is that, for example, the device
-        with the earliest layer block is, under this naive implementation, left
-        idle for the whole time from passing its output to the second device at
-        the start of our Forward pass until it receives back the last stage of
-        the Backward pass. When each of our devices is a many-thousands-of-dollars
-        cutting-edge GPU in global short supply, this translates into a
-        substantial amount of idle time across all devices, which it would really
-        be better to avoid.
+        Another downside of Pipeline Parallelism is that, for example, the
+        device with the earliest layer block is, under this naive
+        implementation, left idle for the whole time from passing its output to
+        the second device at the start of our Forward pass until it receives
+        back the last stage of the Backward pass. When each of our devices is a
+        many-thousands-of-dollars cutting-edge GPU in global short supply, this
+        translates into a substantial amount of idle time across all devices,
+        which it would really be better to avoid.
       </p>
       <p>
         These pockets of idle devices are termed "Bubbles" in our execution, and
         thankfully Pipeline Parallelism does have a bit of a solution to this in
         the form of <i>Micro-batching</i>. Micro-batching operates by once again
         splitting our full dataset into \(N\) batches of data. After we
-        calculate the result of our first layer block on our first batch of data,
-        we still have \(N-1\) batches of data to continue running our layer blocks
-        on, keeping them active and running at overlapped times, unlocking a
-        Bubble ratio of \(\approx \frac{N-1}{M+N-1}\). The following is a rough
-        diagram of the process:
+        calculate the result of our first layer block on our first batch of
+        data, we still have \(N-1\) batches of data to continue running our
+        layer blocks on, keeping them active and running at overlapped times,
+        unlocking a Bubble ratio of \(\approx \frac{N-1}{M+N-1}\). The following
+        is a rough diagram of the process:
       </p>
       <div class="centered-item-holder">
         <img src="../pics/Pic 1.png" alt="" class="responsive-image-med" />
       </div>
       <p>
         Empirically, this method of Micro-batching is found to work best when
-        given \(M\) micro-batches across \(K\) devices: \(M \geq 4K\), leading to
-        near-linear scaling of throughput.
+        given \(M\) micro-batches across \(K\) devices: \(M \geq 4K\), leading
+        to near-linear scaling of throughput.
       </p>
       <p>
         There's a broad class of approaches to reducing this Bubble ratio even
@@ -471,26 +480,26 @@
         horizontally into sequentially running blocks, which can be, through
         clever spacing, run in near parallel. But in many ways, that clever
         spacing is only necessary because models are inherently sequential
-        algorithms temporally across their Forward & Backward passes. This is the
-        observation that Tensor parallelism builds on to introduce the third
-        dimension of 3D parallelism for splitting up model training, no longer
-        splitting our models horizontally but instead splitting them vertically.
+        algorithms temporally across their Forward &amp; Backward passes. This
+        is the observation that Tensor parallelism builds on to introduce the
+        third dimension of 3D parallelism for splitting up model training, no
+        longer splitting our models horizontally but instead splitting them
+        vertically.
       </p>
 
-      <a name="G"></a>
-      <h4>Tensor parallelism</h4>
+      <h3 id="G">Tensor parallelism</h3>
 
       <p>
         Splitting models vertically means making our cuts at the intra-layer
-        level—a cut that is, in many ways, awkward and opens up its own front for
-        model design: avoiding designs that require pooling. Much like in the
-        case of Data Parallelism, where we needed to ship information from every
-        device to one central GPU for computing the average gradient across data
-        batches, Tensor parallelism not only requires that same pooling of average
-        gradients across each vertical slice of our model but also, depending on
-        model architecture, requires that pooling of data to one GPU for every
-        layer of our model, which only operates when all of the information in
-        that layer is operated across.
+        level—a cut that is, in many ways, awkward and opens up its own front
+        for model design: avoiding designs that require pooling. Much like in
+        the case of Data Parallelism, where we needed to ship information from
+        every device to one central GPU for computing the average gradient
+        across data batches, Tensor parallelism not only requires that same
+        pooling of average gradients across each vertical slice of our model but
+        also, depending on model architecture, requires that pooling of data to
+        one GPU for every layer of our model, which only operates when all of
+        the information in that layer is operated across.
       </p>
       <p>
         Tensor Parallelism only first became feasible under the Megatron-LM
@@ -504,59 +513,60 @@
         <img src="../pics/Pic 3.png" alt="" class="responsive-image-med" />
       </div>
       <p>
-        However, in many ways, the fundamental challenge of Tensor Parallelism is
-        working around this inevitable cost of pooling, which is sometimes the
-        exact point of a layer in a model (in the case of BatchNorm or Pooling
-        layers) and often is necessary for nonlinear functions (Ex: GeLU), which
-        occur all across modern architectures. As long as the Physics of data
-        transfer make data transfer across devices (especially at the largest
-        unit sizes of Data Center scale training) this will be a primary issue
-        that Tensor Parallelism runs up against.
+        However, in many ways, the fundamental challenge of Tensor Parallelism
+        is working around this inevitable cost of pooling, which is sometimes
+        the exact point of a layer in a model (in the case of BatchNorm or
+        Pooling layers) and often is necessary for nonlinear functions (Ex:
+        GeLU), which occur all across modern architectures. As long as the
+        Physics of data transfer make data transfer across devices (especially
+        at the largest unit sizes of Data Center scale training) this will be a
+        primary issue that Tensor Parallelism runs up against.
       </p>
       <p>
-        The other challenge of Tensor Parallelism, which we've up until now mostly
-        avoided discussing, is that to update the parameters of each layer in our
-        Backward pass, we need to use the activation values of that layer. Coming
-        out of the chain rule, the activation value of a layer becomes a
-        component of calculating the gradient update for that same layer. One
-        component of vertically slicing our models is that per device, the amount
-        of activations being stored scales with the depth of the model, while the
-        amount of actual computation being done at any given point of the
-        Backward & Forward pass reduces with the number of devices to send slices
-        to.
+        The other challenge of Tensor Parallelism, which we've up until now
+        mostly avoided discussing, is that to update the parameters of each
+        layer in our Backward pass, we need to use the activation values of that
+        layer. Coming out of the chain rule, the activation value of a layer
+        becomes a component of calculating the gradient update for that same
+        layer. One component of vertically slicing our models is that per
+        device, the amount of activations being stored scales with the depth of
+        the model, while the amount of actual computation being done at any
+        given point of the Backward &amp; Forward pass reduces with the number
+        of devices to send slices to.
       </p>
       <p>
-        Much like Micro-batching helped in reducing the issue of Bubble Ratio for
-        Pipeline Parallelism, Tensor Parallelism's confrontation with activation
-        value storage can be reduced through trading off more computation for
-        lower memory footprint in a process called <i>Checkpointing</i>. With the
-        knowledge that as we increase the number of vertical slices we make in
-        our model, the actual computation needed at any given time to handle each
-        slice decreases, translating to smaller MatMuls and quicker execution, we
-        can choose to store only every \(i\)th activation, resulting in \(N\)
-        stored activations where \(N = n_{\text{total_layers}}/i\), and then, on
-        our Backward pass, recalculate activations \((N-1)i\) to \(Ni\) from the
-        \((N-1)\)th checkpoint to only ever have \(N + i\) activations in memory
-        at any given time. Essentially, this translates into recalculating
-        activations from a set of stored checkpoints of activations to increase
-        the amount of computation in exchange for lower memory overhead of
-        storing all of the activations for our entire Forward & Backward passes.
+        Much like Micro-batching helped in reducing the issue of Bubble Ratio
+        for Pipeline Parallelism, Tensor Parallelism's confrontation with
+        activation value storage can be reduced through trading off more
+        computation for lower memory footprint in a process called
+        <i>Checkpointing</i>. With the knowledge that as we increase the number
+        of vertical slices we make in our model, the actual computation needed
+        at any given time to handle each slice decreases, translating to smaller
+        MatMuls and quicker execution, we can choose to store only every
+        \(i\)th activation, resulting in \(N\) stored activations where
+        \(N = n_{\text{total_layers}}/i\), and then, on our Backward pass,
+        recalculate activations \((N-1)i\) to \(Ni\) from the \((N-1)\)th
+        checkpoint to only ever have \(N + i\) activations in memory at any
+        given time. Essentially, this translates into recalculating activations
+        from a set of stored checkpoints of activations to increase the amount
+        of computation in exchange for lower memory overhead of storing all of
+        the activations for our entire Forward &amp; Backward passes.
       </p>
       <p>
         Through careful Checkpointing and application of parallelization of
         non-pooling layers, Megatron-LM was determined to reach a new \(76\%\)
         scaling efficiency (meaning only about \(24\%\) average idle time per
-        GPU) on standard Large Language Models of Transformers with equivalent &
-        stable learning across device counts after only a few minor reordering of
-        some of the pooling steps.
+        GPU) on standard Large Language Models of Transformers with equivalent
+        &amp; stable learning across device counts after only a few minor
+        reordering of some of the pooling steps.
       </p>
       <p>
-        That resolves all three primary axes of breaking down Model training into
-        Distributed processes. Importantly, all of these techniques can be used
-        in complement to each other, stacking huge performance gains and forming
-        a greater family of distributed computation referred to earlier as
-        <b>3D Parallelism</b>. Given \(L\) vertical model slices, \(M\) layer-level
-        slices, and \(N\) data batches, we arrive at space for
+        That resolves all three primary axes of breaking down Model training
+        into Distributed processes. Importantly, all of these techniques can be
+        used in complement to each other, stacking huge performance gains and
+        forming a greater family of distributed computation referred to earlier
+        as <b>3D Parallelism</b>. Given \(L\) vertical model slices, \(M\)
+        layer-level slices, and \(N\) data batches, we arrive at space for
         \(L \times M \times N\) devices all running roughly in parallel (barring
         pooling and bubble ratios).
       </p>
@@ -588,13 +598,12 @@
         by our optimizer, which come in scales equal to some 16 times our
         original model parameter count. 3D Parallelism is a great building block
         for distributed training and an indispensable mental building block for
-        understanding the framework within which later frameworks for distributed
-        training are fitting their innovations around, but it's not the end of
-        the road.
+        understanding the framework within which later frameworks for
+        distributed training are fitting their innovations around, but it's not
+        the end of the road.
       </p>
 
-      <a name="H"></a>
-      <h3>What even is a Parameter?</h3>
+      <h2 id="H">What even is a Parameter?</h2>
 
       <p>
         Let's return to one of the sentences I laid out at the beginning of this
@@ -603,9 +612,11 @@
       </p>
       <blockquote>
         <p>
-          `` storing all of those parameters in memory in the historically
-          standard FP32 format where each parameter takes up 32 bytes of memory
+          <i>
+          ''storing all of those parameters in memory in the historically standard
+          FP32 format where each parameter takes up 32 bytes of memory
           translates to some 14.4TB to 54.4TB in memory... ''
+          </i>
         </p>
       </blockquote>
       <p>
@@ -613,75 +624,76 @@
         pushing more model performance into fewer devices, lowering the cost of
         training, and lowering the area of devices to transfer data between:
         Mixed Precision Training. The core insight of Mixed Precision Training
-        is that the model scale we're coming up against in our need to distribute
-        our model across devices in the first place is the bytes of physical
-        memory being required from our model. Instead of lowering the total
-        parameter count, we can take aim at that traditional FP32 floating point
-        precision (which takes up four bytes of memory) and drive the precision
-        per parameter down.
+        is that the model scale we're coming up against in our need to
+        distribute our model across devices in the first place is the bytes of
+        physical memory being required from our model. Instead of lowering the
+        total parameter count, we can take aim at that traditional FP32 floating
+        point precision (which takes up four bytes of memory) and drive the
+        precision per parameter down.
       </p>
       <p>
-        But wait! Doesn't the precision of the values of those parameters matter?
-        Isn't that important information determining the performance of our
-        model? Well, yes, but there are definitely a few tricks we can leverage
-        to use less precise and more memory-efficient values for cheaper overall
-        training.
+        But wait! Doesn't the precision of the values of those parameters
+        matter? Isn't that important information determining the performance of
+        our model? Well, yes, but there are definitely a few tricks we can
+        leverage to use less precise and more memory-efficient values for
+        cheaper overall training.
       </p>
       <p>
         Mixed Precision Training (Narang et al. 2018) introduced this idea
         through the general process of storing full-precision masterweights of
-        our model but doing our Forward (Fwd) & Backward (Bwd) passes in
+        our model but doing our Forward (Fwd) &amp; Backward (Bwd) passes in
         half-precision. While this algorithm obviously has a cost in the most of
         a memory cost incurred by storing a full master copy of our weights, it
         pays off over time through lower memory overhead in every corner of our
         training process. In reality, the majority of the overhead of memory
         costs for training comes from the memory incurred by storing past
-        activations (as we confronted in the previous Tensor Parallelism section),
-        so by adopting FP16 half-precision values for our entire Fwd & Bwd passes,
-        we reduce the vast majority of the memory overhead we're worrying about.
-        Not only does FP16 take only half the memory space, but since it's
-        lighter weight, it's also quicker to operate on, which yields a
-        computational/runtime improvement on top of that previously mentioned
-        memory crisis.
+        activations (as we confronted in the previous Tensor Parallelism
+        section), so by adopting FP16 half-precision values for our entire Fwd
+        &amp; Bwd passes, we reduce the vast majority of the memory overhead
+        we're worrying about. Not only does FP16 take only half the memory
+        space, but since it's lighter weight, it's also quicker to operate on,
+        which yields a computational/runtime improvement on top of that
+        previously mentioned memory crisis.
       </p>
       <p>
         As for that lost precision? Some of that is helped by storing full
-        precision weights, which our post-training end model is going to be stored
-        in. Another workaround is through <i>Gradient Scaling</i>. One of the
-        benefits of going to FP16 is that, in practice, a huge amount of the
+        precision weights, which our post-training end model is going to be
+        stored in. Another workaround is through <i>Gradient Scaling</i>. One of
+        the benefits of going to FP16 is that, in practice, a huge amount of the
         gradient values throughout our Bwd pass fall into the zero value under
         FP16, which opens up another surface of speeding up operations through
-        leveraging <i>sparsity</i>, but that's a topic we'll reserve for the next
-        algorithm we'll discuss. One of the downsides of many gradients in FP16
-        going to a value of zero is that sometimes those gradients would have
-        been a value that, while small, was important for updating our weights
-        and getting the full model to the accuracy these Hyperscalers need.
-        Thankfully, there's a quick way of sorting out this issue. By multiplying
-        the pooled loss of our model after each Fwd pass by a factor (\(\times 8\)
-        was used in the paper), we can bring some number of the highest-value
-        gradients (an additional \(2\%\) of gradients in the paper) previously in
-        the zero range back into the non-zero range for FP16, restoring the
-        gradients most relevant for our training back into usability.
+        leveraging <i>sparsity</i>, but that's a topic we'll reserve for the
+        next algorithm we'll discuss. One of the downsides of many gradients in
+        FP16 going to a value of zero is that sometimes those gradients would
+        have been a value that, while small, was important for updating our
+        weights and getting the full model to the accuracy these Hyperscalers
+        need. Thankfully, there's a quick way of sorting out this issue. By
+        multiplying the pooled loss of our model after each Fwd pass by a factor
+        (\(\times 8\) was used in the paper), we can bring some number of the
+        highest-value gradients (an additional \(2\%\) of gradients in the
+        paper) previously in the zero range back into the non-zero range for
+        FP16, restoring the gradients most relevant for our training back into
+        usability.
       </p>
       <div class="centered-item-holder">
         <img src="../pics/Pic 5.png" alt="" class="responsive-image-med" />
       </div>
       <p>
-        Of course, not all of the Bwd & Fwd passes necessarily should be
+        Of course, not all of the Bwd &amp; Fwd passes necessarily should be
         converted into FP16, and the authors of <i>Mixed Precision Training</i>
-        make a point to highlight that, of the three categories of Neural Network
-        arithmetic operations—Vector dot-products, Reductions (i.e., Poolings),
-        and Point-wise operations—both Reductions & Vector dot-products seem to
-        benefit from the precision of sticking with FP32. That being said, there
-        are a variety of papers coming out in these past months (realize that
-        Mixed Precision is a 6-year-old paper at this point) that have been
-        showing further memory advances without sacrificing accuracy achieved
-        over training, such as
+        make a point to highlight that, of the three categories of Neural
+        Network arithmetic operations—Vector dot-products, Reductions (i.e.,
+        Poolings), and Point-wise operations—both Reductions &amp; Vector
+        dot-products seem to benefit from the precision of sticking with FP32.
+        That being said, there are a variety of papers coming out in these past
+        months (realize that Mixed Precision is a 6-year-old paper at this
+        point) that have been showing further memory advances without
+        sacrificing accuracy achieved over training, such as
         <a href="https://arxiv.org/pdf/2402.17764"
           ><i>The Era of 1-bit LLMs</i> (Ma et al. 2024)</a
         >, and there has even been experimentation around reconfiguring how we
-        allocate bits within the two bytes taken up by an FP16. Google introduced
-        the
+        allocate bits within the two bytes taken up by an FP16. Google
+        introduced the
         <a
           href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus"
         >
@@ -708,8 +720,7 @@
         aims squarely at.
       </p>
 
-      <a name="I"></a>
-      <h3>ZeRO-- Seriously Tackling Where 3D Parallelism Fails</h3>
+      <h2 id="I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</h2>
 
       <p>
         ZeRO is a tremendously impactful project out of Microsoft's research
@@ -739,10 +750,10 @@
         be done on each GPU and more bang behind each additional GPU.
       </p>
       <p>
-        <b>2.</b> Clever utilization of CPU & Node-level memory/computation to
-        pass off training requirements between close-by components of these
-        DGX-2 Nodes of many GPUs, allowing important memory to be kept closer to
-        the GPU and shipped off between Nodes less often.
+        <b>2.</b> Clever utilization of CPU &amp; Node-level
+        memory/computation to pass off training requirements between close-by
+        components of these DGX-2 Nodes of many GPUs, allowing important memory
+        to be kept closer to the GPU and shipped off between Nodes less often.
       </p>
       <p>
         One of the fundamental axes of 3D Parallelism is the vertical split,
@@ -767,21 +778,21 @@
         glitzy optimizer popping up today. Suffice to say, if you haven't read
         those articles, though, in order to translate the error of our model
         into the exact amount to adjust each model parameter by, it's been
-        empirically (& theoretically) found that keeping optimizer states stored
-        in memory for the sake of tracking trends in how training is progressing
-        can be invaluable for getting the most high-performance model after
-        training as possible. Unfortunately, that means a whole other set of
-        values multiple times larger than even the parameter count needing to be
-        stored during training.
+        empirically (&amp; theoretically) found that keeping optimizer states
+        stored in memory for the sake of tracking trends in how training is
+        progressing can be invaluable for getting the most high-performance
+        model after training as possible. Unfortunately, that means a whole
+        other set of values multiple times larger than even the parameter count
+        needing to be stored during training.
       </p>
       <p>
         ZeRO stands for Zero Redundancy Optimizer because while 3D Parallelism
         looks at the parameter values and even the activation values, it hasn't
         been known to address these optimizer values, leaving a whole other
         block of redundant values being stored on GPUs that can be split up
-        across devices. Additionally, whereas gradients & parameters had, at the
-        time of ZeRO, been shown to be able to be compressed into FP16 (this was
-        a large thrust of the takeaway of Mixed Precision Training), because
+        across devices. Additionally, whereas gradients &amp; parameters had, at
+        the time of ZeRO, been shown to be able to be compressed into FP16 (this
+        was a large thrust of the takeaway of Mixed Precision Training), because
         smaller changes in optimizer values have repercussions that echo through
         the entire rest of the training process, they still had to be kept in
         FP32, meaning that not only are there more optimizer values than
@@ -839,11 +850,11 @@
       </p>
       <p>
         I could dig further into the details here around both these components
-        of intelligent memory allocation, but suffice it to say that ZeRO brought
-        to the forefront of public conversation new algorithms for
+        of intelligent memory allocation, but suffice it to say that ZeRO
+        brought to the forefront of public conversation new algorithms for
         automatically setting up contiguous chunks of memory buffer based on the
-        specifics of both the model being trained & the system being trained on,
-        setting the stage for better memory allotment during training. Then,
+        specifics of both the model being trained &amp; the system being trained
+        on, setting the stage for better memory allotment during training. Then,
         during training, in order to keep that distribution as healthy as
         possible—as contiguous and efficiently distributed as possible—one can
         define a relatively simple protocol of tensor age tracking to
@@ -869,8 +880,8 @@
         states, and activation values across GPUs to the models where they
         actually matter. Then, we put in place some protocols for automatically
         setting up the memory requirements that our model is going to need to
-        train on the physical computing network we're working with, maintaining a
-        healthy contiguous distribution of saved memory blocks that lowers
+        train on the physical computing network we're working with, maintaining
+        a healthy contiguous distribution of saved memory blocks that lowers
         memory requirements even further.
       </p>
       <p>
@@ -886,8 +897,7 @@
         Enter the CPU and enter NVMe memory.
       </p>
 
-      <a name="J"></a>
-      <h4>Off-GPU, Intra-Node</h4>
+      <h3 id="J">Off-GPU, Intra-Node</h3>
 
       <p>
         GPUs are incredibly efficient for the multidimensional operations that
@@ -897,24 +907,25 @@
         GPU because GPUs are just so efficient, looking at a memory breakdown of
         where the memory on a DGX-2 Node is placed, we see that CPUs have twice
         the memory capacity of our GPUs, and our NVMe drives have \(\times 14\)
-        the memory of both the CPUs and GPUs combined. Because of this, despite
-        the costs of busing data from GPU to CPU or from GPU to NVMe storage,
-        there's real worth in offloading data into these (comparatively) bulk
-        stores of data and even running compute on the CPU whenever we can
-        justify it not bottlenecking access of our more efficient GPUs to the
-        information they need.
+        the memory of both the CPUs and GPUs combined. Because of this,
+        despite the costs of busing data from GPU to CPU or from GPU to NVMe
+        storage, there's real worth in offloading data into these
+        (comparatively) bulk stores of data and even running compute on the CPU
+        whenever we can justify it not bottlenecking access of our more
+        efficient GPUs to the information they need.
       </p>
       <div class="centered-item-holder">
         <img src="../pics/Pic 9.png" alt="" class="responsive-image-med" />
       </div>
       <p>
-        While the Bwd & Fwd passes' compute surface scales with the product of
-        \(N\) our parameter count and dataset size \(D\), some of the operations
-        happening in our model scale with parameter count \(N\) alone. Those are
-        the types of operations that CPUs can compete with GPUs on and therefore
-        can be offloaded to the CPU during our training process. These would be
-        norm calculations necessary for weight regularization or weight updates
-        that consider every weight once and only once.
+        While the Bwd &amp; Fwd passes' compute surface scales with the product
+        of \(N\) our parameter count and dataset size \(D\), some of the
+        operations happening in our model scale with parameter count \(N\)
+        alone. Those are the types of operations that CPUs can compete with GPUs
+        on and therefore can be offloaded to the CPU during our training
+        process. These would be norm calculations necessary for weight
+        regularization or weight updates that consider every weight once and
+        only once.
       </p>
       <p>
         In fact, we can offload some of those partitioned model states
@@ -935,8 +946,7 @@
         <img src="../pics/Pic 10.png" alt="" class="responsive-image-med" />
       </div>
 
-      <a name="K"></a>
-      <h4>Further Miscellaneous ZeRO</h4>
+      <h3 id="K">Further Miscellaneous ZeRO</h3>
 
       <p>
         That's the bulk of what makes ZeRO ZeRO—how redundancies get optimized
@@ -948,23 +958,24 @@
         for training Transformers.
       </p>
       <p>Those are as follows:</p>
-      <p><b>1. Quantization & Hierarchical Partitioning of Weights </b></p>
+      <p><b>1. Quantization &amp; Hierarchical Partitioning of Weights </b></p>
       <p>
-        One of the bottlenecks of the Fwd & Bwd pass process is in the gathering
-        of weights across all of the GPUs to calculate average error and produce
-        an average gradient for our Bwd pass since it requires a gathering of
-        values across every device. One technique for delivering the messages
-        from each device to the central node operating on those gathered values
-        without each message taking up quite as many bits of communication is
-        through a method called quantization, which amounts to mapping our high
-        precision values into a smaller lower precision range, then mapping them
-        back up to the high precision range at their destination with a small
-        error of information lost in compression. In an extension of ZeRO called
-        <a href="(https://arxiv.org/pdf/2306.10209)">ZeRO++</a>, the team at
+        One of the bottlenecks of the Fwd &amp; Bwd pass process is in the
+        gathering of weights across all of the GPUs to calculate average error
+        and produce an average gradient for our Bwd pass since it requires a
+        gathering of values across every device. One technique for delivering
+        the messages from each device to the central node operating on those
+        gathered values without each message taking up quite as many bits of
+        communication is through a method called quantization, which amounts to
+        mapping our high precision values into a smaller lower precision range,
+        then mapping them back up to the high precision range at their
+        destination with a small error of information lost in compression. In an
+        extension of ZeRO called
+        <a href="https://arxiv.org/pdf/2306.10209">ZeRO++</a>, the team at
         Microsoft observed that by quantizing a block of values according to
         separate mapping functions for each column block, they could reduce that
-        error from quantization by \(\times 3\) without increasing the bits being
-        transferred between machines.
+        error from quantization by \(\times 3\) without increasing the bits
+        being transferred between machines.
       </p>
       <div class="centered-item-holder">
         <img src="../pics/Pic 11.png" alt="" class="responsive-image-med" />
@@ -982,10 +993,10 @@
       </div>
       <p>
         Finally, through gathering pooled weights in multi-server sub-clusters
-        of the full training system during the Fwd & Bwd passes, the ZeRO++ team
-        found the ability to trade off \(\times 8.9\) memory cost for \(\times
-        1.5\) end-to-end communication on those all-device data pooling
-        operations.
+        of the full training system during the Fwd &amp; Bwd passes, the ZeRO++
+        team found the ability to trade off \(\times 8.9\) memory cost for
+        \(\times 1.5\) end-to-end communication on those all-device data
+        pooling operations.
       </p>
       <div class="centered-item-holder">
         <img src="../pics/Pic 13.png" alt="" class="responsive-image-med" />
@@ -1036,8 +1047,8 @@
         on into training, one can subject themselves to the slower communication
         costs for a short warmup period in the beginning of training, then save
         that variance value that their model converged to and switch to a linear
-        optimizer for the rest of training corrected by that saved variance term.
-        Therefore, weight compression can be utilized for the majority of
+        optimizer for the rest of training corrected by that saved variance
+        term. Therefore, weight compression can be utilized for the majority of
         training, and the memory overhead of storing all of the optimizer states
         can be brought down, resulting in communication volume reducing by up to
         \(\times 5\) without a drop in convergence efficiency.
@@ -1063,8 +1074,7 @@
         <img src="../pics/Pic 15.png" alt="" class="responsive-image-large" />
       </div>
 
-      <a name="L"></a>
-      <h3>Conclusion</h3>
+      <h2 id="L">Conclusion</h2>
       <p>
         They say, "may you live in interesting times," and the beautiful thing
         is that as long as you lock in on the innovations happening in the Tech
@@ -1088,121 +1098,215 @@
         our pockets.
       </p>
       <p>
-        I'll do my best to continue soaking in the newest innovations, learning,
-        and doing what I find most rewarding in following, understanding, and
-        projecting forward the innovations being made around the world in
-        computation.
+        I'll do my best to continue soaking in the newest innovations,
+        learning, and doing what I find most rewarding in following,
+        understanding, and projecting forward the innovations being made around
+        the world in computation.
       </p>
       <p>
         To track our transition from the age of Jobs to that of Jensen.
       </p>
 
-      <a name="M"></a>
-      <h3>Sources</h3>
-
-      <ul>
-        <li>
+      <!-- References Section (reformatted to match the new_monetarism style) -->
+      <h2 id="M">Sources</h2>
+      <div class="references">
+        <div class="bullet">
+          <span>1.</span>
           <a href="https://arxiv.org/pdf/2001.08361"
             >Scaling Laws for Neural Language Models (Kaplan et al. 2020)</a
           >
-        </li>
-        <li>
-          <a href="https://www.constellationr.com/blog-news/insights/meta-launches-llama-31-450b-and-zuckerberg-its-personal"
+        </div>
+        <div class="bullet">
+          <span>2.</span>
+          <a
+            href="https://www.constellationr.com/blog-news/insights/meta-launches-llama-31-450b-and-zuckerberg-its-personal"
             >Constellation Research: llama3.1</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>3.</span>
           <a href="https://the-decoder.com/gpt-4-architecture-datasets-costs-and-more-leaked/"
             >The Decoder: GPT-4 Architecture</a
           >
-        </li>
-        <li>
-          <a href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf"
+        </div>
+        <div class="bullet">
+          <span>4.</span>
+          <a
+            href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf"
             >NVIDIA DGX-2 Datasheet</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>5.</span>
           <a href="https://openreview.net/pdf?id=cw-EmNq5zfD"
             >Group-based Interleaved Pipeline Parallelism for Large DNN
             Training (Yang et al. 2022)</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>6.</span>
           <a href="https://arxiv.org/pdf/1909.08053"
             >Megatron-LM: Training Multi-Billion Parameter Language Models
             Using Model Parallelism (Shoeybi et al. 2020)</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>7.</span>
           <a href="https://arxiv.org/pdf/2402.17764"
             >The Era of 1-bit LLMs (Ma et al. 2024)</a
           >
-        </li>
-        <li>
-          <a href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus"
-            >BFloat16: The secret to high performance on Cloud TPUs</a
+        </div>
+        <div class="bullet">
+          <span>8.</span>
+          <a
+            href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus"
           >
-        </li>
-        <li>
+            BFloat16: The secret to high performance on Cloud TPUs
+          </a>
+        </div>
+        <div class="bullet">
+          <span>9.</span>
           <a href="https://arxiv.org/pdf/1910.02054"
             >ZeRO: Memory Optimizations Towards Training Trillion Parameter
             Models (Rajbhandari et al. 2020)</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>10.</span>
           <a href="https://arxiv.org/pdf/2306.10209"
             >ZeRO++: Extremely Efficient Collective Communication for Giant
             Model Training (Wang et al. 2023)</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>11.</span>
           <a href="https://arxiv.org/pdf/2104.07857"
             >ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale
             Deep Learning (Rajbhandari et al. 2021)</a
           >
-        </li>
-        <li>
-          <a href="https://www.microsoft.com/en-us/research/blog/zero-infinity-and-deepspeed-unlocking-unprecedented-model-scale-for-deep-learning-training/"
-            >ZeRO-Infinity and DeepSpeed: Unlocking model scale for DL
-            training</a
+        </div>
+        <div class="bullet">
+          <span>12.</span>
+          <a
+            href="https://www.microsoft.com/en-us/research/blog/zero-infinity-and-deepspeed-unlocking-unprecedented-model-scale-for-deep-learning-training/"
           >
-        </li>
-        <li>
+            ZeRO-Infinity and DeepSpeed: Unlocking model scale for DL
+            training
+          </a>
+        </div>
+        <div class="bullet">
+          <span>13.</span>
           <a href="https://arxiv.org/pdf/2101.06840"
             >ZeRO-Offload: Democratizing Billion-Scale Model Training (Ren et
             al. 2021)</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>14.</span>
           <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/"
             >DeepSpeed: Extreme-scale Model Training for Everyone</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>15.</span>
           <a href="https://medium.com/@vishal09vns/sparse-attention-dad17691478c"
             >Demystifying Sparse Attention: A Comprehensive Guide from
             Scratch</a
           >
-        </li>
-        <li>
-          <a href="https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/"
-            >ZeRO-2 & DeepSpeed: Shattering <Btn></Btn>arriers of DL Speed &
+        </div>
+        <div class="bullet">
+          <span>16.</span>
+          <a
+            href="https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/"
+          >
+            ZeRO-2 &amp; DeepSpeed: Shattering Barriers of DL Speed &amp;
             Scale</a
           >
-        </li>
-        <li>
+        </div>
+        <div class="bullet">
+          <span>17.</span>
           <a href="https://www.youtube.com/watch?v=zqsOEzKZX2Y"
-            >[YT] ZeRO & Fastest BERT: Increasing the Scale and Speed of Deep
-            Learning Training in DeepSpeed</a
+            >[YT] ZeRO &amp; Fastest BERT: Increasing the Scale and Speed of
+            Deep Learning Training in DeepSpeed</a
           >
-        </li>
-      </ul>
+        </div>
+      </div>
 
-      <script src="copy-paste.js"></script>
-    </main>
+      <h2>To cite this blog post:</h2>
+      <div
+        class="code-container citation-code"
+        onmousemove="handleMouseMove(event, 'citation-copy-button')"
+      >
+        <div class="code-content">
+            <button id="citation-copy-button" class="copy-button" onclick="copyCitation(event)">
+            <svg id="citation-copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg id="citation-check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            </button>
+          <pre><code><span class="keyword">@misc</span>{<span class="parameter">bradley-distributed-2025</span>,
+    <span class="parameter">title</span>=<span class="operator">{</span><span class="string">From Jobs To Jensen</span><span class="operator">}</span>,
+    <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
+    <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
+    <span class="parameter">month</span>=<span class="operator">{</span><span class="string">oct</span><span class="operator">}</span>,
+    <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
+    <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
+}</code></pre>
+        </div>
+      </div>
+    </div>
+    </div>
 
-    <footer>
-      <p>All opinions are my own and do not represent those of an employer.</p>
-    </footer>
+    <!-- Scroll-to-top Button (mirroring the template) -->
+    <div
+      id="scrollToTop"
+      class="fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer"
+      onclick="scrollToTop()"
+    >
+      <div class="bg-zinc-800 hover:bg-zinc-700 rounded-full p-3 shadow-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-zinc-200"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Sidebar TOC (mirroring the template) -->
+    <div id="sidebar-toc" class="sidebar-toc">
+      <div class="sidebar-toc-content">
+        <div class="sidebar-toc-header">Contents</div>
+        <div class="sidebar-toc-links">
+          <a href="#A">Introduction</a>
+          <a href="#B">Motivation</a>
+          <a href="#C">Baseline Physical Tradeoffs</a>
+          <a href="#D">3D Parallelism</a>
+          <a href="#E">Data parallelism</a>
+          <a href="#F">Pipeline parallelism</a>
+          <a href="#G">Tensor parallelism</a>
+          <a href="#H">What even is a Parameter?</a>
+          <a href="#I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</a>
+          <a href="#J">Off-GPU, Intra-Node</a>
+          <a href="#K">Further Miscellaneous ZeRO</a>
+          <a href="#L">Conclusion</a>
+          <a href="#M">Sources</a>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="gameOfLife" class="game-of-life" width="200" height="400"></canvas>
+    <script src="../functionality.js"></script>
   </body>
 </html>

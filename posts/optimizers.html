@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bb.radz</title>
-    <link rel="icon" type="image/x-icon" href="../pics/pattern.ico" />
-    <link rel="stylesheet" href="article-styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>bb.radz optimizer taxonomy</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script
       id="MathJax-script"
@@ -18,135 +13,126 @@
     ></script>
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <h1>
-          <a class="landingpage-button" href="../index.html">Ben Bradley</a>
-        </h1>
-        <div class="header-horizontal">
-          <div class="left-horizontal">
-            <p>Riding the Wave of Computation</p>
-            <!-- <a href="/about"><p>About</p></a> -->
-          </div>
-          <div class="logo-horizontal">
-            <a href="https://x.com/SLENDERdude441" target="_blank"
-              ><p>
-                <img
-                  src="../pics/x6.png"
-                  alt="x logo"
-                  style="width: 15px; height: 14px"
-                /></p
-            ></a>
-            <a href="https://github.com/bbradz" target="_blank"
-              ><p>
-                <img
-                  src="../pics/git.png"
-                  alt="github logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.linkedin.com/in/bbradz/" target="_blank"
-              ><p>
-                <img
-                  src="../pics/linkedin.png"
-                  alt="linkedin logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a
-              href="https://open.spotify.com/user/slender_dude441"
-              target="_blank"
-              ><p>
-                <img
-                  src="../pics/spotify2.png"
-                  alt="spotify logo"
-                  style="width: 15px; height: 15px"
-                /></p
-            ></a>
-            <a href="https://www.instagram.com/bbradz_/" target="_blank"
-              ><p>
-                <img
-                  src="../pics/ig.jpeg"
-                  alt="ig logo"
-                  style="width: 17px; height: 15px"
-                /></p
-            ></a>
-          </div>
-        </div>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-section">
+        <a href="/about" class="logo">BBradz</a>
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Posts</a>
+        <a href="../reading.html" class="nav-link">Library</a>
+        <a href="/profile" class="nav-link">Psychological Profile</a>
+        <a href="../about.html" class="nav-link">About</a>
+      </nav>
     </header>
 
-    <main>
-      <h1 style="font-size: 32px; margin-bottom: 0px">
-        Optimizers 🥾 ⎯ Towards a full Taxonomy
-      </h1>
-      <p style="margin-top: 5px; font-size: 12px">
-        <strong>Word Count: 7,366</strong>
-      </p>
-      <div class="nav" style="font-size: 14px">
-        <ol>
-          <li><a href="#A">Prelude</a></li>
-          <li><a href="#B">Introduction</a></li>
-          <ol>
-            <li><a href="#C">Explaining Terms</a></li>
-            <li><a href="#D">Towards a Taxonomy of Optimizers</a></li>
-          </ol>
-          <li><a href="#E">First-Order Optimizers</a></li>
-          <ol>
-            <li><a href="#F">SGD-Type</a></li>
-            <li><a href="#G">Adam-Type</a></li>
-            <li><a href="#H">Triple Moment Adam-Type Optimizers</a></li>
-          </ol>
-          <li><a href="#I">Second-Order Optimizers</a></li>
-          <li><a href="#J">Information-Geometric Optimizers</a></li>
-          <li><a href="#K">Conclusions </a></li>
-          <li><a href="#L">Sources</a></li>
-        </ol>
+    <!-- Article -->
+    <div class="container">
+      <h1>Optimizers 🥾 ⎯ Towards a full Taxonomy</h1>
+
+      <div class="header-content">
+        <div class="header-left">
+          <div class="metadata">
+            Benjamin Bradley, Sun Sep 14 2024 • 37 min read (7.4K words)
+          </div>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Optimization</span>
+          </div>
+        </div>
+        <a href="#" class="back-link" onclick="history.back(); return false;">Back</a>
+
       </div>
 
-      <hr />
+      <div class="toc-container" onclick="toggleTOC()">
+        <div class="toc-header">
+          <span>▶</span>
+          <span><b>Table of Contents</b></span>
+        </div>
+        <div class="toc-content" id="toc">
+          <a href="#prelude">Prelude</a>
+          <a href="#introduction">Introduction</a>
+          <a href="#explaining-terms">&nbsp;&nbsp;Explaining Terms</a>
+          <a href="#taxonomy">&nbsp;&nbsp;Towards a Taxonomy of Optimizers</a>
+          <a href="#first-order">First-Order Optimizers</a>
+          <a href="#sgd-type">&nbsp;&nbsp;SGD-Type</a>
+          <a href="#adam-type">&nbsp;&nbsp;Adam-Type</a>
+          <a href="#triple-moment"
+            >&nbsp;&nbsp;Triple Moment Adam-Type Optimizers</a
+          >
+          <a href="#second-order">Second-Order Optimizers</a>
+          <a href="#info-geometric">Information-Geometric Optimizers</a>
+          <a href="#conclusions">Conclusions</a>
+          <a href="#sources">References</a>
+        </div>
+      </div>
 
-      <a name="A"></a>
-      <h3>Prelude:</h3>
+      <h3 id="prelude">Prelude:</h3>
 
       <p>
         Last Sunday I released an article onto this blog breaking down at a
         moderately exhaustive level the new <i>Algoperf</i> optimizer benchmark.
-        Given that my RL research with the Physics department at Brown
-        University has been winding down I've strongly been looking for some way
-        to transition my attention over towards the hard-CS side of things,
-        where my more truly heart is, I really enjoyed writing that piece and it
-        served a real purpose in my life which is part of why I'm back here
-        today writing about the field of study which spawned <i>Algoperf</i>,
-        Optimizers!
+        Given that my RL research with the Physics department at Brown University has been winding 
+        down I've strongly been looking for some way to transition my attention over towards 
+        the hard-CS side of things, where my more truly heart is, I really enjoyed writing that 
+        piece and it served a real purpose in my life which is part of why I'm back here 
+        today writing about the field of study which spawned <i>Algoperf</i>, Optimizers!
       </p>
       <p>
-        Machine Learning as a field is absolutely ginormous, ginormous enough in
-        fact that I can't avoid a feeling of intense humility whenever I talk
-        about it; It amazes me how little of it's breadth, despite my efforts, I
-        can comfortably lay claim to understanding at a nuts & bolts level. When
-        I was writing about <i>Algoperf</i> I hadn't intended to dedicate a
-        whole article to the topic, moreso it proved to be an inavoidable topic
-        on a much longer path, a path which I intend to continue following
-        today.
+        Machine Learning as a field is absolutely ginormous, ginormous enough in fact that I
+        can't avoid a feeling of intense humility whenever I talk about it; It amazes me how little of 
+        it's breadth, despite my efforts, I can comfortably lay claim to understanding at
+        a nuts & bolts level. When I was writing about <i>Algoperf</i> I hadn't intended 
+        to dedicate a whole article to the topic, moreso it proved to be an inavoidable 
+        topic on a much longer path, a path which I intend to continue following today.
       </p>
 
       <p>
         It always struck me as surprising that there isn't more attention
-        regularly given to the class of algorithm tasked with controlling how
-        our models progress from the point of disfunction to world-changing.
-        Optimizers are special pieces of work with the potential to have huge
-        reprecussions on every AI project but all to often end out as a meer
-        item on the checklist for assembling this week's in-vogue iteration of a
-        Transformer.
+        regularly given to the class of algorithm tasked with controlling how our 
+        models progress from the point of disfunction to world-changing. 
+        Optimizers are special pieces of work with the potential
+        to have huge reprecussions on every AI project but all to often end out as a
+        meer item on the checklist for assembling this week's in-vogue 
+        iteration of a Transformer.
       </p>
 
       <p>
-        In this article, I aspire to follow that intellectual curiosity and
+        In this article, I aspire to follow that intellectual curiosity and 
         topple that haze of mystery for myself and, ideally (if I can word it
-        well enough) you the reader. In the process I intend to outline a brief
-        top-down look at many, though not all, of the Optimization algorithms
-        floating around in the literature at the moment.
+        well enough) you the reader. In the process I intend to outline a 
+        brief top-down look at many, though not all, of the Optimization 
+        algorithms floating around in the literature at the moment.
       </p>
 
       <a name="B"></a>
@@ -158,100 +144,99 @@
           class="responsive-image-large"
         />
       </div>
-      <h3>Introduction:</h3>
+      <h3 id="introduction">Introduction:</h3>
 
       <p>
         Have you ever been hiking? Yesterday I was standing 833 meters above the
-        rolling forests of New Hampshire aside a newly emptied sandwich bag when
+        rolling forests of New Hampshire aside a newly emptied sandwich bag when 
         the glimmer of an unlikely thought came to me:
       </p>
 
       <p><i>Oh god, now how the h**l am I gonna get down.</i></p>
 
-      <p>We've all been there and fascinatingly so has ChatGPT.</p>
-
       <p>
-        If you allow me a bit of anthropomorizing: ChatGPT found itself, some
-        time around the middle of 2022, among the peaks of a mountain range
-        bigger and more complicated than you or I could ever visualize. The
-        instant that a model is initialized it's granted some random set of
-        weights, placed into a mind-bogglingly complex range of adjustable
-        parameters, has it's map siezed, fog descends over the landscape, and
-        (atleast in ChatGPTs case) holding the hopes of a million high schoolers
-        are placed squarely on it's back relying on it descending to life in the
-        valley below. That's the high dimensional, and even higher stakes, world
-        of optimization algorithms.
+        We've all been there and fascinatingly so has ChatGPT. 
+      </p>
+    
+      <p>
+        If you allow me a bit of anthropomorizing: ChatGPT found itself, 
+        some time around the middle of 2022, among the
+        peaks of a mountain range bigger and more complicated than you or I
+        could ever visualize. The instant that a model is initialized it's granted
+        some random set of weights, placed into a mind-bogglingly complex range of
+        adjustable parameters, has it's map siezed, fog descends over the landscape, 
+        and (atleast in ChatGPTs case) holding the hopes of a million high schoolers 
+        are placed squarely on it's back relying on it descending to life in the valley
+        below. That's the high dimensional, and even higher stakes, world of 
+        optimization algorithms. 
       </p>
 
       <p>
-        By the nature of this topic (and because it's fun) over the course of
-        this article I will be breaking out a healthy helping of math but I open
-        up with this analogy to Hiking for a good reason. I promise you that at
-        it's most basic (except maybe in the case of our third category of
-        optimizers) if you boil the math down to applications to the analogy of
-        a hiker in the hills of a complex mountain range needing to measure and
-        descend their way to the lowest point of the valley below that 90% of
-        this article will slot together with ease. With that said, let's jump
-        in.
+        By the nature of this topic (and because it's fun) over the course of this 
+        article I will be breaking out a healthy helping of math but I open up with 
+        this analogy to Hiking for a good reason. I promise you that at it's most
+        basic (except maybe in the case of our third category of optimizers) if 
+        you boil the math down to applications to the analogy of a hiker in the 
+        hills of a complex mountain range needing to measure and descend their 
+        way to the lowest point of the valley below that 90% of this article will 
+        slot together with ease. With that said, let's jump in.
       </p>
 
       <a name="C"></a>
-      <h4>Explaining Terms:</h4>
+      <h4 id="explaining-terms">Explaining Terms:</h4>
 
       <p>
-        The first step in this explanation probably ought be laying down a bit
-        of an explanation of what optimizers would be, starting with what the
-        valleys these models are being tasked with descending even are in the
-        first place. When a model is initialized there's a definable group
-        containing all the possible arrangements of weights our model could
-        possible take on and for each of those weights there's some accuracy our
-        model would show on our chosen task if it were assigned that particular
-        arrangment of weights. In this metaphor the domain of possible weight
-        arrangements is our metaphorical surface, the random initialization of
-        those weights is the point on that surface our hiker starts at, our
-        optimization algorithm is the method our hiker is set to follow in order
-        to descend the elevation of our surface, and our elevation at any given
-        point on that surface is the number of mistakes our model is making at
-        each of those weight arrangements along the surface. The goal: Get to
-        the bottom of the valley to some weight combination which minimizes
-        mistakes.
+        The first step in this explanation probably ought be laying 
+        down a bit of an explanation of what optimizers would be, starting with 
+        what the valleys these models are being tasked with descending even are 
+        in the first place. When a model is initialized there's a definable group containing all the possible
+        arrangements of weights our model could possible take on and for each of those
+        weights there's some accuracy our model would show on our chosen task 
+        if it were assigned that particular arrangment of weights. In this
+        metaphor the domain of possible weight arrangements is our metaphorical surface, 
+        the random initialization of those weights is the point on that surface our
+        hiker starts at, our optimization algorithm is the method our hiker is set 
+        to follow in order to descend the elevation of our surface, 
+        and our elevation at any given point on that surface is the number of mistakes 
+        our model is making at each of those weight arrangements along the surface. 
+        The goal: Get to the bottom of the valley to some weight combination 
+        which minimizes mistakes.
       </p>
 
       <p>
         Much of our challenge comes from the quirk that while it's relatively
-        uncomplicated from a computational cost perspective to have our model
-        look at the exact point where it's standing and figure out which
-        direction directly adjacent to it will get it most instantly downhill
-        it's
+        uncomplicated from a computational cost perspective to have our model look at the
+        exact point where it's standing and figure out which direction directly
+        adjacent to it will get it most instantly downhill it's
         <i>tremendously</i> expensive to look forward and observe the shape of
         the hill as a whole, again imagine the valley as being covered in a
-        thick fog drowning out all visibility. Since analyzing the whole surface
-        is so expensive we don't actually know what the lowest point on our
-        surface is which makes it easy even some relatively simple valley shapes
-        to descend into a bowl which while not the lowest possible point doesn't
-        have any direct path down out, this is called a local minimum, a sort of
-        pit we risk falling into. Even if we do find our way to a global minimum
-        (aka the bottom of the valley) we may end out having taken a winding and
-        inefficient path down. The math term relevant to introduce here is the
-        <i>gradient</i> which describes essentially which direction the slope
-        under our model's feet is pointing and how steep that slope is.
+        thick fog drowning out all visibility. Since analyzing the whole surface is
+        so expensive we don't actually know what the lowest point on our surface is
+        which makes it easy even some relatively simple valley shapes to descend into 
+        a bowl which while not the lowest possible point doesn't have any direct path 
+        down out, this is called a local minimum, a sort of pit we risk falling into. 
+        Even if we do find our way to a global minimum (aka the bottom of the valley) 
+        we may end out having taken a winding and inefficient path down. 
+        The math term relevant to introduce here is the <i>gradient</i> which 
+        describes essentially which direction the slope under our model's feet 
+        is pointing and how steep that slope is.
       </p>
 
       <p>
         By the multivariate nature of these surfaces they inevitably take on a
         tremendous variety of different shapes and our goal when designing or
         picking an optimizer is to find an algorithm which can traverse all of
-        the surfaces relevant in solving the problems we care to solve. There
-        are quite a few types of surfaces which may be useful \ relevant
-        examples in describing the possible challenges these optimizers need to
-        be equipped for. Three of the most commonly referred to challenge
+        the surfaces relevant in solving the problems we care to solve. 
+        There are quite a few types of surfaces which may be useful \ relevant
+        examples in describing the possible challenges these optimizers need 
+        to be equipped for. Three of the most commonly referred to challenge 
         surface shapes (which we'll return to throughout this article) for
         existing optimizers, being the following:
       </p>
 
       <div class="centered-item-holder">
         <img
-          src="../pics/Screenshot 2024-08-15 at 12.55.05 PM.png"
+          src=".../pics/Screenshot 2024-08-15 at 12.55.05 PM.png"
           alt=""
           class="responsive-image-large"
         />
@@ -277,19 +262,18 @@
 
       <p>
         Take a moment to analyze these three functions since we'll be
-        referencing them repeatedly. One of the important parts is (looking at
-        the Ackley & Rastrigin functions) that there are local dips built into
-        these surfaces which cause naive approaches of following the fastest
-        immediate direction downward to fail. Put another way, if we were to
-        just step in whichever direction our direct surroundings present us we
-        would likely be left stuck in suboptimal local minimums! That's really
-        the most important detail beyond the general shape of each function
-        relevant to take away. Now on to discussing the stars of the show, the
-        Optimizer algorithms themselves.
+        referencing them repeatedly. One of the important parts is (looking at 
+        the Ackley & Rastrigin functions) that there are local dips built
+        into these surfaces which cause naive approaches of following the fastest 
+        immediate direction downward to fail. Put another
+        way, if we were to just step in whichever direction our direct
+        surroundings present us we would likely be left stuck in suboptimal
+        local minimums! That's really the most important detail beyond the
+        general shape of each function relevant to take away. Now on to
+        discussing the stars of the show, the Optimizer algorithms themselves.
       </p>
 
-      <a name="D"></a>
-      <h4>Towards a Taxonomy of Optimizers:</h4>
+      <h4 id="taxonomy">Towards a Taxonomy of Optimizers:</h4>
 
       <div class="centered-item-holder">
         <img
@@ -307,12 +291,13 @@
 
       <p>
         Optimizer design breaks down into 3 basic categories, the first of which
-        makes up by completely abritraty approximation roughly <i>95%</i>
-        percent of the optimizers in use today in-industry and therefore will be
-        getting the majority of the attention here. The other two categories are
-        still interesting though and will be getting their justice alongside as
-        a bit of a explanation of where they've been found to be useful (hint:
-        Physics-Informed NNs, Non Real-valued NNs, time-variant Spikey NNs).`
+        makes up by completely abritraty approximation roughly <i>95%</i> 
+        percent of the optimizers in use today in-industry
+        and therefore will be getting the majority of the attention here. The
+        other two categories are still interesting though and will be getting
+        their justice alongside as a bit of a explanation of where they've been
+        found to be useful (hint: Physics-Informed NNs, Non Real-valued NNs,
+        time-variant Spikey NNs).
       </p>
 
       <p>These three basic categories are:</p>
@@ -340,8 +325,8 @@
         <b>2. Second-order optimizers</b> which consider both the first
         <i>and</i> second derivatives of the surface. Second-order algorithms
         are built around adding in consideration for the greater curvature of
-        the surface on top of the first-order gradient, analogous to clearing a
-        bit of the fog away from the valley to see the broader shape of the
+        the surface on top of the first-order gradient, analogous to clearing a bit
+        of the fog away from the valley to see the broader shape of the
         territory. These too have two primary subfamilies of algorithms:
       </p>
       <ul>
@@ -350,36 +335,32 @@
       </ul>
 
       <p>
-        Second-order optimizers seem to have been found to work well on Deep
-        CNNs and GNNs but aren't used as much on most of the large networks in
-        use today because of the signifigant computational overhead in
-        calculating (or even approximating) that second-order view on the
-        problem.
+        Second-order optimizers seem to have been found to work well on Deep CNNs and
+        GNNs but aren't used as much on most of the large networks in use today 
+        because of the signifigant computational overhead in calculating (or even 
+        approximating) that second-order view on the problem.  
       </p>
 
       <p>
         <b>3. Finally, Information-Geometric optimizers.</b> The dark sorcery of
         optimizer algorithms, information-geometric optimizers choose to
         reimagine the whole surface as more complicated mathematical objects,
-        drawing on various branches of differential geometry and abstract
-        algebra to bear witness more information about the problem in less
-        computation via manifold-level inference. I'll break a bit into the math
-        behind these cool pieces of machinery but we'll save that for the end
-        since it's the most out there of all three classes.
+        drawing on various branches of differential geometry and abstract algebra to bear
+        witness more information about the problem in less computation via
+        manifold-level inference. I'll break a bit into the math behind
+        these cool pieces of machinery but we'll save that for the end since
+        it's the most out there of all three classes.
       </p>
 
       <p>
         If your looking for a deeper breakdown on the operations behind any of
-        the optimizers we'll be breaking down throughout this article I'll be
-        linking them in the sources section at the end of this article, for now
-        let's get to explaining.
+        the optimizers we'll be breaking down throughout this article I'll be linking 
+        them in the sources section at the end of this article, for now let's get to
+        explaining.
       </p>
 
-      <a name="E"></a>
-      <h3>First-Order Optimizers</h3>
-
-      <a name="F"></a>
-      <h4>SGD-Type</h4>
+      <h3 id="first-order">First-Order Optimizers</h3>
+      <h4 id="sgd-type">SGD-Type</h4>
 
       <p>
         The simplest first-order optimizer out there, the one which you likely
@@ -390,10 +371,10 @@
         information we can glean from the instantaneous <i>gradient</i> of our
         model's position in that weight space derived from a random (aka
         <i>Stochastic</i>) sampling of the full problem. Weight adjustments made
-        by pure SGD don't take into account any history of past adjustments.
-        Moreover SGD often just measure how our model should descend the
-        gradient based on a approximation of the true gradient gleaned from a
-        small number of examples components of the full challenge.
+        by pure SGD don't take into account any history of past adjustments. Moreover 
+        SGD often just measure how our model should descend the gradient based on a
+        approximation of the true gradient gleaned from a small number of
+        examples components of the full challenge.
       </p>
 
       <p>The following is the formula for <b>SGD</b>:</p>
@@ -413,13 +394,13 @@
         One of the primary benefits of SGD is that it's got an extremely low
         overhead in terms of computational cost since it takes into account as
         little information as possible (only one component of the surface shape
-        over only a few examples) but unfortunately that strength simultaneously
-        opens up the primary weakness of SGD, a tendency to get trapped in bowls
-        or regions of consistent small gradients where step sizes become
-        miniscule. SGD doesn't glean the true shape of the function it's
-        traversing as it takes steps trading off a lower memory for quicker
-        iterations. One of the first additions made to SGD back in 1980 was the
-        consideration of a momentum term through Nesterov accelerated gradients.
+        over only a few examples) but unfortunately that strength simultaneously opens up
+        the primary weakness of SGD, a tendency to get trapped in bowls or 
+        regions of consistent small gradients where step sizes become miniscule. 
+        SGD doesn't glean the true shape of the function it's traversing 
+        as it takes steps trading off a lower memory for quicker iterations. 
+        One of the first additions made to SGD back in 1980 was the consideration 
+        of a momentum term through Nesterov accelerated gradients.
       </p>
 
       <div class="centered-item-holder">
@@ -441,11 +422,11 @@
       <p>
         Nesterov accelerated gradient (NAG) optimization focuses on enhancing
         convergence in gradually sloped portions of functions through adding
-        into the SGD gradient estimation loop a small partial step in a
-        direction proportional to the running sum of all the past gradients
-        observed by our model. Through imposing an additive step proportional to
-        the momentum of the past observed gradients the weight update rule
-        becomes the following:
+        into the SGD gradient estimation loop a small partial step in a direction
+        proportional to the running sum of all the past gradients observed by
+        our model. Through imposing an additive step proportional to the momentum
+        of the past observed gradients the weight update rule becomes the
+        following:
       </p>
 
       \[ \begin{gather} &\theta_{t+1} = \theta_t + v_{t+1} \\ \\ &v_{t+1} = \mu
@@ -454,27 +435,26 @@
       <p>
         Nesterov momentum distills the convexity of our surface via some
         beautiful mathematical grounding in the Nesterov condition for measuring
-        the convexity of functions (aka how far from linear our function is),
-        essentially amounting to the model realizing that when it already
-        observed a long string of similarly pointed gradients it should take
-        larger steps in that direction next time around. As Nesterov mementum
-        describes and accounts for function convexity very effectively through
-        it's roots in the Nesterov condition it's a concept which ends up
-        popping up throughout all sorts of optimizer algorithms but this exact
-        formula wasn't the primary one which caused the technique of momentum to
-        truly take off in practice. For that we look to a different optimizer
-        algorithm, AdaGrad...
+        the convexity of functions (aka how far from linear our function is), essentially
+        amounting to the model realizing that when it already observed a long
+        string of similarly pointed gradients it should take larger steps
+        in that direction next time around. As Nesterov mementum describes and
+        accounts for function convexity very effectively through it's roots in the
+        Nesterov condition it's a concept which ends up popping up throughout
+        all sorts of optimizer algorithms but this exact formula wasn't the primary 
+        one which caused the technique of momentum to truly take off in practice. 
+        For that we look to a different optimizer algorithm, AdaGrad...
       </p>
 
       <p>
-        AdaGrad differs from SGD with NAG as it unlocked a higher convergence
+        AdaGrad differs from SGD with NAG as it unlocked a higher convergence 
         rate through moving that momentum-approximating summation of past
         gradients away from it's own independent partial step and into composing
-        an adaptive factor for informing a scaling of the step size. By
-        unlocking adaptive step sizes in relation to the momentum of the past
-        gradients AdaGrad manages to compress the same amount of progress into
-        less steps, allowing for an increase in the learning rate and reduction
-        in time consumed.
+        an adaptive factor for informing a scaling of the step size. 
+        By unlocking adaptive step sizes in relation to the momentum of 
+        the past gradients AdaGrad manages to compress the same amount of progress
+        into less steps, allowing for an increase in the learning rate and
+        reduction in time consumed.
       </p>
 
       <p>The following is the formula for <b>AdaGrad</b>:</p>
@@ -485,20 +465,18 @@
       <p>
         As you can see AdaGrad compiles together a \(G \) term which functions
         as a trailing sum of the past gradients, importantly preserving signs,
-        where increases in \(G \) (meaning that updates have been made
-        repeatedly in the same direction) translate to decrease in size of steps
-        taken. In this way AdaGrad adapts to be cautious when it's descending
-        down a persistant slope so as to not overshoot the ending of that slope,
-        a smartly adaptive strategy for boiling the expected convexity of a
-        slope's curvature into the steps actually along that slope, again,
-        providing empirical gains. AdaGrad still, as should be expected, is far
-        from perfect however and thinking about the case of local minimums while
-        those cautious step sizes can avoid falling into local minimums through
-        not immediately moving into them into those local minimum bowls it also
-        neuters the step size to be able to rise back out when the algorithm
-        does mess up and step in a local minimum. AdaGrad, therefore, while
-        better than SGD still isn't fundamentally guaranteed to converge to the
-        global minimum's neighborhood.
+        where increases in \(G \) (meaning that updates have been made repeatedly
+        in the same direction) translate to decrease in size of steps taken. In this way
+        AdaGrad adapts to be cautious when it's descending down a persistant
+        slope so as to not overshoot the ending of that slope, a smartly
+        adaptive strategy for boiling the expected convexity of a slope's curvature
+        into the steps actually along that slope, again, providing empirical gains. 
+        AdaGrad still, as should be expected, is far from perfect however and thinking about the 
+        case of local minimums while those cautious step sizes can avoid falling into 
+        local minimums through not immediately moving into them into those local minimum 
+        bowls it also neuters the step size to be able to rise back out when the algorithm 
+        does mess up and step in a local minimum. AdaGrad, therefore, while better than SGD 
+        still isn't fundamentally guaranteed to converge to the global minimum's neighborhood.
       </p>
 
       <p>
@@ -509,27 +487,27 @@
       \[ G = g_0 + g_1 + g_2 + ... + g_n \]
 
       <p>
-        This way of compiling gradients worryingly considers the initial
-        gradient values equally to the most recent observed gradients, meaning
-        that extreme or misrepresentative initial gradients can often lead to
-        our model having overly conservative or aggressive step sizes for the
-        entire rest of their training process.
+        This way of compiling gradients worryingly considers the initial gradient
+        values equally to the most recent observed gradients, meaning that
+        extreme or misrepresentative initial gradients can often lead to our
+        model having overly conservative or aggressive step sizes for the entire
+        rest of their training process.
       </p>
 
       <p>
         One change which can be made to AdaGrad is, again, to change how we put
         together our running sum of gradients and rethink how we utilize that
-        running sum for our weight updates. This is the alteration we observe
-        one version of in the AdaDelta algorithm.
+        running sum for our weight updates. This is the alteration we observe one 
+        version of in the AdaDelta algorithm.
       </p>
 
       <p>
         <b>AdaDelta</b> puts together an exponentially decaying running sum of
         the square of the gradients and a exponentially decaying running sum of
         the square of the actual changes made to each weight in our model. Next
-        AdaDelta takes the square root of both sums, and defines the step size
-        to be the ratio of the running weight change sum over the gradient sum.
-        In other words, we define the following set of additional functions:
+        AdaDelta takes the square root of both sums, and defines the step size to
+        be the ratio of the running weight change sum over the gradient sum. In
+        other words, we define the following set of additional functions:
       </p>
 
       \[ \begin{gather} &E[x^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \\ \\
@@ -542,14 +520,15 @@
       <p>
         In this way the rate of changing parameters is only slowed down when in
         recent memory there was dramatically larger gradients but our algorithm
-        gains the capacity to adaptively keep step sizes up for those weights
-        which have reliably, through those changes in the gradient, kept being
-        changed in a signifigant way. Expanding out the term for \( E[x] \) we
-        get the formula: \[ E[x]_n = (1-\rho)\rho^{n-1} g^2_0 +
-        (1-\rho)\rho^{n-2} g^2_1 + ... + (1-\rho)g_n^2 \] showing that (given
-        that \(\rho < 1 \)) past gradients gradually are scaled down in
-        relevance to the current update rule as they're weighting in the full
-        running sum is slowly decrease timestep by timestep.
+        gains the capacity to adaptively keep step sizes up for those weights 
+        which have reliably, through those changes in the gradient, kept being 
+        changed in a signifigant way.
+        Expanding out the term for \( E[x] \) we get the formula: \[ E[x]_n =
+        (1-\rho)\rho^{n-1} g^2_0 + (1-\rho)\rho^{n-2} g^2_1 + ... +
+        (1-\rho)g_n^2 \] showing that (given that \(\rho < 1 \)) past gradients 
+        gradually are scaled down in relevance to the current update rule as 
+        they're weighting in the full running sum is slowly decrease timestep by 
+        timestep.  
       </p>
 
       <p>
@@ -561,23 +540,23 @@
         traversals out of local pitfalls and dampening oscillations in the
         vertical directions) while preserving room for individual weights to
         update (or not update) according to what their individual running
-        momentums call for.
+        momentums call for. 
       </p>
       <p>
-        One of the key applications of this algorithm is in cases of models with
-        many weights where some weights may be exercised only sparsely during
-        training, through dampening the updates of weights which occur more
-        often in comparison to weights which have rarer distinct gradients, the
-        update rule compensates to make larger adjustments to those weights
-        which rarely show up as relevant compared to those let's say
-        <i>overexposed</i> weights, this allows for a higher proportional
-        consideration of those niche weights which filters down into higher
-        performance on the deep networks which we see everywhere nowadays.
-        AdaDelta has been shown to work well on the 2nd and 3rd challenging
-        valley shapes for optimizers, to take minimially more computation than
-        pure gradient descent, to be robust to dramatic gradients, noise, and a
-        good degree of network choices, all without need for a learning rate
-        (\(\eta \)) hyperparameter!
+        One of the key applications of this algorithm is in
+        cases of models with many weights where some weights may be exercised
+        only sparsely during training, through dampening the updates of weights
+        which occur more often in comparison to weights which have rarer
+        distinct gradients, the update rule compensates to make larger adjustments to
+        those weights which rarely show up as relevant compared to those let's say
+        <i>overexposed</i> weights, this allows for a higher proportional consideration of
+        those niche weights which filters down into higher performance on the
+        deep networks which we see everywhere nowadays. AdaDelta has been shown
+        to work well on the 2nd and 3rd challenging valley shapes for
+        optimizers, to take minimially more computation than pure gradient
+        descent, to be robust to dramatic gradients, noise, and a good degree of
+        network choices, all without need for a learning rate (\(\eta \))
+        hyperparameter!
       </p>
 
       <p>
@@ -614,13 +593,12 @@
         of optimizer design...
       </p>
 
-      <a name="G"></a>
-      <h4>Adam-Type</h4>
+      <h4 id="adam-type">Adam-Type</h4>
 
       <p>
         <b>Adaptive Moment (Adam) </b> optimizers expand the scope of
-        information being tracked to consider two "moment" views from the trail
-        of past observed gradients, both of which utilize AdaGrad's method of
+        information being tracked to consider two "moment" views from the trail of past
+        observed gradients, both of which utilize AdaGrad's method of
         exponentially decaying summation and together provide the optimizer the
         ability to account for simultaneously the jaggedness of gradient change
         & standardness of direction of that gradient change.
@@ -635,18 +613,18 @@
 
       <p>
         The first moment which Adam takes care to compile is the
-        <i>mean</i> (\(\hat M_t \)) of the past gradients, which is generally
-        taken to imply when a long string of gradients has been pointing in the
-        same direction. The second moment which Adam compiles is the
-        <i>variance</i> (\(\hat V_t \)) of the gradient, aka a running sum of
-        the square of the gradients, isolating the steepness of the slope our
-        model is traversing at the expense of preserving the exact average
-        direction of those slopes. This is really a quite smart design, breaking
-        out two momentum terms where each informs tracks what information the
-        other is leaving aside, aka the consistency of the direction of the
-        gradients and the jaggedness of those gradients. Through this design
-        Adam's family of optimizers opens up room for considering a variety of
-        different function regions.
+        <i>mean</i> (\(\hat M_t \)) of the past gradients, which is 
+        generally taken to imply when a long string of gradients has been 
+        pointing in the same direction. The second moment which Adam
+        compiles is the <i>variance</i> (\(\hat V_t \)) of the gradient, aka a
+        running sum of the square of the gradients, isolating the steepness of
+        the slope our model is traversing at the expense of preserving the exact 
+        average direction of those slopes. 
+        This is really a quite smart design, breaking out two momentum terms 
+        where each informs tracks what information the other is leaving aside, 
+        aka the consistency of the direction of the gradients and the jaggedness 
+        of those gradients. Through this design Adam's family of optimizers opens up 
+        room for considering a variety of different function regions.
       </p>
 
       <p>
@@ -677,27 +655,27 @@
 
       <p>
         Finally in place of the usual gradient term in SGD, Adam uses the ratio
-        between that general direction being pointed to over the mean of the
-        past gradients divided by the square root (as a normalizing tool) of the
+        between that general direction being pointed to over the mean of the past
+        gradients divided by the square root (as a normalizing tool) of the
         variance in the jaggedness of those gradients. This ratio allows for
         larger steps in regions of consistently directional gradients on top of
-        a cautionary dampening when the gradients are jagged and might be taking
-        our model in more dramatic directions if followed fully. Adam can
-        famously solve all 3 example valley shapes (Ackley, Rastrigin,
-        Rosenbrock) as it's exponential moving averages (EMA) together decreases
-        propensity to fall into local minimums and open up adaptability to a
-        wide range of different surface dynamics.
+        a cautionary dampening when the gradients are jagged and might be taking 
+        our model in more dramatic directions if followed fully. Adam can famously
+        solve all 3 example valley shapes (Ackley, Rastrigin, Rosenbrock) as
+        it's exponential moving averages (EMA) together decreases propensity to
+        fall into local minimums and open up adaptability to a wide range of
+        different surface dynamics.
       </p>
 
       <p>
         I briefly mentioned \(L^2 \) regularized SGD (aka SGDW) as an out-there
         iteration of the SGD family of first-order optimizers. SGDW aspired to
         decreasing overfitting but failed through mucking up the update signal,
-        hurting convergence more than it served to improve generalization. Well
-        one of the benefits of the Adam formulation of optimization over SGD is
-        that the self-regularizing version of Adam has actually managed to live
-        up to those hopes! Enter the most popular spin off of the Adam class of
-        optimizers: AdamW.
+        hurting convergence more than it served to improve generalization. 
+        Well one of the benefits of the Adam formulation of optimization over 
+        SGD is that the self-regularizing version of Adam has actually managed 
+        to live up to those hopes! Enter the most popular spin off of the Adam 
+        class of optimizers: AdamW.
       </p>
 
       <p>The following is the formula for <b>AdamW</b>:</p>
@@ -706,16 +684,16 @@
       v_t}+\epsilon} + \lambda \theta_t \right] \]
 
       <p>
-        At it's core: AdamW integrates the scale of each weight being updated
-        into determining how much to adjust that weight by, decreasing each
+        At it's core: AdamW integrates the scale of each weight being updated into
+        determining how much to adjust that weight by, decreasing each
         weight by \(\eta \lambda \theta \) at each step and dragging all weights
-        closer to value around zero which propensity to take on a lopsided
-        weight combination for overfitting to the exact problem our model is
-        being trained on. AdamW's inserted weight reduction consideration has
-        been shown empirically to provide better gains in generalization than
-        just slapping the traditional \(L^2 \) Regularizer on top of traditional
-        Adam and has gained real popularity in-industry for its ability to
-        guarantee reliable model performance.
+        closer to value around zero which propensity to take on a lopsided weight
+        combination for overfitting to the exact problem our model is being trained 
+        on. AdamW's inserted weight reduction consideration has been shown 
+        empirically to provide better gains in generalization than just slapping 
+        the traditional \(L^2 \) Regularizer on top of traditional Adam and has 
+        gained real popularity in-industry for its ability to guarantee reliable 
+        model performance.
       </p>
 
       <p>
@@ -734,21 +712,19 @@
         As you can see, NAdam adds a small partial step of
         \(\frac{(1-\beta_1)g_t}{1-\beta_1^t} \) into Adam and while this yields
         some additional performance (especially on training deep convolutional
-        NNs) through speedier convergence from a smoother update rule capable of
-        further considering the convexity of the problem surface. NAdam is
+        NNs) through speedier convergence from a smoother update rule capable 
+        of further considering the convexity of the problem surface. NAdam is
         common in industry in it's own right for trading a slightly higher
         proclivity to overfit compared to AdamW for a bit of better convergence.
-        Unfortunately NAdam has been known to begin to stack up deviations from
-        the ideal on more complicated physics-informed models used to learn
-        complex PDEs.
+        Unfortunately NAdam has been known to begin to stack up deviations from the 
+        ideal on more complicated physics-informed models used to learn complex PDEs.
       </p>
 
       <p>
         Into that space enters <b>Rectified Adam (RAdam)</b> which introduces
         another trick in evening out extreme behavior through an additional term
-        aimed at rectifying the variance in our adaptive learning rate and in
-        the process provoking more reliable returned updates and higher test
-        accuracies.
+        aimed at rectifying the variance in our adaptive learning rate and in the process
+        provoking more reliable returned updates and higher test accuracies.
       </p>
 
       <p>The algorithm for RAdam is as follows:</p>
@@ -786,20 +762,19 @@
       </ul>
 
       <p>
-        The authors of RAdam observed when introducing the algorithm that due to
-        the lack of samples at early stages in training Adam has an undesirably
-        large variance in step sizes which can drive it into suspicious / bad
-        local optima (this is the whole origin for the \(\hat m_t \) and \(\hat
-        v_t \) corrective factors in the first place). They then proposed \(\rho
-        \) as a method for building on the characteristics of a
+        The authors of RAdam observed when introducing the algorithm
+        that due to the lack of samples at early stages in training Adam has an
+        undesirably large variance in step sizes which can drive it into
+        suspicious / bad local optima (this is the whole origin for the \(\hat m_t
+        \) and \(\hat v_t \) corrective factors in the first place). They then
+        proposed \(\rho \) as a method for building on the characteristics of a
         <i>non-exponential</i> simple moving average to approximate how much of
         our moving average is missing due to missing samples and feed that into
-        their \(r_t \) term, dampening the step size in relation to the square
-        root of what fraction of the healthy number of samples our model is at
-        at that timestep and providing a sort of warmup in step size in those
+        their \(r_t \) term, dampening the step size in relation to the
+        square root of what fraction of the healthy number of samples our model
+        is at at that timestep and providing a sort of warmup in step size in those
         early stages of training which had by the time of their proposal become
-        common but never before been built directly into the optimizer update
-        rule.
+        common but never before been built directly into the optimizer update rule.
       </p>
 
       <p>
@@ -822,8 +797,8 @@
       </p>
 
       <p>
-        The update rule is much simpler than RAdam and thus follows the update
-        ruel for DiffGrad:
+        The update rule is much simpler than RAdam and thus follows the 
+        update ruel for DiffGrad:
       </p>
 
       \[ \begin{gather} &\Delta g_t = g_{t-1} - g_t \\ &\xi_t =
@@ -836,20 +811,19 @@
         far from the optimum and accurately avoid overshooting through lowering
         the learning rate when closer to the optimum. DiffGrad performs very
         well on deep convolutional networks much like RAdam while still
-        preserving the theoretical advantages on our chosen challenge function
-        shapes. DiffGrad also has some evidence pointing to it outperforming
-        SGDM, AdaDelta, and Adam on a wide range of pattern recognition
-        challenges.
+        preserving the theoretical advantages on our chosen challenge function 
+        shapes. DiffGrad also has some evidence pointing to it outperforming 
+        SGDM, AdaDelta, and Adam on a wide range of pattern recognition challenges. 
       </p>
       <p>
-        DiffGrad does end out being a bit overtuned to solving simply classical
-        and convolutional neural networks however and (to be fair, much like all
-        of the First-Order optimizers) shows marked collapse in learning on more
-        complex NNs. When analyzed on the quantum, spiked, complex-valued, and
-        physics-informed networks which all optimizers should aspire to be able
-        to cover in addition to the usual convolutional, reccurent, and
-        traditional NNs it too failed to show efficient. Another Adam-Type
-        optimizer was soon proposed after DiffGrad which takes more account of
+        DiffGrad does end out being a bit overtuned to solving simply classical 
+        and convolutional neural networks however and (to be fair, much like all of 
+        the First-Order optimizers) shows marked collapse in learning 
+        on more complex NNs. When analyzed on the quantum, spiked, complex-valued, 
+        and physics-informed networks which all optimizers should aspire to be 
+        able to cover in addition to the usual convolutional, reccurent, and 
+        traditional NNs it too failed to show efficient. Another Adam-Type 
+        optimizer was soon proposed after DiffGrad which takes more account of 
         the curvature of the loss function during minimization, Yogi.
       </p>
 
@@ -922,8 +896,7 @@
         family of optimizers.
       </p>
 
-      <a name="H"></a>
-      <h5>Triple Moment Adam-Type Optimizers</h5>
+      <h5 id="triple-moment">Triple Moment Adam-Type Optimizers</h5>
 
       <p>
         The first of two major concepts worth explaining as a form of expanding
@@ -991,14 +964,10 @@
           class="responsive-image-med"
         />
         <p class="small-text responsive-text-med">
-          Quick animation I whipped up, inspired by the
-          <a
-            href="https://github.com/luisdamed/Gradient_Descent_Visualizations/blob/main/Advanced_Gradient_Descent_Trajectories.ipynb"
-          >
-            Luisdamed's Gradient Descent Visualization notebook</a
-          >
-          comparing the performance of a few select First-order SGD and Adam
-          type optimizers
+          Quick animation I whipped up, inspired by the 
+          <a href="https://github.com/luisdamed/Gradient_Descent_Visualizations/blob/main/Advanced_Gradient_Descent_Trajectories.ipynb">
+            Luisdamed's Gradient Descent Visualization notebook</a> comparing
+          the performance of a few select First-order SGD and Adam type optimizers
           <a
             href="https://colab.research.google.com/drive/1_nQEYD2D-b3wnuSb5bYZ2zYh1-KVyllo?usp=sharing"
             >(Colab)</a
@@ -1027,8 +996,7 @@
         Optimizers!
       </p>
 
-      <a name="I"></a>
-      <h3>Second-Order Optimizers</h3>
+      <h3 id="second-order">Second-Order Optimizers</h3>
 
       <p>
         The fundamental weakness of First-Order Optimizers is that they can only
@@ -1200,30 +1168,32 @@
       <p>
         After understanding both Apollo and AdaHessian we wrap up our forray
         into Quasi-Newtonian optimizers which in the process wraps up our
-        breakdown of Second-order optimizers as a whole! Quasi-Newtonian
-        optimizers like Apollo and AdaHessian have found some applications for
-        their higher convergence as practical choices on standard convolutional
-        NNs and recurrent networks where time and/or power consumption isn't as
-        critical. Both Newtonian (L-BFGS / SR1) and Quasi-Newtonian (Apollo /
-        AdaHessian) have also been found to show superior results over
-        First-order options particularly on Physics-Informed NNs (PINNs) where
-        one needs to analyze the loss function as well as initial and boundary
-        conditions. Unfortunately, on more complicated NNs and much of the giant
-        LLMs of today the higher time consumption becomes prohibitive in
-        comparison to any benefits in convergence which moving from First to
-        Second-order optimizers might yield. In many ways the story of
-        Second-Order optimizers is the same story which optimizers as a field
-        comes up against over and over, that being the fundamental challenge of
-        optimizer design: how to encapsulate better geometric reasoning (aka
-        better convergence on complex landscapes) into less effort. This leads
-        us to our third and final category of optimization algorithms, one which
-        brings in a few heavier techniques in geometry, probability, and
-        optimization to try and reformulate the problem in terms easier to
-        compute across, Information-Geometric terms.
+        breakdown of Second-order optimizers as a whole! 
+        
+        Quasi-Newtonian optimizers like Apollo and AdaHessian have found 
+        some applications for their higher convergence as practical choices on 
+        standard convolutional NNs and recurrent networks where time and/or 
+        power consumption isn't as critical. Both Newtonian (L-BFGS / SR1)
+        and Quasi-Newtonian (Apollo / AdaHessian) have also been found to show
+        superior results over First-order options particularly on Physics-Informed
+        NNs (PINNs) where one needs to analyze the loss function as well as 
+        initial and boundary conditions. Unfortunately, on more complicated 
+        NNs and much of the giant LLMs of today the higher time consumption 
+        becomes prohibitive in comparison to any benefits in convergence which 
+        moving from First to Second-order optimizers might yield. 
+
+        In many ways the story
+        of Second-Order optimizers is the same story which optimizers as a field 
+        comes up against over and over, that being the fundamental challenge of 
+        optimizer design: how to encapsulate better geometric reasoning (aka 
+        better convergence on complex landscapes) into less effort. This leads us 
+        to our third and final category of optimization algorithms, one which 
+        brings in a few heavier techniques in geometry, probability, and 
+        optimization to try and reformulate the problem in terms easier to compute
+        across, Information-Geometric terms.
       </p>
 
-      <a name="J"></a>
-      <h3>Information-Geometric Optimizers</h3>
+      <h3 id="info-geometric">Information-Geometric Optimizers</h3>
 
       <p>
         Information geometry is formulation of model fitting as a decision of
@@ -1320,8 +1290,7 @@
         of formulating the challenge.
       </p>
 
-      <a name="K"></a>
-      <h3>Conclusions</h3>
+      <h3 id="conclusions">Conclusions</h3>
 
       <p>
         From attempts at generalized differentiable operators using fractional
@@ -1393,70 +1362,175 @@
         That's all for today, thank you for your time and attention.
       </p>
 
-      <a name="L"></a>
-      <h3>Sources</h3>
+      <!-- Sources section moved to bottom -->
+        <h2 id="sources">References</h2>
+        <div class="references">
+        <div class="bullet">
+            <span>1.</span>
+            <a href="https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf" style="color: inherit; text-decoration: underline;">AdaGrad</a>.
+        </div>
+        <div class="bullet">
+            <span>2.</span>
+            <a href="https://arxiv.org/pdf/1212.5701" style="color: inherit; text-decoration: underline;">AdaDelta</a>.
+        </div>
+        <div class="bullet">
+            <span>3.</span>
+            <a href="https://arxiv.org/pdf/1711.05101" style="color: inherit; text-decoration: underline;">SGDW and AdamW</a>.
+        </div>
+        <div class="bullet">
+            <span>4.</span>
+            <a href="https://arxiv.org/pdf/1412.6980" style="color: inherit; text-decoration: underline;">Adam</a>.
+        </div>
+        <div class="bullet">
+            <span>5.</span>
+            <a href="https://openreview.net/pdf/OM0jvwB8jIp57ZJjtNEZ.pdf" style="color: inherit; text-decoration: underline;">NAdam</a>.
+        </div>
+        <div class="bullet">
+            <span>6.</span>
+            <a href="https://arxiv.org/pdf/1908.03265" style="color: inherit; text-decoration: underline;">RAdam</a>.
+        </div>
+        <div class="bullet">
+            <span>7.</span>
+            <a href="https://arxiv.org/pdf/1909.11015" style="color: inherit; text-decoration: underline;">DiffGrad</a>.
+        </div>
+        <div class="bullet">
+            <span>8.</span>
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2018/file/90365351ccc7437a1309dc64e4db32a3-Paper.pdf" style="color: inherit; text-decoration: underline;">Yogi</a>.
+        </div>
+        <div class="bullet">
+            <span>9.</span>
+            <a href="https://arxiv.org/pdf/2010.07468" style="color: inherit; text-decoration: underline;">AdaBelief</a>.
+        </div>
+        <div class="bullet">
+            <span>10.</span>
+            <a href="https://arxiv.org/pdf/2103.17182" style="color: inherit; text-decoration: underline;">AdaPNM</a>.
+        </div>
+        <div class="bullet">
+            <span>11.</span>
+            <a href="https://arxiv.org/pdf/2208.06677" style="color: inherit; text-decoration: underline;">Adan</a>.
+        </div>
+        <div class="bullet">
+            <span>12.</span>
+            <a href="https://arxiv.org/pdf/1810.00303" style="color: inherit; text-decoration: underline;">Newton-MR</a>.
+        </div>
+        <div class="bullet">
+            <span>13.</span>
+            <a href="https://arxiv.org/pdf/1802.05374" style="color: inherit; text-decoration: underline;">L-BFGS</a>.
+        </div>
+        <div class="bullet">
+            <span>14.</span>
+            <a href="https://openreview.net/pdf?id=By1snw5gl" style="color: inherit; text-decoration: underline;">L-SR1</a>.
+        </div>
+        <div class="bullet">
+            <span>15.</span>
+            <a href="https://arxiv.org/pdf/2009.13586" style="color: inherit; text-decoration: underline;">Apollo</a>.
+        </div>
+        <div class="bullet">
+            <span>16.</span>
+            <a href="https://arxiv.org/pdf/2006.00719" style="color: inherit; text-decoration: underline;">AdaHessian</a>.
+        </div>
+        <div class="bullet">
+            <span>17.</span>
+            <a href="https://arxiv.org/pdf/2110.15412" style="color: inherit; text-decoration: underline;">Mirror Descent</a>.
+        </div>
+        <div class="bullet">
+            <span>18.</span>
+            <a href="https://www.researchgate.net/publication/370177400_Survey_of_Optimization_Algorithms_in_Modern_Neural_Networks" style="color: inherit; text-decoration: underline;">Survey of Optimization Algorithms in Modern Neural Networks</a>.
+        </div>
+        <div class="bullet">
+            <span>19.</span>
+            <a href="https://arxiv.org/pdf/2405.15682" style="color: inherit; text-decoration: underline;">The road less scheduled</a>.
+        </div>
+        <div class="bullet">
+            <span>20.</span>
+            <a href="https://arxiv.org/pdf/2207.14484" style="color: inherit; text-decoration: underline;">Adaptive gradient methods at the edge of stability</a>.
+        </div>
+        <div class="bullet">
+            <span>21.</span>
+            <a href="https://arxiv.org/pdf/2110.04369" style="color: inherit; text-decoration: underline;">Loss curvature perspective on training instability in DL</a>.
+        </div>
+        <div class="bullet">
+            <span>22.</span>
+            <a href="https://openmdao.github.io/PracticalMDO/Notebooks/Optimization/types_of_gradient_free_methods.html" style="color: inherit; text-decoration: underline;">Gradient-free optimizers</a>.
+        </div>
+        </div>
 
-      <ul>
-        <li>
-          <a href="https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf"
-            >AdaGrad</a
-          >
-        </li>
-        <li><a href="https://arxiv.org/pdf/1212.5701">AdaDelta</a></li>
-        <li><a href="https://arxiv.org/pdf/1711.05101">SGDW and AdamW</a></li>
-        <li><a href="https://arxiv.org/pdf/1412.6980">Adam</a></li>
-        <li>
-          <a href="https://openreview.net/pdf/OM0jvwB8jIp57ZJjtNEZ.pdf"
-            >NAdam</a
-          >
-        </li>
-        <li><a href="https://arxiv.org/pdf/1908.03265">RAdam</a></li>
-        <li><a href="https://arxiv.org/pdf/1909.11015">DiffGrad</a></li>
-        <li>
-          <a
-            href="https://proceedings.neurips.cc/paper_files/paper/2018/file/90365351ccc7437a1309dc64e4db32a3-Paper.pdf"
-            >Yogi</a
-          >
-        </li>
-        <li><a href="https://arxiv.org/pdf/2010.07468">AdaBelief</a></li>
-        <li><a href="https://arxiv.org/pdf/2103.17182">AdaPNM</a></li>
-        <li><a href="https://arxiv.org/pdf/2208.06677">Adan</a></li>
-        <li><a href="https://arxiv.org/pdf/1810.00303">Newton-MR</a></li>
-        <li><a href="https://arxiv.org/pdf/1802.05374">L-BFGS</a></li>
-        <li><a href="https://openreview.net/pdf?id=By1snw5gl">L-SR1</a></li>
-        <li><a href="https://arxiv.org/pdf/2009.13586">Apollo</a></li>
-        <li><a href="https://arxiv.org/pdf/2006.00719">AdaHessian</a></li>
-        <li><a href="https://arxiv.org/pdf/2110.15412">Mirror Descent</a></li>
-        <li>
-          <a
-            href="https://www.researchgate.net/publication/370177400_Survey_of_Optimization_Algorithms_in_Modern_Neural_Networks"
-            >Survey of Optimization Algorithms in Modern Neural Networks</a
-          >
-        </li>
-        <li>
-          <a href="https://arxiv.org/pdf/2405.15682">The road less scheduled</a>
-        </li>
-        <li>
-          <a href="https://arxiv.org/pdf/2207.14484"
-            >Adaptive gradient methods at the edge of stability</a
-          >
-        </li>
-        <li>
-          <a href="https://arxiv.org/pdf/2110.04369"
-            >Loss curvature perspective on training instability in DL</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://openmdao.github.io/PracticalMDO/Notebooks/Optimization/types_of_gradient_free_methods.html"
-            >Gradient-free optimizers</a
-          >
-        </li>
-      </ul>
-    </main>
+        <!-- Citation section -->
+        <h2>To cite this blog post:</h2>
+        <div class="code-container citation-code" onmousemove="handleMouseMove(event, 'citation-copy-button')">
+          <div class="code-content">
+            <button id="citation-copy-button" class="copy-button" onclick="copyCitation(event)">
+            <svg id="citation-copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg id="citation-check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            </button>
+            <pre><code><span class="keyword">@misc</span>{<span class="parameter">bradley-optimizers-2024</span>,
+                <span class="parameter">title</span>=<span class="operator">{</span><span class="string">Optimizers 🥾 ⎯ Towards a full Taxonomy</span><span class="operator">}</span>,
+                <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
+                <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
+                <span class="parameter">month</span>=<span class="operator">{</span><span class="string">sep</span><span class="operator">}</span>,
+                <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
+                <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
+            }</code></pre>
+          </div>
+        </div>
+    </div>
 
-    <footer>
-      <p>All opinions are my own and do not represent those of an employer.</p>
-    </footer>
+    <!-- Scroll-to-top Button -->
+    <div
+      id="scrollToTop"
+      class="fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer"
+      onclick="scrollToTop()"
+    >
+      <div class="bg-zinc-800 hover:bg-zinc-700 rounded-full p-3 shadow-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-zinc-200"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Sidebar TOC -->
+    <div id="sidebar-toc" class="sidebar-toc">
+      <div class="sidebar-toc-content">
+            <div class="sidebar-toc-header">Contents</div>
+            <div class="sidebar-toc-links">
+                <a href="#prelude">Prelude</a>
+                <a href="#introduction">Introduction</a>
+                <ol>
+                    <a href="#explaining-terms">Explaining Terms</a>
+                    <a href="#taxonomy">Towards a Taxonomy of Optimizers</a>
+                </ol>
+                <a href="#first-order">First-Order Optimizers</a>
+                <ol>
+                    <a href="#sgd-type">SGD-Type</a>
+                    <a href="#adam-type">Adam-Type</a>
+                    <a href="#triple-moment">Triple Moment Adam-Type Optimizers</a>
+                </ol>
+                <a href="#second-order">Second-Order Optimizers</a>
+                <a href="#info-geometric">Information-Geometric Optimizers</a>
+                <a href="#conclusions">Conclusions</a>
+                <a href="#sources">References</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="gameOfLife" class="game-of-life" width="200" height="400"></canvas>
+    <script src="../functionality.js"></script>
   </body>
 </html>
