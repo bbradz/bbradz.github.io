@@ -628,7 +628,7 @@ function generateReadingListHTML(data) {
             </div>
             ${
               item.downloadLink
-                ? `<a class="download-link" href="${item.downloadLink}" download>Download Marked PDF</a>`
+                ? `<a class="download-link" href="${item.downloadLink}" download>Source</a>`
                 : ""
             }
         `;
