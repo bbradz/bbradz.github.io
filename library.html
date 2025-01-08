@@ -532,14 +532,14 @@
             .attr("r", (d) =>
               normalizeReadTime(d.readTime, minReadTime, maxReadTime)
             )
-            .attr("fill", (d) => (d.isRead ? "#4caf50" : "var(--node-color)"))
+            .attr("fill", (d) => (d.isRead ? "#4a9eff" : "var(--node-color)"))
             .attr("stroke", "var(--node-stroke-color)")
             .on("mouseover", function (event, d) {
-              d3.select(this).attr("fill", "#4a9eff");
+              d3.select(this).attr("fill", "#6fc900");
               link
                 .attr("stroke", (l) =>
                   l.source.id === d.id || l.target.id === d.id
-                    ? "#4a9eff"
+                    ? "#6fc900"
                     : "var(--edge-color)"
                 )
                 .attr("stroke-width", (l) =>
@@ -561,9 +561,12 @@
                 .text(d.title);
             })
             .on("mouseout", function (event, d) {
+              // Revert the node color based on whether it was read or not
               d3.select(this).attr("fill", (d) =>
-                d.isRead ? "#4caf50" : "var(--node-color)"
+                d.isRead ? "#4a9eff" : "var(--node-color)"
               );
+
+              // Revert the link colors and widths
               link
                 .attr("stroke", "var(--edge-color)")
                 .attr("stroke-width", (d) => d.width);

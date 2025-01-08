@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. Initialize local storage logic
     function initializeGame(useSeed = false, providedSeed = null) {
       const seed = providedSeed || Date.now();
-      console.log(seed)
+      console.log(seed);
       localStorage.setItem("gameOfLifeUseSeed", useSeed);
       if (useSeed) {
         localStorage.setItem("gameOfLifeSeed", seed.toString());
@@ -527,7 +527,16 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeGame(false);
 
     // For seeded initialization:
-    // initializeGame(true, 12345); // Use any number as seed
+    // initializeGame(true, 1736329082156); // Use any number as seed
+
+    /* 
+        OTHER GOOD SEEDS
+
+    1736329157225
+    1736329263658
+    
+    
+    */
   }
 });
 
@@ -1311,10 +1320,223 @@ const readingListData = [
     author: "Meta",
     description:
       "Shows a Transformer model to optimally solve unseen Sokoban puzzles 93.7% of the time with up to 26.8% fewer steps than the A*.",
-    tags: ["Transformers", "Pathfinding", "Sokoban", "Arxiv"],
+    tags: ["Transformers", "Arxiv"],
     readTime: 0.8,
     releaseDate: "2024-04-26",
     isRead: false,
     downloadLink: "https://arxiv.org/pdf/2402.14083",
   },
+  {
+    title: "Beating SPACE EXPLORATION | The 300 Hour Factorio Mod",
+    author: "DoshDoshington",
+    description:
+      "Playthrough of the Space Exploration Modpack for the base-building logistics management game, Factorio.",
+    tags: ["Factorio", "YT"],
+    readTime: 3.5,
+    releaseDate: "2022-08-09",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=8hRJ-CcwvrI&t=3668s",
+  },
+  {
+    title: "LPUs, TPUs & GPUs w/ Jonathan Ross, Founder Groq",
+    author: "Lumida Wealth",
+    description:
+      "Interview with the founder of breakout AI Accelerator lab Groq on the state of the art in LLM Hardware.",
+    tags: ["Parallel Computing", "Hardware", "YT"],
+    readTime: 1.5,
+    releaseDate: "2023-12-03",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=gE8SvBqMf8o&t=989s",
+  },
+  {
+    title:
+      "o3 - Tradeoffs of Heuristics, Tree Search, External Memory, In-built Bias",
+    author: "John Tan Chong Min",
+    description:
+      "Slideshow lecture from John about the SOTA and limitations in LLM Reasoning.",
+    tags: ["LLMs", "Reinforcement Learning", "Meta-Learning", "YT"],
+    readTime: 4.0,
+    releaseDate: "2024-12-30",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=f5obaHiOog4&t=5986s",
+  },
+  {
+    title: "The State of Reasoning",
+    author: "Nathan Lambert",
+    description: "NeurIPS 2024 talk on the attempts to teach LLMs to Reason",
+    tags: ["LLMs", "YT"],
+    readTime: 0.5,
+    releaseDate: "2025-01-03",
+    isRead: false,
+    downloadLink: "https://www.youtube.com/watch?v=skT89EvIjrc",
+  },
+  {
+    title: "CUDA Programming Course",
+    author: "freeCodeCamp.org",
+    description:
+      "Tutorial on the implementation details of coding in the CUDA programming language.",
+    tags: ["Programming", "Parallel Computing", "YT"],
+    readTime: 12,
+    releaseDate: "2024-09-24",
+    isRead: false,
+    downloadLink: "https://www.youtube.com/watch?v=86FAWCzIe_4&t=1s",
+  },
+  {
+    title:
+      "Deep Symbolic Regression: Recovering Math Expressions from Data via Risk-Seeking Policy Gradients",
+    author: "Lawrence Livermore Laboratory",
+    description:
+      "Brenden Petersen explains how symbolic regression transforms data-fitting into a problem of Reinforcement Learning over language space.",
+    tags: ["Symbolic Systems", "YT"],
+    readTime: 1.0,
+    releaseDate: "2021-06-08",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=o43X6Hni6tU&t=2715s",
+  },
+  {
+    title: "AI for physics & physics for AI",
+    author: "MIT",
+    description:
+      "Description of the AI Feynman project for Symbolic Regression on Physics Data.",
+    tags: ["Symbolic Systems", "YT"],
+    readTime: 1.0,
+    releaseDate: "2020-06-25",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=pkJkHB_c3nA&t=46s",
+  },
+  {
+    title: "AI for physics & physics for AI",
+    author: "MIT",
+    description:
+      "Description of the AI Feynman project for Symbolic Regression on Physics Data.",
+    tags: ["Symbolic Systems", "YT"],
+    readTime: 1.0,
+    releaseDate: "2020-06-25",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=pkJkHB_c3nA&t=46s",
+  },
+  {
+    title: "Parables on the Power of Planning in AI: From Poker to Diplomacy",
+    author: "Noam Brown",
+    description:
+      "OpenAI's Noam Brown explains the story of the power of applying planning to AI in Games.",
+    tags: ["LLMs", "Reinforcement Learning", "YT"],
+    readTime: 1.0,
+    releaseDate: "2024-09-17",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=eaAonE58sLU",
+  },
+  {
+    title:
+      "The Wisdom (and Madness) of Crowds: Political Markets as Election Predictors",
+    author: "Aswath Damodaran",
+    description:
+      "Examines the history of thought around the conditions under which the crowd or market's judgment becomes wise.",
+    tags: ["Markets", "Finance", "YT"],
+    readTime: 0.5,
+    releaseDate: "2024-09-07",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=LejPvcakKpE&t=284s",
+  },
+  {
+    title:
+      "@Asianometry & Dylan Patel – How the Semiconductor Industry Actually Works",
+    author: "Dwarkesh Patel",
+    description:
+      "Conversation between two Industry watchdogs on the state of play in US-China AI Race.",
+    tags: ["Distributed Computing", "Hardware", "YT"],
+    readTime: 2.5,
+    releaseDate: "2024-10-04",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=pE3KKUKXcTM",
+  },
+  {
+    title: "The Insane Engineering of Minecraft's Most Powerful Mobfarm",
+    author: "cubicmetre",
+    description:
+      "exploring the End of Light mobfarm and how it pushes mobfarming in Minecraft to the game's absolute limits.",
+    tags: ["Minecraft", "YT"],
+    readTime: 2.0,
+    releaseDate: "2024-08-07",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=v1eouiqVfZY",
+  },
+  {
+    title: "Sun Valley Writers' Conference with Ezra Klein",
+    author: "Ezra Klein",
+    description:
+      "Discussion on AI, the tie between zoning and homelessness, polarizing politics, and the intersection of government and technology.",
+    tags: ["Policy", "YT"],
+    readTime: 1.0,
+    releaseDate: "2023-08-17",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=nRYFyH8-0oc",
+  },
+  {
+    title: "A Conversation with Ezra Klein about Liberalism",
+    author: "Ezra Klein",
+    description:
+      "Reflecting on Democratic governments inability to build real things in the real world quickly and affordably.",
+    tags: ["Policy", "YT"],
+    readTime: 1.5,
+    releaseDate: "2023-12-08",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=7OyLHeJB15c&t=671s",
+  },
+  {
+    title: "Arguments for Atheism",
+    author: "Alex O'Connor",
+    description:
+      "Two Doctoral Students in the Philosophy of Theology construct a tier list of arguments for Atheism.",
+    tags: ["Philosophy", "YT"],
+    readTime: 2.5,
+    releaseDate: "2024-06-23",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=s_5vfQE6_yE",
+  },
+  {
+    title: "How massive Cerebras chips rival Nvidia GPUs for AI",
+    author: "Dr Waku",
+    description:
+      "Discussion with key engineer at Cerebras AI Accelerator on their unique memory architectures unique use-case in LLMs.",
+    tags: ["Parallel Computing", "LLMs", "Hardware", "YT"],
+    readTime: 1.0,
+    releaseDate: "2024-12-25",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=qC_lCFTOJU0&t=740s",
+  },
+  {
+    title: "Populism, Media Revolutions, and Our Terrible Moment",
+    author: "Hank Green",
+    description: "Rant from Hank Green on the destruction of trust & reality in society by the Internet's revolutionary Algorithmic Realities.",
+    tags: ["Politics", "YT"],
+    readTime: 0.5,
+    releaseDate: "2024-11-22",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=d8PndpFPL8g",
+  },
 ];
+
+/*  
+  \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
+
+  Tags = Machine Learning, Activation Functions, Arxiv, Finance, Site, 
+  Information Theory, Programming, Optimization, Distributed Computing, 
+  Diffusion Models, Tutorial, Deep Learning, Economics, Reinforcement Learning, 
+  Autoencoders, Parallel Computing, Hyperparameter Optimization, Libraries, 
+  Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
+  Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
+  Markets, Factorio, Minecraft, Policy, Philosophy, politics
+
+  {
+    title: "",
+    author: "",
+    description:
+      "",
+    tags: [""],
+    readTime: 0.0,
+    releaseDate: "XXXX-XX-XX",
+    isRead: false,
+    downloadLink: "",
+  }, 
+*/
