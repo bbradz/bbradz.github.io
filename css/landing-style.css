@@ -436,6 +436,7 @@ sub {
     width: 100%;
     max-width: 800px;
     padding: 20px;
+    margin-top: 80px;
   }
 
   .game-of-life {
