@@ -28,24 +28,24 @@
 }
 
 @font-face {
-  font-family: 'loading';
-  src: url('../fonts/Sligoil-Micro.otf') format('opentype');
+  font-family: "loading";
+  src: url("../fonts/Sligoil-Micro.otf") format("opentype");
 }
 
 .loading {
-  font-family: 'loading', sans-serif;
+  font-family: "loading", sans-serif;
 }
 
 @font-face {
-  font-family: 'default';
-  src: url('../fonts/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+  font-family: "default";
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'default', sans-serif;
+  font-family: "default", sans-serif;
 }
 
 html {
@@ -564,4 +564,49 @@ ul li {
   font-weight: bold;
   color: var(--text-color);
   margin: 1rem 0 0.5rem 0;
+}
+
+.headshots-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 20px;
+  justify-content: center; /* Center items on uneven rows */
+}
+
+.headshot-item {
+  text-align: center;
+  flex: 1 1 calc(25% - 20px); /* Default: 4 items per row */
+  max-width: 120px; /* Limit the maximum width of each item */
+}
+
+.headshot-image {
+  width: 100%;
+  border-radius: 50%; /* Make the image circular */
+  border: 3px solid var(--accent-color); /* Add a border for better visibility */
+  transition: transform 0.3s ease;
+}
+
+.headshot-image:hover {
+  transform: scale(1.1); /* Add a hover effect */
+}
+
+.headshot-name {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* Adjust layout for medium screens (up to 768px) */
+@media (max-width: 1000px) {
+  .headshots-section .headshot-item {
+    margin-right: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .headshots-section .headshot-item {
+    margin-right: 10px;
+  }
 }
