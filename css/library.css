@@ -255,7 +255,7 @@ li {
 
 @media (max-width: 768px) {
   .reading-list-layout {
-    margin-top: 80px;
+    margin-top: 50px;
     margin-left: 0 !important;
     display: flex;
     align-items: flex-start;
@@ -286,7 +286,7 @@ li {
   .search-bar {
     flex-direction: column;
     gap: 8px;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   .search-bar input,
