@@ -353,6 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. Initialize local storage logic
     function initializeGame(useSeed = false, providedSeed = null) {
       const seed = providedSeed || Date.now();
+      console.log(seed)
       localStorage.setItem("gameOfLifeUseSeed", useSeed);
       if (useSeed) {
         localStorage.setItem("gameOfLifeSeed", seed.toString());
