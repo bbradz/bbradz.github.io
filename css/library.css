@@ -296,9 +296,9 @@ li {
 
   .sort-bar-buttons {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
     gap: 4px;
+    flex-wrap: wrap;
     width: auto;
     margin: 0 auto;
   }
