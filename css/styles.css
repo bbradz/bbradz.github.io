@@ -27,6 +27,15 @@
   --table-row-even: #f6f8fa;
 }
 
+@font-face {
+  font-family: 'default';
+  src: url('../fonts/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+* {
+  font-family: 'default', sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 85px;

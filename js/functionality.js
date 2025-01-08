@@ -860,7 +860,7 @@ const readingListData = [
     title: "Information Theory: A Tutorial Introduction",
     author: "University of Sheffield",
     description: "Introduces the main ideas in Shannon’s theory.",
-    tags: ["Information Theory", "Shannon", "Arxiv"],
+    tags: ["Information Theory", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2019-06-13",
     isRead: false,

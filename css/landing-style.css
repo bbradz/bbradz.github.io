@@ -27,11 +27,25 @@
   --table-row-even: #f6f8fa;
 }
 
-/* Reset and base styles */
+@font-face {
+  font-family: 'loading';
+  src: url('../fonts/Sligoil-Micro.otf') format('opentype');
+}
+
+.loading {
+  font-family: 'loading', sans-serif;
+}
+
+@font-face {
+  font-family: 'default';
+  src: url('../fonts/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'default', sans-serif;
 }
 
 html {
@@ -39,7 +53,6 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.5;
@@ -430,6 +443,14 @@ sub {
   }
 
   .graph-container {
+    display: none;
+  }
+
+  .welcome-section {
+    margin-top: 80px;
+  }
+
+  .title {
     display: none;
   }
 }
