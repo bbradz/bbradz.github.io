@@ -262,6 +262,18 @@
           return Math.max(padding, Math.min(dimension - padding, position));
         };
 
+        const normalizeReadTime = (readTime, minReadTime, maxReadTime) => {
+          const minRadius = 5;  // Minimum radius for nodes
+          const maxRadius = 20; // Maximum radius for nodes
+
+          // Apply a logarithmic transformation to reduce the impact of larger values
+          const logMin = Math.log(minReadTime + 1);
+          const logMax = Math.log(maxReadTime + 1);
+          const logReadTime = Math.log(readTime + 1);
+
+          return ((logReadTime - logMin) / (logMax - logMin)) * (maxRadius - minRadius) + minRadius;
+        };
+
         const getVisibleDocuments = useCallback(() => {
           const items = Array.from(
             document.querySelectorAll("#reading-list li")
@@ -435,6 +447,11 @@
               isRead: doc.isRead,
             }));
 
+            // Calculate min and max readTime
+            const readTimes = visibleDocs.map((doc) => doc.readTime);
+            const minReadTime = Math.min(...readTimes);
+            const maxReadTime = Math.max(...readTimes);
+
             const docSetHash = hashDocSet(visibleDocs);
             let links = getCachedSimilarities(docSetHash);
 
@@ -533,7 +550,9 @@
 
             node
               .append("circle")
-              .attr("r", 8)
+              .attr("r", (d) =>
+                normalizeReadTime(d.readTime, minReadTime, maxReadTime)
+              ) // Use normalized readTime for radius
               .attr("fill", (d) => (d.isRead ? "#4caf50" : "var(--node-color)"))
               .attr("stroke", "var(--node-stroke-color)")
               .on("mouseover", function (event, d) {
@@ -576,15 +595,46 @@
               });
 
             node
-              .append("title")
-              .text(
-                (d) =>
-                  `${d.title}\n${d.fullText}\nTags: ${d.tags.join(
-                    ", "
-                  )}\nRead Time: ${d.readTime} hours\nRelease Date: ${
-                    d.releaseDate
-                  }`
-              );
+              .on("mouseover", function (event, d) {
+                // Highlight the node
+                d3.select(this).attr("fill", "#4a9eff");
+
+                // Highlight connected edges
+                link
+                  .attr("stroke", (l) =>
+                    l.source.id === d.id || l.target.id === d.id
+                      ? "#4a9eff"
+                      : "var(--edge-color)"
+                  )
+                  .attr("stroke-width", (l) =>
+                    l.source.id === d.id || l.target.id === d.id ? 3 : d.width
+                  );
+
+                // Show a custom tooltip with more details
+                nodeGroup
+                  .append("text")
+                  .attr("class", "node-tooltip")
+                  .attr("x", d.x + 10)
+                  .attr("y", d.y + 5)
+                  .attr("fill", "var(--text-color)")
+                  .text(
+                    `${d.title}\n${d.fullText}\nTags: ${d.tags.join(", ")}`
+                  );
+              })
+              .on("mouseout", function (event, d) {
+                // Restore the node color
+                d3.select(this).attr("fill", (d) =>
+                  d.isRead ? "#4caf50" : "var(--node-color)"
+                );
+
+                // Restore the edge color and width
+                link
+                  .attr("stroke", "var(--edge-color)")
+                  .attr("stroke-width", (d) => d.width);
+
+                // Remove the custom tooltip
+                nodeGroup.selectAll(".node-tooltip").remove();
+              });
 
             function dragstarted(event, d) {
               if (!event.active)

@@ -1015,7 +1015,7 @@ const readingListData = [
     author: "Not specified",
     description: "A book on set theory.",
     tags: ["Mathematics", "Site"],
-    readTime: "Not specified",
+    readTime: 1,
     releaseDate: "Not specified",
     isRead: false,
     downloadLink: "http://www.alefenu.com/libri/topologymunkres.pdf",
@@ -1036,7 +1036,7 @@ const readingListData = [
     author: "University of Ottowa",
     description: "A book on Lie groups.",
     tags: ["Mathematics", "Lie Groups", "Site"],
-    readTime: "Not specified",
+    readTime: 1,
     releaseDate: "Not specified",
     isRead: false,
     downloadLink:
