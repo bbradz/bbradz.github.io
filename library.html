@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/landing-style.css" />
     <link rel="stylesheet" href="./css/library.css" />
 
-    <title>bb.radz' library</title>
+    <title>bb.radz</title>
   </head>
   <body>
     <!-- Game of Life -->
@@ -535,11 +535,11 @@
             .attr("fill", (d) => (d.isRead ? "#4a9eff" : "var(--node-color)"))
             .attr("stroke", "var(--node-stroke-color)")
             .on("mouseover", function (event, d) {
-              d3.select(this).attr("fill", "#6fc900");
+              d3.select(this).attr("fill", "#8ACE00");
               link
                 .attr("stroke", (l) =>
                   l.source.id === d.id || l.target.id === d.id
-                    ? "#6fc900"
+                    ? "#8ACE00"
                     : "var(--edge-color)"
                 )
                 .attr("stroke-width", (l) =>
