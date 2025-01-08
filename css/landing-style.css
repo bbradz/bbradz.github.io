@@ -125,6 +125,62 @@ body {
   fill: none;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  border: 1px solid var(--table-border);
+}
+
+th {
+  background-color: var(--table-header-bg);
+  border: 1px solid var(--table-border);
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+td {
+  border: 1px solid var(--table-border);
+  padding: 0.5rem 1rem;
+  text-align: left;
+  color: var(--text-color);
+}
+
+tr:nth-child(odd) td {
+  background-color: var(--table-row-odd);
+}
+
+tr:nth-child(even) td {
+  background-color: var(--table-row-even);
+}
+
+table tbody tr td:not(:first-child) {
+  font-style: italic;
+}
+
+sub {
+  font-size: 0.75em;
+}
+
+.formula-text {
+  text-align: center;
+  font-family: serif;
+  font-size: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--text-color);
+}
+
+.monospace {
+  font-family: monospace;
+  background-color: var(--toc-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
 [data-theme="light"] .theme-toggle .moon-icon {
   display: block;
 }
@@ -185,16 +241,16 @@ body {
 }
 
 .welcome-section h1 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
   color: var(--text-color);
 }
 
 .welcome-section p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--nav-color);
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 1rem auto;
   line-height: 1.6;
 }
 
@@ -357,24 +413,24 @@ body {
 
 @media (max-width: 1200px) {
   .reading-list-layout {
-    margin-left: 0 !important; 
+    margin-left: 0 !important;
     justify-content: center;
     width: 100%;
   }
 
   .container {
-    margin: 0 auto; /* Center the container */
-    width: 100%; /* Ensure it takes full width */
-    max-width: 800px; /* Adjust max-width for better readability */
-    padding: 20px; /* Maintain padding */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
   }
 
   .game-of-life {
-    display: none; /* Hide the Game of Life canvas */
+    display: none;
   }
 
   .graph-container {
-    display: none; /* Hide the graph container */
+    display: none;
   }
 }
 
@@ -466,4 +522,24 @@ body {
 @font-face {
   font-family: "IcelandWinterstorm";
   src: url("../fonts/Roman SD.ttf") format("opentype");
+}
+
+/* New styles for requested changes */
+ul {
+  text-align: left;
+  color: var(--nav-color);
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+.test-heading {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 1rem 0 0.5rem 0;
 }

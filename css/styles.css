@@ -709,9 +709,9 @@ sub {
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
   .logo-section {

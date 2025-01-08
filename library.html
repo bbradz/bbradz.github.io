@@ -57,8 +57,7 @@
       <nav class="nav-links">
         <a href="./posts.html" class="nav-link">Posts</a>
         <a href="../library.html" class="nav-link">Library</a>
-        <a href="/profile" class="nav-link">Psychological Profile</a>
-        <a href="./index.html" class="nav-link">About</a>
+        <a href="./index.html" class="nav-link">Psychological Profile</a>
       </nav>
     </header>
 
@@ -230,50 +229,57 @@
         return dotProduct / (normA * normB);
       };
 
+      const debounce = (func, wait) => {
+        let timeout;
+        return function (...args) {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+      };
+
       const DocumentGraph = ({ width, height }) => {
         const containerRef = useRef(null);
         const [model, setModel] = useState(null);
         const [loading, setLoading] = useState(true);
         const [error, setError] = useState(null);
         const [visibleDocs, setVisibleDocs] = useState([]);
+        const [isSmallScreen, setIsSmallScreen] = useState(false);
         const svgRef = useRef(null);
         const simulationRef = useRef(null);
-        const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
-        React.useEffect(() => {
-          const checkScreenSize = () => {
-            setIsSmallScreen(window.innerWidth <= 768);
+        // Function to check screen size and update state
+        const checkScreenSize = () => {
+          const smallScreen = window.innerWidth <= 768;
+          setIsSmallScreen(smallScreen);
+        };
+
+        // Debounce function to limit how often the resize handler is called
+        const debounce = (func, wait) => {
+          let timeout;
+          return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
           };
-          checkScreenSize();
-          window.addEventListener("resize", checkScreenSize);
+        };
+
+        // Effect to add and remove resize event listener
+        useEffect(() => {
+          const debouncedCheckScreenSize = debounce(checkScreenSize, 100);
+          checkScreenSize(); // Initial check
+          window.addEventListener("resize", debouncedCheckScreenSize);
           return () => {
-            window.removeEventListener("resize", checkScreenSize);
+            window.removeEventListener("resize", debouncedCheckScreenSize);
           };
         }, []);
 
-        if (isSmallScreen) {
-          return null;
-        }
+        // Effect to reinitialize the graph when screen size changes
+        useEffect(() => {
+          if (!isSmallScreen && containerRef.current) {
+            initializeGraph();
+          }
+        }, [isSmallScreen, visibleDocs, width, height, model, loading]);
 
-        const threshold = 0.75;
-        const padding = -200;
-
-        const boundPosition = (position, dimension, padding) => {
-          return Math.max(padding, Math.min(dimension - padding, position));
-        };
-
-        const normalizeReadTime = (readTime, minReadTime, maxReadTime) => {
-          const minRadius = 5;  // Minimum radius for nodes
-          const maxRadius = 20; // Maximum radius for nodes
-
-          // Apply a logarithmic transformation to reduce the impact of larger values
-          const logMin = Math.log(minReadTime + 1);
-          const logMax = Math.log(maxReadTime + 1);
-          const logReadTime = Math.log(readTime + 1);
-
-          return ((logReadTime - logMin) / (logMax - logMin)) * (maxRadius - minRadius) + minRadius;
-        };
-
+        // Function to get visible documents
         const getVisibleDocuments = useCallback(() => {
           const items = Array.from(
             document.querySelectorAll("#reading-list li")
@@ -301,6 +307,7 @@
             .filter(Boolean);
         }, []);
 
+        // Effect to update visible documents when the document visibility changes
         useEffect(() => {
           const handleVisibilityChange = () => {
             const currentVisibleDocs = getVisibleDocuments();
@@ -321,6 +328,7 @@
           };
         }, [getVisibleDocuments]);
 
+        // Effect to load the Universal Sentence Encoder model
         useEffect(() => {
           const loadModel = async () => {
             try {
@@ -349,6 +357,7 @@
           loadModel();
         }, []);
 
+        // Function to clean up the graph
         const cleanupGraph = useCallback(() => {
           if (simulationRef.current) {
             simulationRef.current.stop();
@@ -361,7 +370,8 @@
           }
         }, []);
 
-        useEffect(() => {
+        // Function to initialize the graph
+        const initializeGraph = async () => {
           if (!containerRef.current || !model || loading) return;
 
           cleanupGraph();
@@ -416,288 +426,207 @@
 
           svg.call(zoom);
 
-          const initializeGraph = async () => {
-            console.time("Graph Initialization");
-            console.log("Initializing graph with docs:", visibleDocs.length);
+          const processedDocs = visibleDocs.map((doc) => ({
+            content: `${doc.title} ${doc.description} ${doc.tags.join(" ")}`,
+          }));
 
-            const processedDocs = visibleDocs.map((doc) => ({
-              content: `${doc.title} ${doc.description} ${doc.tags.join(" ")}`,
-            }));
+          const embeddings = await generateEmbeddingsWithCache(
+            processedDocs,
+            model,
+            10
+          );
+          if (!embeddings) {
+            console.error("No embeddings generated");
+            return;
+          }
 
-            const embeddings = await generateEmbeddingsWithCache(
-              processedDocs,
-              model,
-              10
-            );
-            if (!embeddings) {
-              console.error("No embeddings generated");
-              console.timeEnd("Graph Initialization");
-              return;
-            }
+          const nodes = visibleDocs.map((doc, i) => ({
+            id: String(i),
+            title: doc.title,
+            fullText: doc.description,
+            tags: doc.tags,
+            readTime: doc.readTime,
+            releaseDate: doc.releaseDate,
+            isRead: doc.isRead,
+          }));
 
-            console.log("Generated embeddings successfully");
+          const readTimes = visibleDocs.map((doc) => doc.readTime);
+          const minReadTime = Math.min(...readTimes);
+          const maxReadTime = Math.max(...readTimes);
 
-            const nodes = visibleDocs.map((doc, i) => ({
-              id: String(i),
-              title: doc.title,
-              fullText: doc.description,
-              tags: doc.tags,
-              readTime: doc.readTime,
-              releaseDate: doc.releaseDate,
-              isRead: doc.isRead,
-            }));
+          const docSetHash = hashDocSet(visibleDocs);
+          let links = getCachedSimilarities(docSetHash);
 
-            // Calculate min and max readTime
-            const readTimes = visibleDocs.map((doc) => doc.readTime);
-            const minReadTime = Math.min(...readTimes);
-            const maxReadTime = Math.max(...readTimes);
-
-            const docSetHash = hashDocSet(visibleDocs);
-            let links = getCachedSimilarities(docSetHash);
-
-            if (!links) {
-              links = [];
-              for (let i = 0; i < visibleDocs.length; i++) {
-                for (let j = i + 1; j < visibleDocs.length; j++) {
-                  const similarity = cosineSimilarity(
-                    embeddings[i],
-                    embeddings[j]
-                  );
-                  if (similarity > threshold) {
-                    links.push({
-                      source: String(i),
-                      target: String(j),
-                      similarity,
-                      width:
-                        1 + (similarity - threshold) * (4 / (1 - threshold)),
-                    });
-                  }
+          if (!links) {
+            links = [];
+            for (let i = 0; i < visibleDocs.length; i++) {
+              for (let j = i + 1; j < visibleDocs.length; j++) {
+                const similarity = cosineSimilarity(
+                  embeddings[i],
+                  embeddings[j]
+                );
+                if (similarity > 0.75) {
+                  links.push({
+                    source: String(i),
+                    target: String(j),
+                    similarity,
+                    width: 1 + (similarity - 0.75) * (4 / (1 - 0.75)),
+                  });
                 }
               }
-              setCachedSimilarities(docSetHash, links);
-              console.log("Similarities cached for docSetHash:", docSetHash);
-            } else {
-              console.log(
-                "Loaded similarities from cache for docSetHash:",
-                docSetHash
-              );
             }
+            setCachedSimilarities(docSetHash, links);
+          }
 
-            console.log(
-              "Setting up force simulation with nodes:",
-              nodes.length
-            );
-
-            nodes.forEach((node) => {
-              node.x = width / 2 + (Math.random() - 0.5) * 100;
-              node.y = height / 2 + (Math.random() - 0.5) * 100;
-            });
-
-            simulationRef.current = d3
-              .forceSimulation()
-              .nodes(nodes)
-              .force(
-                "link",
-                d3
-                  .forceLink(links)
-                  .id((d) => d.id)
-                  .distance(60)
-                  .strength(0.3)
-              )
-              .force("charge", d3.forceManyBody().strength(-800))
-              .force("center", d3.forceCenter(width / 2, height / 2))
-              .force("x", d3.forceX(width / 2).strength(0.1))
-              .force("y", d3.forceY(height / 2).strength(0.1))
-              .force("collision", d3.forceCollide().radius(25))
-              .velocityDecay(0.3)
-              .alphaTarget(0)
-              .alphaDecay(0.02);
-
-            const link = g
-              .append("g")
-              .selectAll("line")
-              .data(links)
-              .join("line")
-              .attr("stroke", "var(--edge-color)")
-              .attr("stroke-width", (d) => d.width)
-              .attr("stroke-opacity", "var(--edge-opacity)");
-
-            const edgeLabels = g
-              .append("g")
-              .selectAll("text")
-              .data(links)
-              .join("text")
-              .attr("fill", "var(--text-color)")
-              .attr("font-size", "10px")
-              .text((d) => d.similarity.toFixed(2));
-
-            console.log("Creating node elements");
-
-            const nodeGroup = g.append("g").attr("class", "nodes");
-
-            const node = nodeGroup
-              .selectAll("g")
-              .data(nodes)
-              .join("g")
-              .attr("transform", (d) => `translate(${d.x},${d.y})`)
-              .call(
-                d3
-                  .drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-              );
-
-            node
-              .append("circle")
-              .attr("r", (d) =>
-                normalizeReadTime(d.readTime, minReadTime, maxReadTime)
-              ) // Use normalized readTime for radius
-              .attr("fill", (d) => (d.isRead ? "#4caf50" : "var(--node-color)"))
-              .attr("stroke", "var(--node-stroke-color)")
-              .on("mouseover", function (event, d) {
-                // Highlight the node
-                d3.select(this).attr("fill", "#4a9eff");
-
-                // Highlight connected edges
-                link
-                  .attr("stroke", (l) =>
-                    l.source.id === d.id || l.target.id === d.id
-                      ? "#4a9eff"
-                      : "var(--edge-color)"
-                  )
-                  .attr("stroke-width", (l) =>
-                    l.source.id === d.id || l.target.id === d.id ? 3 : d.width
-                  );
-
-                // Show the title of the node
-                nodeGroup
-                  .append("text")
-                  .attr("class", "node-title")
-                  .attr("x", d.x + 10)
-                  .attr("y", d.y + 5)
-                  .attr("fill", "var(--text-color)")
-                  .text(d.title);
-              })
-              .on("mouseout", function (event, d) {
-                // Restore the node color
-                d3.select(this).attr("fill", (d) =>
-                  d.isRead ? "#4caf50" : "var(--node-color)"
-                );
-
-                // Restore the edge color and width
-                link
-                  .attr("stroke", "var(--edge-color)")
-                  .attr("stroke-width", (d) => d.width);
-
-                // Remove the title text
-                nodeGroup.selectAll(".node-title").remove();
-              });
-
-            node
-              .on("mouseover", function (event, d) {
-                // Highlight the node
-                d3.select(this).attr("fill", "#4a9eff");
-
-                // Highlight connected edges
-                link
-                  .attr("stroke", (l) =>
-                    l.source.id === d.id || l.target.id === d.id
-                      ? "#4a9eff"
-                      : "var(--edge-color)"
-                  )
-                  .attr("stroke-width", (l) =>
-                    l.source.id === d.id || l.target.id === d.id ? 3 : d.width
-                  );
-
-                // Show a custom tooltip with more details
-                nodeGroup
-                  .append("text")
-                  .attr("class", "node-tooltip")
-                  .attr("x", d.x + 10)
-                  .attr("y", d.y + 5)
-                  .attr("fill", "var(--text-color)")
-                  .text(
-                    `${d.title}\n${d.fullText}\nTags: ${d.tags.join(", ")}`
-                  );
-              })
-              .on("mouseout", function (event, d) {
-                // Restore the node color
-                d3.select(this).attr("fill", (d) =>
-                  d.isRead ? "#4caf50" : "var(--node-color)"
-                );
-
-                // Restore the edge color and width
-                link
-                  .attr("stroke", "var(--edge-color)")
-                  .attr("stroke-width", (d) => d.width);
-
-                // Remove the custom tooltip
-                nodeGroup.selectAll(".node-tooltip").remove();
-              });
-
-            function dragstarted(event, d) {
-              if (!event.active)
-                simulationRef.current.alphaTarget(0.3).restart();
-              d.fx = d.x;
-              d.fy = d.y;
-            }
-
-            function dragged(event, d) {
-              d.fx = boundPosition(event.x, width, padding);
-              d.fy = boundPosition(event.y, height, padding);
-            }
-
-            function dragended(event, d) {
-              if (!event.active) simulationRef.current.alphaTarget(0);
-              d.fx = null;
-              d.fy = null;
-            }
-
-            console.log("Setting up tick handler");
-
-            simulationRef.current.on("tick", () => {
-              link
-                .attr("x1", (d) => boundPosition(d.source.x, width, padding))
-                .attr("y1", (d) => boundPosition(d.source.y, height, padding))
-                .attr("x2", (d) => boundPosition(d.target.x, width, padding))
-                .attr("y2", (d) => boundPosition(d.target.y, height, padding));
-
-              edgeLabels
-                .attr(
-                  "x",
-                  (d) =>
-                    (boundPosition(d.source.x, width, padding) +
-                      boundPosition(d.target.x, width, padding)) /
-                    2
-                )
-                .attr(
-                  "y",
-                  (d) =>
-                    (boundPosition(d.source.y, height, padding) +
-                      boundPosition(d.target.y, height, padding)) /
-                    2
-                );
-
-              node.attr("transform", (d) => {
-                const x = boundPosition(d.x, width, padding);
-                const y = boundPosition(d.y, height, padding);
-                return `translate(${x},${y})`;
-              });
-            });
-
-            console.log("Graph initialization complete");
-            console.timeEnd("Graph Initialization");
-          };
-
-          initializeGraph().then(() => {
-            console.timeEnd("Total Page Load");
+          nodes.forEach((node) => {
+            node.x = width / 2 + (Math.random() - 0.5) * 100;
+            node.y = height / 2 + (Math.random() - 0.5) * 100;
           });
 
-          return () => {
-            cleanupGraph();
-          };
-        }, [visibleDocs, width, height, model, loading, padding, cleanupGraph]);
+          simulationRef.current = d3
+            .forceSimulation()
+            .nodes(nodes)
+            .force(
+              "link",
+              d3
+                .forceLink(links)
+                .id((d) => d.id)
+                .distance(60)
+                .strength(0.3)
+            )
+            .force("charge", d3.forceManyBody().strength(-800))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("x", d3.forceX(width / 2).strength(0.1))
+            .force("y", d3.forceY(height / 2).strength(0.1))
+            .force("collision", d3.forceCollide().radius(25))
+            .velocityDecay(0.3)
+            .alphaTarget(0)
+            .alphaDecay(0.02);
+
+          const link = g
+            .append("g")
+            .selectAll("line")
+            .data(links)
+            .join("line")
+            .attr("stroke", "var(--edge-color)")
+            .attr("stroke-width", (d) => d.width)
+            .attr("stroke-opacity", "var(--edge-opacity)");
+
+          const nodeGroup = g.append("g").attr("class", "nodes");
+
+          const node = nodeGroup
+            .selectAll("g")
+            .data(nodes)
+            .join("g")
+            .attr("transform", (d) => `translate(${d.x},${d.y})`)
+            .call(
+              d3
+                .drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended)
+            );
+
+          node
+            .append("circle")
+            .attr("r", (d) =>
+              normalizeReadTime(d.readTime, minReadTime, maxReadTime)
+            )
+            .attr("fill", (d) => (d.isRead ? "#4caf50" : "var(--node-color)"))
+            .attr("stroke", "var(--node-stroke-color)")
+            .on("mouseover", function (event, d) {
+              d3.select(this).attr("fill", "#4a9eff");
+              link
+                .attr("stroke", (l) =>
+                  l.source.id === d.id || l.target.id === d.id
+                    ? "#4a9eff"
+                    : "var(--edge-color)"
+                )
+                .attr("stroke-width", (l) =>
+                  l.source.id === d.id || l.target.id === d.id ? 3 : d.width
+                );
+
+              // Create a separate group for the title text
+              const titleGroup = nodeGroup
+                .append("g")
+                .attr("class", "node-title-group")
+                .attr("transform", `translate(${d.x},${d.y})`);
+
+              titleGroup
+                .append("text")
+                .attr("class", "node-title")
+                .attr("x", 10)
+                .attr("y", 5)
+                .attr("fill", "var(--text-color)")
+                .text(d.title);
+            })
+            .on("mouseout", function (event, d) {
+              d3.select(this).attr("fill", (d) =>
+                d.isRead ? "#4caf50" : "var(--node-color)"
+              );
+              link
+                .attr("stroke", "var(--edge-color)")
+                .attr("stroke-width", (d) => d.width);
+
+              // Remove the title group on mouseout
+              nodeGroup.selectAll(".node-title-group").remove();
+            });
+
+          simulationRef.current.on("tick", () => {
+            link
+              .attr("x1", (d) => boundPosition(d.source.x, width, -200))
+              .attr("y1", (d) => boundPosition(d.source.y, height, -200))
+              .attr("x2", (d) => boundPosition(d.target.x, width, -200))
+              .attr("y2", (d) => boundPosition(d.target.y, height, -200));
+
+            node.attr("transform", (d) => {
+              const x = boundPosition(d.x, width, -200);
+              const y = boundPosition(d.y, height, -200);
+              return `translate(${x},${y})`;
+            });
+          });
+        };
+
+        // Drag event handlers
+        const dragstarted = (event, d) => {
+          if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        };
+
+        const dragged = (event, d) => {
+          d.fx = boundPosition(event.x, width, -200);
+          d.fy = boundPosition(event.y, height, -200);
+        };
+
+        const dragended = (event, d) => {
+          if (!event.active) simulationRef.current.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        };
+
+        // Helper function to bound node positions
+        const boundPosition = (position, dimension, padding) => {
+          return Math.max(padding, Math.min(dimension - padding, position));
+        };
+
+        // Helper function to normalize read time for node radius
+        const normalizeReadTime = (readTime, minReadTime, maxReadTime) => {
+          const minRadius = 5;
+          const maxRadius = 20;
+          const logMin = Math.log(minReadTime + 1);
+          const logMax = Math.log(maxReadTime + 1);
+          const logReadTime = Math.log(readTime + 1);
+          return (
+            ((logReadTime - logMin) / (logMax - logMin)) *
+              (maxRadius - minRadius) +
+            minRadius
+          );
+        };
+
+        if (isSmallScreen) {
+          return null;
+        }
 
         if (loading) {
           return (
