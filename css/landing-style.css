@@ -60,6 +60,11 @@ body {
   padding: 0;
 }
 
+a {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
 .content-wrapper {
   position: relative;
   z-index: 2;
@@ -639,6 +644,6 @@ ul li {
 }
 
 .selfie {
-  margin-top: 20px;
-  width: 53%;
+  margin-top: 12px;
+  width: 40%;
 }

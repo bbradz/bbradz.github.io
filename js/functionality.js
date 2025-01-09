@@ -1601,6 +1601,39 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://www.youtube.com/watch?v=w9WE1aOPjHc",
   },
+  {
+    title: "Let this method tune hyper-parameters for you!",
+    author: "Tunadorable",
+    description:
+      "Stepping through, analyzing, and explaining the muP method for controlling optimal hyperparameter divergence with model scaling.",
+    tags: ["Hyperparameter Optimization", "YT"],
+    readTime: 0.5,
+    releaseDate: "2025-01-06",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=-T9pBZ2nBkc",
+  }, 
+  {
+    title: "Let this method tune hyper-parameters for you!",
+    author: "Tunadorable",
+    description:
+      "Stepping through, analyzing, and explaining the muP method for controlling optimal hyperparameter divergence with model scaling.",
+    tags: ["Hyperparameter Optimization", "YT"],
+    readTime: 0.5,
+    releaseDate: "2025-01-06",
+    isRead: true,
+    downloadLink: "https://www.youtube.com/watch?v=-T9pBZ2nBkc",
+  }, 
+  {
+    title: "The Practitioner's Guide to the Maximal Update Parameterization",
+    author: "Eleuther.AI",
+    description:
+      "Explores the implementation details of mutransfer & basis it's in statistical properties as well as empirically tests to verify the technique.",
+    tags: ["Hyperparameter Optimization", "Deep Learning", "Site"],
+    readTime: 0.5,
+    releaseDate: "2024-09-19",
+    isRead: true,
+    downloadLink: "https://blog.eleuther.ai/mutransfer/",
+  }, 
 ];
 
 /*  
