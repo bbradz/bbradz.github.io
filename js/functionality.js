@@ -583,15 +583,32 @@ function initializeTagColors() {
   });
 }
 
+// Debounce function to limit how often searchItems is called
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// Optimized search function
 function searchItems() {
   const searchTerm = document.getElementById("search").value.toLowerCase();
   const items = document.querySelectorAll("#reading-list li");
+
   items.forEach((item) => {
-    const text = item.textContent.toLowerCase();
-    item.style.display = text.includes(searchTerm) ? "" : "none";
+    const cachedText =
+      item.dataset.cachedText || item.textContent.toLowerCase();
+    item.dataset.cachedText = cachedText; // Cache the lowercase text
+    item.style.display = cachedText.includes(searchTerm) ? "" : "none";
   });
+
   window.dispatchEvent(window.documentVisibilityChanged);
 }
+
+// Debounced version of searchItems
+const debouncedSearchItems = debounce(searchItems, 300);
 
 function formatDate(dateString) {
   if (dateString === "Not specified") return dateString;
@@ -654,7 +671,7 @@ document.addEventListener("DOMContentLoaded", () => {
   generateReadingListHTML(readingListData);
   const searchInput = document.getElementById("search");
   if (searchInput) {
-    searchInput.addEventListener("input", searchItems);
+    searchInput.addEventListener("input", debouncedSearchItems);
   }
   initializeTagColors();
 });
@@ -1519,7 +1536,8 @@ const readingListData = [
   {
     title: "o-models, beyond classical DL",
     author: "Francois Chollet",
-    description: "Description of the ARG-AGI model evaluation test set and how current Deep Learning Architectures fail to encapsulate Symbolic reasoning",
+    description:
+      "Description of the ARG-AGI model evaluation test set and how current Deep Learning Architectures fail to encapsulate Symbolic reasoning",
     tags: ["Deep Learning", "Symbolic Systems", "YT"],
     readTime: 1.5,
     releaseDate: "2025-01-08",
