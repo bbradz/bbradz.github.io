@@ -92,7 +92,7 @@
           <a href="#F">Pipeline parallelism</a>
           <a href="#G">Tensor parallelism</a>
           <a href="#H">What even is a Parameter?</a>
-          <a href="#I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</a>
+          <a href="#I">ZeRO― Seriously Tackling Where 3D Parallelism Fails</a>
           <a href="#J">Off-GPU, Intra-Node</a>
           <a href="#K">Further Miscellaneous ZeRO</a>
           <a href="#L">Conclusion</a>
@@ -345,21 +345,26 @@
         for you if your trying to implement this yourself or get a better feel for
         the exact mechanics...
       </p>
-      <div class="collapsible-code-container">
-        <button class="collapse-button" onclick="toggleCollapse(this)">
-          Show Code
-          <button class="copy-button" onclick="copyCode(event)">
-            <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-            <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </button>
-        </button>
-        <div class="code-container" onmousemove="handleMouseMove(event)">
-          <div class="code-content">
+        <div class="collapsible-code-container">
+          <div class="button-container">
+            <button class="collapse-button" onclick="toggleCollapse(this)">
+              <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+              <span>show code</span>
+            </button>
+            <button class="copy-button" onclick="copyCode(event)">
+              <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="code-container">
+            <div class="code-content">
               <pre><code>
                 <span class="keyword">import</span> torch
                 <span class="keyword">import</span> torch.distributed <span class="keyword">as</span> dist
@@ -571,8 +576,13 @@
         scheduling strategy.
       </p>
       <div class="collapsible-code-container">
-        <button class="collapse-button" onclick="toggleCollapse(this)">
-          Show Code
+        <div class="button-container">
+          <button class="collapse-button" onclick="toggleCollapse(this)">
+            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+            <span>show code</span>
+          </button>
           <button class="copy-button" onclick="copyCode(event)">
             <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -582,8 +592,8 @@
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </button>
-        </button>
-        <div class="code-container" onmousemove="handleMouseMove(event)">
+        </div>
+        <div class="code-container">
           <div class="code-content">
               <pre><code>
                 <span class="keyword">import</span> torch
@@ -852,185 +862,190 @@
               Hugging Face's <a href="https://github.com/huggingface/picotron" target="_blank">Picotron repository</a> .
           </p>
           <div class="collapsible-code-container">
+          <div class="button-container">
             <button class="collapse-button" onclick="toggleCollapse(this)">
-              Show Code
-              <button class="copy-button" onclick="copyCode(event)">
-                <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </button>
+              <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+              <span>show code</span>
             </button>
-            <div class="code-container" onmousemove="handleMouseMove(event)">
+            <button class="copy-button" onclick="copyCode(event)">
+              <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+          </div>
+            <div class="code-container">
               <div class="code-content">
-                  <pre><code>
-                    <span class="keyword">import</span> math, torch, torch.nn <span class="keyword">as</span> nn, torch.nn.functional <span class="keyword">as</span> F, torch.distributed <span class="keyword">as</span> dist
-                    <span class="keyword">from</span> typing <span class="keyword">import</span> Optional, Tuple
-                    <span class="keyword">import</span> picotron.process_group_manager <span class="keyword">as</span> pgm
+              <pre><code>
+                <span class="keyword">import</span> math, torch, torch.nn <span class="keyword">as</span> nn, torch.nn.functional <span class="keyword">as</span> F, torch.distributed <span class="keyword">as</span> dist
+                <span class="keyword">from</span> typing <span class="keyword">import</span> Optional, Tuple
+                <span class="keyword">import</span> picotron.process_group_manager <span class="keyword">as</span> pgm
 
-                    <span class="comment"># Apply tensor parallelism to the model by replacing specific layers with parallelized versions</span>
-                    <span class="keyword">def</span> <span class="function">apply_tensor_parallel</span>(model):
-                        <span class="keyword">def</span> <span class="function">_replace_module</span>(_module, _linear_proj_name, _style, args={}):
-                            linear_layer = getattr(_module, _linear_proj_name)  <span class="comment"># Get the original linear layer</span>
-                            <span class="keyword">if</span> _style == <span class="string">"column"</span>:  <span class="comment"># Replace with column-parallel linear layer</span>
-                                new_linear_layer = ColumnParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, args.get(<span class="string">"gather_output"</span>, <span class="keyword">False</span>))
-                            <span class="keyword">elif</span> _style == <span class="string">"row"</span>:  <span class="comment"># Replace with row-parallel linear layer</span>
-                                new_linear_layer = RowParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)
-                            <span class="keyword">else</span>:  <span class="comment"># Replace with vocabulary-parallel embedding layer</span>
-                                new_linear_layer = VocabParallelEmbedding(linear_layer.num_embeddings, linear_layer.embedding_dim)
-                            setattr(_module, _linear_proj_name, new_linear_layer)  <span class="comment"># Replace the original layer with the parallelized version</span>
+                <span class="comment"># Apply tensor parallelism to the model by replacing specific layers with parallelized versions</span>
+                <span class="keyword">def</span> <span class="function">apply_tensor_parallel</span>(model):
+                    <span class="keyword">def</span> <span class="function">_replace_module</span>(_module, _linear_proj_name, _style, args={}):
+                        linear_layer = getattr(_module, _linear_proj_name)  <span class="comment"># Get the original linear layer</span>
+                        <span class="keyword">if</span> _style == <span class="string">"column"</span>:  <span class="comment"># Replace with column-parallel linear layer</span>
+                            new_linear_layer = ColumnParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, args.get(<span class="string">"gather_output"</span>, <span class="keyword">False</span>))
+                        <span class="keyword">elif</span> _style == <span class="string">"row"</span>:  <span class="comment"># Replace with row-parallel linear layer</span>
+                            new_linear_layer = RowParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)
+                        <span class="keyword">else</span>:  <span class="comment"># Replace with vocabulary-parallel embedding layer</span>
+                            new_linear_layer = VocabParallelEmbedding(linear_layer.num_embeddings, linear_layer.embedding_dim)
+                        setattr(_module, _linear_proj_name, new_linear_layer)  <span class="comment"># Replace the original layer with the parallelized version</span>
 
-                        <span class="comment"># Mapping of layer names to their parallelization styles</span>
-                        module_linear_name_stype_mapping_list = [
-                            (<span class="string">"attention"</span>, <span class="string">"q_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"k_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"v_proj"</span>, <span class="string">"column"</span>),
-                            (<span class="string">"attention"</span>, <span class="string">"out_proj"</span>, <span class="string">"row"</span>), (<span class="string">"mlp"</span>, <span class="string">"up_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"gate_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"down_proj"</span>, <span class="string">"row"</span>),
-                        ]
-                        <span class="keyword">for</span> layer <span class="keyword">in</span> model.decoder_layers:  <span class="comment"># Apply parallelism to each decoder layer</span>
-                            <span class="keyword">for</span> module_name, linear_proj_name, style <span class="keyword">in</span> module_linear_name_stype_mapping_list:
-                                _replace_module(getattr(layer, module_name), linear_proj_name, style)
-                        _replace_module(model, <span class="string">"embedding"</span>, <span class="string">"vocab"</span>)  <span class="comment"># Parallelize embedding layer</span>
-                        _replace_module(model, <span class="string">"final_proj"</span>, <span class="string">"column"</span>, args={<span class="string">"gather_output"</span>: <span class="keyword">True</span>})  <span class="comment"># Parallelize final projection layer</span>
-                        <span class="keyword">return</span> model
+                    <span class="comment"># Mapping of layer names to their parallelization styles</span>
+                    module_linear_name_stype_mapping_list = [
+                        (<span class="string">"attention"</span>, <span class="string">"q_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"k_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"v_proj"</span>, <span class="string">"column"</span>),
+                        (<span class="string">"attention"</span>, <span class="string">"out_proj"</span>, <span class="string">"row"</span>), (<span class="string">"mlp"</span>, <span class="string">"up_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"gate_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"down_proj"</span>, <span class="string">"row"</span>),
+                    ]
+                    <span class="keyword">for</span> layer <span class="keyword">in</span> model.decoder_layers:  <span class="comment"># Apply parallelism to each decoder layer</span>
+                        <span class="keyword">for</span> module_name, linear_proj_name, style <span class="keyword">in</span> module_linear_name_stype_mapping_list:
+                            _replace_module(getattr(layer, module_name), linear_proj_name, style)
+                    _replace_module(model, <span class="string">"embedding"</span>, <span class="string">"vocab"</span>)  <span class="comment"># Parallelize embedding layer</span>
+                    _replace_module(model, <span class="string">"final_proj"</span>, <span class="string">"column"</span>, args={<span class="string">"gather_output"</span>: <span class="keyword">True</span>})  <span class="comment"># Parallelize final projection layer</span>
+                    <span class="keyword">return</span> model
 
-                    <span class="comment"># Column Parallel Linear Layer: Splits weight matrix along columns across GPUs</span>
-                    <span class="keyword">class</span> <span class="class">ColumnParallelLinear</span>(nn.Module):
-                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span> = <span class="keyword">False</span>, gather_output: <span class="keyword">bool</span> = <span class="keyword">False</span>, async_all_reduce: <span class="keyword">bool</span> = <span class="keyword">False</span>):
-                            <span class="function">super</span>().<span class="function">__init__</span>()
-                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
-                            <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
-                            <span class="parameter">self</span>.output_size_per_partition = out_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Output size per GPU</span>
-                            <span class="parameter">self</span>.gather_output, <span class="parameter">self</span>.async_all_reduce = gather_output, async_all_reduce  <span class="comment"># Gather output and async all-reduce flags</span>
-                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition, <span class="parameter">self</span>.in_features))  <span class="comment"># Weight matrix (split along columns)</span>
-                            <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
-                            <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
-                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
+                <span class="comment"># Column Parallel Linear Layer: Splits weight matrix along columns across GPUs</span>
+                <span class="keyword">class</span> <span class="class">ColumnParallelLinear</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span> = <span class="keyword">False</span>, gather_output: <span class="keyword">bool</span> = <span class="keyword">False</span>, async_all_reduce: <span class="keyword">bool</span> = <span class="keyword">False</span>):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                        <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
+                        <span class="parameter">self</span>.output_size_per_partition = out_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Output size per GPU</span>
+                        <span class="parameter">self</span>.gather_output, <span class="parameter">self</span>.async_all_reduce = gather_output, async_all_reduce  <span class="comment"># Gather output and async all-reduce flags</span>
+                        <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition, <span class="parameter">self</span>.in_features))  <span class="comment"># Weight matrix (split along columns)</span>
+                        <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
+                        <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
+                        <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
 
-                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
-                            master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
-                            torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
-                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.output_size_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
-                        
-                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x: torch.Tensor) -> torch.Tensor:  
-                            output = linear_with_async_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias) <span class="keyword">if</span> <span class="parameter">self</span>.async_all_reduce <span class="keyword">else</span> linear_with_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias)  <span class="comment"># Compute output with optional async all-reduce</span>
-                            <span class="keyword">return</span> GatherFromModelParallelRegion.apply(output) <span class="keyword">if</span> <span class="parameter">self</span>.gather_output <span class="keyword">else</span> output  <span class="comment"># Gather output if needed</span>
+                    <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                        master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
+                        torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
+                        <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.output_size_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
+                    
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x: torch.Tensor) -> torch.Tensor:  
+                        output = linear_with_async_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias) <span class="keyword">if</span> <span class="parameter">self</span>.async_all_reduce <span class="keyword">else</span> linear_with_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias)  <span class="comment"># Compute output with optional async all-reduce</span>
+                        <span class="keyword">return</span> GatherFromModelParallelRegion.apply(output) <span class="keyword">if</span> <span class="parameter">self</span>.gather_output <span class="keyword">else</span> output  <span class="comment"># Gather output if needed</span>
 
-                    <span class="comment"># Row Parallel Linear Layer: Splits weight matrix along rows across GPUs</span>
-                    <span class="keyword">class</span> <span class="class">RowParallelLinear</span>(nn.Module):
-                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span>):
-                            <span class="function">super</span>().<span class="function">__init__</span>()
-                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
-                            <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
-                            <span class="parameter">self</span>.input_size_per_partition = in_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Input size per GPU</span>
-                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.input_size_per_partition))  <span class="comment"># Weight matrix (split along rows)</span>
-                            <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
-                            <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
-                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
+                <span class="comment"># Row Parallel Linear Layer: Splits weight matrix along rows across GPUs</span>
+                <span class="keyword">class</span> <span class="class">RowParallelLinear</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span>):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                        <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
+                        <span class="parameter">self</span>.input_size_per_partition = in_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Input size per GPU</span>
+                        <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.input_size_per_partition))  <span class="comment"># Weight matrix (split along rows)</span>
+                        <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
+                        <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
+                        <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
 
-                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
-                            master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
-                            torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
-                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.input_size_per_partition, dim=<span class="number">1</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
+                    <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                        master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
+                        torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
+                        <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.input_size_per_partition, dim=<span class="number">1</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
 
-                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
-                            output_parallel = F.linear(x, <span class="parameter">self</span>.weight)  <span class="comment"># Compute partial output</span>
-                            output = ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum outputs across GPUs</span>
-                            <span class="keyword">return</span> output <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">else</span> output + <span class="parameter">self</span>.bias  <span class="comment"># Add bias if present</span>
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
+                        output_parallel = F.linear(x, <span class="parameter">self</span>.weight)  <span class="comment"># Compute partial output</span>
+                        output = ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum outputs across GPUs</span>
+                        <span class="keyword">return</span> output <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">else</span> output + <span class="parameter">self</span>.bias  <span class="comment"># Add bias if present</span>
 
-                    <span class="comment"># Vocabulary Parallel Embedding Layer: Splits embedding matrix along vocabulary dimension</span>
-                    <span class="keyword">class</span> <span class="class">VocabParallelEmbedding</span>(nn.Module):
-                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, num_embeddings: <span class="keyword">int</span>, embedding_dim: <span class="keyword">int</span>, padding_idx: Optional[<span class="keyword">int</span>] = <span class="keyword">None</span>, max_norm: Optional[<span class="keyword">float</span>] = <span class="keyword">None</span>, norm_type: <span class="keyword">float</span> = <span class="number">2.0</span>, scale_grad_by_freq: <span class="keyword">bool</span> = <span class="keyword">False</span>, sparse: <span class="keyword">bool</span> = <span class="keyword">False</span>):
-                            <span class="function">super</span>().<span class="function">__init__</span>()
-                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
-                            <span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim = num_embeddings, embedding_dim  <span class="comment"># Vocabulary size and embedding dimension</span>
-                            <span class="parameter">self</span>.vocab_start_index, <span class="parameter">self</span>.vocab_end_index = <span class="parameter">self</span>._vocab_range_from_global_vocab_size(num_embeddings, <span class="parameter">self</span>.tp_rank, <span class="parameter">self</span>.tp_world_size)  <span class="comment"># Vocabulary range for this GPU</span>
-                            <span class="parameter">self</span>.num_embeddings_per_partition = <span class="parameter">self</span>.vocab_end_index - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Vocabulary size per GPU</span>
-                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.num_embeddings_per_partition, <span class="parameter">self</span>.embedding_dim))  <span class="comment"># Embedding matrix (split along vocabulary)</span>
-                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize embeddings</span>
-                        
-                        <span class="keyword">def</span> <span class="function">_vocab_range_from_global_vocab_size</span>(<span class="parameter">self</span>, global_vocab_size: <span class="keyword">int</span>, rank: <span class="keyword">int</span>, world_size: <span class="keyword">int</span>):
-                            per_partition_vocab_size = global_vocab_size // world_size  <span class="comment"># Vocabulary size per GPU</span>
-                            <span class="keyword">return</span> rank * per_partition_vocab_size, (rank + <span class="number">1</span>) * per_partition_vocab_size  <span class="comment"># Start and end indices for this GPU</span>
+                <span class="comment"># Vocabulary Parallel Embedding Layer: Splits embedding matrix along vocabulary dimension</span>
+                <span class="keyword">class</span> <span class="class">VocabParallelEmbedding</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, num_embeddings: <span class="keyword">int</span>, embedding_dim: <span class="keyword">int</span>, padding_idx: Optional[<span class="keyword">int</span>] = <span class="keyword">None</span>, max_norm: Optional[<span class="keyword">float</span>] = <span class="keyword">None</span>, norm_type: <span class="keyword">float</span> = <span class="number">2.0</span>, scale_grad_by_freq: <span class="keyword">bool</span> = <span class="keyword">False</span>, sparse: <span class="keyword">bool</span> = <span class="keyword">False</span>):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                        <span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim = num_embeddings, embedding_dim  <span class="comment"># Vocabulary size and embedding dimension</span>
+                        <span class="parameter">self</span>.vocab_start_index, <span class="parameter">self</span>.vocab_end_index = <span class="parameter">self</span>._vocab_range_from_global_vocab_size(num_embeddings, <span class="parameter">self</span>.tp_rank, <span class="parameter">self</span>.tp_world_size)  <span class="comment"># Vocabulary range for this GPU</span>
+                        <span class="parameter">self</span>.num_embeddings_per_partition = <span class="parameter">self</span>.vocab_end_index - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Vocabulary size per GPU</span>
+                        <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.num_embeddings_per_partition, <span class="parameter">self</span>.embedding_dim))  <span class="comment"># Embedding matrix (split along vocabulary)</span>
+                        <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize embeddings</span>
+                    
+                    <span class="keyword">def</span> <span class="function">_vocab_range_from_global_vocab_size</span>(<span class="parameter">self</span>, global_vocab_size: <span class="keyword">int</span>, rank: <span class="keyword">int</span>, world_size: <span class="keyword">int</span>):
+                        per_partition_vocab_size = global_vocab_size // world_size  <span class="comment"># Vocabulary size per GPU</span>
+                        <span class="keyword">return</span> rank * per_partition_vocab_size, (rank + <span class="number">1</span>) * per_partition_vocab_size  <span class="comment"># Start and end indices for this GPU</span>
 
-                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
-                            master_weight = torch.empty(<span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full embedding matrix</span>
-                            torch.nn.init.normal_(master_weight, mean=<span class="number">0.0</span>, std=<span class="number">1.0</span>)  <span class="comment"># Initialize embeddings with normal distribution</span>
-                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.num_embeddings_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split embeddings across GPUs</span>
+                    <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                        master_weight = torch.empty(<span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full embedding matrix</span>
+                        torch.nn.init.normal_(master_weight, mean=<span class="number">0.0</span>, std=<span class="number">1.0</span>)  <span class="comment"># Initialize embeddings with normal distribution</span>
+                        <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.num_embeddings_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split embeddings across GPUs</span>
 
-                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
-                            input_mask = (x < <span class="parameter">self</span>.vocab_start_index) | (x >= <span class="parameter">self</span>.vocab_end_index)  <span class="comment"># Mask tokens outside this GPU's vocabulary range</span>
-                            masked_input = x.clone() - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Adjust input indices for this GPU</span>
-                            masked_input[input_mask] = <span class="number">0</span>  <span class="comment"># Set out-of-range tokens to zero</span>
-                            output_parallel = F.embedding(masked_input, <span class="parameter">self</span>.weight, <span class="keyword">None</span>, <span class="keyword">None</span>, <span class="number">2.0</span>, <span class="keyword">False</span>, <span class="keyword">False</span>)  <span class="comment"># Lookup embeddings for valid tokens</span>
-                            output_parallel[input_mask, :] = <span class="number">0.0</span>  <span class="comment"># Set embeddings of out-of-range tokens to zero</span>
-                            <span class="keyword">return</span> ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum embeddings across GPUs</span>
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
+                        input_mask = (x < <span class="parameter">self</span>.vocab_start_index) | (x >= <span class="parameter">self</span>.vocab_end_index)  <span class="comment"># Mask tokens outside this GPU's vocabulary range</span>
+                        masked_input = x.clone() - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Adjust input indices for this GPU</span>
+                        masked_input[input_mask] = <span class="number">0</span>  <span class="comment"># Set out-of-range tokens to zero</span>
+                        output_parallel = F.embedding(masked_input, <span class="parameter">self</span>.weight, <span class="keyword">None</span>, <span class="keyword">None</span>, <span class="number">2.0</span>, <span class="keyword">False</span>, <span class="keyword">False</span>)  <span class="comment"># Lookup embeddings for valid tokens</span>
+                        output_parallel[input_mask, :] = <span class="number">0.0</span>  <span class="comment"># Set embeddings of out-of-range tokens to zero</span>
+                        <span class="keyword">return</span> ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum embeddings across GPUs</span>
 
-                    <span class="comment"># Helper functions for tensor parallelism</span>
-                    <span class="keyword">def</span> <span class="function">merge_first_two_dims</span>(grad_output: torch.Tensor, input_: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
-                        <span class="keyword">return</span> grad_output.contiguous().view(-<span class="number">1</span>, *grad_output.shape[<span class="number">2</span>:]), input_.contiguous().view(-<span class="number">1</span>, *input_.shape[<span class="number">2</span>:])  <span class="comment"># Merge first two dimensions for matrix multiplication</span>
+                <span class="comment"># Helper functions for tensor parallelism</span>
+                <span class="keyword">def</span> <span class="function">merge_first_two_dims</span>(grad_output: torch.Tensor, input_: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+                    <span class="keyword">return</span> grad_output.contiguous().view(-<span class="number">1</span>, *grad_output.shape[<span class="number">2</span>:]), input_.contiguous().view(-<span class="number">1</span>, *input_.shape[<span class="number">2</span>:])  <span class="comment"># Merge first two dimensions for matrix multiplication</span>
 
-                    <span class="keyword">def</span> <span class="function">split_tensor_along_last_dim</span>(tensor, num_partitions):
-                        <span class="keyword">return</span> torch.split(tensor, tensor.size()[-<span class="number">1</span>] // num_partitions, dim=-<span class="number">1</span>)  <span class="comment"># Split tensor along last dimension</span>
+                <span class="keyword">def</span> <span class="function">split_tensor_along_last_dim</span>(tensor, num_partitions):
+                    <span class="keyword">return</span> torch.split(tensor, tensor.size()[-<span class="number">1</span>] // num_partitions, dim=-<span class="number">1</span>)  <span class="comment"># Split tensor along last dimension</span>
 
-                    <span class="keyword">class</span> <span class="class">CopyToModelParallelRegion</span>(torch.autograd.Function):
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x): <span class="keyword">return</span> x  <span class="comment"># Forward pass: no change</span>
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
-                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(grad_output, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Backward pass: all-reduce gradients</span>
-                            <span class="keyword">return</span> grad_output
+                <span class="keyword">class</span> <span class="class">CopyToModelParallelRegion</span>(torch.autograd.Function):
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">forward</span>(ctx, x): <span class="keyword">return</span> x  <span class="comment"># Forward pass: no change</span>
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                        <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(grad_output, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Backward pass: all-reduce gradients</span>
+                        <span class="keyword">return</span> grad_output
 
-                    <span class="keyword">class</span> <span class="class">ReduceFromModelParallelRegion</span>(torch.autograd.Function):
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
-                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(x, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Forward pass: all-reduce outputs</span>
-                            <span class="keyword">return</span> x
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output): <span class="keyword">return</span> grad_output  <span class="comment"># Backward pass: no change</span>
+                <span class="keyword">class</span> <span class="class">ReduceFromModelParallelRegion</span>(torch.autograd.Function):
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
+                        <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(x, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Forward pass: all-reduce outputs</span>
+                        <span class="keyword">return</span> x
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output): <span class="keyword">return</span> grad_output  <span class="comment"># Backward pass: no change</span>
 
-                    <span class="keyword">class</span> <span class="class">GatherFromModelParallelRegion</span>(torch.autograd.Function):
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
-                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> x  <span class="comment"># If single GPU, return input</span>
-                            x = x.contiguous()  <span class="comment"># Ensure tensor is contiguous</span>
-                            tensor_list = [torch.empty_like(x) <span class="keyword">for</span> _ <span class="keyword">in</span> range(pgm.process_group_manager.tp_world_size)]  <span class="comment"># Create list to gather tensors</span>
-                            tensor_list[pgm.process_group_manager.tp_rank] = x  <span class="comment"># Place this GPU's tensor in the list</span>
-                            dist.all_gather(tensor_list, x, group=pgm.process_group_manager.tp_group)  <span class="comment"># Gather tensors from all GPUs</span>
-                            <span class="keyword">return</span> torch.cat(tensor_list, dim=-<span class="number">1</span>).contiguous()  <span class="comment"># Concatenate tensors along last dimension</span>
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
-                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> grad_output  <span class="comment"># If single GPU, return gradient</span>
-                            <span class="keyword">return</span> split_tensor_along_last_dim(grad_output, pgm.process_group_manager.tp_world_size)[pgm.process_group_manager.tp_rank].contiguous()  <span class="comment"># Split gradient for this GPU</span>
+                <span class="keyword">class</span> <span class="class">GatherFromModelParallelRegion</span>(torch.autograd.Function):
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
+                        <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> x  <span class="comment"># If single GPU, return input</span>
+                        x = x.contiguous()  <span class="comment"># Ensure tensor is contiguous</span>
+                        tensor_list = [torch.empty_like(x) <span class="keyword">for</span> _ <span class="keyword">in</span> range(pgm.process_group_manager.tp_world_size)]  <span class="comment"># Create list to gather tensors</span>
+                        tensor_list[pgm.process_group_manager.tp_rank] = x  <span class="comment"># Place this GPU's tensor in the list</span>
+                        dist.all_gather(tensor_list, x, group=pgm.process_group_manager.tp_group)  <span class="comment"># Gather tensors from all GPUs</span>
+                        <span class="keyword">return</span> torch.cat(tensor_list, dim=-<span class="number">1</span>).contiguous()  <span class="comment"># Concatenate tensors along last dimension</span>
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                        <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> grad_output  <span class="comment"># If single GPU, return gradient</span>
+                        <span class="keyword">return</span> split_tensor_along_last_dim(grad_output, pgm.process_group_manager.tp_world_size)[pgm.process_group_manager.tp_rank].contiguous()  <span class="comment"># Split gradient for this GPU</span>
 
-                    <span class="keyword">class</span> <span class="class">LinearWithAsyncAllReduce</span>(torch.autograd.Function):
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, input_, weight, bias):
-                            ctx.save_for_backward(input_, weight)  <span class="comment"># Save inputs for backward pass</span>
-                            ctx.use_bias = bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>  <span class="comment"># Flag for bias presence</span>
-                            <span class="keyword">return</span> input_ @ weight.t() + bias <span class="keyword">if</span> bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> input_ @ weight.t()  <span class="comment"># Compute output</span>
-                        
-                        @staticmethod
-                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
-                            input_, weight = ctx.saved_tensors  <span class="comment"># Retrieve saved tensors</span>
-                            grad_input = grad_output @ weight  <span class="comment"># Compute gradient of input</span>
-                            input_gradient_all_reduce_handle = dist.all_reduce(grad_input, group=pgm.process_group_manager.tp_group, async_op=<span class="keyword">True</span>)  <span class="comment"># All-reduce input gradient asynchronously</span>
-                            grad_output, input_ = merge_first_two_dims(grad_output, input_)  <span class="comment"># Merge dimensions for matrix multiplication</span>
-                            grad_weight = grad_output.t() @ input_  <span class="comment"># Compute gradient of weight</span>
-                            grad_bias = grad_output.sum(<span class="number">0</span>) <span class="keyword">if</span> ctx.use_bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Compute gradient of bias (if present)</span>
-                            input_gradient_all_reduce_handle.wait()  <span class="comment"># Wait for all-reduce to complete</span>
-                            <span class="keyword">return</span> grad_input, grad_weight, grad_bias  <span class="comment"># Return gradients</span>
+                <span class="keyword">class</span> <span class="class">LinearWithAsyncAllReduce</span>(torch.autograd.Function):
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">forward</span>(ctx, input_, weight, bias):
+                        ctx.save_for_backward(input_, weight)  <span class="comment"># Save inputs for backward pass</span>
+                        ctx.use_bias = bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>  <span class="comment"># Flag for bias presence</span>
+                        <span class="keyword">return</span> input_ @ weight.t() + bias <span class="keyword">if</span> bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> input_ @ weight.t()  <span class="comment"># Compute output</span>
+                    
+                    @staticmethod
+                    <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                        input_, weight = ctx.saved_tensors  <span class="comment"># Retrieve saved tensors</span>
+                        grad_input = grad_output @ weight  <span class="comment"># Compute gradient of input</span>
+                        input_gradient_all_reduce_handle = dist.all_reduce(grad_input, group=pgm.process_group_manager.tp_group, async_op=<span class="keyword">True</span>)  <span class="comment"># All-reduce input gradient asynchronously</span>
+                        grad_output, input_ = merge_first_two_dims(grad_output, input_)  <span class="comment"># Merge dimensions for matrix multiplication</span>
+                        grad_weight = grad_output.t() @ input_  <span class="comment"># Compute gradient of weight</span>
+                        grad_bias = grad_output.sum(<span class="number">0</span>) <span class="keyword">if</span> ctx.use_bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Compute gradient of bias (if present)</span>
+                        input_gradient_all_reduce_handle.wait()  <span class="comment"># Wait for all-reduce to complete</span>
+                        <span class="keyword">return</span> grad_input, grad_weight, grad_bias  <span class="comment"># Return gradients</span>
 
-                    <span class="keyword">def</span> <span class="function">linear_with_all_reduce</span>(x, weight, bias):
-                        <span class="keyword">return</span> F.linear(CopyToModelParallelRegion.apply(x), weight, bias)  <span class="comment"># Linear transformation with all-reduce</span>
+                <span class="keyword">def</span> <span class="function">linear_with_all_reduce</span>(x, weight, bias):
+                    <span class="keyword">return</span> F.linear(CopyToModelParallelRegion.apply(x), weight, bias)  <span class="comment"># Linear transformation with all-reduce</span>
 
-                    <span class="keyword">def</span> <span class="function">linear_with_async_all_reduce</span>(x, weight, bias):
-                        <span class="keyword">return</span> LinearWithAsyncAllReduce.apply(x, weight, bias)  <span class="comment"># Linear transformation with async all-reduce</span>
-                  </code></pre>
+                <span class="keyword">def</span> <span class="function">linear_with_async_all_reduce</span>(x, weight, bias):
+                    <span class="keyword">return</span> LinearWithAsyncAllReduce.apply(x, weight, bias)  <span class="comment"># Linear transformation with async all-reduce</span>
+              </code></pre>
+            </div>
           </div>
         </div>
-      </div>
       <p>
         That resolves all three primary axes of breaking down Model training
         into Distributed processes. Importantly, all of these techniques can be
@@ -1191,7 +1206,7 @@
         aims squarely at.
       </p>
 
-      <h2 id="I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</h2>
+      <h2 id="I">ZeRO― Seriously Tackling Where 3D Parallelism Fails</h2>
 
       <p>
         ZeRO is a tremendously impactful project out of Microsoft's research
@@ -1241,7 +1256,7 @@
         to store for our Backward pass, in practice, the majority of memory is
         usually taken by the states of our optimizer!
       </p>
-      <p>Enter-- Optimizer parallelism.</p>
+      <p><b>Enter― Optimizer parallelism.</b></p>
       <p>
         If you feel like you may want to brush up on Optimizers, now is the time
         for me to highlight that I actually just wrote a three-part series on
@@ -1704,20 +1719,17 @@
       </div>
 
       <h2>To cite this blog post:</h2>
-      <div
-        class="code-container citation-code"
-        onmousemove="handleMouseMove(event, 'citation-copy-button')"
-      >
-        <div class="code-content">
-            <button id="citation-copy-button" class="copy-button" onclick="copyCitation(event)">
-            <svg id="citation-copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-            <svg id="citation-check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            </button>
+      <div class="citation-container">
+        <button id="citation-copy-button" onclick="copyCitation(event)">
+          <svg id="citation-copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <svg id="citation-check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#73daca" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        <div class="citation-content">
           <pre><code><span class="keyword">@misc</span>{<span class="parameter">bradley-distributed-2025</span>,
               <span class="parameter">title</span>=<span class="operator">{</span><span class="string">From Jobs To Jensen</span><span class="operator">}</span>,
               <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
@@ -1728,7 +1740,6 @@
           }</code></pre>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- Scroll-to-top Button (mirroring the template) -->
@@ -1768,7 +1779,7 @@
           <a href="#F">Pipeline parallelism</a>
           <a href="#G">Tensor parallelism</a>
           <a href="#H">What even is a Parameter?</a>
-          <a href="#I">ZeRO-- Seriously Tackling Where 3D Parallelism Fails</a>
+          <a href="#I">ZeRO― Seriously Tackling Where 3D Parallelism Fails</a>
           <a href="#J">Off-GPU, Intra-Node</a>
           <a href="#K">Further Miscellaneous ZeRO</a>
           <a href="#L">Conclusion</a>

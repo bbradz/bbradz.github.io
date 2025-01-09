@@ -1,26 +1,62 @@
+// Update the toggleCollapse function
 function toggleCollapse(button) {
-  const container = button.parentElement;
-  const codeContainer = container.querySelector(".code-container");
-  const copyButton = button.querySelector(".copy-button");
+  const container = button.closest(".collapsible-code-container");
+  if (!container) return;
 
-  button.classList.toggle("expanded");
+  const codeContainer = container.querySelector(".code-container");
+  if (!codeContainer) return;
+
+  // Toggle the visibility of the code container
   codeContainer.classList.toggle("visible");
 
-  // Toggle copy button visibility
+  // Toggle the expanded state of the button
+  button.classList.toggle("expanded");
+
+  // Update the button text based on the state
+  const buttonText = button.querySelector("span");
   if (codeContainer.classList.contains("visible")) {
-    copyButton.classList.add("visible");
+    buttonText.textContent = "hide code";
   } else {
-    copyButton.classList.remove("visible");
+    buttonText.textContent = "show code";
   }
 }
 
-function handleMouseMove(event) {
-  const codeContainer = event.currentTarget;
-  const copyButton = codeContainer.querySelector(".copy-button");
-  const rect = codeContainer.getBoundingClientRect();
+document.addEventListener("DOMContentLoaded", () => {
+  const buttonContainers = document.querySelectorAll(".button-container");
+  buttonContainers.forEach((container) => {
+    container.addEventListener("mouseenter", () => {
+      const copyButton = container.querySelector(".copy-button");
+      if (copyButton) {
+        copyButton.classList.add("visible");
+      }
+    });
 
-  // Show copy button when hovering near the top-right corner
-  if (event.clientY - rect.top < 50 && rect.right - event.clientX < 50) {
+    container.addEventListener("mouseleave", () => {
+      const copyButton = container.querySelector(".copy-button");
+      if (copyButton) {
+        copyButton.classList.remove("visible");
+      }
+    });
+  });
+});
+
+function handleMouseMove(event, container) {
+  const copyButton = container.querySelector(".copy-button");
+  if (!copyButton) return;
+
+  const rect = container.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  const buttonRect = copyButton.getBoundingClientRect();
+  const buttonCenterX = buttonRect.left + buttonRect.width / 2 - rect.left;
+  const buttonCenterY = buttonRect.top + buttonRect.height / 2 - rect.top;
+
+  const distance = Math.sqrt(
+    Math.pow(mouseX - buttonCenterX, 2) + Math.pow(mouseY - buttonCenterY, 2)
+  );
+
+  if (distance <= 150) {
     copyButton.classList.add("visible");
   } else {
     copyButton.classList.remove("visible");
@@ -94,51 +130,37 @@ function handleMouseMove(event, buttonId = null) {
   }
 }
 
+// Update the copyCode function
 function copyCode(event) {
-  // Prevent any default button behavior
   event.preventDefault();
-
-  // Get the clicked button
   const button = event.currentTarget;
+  const codeContainer = button.closest(".collapsible-code-container");
+  const codeEl = codeContainer.querySelector("code");
 
-  // Find the closest code container and get its code element
-  const container = button.closest(".code-container");
-  if (!container) return;
-
-  const codeEl = container.querySelector("code");
   if (!codeEl) return;
 
-  // Copy the code text
   navigator.clipboard
     .writeText(codeEl.innerText || "")
     .then(() => {
-      // Add the copied class
+      console.log("Copy button clicked, adding 'copied' class"); // Debug log
       button.classList.add("copied");
-
-      // Remove the copied class after animation
       setTimeout(() => {
+        console.log("Removing 'copied' class"); // Debug log
         button.classList.remove("copied");
-      }, 600);
-
-      // Find and toggle the icons
-      const copyIcon = button.querySelector("#copy-icon");
-      const checkIcon = button.querySelector("#check-icon");
-
-      if (copyIcon && checkIcon) {
-        copyIcon.style.display = "none";
-        checkIcon.style.display = "block";
-
-        // Revert back after the timeout
-        setTimeout(() => {
-          copyIcon.style.display = "block";
-          checkIcon.style.display = "none";
-        }, 600);
-      }
+      }, 500);
     })
     .catch((err) => {
       console.error("Failed to copy code:", err);
     });
 }
+
+// Add event listeners to all copy buttons
+document.addEventListener("DOMContentLoaded", () => {
+  const copyButtons = document.querySelectorAll(".copy-button");
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", copyCode);
+  });
+});
 
 // ======================
 // Scroll to top
@@ -169,37 +191,41 @@ function scrollToTop() {
 // ======================
 function copyCitation(event) {
   event.preventDefault();
-
   const button = event.currentTarget;
-  const container = button.closest(".code-container");
-  if (!container) return;
+  const citationContainer = button.closest(".citation-container");
+  const citationEl = citationContainer.querySelector("code");
 
-  const codeEl = container.querySelector("code");
-  if (!codeEl) return;
+  if (!citationEl) return;
 
   navigator.clipboard
-    .writeText(codeEl.innerText || "")
+    .writeText(citationEl.innerText || "")
     .then(() => {
+      console.log("Citation button clicked, adding 'copied' class"); // Debug log
       button.classList.add("copied");
-
-      const copyIcon = button.querySelector("#citation-copy-icon");
-      const checkIcon = button.querySelector("#citation-check-icon");
-
-      if (copyIcon && checkIcon) {
-        copyIcon.style.display = "none";
-        checkIcon.style.display = "block";
-
-        setTimeout(() => {
-          button.classList.remove("copied");
-          copyIcon.style.display = "block";
-          checkIcon.style.display = "none";
-        }, 600);
-      }
+      setTimeout(() => {
+        console.log("Removing 'copied' class"); // Debug log
+        button.classList.remove("copied");
+      }, 500);
     })
     .catch((err) => {
       console.error("Failed to copy citation:", err);
     });
 }
+
+// Add event listeners to all copy buttons
+document.addEventListener("DOMContentLoaded", () => {
+  const copyButtons = document.querySelectorAll(".copy-button");
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", copyCode);
+  });
+
+  const citationCopyButtons = document.querySelectorAll(
+    "#citation-copy-button"
+  );
+  citationCopyButtons.forEach((button) => {
+    button.addEventListener("click", copyCitation);
+  });
+});
 
 // ======================
 // DOMContentLoaded

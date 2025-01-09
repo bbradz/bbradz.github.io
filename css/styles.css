@@ -32,6 +32,11 @@
   src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
 }
 
+@font-face {
+  font-family: "IcelandWinterstorm";
+  src: url("../fonts/Roman SD.ttf") format("opentype");
+}
+
 * {
   font-family: "default", sans-serif;
 }
@@ -90,6 +95,35 @@ body {
   padding: 0.5rem;
   color: var(--text-color);
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-color);
+  stroke-width: 2;
+  fill: none;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: block;
 }
 
 .nav-links {
@@ -110,7 +144,7 @@ body {
   text-decoration: underline;
 }
 
-/* Original styles from paste.txt */
+/* Container and centered items */
 .container {
   max-width: 760px;
   margin: 0 auto;
@@ -130,8 +164,6 @@ body {
 .centered-item-holder img {
   width: 100%;
   height: auto;
-  max-height: none !important;
-  max-width: none !important;
   object-fit: contain;
 }
 
@@ -290,16 +322,17 @@ sub {
   position: relative;
   margin: 1.5rem 0;
   border: 1px solid var(--table-border);
+  background-color: var(--code-bg);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .collapse-button {
-  width: 100%;
+  width: 80%;
   background: var(--toc-bg);
   border: none;
-  padding: 0.75rem 1rem;
-  padding-right: 3rem;
+  padding: 0.4rem 0rem;
+  padding-right: 2rem;
   color: var(--text-color);
   text-align: left;
   cursor: pointer;
@@ -308,12 +341,19 @@ sub {
   gap: 0.5rem;
   transition: background-color 0.2s;
   position: relative;
+  flex-grow: 1;
+  font-size: 1rem;
 }
 
-.collapse-button::before {
-  content: "▶";
-  font-size: 0.8rem;
-  transition: transform 0.2s;
+.collapse-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.collapse-button.expanded .collapse-icon {
+  transform: rotate(90deg);
 }
 
 .collapse-button.expanded::before {
@@ -328,12 +368,12 @@ sub {
 
 .code-container.visible {
   display: block;
-  margin-left: -24px;
 }
 
 .code-content {
   position: relative;
-  padding-right: 1rem;
+  padding: 0rem 1rem;
+  padding-left: 0rem;
   overflow-x: auto;
 }
 
@@ -348,65 +388,59 @@ sub {
   display: block;
   padding: 0rem;
   background-color: transparent;
-  margin-left: -8px;
+  margin-left: -36px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--toc-bg); /* Match the collapse button's background */
+  border-radius: 8px; /* Match the collapse button's border radius */
+  padding: 8px 12px; /* Match the collapse button's padding */
+  cursor: pointer;
 }
 
 .copy-button {
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-  background: transparent;
+  background: none;
   border: none;
+  padding: 0;
+  margin-left: 8px; /* Add spacing between the collapse button and copy button */
   cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  opacity: 0;
-  pointer-events: none;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.copy-button.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.copy-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.7);
+  opacity: 0.8; /* Initially hidden */
+  transition: opacity 0.2s ease-in-out;
 }
 
 .copy-button svg {
   width: 20px;
   height: 20px;
+  fill: none;
+  stroke: var(--text-color);
 }
 
-#citation-check-icon {
-  display: none;
+.copy-button,
+#citation-copy-button {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* === Non-citation code block === */
-.copy-button.copied #copy-icon {
-  display: none;
-}
-.copy-button.copied #check-icon {
-  display: block;
-  stroke: #73daca;
-  stroke-width: 3;
+.copy-button:hover,
+#citation-copy-button:hover {
+  opacity: 1;
 }
 
-/* === Citation code block === */
-.copy-button.copied #citation-copy-icon {
-  display: none;
+.copy-button.copied #copy-icon,
+#citation-copy-button.copied #citation-copy-icon {
+  display: none; /* Hide the copy icon */
 }
-.copy-button.copied #citation-check-icon {
-  display: block;
-  stroke: #73daca;
-  stroke-width: 3;
+
+.copy-button.copied #check-icon,
+#citation-copy-button.copied #citation-check-icon {
+  display: block !important; /* Force display for debugging */
+  stroke: var(--text-color) !important; /* Ensure the color is correct */
+  stroke-width: 3 !important; /* Ensure the stroke is thick enough */
 }
 
 .keyword {
@@ -437,16 +471,37 @@ sub {
   color: #565f89;
 }
 
-/* Citation styles */
 .citation-container {
-  background-color: rgb(39, 39, 42);
+  position: relative;
+  background-color: var(--code-bg);
   border-radius: 8px;
   padding: 16px;
   margin: 24px 0;
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5;
-  color: rgb(212, 212, 216);
+  color: var(--text-color);
+  overflow: visible;
+}
+
+#citation-copy-button {
+  position: absolute; /* Position the button absolutely within the container */
+  top: 8px; /* Adjust top position */
+  right: 8px; /* Adjust right position */
+  margin: 0 !important; /* Remove any default margins */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px; /* Add some padding for better clickability */
+}
+
+#citation-copy-button svg {
+  stroke: var(--text-color); /* Use the same color as other icons */
+  fill: none; /* Ensure no fill */
+}
+
+#citation-check-icon {
+  display: none; /* Hide the check icon by default */
 }
 
 .citation-container .property {
@@ -461,7 +516,26 @@ sub {
   color: rgb(252, 211, 77);
 }
 
-/* Scroll to top button */
+.citation-content {
+  position: relative;
+  padding: 0rem 1rem;
+  padding-left: 0rem;
+  overflow-x: auto;
+}
+
+.citation-content pre {
+  margin: 0;
+  padding: 0;
+}
+
+.citation-content code {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: block;
+  padding: 0rem;
+  background-color: transparent;
+}
+
 #scrollToTop {
   position: fixed;
   bottom: 24px;
@@ -472,7 +546,6 @@ sub {
   z-index: 1000;
 }
 
-/* Hide game of life when content might overflow */
 @media (max-width: 1200px) {
   .game-of-life {
     display: none;
@@ -504,7 +577,6 @@ sub {
   }
 }
 
-/* Table of Contents styles */
 .toc-container {
   background-color: var(--toc-bg);
   border-radius: 8px;
@@ -540,44 +612,6 @@ sub {
 
 .toc-content a:hover {
   text-decoration: underline;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  /* padding-top: 0rem; */
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s;
-}
-
-.theme-toggle svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--text-color);
-  stroke-width: 2;
-  fill: none;
-}
-
-[data-theme="light"] .theme-toggle .moon-icon {
-  display: block;
-}
-
-[data-theme="light"] .theme-toggle .sun-icon {
-  display: none;
-}
-
-[data-theme="dark"] .theme-toggle .moon-icon {
-  display: none;
-}
-
-[data-theme="dark"] .theme-toggle .sun-icon {
-  display: block;
 }
 
 .sidebar-toc {
@@ -726,14 +760,10 @@ sub {
   font-size: 0.9rem;
   gap: 0.5rem;
 }
+
 .discussion-links a {
   color: inherit;
   text-decoration: underline;
-}
-
-@font-face {
-  font-family: "IcelandWinterstorm";
-  src: url("../fonts/Roman SD.ttf") format("opentype");
 }
 
 @media (max-width: 768px) {
@@ -780,7 +810,6 @@ sub {
   }
 }
 
-/* Hidden text styles */
 .hidden-message {
   color: var(--bg-color);
   background-color: var(--bg-color);

@@ -466,56 +466,49 @@
 
         <!-- Citation section -->
         <h2>To cite this blog post:</h2>
-        <div
-          class="code-container citation-code"
-          onmousemove="handleMouseMove(event, 'citation-copy-button')"
-        >
-          <div class="code-content">
-            <button
-              id="citation-copy-button"
-              class="copy-button"
-              onclick="copyCitation(event)"
+        <div class="citation-container">
+          <button id="citation-copy-button" onclick="copyCitation(event)">
+            <svg
+              id="citation-copy-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              <svg
-                id="citation-copy-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path>
-              </svg>
-              <svg
-                id="citation-check-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="display: none"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </button>
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              ></path>
+            </svg>
+            <svg
+              id="citation-check-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#73daca"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="citation-content">
             <pre><code><span class="keyword">@misc</span>{<span class="parameter">bradley-shampoo-2024</span>,
-                <span class="parameter">title</span>=<span class="operator">{</span><span class="string">Shampoo clears the competition!</span><span class="operator">}</span>,
-                <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
-                <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
-                <span class="parameter">month</span>=<span class="operator">{</span><span class="string">aug</span><span class="operator">}</span>,
-                <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
-                <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
+              <span class="parameter">title</span>=<span class="operator">{</span><span class="string">Shampoo clears the competition!</span><span class="operator">}</span>,
+              <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
+              <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
+              <span class="parameter">month</span>=<span class="operator">{</span><span class="string">aug</span><span class="operator">}</span>,
+              <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
+              <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
             }</code></pre>
           </div>
         </div>
