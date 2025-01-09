@@ -135,7 +135,7 @@ function copyCode(event) {
   event.preventDefault();
   const button = event.currentTarget;
   const codeContainer = button.closest(".collapsible-code-container");
-  const codeEl = codeContainer.querySelector("code");
+  const codeEl = codeContainer ? codeContainer.querySelector("code") : null;
 
   if (!codeEl) return;
 
@@ -193,7 +193,9 @@ function copyCitation(event) {
   event.preventDefault();
   const button = event.currentTarget;
   const citationContainer = button.closest(".citation-container");
-  const citationEl = citationContainer.querySelector("code");
+  const citationEl = citationContainer
+    ? citationContainer.querySelector("code")
+    : null;
 
   if (!citationEl) return;
 

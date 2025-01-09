@@ -366,156 +366,156 @@
           <div class="code-container">
             <div class="code-content">
               <pre><code>
-                <span class="keyword">import</span> torch
-                <span class="keyword">import</span> torch.distributed <span class="keyword">as</span> dist
-                <span class="keyword">import</span> contextlib
-                <span class="keyword">from</span> torch <span class="keyword">import</span> nn
-                <span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable
+                  <span class="keyword">import</span> torch
+                  <span class="keyword">import</span> torch.distributed <span class="keyword">as</span> dist
+                  <span class="keyword">import</span> contextlib
+                  <span class="keyword">from</span> torch <span class="keyword">import</span> nn
+                  <span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable
 
-                <span class="keyword">class</span> <span class="class">DataParallelNaive</span>(nn.Module):
-                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>):
-                        <span class="function">super</span>().<span class="function">__init__</span>()
-                        <span class="parameter">self</span>.module = module  <span class="comment">// The model to parallelize</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment">// Controls gradient synchronization</span>
-                        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment">// Register hooks for all parameters</span>
-                            <span class="keyword">if</span> p.requires_grad: 
-                                p.register_hook(<span class="parameter">self</span>._allreduce_grads)  <span class="comment">// Hook for gradient synchronization</span>
-                    
-                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
-                        <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment">// Forward pass through the model</span>
-                                
-                    <span class="keyword">def</span> <span class="function">_allreduce_grads</span>(<span class="parameter">self</span>, <span class="parameter">grad</span>):  <span class="comment">// Synchronize gradients across processes</span>
-                        <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment">// Only sync if enabled</span>
-                            dist.all_reduce(<span class="parameter">grad</span>, op=dist.ReduceOp.SUM, group=dist.group.WORLD)  <span class="comment">// Sum gradients across processes</span>
-                            <span class="parameter">grad</span> /= dist.get_world_size()  <span class="comment">// Average gradients</span>
-                        <span class="keyword">return</span> grad 
-                    
-                    <span class="decorator">@contextlib.contextmanager</span>
-                    <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment">// Temporarily disable gradient synchronization (useful for gradient accumulation)</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
-                        <span class="keyword">yield</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
+                  <span class="keyword">class</span> <span class="class">DataParallelNaive</span>(nn.Module):
+                      <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>):
+                          <span class="function">super</span>().<span class="function">__init__</span>()
+                          <span class="parameter">self</span>.module = module  <span class="comment"># The model to parallelize</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment"># Controls gradient synchronization</span>
+                          <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment"># Register hooks for all parameters</span>
+                              <span class="keyword">if</span> p.requires_grad: 
+                                  p.register_hook(<span class="parameter">self</span>._allreduce_grads)  <span class="comment"># Hook for gradient synchronization</span>
+                      
+                      <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
+                          <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment"># Forward pass through the model</span>
+                                  
+                      <span class="keyword">def</span> <span class="function">_allreduce_grads</span>(<span class="parameter">self</span>, <span class="parameter">grad</span>):  <span class="comment"># Synchronize gradients across processes</span>
+                          <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment"># Only sync if enabled</span>
+                              dist.all_reduce(<span class="parameter">grad</span>, op=dist.ReduceOp.SUM, group=dist.group.WORLD)  <span class="comment"># Sum gradients across processes</span>
+                              <span class="parameter">grad</span> /= dist.get_world_size()  <span class="comment"># Average gradients</span>
+                          <span class="keyword">return</span> grad 
+                      
+                      <span class="decorator">@contextlib.contextmanager</span>
+                      <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment"># Temporarily disable gradient synchronization (useful for gradient accumulation)</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
+                          <span class="keyword">yield</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
 
-                <span class="keyword">class</span> <span class="class">Bucket</span>:
-                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">grad_data</span>, <span class="parameter">process_group</span>):
-                        <span class="parameter">self</span>.params = set(<span class="parameter">params</span>)  <span class="comment">// Parameters in this bucket</span>
-                        <span class="parameter">self</span>.params_with_grad_ready = set()  <span class="comment">// Parameters with gradients ready for synchronization</span>
-                        <span class="parameter">self</span>.grad_data = grad_data  <span class="comment">// Tensor to store gradients</span>
-                        <span class="parameter">self</span>.process_group = process_group  <span class="comment">// Process group for communication</span>
-                        <span class="parameter">self</span>.process_group_size = dist.get_world_size(group=<span class="parameter">self</span>.process_group)  <span class="comment">// Number of processes</span>
-                        <span class="parameter">self</span>.handle = <span class="keyword">None</span>  <span class="comment">// Handle for async all-reduce</span>
-                        <span class="parameter">self</span>.reset()  <span class="comment">// Initialize bucket state</span>
-                    
-                    <span class="keyword">def</span> <span class="function">sync_gradient</span>(<span class="parameter">self</span>):  <span class="comment">// Launch async all-reduce to synchronize gradients</span>
-                        <span class="parameter">self</span>.grad_data /= <span class="parameter">self</span>.process_group_size  <span class="comment">// Normalize gradients</span>
-                        <span class="parameter">self</span>.handle = dist.all_reduce(<span class="parameter">self</span>.grad_data, group=<span class="parameter">self</span>.process_group, async_op=<span class="keyword">True</span>)  <span class="comment">// Async all-reduce</span>
-                    
-                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset bucket state</span>
-                        <span class="parameter">self</span>.handle = <span class="keyword">None</span>
-                        <span class="parameter">self</span>.params_with_grad_ready.clear()  <span class="comment">// Clear ready parameters</span>
-                        <span class="parameter">self</span>.grad_data.zero_()  <span class="comment">// Zero out gradients</span>
+                  <span class="keyword">class</span> <span class="class">Bucket</span>:
+                      <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">grad_data</span>, <span class="parameter">process_group</span>):
+                          <span class="parameter">self</span>.params = set(<span class="parameter">params</span>)  <span class="comment"># Parameters in this bucket</span>
+                          <span class="parameter">self</span>.params_with_grad_ready = set()  <span class="comment"># Parameters with gradients ready for synchronization</span>
+                          <span class="parameter">self</span>.grad_data = grad_data  <span class="comment"># Tensor to store gradients</span>
+                          <span class="parameter">self</span>.process_group = process_group  <span class="comment"># Process group for communication</span>
+                          <span class="parameter">self</span>.process_group_size = dist.get_world_size(group=<span class="parameter">self</span>.process_group)  <span class="comment"># Number of processes</span>
+                          <span class="parameter">self</span>.handle = <span class="keyword">None</span>  <span class="comment"># Handle for async all-reduce</span>
+                          <span class="parameter">self</span>.reset()  <span class="comment"># Initialize bucket state</span>
+                      
+                      <span class="keyword">def</span> <span class="function">sync_gradient</span>(<span class="parameter">self</span>):  <span class="comment"># Launch async all-reduce to synchronize gradients</span>
+                          <span class="parameter">self</span>.grad_data /= <span class="parameter">self</span>.process_group_size  <span class="comment"># Normalize gradients</span>
+                          <span class="parameter">self</span>.handle = dist.all_reduce(<span class="parameter">self</span>.grad_data, group=<span class="parameter">self</span>.process_group, async_op=<span class="keyword">True</span>)  <span class="comment"># Async all-reduce</span>
+                      
+                      <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment"># Reset bucket state</span>
+                          <span class="parameter">self</span>.handle = <span class="keyword">None</span>
+                          <span class="parameter">self</span>.params_with_grad_ready.clear()  <span class="comment"># Clear ready parameters</span>
+                          <span class="parameter">self</span>.grad_data.zero_()  <span class="comment"># Zero out gradients</span>
 
-                    <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>): 
-                        <span class="parameter">self</span>.handle.wait()  <span class="comment">// Wait for all-reduce to finish</span>
+                      <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>): 
+                          <span class="parameter">self</span>.handle.wait()  <span class="comment"># Wait for all-reduce to finish</span>
 
-                    <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Mark parameter as ready for synchronization</span>
-                        <span class="parameter">self</span>.params_with_grad_ready.add(<span class="parameter">param</span>)  <span class="comment">// Add to ready set</span>
-                        <span class="keyword">if</span> len(<span class="parameter">self</span>.params_with_grad_ready) == len(<span class="parameter">self</span>.params): 
-                            <span class="parameter">self</span>.sync_gradient()  <span class="comment">// Sync if all params are ready</span>
+                      <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment"># Mark parameter as ready for synchronization</span>
+                          <span class="parameter">self</span>.params_with_grad_ready.add(<span class="parameter">param</span>)  <span class="comment"># Add to ready set</span>
+                          <span class="keyword">if</span> len(<span class="parameter">self</span>.params_with_grad_ready) == len(<span class="parameter">self</span>.params): 
+                              <span class="parameter">self</span>.sync_gradient()  <span class="comment"># Sync if all params are ready</span>
 
-                <span class="keyword">class</span> <span class="class">BucketManager</span>:
-                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">process_group</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>=torch.float32):
-                        <span class="parameter">self</span>.params = list(<span class="parameter">params</span>)  <span class="comment">// List of model parameters</span>
-                        <span class="parameter">self</span>.device = torch.device(<span class="string">"cuda"</span>) <span class="keyword">if</span> <span class="parameter">self</span>.params[<span class="number">0</span>].is_cuda <span class="keyword">else</span> torch.device(<span class="string">"cpu"</span>)  <span class="comment">// Device for gradients</span>
-                        <span class="parameter">self</span>.buckets = []  <span class="comment">// List of buckets</span>
-                        <span class="parameter">self</span>.process_group = process_group  <span class="comment">// Process group for communication</span>
-                        <span class="parameter">self</span>.params_to_bucket_location = {}  <span class="comment">// Maps params to their bucket and location</span>
-                        <span class="parameter">self</span>.grad_data_list = []  <span class="comment">// List of gradient tensors (one per bucket)</span>
-                        <span class="parameter">self</span>._initialize_buckets(<span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>)  <span class="comment">// Initialize buckets</span>
-                    
-                    <span class="keyword">def</span> <span class="function">_initialize_buckets</span>(<span class="parameter">self</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>):  <span class="comment">// Divide params into buckets</span>
-                        cur_bucket_size, cur_bucket_idx = <span class="number">0</span>, <span class="number">0</span>  <span class="comment">// Track current bucket size and index</span>
-                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params:  <span class="comment">// Assign params to buckets</span>
-                            <span class="keyword">if</span> <span class="keyword">not</span> param.requires_grad: <span class="keyword">continue</span>  <span class="comment">// Skip params without gradients</span>
-                            <span class="keyword">if</span> cur_bucket_size + param.numel() > bucket_size:  <span class="comment">// Start new bucket if current is full</span>
-                                cur_bucket_idx += <span class="number">1</span>
-                                cur_bucket_size = param.numel()
-                                <span class="parameter">self</span>.params_to_bucket_location[param] = (<span class="number">0</span>, param.numel(), cur_bucket_idx)  <span class="comment">// Map param to new bucket</span>
-                            <span class="keyword">else</span>:  <span class="comment">// Add param to current bucket</span>
-                                <span class="parameter">self</span>.params_to_bucket_location[param] = (cur_bucket_size, cur_bucket_size + param.numel(), cur_bucket_idx)
-                                cur_bucket_size += param.numel()
+                  <span class="keyword">class</span> <span class="class">BucketManager</span>:
+                      <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">process_group</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>=torch.float32):
+                          <span class="parameter">self</span>.params = list(<span class="parameter">params</span>)  <span class="comment"># List of model parameters</span>
+                          <span class="parameter">self</span>.device = torch.device(<span class="string">"cuda"</span>) <span class="keyword">if</span> <span class="parameter">self</span>.params[<span class="number">0</span>].is_cuda <span class="keyword">else</span> torch.device(<span class="string">"cpu"</span>)  <span class="comment"># Device for gradients</span>
+                          <span class="parameter">self</span>.buckets = []  <span class="comment"># List of buckets</span>
+                          <span class="parameter">self</span>.process_group = process_group  <span class="comment"># Process group for communication</span>
+                          <span class="parameter">self</span>.params_to_bucket_location = {}  <span class="comment"># Maps params to their bucket and location</span>
+                          <span class="parameter">self</span>.grad_data_list = []  <span class="comment"># List of gradient tensors (one per bucket)</span>
+                          <span class="parameter">self</span>._initialize_buckets(<span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>)  <span class="comment"># Initialize buckets</span>
+                      
+                      <span class="keyword">def</span> <span class="function">_initialize_buckets</span>(<span class="parameter">self</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>):  <span class="comment"># Divide params into buckets</span>
+                          cur_bucket_size, cur_bucket_idx = <span class="number">0</span>, <span class="number">0</span>  <span class="comment"># Track current bucket size and index</span>
+                          <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params:  <span class="comment"># Assign params to buckets</span>
+                              <span class="keyword">if</span> <span class="keyword">not</span> param.requires_grad: <span class="keyword">continue</span>  <span class="comment"># Skip params without gradients</span>
+                              <span class="keyword">if</span> cur_bucket_size + param.numel() > bucket_size:  <span class="comment"># Start new bucket if current is full</span>
+                                  cur_bucket_idx += <span class="number">1</span>
+                                  cur_bucket_size = param.numel()
+                                  <span class="parameter">self</span>.params_to_bucket_location[param] = (<span class="number">0</span>, param.numel(), cur_bucket_idx)  <span class="comment"># Map param to new bucket</span>
+                              <span class="keyword">else</span>:  <span class="comment"># Add param to current bucket</span>
+                                  <span class="parameter">self</span>.params_to_bucket_location[param] = (cur_bucket_size, cur_bucket_size + param.numel(), cur_bucket_idx)
+                                  cur_bucket_size += param.numel()
 
-                        bucket_sizes = [<span class="number">0</span>] * (cur_bucket_idx + <span class="number">1</span>)  <span class="comment">// Track size of each bucket</span>
-                        buckets_to_params = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(cur_bucket_idx + <span class="number">1</span>)]  <span class="comment">// Map buckets to their params</span>
-                        <span class="keyword">for</span> param, (_, end, idx) <span class="keyword">in</span> <span class="parameter">self</span>.params_to_bucket_location.items():  <span class="comment">// Populate bucket sizes and params</span>
-                            bucket_sizes[idx] = max(bucket_sizes[idx], end)
-                            buckets_to_params[idx].append(param)
-                        
-                        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(bucket_sizes)):  <span class="comment">// Create gradient tensors and buckets</span>
-                            <span class="parameter">self</span>.grad_data_list.append(torch.zeros(bucket_sizes[i], dtype=<span class="parameter">grad_type</span>, device=<span class="parameter">self</span>.device))  <span class="comment">// Gradient tensor</span>
-                            <span class="parameter">self</span>.buckets.append(Bucket(buckets_to_params[i], <span class="parameter">self</span>.grad_data_list[i], <span class="parameter">self</span>.process_group))  <span class="comment">// Create bucket</span>
-                        
-                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params[::-<span class="number">1</span>]:  <span class="comment">// Create gradient views for each parameter</span>
-                            <span class="keyword">if</span> param.requires_grad:
-                                start, end, bucket_id = <span class="parameter">self</span>.params_to_bucket_location[param]
-                                param.main_grad = <span class="parameter">self</span>.grad_data_list[bucket_id][start:end].view(param.shape)  <span class="comment">// View into gradient tensor</span>
-                    
-                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset all buckets</span>
-                        <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.reset()
-                    
-                    <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>):  <span class="comment">// Wait for all buckets to finish synchronization</span>
-                        <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.wait()
-                    
-                    <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Mark param as ready for synchronization</span>
-                        <span class="parameter">self</span>.buckets[<span class="parameter">self</span>.params_to_bucket_location[param][<span class="number">2</span>]].mark_param_as_ready(param)
+                          bucket_sizes = [<span class="number">0</span>] * (cur_bucket_idx + <span class="number">1</span>)  <span class="comment"># Track size of each bucket</span>
+                          buckets_to_params = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(cur_bucket_idx + <span class="number">1</span>)]  <span class="comment"># Map buckets to their params</span>
+                          <span class="keyword">for</span> param, (_, end, idx) <span class="keyword">in</span> <span class="parameter">self</span>.params_to_bucket_location.items():  <span class="comment"># Populate bucket sizes and params</span>
+                              bucket_sizes[idx] = max(bucket_sizes[idx], end)
+                              buckets_to_params[idx].append(param)
+                          
+                          <span class="keyword">for</span> i <span class="keyword">in</span> range(len(bucket_sizes)):  <span class="comment"># Create gradient tensors and buckets</span>
+                              <span class="parameter">self</span>.grad_data_list.append(torch.zeros(bucket_sizes[i], dtype=<span class="parameter">grad_type</span>, device=<span class="parameter">self</span>.device))  <span class="comment"># Gradient tensor</span>
+                              <span class="parameter">self</span>.buckets.append(Bucket(buckets_to_params[i], <span class="parameter">self</span>.grad_data_list[i], <span class="parameter">self</span>.process_group))  <span class="comment"># Create bucket</span>
+                          
+                          <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params[::-<span class="number">1</span>]:  <span class="comment"># Create gradient views for each parameter</span>
+                              <span class="keyword">if</span> param.requires_grad:
+                                  start, end, bucket_id = <span class="parameter">self</span>.params_to_bucket_location[param]
+                                  param.main_grad = <span class="parameter">self</span>.grad_data_list[bucket_id][start:end].view(param.shape)  <span class="comment"># View into gradient tensor</span>
+                      
+                      <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment"># Reset all buckets</span>
+                          <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.reset()
+                      
+                      <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>):  <span class="comment"># Wait for all buckets to finish synchronization</span>
+                          <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.wait()
+                      
+                      <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment"># Mark param as ready for synchronization</span>
+                          <span class="parameter">self</span>.buckets[<span class="parameter">self</span>.params_to_bucket_location[param][<span class="number">2</span>]].mark_param_as_ready(param)
 
-                <span class="keyword">class</span> <span class="class">DataParallelBucket</span>(nn.Module):
-                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>, <span class="parameter">bucket_cap_mb</span>=<span class="number">25</span>, <span class="parameter">grad_type</span>=torch.float32):
-                        <span class="function">super</span>().<span class="function">__init__</span>()
-                        <span class="parameter">self</span>.module = module  <span class="comment">// The model to parallelize</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment">// Controls gradient synchronization</span>
-                        bucket_size = bucket_cap_mb * <span class="number">1024</span> * <span class="number">1024</span> // (<span class="number">2</span> <span class="keyword">if</span> grad_type == torch.bfloat16 <span class="keyword">else</span> <span class="number">4</span>)  <span class="comment">// Calculate bucket size</span>
-                        <span class="parameter">self</span>.bucket_manager = BucketManager(module.parameters(), dist.group.WORLD, bucket_size, grad_type)  <span class="comment">// Initialize bucket manager</span>
-                        <span class="parameter">self</span>._register_backward_hooks()  <span class="comment">// Register hooks for gradient accumulation</span>
-                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment">// Track if post-backward callback is set</span>
-                    
-                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
-                        <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment">// Forward pass through the model</span>
+                  <span class="keyword">class</span> <span class="class">DataParallelBucket</span>(nn.Module):
+                      <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>, <span class="parameter">bucket_cap_mb</span>=<span class="number">25</span>, <span class="parameter">grad_type</span>=torch.float32):
+                          <span class="function">super</span>().<span class="function">__init__</span>()
+                          <span class="parameter">self</span>.module = module  <span class="comment"># The model to parallelize</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment"># Controls gradient synchronization</span>
+                          bucket_size = bucket_cap_mb * <span class="number">1024</span> * <span class="number">1024</span> # (<span class="number">2</span> <span class="keyword">if</span> grad_type == torch.bfloat16 <span class="keyword">else</span> <span class="number">4</span>)  <span class="comment"># Calculate bucket size</span>
+                          <span class="parameter">self</span>.bucket_manager = BucketManager(module.parameters(), dist.group.WORLD, bucket_size, grad_type)  <span class="comment"># Initialize bucket manager</span>
+                          <span class="parameter">self</span>._register_backward_hooks()  <span class="comment"># Register hooks for gradient accumulation</span>
+                          <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment"># Track if post-backward callback is set</span>
+                      
+                      <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
+                          <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment"># Forward pass through the model</span>
 
-                    <span class="keyword">def</span> <span class="function">_register_backward_hooks</span>(<span class="parameter">self</span>):  <span class="comment">// Register hooks for gradient accumulation</span>
-                        <span class="parameter">self</span>.grad_accs = []  <span class="comment">// Store gradient accumulator functions</span>
-                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():
-                            <span class="keyword">if</span> param.requires_grad:
-                                grad_acc_fn = param.expand_as(param).grad_fn.next_functions[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment">// Get gradient accumulator</span>
-                                grad_acc_fn.register_hook(<span class="parameter">self</span>._make_param_hook(param))  <span class="comment">// Register hook for gradient accumulation</span>
-                                <span class="parameter">self</span>.grad_accs.append(grad_acc_fn)
-                                
-                    <span class="keyword">def</span> <span class="function">_make_param_hook</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Create hook for gradient accumulation</span>
-                        <span class="keyword">def</span> <span class="function">param_hook</span>(*unused):
-                            <span class="keyword">if</span> param.requires_grad:
-                                param.main_grad.add_(param.grad.data)  <span class="comment">// Accumulate gradients</span>
-                                param.grad = <span class="keyword">None</span>  <span class="comment">// Clear gradient</span>
-                                <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment">// Sync gradients if enabled</span>
-                                    <span class="keyword">if</span> <span class="keyword">not</span> <span class="parameter">self</span>._post_backward_callback_set:  <span class="comment">// Add post-backward callback if not already set</span>
-                                        Variable._execution_engine.queue_callback(<span class="parameter">self</span>._post_backward)
-                                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">True</span>
-                                    <span class="parameter">self</span>.bucket_manager.mark_param_as_ready(param)  <span class="comment">// Mark param as ready for synchronization</span>
-                        <span class="keyword">return</span> param_hook
-                    
-                    <span class="decorator">@contextlib.contextmanager</span>
-                    <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment">// Temporarily disable gradient synchronization</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
-                        <span class="keyword">yield</span>
-                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
-                        
-                    <span class="keyword">def</span> <span class="function">_post_backward</span>(<span class="parameter">self</span>):  <span class="comment">// Post-backward callback to finalize synchronization</span>
-                        <span class="parameter">self</span>.bucket_manager.wait()  <span class="comment">// Wait for all buckets to finish</span>
-                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment">// Reset callback flag</span>
-                        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment">// Copy synchronized gradients back to parameters</span>
-                            <span class="keyword">if</span> p.requires_grad: p.grad = p.main_grad.to(p.dtype)
+                      <span class="keyword">def</span> <span class="function">_register_backward_hooks</span>(<span class="parameter">self</span>):  <span class="comment"># Register hooks for gradient accumulation</span>
+                          <span class="parameter">self</span>.grad_accs = []  <span class="comment"># Store gradient accumulator functions</span>
+                          <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():
+                              <span class="keyword">if</span> param.requires_grad:
+                                  grad_acc_fn = param.expand_as(param).grad_fn.next_functions[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment"># Get gradient accumulator</span>
+                                  grad_acc_fn.register_hook(<span class="parameter">self</span>._make_param_hook(param))  <span class="comment"># Register hook for gradient accumulation</span>
+                                  <span class="parameter">self</span>.grad_accs.append(grad_acc_fn)
+                                  
+                      <span class="keyword">def</span> <span class="function">_make_param_hook</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment"># Create hook for gradient accumulation</span>
+                          <span class="keyword">def</span> <span class="function">param_hook</span>(*unused):
+                              <span class="keyword">if</span> param.requires_grad:
+                                  param.main_grad.add_(param.grad.data)  <span class="comment"># Accumulate gradients</span>
+                                  param.grad = <span class="keyword">None</span>  <span class="comment"># Clear gradient</span>
+                                  <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment"># Sync gradients if enabled</span>
+                                      <span class="keyword">if</span> <span class="keyword">not</span> <span class="parameter">self</span>._post_backward_callback_set:  <span class="comment"># Add post-backward callback if not already set</span>
+                                          Variable._execution_engine.queue_callback(<span class="parameter">self</span>._post_backward)
+                                          <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">True</span>
+                                      <span class="parameter">self</span>.bucket_manager.mark_param_as_ready(param)  <span class="comment"># Mark param as ready for synchronization</span>
+                          <span class="keyword">return</span> param_hook
+                      
+                      <span class="decorator">@contextlib.contextmanager</span>
+                      <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment"># Temporarily disable gradient synchronization</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
+                          <span class="keyword">yield</span>
+                          <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
+                          
+                      <span class="keyword">def</span> <span class="function">_post_backward</span>(<span class="parameter">self</span>):  <span class="comment"># Post-backward callback to finalize synchronization</span>
+                          <span class="parameter">self</span>.bucket_manager.wait()  <span class="comment"># Wait for all buckets to finish</span>
+                          <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment"># Reset callback flag</span>
+                          <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment"># Copy synchronized gradients back to parameters</span>
+                              <span class="keyword">if</span> p.requires_grad: p.grad = p.main_grad.to(p.dtype)
 
-                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset bucket manager and gradients</span>
-                        <span class="parameter">self</span>.bucket_manager.reset()
+                      <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment"># Reset bucket manager and gradients</span>
+                          <span class="parameter">self</span>.bucket_manager.reset()
               </code></pre>
             </div>
           </div>
