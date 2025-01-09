@@ -637,3 +637,8 @@ ul li {
     height: 70px;
   }
 }
+
+.selfie {
+  margin-top: 20px;
+  width: 53%;
+}
