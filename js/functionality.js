@@ -555,7 +555,7 @@ function getTagColor(tag) {
     case "YT":
       return "#FF0000";
     case "Arxiv":
-      return "#A51C30";
+      return "#b31b1b";
     case "Site":
       return "#F5F5DC";
     default:
@@ -765,7 +765,7 @@ function toggleFilterType(button, type) {
         button.style.setProperty("--active-text-color", "#FFFFFF");
         break;
       case "Arxiv":
-        button.style.setProperty("--active-color", "#A51C30");
+        button.style.setProperty("--active-color", "#b31b1b");
         button.style.setProperty("--active-text-color", "#FFFFFF");
         break;
       case "Site":
