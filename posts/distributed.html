@@ -308,57 +308,6 @@
         to train on into \(N\) batches, and then train the full model on its own
         assigned batch of data on each device.
       </p>
-        <div class="code-container" onmousemove="handleMouseMove(event)">
-        <div class="code-content">
-            <button class="copy-button" onclick="copyCode(event)">
-            <svg
-                id="copy-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path>
-            </svg>
-            <svg
-                id="check-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="display: none"
-            >
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            </button>
-            <pre><code><span class="function">rand_loader</span> = <span class="class">DataLoader</span>(<span class="parameter">dataset=RandomDataset(input_size, data_size)</span>,
-                <span class="parameter">batch_size=batch_size</span>, <span class="parameter">shuffle=True</span>)
-
-        <span class="function">model</span> = <span class="class">Model</span>(<span class="parameter">input_size</span>, <span class="parameter">output_size</span>)
-        <span class="comment">// dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs</span>
-        <span class="function">model</span> = <span class="class">nn.DataParallel</span>(<span class="parameter">model</span>)
-        <span class="function">model</span>.to(<span class="parameter">device</span>)
-
-        <span class="keyword">for</span> <span class="parameter">data</span> <span class="keyword">in</span> <span class="function">rand_loader</span>:
-            <span class="function">input</span> = <span class="parameter">data.to(device)</span>
-            <span class="function">output</span> = <span class="function">model(input)</span>
-            <span class="function">print</span>(<span class="string">"Outside: input size"</span>, <span class="function">input.size()</span>,
-                <span class="string">"output_size"</span>, <span class="function">output.size()</span>)</code></pre>
-        </div>
-        </div>
       <p>
         There's one catch, however, a catch inherent to model training, which
         distributed training inherently comes up against on top of the existing
@@ -387,6 +336,185 @@
         of parameters and \(D\) is the number of data points to compute across,
         but it doesn't get the full job done.
       </p>
+      <p style="margin-bottom: 25px;">
+        The following is an implementation of data paralleism including buckets 
+        of data being communicaited and full gradient synchronization, inspired by the 
+        Hugging Face's 
+        <a href="https://github.com/huggingface/picotron" target="_blank">Picotron repository</a> 
+        implementation. Don't stress the details necessarily but it may be useful
+        for you if your trying to implement this yourself or get a better feel for
+        the exact mechanics...
+      </p>
+      <div class="collapsible-code-container">
+        <button class="collapse-button" onclick="toggleCollapse(this)">
+          Show Code
+          <button class="copy-button" onclick="copyCode(event)">
+            <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </button>
+        <div class="code-container" onmousemove="handleMouseMove(event)">
+          <div class="code-content">
+              <pre><code>
+                <span class="keyword">import</span> torch
+                <span class="keyword">import</span> torch.distributed <span class="keyword">as</span> dist
+                <span class="keyword">import</span> contextlib
+                <span class="keyword">from</span> torch <span class="keyword">import</span> nn
+                <span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable
+
+                <span class="keyword">class</span> <span class="class">DataParallelNaive</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.module = module  <span class="comment">// The model to parallelize</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment">// Controls gradient synchronization</span>
+                        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment">// Register hooks for all parameters</span>
+                            <span class="keyword">if</span> p.requires_grad: 
+                                p.register_hook(<span class="parameter">self</span>._allreduce_grads)  <span class="comment">// Hook for gradient synchronization</span>
+                    
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
+                        <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment">// Forward pass through the model</span>
+                                
+                    <span class="keyword">def</span> <span class="function">_allreduce_grads</span>(<span class="parameter">self</span>, <span class="parameter">grad</span>):  <span class="comment">// Synchronize gradients across processes</span>
+                        <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment">// Only sync if enabled</span>
+                            dist.all_reduce(<span class="parameter">grad</span>, op=dist.ReduceOp.SUM, group=dist.group.WORLD)  <span class="comment">// Sum gradients across processes</span>
+                            <span class="parameter">grad</span> /= dist.get_world_size()  <span class="comment">// Average gradients</span>
+                        <span class="keyword">return</span> grad 
+                    
+                    <span class="decorator">@contextlib.contextmanager</span>
+                    <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment">// Temporarily disable gradient synchronization (useful for gradient accumulation)</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
+                        <span class="keyword">yield</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
+
+                <span class="keyword">class</span> <span class="class">Bucket</span>:
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">grad_data</span>, <span class="parameter">process_group</span>):
+                        <span class="parameter">self</span>.params = set(<span class="parameter">params</span>)  <span class="comment">// Parameters in this bucket</span>
+                        <span class="parameter">self</span>.params_with_grad_ready = set()  <span class="comment">// Parameters with gradients ready for synchronization</span>
+                        <span class="parameter">self</span>.grad_data = grad_data  <span class="comment">// Tensor to store gradients</span>
+                        <span class="parameter">self</span>.process_group = process_group  <span class="comment">// Process group for communication</span>
+                        <span class="parameter">self</span>.process_group_size = dist.get_world_size(group=<span class="parameter">self</span>.process_group)  <span class="comment">// Number of processes</span>
+                        <span class="parameter">self</span>.handle = <span class="keyword">None</span>  <span class="comment">// Handle for async all-reduce</span>
+                        <span class="parameter">self</span>.reset()  <span class="comment">// Initialize bucket state</span>
+                    
+                    <span class="keyword">def</span> <span class="function">sync_gradient</span>(<span class="parameter">self</span>):  <span class="comment">// Launch async all-reduce to synchronize gradients</span>
+                        <span class="parameter">self</span>.grad_data /= <span class="parameter">self</span>.process_group_size  <span class="comment">// Normalize gradients</span>
+                        <span class="parameter">self</span>.handle = dist.all_reduce(<span class="parameter">self</span>.grad_data, group=<span class="parameter">self</span>.process_group, async_op=<span class="keyword">True</span>)  <span class="comment">// Async all-reduce</span>
+                    
+                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset bucket state</span>
+                        <span class="parameter">self</span>.handle = <span class="keyword">None</span>
+                        <span class="parameter">self</span>.params_with_grad_ready.clear()  <span class="comment">// Clear ready parameters</span>
+                        <span class="parameter">self</span>.grad_data.zero_()  <span class="comment">// Zero out gradients</span>
+
+                    <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>): 
+                        <span class="parameter">self</span>.handle.wait()  <span class="comment">// Wait for all-reduce to finish</span>
+
+                    <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Mark parameter as ready for synchronization</span>
+                        <span class="parameter">self</span>.params_with_grad_ready.add(<span class="parameter">param</span>)  <span class="comment">// Add to ready set</span>
+                        <span class="keyword">if</span> len(<span class="parameter">self</span>.params_with_grad_ready) == len(<span class="parameter">self</span>.params): 
+                            <span class="parameter">self</span>.sync_gradient()  <span class="comment">// Sync if all params are ready</span>
+
+                <span class="keyword">class</span> <span class="class">BucketManager</span>:
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">params</span>, <span class="parameter">process_group</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>=torch.float32):
+                        <span class="parameter">self</span>.params = list(<span class="parameter">params</span>)  <span class="comment">// List of model parameters</span>
+                        <span class="parameter">self</span>.device = torch.device(<span class="string">"cuda"</span>) <span class="keyword">if</span> <span class="parameter">self</span>.params[<span class="number">0</span>].is_cuda <span class="keyword">else</span> torch.device(<span class="string">"cpu"</span>)  <span class="comment">// Device for gradients</span>
+                        <span class="parameter">self</span>.buckets = []  <span class="comment">// List of buckets</span>
+                        <span class="parameter">self</span>.process_group = process_group  <span class="comment">// Process group for communication</span>
+                        <span class="parameter">self</span>.params_to_bucket_location = {}  <span class="comment">// Maps params to their bucket and location</span>
+                        <span class="parameter">self</span>.grad_data_list = []  <span class="comment">// List of gradient tensors (one per bucket)</span>
+                        <span class="parameter">self</span>._initialize_buckets(<span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>)  <span class="comment">// Initialize buckets</span>
+                    
+                    <span class="keyword">def</span> <span class="function">_initialize_buckets</span>(<span class="parameter">self</span>, <span class="parameter">bucket_size</span>, <span class="parameter">grad_type</span>):  <span class="comment">// Divide params into buckets</span>
+                        cur_bucket_size, cur_bucket_idx = <span class="number">0</span>, <span class="number">0</span>  <span class="comment">// Track current bucket size and index</span>
+                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params:  <span class="comment">// Assign params to buckets</span>
+                            <span class="keyword">if</span> <span class="keyword">not</span> param.requires_grad: <span class="keyword">continue</span>  <span class="comment">// Skip params without gradients</span>
+                            <span class="keyword">if</span> cur_bucket_size + param.numel() > bucket_size:  <span class="comment">// Start new bucket if current is full</span>
+                                cur_bucket_idx += <span class="number">1</span>
+                                cur_bucket_size = param.numel()
+                                <span class="parameter">self</span>.params_to_bucket_location[param] = (<span class="number">0</span>, param.numel(), cur_bucket_idx)  <span class="comment">// Map param to new bucket</span>
+                            <span class="keyword">else</span>:  <span class="comment">// Add param to current bucket</span>
+                                <span class="parameter">self</span>.params_to_bucket_location[param] = (cur_bucket_size, cur_bucket_size + param.numel(), cur_bucket_idx)
+                                cur_bucket_size += param.numel()
+
+                        bucket_sizes = [<span class="number">0</span>] * (cur_bucket_idx + <span class="number">1</span>)  <span class="comment">// Track size of each bucket</span>
+                        buckets_to_params = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(cur_bucket_idx + <span class="number">1</span>)]  <span class="comment">// Map buckets to their params</span>
+                        <span class="keyword">for</span> param, (_, end, idx) <span class="keyword">in</span> <span class="parameter">self</span>.params_to_bucket_location.items():  <span class="comment">// Populate bucket sizes and params</span>
+                            bucket_sizes[idx] = max(bucket_sizes[idx], end)
+                            buckets_to_params[idx].append(param)
+                        
+                        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(bucket_sizes)):  <span class="comment">// Create gradient tensors and buckets</span>
+                            <span class="parameter">self</span>.grad_data_list.append(torch.zeros(bucket_sizes[i], dtype=<span class="parameter">grad_type</span>, device=<span class="parameter">self</span>.device))  <span class="comment">// Gradient tensor</span>
+                            <span class="parameter">self</span>.buckets.append(Bucket(buckets_to_params[i], <span class="parameter">self</span>.grad_data_list[i], <span class="parameter">self</span>.process_group))  <span class="comment">// Create bucket</span>
+                        
+                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.params[::-<span class="number">1</span>]:  <span class="comment">// Create gradient views for each parameter</span>
+                            <span class="keyword">if</span> param.requires_grad:
+                                start, end, bucket_id = <span class="parameter">self</span>.params_to_bucket_location[param]
+                                param.main_grad = <span class="parameter">self</span>.grad_data_list[bucket_id][start:end].view(param.shape)  <span class="comment">// View into gradient tensor</span>
+                    
+                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset all buckets</span>
+                        <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.reset()
+                    
+                    <span class="keyword">def</span> <span class="function">wait</span>(<span class="parameter">self</span>):  <span class="comment">// Wait for all buckets to finish synchronization</span>
+                        <span class="keyword">for</span> bucket <span class="keyword">in</span> <span class="parameter">self</span>.buckets: bucket.wait()
+                    
+                    <span class="keyword">def</span> <span class="function">mark_param_as_ready</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Mark param as ready for synchronization</span>
+                        <span class="parameter">self</span>.buckets[<span class="parameter">self</span>.params_to_bucket_location[param][<span class="number">2</span>]].mark_param_as_ready(param)
+
+                <span class="keyword">class</span> <span class="class">DataParallelBucket</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">module</span>, <span class="parameter">bucket_cap_mb</span>=<span class="number">25</span>, <span class="parameter">grad_type</span>=torch.float32):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.module = module  <span class="comment">// The model to parallelize</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment">// Controls gradient synchronization</span>
+                        bucket_size = bucket_cap_mb * <span class="number">1024</span> * <span class="number">1024</span> // (<span class="number">2</span> <span class="keyword">if</span> grad_type == torch.bfloat16 <span class="keyword">else</span> <span class="number">4</span>)  <span class="comment">// Calculate bucket size</span>
+                        <span class="parameter">self</span>.bucket_manager = BucketManager(module.parameters(), dist.group.WORLD, bucket_size, grad_type)  <span class="comment">// Initialize bucket manager</span>
+                        <span class="parameter">self</span>._register_backward_hooks()  <span class="comment">// Register hooks for gradient accumulation</span>
+                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment">// Track if post-backward callback is set</span>
+                    
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, *<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>): 
+                        <span class="keyword">return</span> <span class="parameter">self</span>.module(*<span class="parameter">inputs</span>, **<span class="parameter">kwargs</span>)  <span class="comment">// Forward pass through the model</span>
+
+                    <span class="keyword">def</span> <span class="function">_register_backward_hooks</span>(<span class="parameter">self</span>):  <span class="comment">// Register hooks for gradient accumulation</span>
+                        <span class="parameter">self</span>.grad_accs = []  <span class="comment">// Store gradient accumulator functions</span>
+                        <span class="keyword">for</span> param <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():
+                            <span class="keyword">if</span> param.requires_grad:
+                                grad_acc_fn = param.expand_as(param).grad_fn.next_functions[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment">// Get gradient accumulator</span>
+                                grad_acc_fn.register_hook(<span class="parameter">self</span>._make_param_hook(param))  <span class="comment">// Register hook for gradient accumulation</span>
+                                <span class="parameter">self</span>.grad_accs.append(grad_acc_fn)
+                                
+                    <span class="keyword">def</span> <span class="function">_make_param_hook</span>(<span class="parameter">self</span>, <span class="parameter">param</span>):  <span class="comment">// Create hook for gradient accumulation</span>
+                        <span class="keyword">def</span> <span class="function">param_hook</span>(*unused):
+                            <span class="keyword">if</span> param.requires_grad:
+                                param.main_grad.add_(param.grad.data)  <span class="comment">// Accumulate gradients</span>
+                                param.grad = <span class="keyword">None</span>  <span class="comment">// Clear gradient</span>
+                                <span class="keyword">if</span> <span class="parameter">self</span>.require_backward_grad_sync:  <span class="comment">// Sync gradients if enabled</span>
+                                    <span class="keyword">if</span> <span class="keyword">not</span> <span class="parameter">self</span>._post_backward_callback_set:  <span class="comment">// Add post-backward callback if not already set</span>
+                                        Variable._execution_engine.queue_callback(<span class="parameter">self</span>._post_backward)
+                                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">True</span>
+                                    <span class="parameter">self</span>.bucket_manager.mark_param_as_ready(param)  <span class="comment">// Mark param as ready for synchronization</span>
+                        <span class="keyword">return</span> param_hook
+                    
+                    <span class="decorator">@contextlib.contextmanager</span>
+                    <span class="keyword">def</span> <span class="function">no_sync</span>(<span class="parameter">self</span>):  <span class="comment">// Temporarily disable gradient synchronization</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">False</span>
+                        <span class="keyword">yield</span>
+                        <span class="parameter">self</span>.require_backward_grad_sync = <span class="keyword">True</span>
+                        
+                    <span class="keyword">def</span> <span class="function">_post_backward</span>(<span class="parameter">self</span>):  <span class="comment">// Post-backward callback to finalize synchronization</span>
+                        <span class="parameter">self</span>.bucket_manager.wait()  <span class="comment">// Wait for all buckets to finish</span>
+                        <span class="parameter">self</span>._post_backward_callback_set = <span class="keyword">False</span>  <span class="comment">// Reset callback flag</span>
+                        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="parameter">self</span>.module.parameters():  <span class="comment">// Copy synchronized gradients back to parameters</span>
+                            <span class="keyword">if</span> p.requires_grad: p.grad = p.main_grad.to(p.dtype)
+
+                    <span class="keyword">def</span> <span class="function">reset</span>(<span class="parameter">self</span>):  <span class="comment">// Reset bucket manager and gradients</span>
+                        <span class="parameter">self</span>.bucket_manager.reset()
+              </code></pre>
+            </div>
+          </div>
+        </div>
       <p>
         If you've been paying attention, you're probably a little confused right
         now, however, because the primary issue today is really that \(M\) term
@@ -431,6 +559,162 @@
         calculation, it also exposes us to the slower inter-device transfer
         speeds between each block of layers.
       </p>
+      <div>
+      <p style="margin-bottom: 25px;">
+        The following is an implementation of pipeline parallelism, which 
+        splits a model's layers across multiple GPUs to enable efficient 
+        training of large models. This approach is once again lifted 
+        from Hugging Face's informative 
+        <a href="https://github.com/huggingface/picotron" target="_blank">Picotron repository</a> 
+        and includes features like bidirectional communication, gradient 
+        accumulation, and support for the 1F1B (One Forward One Backward) 
+        scheduling strategy.
+      </p>
+      <div class="collapsible-code-container">
+        <button class="collapse-button" onclick="toggleCollapse(this)">
+          Show Code
+          <button class="copy-button" onclick="copyCode(event)">
+            <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </button>
+        <div class="code-container" onmousemove="handleMouseMove(event)">
+          <div class="code-content">
+              <pre><code>
+                <span class="keyword">import</span> torch
+                <span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn
+                <span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F
+                <span class="keyword">import</span> torch.distributed <span class="keyword">as</span> dist
+                <span class="keyword">import</span> os
+                <span class="keyword">import</span> picotron.process_group_manager <span class="keyword">as</span> pgm
+
+                STEP, VERBOSE = <span class="number">0</span>, os.environ.get(<span class="string">"VERBOSE"</span>, <span class="string">"0"</span>) == <span class="string">"1"</span>  <span class="comment"># Track steps and enable verbose logging</span>
+
+                <span class="keyword">class</span> <span class="class">PipelineParallel</span>(nn.Module):
+                    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, model, config):
+                        <span class="function">super</span>().<span class="function">__init__</span>()
+                        <span class="parameter">self</span>.layer_distribution = <span class="parameter">self</span>.distribute_layers(config.num_hidden_layers)  <span class="comment"># Distribute layers across GPUs</span>
+                        <span class="parameter">self</span>.embedding = model.embedding <span class="keyword">if</span> pgm.process_group_manager.pp_is_first_stage <span class="keyword">else</span> nn.Identity()  <span class="comment"># First stage gets embedding</span>
+                        <span class="parameter">self</span>.decoder_layers = nn.ModuleDict({str(i): model.decoder_layers[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="parameter">self</span>.layer_distribution})  <span class="comment"># Assign layers to this GPU</span>
+                        <span class="parameter">self</span>.final_norm = model.final_norm <span class="keyword">if</span> pgm.process_group_manager.pp_is_last_stage <span class="keyword">else</span> nn.Identity()  <span class="comment"># Last stage gets final norm</span>
+                        <span class="parameter">self</span>.final_proj = model.final_proj <span class="keyword">if</span> pgm.process_group_manager.pp_is_last_stage <span class="keyword">else</span> nn.Identity()  <span class="comment"># Last stage gets final projection</span>
+                        <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize parameters</span>
+                    
+                    <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                        <span class="keyword">if</span> pgm.process_group_manager.pp_is_first_stage: <span class="parameter">self</span>.embedding.reset_parameters()  <span class="comment"># Reset embedding if first stage</span>
+                        <span class="keyword">for</span> layer <span class="keyword">in</span> <span class="parameter">self</span>.decoder_layers.values(): layer.reset_parameters()  <span class="comment"># Reset all decoder layers</span>
+                        <span class="keyword">if</span> pgm.process_group_manager.pp_is_last_stage: <span class="parameter">self</span>.final_norm.reset_parameters(); <span class="parameter">self</span>.final_proj.reset_parameters()  <span class="comment"># Reset final layers if last stage</span>
+
+                    <span class="keyword">def</span> <span class="function">distribute_layers</span>(<span class="parameter">self</span>, num_layers):
+                        layers_per_gpu = [num_layers // pgm.process_group_manager.pp_world_size + (<span class="number">1</span> <span class="keyword">if</span> i < num_layers % pgm.process_group_manager.pp_world_size <span class="keyword">else</span> <span class="number">0</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(pgm.process_group_manager.pp_world_size)]  <span class="comment"># Split layers evenly</span>
+                        start_layer = sum(layers_per_gpu[:pgm.process_group_manager.pp_rank])  <span class="comment"># Calculate starting layer for this GPU</span>
+                        <span class="keyword">return</span> list(range(start_layer, start_layer + layers_per_gpu[pgm.process_group_manager.pp_rank]))  <span class="comment"># Return assigned layers</span>
+
+                    <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, input_ids, position_ids, hidden_states):
+                        x = hidden_states <span class="keyword">if</span> hidden_states <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> input_ids  <span class="comment"># Use hidden_states if provided, else input_ids</span>
+                        x = <span class="parameter">self</span>.embedding(x)  <span class="comment"># Pass through embedding (if first stage)</span>
+                        <span class="keyword">for</span> layer <span class="keyword">in</span> <span class="parameter">self</span>.decoder_layers.values(): x = layer(x, position_ids=position_ids)  <span class="comment"># Pass through decoder layers</span>
+                        <span class="keyword">return</span> <span class="parameter">self</span>.final_proj(<span class="parameter">self</span>.final_norm(x))  <span class="comment"># Pass through final norm and projection (if last stage)</span>
+
+                    <span class="keyword">def</span> <span class="function">backward</span>(<span class="parameter">self</span>, input_tensor, output_tensor, output_tensor_grad):
+                        <span class="keyword">if</span> input_tensor <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: input_tensor.retain_grad()  <span class="comment"># Retain gradient for input tensor</span>
+                        <span class="keyword">if</span> output_tensor_grad <span class="keyword">is</span> <span class="keyword">None</span>: output_tensor_grad = torch.ones_like(output_tensor)  <span class="comment"># Default gradient if none provided</span>
+                        torch.autograd.backward(output_tensor, grad_tensors=output_tensor_grad)  <span class="comment"># Compute gradients</span>
+                        <span class="keyword">return</span> input_tensor.grad <span class="keyword">if</span> input_tensor <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Return input gradient</span>
+
+                <span class="keyword">def</span> <span class="function">pipeline_communicate</span>(operation, device, dtype, tensor=<span class="keyword">None</span>, shapes=<span class="keyword">None</span>):
+                    <span class="keyword">global</span> STEP, VERBOSE
+                    <span class="keyword">if</span> operation == <span class="string">'recv_forward'</span> <span class="keyword">and</span> <span class="keyword">not</span> pgm.process_group_manager.pp_is_first_stage:  <span class="comment"># Receive input for forward pass (not first stage)</span>
+                        tensor = torch.empty(shapes, requires_grad=<span class="keyword">True</span>, device=device, dtype=dtype)  <span class="comment"># Create empty tensor</span>
+                        src = pgm.process_group_manager.pp_prev_rank  <span class="comment"># Source is previous GPU</span>
+                    <span class="keyword">elif</span> operation == <span class="string">'send_forward'</span> <span class="keyword">and</span> <span class="keyword">not</span> pgm.process_group_manager.pp_is_last_stage:  <span class="comment"># Send output for forward pass (not last stage)</span>
+                        dest = pgm.process_group_manager.pp_next_rank  <span class="comment"># Destination is next GPU</span>
+                    <span class="keyword">elif</span> operation == <span class="string">'recv_backward'</span> <span class="keyword">and</span> <span class="keyword">not</span> pgm.process_group_manager.pp_is_last_stage:  <span class="comment"># Receive gradient for backward pass (not last stage)</span>
+                        tensor = torch.empty(shapes, requires_grad=<span class="keyword">True</span>, device=device, dtype=dtype)  <span class="comment"># Create empty tensor</span>
+                        src = pgm.process_group_manager.pp_next_rank  <span class="comment"># Source is next GPU</span>
+                    <span class="keyword">elif</span> operation == <span class="string">'send_backward'</span> <span class="keyword">and</span> <span class="keyword">not</span> pgm.process_group_manager.pp_is_first_stage:  <span class="comment"># Send gradient for backward pass (not first stage)</span>
+                        dest = pgm.process_group_manager.pp_prev_rank  <span class="comment"># Destination is previous GPU</span>
+                    <span class="keyword">else</span>: <span class="keyword">return</span> tensor <span class="keyword">if</span> operation.startswith(<span class="string">'recv'</span>) <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Return tensor for receive ops, else None</span>
+                    is_send = operation.startswith(<span class="string">'send'</span>)  <span class="comment"># Check if operation is send</span>
+                    peer_rank = dest <span class="keyword">if</span> is_send <span class="keyword">else</span> src  <span class="comment"># Determine peer GPU rank</span>
+                    op = dist.P2POp(dist.isend <span class="keyword">if</span> is_send <span class="keyword">else</span> dist.irecv, tensor, peer_rank)  <span class="comment"># Create send/receive operation</span>
+                    <span class="keyword">if</span> VERBOSE: print(f<span class="string">"{operation} | {'sending' if is_send else 'receiving'} {operation.split('_')[1]} {pgm.process_group_manager.pp_rank} {'→' if is_send else '←'} {peer_rank} | STEP:{STEP} | RANK:{pgm.process_group_manager.pp_rank}"</span>, flush=<span class="keyword">True</span>)  <span class="comment"># Log communication</span>
+                    [req.wait() <span class="keyword">for</span> req <span class="keyword">in</span> dist.batch_isend_irecv([op])]  <span class="comment"># Wait for communication to complete</span>
+                    torch.cuda.synchronize()  <span class="comment"># Sync CUDA</span>
+                    <span class="keyword">if</span> VERBOSE: STEP += <span class="number">1</span>  <span class="comment"># Increment step counter</span>
+                    <span class="keyword">return</span> tensor <span class="keyword">if</span> <span class="keyword">not</span> is_send <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Return tensor for receive ops, else None</span>
+
+                <span class="keyword">def</span> <span class="function">bidirectional_pipeline_communicate</span>(operation, send_tensor, recv_shapes, device, dtype):
+                    <span class="keyword">global</span> STEP, VERBOSE
+                    is_fwd = (operation == <span class="string">'send_fwd_recv_bwd'</span>)  <span class="comment"># Check if operation is forward</span>
+                    <span class="keyword">if</span> (is_fwd <span class="keyword">and</span> pgm.process_group_manager.pp_is_last_stage) <span class="keyword">or</span> (<span class="keyword">not</span> is_fwd <span class="keyword">and</span> pgm.process_group_manager.pp_is_first_stage): <span class="keyword">return</span> <span class="keyword">None</span>  <span class="comment"># Skip if last stage (forward) or first stage (backward)</span>
+                    peer_rank = pgm.process_group_manager.pp_next_rank <span class="keyword">if</span> is_fwd <span class="keyword">else</span> pgm.process_group_manager.pp_prev_rank  <span class="comment"># Determine peer GPU rank</span>
+                    recv_tensor = torch.empty(recv_shapes, requires_grad=<span class="keyword">True</span>, device=device, dtype=dtype)  <span class="comment"># Create empty tensor for receiving</span>
+                    reqs = dist.batch_isend_irecv([dist.P2POp(dist.isend, send_tensor, peer_rank), dist.P2POp(dist.irecv, recv_tensor, peer_rank)])  <span class="comment"># Send and receive simultaneously</span>
+                    <span class="keyword">if</span> VERBOSE: print(f<span class="string">"{operation} | sending {'next' if is_fwd else 'prev'} {pgm.process_group_manager.pp_rank} -> {peer_rank} | "f"receiving {'next' if is_fwd else 'prev'} {peer_rank} -> {pgm.process_group_manager.pp_rank} | "f"STEP {STEP=} | RANK:{pgm.process_group_manager.pp_rank}"</span>, flush=<span class="keyword">True</span>)  <span class="comment"># Log communication</span>
+                    [req.wait() <span class="keyword">for</span> req <span class="keyword">in</span> reqs]  <span class="comment"># Wait for communication to complete</span>
+                    torch.cuda.synchronize()  <span class="comment"># Sync CUDA</span>
+                    <span class="keyword">if</span> VERBOSE: STEP += <span class="number">1</span>  <span class="comment"># Increment step counter</span>
+                    <span class="keyword">return</span> recv_tensor  <span class="comment"># Return received tensor</span>
+
+                <span class="keyword">def</span> <span class="function">train_step_pipeline</span>(model, data_loader, tensor_shapes, device, dtype, mode=<span class="string">'1f1b'</span>):
+                    logging_loss, input_tensors, output_tensors = <span class="number">0.0</span>, [], []  <span class="comment"># Track loss and tensors</span>
+                    requires_grad_sync = pgm.process_group_manager.cp_dp_world_size > <span class="number">1</span>  <span class="comment"># Check if gradient sync is needed</span>
+                    num_warmup_microbatches = min(pgm.process_group_manager.pp_world_size - pgm.process_group_manager.pp_rank - <span class="number">1</span>, data_loader.grad_acc_steps) <span class="keyword">if</span> mode == <span class="string">'1f1b'</span> <span class="keyword">else</span> <span class="number">0</span>  <span class="comment"># Warmup microbatches for 1F1B</span>
+                    num_microbatches_remaining = data_loader.grad_acc_steps - num_warmup_microbatches  <span class="comment"># Remaining microbatches</span>
+
+                    <span class="keyword">def</span> <span class="function">_forward_step</span>(input_tensor):
+                        batch = next(data_loader)  <span class="comment"># Get next batch</span>
+                        batch[<span class="string">"hidden_states"</span>] = input_tensor.to(device) <span class="keyword">if</span> input_tensor <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> input_tensor  <span class="comment"># Set hidden states</span>
+                        output_tensor = model.forward(input_ids=batch[<span class="string">"input_ids"</span>].to(device), position_ids=batch[<span class="string">"position_ids"</span>].to(device), hidden_states=batch[<span class="string">"hidden_states"</span>])  <span class="comment"># Forward pass</span>
+                        <span class="keyword">if</span> pgm.process_group_manager.pp_is_last_stage:  <span class="comment"># Calculate loss if last stage</span>
+                            output_tensor = F.cross_entropy(output_tensor.transpose(<span class="number">1</span>, <span class="number">2</span>), batch[<span class="string">"target_ids"</span>].to(device), reduction=<span class="string">'mean'</span>)
+                            <span class="keyword">nonlocal</span> logging_loss
+                            logging_loss += output_tensor.item() / data_loader.grad_acc_steps  <span class="comment"># Accumulate loss</span>
+                        <span class="keyword">return</span> output_tensor
+
+                    <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_warmup_microbatches):  <span class="comment"># Warmup phase (1F1B only)</span>
+                        input_tensor = pipeline_communicate(operation=<span class="string">'recv_forward'</span>, shapes=tensor_shapes, device=device, dtype=dtype)  <span class="comment"># Receive input</span>
+                        output_tensor = _forward_step(input_tensor)  <span class="comment"># Forward pass</span>
+                        pipeline_communicate(operation=<span class="string">'send_forward'</span>, tensor=output_tensor, device=device, dtype=dtype)  <span class="comment"># Send output</span>
+                        input_tensors.append(input_tensor); output_tensors.append(output_tensor)  <span class="comment"># Store tensors</span>
+
+                    <span class="keyword">if</span> num_microbatches_remaining > <span class="number">0</span>:  <span class="comment"># Steady state</span>
+                        input_tensor = pipeline_communicate(operation=<span class="string">'recv_forward'</span>, shapes=tensor_shapes, device=device, dtype=dtype)  <span class="comment"># Receive input</span>
+
+                    <span class="keyword">if</span> requires_grad_sync: model.require_backward_grad_sync = <span class="keyword">False</span>  <span class="comment"># Disable gradient sync initially</span>
+
+                    <span class="keyword">for</span> ith_microbatch <span class="keyword">in</span> range(num_microbatches_remaining):  <span class="comment"># Steady state loop</span>
+                        is_last_iteration = (ith_microbatch == num_microbatches_remaining - <span class="number">1</span>)  <span class="comment"># Check if last iteration</span>
+                        output_tensor = _forward_step(input_tensor)  <span class="comment"># Forward pass</span>
+                        output_tensor_grad = bidirectional_pipeline_communicate(operation=<span class="string">'send_fwd_recv_bwd'</span>, send_tensor=output_tensor, recv_shapes=tensor_shapes, device=device, dtype=dtype) <span class="keyword">if</span> mode == <span class="string">'1f1b'</span> <span class="keyword">else</span> pipeline_communicate(operation=<span class="string">'recv_backward'</span>, shapes=tensor_shapes, device=device, dtype=dtype)  <span class="comment"># Communicate gradients</span>
+                        input_tensors.append(input_tensor); output_tensors.append(output_tensor)  <span class="comment"># Store tensors</span>
+                        input_tensor, output_tensor = input_tensors.pop(<span class="number">0</span>), output_tensors.pop(<span class="number">0</span>)  <span class="comment"># Pop tensors for backward pass</span>
+                        <span class="keyword">if</span> num_warmup_microbatches == <span class="number">0</span> <span class="keyword">and</span> is_last_iteration: model.require_backward_grad_sync = <span class="keyword">True</span>  <span class="comment"># Enable gradient sync on last iteration</span>
+                        input_tensor_grad = model.backward(input_tensor, output_tensor, output_tensor_grad)  <span class="comment"># Backward pass</span>
+                        <span class="keyword">if</span> is_last_iteration:  <span class="comment"># Last iteration cleanup</span>
+                            input_tensor = <span class="keyword">None</span>
+                            pipeline_communicate(operation=<span class="string">'send_backward'</span>, tensor=input_tensor_grad, device=device, dtype=dtype)  <span class="comment"># Send final gradient</span>
+                        <span class="keyword">else</span>:  <span class="comment"># Continue communication</span>
+                            input_tensor = bidirectional_pipeline_communicate(operation=<span class="string">'send_bwd_recv_fwd'</span>, send_tensor=input_tensor_grad, recv_shapes=tensor_shapes, device=device, dtype=dtype) <span class="keyword">if</span> mode == <span class="string">'1f1b'</span> <span class="keyword">else</span> pipeline_communicate(operation=<span class="string">'recv_forward'</span>, shapes=tensor_shapes, device=device, dtype=dtype)
+
+                    <span class="keyword">for</span> ith_warmup_microbatches <span class="keyword">in</span> range(num_warmup_microbatches):  <span class="comment"># Cooldown phase (1F1B only)</span>
+                        <span class="keyword">if</span> requires_grad_sync: model.require_backward_grad_sync = (ith_warmup_microbatches == num_warmup_microbatches - <span class="number">1</span>)  <span class="comment"># Enable gradient sync on last iteration</span>
+                        input_tensor, output_tensor = input_tensors.pop(<span class="number">0</span>), output_tensors.pop(<span class="number">0</span>)  <span class="comment"># Pop tensors for backward pass</span>
+                        output_tensor_grad = pipeline_communicate(operation=<span class="string">'recv_backward'</span>, shapes=tensor_shapes, device=device, dtype=dtype)  <span class="comment"># Receive gradient</span>
+                        input_tensor_grad = model.backward(input_tensor, output_tensor, output_tensor_grad)  <span class="comment"># Backward pass</span>
+                        pipeline_communicate(operation=<span class="string">'send_backward'</span>, tensor=input_tensor_grad, device=device, dtype=dtype)  <span class="comment"># Send gradient</span>
+
+                    <span class="keyword">return</span> logging_loss  <span class="comment"># Return accumulated loss</span>
+              </code></pre>
+            </div>
+          </div>
+        </div>
       <p>
         Another downside of Pipeline Parallelism is that, for example, the
         device with the earliest layer block is, under this naive
@@ -559,6 +843,194 @@
         &amp; stable learning across device counts after only a few minor
         reordering of some of the pooling steps.
       </p>
+      <div>
+          <p style="margin-bottom: 25px;">
+              The following implements tensor parallelism, splitting the 
+              model's weight matrices across multiple GPUs using column-parallel, 
+              row-parallel linear layers, vocabulary-parallel embeddings, and 
+              support for asynchronous all-reduce operations. Again adapted from 
+              Hugging Face's <a href="https://github.com/huggingface/picotron" target="_blank">Picotron repository</a> .
+          </p>
+          <div class="collapsible-code-container">
+            <button class="collapse-button" onclick="toggleCollapse(this)">
+              Show Code
+              <button class="copy-button" onclick="copyCode(event)">
+                <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </button>
+            </button>
+            <div class="code-container" onmousemove="handleMouseMove(event)">
+              <div class="code-content">
+                  <pre><code>
+                    <span class="keyword">import</span> math, torch, torch.nn <span class="keyword">as</span> nn, torch.nn.functional <span class="keyword">as</span> F, torch.distributed <span class="keyword">as</span> dist
+                    <span class="keyword">from</span> typing <span class="keyword">import</span> Optional, Tuple
+                    <span class="keyword">import</span> picotron.process_group_manager <span class="keyword">as</span> pgm
+
+                    <span class="comment"># Apply tensor parallelism to the model by replacing specific layers with parallelized versions</span>
+                    <span class="keyword">def</span> <span class="function">apply_tensor_parallel</span>(model):
+                        <span class="keyword">def</span> <span class="function">_replace_module</span>(_module, _linear_proj_name, _style, args={}):
+                            linear_layer = getattr(_module, _linear_proj_name)  <span class="comment"># Get the original linear layer</span>
+                            <span class="keyword">if</span> _style == <span class="string">"column"</span>:  <span class="comment"># Replace with column-parallel linear layer</span>
+                                new_linear_layer = ColumnParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, args.get(<span class="string">"gather_output"</span>, <span class="keyword">False</span>))
+                            <span class="keyword">elif</span> _style == <span class="string">"row"</span>:  <span class="comment"># Replace with row-parallel linear layer</span>
+                                new_linear_layer = RowParallelLinear(linear_layer.in_features, linear_layer.out_features, linear_layer.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)
+                            <span class="keyword">else</span>:  <span class="comment"># Replace with vocabulary-parallel embedding layer</span>
+                                new_linear_layer = VocabParallelEmbedding(linear_layer.num_embeddings, linear_layer.embedding_dim)
+                            setattr(_module, _linear_proj_name, new_linear_layer)  <span class="comment"># Replace the original layer with the parallelized version</span>
+
+                        <span class="comment"># Mapping of layer names to their parallelization styles</span>
+                        module_linear_name_stype_mapping_list = [
+                            (<span class="string">"attention"</span>, <span class="string">"q_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"k_proj"</span>, <span class="string">"column"</span>), (<span class="string">"attention"</span>, <span class="string">"v_proj"</span>, <span class="string">"column"</span>),
+                            (<span class="string">"attention"</span>, <span class="string">"out_proj"</span>, <span class="string">"row"</span>), (<span class="string">"mlp"</span>, <span class="string">"up_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"gate_proj"</span>, <span class="string">"column"</span>), (<span class="string">"mlp"</span>, <span class="string">"down_proj"</span>, <span class="string">"row"</span>),
+                        ]
+                        <span class="keyword">for</span> layer <span class="keyword">in</span> model.decoder_layers:  <span class="comment"># Apply parallelism to each decoder layer</span>
+                            <span class="keyword">for</span> module_name, linear_proj_name, style <span class="keyword">in</span> module_linear_name_stype_mapping_list:
+                                _replace_module(getattr(layer, module_name), linear_proj_name, style)
+                        _replace_module(model, <span class="string">"embedding"</span>, <span class="string">"vocab"</span>)  <span class="comment"># Parallelize embedding layer</span>
+                        _replace_module(model, <span class="string">"final_proj"</span>, <span class="string">"column"</span>, args={<span class="string">"gather_output"</span>: <span class="keyword">True</span>})  <span class="comment"># Parallelize final projection layer</span>
+                        <span class="keyword">return</span> model
+
+                    <span class="comment"># Column Parallel Linear Layer: Splits weight matrix along columns across GPUs</span>
+                    <span class="keyword">class</span> <span class="class">ColumnParallelLinear</span>(nn.Module):
+                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span> = <span class="keyword">False</span>, gather_output: <span class="keyword">bool</span> = <span class="keyword">False</span>, async_all_reduce: <span class="keyword">bool</span> = <span class="keyword">False</span>):
+                            <span class="function">super</span>().<span class="function">__init__</span>()
+                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                            <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
+                            <span class="parameter">self</span>.output_size_per_partition = out_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Output size per GPU</span>
+                            <span class="parameter">self</span>.gather_output, <span class="parameter">self</span>.async_all_reduce = gather_output, async_all_reduce  <span class="comment"># Gather output and async all-reduce flags</span>
+                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition, <span class="parameter">self</span>.in_features))  <span class="comment"># Weight matrix (split along columns)</span>
+                            <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.output_size_per_partition)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
+                            <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
+                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
+
+                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                            master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
+                            torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
+                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.output_size_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
+                        
+                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x: torch.Tensor) -> torch.Tensor:  
+                            output = linear_with_async_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias) <span class="keyword">if</span> <span class="parameter">self</span>.async_all_reduce <span class="keyword">else</span> linear_with_all_reduce(x, <span class="parameter">self</span>.weight, <span class="parameter">self</span>.bias)  <span class="comment"># Compute output with optional async all-reduce</span>
+                            <span class="keyword">return</span> GatherFromModelParallelRegion.apply(output) <span class="keyword">if</span> <span class="parameter">self</span>.gather_output <span class="keyword">else</span> output  <span class="comment"># Gather output if needed</span>
+
+                    <span class="comment"># Row Parallel Linear Layer: Splits weight matrix along rows across GPUs</span>
+                    <span class="keyword">class</span> <span class="class">RowParallelLinear</span>(nn.Module):
+                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, in_features: <span class="keyword">int</span>, out_features: <span class="keyword">int</span>, bias: <span class="keyword">bool</span>):
+                            <span class="function">super</span>().<span class="function">__init__</span>()
+                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                            <span class="parameter">self</span>.in_features, <span class="parameter">self</span>.out_features = in_features, out_features  <span class="comment"># Input/output dimensions</span>
+                            <span class="parameter">self</span>.input_size_per_partition = in_features // <span class="parameter">self</span>.tp_world_size  <span class="comment"># Input size per GPU</span>
+                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.input_size_per_partition))  <span class="comment"># Weight matrix (split along rows)</span>
+                            <span class="parameter">self</span>.bias = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.out_features)) <span class="keyword">if</span> bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Bias (optional)</span>
+                            <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>: <span class="parameter">self</span>.bias.zero_()  <span class="comment"># Initialize bias to zero</span>
+                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize weights</span>
+
+                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                            master_weight = torch.empty(<span class="parameter">self</span>.out_features, <span class="parameter">self</span>.in_features, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full weight matrix</span>
+                            torch.nn.init.uniform_(master_weight, -math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)), math.sqrt(<span class="number">1</span> / master_weight.size(<span class="number">1</span>)))  <span class="comment"># Initialize weights uniformly</span>
+                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.input_size_per_partition, dim=<span class="number">1</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split weights across GPUs</span>
+
+                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
+                            output_parallel = F.linear(x, <span class="parameter">self</span>.weight)  <span class="comment"># Compute partial output</span>
+                            output = ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum outputs across GPUs</span>
+                            <span class="keyword">return</span> output <span class="keyword">if</span> <span class="parameter">self</span>.bias <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">else</span> output + <span class="parameter">self</span>.bias  <span class="comment"># Add bias if present</span>
+
+                    <span class="comment"># Vocabulary Parallel Embedding Layer: Splits embedding matrix along vocabulary dimension</span>
+                    <span class="keyword">class</span> <span class="class">VocabParallelEmbedding</span>(nn.Module):
+                        <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, num_embeddings: <span class="keyword">int</span>, embedding_dim: <span class="keyword">int</span>, padding_idx: Optional[<span class="keyword">int</span>] = <span class="keyword">None</span>, max_norm: Optional[<span class="keyword">float</span>] = <span class="keyword">None</span>, norm_type: <span class="keyword">float</span> = <span class="number">2.0</span>, scale_grad_by_freq: <span class="keyword">bool</span> = <span class="keyword">False</span>, sparse: <span class="keyword">bool</span> = <span class="keyword">False</span>):
+                            <span class="function">super</span>().<span class="function">__init__</span>()
+                            <span class="parameter">self</span>.tp_world_size, <span class="parameter">self</span>.tp_rank = pgm.process_group_manager.tp_world_size, pgm.process_group_manager.tp_rank  <span class="comment"># Get TP world size and rank</span>
+                            <span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim = num_embeddings, embedding_dim  <span class="comment"># Vocabulary size and embedding dimension</span>
+                            <span class="parameter">self</span>.vocab_start_index, <span class="parameter">self</span>.vocab_end_index = <span class="parameter">self</span>._vocab_range_from_global_vocab_size(num_embeddings, <span class="parameter">self</span>.tp_rank, <span class="parameter">self</span>.tp_world_size)  <span class="comment"># Vocabulary range for this GPU</span>
+                            <span class="parameter">self</span>.num_embeddings_per_partition = <span class="parameter">self</span>.vocab_end_index - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Vocabulary size per GPU</span>
+                            <span class="parameter">self</span>.weight = nn.Parameter(torch.Tensor(<span class="parameter">self</span>.num_embeddings_per_partition, <span class="parameter">self</span>.embedding_dim))  <span class="comment"># Embedding matrix (split along vocabulary)</span>
+                            <span class="parameter">self</span>.reset_parameters()  <span class="comment"># Initialize embeddings</span>
+                        
+                        <span class="keyword">def</span> <span class="function">_vocab_range_from_global_vocab_size</span>(<span class="parameter">self</span>, global_vocab_size: <span class="keyword">int</span>, rank: <span class="keyword">int</span>, world_size: <span class="keyword">int</span>):
+                            per_partition_vocab_size = global_vocab_size // world_size  <span class="comment"># Vocabulary size per GPU</span>
+                            <span class="keyword">return</span> rank * per_partition_vocab_size, (rank + <span class="number">1</span>) * per_partition_vocab_size  <span class="comment"># Start and end indices for this GPU</span>
+
+                        <span class="keyword">def</span> <span class="function">reset_parameters</span>(<span class="parameter">self</span>):
+                            master_weight = torch.empty(<span class="parameter">self</span>.num_embeddings, <span class="parameter">self</span>.embedding_dim, dtype=<span class="parameter">self</span>.weight.dtype, device=<span class="parameter">self</span>.weight.device, requires_grad=<span class="keyword">False</span>)  <span class="comment"># Full embedding matrix</span>
+                            torch.nn.init.normal_(master_weight, mean=<span class="number">0.0</span>, std=<span class="number">1.0</span>)  <span class="comment"># Initialize embeddings with normal distribution</span>
+                            <span class="parameter">self</span>.weight.data = torch.split(master_weight, <span class="parameter">self</span>.num_embeddings_per_partition, dim=<span class="number">0</span>)[<span class="parameter">self</span>.tp_rank].contiguous()  <span class="comment"># Split embeddings across GPUs</span>
+
+                        <span class="keyword">def</span> <span class="function">forward</span>(<span class="parameter">self</span>, x):
+                            input_mask = (x < <span class="parameter">self</span>.vocab_start_index) | (x >= <span class="parameter">self</span>.vocab_end_index)  <span class="comment"># Mask tokens outside this GPU's vocabulary range</span>
+                            masked_input = x.clone() - <span class="parameter">self</span>.vocab_start_index  <span class="comment"># Adjust input indices for this GPU</span>
+                            masked_input[input_mask] = <span class="number">0</span>  <span class="comment"># Set out-of-range tokens to zero</span>
+                            output_parallel = F.embedding(masked_input, <span class="parameter">self</span>.weight, <span class="keyword">None</span>, <span class="keyword">None</span>, <span class="number">2.0</span>, <span class="keyword">False</span>, <span class="keyword">False</span>)  <span class="comment"># Lookup embeddings for valid tokens</span>
+                            output_parallel[input_mask, :] = <span class="number">0.0</span>  <span class="comment"># Set embeddings of out-of-range tokens to zero</span>
+                            <span class="keyword">return</span> ReduceFromModelParallelRegion.apply(output_parallel)  <span class="comment"># Sum embeddings across GPUs</span>
+
+                    <span class="comment"># Helper functions for tensor parallelism</span>
+                    <span class="keyword">def</span> <span class="function">merge_first_two_dims</span>(grad_output: torch.Tensor, input_: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+                        <span class="keyword">return</span> grad_output.contiguous().view(-<span class="number">1</span>, *grad_output.shape[<span class="number">2</span>:]), input_.contiguous().view(-<span class="number">1</span>, *input_.shape[<span class="number">2</span>:])  <span class="comment"># Merge first two dimensions for matrix multiplication</span>
+
+                    <span class="keyword">def</span> <span class="function">split_tensor_along_last_dim</span>(tensor, num_partitions):
+                        <span class="keyword">return</span> torch.split(tensor, tensor.size()[-<span class="number">1</span>] // num_partitions, dim=-<span class="number">1</span>)  <span class="comment"># Split tensor along last dimension</span>
+
+                    <span class="keyword">class</span> <span class="class">CopyToModelParallelRegion</span>(torch.autograd.Function):
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x): <span class="keyword">return</span> x  <span class="comment"># Forward pass: no change</span>
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(grad_output, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Backward pass: all-reduce gradients</span>
+                            <span class="keyword">return</span> grad_output
+
+                    <span class="keyword">class</span> <span class="class">ReduceFromModelParallelRegion</span>(torch.autograd.Function):
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
+                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size > <span class="number">1</span>: dist.all_reduce(x, op=dist.ReduceOp.SUM, group=pgm.process_group_manager.tp_group)  <span class="comment"># Forward pass: all-reduce outputs</span>
+                            <span class="keyword">return</span> x
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output): <span class="keyword">return</span> grad_output  <span class="comment"># Backward pass: no change</span>
+
+                    <span class="keyword">class</span> <span class="class">GatherFromModelParallelRegion</span>(torch.autograd.Function):
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, x):
+                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> x  <span class="comment"># If single GPU, return input</span>
+                            x = x.contiguous()  <span class="comment"># Ensure tensor is contiguous</span>
+                            tensor_list = [torch.empty_like(x) <span class="keyword">for</span> _ <span class="keyword">in</span> range(pgm.process_group_manager.tp_world_size)]  <span class="comment"># Create list to gather tensors</span>
+                            tensor_list[pgm.process_group_manager.tp_rank] = x  <span class="comment"># Place this GPU's tensor in the list</span>
+                            dist.all_gather(tensor_list, x, group=pgm.process_group_manager.tp_group)  <span class="comment"># Gather tensors from all GPUs</span>
+                            <span class="keyword">return</span> torch.cat(tensor_list, dim=-<span class="number">1</span>).contiguous()  <span class="comment"># Concatenate tensors along last dimension</span>
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                            <span class="keyword">if</span> pgm.process_group_manager.tp_world_size == <span class="number">1</span>: <span class="keyword">return</span> grad_output  <span class="comment"># If single GPU, return gradient</span>
+                            <span class="keyword">return</span> split_tensor_along_last_dim(grad_output, pgm.process_group_manager.tp_world_size)[pgm.process_group_manager.tp_rank].contiguous()  <span class="comment"># Split gradient for this GPU</span>
+
+                    <span class="keyword">class</span> <span class="class">LinearWithAsyncAllReduce</span>(torch.autograd.Function):
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">forward</span>(ctx, input_, weight, bias):
+                            ctx.save_for_backward(input_, weight)  <span class="comment"># Save inputs for backward pass</span>
+                            ctx.use_bias = bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>  <span class="comment"># Flag for bias presence</span>
+                            <span class="keyword">return</span> input_ @ weight.t() + bias <span class="keyword">if</span> bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> input_ @ weight.t()  <span class="comment"># Compute output</span>
+                        
+                        @staticmethod
+                        <span class="keyword">def</span> <span class="function">backward</span>(ctx, grad_output):
+                            input_, weight = ctx.saved_tensors  <span class="comment"># Retrieve saved tensors</span>
+                            grad_input = grad_output @ weight  <span class="comment"># Compute gradient of input</span>
+                            input_gradient_all_reduce_handle = dist.all_reduce(grad_input, group=pgm.process_group_manager.tp_group, async_op=<span class="keyword">True</span>)  <span class="comment"># All-reduce input gradient asynchronously</span>
+                            grad_output, input_ = merge_first_two_dims(grad_output, input_)  <span class="comment"># Merge dimensions for matrix multiplication</span>
+                            grad_weight = grad_output.t() @ input_  <span class="comment"># Compute gradient of weight</span>
+                            grad_bias = grad_output.sum(<span class="number">0</span>) <span class="keyword">if</span> ctx.use_bias <span class="keyword">else</span> <span class="keyword">None</span>  <span class="comment"># Compute gradient of bias (if present)</span>
+                            input_gradient_all_reduce_handle.wait()  <span class="comment"># Wait for all-reduce to complete</span>
+                            <span class="keyword">return</span> grad_input, grad_weight, grad_bias  <span class="comment"># Return gradients</span>
+
+                    <span class="keyword">def</span> <span class="function">linear_with_all_reduce</span>(x, weight, bias):
+                        <span class="keyword">return</span> F.linear(CopyToModelParallelRegion.apply(x), weight, bias)  <span class="comment"># Linear transformation with all-reduce</span>
+
+                    <span class="keyword">def</span> <span class="function">linear_with_async_all_reduce</span>(x, weight, bias):
+                        <span class="keyword">return</span> LinearWithAsyncAllReduce.apply(x, weight, bias)  <span class="comment"># Linear transformation with async all-reduce</span>
+                  </code></pre>
+          </div>
+        </div>
+      </div>
       <p>
         That resolves all three primary axes of breaking down Model training
         into Distributed processes. Importantly, all of these techniques can be
@@ -1247,13 +1719,13 @@
             </svg>
             </button>
           <pre><code><span class="keyword">@misc</span>{<span class="parameter">bradley-distributed-2025</span>,
-    <span class="parameter">title</span>=<span class="operator">{</span><span class="string">From Jobs To Jensen</span><span class="operator">}</span>,
-    <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
-    <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
-    <span class="parameter">month</span>=<span class="operator">{</span><span class="string">oct</span><span class="operator">}</span>,
-    <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
-    <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
-}</code></pre>
+              <span class="parameter">title</span>=<span class="operator">{</span><span class="string">From Jobs To Jensen</span><span class="operator">}</span>,
+              <span class="parameter">author</span>=<span class="operator">{</span><span class="string">Bradley, Ben</span><span class="operator">}</span>,
+              <span class="parameter">year</span>=<span class="operator">{</span><span class="number">2024</span><span class="operator">}</span>,
+              <span class="parameter">month</span>=<span class="operator">{</span><span class="string">oct</span><span class="operator">}</span>,
+              <span class="parameter">note</span>=<span class="operator">{</span><span class="string">Blog post</span><span class="operator">}</span>,
+              <span class="parameter">howpublished</span>=<span class="operator">{</span><span class="string">\url{bbradz.github.com}</span><span class="operator">}</span>
+          }</code></pre>
         </div>
       </div>
     </div>

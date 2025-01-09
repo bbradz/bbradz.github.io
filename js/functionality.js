@@ -1,3 +1,32 @@
+function toggleCollapse(button) {
+  const container = button.parentElement;
+  const codeContainer = container.querySelector(".code-container");
+  const copyButton = button.querySelector(".copy-button");
+
+  button.classList.toggle("expanded");
+  codeContainer.classList.toggle("visible");
+
+  // Toggle copy button visibility
+  if (codeContainer.classList.contains("visible")) {
+    copyButton.classList.add("visible");
+  } else {
+    copyButton.classList.remove("visible");
+  }
+}
+
+function handleMouseMove(event) {
+  const codeContainer = event.currentTarget;
+  const copyButton = codeContainer.querySelector(".copy-button");
+  const rect = codeContainer.getBoundingClientRect();
+
+  // Show copy button when hovering near the top-right corner
+  if (event.clientY - rect.top < 50 && rect.right - event.clientX < 50) {
+    copyButton.classList.add("visible");
+  } else {
+    copyButton.classList.remove("visible");
+  }
+}
+
 // ======================
 // Theme toggle
 // ======================

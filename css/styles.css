@@ -28,12 +28,12 @@
 }
 
 @font-face {
-  font-family: 'default';
-  src: url('../fonts/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+  font-family: "default";
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
 }
 
 * {
-  font-family: 'default', sans-serif;
+  font-family: "default", sans-serif;
 }
 
 html {
@@ -60,7 +60,7 @@ body {
   right: 0;
   background-color: var(--header-bg);
   z-index: 1;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
   padding-left: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -286,16 +286,54 @@ sub {
   margin: 0.5rem 0 0.5rem 2rem;
 }
 
-.code-container {
+.collapsible-code-container {
   position: relative;
-  background-color: #1a1b26;
+  margin: 1.5rem 0;
+  border: 1px solid var(--table-border);
   border-radius: 8px;
-  font-family: monospace;
-  color: #a9b1d6;
+  overflow: hidden;
+}
+
+.collapse-button {
+  width: 100%;
+  background: var(--toc-bg);
+  border: none;
+  padding: 0.75rem 1rem;
+  padding-right: 3rem;
+  color: var(--text-color);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.collapse-button::before {
+  content: "▶";
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.collapse-button.expanded::before {
+  transform: rotate(90deg);
+}
+
+.code-container {
+  display: none;
+  background-color: var(--code-bg);
+  border-top: 1px solid var(--table-border);
+}
+
+.code-container.visible {
+  display: block;
+  margin-left: -24px;
 }
 
 .code-content {
-  padding: 20px;
+  position: relative;
+  padding-right: 1rem;
   overflow-x: auto;
 }
 
@@ -305,14 +343,19 @@ sub {
 }
 
 .code-content code {
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 1.5;
+  display: block;
+  padding: 0rem;
+  background-color: transparent;
+  margin-left: -8px;
 }
 
 .copy-button {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -325,7 +368,6 @@ sub {
   opacity: 0;
   pointer-events: none;
   color: rgba(255, 255, 255, 0.5);
-  transform: scale(0.8);
 }
 
 .copy-button.visible {
@@ -339,10 +381,6 @@ sub {
 }
 
 .copy-button svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
 }
@@ -671,10 +709,13 @@ sub {
 
 .game-of-life {
   position: fixed;
+  left: 20px;
   top: 50px;
   z-index: 0;
   opacity: 0.4;
   pointer-events: none;
+  width: 200px;
+  height: 400px;
 }
 
 .discussion-links {
