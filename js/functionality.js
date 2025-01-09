@@ -1508,12 +1508,23 @@ const readingListData = [
   {
     title: "Populism, Media Revolutions, and Our Terrible Moment",
     author: "Hank Green",
-    description: "Rant from Hank Green on the destruction of trust & reality in society by the Internet's revolutionary Algorithmic Realities.",
+    description:
+      "Rant from Hank Green on the destruction of trust & reality in society by the Internet's revolutionary Algorithmic Realities.",
     tags: ["Politics", "YT"],
     readTime: 0.5,
     releaseDate: "2024-11-22",
     isRead: true,
     downloadLink: "https://www.youtube.com/watch?v=d8PndpFPL8g",
+  },
+  {
+    title: "o-models, beyond classical DL",
+    author: "Francois Chollet",
+    description: "Description of the ARG-AGI model evaluation test set and how current Deep Learning Architectures fail to encapsulate Symbolic reasoning",
+    tags: ["Deep Learning", "Symbolic Systems", "YT"],
+    readTime: 1.5,
+    releaseDate: "2025-01-08",
+    isRead: false,
+    downloadLink: "https://www.youtube.com/watch?v=w9WE1aOPjHc",
   },
 ];
 

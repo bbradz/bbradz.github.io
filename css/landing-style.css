@@ -457,6 +457,10 @@ sub {
 }
 
 /* Series Header */
+.series {
+  margin-bottom: 10px;
+}
+
 .series-header {
   display: flex;
   justify-content: space-between;
