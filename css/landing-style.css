@@ -573,7 +573,7 @@ ul li {
 .headshots-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   margin-top: 40px;
   padding: 20px;
   justify-content: center; /* Center items on uneven rows */
@@ -581,15 +581,21 @@ ul li {
 
 .headshot-item {
   text-align: center;
-  flex: 1 1 calc(25% - 20px); /* Default: 4 items per row */
-  max-width: 120px; /* Limit the maximum width of each item */
+  flex: 0 1 calc(16.66% - 20px); /* Default: 6 items per row, adjust spacing */
+  max-width: 120px;
+  max-height: 160px; /* Ensure uniform maximum dimensions */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .headshot-image {
-  width: 100%;
+  width: 100px; /* Fixed size for all images */
+  height: 100px; /* Fixed size for all images */
   border-radius: 50%; /* Make the image circular */
   border: 3px solid var(--accent-color); /* Add a border for better visibility */
   transition: transform 0.3s ease;
+  object-fit: cover; /* Ensures the image fits within the circular frame */
 }
 
 .headshot-image:hover {
@@ -598,19 +604,36 @@ ul li {
 
 .headshot-name {
   margin-top: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-color);
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." to indicate overflow */
+  width: 100%; /* Adjust as needed */
 }
 
-/* Adjust layout for medium screens (up to 768px) */
+/* Adjust layout for medium screens */
 @media (max-width: 1000px) {
   .headshots-section .headshot-item {
-    margin-right: 50px;
+    flex: 0 1 calc(25% - 20px); /* Adjust to 4 items per row */
+    max-width: 150px;
+  }
+
+  .headshot-image {
+    width: 80px; /* Scale down the image size */
+    height: 80px;
   }
 }
+
 @media (max-width: 600px) {
   .headshots-section .headshot-item {
-    margin-right: 10px;
+    flex: 0 1 calc(50% - 20px); /* Adjust to 2 items per row */
+    max-width: 120px;
+  }
+
+  .headshot-image {
+    width: 70px; /* Further scale down the image size */
+    height: 70px;
   }
 }
