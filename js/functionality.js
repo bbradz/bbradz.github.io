@@ -1523,7 +1523,7 @@ const readingListData = [
     tags: ["Deep Learning", "Symbolic Systems", "YT"],
     readTime: 1.5,
     releaseDate: "2025-01-08",
-    isRead: false,
+    isRead: true,
     downloadLink: "https://www.youtube.com/watch?v=w9WE1aOPjHc",
   },
 ];
