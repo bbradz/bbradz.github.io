@@ -1224,7 +1224,7 @@ const readingListData = [
     tags: ["Machine Learning", "Site"],
     readTime: 0.3,
     releaseDate: "2024-08-10",
-    isRead: false,
+    isRead: true,
     downloadLink: "https://njkumar.com/literature-review-sampling-techniques/",
   },
   {
@@ -1611,7 +1611,7 @@ const readingListData = [
     releaseDate: "2025-01-06",
     isRead: true,
     downloadLink: "https://www.youtube.com/watch?v=-T9pBZ2nBkc",
-  }, 
+  },
   {
     title: "Let this method tune hyper-parameters for you!",
     author: "Tunadorable",
@@ -1622,7 +1622,7 @@ const readingListData = [
     releaseDate: "2025-01-06",
     isRead: true,
     downloadLink: "https://www.youtube.com/watch?v=-T9pBZ2nBkc",
-  }, 
+  },
   {
     title: "The Practitioner's Guide to the Maximal Update Parameterization",
     author: "Eleuther.AI",
@@ -1633,7 +1633,17 @@ const readingListData = [
     releaseDate: "2024-09-19",
     isRead: true,
     downloadLink: "https://blog.eleuther.ai/mutransfer/",
-  }, 
+  },
+  {
+    title: "Git Version Control-- CS61",
+    author: "Harvard",
+    description: "Harvard CS61 Introductory Guide to Git Version Control, read this for CS30 Course at Brown University",
+    tags: ["Git", "Site"],
+    readTime: 1.0,
+    releaseDate: "2023-11-0",
+    isRead: true,
+    downloadLink: "https://cs61.seas.harvard.edu/site/ref/git/#gsc.tab=0",
+  },
 ];
 
 /*  
