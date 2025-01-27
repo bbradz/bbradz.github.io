@@ -1637,12 +1637,24 @@ const readingListData = [
   {
     title: "Git Version Control-- CS61",
     author: "Harvard",
-    description: "Harvard CS61 Introductory Guide to Git Version Control, read this for CS30 Course at Brown University",
+    description:
+      "Harvard CS61 Introductory Guide to Git Version Control, read this for CS30 Course at Brown University",
     tags: ["Git", "Site"],
     readTime: 1.0,
     releaseDate: "2023-11-0",
     isRead: true,
     downloadLink: "https://cs61.seas.harvard.edu/site/ref/git/#gsc.tab=0",
+  },
+  {
+    title: "git - the simple guide",
+    author: "",
+    description:
+      "beautifully designed scroll-based description of git which specializes in simple descriptions of complex commands",
+    tags: ["Roger Dudler"],
+    readTime: 0.5,
+    releaseDate: "XXXX-XX-XX",
+    isRead: true,
+    downloadLink: "https://rogerdudler.github.io/git-guide/",
   },
 ];
 
