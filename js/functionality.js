@@ -1659,13 +1659,26 @@ const readingListData = [
   {
     title: "Treadmill: Attributing the Source of Tail Latency",
     author: "Meta",
-    description: "decomposes features of request tail latency into an evaluation methodology to reduce the 99th-percentile latency by 43% and its variance by 93%",
+    description:
+      "decomposes features of request tail latency into an evaluation methodology to reduce the 99th-percentile latency by 43% and its variance by 93%",
     tags: ["Distributed Systems", "Site"],
     readTime: 0.5,
     releaseDate: "2016-01-01",
     isRead: true,
     downloadLink:
       "https://www.jasonmars.org/wp-content/uploads/2020/04/ISCA.2016.47.pdf",
+  },
+  {
+    title: "Open Versus Closed: A Cautionary Tale",
+    author: "CMU",
+    description:
+      "Illustrates the behavior differences b/w closed & open sourced models in real-world settings to motivate a proposed partly open system model for diagnostic workload generation",
+    tags: ["Distributed Systems", "Site"],
+    readTime: 0.5,
+    releaseDate: "2006-01-01",
+    isRead: true,
+    downloadLink:
+      "https://www.usenix.org/legacy/event/nsdi06/tech/full_papers/schroeder/schroeder.pdf",
   },
 ];
 
