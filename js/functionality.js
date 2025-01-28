@@ -1680,6 +1680,18 @@ const readingListData = [
     downloadLink:
       "https://www.usenix.org/legacy/event/nsdi06/tech/full_papers/schroeder/schroeder.pdf",
   },
+  {
+    title: "Quantile Regression",
+    author: "sklearn",
+    description:
+      "Quick description of the math behind & motivation behind Quantile Regression (as opposed to OLS Linear Regression, and how to use sklearn to implement it.",
+    tags: ["Machine Learning", "Site"],
+    readTime: 0.5,
+    releaseDate: "2023-01-01",
+    isRead: true,
+    downloadLink:
+      "https://scikit-learn.org/dev/auto_examples/linear_model/plot_quantile_regression.html",
+  },
 ];
 
 /*  
