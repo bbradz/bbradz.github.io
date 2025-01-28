@@ -1656,6 +1656,17 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://rogerdudler.github.io/git-guide/",
   },
+  {
+    title: "Treadmill: Attributing the Source of Tail Latency",
+    author: "Meta",
+    description: "decomposes features of request tail latency into an evaluation methodology to reduce the 99th-percentile latency by 43% and its variance by 93%",
+    tags: ["Distributed Systems", "Site"],
+    readTime: 0.5,
+    releaseDate: "2016-01-01",
+    isRead: true,
+    downloadLink:
+      "https://www.jasonmars.org/wp-content/uploads/2020/04/ISCA.2016.47.pdf",
+  },
 ];
 
 /*  
@@ -1667,7 +1678,7 @@ const readingListData = [
   Autoencoders, Parallel Computing, Hyperparameter Optimization, Libraries, 
   Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
   Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
-  Markets, Factorio, Minecraft, Policy, Philosophy, politics
+  Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems
 
   {
     title: "",
