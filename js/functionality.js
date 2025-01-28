@@ -1661,7 +1661,7 @@ const readingListData = [
     author: "Meta",
     description:
       "decomposes features of request tail latency into an evaluation methodology to reduce the 99th-percentile latency by 43% and its variance by 93%",
-    tags: ["Distributed Systems", "Site"],
+    tags: ["Distributed Systems", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2016-01-01",
     isRead: true,
@@ -1673,7 +1673,7 @@ const readingListData = [
     author: "CMU",
     description:
       "Illustrates the behavior differences b/w closed & open sourced models in real-world settings to motivate a proposed partly open system model for diagnostic workload generation",
-    tags: ["Distributed Systems", "Site"],
+    tags: ["Distributed Systems", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2006-01-01",
     isRead: true,
@@ -1691,6 +1691,26 @@ const readingListData = [
     isRead: true,
     downloadLink:
       "https://scikit-learn.org/dev/auto_examples/linear_model/plot_quantile_regression.html",
+  },
+  {
+    title: "Interpretability in Parameter Space",
+    author: "Apollo",
+    description: "Introduced method to decompose a NN params into components",
+    tags: ["Interpretability", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2025-01-24",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2501.14926",
+  },
+  {
+    title: "The Mythos of Model Interpretability",
+    author: "Zachary C. Lipton",
+    description: "Old paper we went over for CS2222 outlining reasons to want, and properties you would expect from, Interpretable models",
+    tags: ["Interpretability", "Arxiv"],
+    readTime: 0.0,
+    releaseDate: "2017-03-06",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/1606.03490",
   },
 ];
 
