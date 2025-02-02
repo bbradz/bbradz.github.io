@@ -1753,7 +1753,7 @@ const readingListData = [
     title: "Probing Classifiers: Promises, Shortcomings, and Advances",
     author: "Israel Institute of Technology",
     description:
-      "Critically reviews probing classifiers as a framework for understanding learned information in models, highlighting their promises, shortcomings, and advances.",
+      "Critically reviews probing classifiers as a framework for understanding learned information in models, highlighting their promises, shortcomings, and advances. [CS2222]",
     tags: ["Interpretability", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2024-02-21",
@@ -1764,7 +1764,7 @@ const readingListData = [
     title: "Mechanistic?",
     author: "Harvard / Allen Institute",
     description:
-      "Explains the many meanings behind *mechinterp* as a product of a critical confluence of communities of varying degrees of credentials",
+      "Explains the many meanings behind *mechinterp* as a product of a critical confluence of communities of varying degrees of credentials [CS2222]",
     tags: ["AI Safety", "Interpretability", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2024-10-07",
@@ -1798,7 +1798,7 @@ const readingListData = [
     title: "The Linear Representation Hypothesis and the Geometry of LLMs",
     author: "Park et al.",
     description:
-      "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace",
+      "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace [CS2222]",
     tags: ["Interpretability", "Arxiv"],
     readTime: 0.0,
     releaseDate: "2024-06-17",
@@ -1815,13 +1815,13 @@ const readingListData = [
     releaseDate: "2020-08-30",
     isRead: true,
     downloadLink:
-      "https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens",
+      "https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens [CS2222]",
   },
   {
     title: "Axiomatic Attribution for Deep Networks",
     author: "Sundararajan et al.",
     description:
-      "Proposes the Integrated Gradients technique for model-ambiguously attributing input features to model output",
+      "Proposes the Integrated Gradients technique for model-ambiguously attributing input features to model output [CS2222]",
     tags: ["Interpretability", "LLMs", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2017-06-13",
@@ -1831,7 +1831,8 @@ const readingListData = [
   {
     title: "Rethinking the Role of Demonstrations",
     author: "University of Washington",
-    description: "Digs into testing why in-context learning works in LLMs",
+    description:
+      "Digs into testing why in-context learning works in LLMs [CS2222]",
     tags: ["Interpretability", "LLMs", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2020-08-20",
