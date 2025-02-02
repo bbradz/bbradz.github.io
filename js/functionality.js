@@ -1771,6 +1771,16 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/2410.09087",
   },
+  {
+    title: "escaping flatland: career advice for CS undergrads",
+    author: "Euan Ong",
+    description: "A message to CS undergrads about the unmentioned mimetic vortex of prestige and narrow set of allowed passions which university can distract you with.",
+    tags: ["Essay", "Site"],
+    readTime: 0.5,
+    releaseDate: "2024-12-26",
+    isRead: true,
+    downloadLink: "https://space.ong.ac/escaping-flatland",
+  },
 ];
 
 /*  
@@ -1783,7 +1793,7 @@ const readingListData = [
   Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
   Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
   Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems,
-  Technology, AI Safety
+  Technology, AI Safety, Essay
 
   {
     title: "",
