@@ -1885,7 +1885,18 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://www.ibm.com/think/topics/self-supervised-learning",
   },
+  {
+    title: "Exploring Neural Networks with Activation Atlases",
+    author: "Google Brain",
+    description: "provides very high quality analysis of navigating across a CNN activation atlas to understand how different layers visualize different classes of output.",
+    tags: ["Interpretability", "Site"],
+    readTime: 1.0,
+    releaseDate: "2019-03-09",
+    isRead: true,
+    downloadLink: "https://distill.pub/2019/activation-atlas/",
+  },
 ];
+
 
 /*  
   \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
