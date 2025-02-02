@@ -1737,6 +1737,17 @@ const readingListData = [
     downloadLink:
       "https://www.danhock.co/p/why-did-doordash-win?utm_source=tldrproduct",
   },
+  {
+    title: "Good Lord",
+    author: "Benn",
+    description: "essay from the supposed perspective of a tech insider about the internal experience of a newly empowered debaucherous trump-fueled tech vibe",
+    tags: ["Politics", "Technology", "Site"],
+    readTime: 0.5,
+    releaseDate: "2025-01-24",
+    isRead: true,
+    downloadLink:
+      "https://benn.substack.com/p/good-lord?utm_source=tldrproduct#footnote-5-155630639",
+  },
 ];
 
 /*  
@@ -1748,7 +1759,8 @@ const readingListData = [
   Autoencoders, Parallel Computing, Hyperparameter Optimization, Libraries, 
   Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
   Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
-  Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems
+  Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems,
+  Politics, Technology
 
   {
     title: "",
