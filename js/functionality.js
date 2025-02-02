@@ -1865,13 +1865,24 @@ const readingListData = [
   {
     title: "Privileged vs non-privileged bases in ML",
     author: "Harrison Pim",
-    description: "Provides a geometric intuition for how architectural choices restrain & nudge models towards aligning features internally aligned in forseeable & interpretable ways.",
+    description:
+      "Provides a geometric intuition for how architectural choices restrain & nudge models towards aligning features internally aligned in forseeable & interpretable ways.",
     tags: ["Architecture", "Interpretability", "Site"],
     readTime: 0.5,
     releaseDate: "2023-05-05",
     isRead: true,
     downloadLink:
       "https://harrisonpim.com/blog/privileged-vs-non-privileged-bases-in-machine-learning",
+  },
+  {
+    title: "What is self-supervised learning?",
+    author: "IBM",
+    description: "Describes briefly a few classes of self-supervised learning from encoders to autoregressive models to contrastic & non-constrastive learning.",
+    tags: ["Machine Learning", "Site"],
+    readTime: 0.5,
+    releaseDate: "2023-12-05",
+    isRead: true,
+    downloadLink: "https://www.ibm.com/think/topics/self-supervised-learning",
   },
 ];
 
