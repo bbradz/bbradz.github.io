@@ -1740,13 +1740,36 @@ const readingListData = [
   {
     title: "Good Lord",
     author: "Benn",
-    description: "essay from the supposed perspective of a tech insider about the internal experience of a newly empowered debaucherous trump-fueled tech vibe",
+    description:
+      "essay from the supposed perspective of a tech insider about the internal experience of a newly empowered debaucherous trump-fueled tech vibe",
     tags: ["Politics", "Technology", "Site"],
     readTime: 0.5,
     releaseDate: "2025-01-24",
     isRead: true,
     downloadLink:
       "https://benn.substack.com/p/good-lord?utm_source=tldrproduct#footnote-5-155630639",
+  },
+  {
+    title: "Probing Classifiers: Promises, Shortcomings, and Advances",
+    author: "Israel Institute of Technology",
+    description:
+      "Critically reviews probing classifiers as a framework for understanding learned information in models, highlighting their promises, shortcomings, and advances.",
+    tags: ["Interpretability", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2024-02-21",
+    isRead: true,
+    downloadLink: "https://aclanthology.org/2022.cl-1.7.pdf",
+  },
+  {
+    title: "Mechanistic?",
+    author: "Harvard / Allen Institute",
+    description:
+      "Explains the many meanings behind *mechinterp* as a product of a critical confluence of communities of varying degrees of credentials",
+    tags: ["AI Safety", "Interpretability", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2024-10-07",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2410.09087",
   },
 ];
 
@@ -1760,7 +1783,7 @@ const readingListData = [
   Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
   Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
   Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems,
-  Politics, Technology
+  Technology, AI Safety
 
   {
     title: "",
