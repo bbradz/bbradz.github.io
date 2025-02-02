@@ -1799,7 +1799,7 @@ const readingListData = [
     author: "Park et al.",
     description:
       "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace [CS2222]",
-    tags: ["Interpretability", "Arxiv"],
+    tags: ["Interpretability", "LLMs", "Arxiv"],
     readTime: 0.0,
     releaseDate: "2024-06-17",
     isRead: true,
@@ -1810,7 +1810,7 @@ const readingListData = [
     author: "nostalgebraist",
     description:
       "observations about how intermediate representations adapt as you track them from input to output of GPT2&3",
-    tags: ["Interpretability", "LLMs", "Site"],
+    tags: ["Interpretability", "Transformers", "Site"],
     readTime: 0.5,
     releaseDate: "2020-08-30",
     isRead: true,
@@ -1844,7 +1844,7 @@ const readingListData = [
     author: "Geva et al.",
     description:
       "Decomposes FFN updates into sub-updates corresponding to single vectors corresponding to human intepretable features",
-    tags: ["Interpretability", "LLMs", "Arxiv"],
+    tags: ["Interpretability", "Transformers", "Arxiv"],
     readTime: 0.5,
     releaseDate: "2022-10-12",
     isRead: true,
@@ -1877,7 +1877,8 @@ const readingListData = [
   {
     title: "What is self-supervised learning?",
     author: "IBM",
-    description: "Describes briefly a few classes of self-supervised learning from encoders to autoregressive models to contrastic & non-constrastive learning.",
+    description:
+      "Describes briefly a few classes of self-supervised learning from encoders to autoregressive models to contrastic & non-constrastive learning.",
     tags: ["Machine Learning", "Site"],
     readTime: 0.5,
     releaseDate: "2023-12-05",
@@ -1890,14 +1891,16 @@ const readingListData = [
   \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
   Site, Arxiv, YT
 
-  Tags = Machine Learning, Activation Functions, Arxiv, Finance, Site, 
-  Information Theory, Programming, Optimization, Distributed Computing, 
-  Diffusion Models, Tutorial, Deep Learning, Economics, Reinforcement Learning, 
-  Autoencoders, Parallel Computing, Hyperparameter Optimization, Libraries, 
-  Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
-  Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
-  Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems,
-  Technology, AI Safety, Essay, Architecture
+  Tags = Activation Functions, AI Safety, Architecture, Arxiv, Autoencoders, 
+  Deep Learning, Diffusion Models, Distributed Computing, Distributed Systems, 
+  Economics, Essay, Factorio, Finance, Git, GNNs, Grokking, Hardware, 
+  Hyperparameter Optimization, Information Theory, Interpretability, 
+  Libraries, Lie Groups, LLMs, Machine Learning, Markets, Mathematics, 
+  Meta-Learning, Minecraft, MoEs, Neural Networks, Optimization, Optimizers, 
+  Parallel Computing, Philosophy, Policy, Politics, Programming, 
+  Reinforcement Learning, Site, Symbolic Systems, Technology, 
+  Transformers, Tutorial
+
 
   {
     title: "",
