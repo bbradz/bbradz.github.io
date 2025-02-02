@@ -1857,10 +1857,21 @@ const readingListData = [
       "blog page implementing and briefly explaining saliency maps for understanding which features of a input most contributed to the output",
     tags: ["Interpretability", "Site"],
     readTime: 0.5,
-    releaseDate: "XXXX-XX-XX",
+    releaseDate: "2022-03-05",
     isRead: true,
     downloadLink:
       "https://medium.com/@bijil.subhash/explainable-ai-saliency-maps-89098e230100",
+  },
+  {
+    title: "Privileged vs non-privileged bases in ML",
+    author: "Harrison Pim",
+    description: "Provides a geometric intuition for how architectural choices restrain & nudge models towards aligning features internally aligned in forseeable & interpretable ways.",
+    tags: ["Architecture", "Interpretability", "Site"],
+    readTime: 0.5,
+    releaseDate: "2023-05-05",
+    isRead: true,
+    downloadLink:
+      "https://harrisonpim.com/blog/privileged-vs-non-privileged-bases-in-machine-learning",
   },
 ];
 
@@ -1875,7 +1886,7 @@ const readingListData = [
   Mathematics, Lie Groups, Neural Networks, Grokking, Interpretability, LLMs, 
   Meta-Learning, Transformers, GNNs, Optimizers, MoEs, Hardware, Symbolic Systems,
   Markets, Factorio, Minecraft, Policy, Philosophy, Politics, Git, Distributed Systems,
-  Technology, AI Safety, Essay
+  Technology, AI Safety, Essay, Architecture
 
   {
     title: "",
