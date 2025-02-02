@@ -1721,9 +1721,21 @@ const readingListData = [
     tags: ["Economics", "Site"],
     readTime: 0.5,
     releaseDate: "2024-12-09",
-    isRead: false,
+    isRead: true,
     downloadLink:
       "https://www.danhock.co/p/the-leaky-bucket-theory-of-network-effects?utm_source=profile&utm_medium=reader2",
+  },
+  {
+    title: "Why Did DoorDash Win?",
+    author: "Dan Hockenmaier",
+    description:
+      "A rough description of the process by which Doordash rose to dominate the food delivery market",
+    tags: ["Economics", "Site"],
+    readTime: 0.5,
+    releaseDate: "2025-01-22",
+    isRead: true,
+    downloadLink:
+      "https://www.danhock.co/p/why-did-doordash-win?utm_source=tldrproduct",
   },
 ];
 
