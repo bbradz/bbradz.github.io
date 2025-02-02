@@ -1797,12 +1797,46 @@ const readingListData = [
   {
     title: "The Linear Representation Hypothesis and the Geometry of LLMs",
     author: "Park et al.",
-    description: "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace",
+    description:
+      "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace",
     tags: ["Interpretability", "Arxiv"],
     readTime: 0.0,
     releaseDate: "2024-06-17",
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/2311.03658",
+  },
+  {
+    title: "interpreting GPT: the logit lens",
+    author: "nostalgebraist",
+    description:
+      "observations about how intermediate representations adapt as you track them from input to output of GPT2&3",
+    tags: ["Interpretability", "LLMs", "Site"],
+    readTime: 0.5,
+    releaseDate: "2020-08-30",
+    isRead: true,
+    downloadLink:
+      "https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens",
+  },
+  {
+    title: "Axiomatic Attribution for Deep Networks",
+    author: "Sundararajan et al.",
+    description:
+      "Proposes the Integrated Gradients technique for model-ambiguously attributing input features to model output",
+    tags: ["Interpretability", "LLMs", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2017-06-13",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/1703.01365",
+  },
+  {
+    title: "Rethinking the Role of Demonstrations",
+    author: "University of Washington",
+    description: "Digs into testing why in-context learning works in LLMs",
+    tags: ["Interpretability", "LLMs", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2020-08-20",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2202.12837",
   },
 ];
 
