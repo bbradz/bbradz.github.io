@@ -1839,10 +1839,34 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/2202.12837",
   },
+  {
+    title: "Transformer FFNs build predictions in Vocab Space",
+    author: "Geva et al.",
+    description:
+      "Decomposes FFN updates into sub-updates corresponding to single vectors corresponding to human intepretable features",
+    tags: ["Interpretability", "LLMs", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2022-10-12",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2203.14680",
+  },
+  {
+    title: "Explainable AI: Saliency Maps",
+    author: "Bijil Subhash",
+    description:
+      "blog page implementing and briefly explaining saliency maps for understanding which features of a input most contributed to the output",
+    tags: ["Interpretability", "Site"],
+    readTime: 0.5,
+    releaseDate: "XXXX-XX-XX",
+    isRead: true,
+    downloadLink:
+      "https://medium.com/@bijil.subhash/explainable-ai-saliency-maps-89098e230100",
+  },
 ];
 
 /*  
   \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
+  Site, Arxiv, YT
 
   Tags = Machine Learning, Activation Functions, Arxiv, Finance, Site, 
   Information Theory, Programming, Optimization, Distributed Computing, 
