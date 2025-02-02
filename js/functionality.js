@@ -1652,7 +1652,7 @@ const readingListData = [
       "beautifully designed scroll-based description of git which specializes in simple descriptions of complex commands",
     tags: ["Roger Dudler"],
     readTime: 0.5,
-    releaseDate: "XXXX-XX-XX",
+    releaseDate: "2020-1-1",
     isRead: true,
     downloadLink: "https://rogerdudler.github.io/git-guide/",
   },
@@ -1705,12 +1705,25 @@ const readingListData = [
   {
     title: "The Mythos of Model Interpretability",
     author: "Zachary C. Lipton",
-    description: "Old paper we went over for CS2222 outlining reasons to want, and properties you would expect from, Interpretable models",
+    description:
+      "Old paper we went over for CS2222 outlining reasons to want, and properties you would expect from, Interpretable models",
     tags: ["Interpretability", "Arxiv"],
     readTime: 0.0,
     releaseDate: "2017-03-06",
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/1606.03490",
+  },
+  {
+    title: "The Leaky Bucket Theory of Network Effects",
+    author: "Dan Hockenmaier",
+    description:
+      "A framework for understanding the strength of a marketplace’s network effect",
+    tags: ["Economics", "Site"],
+    readTime: 0.5,
+    releaseDate: "2024-12-09",
+    isRead: false,
+    downloadLink:
+      "https://www.danhock.co/p/the-leaky-bucket-theory-of-network-effects?utm_source=profile&utm_medium=reader2",
   },
 ];
 
