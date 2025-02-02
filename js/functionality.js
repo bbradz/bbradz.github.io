@@ -1774,12 +1774,35 @@ const readingListData = [
   {
     title: "escaping flatland: career advice for CS undergrads",
     author: "Euan Ong",
-    description: "A message to CS undergrads about the unmentioned mimetic vortex of prestige and narrow set of allowed passions which university can distract you with.",
+    description:
+      "A message to CS undergrads about the unmentioned mimetic vortex of prestige and narrow set of allowed passions which university can distract you with.",
     tags: ["Essay", "Site"],
     readTime: 0.5,
     releaseDate: "2024-12-26",
     isRead: true,
     downloadLink: "https://space.ong.ac/escaping-flatland",
+  },
+  {
+    title:
+      "Violence and the Sacred: College as an incubator of Girardian terror",
+    author: "Dan Wang",
+    description:
+      "Commentary on the social pressures of college through the lens of René Girard's concept of mimetic desire",
+    tags: ["Politics", "Site"],
+    readTime: 0.5,
+    releaseDate: "2017-06-25",
+    isRead: true,
+    downloadLink: "https://danwang.co/college-girardian-terror/",
+  },
+  {
+    title: "The Linear Representation Hypothesis and the Geometry of LLMs",
+    author: "Park et al.",
+    description: "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace",
+    tags: ["Interpretability", "Arxiv"],
+    readTime: 0.0,
+    releaseDate: "2024-06-17",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2311.03658",
   },
 ];
 
