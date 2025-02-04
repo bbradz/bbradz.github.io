@@ -1,3 +1,8 @@
+// ============================== REGULAR OPS ============================== //
+//                                    xx                                     //
+// ============================== REGULAR OPS ============================== //
+
+
 // Update the toggleCollapse function
 function toggleCollapse(button) {
   const container = button.closest(".collapsible-code-container");
@@ -40,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/*
+  Purpose: Handles mouse movement within a container to show/hide a copy button 
+  based on proximity to the mouse cursor.
+  Behavior: Calculates the distance between the mouse position and the copy 
+  button. If the mouse is within 150 pixels of the button, the button becomes 
+  visible; otherwise, it hides.
+*/
 function handleMouseMove(event, container) {
   const copyButton = container.querySelector(".copy-button");
   if (!copyButton) return;
@@ -130,7 +142,11 @@ function handleMouseMove(event, buttonId = null) {
   }
 }
 
-// Update the copyCode function
+/*
+  Purpose: Copies the content of a code block to the clipboard.
+  Behavior: Finds the closest code block to the clicked button, copies its text, 
+  and temporarily adds a copied class to the button for visual feedback.
+*/
 function copyCode(event) {
   event.preventDefault();
   const button = event.currentTarget;
@@ -597,6 +613,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================== LIBRARY OPS ============================== //
+//                                    xx                                     //
+// ============================== LIBRARY OPS ============================== //
+
 const hashString = (str) => {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -607,6 +647,13 @@ const hashString = (str) => {
   return Math.abs(hash);
 };
 
+/*
+  Purpose: Returns a color for a given tag based on its type or a hash of the 
+  tag name.
+  Behavior: Assigns specific colors for predefined tags (e.g., "YT", "Arxiv") 
+  and generates a unique color for other tags using HSL values derived from the 
+  tag's hash.
+*/
 function getTagColor(tag) {
   switch (tag) {
     case "YT":
@@ -640,7 +687,12 @@ function initializeTagColors() {
   });
 }
 
-// Debounce function to limit how often searchItems is called
+/*
+  Purpose: Limits how often a function is called during rapid events 
+  (e.g., typing in a search box).
+  Behavior: Delays the execution of the provided function until a specified time 
+  (wait) has passed since the last call.
+*/
 function debounce(func, wait) {
   let timeout;
   return function (...args) {
@@ -649,7 +701,11 @@ function debounce(func, wait) {
   };
 }
 
-// Optimized search function
+/*
+  Purpose: Filters the reading list based on a search term.
+  Behavior: Compares the search term against cached text content of each item 
+  and hides items that do not match.
+*/
 function searchItems() {
   const searchTerm = document.getElementById("search").value.toLowerCase();
   const items = document.querySelectorAll("#reading-list li");
@@ -677,6 +733,11 @@ function formatDate(dateString) {
   });
 }
 
+/*
+  Purpose: Dynamically generates the HTML for the reading list based on provided data.
+  Behavior: Iterates over the data, creates list items with appropriate metadata, 
+  and appends them to the reading list container.
+*/
 function generateReadingListHTML(data) {
   const readingList = document.getElementById("reading-list");
   readingList.innerHTML = ""; // Clear existing content
@@ -735,6 +796,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let readFilterState = 0;
 
+/*
+  Purpose: Filters the reading list to show only read, unread, or all items.
+  Behavior: Cycles through three states (all, read, unread) and updates the 
+  button text and item visibility accordingly.
+*/
 function toggleReadFilter(button) {
   const items = document.querySelectorAll("#reading-list li");
 
@@ -770,6 +836,12 @@ function toggleReadFilter(button) {
   window.dispatchEvent(window.documentVisibilityChanged);
 }
 
+/*
+  Purpose: Sorts the reading list by a specified criteria 
+  (e.g., release date or read time).
+  Behavior: Toggles between ascending, descending, and unsorted states, 
+  updating the button UI and reordering the list.
+*/
 function toggleSort(button, criteria) {
   const currentOrder = button.dataset.order || "unsorted";
   let newOrder;
@@ -803,6 +875,11 @@ function toggleSort(button, criteria) {
   }
 }
 
+/*
+  Purpose: Filters the reading list by a specific type (e.g., "YT", "Arxiv").
+  Behavior: Highlights the button and shows only items with the specified tag. 
+  Clicking again resets the filter.
+*/
 function toggleFilterType(button, type) {
   const isActive = button.classList.contains("active");
   const buttons = document.querySelectorAll(".sort-bar button");
@@ -839,6 +916,11 @@ function toggleFilterType(button, type) {
   }
 }
 
+/*
+  Purpose: Sorts the reading list items based on a criteria and order.
+  Behavior: Reorders the items in the list container based on release date or 
+  read time, in ascending or descending order.
+*/
 function sortBy(criteria, order) {
   const list = document.getElementById("reading-list");
   const items = Array.from(list.children);
@@ -859,6 +941,10 @@ function sortBy(criteria, order) {
   items.forEach((item) => list.appendChild(item));
 }
 
+/*
+  Purpose: Filters the reading list to show only items of a specific type.
+  Behavior: Hides items that do not have the specified tag.
+*/
 function filterByType(type) {
   const items = document.querySelectorAll("#reading-list li");
   items.forEach((item) => {
@@ -869,6 +955,11 @@ function filterByType(type) {
   window.dispatchEvent(window.documentVisibilityChanged);
 }
 
+/*
+  Purpose: Adds a tag to the active filters and updates the reading list.
+  Behavior: Creates a new filter tag in the active filters section and refreshes 
+  the list to show only items matching all active tags.
+*/
 function filterByTag(tag) {
   const activeTags = document.getElementById("active-tags");
   if (!Array.from(activeTags.children).some((t) => t.textContent === tag)) {
@@ -888,6 +979,10 @@ function filterByTag(tag) {
   }
 }
 
+/*
+  Purpose: Updates the reading list based on the currently active filters.
+  Behavior: Shows only items that match all active tags and hides the rest.
+*/
 function refreshFilters() {
   const activeTags = Array.from(
     document.getElementById("active-tags").children
@@ -904,6 +999,11 @@ function refreshFilters() {
   window.dispatchEvent(window.documentVisibilityChanged);
 }
 
+/*
+  Purpose: Resets the reading list to show all items.
+  Behavior: Removes all filters and updates the list visibility. Optionally 
+  triggers a graph update if shouldUpdateGraph is true.
+*/
 function resetList(shouldUpdateGraph = true) {
   const items = document.querySelectorAll("#reading-list li");
   items.forEach((item) => {
@@ -915,6 +1015,26 @@ function resetList(shouldUpdateGraph = true) {
 }
 
 document.addEventListener("DOMContentLoaded", initializeTagColors);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const readingListData = [
   {
