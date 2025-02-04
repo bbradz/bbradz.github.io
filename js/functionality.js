@@ -1940,7 +1940,7 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/2306.10209",
   },
-    {
+  {
     title: "PipeDream: Generalized Pipeline Parallelism for DNN Training",
     author: "Microsoft",
     description:
@@ -1949,9 +1949,21 @@ const readingListData = [
     readTime: 1.0,
     releaseDate: "2019-10-30",
     isRead: true,
-    downloadLink: "https://people.eecs.berkeley.edu/~matei/papers/2019/sosp_pipedream.pdf",
-  }, 
-];
+    downloadLink:
+      "https://people.eecs.berkeley.edu/~matei/papers/2019/sosp_pipedream.pdf",
+  },
+  {
+    title: "Autonomous GUidance for Multi-Body Orbital Transfers using RL",
+    author: "Nicolas LaFarge",
+    description: "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
+    tags: ["Reinforcement Learning", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2020-05-01",
+    isRead: true,
+    downloadLink:
+      "https://engineering.purdue.edu/people/kathleen.howell.1/Publications/Masters/2020_Lafarge.pdf",
+  },
+];  
 
 
 /*  
