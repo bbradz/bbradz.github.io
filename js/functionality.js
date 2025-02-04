@@ -1940,6 +1940,17 @@ const readingListData = [
     isRead: true,
     downloadLink: "https://arxiv.org/pdf/2306.10209",
   },
+    {
+    title: "PipeDream: Generalized Pipeline Parallelism for DNN Training",
+    author: "Microsoft",
+    description:
+      "Describes a method for automatically partitioning NN layers among workers to balance work & minimize communication, stashing weights to achieve 100% hardware utilization, yielding 5.3X clocktime speedup over naive data-batch parallelism",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2019-10-30",
+    isRead: true,
+    downloadLink: "https://people.eecs.berkeley.edu/~matei/papers/2019/sosp_pipedream.pdf",
+  }, 
 ];
 
 
