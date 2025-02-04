@@ -1888,12 +1888,57 @@ const readingListData = [
   {
     title: "Exploring Neural Networks with Activation Atlases",
     author: "Google Brain",
-    description: "provides very high quality analysis of navigating across a CNN activation atlas to understand how different layers visualize different classes of output.",
+    description:
+      "provides very high quality analysis of navigating across a CNN activation atlas to understand how different layers visualize different classes of output.",
     tags: ["Interpretability", "Site"],
     readTime: 1.0,
     releaseDate: "2019-03-09",
     isRead: true,
     downloadLink: "https://distill.pub/2019/activation-atlas/",
+  },
+  {
+    title: "GPipe",
+    author: "Google",
+    description:
+      "Outlines a scheduling routine for distributing computation of NN pipelines across multiple devices using micro-batches of data",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 0.0,
+    releaseDate: "XXXX-XX-XX",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/1811.06965",
+  },
+  {
+    title: "PyTorch FSDP",
+    author: "Meta",
+    description:
+      "Outlines Meta's Fully-Sharded Data Parallel for achieving nearly-linear TFLOP scaling with worker count",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2023-09-12",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2304.11277",
+  },
+  {
+    title: "ZeRO",
+    author: "Microsoft",
+    description:
+      "A Fundamental paper for me and the field of Distributed Model Parallelism techniques, ZeRO outlines how to shard parameters, gradients, and optimizer states across devices to minimize memory usage.",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2020-05-13",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/1910.02054",
+  },
+  {
+    title: "ZeRO++",
+    author: "Micorsoft",
+    description:
+      "A Follow up to ZeRO, this paper introduces additional information about ways to i. offload more memory usage onto local CPU or node-level memory and ii. optimize the communication which is leaned on heavily by these ZeRO techniques.",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 1.0,
+    releaseDate: "2023-06-16",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2306.10209",
   },
 ];
 
