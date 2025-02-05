@@ -405,17 +405,21 @@
             return;
           }
 
+          const initialTranslateX = width / 3 - 25;
+          const initialTranslateY = height / 4 + 10;
+          const initialScale = 0.45;
+
           const g = svg.append("g");
           const zoom = d3
             .zoom()
-            .scaleExtent([0.1, 3])
+            .scaleExtent([initialScale, 3])
+            .translateExtent([
+              [0, 0],
+              [width, height],
+            ])
             .on("zoom", (event) => {
               g.attr("transform", event.transform);
             });
-
-          const initialTranslateX = width / 3 - 10;
-          const initialTranslateY = height / 4 + 12;
-          const initialScale = 0.4;
 
           svg.call(
             zoom.transform,
@@ -459,7 +463,22 @@
 
           if (!links) {
             links = [];
-            for (let i = 0; i < visibleDocs.length; i++) {
+            const processLinks = (i) => {
+              if (i >= visibleDocs.length) {
+                setCachedSimilarities(docSetHash, links);
+                initializeSimulation(
+                  nodes,
+                  links,
+                  width,
+                  height,
+                  g,
+                  svg,
+                  minReadTime,
+                  maxReadTime
+                ); // Pass minReadTime and maxReadTime
+                return;
+              }
+
               for (let j = i + 1; j < visibleDocs.length; j++) {
                 const similarity = cosineSimilarity(
                   embeddings[i],
@@ -474,15 +493,42 @@
                   });
                 }
               }
-            }
-            setCachedSimilarities(docSetHash, links);
-          }
 
+              setTimeout(() => processLinks(i + 1), 100); // Process next document after 100ms
+            };
+
+            processLinks(0); // Start processing
+          } else {
+            initializeSimulation(
+              nodes,
+              links,
+              width,
+              height,
+              g,
+              svg,
+              minReadTime,
+              maxReadTime
+            ); // Pass minReadTime and maxReadTime
+          }
+        };
+
+        const initializeSimulation = (
+          nodes,
+          links,
+          width,
+          height,
+          g,
+          svg,
+          minReadTime,
+          maxReadTime
+        ) => {
+          // Randomly initialize node positions near the center
           nodes.forEach((node) => {
             node.x = width / 2 + (Math.random() - 0.5) * 100;
             node.y = height / 2 + (Math.random() - 0.5) * 100;
           });
 
+          // Set up the simulation with a custom boundary force
           simulationRef.current = d3
             .forceSimulation()
             .nodes(nodes)
@@ -491,18 +537,42 @@
               d3
                 .forceLink(links)
                 .id((d) => d.id)
-                .distance(60)
-                .strength(0.3)
+                .distance(30)
+                .strength(0.5)
             )
-            .force("charge", d3.forceManyBody().strength(-800))
+            .force("charge", d3.forceManyBody().strength(-1200))
             .force("center", d3.forceCenter(width / 2, height / 2))
             .force("x", d3.forceX(width / 2).strength(0.1))
             .force("y", d3.forceY(height / 2).strength(0.1))
             .force("collision", d3.forceCollide().radius(25))
-            .velocityDecay(0.3)
-            .alphaTarget(0)
-            .alphaDecay(0.02);
+            .force("boundary", () => {
+              const padding = 4;
+              const xMin = padding;
+              const xMax = width - padding;
+              const yMin = padding;
+              const yMax = height - padding;
 
+              nodes.forEach((node) => {
+                if (node.x < xMin) {
+                  node.vx += (xMin - node.x) * 0.01;
+                }
+                if (node.x > xMax) {
+                  node.vx += (xMax - node.x) * 0.01;
+                }
+                if (node.y < yMin) {
+                  node.vy += (yMin - node.y) * 0.01;
+                }
+                if (node.y > yMax) {
+                  node.vy += (yMax - node.y) * 0.01;
+                }
+              });
+            })
+            // Keep alpha from dropping to zero too quickly:
+            .velocityDecay(0.3)
+            .alphaDecay(0.05) // Slower decay
+            .alphaMin(0.001); // Don’t let alpha get all the way to 0
+
+          // Create link elements
           const link = g
             .append("g")
             .selectAll("line")
@@ -512,8 +582,8 @@
             .attr("stroke-width", (d) => d.width)
             .attr("stroke-opacity", "var(--edge-opacity)");
 
+          // Create node group
           const nodeGroup = g.append("g").attr("class", "nodes");
-
           const node = nodeGroup
             .selectAll("g")
             .data(nodes)
@@ -527,6 +597,7 @@
                 .on("end", dragended)
             );
 
+          // Draw circles for each node
           node
             .append("circle")
             .attr("r", (d) =>
@@ -543,10 +614,9 @@
                     : "var(--edge-color)"
                 )
                 .attr("stroke-width", (l) =>
-                  l.source.id === d.id || l.target.id === d.id ? 3 : d.width
+                  l.source.id === d.id || l.target.id === d.id ? 3 : l.width
                 );
 
-              // Create a separate group for the title text
               const titleGroup = nodeGroup
                 .append("g")
                 .attr("class", "node-title-group")
@@ -561,20 +631,18 @@
                 .text(d.title);
             })
             .on("mouseout", function (event, d) {
-              // Revert the node color based on whether it was read or not
               d3.select(this).attr("fill", (d) =>
                 d.isRead ? "#4a9eff" : "var(--node-color)"
               );
 
-              // Revert the link colors and widths
               link
                 .attr("stroke", "var(--edge-color)")
-                .attr("stroke-width", (d) => d.width);
+                .attr("stroke-width", (l) => l.width);
 
-              // Remove the title group on mouseout
               nodeGroup.selectAll(".node-title-group").remove();
             });
 
+          // Tick updates: keep everything in sync
           simulationRef.current.on("tick", () => {
             link
               .attr("x1", (d) => boundPosition(d.source.x, width, -200))
@@ -590,25 +658,32 @@
           });
         };
 
-        // Drag event handlers
+        /** Drag event handlers */
+        // "start" fires when user begins dragging
         const dragstarted = (event, d) => {
-          if (!event.active) simulationRef.current.alphaTarget(0.3).restart();
+          // Reheat alpha so the simulation updates actively
+          if (!event.active) simulationRef.current.alphaTarget(0.01).restart();
           d.fx = d.x;
           d.fy = d.y;
         };
 
+        // "drag" fires continuously while user drags
         const dragged = (event, d) => {
+          // Keep alpha "hot" while dragging
+          simulationRef.current.alphaTarget(0.01);
           d.fx = boundPosition(event.x, width, -200);
           d.fy = boundPosition(event.y, height, -200);
         };
 
+        // "end" fires when user stops dragging
         const dragended = (event, d) => {
-          if (!event.active) simulationRef.current.alphaTarget(0);
+          // Cool it off, but not all the way to zero
+          if (!event.active) simulationRef.current.alphaTarget(0.01);
           d.fx = null;
           d.fy = null;
         };
 
-        // Helper function to bound node positions
+        // Helper to constrain node positions so they don't go out of bounds
         const boundPosition = (position, dimension, padding) => {
           return Math.max(padding, Math.min(dimension - padding, position));
         };
