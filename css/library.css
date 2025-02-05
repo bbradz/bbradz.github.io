@@ -22,6 +22,10 @@
   padding-left: 30px;
 }
 
+#reading-list li[data-read="false"] {
+  padding-left: 0;
+}
+
 .container {
   max-width: 600px;
   margin: 20px;
@@ -228,6 +232,10 @@ li {
   --edge-opacity: 0.8;
 }
 
+.no-break {
+  white-space: nowrap;
+}
+
 /*******************
 * Graph Container
 *******************/
@@ -270,6 +278,10 @@ li {
   }
 
   #reading-list li {
+    padding-left: 32px;
+  }
+
+  #reading-list li[data-read="false"] {
     padding-left: 32px;
   }
 

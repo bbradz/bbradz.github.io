@@ -2,6 +2,7 @@
 //                                    xx                                     //
 // ============================== REGULAR OPS ============================== //
 
+
 // Update the toggleCollapse function
 function toggleCollapse(button) {
   const container = button.closest(".collapsible-code-container");
@@ -612,6 +613,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ============================== LIBRARY OPS ============================== //
 //                                    xx                                     //
 // ============================== LIBRARY OPS ============================== //
@@ -721,25 +742,21 @@ function generateReadingListHTML(data) {
   const readingList = document.getElementById("reading-list");
   readingList.innerHTML = ""; // Clear existing content
 
-  data.forEach((item) => {
-    const li = document.createElement("li");
-    li.setAttribute("data-release", item.releaseDate);
-    li.setAttribute("data-time", item.readTime);
-    li.setAttribute("data-read", item.isRead);
+data.forEach((item) => {
+  const li = document.createElement("li");
+  li.setAttribute("data-release", item.releaseDate);
+  li.setAttribute("data-time", item.readTime);
+  li.setAttribute("data-read", item.isRead);
 
-    // If the item is not read, set padding-left to 0.
-    if (!item.isRead) {
-      li.style.paddingLeft = "0px";
-    }
-
-    const html = `
+  const html = `
     ${item.isRead ? '<span class="read-indicator">&#10003;</span>' : ""}
     <div class="item-header">
       <div class="item-title">
         <strong>"${item.title}" by ${item.author}</strong>
         <span class="meta">
           ${item.isRead ? "Read: " : ""}
-          ${formatDate(item.releaseDate)} | Est. Time ${item.readTime} hours
+          ${formatDate(item.releaseDate)} | 
+          <span class="no-break">Est. Time ${item.readTime} hours</span>
         </span>
       </div>
       <div class="tags">
@@ -761,9 +778,9 @@ function generateReadingListHTML(data) {
     }
   `;
 
-    li.innerHTML = html;
-    readingList.appendChild(li);
-  });
+  li.innerHTML = html;
+  readingList.appendChild(li);
+});
 
   initializeTagColors();
 }
@@ -998,6 +1015,28 @@ function resetList(shouldUpdateGraph = true) {
 }
 
 document.addEventListener("DOMContentLoaded", initializeTagColors);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const readingListData = [
   {
@@ -2038,8 +2077,7 @@ const readingListData = [
   {
     title: "Autonomous GUidance for Multi-Body Orbital Transfers using RL",
     author: "Nicolas LaFarge",
-    description:
-      "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
+    description: "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
     tags: ["Reinforcement Learning", "Arxiv"],
     readTime: 1.0,
     releaseDate: "2020-05-01",
@@ -2047,7 +2085,8 @@ const readingListData = [
     downloadLink:
       "https://engineering.purdue.edu/people/kathleen.howell.1/Publications/Masters/2020_Lafarge.pdf",
   },
-];
+];  
+
 
 /*  
   \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
