@@ -155,10 +155,7 @@
       };
 
       const setCachedSimilarities = (docSetHash, links) => {
-        const store =
-          JSON.parse(localStorage.getItem("similaritiesCache")) || {};
-        store[docSetHash] = links;
-        localStorage.setItem("similaritiesCache", JSON.stringify(store));
+        localStorage.setItem(`similaritiesCache-${docSetHash}`, JSON.stringify(links));
       };
 
       const generateEmbeddingsWithCache = async (
@@ -195,12 +192,13 @@
           const contents = newDocuments.map((doc) => doc.content);
           const batchedEmbeddings = [];
 
+          const embeddingPromises = [];
           for (let i = 0; i < contents.length; i += batchSize) {
             const batch = contents.slice(i, i + batchSize);
-            const embeddings = await model.embed(batch);
-            const batchArray = await embeddings.array();
-            batchedEmbeddings.push(...batchArray);
+            embeddingPromises.push(model.embed(batch).then(e => e.array()));
           }
+          const results = await Promise.all(embeddingPromises);
+          batchedEmbeddings.push(...results.flat());
 
           // Cache the new embeddings
           cachedEmbeddings[docSetHash] = batchedEmbeddings;
@@ -315,10 +313,8 @@
           };
 
           setVisibleDocs(window.readingListData);
-          window.addEventListener(
-            "documentVisibilityChanged",
-            handleVisibilityChange
-          );
+          const throttledHandleVisibilityChange = debounce(handleVisibilityChange, 200);
+          window.addEventListener("documentVisibilityChanged", throttledHandleVisibilityChange);
 
           return () => {
             window.removeEventListener(
@@ -537,7 +533,7 @@
               d3
                 .forceLink(links)
                 .id((d) => d.id)
-                .distance(30)
+                .distance(50)
                 .strength(0.5)
             )
             .force("charge", d3.forceManyBody().strength(-1200))
@@ -551,7 +547,6 @@
               const xMax = width - padding;
               const yMin = padding;
               const yMax = height - padding;
-
               nodes.forEach((node) => {
                 if (node.x < xMin) {
                   node.vx += (xMin - node.x) * 0.01;
@@ -567,8 +562,8 @@
                 }
               });
             })
-            // Keep alpha from dropping to zero too quickly:
-            .velocityDecay(0.3)
+            .alpha(0.5)
+            .velocityDecay(0.3) // Keep alpha from dropping to zero too quickly:
             .alphaDecay(0.05) // Slower decay
             .alphaMin(0.001); // Don’t let alpha get all the way to 0
 
