@@ -2077,7 +2077,8 @@ const readingListData = [
   {
     title: "Autonomous GUidance for Multi-Body Orbital Transfers using RL",
     author: "Nicolas LaFarge",
-    description: "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
+    description:
+      "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
     tags: ["Reinforcement Learning", "Arxiv"],
     readTime: 1.0,
     releaseDate: "2020-05-01",
@@ -2085,8 +2086,28 @@ const readingListData = [
     downloadLink:
       "https://engineering.purdue.edu/people/kathleen.howell.1/Publications/Masters/2020_Lafarge.pdf",
   },
+  {
+    title: "The Case for Index Funds",
+    author: "Ben Felix",
+    description:
+      "Reports on the Cost Efficiency, Diversification, Investment Returns, Tax Efficiency, and Simplicity of Index Funds over actively managed funds as personal retirement account vehicles.",
+    tags: ["Finance", "YT"],
+    readTime: 0.5,
+    releaseDate: "2025-02-17",
+    isRead: true,
+    downloadLink: "https://youtu.be/Nv5CiRSCVxA",
+  },
+  {
+    title: "Efficient Large-Scale Language Model Training on GPU Clusters",
+    author: "NVIDIA",
+    description: "Proposes a novel interleaved pipelining schedule that can improve throughput by 10+% allowing for 1T model training at 502 petaFLOP/s on 3072 GPUs (per-GPU throughput of 52% of theoretical peak).",
+    tags: ["Distributed Computing", "Arxiv"],
+    readTime: 0.5,
+    releaseDate: "2021-08-23",
+    isRead: true,
+    downloadLink: "https://arxiv.org/pdf/2104.04473",
+  },
 ];  
-
 
 /*  
   \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
