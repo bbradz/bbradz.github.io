@@ -1,13 +1,16 @@
 {
   "name": "bbradz.github.io",
   "version": "1.0.0",
+  "homepage": "https://github.com/bbradz/bbradz.github.io",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --repo https://github.com/bbradz/bbradz.github.io --verbose"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +29,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "gh-pages": "^6.3.0",
     "react-scripts": "^5.0.1"
   },
   "browserslist": {

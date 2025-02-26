@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.81980787.css",
-    "main.js": "/static/js/main.87a098de.js",
-    "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/static/media/SpaceGrotesk-VariableFont_wght.5771010795a77ba7459b.ttf",
-    "static/media/Roman SD.ttf": "/static/media/Roman SD.6772a8ef308112f0ae4c.ttf",
-    "static/media/Sligoil-Micro.otf": "/static/media/Sligoil-Micro.1c0007509fb7e9b80e16.otf",
-    "index.html": "/index.html",
-    "main.81980787.css.map": "/static/css/main.81980787.css.map",
-    "main.87a098de.js.map": "/static/js/main.87a098de.js.map"
+    "main.css": "/bbradz/bbradz.github.io/static/css/main.7f42e857.css",
+    "main.js": "/bbradz/bbradz.github.io/static/js/main.6169bb51.js",
+    "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/bbradz/bbradz.github.io/static/media/SpaceGrotesk-VariableFont_wght.5771010795a77ba7459b.ttf",
+    "static/media/Roman SD.ttf": "/bbradz/bbradz.github.io/static/media/Roman SD.6772a8ef308112f0ae4c.ttf",
+    "static/media/Sligoil-Micro.otf": "/bbradz/bbradz.github.io/static/media/Sligoil-Micro.1c0007509fb7e9b80e16.otf",
+    "index.html": "/bbradz/bbradz.github.io/index.html",
+    "main.7f42e857.css.map": "/bbradz/bbradz.github.io/static/css/main.7f42e857.css.map",
+    "main.6169bb51.js.map": "/bbradz/bbradz.github.io/static/js/main.6169bb51.js.map"
   },
   "entrypoints": [
-    "static/css/main.81980787.css",
-    "static/js/main.87a098de.js"
+    "static/css/main.7f42e857.css",
+    "static/js/main.6169bb51.js"
   ]
 }
