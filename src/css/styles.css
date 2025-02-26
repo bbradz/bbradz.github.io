@@ -1,0 +1,890 @@
+/* Theme variables */
+:root {
+  --bg-color: rgb(15, 14, 15);
+  --text-color: rgb(244, 244, 245);
+  --nav-color: rgba(255, 255, 255, 0.7);
+  --header-bg: rgb(15, 14, 15);
+  --toc-bg: rgb(39, 39, 42);
+  --toc-hover: rgb(63, 63, 70);
+  --code-bg: #1a1b26;
+  --table-border: rgba(40, 40, 45, 0.7);
+  --table-header-bg: rgb(18, 18, 20);
+  --table-row-odd: rgb(25, 25, 28);
+  --table-row-even: rgb(35, 35, 38);
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --nav-color: rgba(36, 41, 47, 0.7);
+  --header-bg: #ffffff;
+  --toc-bg: #f6f8fa;
+  --toc-hover: #ebedef;
+  --code-bg: #f0f0f0; /* Slightly lighter code background for light theme */
+  --table-border: #d0d7de;
+  --table-header-bg: #f6f8fa;
+  --table-row-odd: #ffffff;
+  --table-row-even: #f6f8fa;
+}
+
+@font-face {
+  font-family: "default";
+  src: url("../../public/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "IcelandWinterstorm";
+  src: url("../../public/assets/fonts/Roman SD.ttf") format("opentype");
+}
+
+* {
+  font-family: "default", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+/* Reset and base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 50px;
+  transition: background-color 0.1s, color 0.1s;
+  min-height: 100vh; /* Ensure body is at least the height of the viewport */
+  display: flex;       /* Use flexbox to control layout */
+  flex-direction: column; /* Stack header, container, etc. vertically */
+}
+
+/* Header styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--header-bg);
+  z-index: 1;
+  padding: 0rem 2rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: "IcelandWinterstorm", sans-serif;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-color);
+  stroke-width: 2;
+  fill: none;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: block;
+}
+
+[data-theme="light"] .tag {
+  color: var(--text-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--nav-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.nav-link:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+/* Container and centered items */
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+.container li {
+  margin: 0px;
+  border: 0px;
+}
+
+.container.article-page { /* Styles for article pages specifically */
+  max-width: 960px; /* Or your preferred max width */
+  margin: 20px auto; /* Center the container on the page and add top/bottom margin */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width calculation */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-y: auto;   /* Enable vertical scrollbar if content overflows */
+  flex: 1; /* Allow container to grow and take available vertical space */
+}
+
+.centered-item-holder {
+  width: 100%;
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered-item-holder img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+h1,
+h2 {
+  color: var(--text-color);
+  margin: 2rem 0 1rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.header-left {
+  flex-grow: 1;
+}
+
+.metadata {
+  color: var(--nav-color);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-left: 0;
+}
+
+.tag {
+  background-color: var(--toc-bg);
+  color: var(--text-color); /* Already correct, but re-affirming */
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+[data-theme="light"] .tag {
+  color: var(--text-color);
+}
+
+.back-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-left: 2rem;
+  margin-top: 0.2rem;
+  border: none;
+}
+
+[data-theme="dark"] .back-link {
+  background-color: var(--bg-color); /* Explicitly set dark text color in light mode */
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+p {
+  color: var(--text-color);
+  margin: 1rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  border: 1px solid var(--table-border);
+}
+
+th {
+  background-color: var(--table-header-bg);
+  border: 1px solid var(--table-border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+td {
+  border: 1px solid var(--table-border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: var(--text-color);
+}
+
+tr:nth-child(odd) td {
+  background-color: var(--table-row-odd);
+}
+
+tr:nth-child(even) td {
+  background-color: var(--table-row-even);
+}
+
+table tbody tr td:not(:first-child) {
+  font-style: italic;
+}
+
+sub {
+  font-size: 0.75em;
+}
+
+.formula-text {
+  text-align: center;
+  font-family: serif;
+  font-size: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--text-color);
+}
+
+.monospace {
+  font-family: monospace;
+  background-color: var(--toc-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.graph-container {
+  width: 100%;
+  margin: 2rem 0;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.graph-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.math-block {
+  text-align: center;
+  margin: 2rem 0;
+  font-family: serif;
+  font-size: 1.1rem;
+}
+
+.indent-list {
+  padding-left: 2rem;
+}
+
+.bullet {
+  margin: 1rem 0;
+}
+
+.sub-bullet {
+  margin: 0.5rem 0 0.5rem 2rem;
+}
+
+.collapsible-code-container {
+  position: relative;
+  margin: 1.5rem 0;
+  border: 1px solid var(--table-border);
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.collapse-button {
+  width: 80%;
+  background: var(--toc-bg);
+  border: none;
+  padding: 0.4rem 0rem;
+  padding-right: 2rem;
+  color: var(--text-color);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  position: relative;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.collapse-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.collapse-button.expanded .collapse-icon {
+  transform: rotate(90deg);
+}
+
+.collapse-button.expanded::before {
+  transform: rotate(90deg);
+}
+
+.code-container {
+  display: none;
+  background-color: var(--code-bg);
+  border-top: 1px solid var(--table-border);
+}
+
+.code-container.visible {
+  display: block;
+}
+
+.code-content {
+  position: relative;
+  padding: 0rem 1rem;
+  padding-left: 0rem;
+  overflow-x: auto;
+}
+
+.code-content pre {
+  margin: 0;
+  padding: 0;
+}
+
+.code-content code {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: block;
+  padding: 0rem;
+  background-color: transparent;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--toc-bg); /* Match the collapse button's background */
+  border-radius: 8px; /* Match the collapse button's border radius */
+  padding: 8px 12px; /* Match the collapse button's padding */
+  cursor: pointer;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 8px; /* Add spacing between the collapse button and copy button */
+  cursor: pointer;
+  opacity: 0.8; /* Initially hidden */
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copy-button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--text-color);
+}
+
+.copy-button,
+#citation-copy-button {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.copy-button:hover,
+#citation-copy-button:hover {
+  opacity: 1;
+}
+
+.copy-button.copied #copy-icon,
+#citation-copy-button.copied #citation-copy-icon {
+  display: none; /* Hide the copy icon */
+}
+
+.copy-button.copied #check-icon,
+#citation-copy-button.copied #citation-check-icon {
+  display: block !important; /* Force display for debugging */
+  stroke: var(--text-color) !important; /* Ensure the color is correct */
+  stroke-width: 3 !important; /* Ensure the stroke is thick enough */
+}
+
+.keyword {
+  color: #bb9af7;
+}
+
+.function {
+  color: #7aa2f7;
+}
+
+.parameter {
+  color: #e0af68;
+}
+
+.string {
+  color: #9ece6a;
+}
+
+.number {
+  color: #ff9e64;
+}
+
+.operator {
+  color: #89ddff;
+}
+
+.comment {
+  color: #565f89;
+}
+
+.citation-container {
+  position: relative;
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 24px 0;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  overflow: visible;
+}
+
+#citation-copy-button {
+  position: absolute; /* Position the button absolutely within the container */
+  top: 8px; /* Adjust top position */
+  right: 8px; /* Adjust right position */
+  margin: 0 !important; /* Remove any default margins */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px; /* Add some padding for better clickability */
+}
+
+#citation-copy-button svg {
+  stroke: var(--text-color); /* Use the same color as other icons */
+  fill: none; /* Ensure no fill */
+}
+
+#citation-check-icon {
+  display: none; /* Hide the check icon by default */
+}
+
+.citation-container .property {
+  color: rgb(167, 243, 208);
+}
+
+.citation-container .delimiter {
+  color: rgb(212, 212, 216);
+}
+
+.citation-container .value {
+  color: rgb(252, 211, 77);
+}
+
+.citation-content {
+  position: relative;
+  padding: 0rem 1rem;
+  padding-left: 0rem;
+  overflow-x: auto;
+}
+
+.citation-content pre {
+  margin: 0;
+  padding: 0;
+}
+
+.citation-content code {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: block;
+  padding: 0rem;
+  background-color: transparent;
+}
+
+/* Scroll to top button styles */
+.scroll-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+@media (max-width: 1200px) {
+  .game-of-life {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+    margin-top: 100px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .header-content {
+    flex-direction: column;
+  }
+
+  .back-link {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+.toc-container {
+  background-color: var(--toc-bg);
+  border-radius: 8px;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+}
+
+.toc-header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toc-content {
+  display: none;
+}
+
+.toc-content li {
+  border: 0px;
+  margin: 0px;
+  padding-bottom: 0px;
+}
+
+.toc-content ol {
+  padding-bottom: 10px;
+}
+
+.toc-content.expanded {
+  display: block;
+}
+
+.toc-content a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+}
+
+.toc-content a:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar Table of Contents Styles - Rewritten for Clarity and Maintainability */
+
+.sidebar-toc {
+  /* --- Positioning and Visibility --- */
+  position: fixed; /* Fixed position relative to the viewport */
+  right: 2rem;      /* Distance from the right edge of the viewport */
+  top: 8rem;        /* Distance from the top of the viewport - adjust as needed */
+  width: 16rem;      /* Fixed width of the sidebar */
+  max-height: calc(100vh - 12rem); /* Maximum height to fit within viewport */
+
+  opacity: 0;         /* Initially hidden - for fade-in effect */
+  visibility: hidden; /* Initially hidden - prevents interaction */
+  pointer-events: none; /* Initially non-interactive */
+
+  transition: opacity 0.3s, visibility 0.3s; /* Smooth fade-in/out transition */
+  z-index: 2; /* Ensure it's above other content if needed */
+  display: none; /* Initially hidden on smaller screens - JS toggles visibility */
+}
+
+.sidebar-toc.visible {
+  /* --- When Sidebar is Visible (Class 'visible' is added) --- */
+  visibility: visible; /* Make the sidebar visible */
+  opacity: 1;         /* Fade in to full opacity */
+  pointer-events: auto; /* Make the sidebar interactive */
+  display: block; /* Make sure it's displayed when visible class is added */
+}
+
+/* --- Sidebar Content Container --- */
+.sidebar-toc-content {
+  background-color: var(--toc-bg); /* Background color from theme variables */
+  border: 1px solid var(--table-border); /* Border from theme variables */
+  border-radius: 8px; /* Rounded corners */
+  display: flex;        /* Use flexbox for layout */
+  flex-direction: column; /* Stack header and links vertically */
+  max-height: inherit;  /* Inherit max-height from .sidebar-toc */
+  overflow: hidden; /* Prevent content from overflowing rounded corners */
+}
+
+/* --- Sidebar Header --- */
+.sidebar-toc-header {
+  font-weight: 600; /* Bold font weight */
+  padding: 1rem;      /* Padding around the header text */
+  color: var(--text-color); /* Text color from theme variables */
+  border-bottom: none; /* No bottom border (already has container border) */
+  background-color: var(--toc-bg); /* Match container background */
+  border-radius: 8px 8px 0 0; /* Rounded corners on top only */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* --- Sidebar Links Container --- */
+.sidebar-toc-links {
+  padding: 1rem;         /* Padding around the links */
+  padding-top: 0rem;    /* No top padding to align with header visually */
+  flex-grow: 1;         /* Allow links to take up remaining space in container */
+  overflow-y: auto;      /* Enable vertical scrolling if content overflows */
+  scrollbar-width: thin; /* Make scrollbar thinner for aesthetics (Firefox) */
+  font-size: 0.875rem;  /* Slightly smaller font size for links */
+  max-height: calc(100vh - 16rem); /* Adjust max-height for scrollable area */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* --- Sidebar Link Styles --- */
+.sidebar-toc-links a {
+  color: var(--nav-color); /* Link color from theme variables */
+  text-decoration: none;   /* Remove default underline */
+  display: block;         /* Make each link a block element for full width click area */
+  white-space: nowrap;    /* Prevent text from wrapping */
+  overflow: hidden;      /* Hide overflowing text */
+  text-overflow: ellipsis; /* Ellipsis (...) for overflowing text */
+  transition: color 0.2s; /* Smooth color transition on hover */
+}
+
+.sidebar-toc-links a:hover {
+  color: var(--text-color); /* Text color on hover from theme variables */
+}
+
+.sidebar-toc-links a.active {
+  color: var(--text-color); /* Active link text color from theme variables */
+  font-weight: 1000;      /* Make active link bolder */
+}
+
+.sidebar-toc-links a.active-parent {
+  color: var(--text-color); /* Active parent link text color */
+  opacity: 1;             /* Ensure full opacity for active parent */
+}
+
+/* --- Sidebar Link List (OL) --- */
+.sidebar-toc-links ol {
+  list-style-type: none; /* Remove default list bullets/numbers */
+  padding-left: 0;       /* Reset left padding */
+  margin: 0px;             /* Reset margins */
+  border: 0px;
+  display: flex;        /* Use flexbox for list items */
+  flex-direction: column; /* Stack list items vertically */
+  gap: 0.3rem;         /* Reduced gap for more compressed list items */
+}
+
+/* --- Nested List (Sub-levels) --- */
+.sidebar-toc-links ol ol {
+  padding-left: 1rem;       /* Indent nested lists */
+  margin-top: 0.3rem;     /* Reduced margin-top for less vertical space */
+  border-left: none; /* Removed border-left to remove colored line */
+}
+
+/* --- Even Deeper Nesting (Level 3) --- */
+.sidebar-toc-links ol ol ol {
+  padding-left: 2rem;       /* Further indent for deeper levels */
+}
+
+/* --- List Item (LI) --- */
+.sidebar-toc-links li {
+  line-height: 1.3;      /* Slightly reduced line height for more compression */
+  display: block;         /* Ensure list items are block level */
+  width: 100%;          /* Full width within the list */
+  margin: 0px;
+  border: 0px;
+  padding-bottom: 0px;
+  padding-left: 0.5em;
+}
+
+/* --- Scrollbar Styling (Webkit - Chrome, Safari) --- */
+.sidebar-toc-links::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.sidebar-toc-links::-webkit-scrollbar-track {
+  background: var(--toc-bg); /* Track background color */
+  border-radius: 3px;      /* Rounded corners for the track */
+}
+
+.sidebar-toc-links::-webkit-scrollbar-thumb {
+  background: var(--table-border); /* Thumb background color */
+  border-radius: 3px;      /* Rounded corners for the thumb */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Larger Desktop Screens (min-width: 1280px) - Sidebar is always visible */
+@media (min-width: 1280px) {
+  .sidebar-toc {
+    display: block; /* Ensure sidebar is displayed on larger screens */
+  }
+}
+
+/* Tablets and smaller desktops (max-width: 1279px) - Sidebar initially hidden */
+@media (max-width: 1279px) {
+  .sidebar-toc {
+    display: none; /* Initially hide sidebar on smaller screens (JS toggles visibility) */
+  }
+}
+
+/* Game of Life Canvas Styles */
+.game-of-life-canvas {
+  position: fixed;
+  left: 20px;
+  top: 50px;
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  width: 200px;
+  height: 400px;
+  display: block; /* Ensure canvas is a block element */
+}
+
+.discussion-links {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+  color: var(--nav-color);
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+
+.discussion-links a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    padding-top: 30px;
+    margin-top: 40px;
+  }
+
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  .post-card {
+    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    padding: 1.5rem 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-section {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .logo {
+    text-align: center;
+    flex: 1;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+.hidden-message {
+  color: var(--bg-color);
+  background-color: var(--bg-color);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 2rem;
+  visibility: hidden;
+}
