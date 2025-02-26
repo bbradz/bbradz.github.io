@@ -6,3 +6,11 @@ https://semianalysis.com/2025/01/23/openai-stargate-joint-venture-demystified/?a
 https://stratechery.com/2025/deepseek-faq/?utm_source=tldrproduct
 https://www.theatlantic.com/ideas/archive/2025/01/deepseek-ai-investment-tech/681516/
 
+
+
+How To Push:
+
+git add .
+git commit -m ""
+git push origin main
+git subtree push --prefix build origin gh-page
