@@ -46,6 +46,7 @@ h1 {
 ul {
   list-style: none;
   padding: 0;
+  padding-left: 0px !important;
 }
 
 li {
@@ -75,6 +76,7 @@ li {
 
 .item-title {
   flex: 1;
+  margin-right: 7px;
 }
 
 .title-text {
