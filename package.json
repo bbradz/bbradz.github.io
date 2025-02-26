@@ -1,16 +1,16 @@
 {
   "name": "bbradz.github.io",
   "version": "1.0.0",
-  "homepage": "https://github.com/bbradz/bbradz.github.io",
+  "homepage": "https://bbradz.github.io/bbradz.github.io",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --repo https://github.com/bbradz/bbradz.github.io --verbose"
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
