@@ -5,7 +5,7 @@ import { runGameOfLife } from "../functionality.js";
 import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts";
 import Library from "./Library";
-import IndexPage from "./IndexPage";
+import LandingPage from "./LandingPage";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function AlgoperfArticle() {
@@ -22,7 +22,9 @@ function AlgoperfArticle() {
 
   // Function to toggle theme
   const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   // Function to toggle TOC visibility
@@ -84,10 +86,12 @@ function AlgoperfArticle() {
 
   // // Effect to set data-theme on the <body>
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 
