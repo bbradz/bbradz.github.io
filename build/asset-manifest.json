@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/bbradz.github.io/static/css/main.76c5949d.css",
+    "main.js": "/bbradz.github.io/static/js/main.6169bb51.js",
+    "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/bbradz.github.io/static/media/SpaceGrotesk-VariableFont_wght.5771010795a77ba7459b.ttf",
+    "static/media/Roman SD.ttf": "/bbradz.github.io/static/media/Roman SD.6772a8ef308112f0ae4c.ttf",
+    "static/media/Sligoil-Micro.otf": "/bbradz.github.io/static/media/Sligoil-Micro.1c0007509fb7e9b80e16.otf",
+    "index.html": "/bbradz.github.io/index.html",
+    "main.76c5949d.css.map": "/bbradz.github.io/static/css/main.76c5949d.css.map",
+    "main.6169bb51.js.map": "/bbradz.github.io/static/js/main.6169bb51.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76c5949d.css",
+    "static/js/main.6169bb51.js"
+  ]
+}
