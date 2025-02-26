@@ -13,4 +13,4 @@ How To Push:
 git add .
 git commit -m ""
 git push origin main
-git subtree push --prefix build origin gh-page
+git subtree push --prefix build origin gh-pages
