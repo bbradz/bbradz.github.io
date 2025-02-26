@@ -5,7 +5,7 @@ import { runGameOfLife } from "../functionality.js";
 import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts";
 import Library from "./Library";
-import IndexPage from "./IndexPage";
+import LandingPage from "./LandingPage";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function ShampooArticle() {
@@ -16,7 +16,9 @@ function ShampooArticle() {
   const [isTocOpen, setIsTocOpen] = useState(false); // Define isTocOpen state
 
   const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const goBack = () => {
@@ -70,10 +72,12 @@ function ShampooArticle() {
   };
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 

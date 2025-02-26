@@ -1,11 +1,6 @@
 // library.js - DEBUGGING VERSION - PLEASE RUN THIS AND CHECK CONSOLE
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useMemo,
-} from "react";
+import React from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import * as d3 from "d3";
 import {
@@ -101,22 +96,22 @@ function Library() {
   const [activeTagFilters, setActiveTagFilters] = useState([]);
   const [readFilterState, setReadFilterState] = useState(0);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme); 
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark"; 
+    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
@@ -422,10 +417,6 @@ function Library() {
         filteredData = filterByType("all", filteredData); // Get data from filterByType, pass tag-filtered data
         // filteredData = applyTagFilters(filteredData); // Then refine by tags, get data - redundant, remove this line - already tag filtered
       }
-      console.log(
-        "useEffect [readFilterState] - filteredData before setGraphData:",
-        filteredData
-      );
       setGraphData(filteredData); // Update graph data on read filter change
       setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
     }
@@ -494,12 +485,11 @@ function Library() {
           break;
       }
       filterByType(type);
-      setActiveTagFilters([]); // Clear active tag filters when a filter button is clicked
     } else {
       button.style.removeProperty("--active-color");
       button.style.removeProperty("--active-text-color");
       filterByType("all");
-      setActiveTagFilters([]); // Clear active tag filters when a filter button is unclicked
+      setActiveTagFilters([]);
     }
   };
 
@@ -520,7 +510,7 @@ function Library() {
       const containerRef = useRef(null);
       const [error, setError] = useState(null);
       const [isSmallScreen, setIsSmallScreen] = useState(false);
-      const svgRef = useRef(null); // Keep svgRef to check if SVG exists
+      const svgRef = useRef(null);
       const simulationRef = useRef(null);
       const nodeTitleGroupRef = useRef(null);
       const prevGraphDataRef = useRef(graphDisplayData); // Ref to store previous prop
@@ -556,18 +546,6 @@ function Library() {
         };
       }, []);
 
-      const cleanupGraph = useCallback(() => {
-        if (simulationRef.current) {
-          simulationRef.current.stop();
-          simulationRef.current = null;
-        }
-        if (containerRef.current && svgRef.current) {
-          // Make sure svgRef.current exists
-          const svg = d3.select(svgRef.current);
-          svg.selectAll("*").remove(); // Clear the SVG content, not the container
-        }
-      }, []);
-
       useEffect(() => {
         console.log(
           "DocumentGraph useEffect - graphDisplayData prop in useEffect:",
@@ -580,45 +558,48 @@ function Library() {
           return;
         }
 
-        console.log(
-          "DocumentGraph useEffect - graphDisplayData:",
-          graphDisplayData
-        ); // DEBUG
         if (!isSmallScreen && graphDisplayData && graphDisplayData.length > 0) {
-          // Use graphDisplayData
           console.log(
             "DocumentGraph useEffect - Initializing graph with graphDisplayData:",
             graphDisplayData
           );
-          initializeGraph(graphDisplayData); // Use graphDisplayData
+          initializeGraph(graphDisplayData);
         } else if (
           !isSmallScreen &&
-          (!graphDisplayData || graphDisplayData.length === 0) // Use graphDisplayData
+          (!graphDisplayData || graphDisplayData.length === 0)
         ) {
           console.log(
             "DocumentGraph useEffect - Cleaning up graph - No data or small screen."
           );
           cleanupGraph();
-          if (containerRef.current) {
-            const container = d3.select(containerRef.current);
-            let svg = d3.select(svgRef.current);
-
-            if (svg.empty()) {
-              // Check if SVG is not yet created or was removed somehow
-              svg = container
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("className", "rounded-lg");
-              svgRef.current = svg.node(); // Update the ref to the created SVG node
-            }
-
-            svg.selectAll("*").remove(); // Ensure any previous content is cleared before adding "No documents" text
-
+          if (svgRef.current) {
+            const svg = d3.select(svgRef.current);
+            svg.selectAll("*").remove();
             svg
               .append("rect")
-              .attr("width", "100%")
-              .attr("height", "100%")
+              .attr("width", "400px")
+              .attr("height", "400px")
+              .attr("fill", "var(--graph-background)");
+            const textGroup = svg
+              .append("g")
+              .attr("transform", `translate(${width / 2}, ${height / 2})`);
+            textGroup
+              .append("text")
+              .attr("text-anchor", "middle")
+              .attr("fill", "var(--text-color)")
+              .text("No documents to display");
+          } else if (containerRef.current) {
+            const container = d3.select(containerRef.current);
+            container.selectAll("*").remove();
+            const svg = container
+              .append("svg")
+              .attr("width", "400px")
+              .attr("height", "400px")
+              .attr("className", "rounded-lg");
+            svg
+              .append("rect")
+              .attr("width", "400px")
+              .attr("height", "400px")
               .attr("fill", "var(--graph-background)");
             const textGroup = svg
               .append("g")
@@ -639,8 +620,19 @@ function Library() {
         width,
         height,
         documentSimilaritiesData,
-        memoizedGraphData, // Re-add memoizedGraphData dependency as it should trigger graph updates when filters/search change
+        memoizedGraphData,
       ]);
+
+      const cleanupGraph = useCallback(() => {
+        if (simulationRef.current) {
+          simulationRef.current.stop();
+          simulationRef.current = null;
+        }
+        if (containerRef.current) {
+          const container = d3.select(containerRef.current);
+          container.selectAll("*").remove();
+        }
+      }, []);
 
       const initializeGraph = async (visibleDocsForGraph) => {
         if (!containerRef.current) return;
@@ -649,18 +641,12 @@ function Library() {
 
         try {
           const container = d3.select(containerRef.current);
-          // Ensure SVG is created if it doesn't exist, or select existing one
-          let svg = d3.select(svgRef.current);
-          if (svg.empty()) {
-            svg = container
-              .append("svg")
-              .attr("width", width)
-              .attr("height", height)
-              .attr("className", "rounded-lg");
-            svgRef.current = svg.node(); // Update the ref to the created SVG node
-          }
-
-          svg.selectAll("*").remove(); // Clear previous content before drawing graph
+          const svg = container
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("className", "rounded-lg");
+          svgRef.current = svg;
 
           svg
             .append("rect")
@@ -1028,10 +1014,7 @@ function Library() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M21 12.79A9 9 0 1 1 11.21 3
-               7 7 0 0 0 21 12.79z"
-              ></path>
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
         </div>
@@ -1078,7 +1061,7 @@ function Library() {
               <button
                 id="filter-read"
                 onClick={toggleReadFilter}
-                className={readFilterState !== 0 ? "active" : ""} // ADDED CLASS HERE
+                className={readFilterState !== 0 ? "active" : ""}
               >
                 Filter:{" "}
                 {readFilterState === 0
@@ -1107,19 +1090,14 @@ function Library() {
               </button>
             </div>
             <div id="active-tags" className="active-tag">
-              {activeTagFilters.map(
-                (
-                  tag,
-                  index // ADDED INDEX HERE
-                ) => (
-                  <Tag
-                    key={tag}
-                    tag={tag}
-                    onTagFilter={handleTagFilter}
-                    isFirst={index === 0} // PASSED isFirst PROP
-                  />
-                )
-              )}
+              {activeTagFilters.map((tag, index) => (
+                <Tag
+                  key={tag}
+                  tag={tag}
+                  onTagFilter={handleTagFilter}
+                  isFirst={index === 0}
+                />
+              ))}
             </div>
           </div>
 
@@ -1145,10 +1123,6 @@ function Library() {
         <div className="graph-container">
           <div id="root" className="graph-inner">
             <div className="space-y-6">
-              {console.log(
-                "Before DocumentGraph - memoizedGraphData:",
-                memoizedGraphData
-              )}
               <DocumentGraph
                 width={400}
                 height={400}
@@ -1166,7 +1140,7 @@ function Library() {
         className="scroll-to-top fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer" // Added classes here
         aria-label="Scroll to top"
       >
-        <div>
+        <div className="bg-white-800 hover:bg-white-700 rounded-full p-3 shadow-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -1177,7 +1151,7 @@ function Library() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-zinc-200"
+            className="text-white-200"
           >
             <path d="M18 15l-6-6-6 6" />
           </svg>
