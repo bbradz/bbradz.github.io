@@ -11,7 +11,9 @@ function Posts() {
   const scrollToTopButtonRef = useRef(null);
 
   const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const scrollToTop = () => {
@@ -38,10 +40,12 @@ function Posts() {
   };
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 

@@ -4,7 +4,7 @@ import "../css/index.css";
 import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
-function IndexPage() {
+function LandingPage() {
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
@@ -78,7 +78,7 @@ function IndexPage() {
         </nav>
       </header>
 
-      <div className="container">
+      <div className="container" id="landingpage">
         <div className="welcome-section">
           <h1 className="title" style={{ marginBottom: "0px !important" }}>
             About Me
@@ -707,4 +707,4 @@ function IndexPage() {
   );
 }
 
-export default IndexPage;
+export default LandingPage;
