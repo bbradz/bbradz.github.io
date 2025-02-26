@@ -10,6 +10,8 @@ https://www.theatlantic.com/ideas/archive/2025/01/deepseek-ai-investment-tech/68
 
 How To Push:
 
+rm -rf build
+npm run build
 git add .
 git commit -m ""
 git push origin main
