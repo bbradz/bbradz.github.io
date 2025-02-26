@@ -3,15 +3,14 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./components/Posts";
 import Library from "./components/Library";
-import IndexPage from "./components/IndexPage";
-import ShampooArticle from "./components/ShampooArticle"; 
+import LandingPage from "./components/LandingPage";
+import ShampooArticle from "./components/ShampooArticle";
 import AlgoperfArticle from "./components/AlgoperfArticle";
 import Distributed from "./components/Distributed";
 import Energy from "./components/Energy";
 import NewMonetarism from "./components/NewMonetarism";
 import OptimizerTaxonomyArticle from "./components/OptimizerTaxonomyArticle";
 import SuburbiaDensityArticle from "./components/SuburbiaDensityArticle";
-
 
 function App() {
   const toggleTheme = () => {
@@ -74,16 +73,16 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<IndexPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/library" element={<Library />} />
         <Route path="/posts/shampoo" element={<ShampooArticle />} />
-        <Route path="/posts/optimizer_benchmarking" element={<AlgoperfArticle />} />
-        <Route path="/posts/distributed" element={<Distributed />} />
         <Route
-          path="/posts/energy"
-          element={<Energy />}
+          path="/posts/optimizer_benchmarking"
+          element={<AlgoperfArticle />}
         />
+        <Route path="/posts/distributed" element={<Distributed />} />
+        <Route path="/posts/energy" element={<Energy />} />
         <Route path="/posts/new_monetarism" element={<NewMonetarism />} />
         <Route
           path="/posts/optimizers"

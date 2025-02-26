@@ -472,11 +472,13 @@ li {
     margin: 0 auto;
     width: 100%;
     max-width: 800px;
-    padding: 20px;
-    margin-top: 80px;
   }
 
   .game-of-life {
+    display: none;
+  }
+
+  .graph-container {
     display: none;
   }
 }

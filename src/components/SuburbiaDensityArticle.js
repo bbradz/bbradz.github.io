@@ -5,7 +5,7 @@ import { runGameOfLife } from "../functionality.js";
 import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts";
 import Library from "./Library";
-import IndexPage from "./IndexPage";
+import LandingPage from "./LandingPage";
 
 function SuburbiaDensityArticle() {
   const [theme, setTheme] = useState("dark");
@@ -68,10 +68,12 @@ function SuburbiaDensityArticle() {
   };
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 
