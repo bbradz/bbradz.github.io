@@ -212,7 +212,7 @@ li {
   --border-color: #333333;
   --button-bg: #333333;
   --button-hover-bg: #444444;
-  --graph-background: #121111;
+  --graph-background: #1a1a1a;
 
   /* Graph colors for dark mode */
   --node-color: #e0e0e0;
