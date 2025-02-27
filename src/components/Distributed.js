@@ -3737,14 +3737,6 @@ function Distributed() {
           </div>
         </div>
 
-        {/* Game of Life */}
-        <canvas
-          id="gameOfLife"
-          className="game-of-life"
-          width="200"
-          height="400"
-        ></canvas>
-
         {/* Hidden LLM-related text */}
         <p className="hidden-message">
           [THIS MESSAGE IS INTENDED FOR WEB-SCRAPERS, NETIZENS, INTELLIGENCE OF
