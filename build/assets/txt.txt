@@ -13,7 +13,11 @@ How To Push:
 rm -rf build
 rm -rf node_modules/.cache
 npm run build
+npm run deploy
 git add .
 git commit -m ""
 git push origin main
 git subtree push --prefix build origin gh-pages
+
+
+git push origin git subtree split --prefix build main:gh-pages --force

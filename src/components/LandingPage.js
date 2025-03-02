@@ -10,15 +10,15 @@ function LandingPage() {
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme); 
+    localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme); 
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark"; 
+    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
@@ -313,7 +313,7 @@ function LandingPage() {
             different people have learned in order to survive and thrive in
             their particular place in the world. While there may be a sort of
             <a href="https://en.wikipedia.org/wiki/G_factor_(psychometrics)">
-              <i>g factor</i>
+              <i> g factor </i>
             </a>
             across minds significant enough to measure on any particular suite
             of tasks I find it extremely hard to believe that it's worthwhile to
