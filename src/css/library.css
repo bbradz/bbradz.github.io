@@ -302,7 +302,7 @@ li {
   .search-bar {
     flex-direction: column;
     gap: 8px;
-    margin-top: 40px;
+    margin-top: 0px;
   }
 
   .search-bar input,
