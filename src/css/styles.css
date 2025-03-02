@@ -585,6 +585,12 @@ sub {
   z-index: 1000;
 }
 
+@media (max-width: 1320px) {
+  #sidebar-toc {
+    display: none;
+  }
+}
+
 @media (max-width: 1200px) {
   .game-of-life {
     display: none;
@@ -864,7 +870,7 @@ sub {
 
   .header {
     flex-wrap: wrap;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
   }
 
   .nav-links {
@@ -881,6 +887,8 @@ sub {
   .logo {
     text-align: center;
     flex: 1;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .theme-toggle {
