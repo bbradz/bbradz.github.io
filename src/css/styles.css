@@ -243,8 +243,8 @@ h2 {
   border: none;
 }
 
-[data-theme="dark"] .back-link {
-  background-color: var(--bg-color); /* Explicitly set dark text color in light mode */
+.back-link {
+  background-color: var(--bg-color); 
 }
 
 .back-link:hover {
