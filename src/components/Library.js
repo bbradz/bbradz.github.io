@@ -15,7 +15,6 @@ import "../css/library.css";
 
 // ===================== Tag Component =====================
 const Tag = React.memo(({ tag, onTagFilter, isFirst }) => {
-  // ADDED isFirst PROP
   return (
     <span
       key={tag}
@@ -26,7 +25,7 @@ const Tag = React.memo(({ tag, onTagFilter, isFirst }) => {
         color: getTextColor(tag),
         cursor: "pointer",
         marginRight: "4px",
-        marginLeft: isFirst ? "0px" : undefined, // CONDITIONAL MARGIN-LEFT
+        marginLeft: isFirst ? "0px" : undefined, 
         padding: "2px 6px",
         borderRadius: "3px",
         fontSize: "0.85em",
@@ -87,7 +86,8 @@ function Library() {
   console.log("Library Component RENDER");
 
   // --- State Declarations ---
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
   const scrollToTopButtonRef = useRef(null);
   const [readingListData, setReadingListData] = useState([]);
   const [graphData, setGraphData] = useState([]); // Keep graphData state
@@ -111,8 +111,6 @@ function Library() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 
