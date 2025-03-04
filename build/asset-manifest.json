@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.3546aa49.css",
-    "main.js": "/static/js/main.ba312997.js",
+    "main.js": "/static/js/main.b3be7af0.js",
     "static/media/SpaceGrotesk-VariableFont_wght.ttf": "/static/media/SpaceGrotesk-VariableFont_wght.5771010795a77ba7459b.ttf",
     "static/media/Roman SD.ttf": "/static/media/Roman SD.6772a8ef308112f0ae4c.ttf",
     "static/media/Sligoil-Micro.otf": "/static/media/Sligoil-Micro.1c0007509fb7e9b80e16.otf",
     "index.html": "/index.html",
     "main.3546aa49.css.map": "/static/css/main.3546aa49.css.map",
-    "main.ba312997.js.map": "/static/js/main.ba312997.js.map"
+    "main.b3be7af0.js.map": "/static/js/main.b3be7af0.js.map"
   },
   "entrypoints": [
     "static/css/main.3546aa49.css",
-    "static/js/main.ba312997.js"
+    "static/js/main.b3be7af0.js"
   ]
 }

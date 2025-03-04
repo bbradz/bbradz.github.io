@@ -4,7 +4,8 @@ import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
 function Posts() {
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
   const [optimizersCollapsed, setOptimizersCollapsed] = useState(false);
   const [distributedCollapsed, setDistributedCollapsed] = useState(false);
   const [economicCollapsed, setEconomicCollapsed] = useState(false);
