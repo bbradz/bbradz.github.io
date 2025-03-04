@@ -133,7 +133,7 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.0s;
 }
 
 .theme-toggle svg {
@@ -256,7 +256,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   width: 24px;
   height: 24px;
   opacity: 0.7;
-  transition: all 0.2s ease;
+  transition: all 0.0s ease;
 }
 
 .social-link:hover {
@@ -283,7 +283,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   padding: 0.75rem;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.0s ease;
   margin-top: 0.2rem;
 }
 
@@ -346,7 +346,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   width: 20px;
   height: 20px;
   opacity: 0.7;
-  transition: all 0.2s ease;
+  transition: all 0.0s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -415,7 +415,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   background-color: var(--header-bg);
   border: 1px solid var(--table-border);
   margin-bottom: 1rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.0s;
 }
 
 .series-header:hover {
