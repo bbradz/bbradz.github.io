@@ -17,7 +17,13 @@ npm run deploy
 git add .
 git commit -m ""
 git push origin main
-git subtree push --prefix build origin gh-pages
-
-
 git push origin git subtree split --prefix build main:gh-pages --force
+
+
+
+
+How to process Repo:
+
+1. navigate into repo directory
+repo-to-text
+find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > repo_structure.txt
