@@ -626,7 +626,7 @@ function LandingPage() {
           <li>
             <strong>CGP Grey</strong>: Known for extremely high quality
             educational YouTube videos, I fell in love with CGP Grey's content
-            through his podcast
+            through his podcast{" "}
             <i>Hello Internet</i> and later more minorly <i>Cortex</i> where he
             delves in more detail into topics in the systems of politics,
             transportation, technology, socialization, and the mimetic warfare
