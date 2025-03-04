@@ -604,13 +604,12 @@ function OptimizerTaxonomyArticle() {
         <p>
           Optimizer design breaks down into 3 basic categories, the first of
           which makes up by completely abritraty approximation roughly{" "}
-          <i>95%</i>
-          percent of the optimizers in use today in-industry and therefore will
-          be getting the majority of the attention here. The other two
-          categories are still interesting though and will be getting their
-          justice alongside as a bit of a explanation of where they've been
-          found to be useful (hint: Physics-Informed NNs, Non Real-valued NNs,
-          time-variant Spikey NNs).
+          <i>95% </i> percent of the optimizers in use today in-industry and
+          therefore will be getting the majority of the attention here. The
+          other two categories are still interesting though and will be getting
+          their justice alongside as a bit of a explanation of where they've
+          been found to be useful (hint: Physics-Informed NNs, Non Real-valued
+          NNs, time-variant Spikey NNs).
         </p>
 
         <p>These three basic categories are:</p>
@@ -635,7 +634,7 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          <b>2. Second-order optimizers</b> which consider both the first
+          <b>2. Second-order optimizers</b> which consider both the first{" "}
           <i>and</i> second derivatives of the surface. Second-order algorithms
           are built around adding in consideration for the greater curvature of
           the surface on top of the first-order gradient, analogous to clearing
@@ -684,7 +683,7 @@ function OptimizerTaxonomyArticle() {
           on
           <i>descending</i> the surface of our model's weight space using only
           the information we can glean from the instantaneous <i>gradient</i> of
-          our model's position in that weight space derived from a random (aka
+          our model's position in that weight space derived from a random (aka{" "}
           <i>Stochastic</i>) sampling of the full problem. Weight adjustments
           made by pure SGD don't take into account any history of past
           adjustments. Moreover SGD often just measure how our model should
@@ -704,9 +703,10 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          Another way to think of this is that given a batch size of \`n\`
-          samples from our problem the step we take will be based on the average
-          gradient observed across those \`n\` samples:
+          Another way to think of this is that given a batch size of{" "}
+          <MathJax inline>{`n`}</MathJax> samples from our problem the step we
+          take will be based on the average gradient observed across those{" "}
+          <MathJax inline>{`n`}</MathJax> samples:
         </p>
 
         <p>
@@ -800,11 +800,12 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          As you can see AdaGrad compiles together a \`G \` term which functions
-          as a trailing sum of the past gradients, importantly preserving signs,
-          where increases in \`G \` (meaning that updates have been made
-          repeatedly in the same direction) translate to decrease in size of
-          steps taken. In this way AdaGrad adapts to be cautious when it's
+          As you can see AdaGrad compiles together a{" "}
+          <MathJax inline>{`G`}</MathJax> term which functions as a trailing sum
+          of the past gradients, importantly preserving signs, where increases
+          in <MathJax inline>{`G`}</MathJax> (meaning that updates have been
+          made repeatedly in the same direction) translate to decrease in size
+          of steps taken. In this way AdaGrad adapts to be cautious when it's
           descending down a persistant slope so as to not overshoot the ending
           of that slope, a smartly adaptive strategy for boiling the expected
           convexity of a slope's curvature into the steps actually along that
@@ -819,8 +820,8 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          Another issue with AdaGrad is that expanding out the \`G \` term we
-          arrive at the formula:
+          Another issue with AdaGrad is that expanding out the{" "}
+          <MathJax inline>{`G`}</MathJax> term we arrive at the formula:
         </p>
 
         <p>
@@ -875,14 +876,14 @@ function OptimizerTaxonomyArticle() {
           algorithm gains the capacity to adaptively keep step sizes up for
           those weights which have reliably, through those changes in the
           gradient, kept being changed in a signifigant way. Expanding out the
-          term for {` \( E[x] \) `} we get the formula:{" "}
+          term for <MathJax inline>{`E[x]`}</MathJax> we get the formula:{" "}
           <MathJax inline={`true`}>{`\\[ E[x]_n =
               (1-\\rho)\\rho^{n-1} g^2_0 + (1-\\rho)\\rho^{n-2} g^2_1 + ... +
               (1-\\rho)g_n^2 \\]`}</MathJax>{" "}
-          showing that (given that {`\(rho < 1 \)`} past gradients gradually are
-          scaled down in relevance to the current update rule as they're
-          weighting in the full running sum is slowly decrease timestep by
-          timestep).
+          showing that (given that <MathJax inline>{`\\(\\rho < 1\\)`}</MathJax>{" "}
+          past gradients gradually are scaled down in relevance to the current
+          update rule as they're weighting in the full running sum is slowly
+          decrease timestep by timestep).
         </p>
         <p>
           AdaDelta definingly maintains two running momentums, one for which
@@ -909,8 +910,8 @@ function OptimizerTaxonomyArticle() {
           AdaDelta has been shown to work well on the 2nd and 3rd challenging
           valley shapes for optimizers, to take minimially more computation than
           pure gradient descent, to be robust to dramatic gradients, noise, and
-          a good degree of network choices, all without need for a learning rate
-          ({`\(\\eta \)`}) hyperparameter!
+          a good degree of network choices, all without need for a learning rate{" "}
+          <MathJax inline>{`\\(\\eta\\)`}</MathJax> hyperparameter!
         </p>
 
         <p>
@@ -919,10 +920,10 @@ function OptimizerTaxonomyArticle() {
         </p>
         <ul>
           <li>
-            <MathJax inline={`true`}>{`\(L^2 \)`}</MathJax> regularized SGD
-            (SGDW) which decreases the weight additionally based on the scale of
-            that weight, ideally to prevent overfitting, but which often falls
-            down through mucking the signal for actual accuracy convergence.
+            <MathJax inline>{`\\(L^2\\)`}</MathJax> regularized SGD (SGDW) which
+            decreases the weight additionally based on the scale of that weight,
+            ideally to prevent overfitting, but which often falls down through
+            mucking the signal for actual accuracy convergence.
           </li>
           <li>
             SGD with Projection (SGDP) which hypothetically minimizes weight
@@ -971,20 +972,20 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          The first moment which Adam takes care to compile is the
-          <i>mean</i> (<MathJax inline={`true`}>{`\(\\hat M_t \)`}</MathJax>) of
-          the past gradients, which is generally taken to imply when a long
-          string of gradients has been pointing in the same direction. The
-          second moment which Adam compiles is the <i>variance</i> (
-          <MathJax inline={`true`}>{`\(\\hat V_t \)`}</MathJax>) of the
-          gradient, aka a running sum of the square of the gradients, isolating
-          the steepness of the slope our model is traversing at the expense of
-          preserving the exact average direction of those slopes. This is really
-          a quite smart design, breaking out two momentum terms where each
-          informs tracks what information the other is leaving aside, aka the
-          consistency of the direction of the gradients and the jaggedness of
-          those gradients. Through this design Adam's family of optimizers opens
-          up room for considering a variety of different function regions.
+          The first moment which Adam takes care to compile is the <i>mean</i> (
+          <MathJax inline>{`\\(\\hat M_t\\)`}</MathJax>) of the past gradients,
+          which is generally taken to imply when a long string of gradients has
+          been pointing in the same direction. The second moment which Adam
+          compiles is the <i>variance</i> (
+          <MathJax inline>{"\\(\\hat{V}_t\\)"}</MathJax>) of the gradient, aka a
+          running sum of the square of the gradients, isolating the steepness of
+          the slope our model is traversing at the expense of preserving the
+          exact average direction of those slopes. This is really a quite smart
+          design, breaking out two momentum terms where each informs tracks what
+          information the other is leaving aside, aka the consistency of the
+          direction of the gradients and the jaggedness of those gradients.
+          Through this design Adam's family of optimizers opens up room for
+          considering a variety of different function regions.
         </p>
 
         <p>
@@ -992,9 +993,12 @@ function OptimizerTaxonomyArticle() {
           warrants explanation is this bias-correction division of both moments.
           As we showed in our explanation of AdaDelta one of the characteristics
           of these exponentially decaying summations is that, in the case of the
-          first moment for example, at any given time \`t \` unrolling \`M_t \`
-          into how much each \`M_i \` term is being considered in \`M_t \` gives
-          us the following formula:
+          first moment for example, at any given time{" "}
+          <MathJax inline>{"t"}</MathJax> unrolling{" "}
+          <MathJax inline>{"\\(M_t\\)"}</MathJax> into how much each{" "}
+          <MathJax inline>{"\\(M_i\\)"}</MathJax> term is being considered in{" "}
+          <MathJax inline>{"\\(M_i\\)"}</MathJax> gives us the following
+          formula:
         </p>
 
         <p>
@@ -1005,32 +1009,29 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          Since (<MathJax inline={`true`}>{`\( \beta_1 \)`}</MathJax>) and (
-          <MathJax inline={`true`}>{`\( \beta_2 \)`}</MathJax>) are usually set
-          to values (
-          <MathJax inline={`true`}>{`\( \approx
-            1 \)`}</MathJax>
-          ), the terms <MathJax inline={`true`}>{` \(1-\beta_1 \)`}</MathJax>{" "}
-          and <MathJax inline={`true`}>{` \(1-\beta_2 \)`}</MathJax> becomes{" "}
-          <MathJax inline={`true`}>{`\( \approx 0
-            \)`}</MathJax>{" "}
-          dragging the value of (<MathJax inline={`true`}>{`\(M_t \)`}</MathJax>
-          ) to towards zero at very small \`t \` values and causing early
-          updates to, without correction, overaccount for early moments. This is
-          the origin of those (
-          <MathJax inline={`true`}>{`\( \hat M_t \)`}</MathJax>) and (
-          <MathJax inline={`true`}>{`\( \hat V_t
-            \)`}</MathJax>
-          ) terms: <MathJax inline={`true`}>{`\(1 - \\beta_1^t \)`}</MathJax>{" "}
-          blows up the value of <MathJax inline={`true`}>{`\(M_t \)`}</MathJax>{" "}
-          when \`t \` is small and gradually converges to value of one as \`t \`
-          approaches (<MathJax inline={`true`}>{`\( \infty \)`}</MathJax>)
-          meaning that the value of{" "}
-          <MathJax inline={`true`}>{`\(\frac{M_t}{1-\\beta_1^t} \)`}</MathJax>
-          adaptivelys scale up the value of{" "}
-          <MathJax inline={`true`}>{`\(M_t \)`}</MathJax> earlier into it's
-          training (with the same logic carrying over to{" "}
-          <MathJax inline={`true`}>{`\( \hat V_t \)`}</MathJax>).
+          Since <MathJax inline>{"\\( \\beta_1 \\)"}</MathJax> and{" "}
+          <MathJax inline>{"\\( \\beta_2 \\)"}</MathJax> are usually set to
+          values <MathJax inline>{"\\( \\approx 1 \\)"}</MathJax>, the terms{" "}
+          <MathJax inline>{"\\(1 - \\beta_1 \\)"}</MathJax> and{" "}
+          <MathJax inline>{"\\(1 - \\beta_2 \\)"}</MathJax> become{" "}
+          <MathJax inline>{"\\( \\approx 0 \\)"}</MathJax>, dragging the value
+          of <MathJax inline>{"\\( M_t \\)"}</MathJax> towards zero at very
+          small <MathJax inline>{"\\( t \\)"}</MathJax> values and causing early
+          updates to, without correction, over-account for early moments. This
+          is the origin of those{" "}
+          <MathJax inline>{"\\( \\hat{M}_t \\)"}</MathJax> and{" "}
+          <MathJax inline>{"\\( \\hat{V}_t \\)"}</MathJax> terms:{" "}
+          <MathJax inline>{"\\(1 - \\beta_1^t \\)"}</MathJax> blows up the value
+          of <MathJax inline>{"\\( M_t \\)"}</MathJax> when{" "}
+          <MathJax inline>{"\\( t \\)"}</MathJax> is small and gradually
+          converges to a value of one as <MathJax inline>{"\\( t \\)"}</MathJax>{" "}
+          approaches <MathJax inline>{"\\( \\infty \\)"}</MathJax>, meaning that
+          the value of{" "}
+          <MathJax inline>{"\\(\\frac{M_t}{1 - \\beta_1^t} \\)"}</MathJax>{" "}
+          adaptively scales up the value of{" "}
+          <MathJax inline>{"\\( M_t \\)"}</MathJax> earlier in its training
+          (with the same logic carrying over to{" "}
+          <MathJax inline>{"\\( \\hat{V}_t \\)"}</MathJax>).
         </p>
 
         <p>
@@ -1048,7 +1049,7 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          I briefly mentioned <MathJax inline={`true`}>{`\(L^2 \)`}</MathJax>{" "}
+          I briefly mentioned <MathJax inline>{"\\(L^2\\)"}</MathJax>{" "}
           regularized SGD (aka SGDW) as an out-there iteration of the SGD family
           of first-order optimizers. SGDW aspired to decreasing overfitting but
           failed through mucking up the update signal, hurting convergence more
@@ -1073,21 +1074,20 @@ function OptimizerTaxonomyArticle() {
         <p>
           At it's core: AdamW integrates the scale of each weight being updated
           into determining how much to adjust that weight by, decreasing each
-          weight by (
-          <MathJax inline={`true`}>{`\( \eta \\lambda \\theta \)`}</MathJax>) at
-          each step and dragging all weights closer to value around zero which
-          propensity to take on a lopsided weight combination for overfitting to
-          the exact problem our model is being trained on. AdamW's inserted
-          weight reduction consideration has been shown empirically to provide
-          better gains in generalization than just slapping the traditional{" "}
-          <MathJax inline={`true`}>{`\(L^2 \)`}</MathJax> Regularizer on top of
-          traditional Adam and has gained real popularity in-industry for its
-          ability to guarantee reliable model performance.
+          weight by <MathJax inline>{"\\(\\eta \\lambda \\theta\\)"}</MathJax>
+          at each step and dragging all weights closer to value around zero
+          which propensity to take on a lopsided weight combination for
+          overfitting to the exact problem our model is being trained on.
+          AdamW's inserted weight reduction consideration has been shown
+          empirically to provide better gains in generalization than just
+          slapping the traditional <MathJax inline>{"\\(L^2\\)"}</MathJax>{" "}
+          Regularizer on top of traditional Adam and has gained real popularity
+          in-industry for its ability to guarantee reliable model performance.
         </p>
 
         <p>
           One of the downfalls of AdamW is that it's{" "}
-          <MathJax inline={`true`}>{`\(L^2 \)`}</MathJax> Regularization drives
+          <MathJax inline>{"\\(L^2\\)"}</MathJax> Regularization drives
           convergence in the global minimum neighborhood to not be as smooth as
           necessary, often bumping around the true solution. One of the
           solutions to this is to look back to Nesterov momentum from the SGD
@@ -1103,10 +1103,10 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          As you can see, NAdam adds a small partial step of
-          <MathJax
-            inline={`true`}
-          >{`\(\frac{(1-\\beta_1)g_t}{1-\\beta_1^t} \)`}</MathJax>{" "}
+          As you can see, NAdam adds a small partial step of{" "}
+          <MathJax inline>
+            {"\\( \\frac{(1-\\beta_1)g_t}{1-\\beta_1^t} \\)"}
+          </MathJax>{" "}
           into Adam and while this yields some additional performance
           (especially on training deep convolutional NNs) through speedier
           convergence from a smoother update rule capable of further considering
@@ -1135,9 +1135,9 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          If the variance is tractable (which works out to (
-          <MathJax inline={`true`}>{`\(\rho_t > 4 \)`}</MathJax>
-          )) then the adaptive learning rate and subsequent update rule becomes:
+          If the variance is tractable (which works out to{" "}
+          <MathJax inline>{"\\(\\rho_t > 4\\)"}</MathJax>) then the adaptive
+          learning rate and subsequent update rule becomes:
         </p>
 
         <p>
@@ -1163,12 +1163,12 @@ function OptimizerTaxonomyArticle() {
         <p>RAdam's core innovation is the additon of:</p>
         <ul>
           <li>
-            <MathJax inline={`true`}>{`\(\rho \)`}</MathJax> as an approximation
-            of the center of mass of the EMA guiding the Adam update rule, and,
+            <MathJax inline>{"\\(\\rho\\)"}</MathJax> as an approximation of the
+            center of mass of the EMA guiding the Adam update rule, and,
           </li>
           <li>
-            an <MathJax inline={`true`}>{`\(r_t \)`}</MathJax> term for evening
-            out the variance in the adaptive learning rate over the course of
+            an <MathJax inline>{"\\( r_t \\)"}</MathJax> term for evening out
+            the variance in the adaptive learning rate over the course of
             training.
           </li>
         </ul>
@@ -1178,20 +1178,19 @@ function OptimizerTaxonomyArticle() {
           to the lack of samples at early stages in training Adam has an
           undesirably large variance in step sizes which can drive it into
           suspicious / bad local optima (this is the whole origin for the{" "}
-          <MathJax inline={`true`}>{`\( \hat m_t
-            \)`}</MathJax>{" "}
-          and <MathJax inline={`true`}>{`\( \hat v_t \)`}</MathJax> corrective
-          factors in the first place). They then proposed (
-          <MathJax inline={`true`}>{`\(\rho \)`}</MathJax>) as a method for
-          building on the characteristics of a<i>non-exponential</i> simple
-          moving average to approximate how much of our moving average is
-          missing due to missing samples and feed that into their{" "}
-          <MathJax inline={`true`}>{`\(r_t \)`}</MathJax> term, dampening the
-          step size in relation to the square root of what fraction of the
-          healthy number of samples our model is at at that timestep and
-          providing a sort of warmup in step size in those early stages of
-          training which had by the time of their proposal become common but
-          never before been built directly into the optimizer update rule.
+          <MathJax inline>{"\\( \\hat{m}_t \\)"}</MathJax>
+          and <MathJax inline>{"\\( \\hat{v}_t \\)"}</MathJax>
+          corrective factors in the first place). They then proposed{" "}
+          <MathJax inline>{"\\(\\rho \\)"}</MathJax> as a method for building on
+          the characteristics of a<i>non-exponential</i> simple moving average
+          to approximate how much of our moving average is missing due to
+          missing samples and feed that into their{" "}
+          <MathJax inline>{"\\( r_t \\)"}</MathJax> term, dampening the step
+          size in relation to the square root of what fraction of the healthy
+          number of samples our model is at at that timestep and providing a
+          sort of warmup in step size in those early stages of training which
+          had by the time of their proposal become common but never before been
+          built directly into the optimizer update rule.
         </p>
 
         <p>
@@ -1208,11 +1207,11 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           <b>DiffGrad</b> introduces the concept of <i>friction</i> through
-          building a <MathJax inline={`true`}>{`\( xi_t \)`}</MathJax> term
-          which enforces higher parameter updates in regions with higher changes
-          in the gradient across steps, essentially adjusting the learning rate
-          according to how much the local gradient regions shape calls for
-          dynamic learning rate adjustments.
+          building a <MathJax inline>{"\\( xi_t \\)"}</MathJax>
+          term which enforces higher parameter updates in regions with higher
+          changes in the gradient across steps, essentially adjusting the
+          learning rate according to how much the local gradient regions shape
+          calls for dynamic learning rate adjustments.
         </p>
 
         <p>
@@ -1259,30 +1258,31 @@ function OptimizerTaxonomyArticle() {
           convergence, in many ways solving the convergence failure in simple
           convex optimization settings which composed the primary weakness of
           Adam-type optimizers. The difference between{" "}
-          <MathJax inline={`true`}>{`\(v_{t} \)`}</MathJax> and{" "}
-          <MathJax inline={`true`}>{`\(v_{t-1} \)`}</MathJax> (as well as the
-          magnitude of that difference) depends on{" "}
-          <MathJax inline={`true`}>{`\(v_{t-1} \)`}</MathJax> and{" "}
-          <MathJax inline={`true`}>{`\(g_t^2
-            \)`}</MathJax>
-          , preserving Adam's choice of increasing the effective learning rate
-          when <MathJax inline={`true`}>{`\(v_{t-1} \)`}</MathJax> is much
-          larger than <MathJax inline={`true`}>{`\(g_t^2 \)`}</MathJax>, but
-          adds in more control on top of the usual update rule through adding
-          explicit expression of the direction of that difference in{" "}
-          <MathJax inline={`true`}>{`\(v_{t-1} - g_t^2 \)`}</MathJax>.
+          <MathJax inline>{"\\( v_t \\)"}</MathJax>
+          and <MathJax inline>{"\\( v_{t-1} \\)"}</MathJax>
+          (as well as the magnitude of that difference) depends on{" "}
+          <MathJax inline>{"\\( v_{t-1} \\)"}</MathJax> and{" "}
+          <MathJax inline>{"\\( g_t^2 \\)"}</MathJax>, preserving Adam's choice
+          of increasing the effective learning rate when{" "}
+          <MathJax inline>{"\\( v_{t-1} \\)"}</MathJax> is much larger than{" "}
+          <MathJax inline>{"\\( g_t^2 \\)"}</MathJax>, but adds in more control
+          on top of the usual update rule through adding explicit expression of
+          the direction of that difference in{" "}
+          <MathJax inline>{"\\( v_{t-1} - g_t^2 \\)"}</MathJax>.
         </p>
 
         <p>The following is the update rule for the Yogi optimizer:</p>
 
         <p>
-          <MathJax
-            inline={`true`}
-          >{` \[ \begin{gather} &m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\ &v_t =
-          v_{t-1} - (1-\beta_2)\left(\text{sign}(v_{t-1}-g_t^2)g_t^2\right) \\ \\
-          &\hat m_t = \frac{m_t}{1-\beta_1^t} \\ &\hat v_t = \frac{v_t}{1-\beta_2^t}
-          \\ \\ &\theta_t = \\theta_{t-1} - \frac{\\eta \cdot \hat m_t}{\sqrt{\hat
-          v_t}+\epsilon} \end{gather} \]`}</MathJax>
+          <MathJax>
+            {"\\[ \\begin{gather} " +
+              "&m_t = \\beta_1 m_{t-1} + (1-\\beta_1)g_t \\\\ " +
+              "&v_t = v_{t-1} - (1-\\beta_2)\\left(\\text{sign}(v_{t-1}-g_t^2)g_t^2\\right) \\\\ " +
+              "&\\hat{m}_t = \\frac{m_t}{1-\\beta_1^t} \\\\ " +
+              "&\\hat{v}_t = \\frac{v_t}{1-\\beta_2^t} \\\\ " +
+              "&\\theta_t = \\theta_{t-1} - \\frac{\\eta \\cdot \\hat{m}_t}{\\sqrt{\\hat{v}_t}+\\epsilon} " +
+              "\\end{gather} \\]"}
+          </MathJax>
         </p>
 
         <p>
@@ -1294,19 +1294,19 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           <b>AdaBelief</b> replaces the usual{" "}
-          <MathJax inline={`true`}>{`\(v_t \)`}</MathJax> term in Adam which
-          tracks the EMA of <MathJax inline={`true`}>{`\(g_t^2 \)`}</MathJax>{" "}
-          with a term <MathJax inline={`true`}>{`\(s_t \)`}</MathJax> for
-          tracking the EMA of
-          <MathJax inline={`true`}>{`\(g_t - m_t)^2\)`}</MathJax>, aka how far
-          the <i>mean</i> moment's predicted gradient was from the actual
-          gradient. Essentially adding into the update logic that if the
-          observed gradient is deviating greatly from the predicted gradient
-          then the prediction shouldn't be trusted and the step size should be
-          dampened to show caution. AdaBelief solves all three challenging
-          valley shapes, achieves higher accuracy on convolutional neural
-          networks, and has some additional bells introduced since then using a
-          Fast Gradient Sign Method (FGSM).
+          <MathJax inline>{"\\( v_t \\)"}</MathJax> term in Adam which tracks
+          the EMA of <MathJax inline>{"\\( g_t^2 \\)"}</MathJax> with a term{" "}
+          <MathJax inline>{"\\( s_t \\)"}</MathJax>
+          for tracking the EMA of{" "}
+          <MathJax inline>{"\\( (g_t - m_t)^2 \\)"}</MathJax>, aka how far the{" "}
+          <i>mean</i> moment's predicted gradient was from the actual gradient.
+          Essentially adding into the update logic that if the observed gradient
+          is deviating greatly from the predicted gradient then the prediction
+          shouldn't be trusted and the step size should be dampened to show
+          caution. AdaBelief solves all three challenging valley shapes,
+          achieves higher accuracy on convolutional neural networks, and has
+          some additional bells introduced since then using a Fast Gradient Sign
+          Method (FGSM).
         </p>
 
         <p>The standard AdaBelief update rule is as follows:</p>
@@ -1347,37 +1347,36 @@ function OptimizerTaxonomyArticle() {
           The first of two major concepts worth explaining as a form of
           expanding momentum out into multiple moments is the concept of
           positive-negative momentum or as I would maybe prefer it to be named:
-          odd-even momentum. As described by
+          odd-even momentum. As described by{" "}
           <a href="https://arxiv.org/pdf/2103.17182">Xie et Al. 2022</a> the
           usual EMA of gradients{" "}
-          <MathJax
-            inline={`true`}
-          >{`\(m_t = \sum_{k=0}^t (1-\\beta_1)\\beta_1^{t-k}g_k \)`}</MathJax>{" "}
+          <MathJax inline>
+            {"\\( m_t = \\sum_{k=0}^t (1-\\beta_1)\\beta_1^{t-k}g_k \\)"}
+          </MathJax>{" "}
           can be expanded into two EMAs roughly tracking the even-
-          <MathJax inline={`true`}>{`\(t\)`}</MathJax> gradients and odd-
-          <MathJax inline={`true`}>{`\(t\)`}</MathJax> gradients respectively in
-          the following formula:
+          <MathJax inline>{"t"}</MathJax> gradients and odd-
+          <MathJax inline>{"t"}</MathJax> gradients respectively in the
+          following formula:
         </p>
 
         <p>
           <MathJax
             inline={`true`}
-          >{`\[ \begin{gather} &m_t = (1 + \\beta_0)m_t^{(odd)} + \\beta_0m_t^{(even)} =
-          \\ \\
+          >{`\\[ \\begin{gather} &m_t = (1 + \\beta_0)m_t^{(odd)} + \\beta_0m_t^{(even)} =
+          \\\\
           &(1-\\beta_0)\\left(\\sum_{k=1,3,...t}(1-\\beta_1)\\beta_1^{t-k}g_k\\right) +
           \\beta_0\\left(\\sum_{k=0,2,...t}(1-\\beta_1)\\beta_1^{t-k}g_k\\right)
-          \\end{gather} \]`}</MathJax>
+          \\end{gather} \\]`}</MathJax>
         </p>
 
         <p>
-          This is meaningful insight is that now we've introduced a new (
-          <MathJax inline={`true`}>{`\( \\beta_0
-            \)`}</MathJax>
-          ) variable which can be tuned to grind out the noise between both
-          momentum terms leaving our optimizer with a more realistic and lower
-          variance view of the surface it's descending along. Evnetually this
-          leads into the first triple moment Adam-Type optimizer, AdaPNM which
-          uses the following update rule:
+          This is meaningful insight is that now we've introduced a new{" "}
+          <MathJax inline>{"\\( \\beta_0 \\) "}</MathJax> variable which can be
+          tuned to grind out the noise between both momentum terms leaving our
+          optimizer with a more realistic and lower variance view of the surface
+          it's descending along. Evnetually this leads into the first triple
+          moment Adam-Type optimizer, AdaPNM which uses the following update
+          rule:
         </p>
 
         <p>
@@ -1394,13 +1393,12 @@ function OptimizerTaxonomyArticle() {
           As you can see, AdaPNM preserves the variance moment but essentially
           breaks the mean moment into two seperate momentum terms for the odd
           and even timesteps independently existing within the{" "}
-          <MathJax inline={`true`}>{`\(m_t \)`}</MathJax> history and being
-          weighted against eachother in the{" "}
-          <MathJax inline={`true`}>{`\( \hat m_t \)`}</MathJax> formula. AdaPNM
-          has been shown on deep NNs to give higher test accuracies than
-          advanced double moment Adam optimizers like Yogi and AdaBelief but is
-          only one of the two relevant triple-moment optimizers, the second
-          being another
+          <MathJax inline>{"\\( m_t \\)"}</MathJax> history and being weighted
+          against eachother in the{" "}
+          <MathJax inline>{"\\( \\hat{m}_t \\)"}</MathJax> formula. AdaPNM has
+          been shown on deep NNs to give higher test accuracies than advanced
+          double moment Adam optimizers like Yogi and AdaBelief but is only one
+          of the two relevant triple-moment optimizers, the second being another{" "}
           <i>Nesterov</i> influenced momentum formulation in, Adan, which has
           the following algorithm:
         </p>
@@ -1420,11 +1418,8 @@ function OptimizerTaxonomyArticle() {
           As you can see, Adan essentially keeps a EMA for the gradient term, a
           EMA for the change in the gradient term, and a third EMA for roughly
           where each element in each EMA would have placed the subsequent
-          gradient which is used to scale the learning rate applied for updating
-          (
-          <MathJax inline={`true`}>{`\( \theta
-            \)`}</MathJax>
-          ).
+          gradient which is used to scale the learning rate applied for updating{" "}
+          <MathJax inline>{"\\( \\theta \\)"}</MathJax>.
         </p>
 
         <div className="centered-item-holder">
@@ -1434,12 +1429,12 @@ function OptimizerTaxonomyArticle() {
             className="responsive-image-med"
           />
           <p className="small-text responsive-text-med">
-            Quick animation I whipped up, inspired by the
+            Quick animation I whipped up, inspired by the{" "}
             <a href="https://github.com/luisdamed/Gradient_Descent_Visualizations/blob/main/Advanced_Gradient_Descent_Trajectories.ipynb">
               Luisdamed's Gradient Descent Visualization notebook
             </a>{" "}
             comparing the performance of a few select First-order SGD and Adam
-            type optimizers
+            type optimizers{" "}
             <a href="https://colab.research.google.com/drive/1_nQEYD2D-b3wnuSb5bYZ2zYh1-KVyllo?usp=sharing">
               (Colab)
             </a>
@@ -1509,7 +1504,7 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           Explicit consideration of the Hessian in descending our weight-space
-          valley is called the <i>Newton method</i> and spawns the
+          valley is called the <i>Newton method</i> and spawns the{" "}
           <i>Newton Algorithms</i> for second-order optimization. Netwon
           optimization allows for increased accuracy on functions with multiple
           local minimums and builds the following update rule for it's simplest
@@ -1546,34 +1541,32 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           The trick is in what value the author chooses for{" "}
-          <MathJax inline={`true`}>{`\( \\beta_t \)`}</MathJax>, with a few of
-          the common choices being listed above, for assembling a{" "}
-          <MathJax inline={`true`}>{`\(\Delta
-            d \)`}</MathJax>{" "}
-          update rule which can encapsulate traversals of a combination of
-          surfaces through considering both the instantaneous gradients and the
-          greater Hessian. At the highest level we add in some fraction of how
-          far the Hessian indicates we are from the greater minimum into the
-          size of how far we're supposed to be stepping in order to speed up
-          convergence. The primary issue with Newtonian methods, of course,
-          being that while we may be able to use the Hessian to increase
-          minimization accuracy that doesn't mean we've decreased training time
-          to get to that accuracy and formal Newtonian methods of solving for
-          the Hessian have rarely been justifiable computationally, even worse
-          their increased time to process gradients scales with the size of the
-          network being trained which largely has excluded Newtonian methods
-          from applicability the new and extremely important deep NNs. This
-          leads us into the second family of Second-Order optimizers:
-          Quasi-Newtonian methods, built around computationally efficiently
-          approximating (rather than solving out) that Hessian matrix for
-          minimization.
+          <MathJax inline>{"\\( \\beta_t \\)"}</MathJax>, with a few of the
+          common choices being listed above, for assembling a{" "}
+          <MathJax inline>{"\\( \\Delta d \\)"}</MathJax> update rule which can
+          encapsulate traversals of a combination of surfaces through
+          considering both the instantaneous gradients and the greater Hessian.
+          At the highest level we add in some fraction of how far the Hessian
+          indicates we are from the greater minimum into the size of how far
+          we're supposed to be stepping in order to speed up convergence. The
+          primary issue with Newtonian methods, of course, being that while we
+          may be able to use the Hessian to increase minimization accuracy that
+          doesn't mean we've decreased training time to get to that accuracy and
+          formal Newtonian methods of solving for the Hessian have rarely been
+          justifiable computationally, even worse their increased time to
+          process gradients scales with the size of the network being trained
+          which largely has excluded Newtonian methods from applicability the
+          new and extremely important deep NNs. This leads us into the second
+          family of Second-Order optimizers: Quasi-Newtonian methods, built
+          around computationally efficiently approximating (rather than solving
+          out) that Hessian matrix for minimization.
         </p>
 
         <p>
           The simplest Quasi-Newtonian method for approximating the Hessian
           matrix is the BFGS method which, while interesting is not really
           within the scope of this article to break apart the exact derivation
-          of, if your interested in the exact structure I recommend you look at
+          of, if your interested in the exact structure I recommend you look at{" "}
           <a href="https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504">
             BGFS In a Nutshell
           </a>
@@ -1582,11 +1575,10 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           Suffice to say we construct a grid of curvature pairs{" "}
-          <MathJax inline={`true`}>{`\((s_t, y_t) \)`}</MathJax>
-          assembled at every timestep iteration and used for updating our
-          Hessian
-          <MathJax inline={`true`}>{`\(H_t \)`}</MathJax> according to the
-          following update rule:
+          <MathJax inline>{"\\( (s_t, y_t) \\)"}</MathJax> assembled at every
+          timestep iteration and used for updating our Hessian{" "}
+          <MathJax inline>{"\\( H_t \\)"}</MathJax> according to the following
+          update rule:
         </p>
 
         <p>
@@ -1607,18 +1599,20 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <p>
-          On it's face BFGS has a computational complexity of only
-          <MathJax inline={`true`}>{`\(\mathcal{O}(n^2) \)`}</MathJax>, a vast
+          On it's face BFGS has a computational complexity of only{" "}
+          <MathJax inline>{"\\( \\mathcal{O}(n^2) \\)"}</MathJax>, a vast
           improvement over Newton-MR which comparatively requires roughly{" "}
-          <MathJax inline={`true`}>{`\(\mathcal{O}(n^3) \)`}</MathJax>.
-          Additionally BFGS has a helpful memory-efficient adaptation called{" "}
-          <i>BFGS-L</i> which, instead of storing all three{" "}
-          <MathJax inline={`true`}>{`\(V_t \)`}</MathJax>,{" "}
-          <MathJax inline={`true`}>{`\(\rho_t \)`}</MathJax>, and{" "}
-          <MathJax inline={`true`}>{`\(H_t \)`}</MathJax>
-          matrices between updates instead performs \`m \` BFGS updates using
-          only the \`m \` most recent curvature pairs to reconstruct an
-          approximation of <MathJax inline={`true`}>{`\(H_{t+1} \)`}</MathJax>.
+          <MathJax inline>{"\\( \\mathcal{O}(n^3) \\)"}</MathJax>. Additionally
+          BFGS has a helpful memory-efficient adaptation called <i>BFGS-L</i>{" "}
+          which, instead of storing all three{" "}
+          <MathJax inline>{"\\( V_t \\)"}</MathJax>,{" "}
+          <MathJax inline>{"\\( \\rho_t \\)"}</MathJax>, and{" "}
+          <MathJax inline>{"\\( H_t \\)"}</MathJax>
+          matrices between updates instead performs{" "}
+          <MathJax inline>{"m"}</MathJax> BFGS updates using only the{" "}
+          <MathJax inline>{"m"}</MathJax> most recent curvature pairs to
+          reconstruct an approximation of{" "}
+          <MathJax inline>{"\\( H_{t+1} \\)"}</MathJax>.
         </p>
 
         <p>
@@ -1725,25 +1719,27 @@ function OptimizerTaxonomyArticle() {
         <p>
           Natural Gradient Descent describes the following set-up for that
           parametric selection. Let{" "}
-          <MathJax inline={`true`}>{`\(\\mathcal{M}^n, g) \)`}</MathJax> be a
+          <MathJax inline>{"\\( \\mathcal{M}^n, g) \\)"}</MathJax> be a
           Riemannian manifold where{" "}
-          <MathJax inline={`true`}>{`\(\mathcal{M} \)`}</MathJax> is a
-          topological space expressed in the local coordinate system of an
-          atlast{" "}
-          <MathJax inline={`true`}>{`\(\mathcal{A} = \\{(\\mathcal{U}_i,
-            x_i)\\}_i \)`}</MathJax>{" "}
-          of charts{" "}
-          <MathJax inline={`true`}>{`(\(\mathcal{U}_i, x_i) \)`}</MathJax> with
-          the tangent bundle
-          <MathJax inline={`true`}>{`\(T\\mathcal{M}^n \)`}</MathJax> Riemannian
+          <MathJax inline>{"\\( \\mathcal{M} \\)"}</MathJax> is a topological
+          space expressed in the local coordinate system of an atlast{" "}
+          <MathJax inline>
+            {"\\( \\mathcal{A} = \\{(\\mathcal{U}_i, x_i)\\}_i \\)"}
+          </MathJax>{" "}
+          of charts <MathJax inline>{"\\( (\\mathcal{U}_i, x_i) \\)"}</MathJax>{" "}
+          with the tangent bundle{" "}
+          <MathJax inline>{"\\( T\\mathcal{M}^n \\)"}</MathJax> Riemannian
           metric{" "}
-          <MathJax inline={`true`}>{`\(g : T\\mathcal{M}^n \\otimes
-            T\\mathcal{M}^n \\rightarrow \\mathbb{R} \)`}</MathJax>
+          <MathJax inline>
+            {
+              "\\( g : T\\mathcal{M}^n \\otimes T\\mathcal{M}^n \\rightarrow \\mathbb{R} \\)"
+            }
+          </MathJax>
           . Under this formulation gradient flow for optimization entails
-          searching for a change in
-          <MathJax inline={`true`}>{`\(\theta_t \)`}</MathJax> which would lead
-          to better improvement in the objective value controlled for the length
-          of the change in terms of the geometry of the manifold, working out to
+          searching for a change in{" "}
+          <MathJax inline>{"\\( \\theta_t \\)"}</MathJax> which would lead to
+          better improvement in the objective value controlled for the length of
+          the change in terms of the geometry of the manifold, working out to
           the following formula:
         </p>
 
@@ -1756,8 +1752,8 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           Where under the standard Euclidean manifold metric, where{" "}
-          <MathJax inline={`true`}>{`\(g = I \)`}</MathJax>, the gradient flow
-          reduces to gradient descent but under under a probability distribution
+          <MathJax inline>{"\\( g=I \\)"}</MathJax>, the gradient flow reduces
+          to gradient descent but under under a probability distribution
           manifold with K-L divergence as a metric you get the beginnings of a
           formulation of quantum neural networks. Additionally, if you extand
           that Rimannian manifold with a Levi-Civita connection to conjugate the
@@ -1774,9 +1770,9 @@ function OptimizerTaxonomyArticle() {
 
         <p>
           Where{" "}
-          <MathJax
-            inline={`true`}
-          >{`\(g(\\theta, \\theta+d\\theta) = F(\\theta_t) \)`}</MathJax>{" "}
+          <MathJax inline>
+            {"\\( g(\\theta, \\theta+d\\theta) = F(\\theta_t) \\)"}
+          </MathJax>{" "}
           is the Fisher information matrix. Such a formulation solves all three
           cases of challenging surface shapes, is capable of converging to a
           global minimum in time suitable for deep learning, and creates a whole
