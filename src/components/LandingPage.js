@@ -344,18 +344,17 @@ function LandingPage() {
             </thead>
             <tbody>
               <tr>
-                <td>Visual Spatial</td>
-                <td>130</td>
-                <td>98</td>
-                <td>Recreating abstract designs using colored blocks.</td>
+                <td>Verbal Comprehension</td>
+                <td>111</td>
+                <td>77</td>
+                <td>Explaining relationships between words and concepts.</td>
               </tr>
               <tr>
-                <td>Fluid Reasoning</td>
-                <td>130</td>
-                <td>98</td>
+                <td>Processing Speed</td>
+                <td>111</td>
+                <td>77</td>
                 <td>
-                  Identifying patterns or completing sequences in visual
-                  puzzles.
+                  Scanning symbols and matching them quickly under time limits.
                 </td>
               </tr>
               <tr>
@@ -368,17 +367,18 @@ function LandingPage() {
                 </td>
               </tr>
               <tr>
-                <td>Verbal Comprehension</td>
-                <td>111</td>
-                <td>77</td>
-                <td>Explaining relationships between words and concepts.</td>
+                <td>Visual Spatial</td>
+                <td>130</td>
+                <td>98</td>
+                <td>Recreating abstract designs using colored blocks.</td>
               </tr>
               <tr>
-                <td>Processing Speed</td>
-                <td>111</td>
-                <td>77</td>
+                <td>Fluid Reasoning</td>
+                <td>130</td>
+                <td>98</td>
                 <td>
-                  Scanning symbols and matching them quickly under time limits.
+                  Identifying patterns or completing sequences in visual
+                  puzzles.
                 </td>
               </tr>
             </tbody>
@@ -401,28 +401,6 @@ function LandingPage() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>CPT-3 HRT ISI Change</td>
-                <td>77</td>
-                <td>—</td>
-                <td>
-                  Pressing a key when a specific letter appears on a screen.
-                </td>
-              </tr>
-              <tr>
-                <td>WAIS-5 Running Digits</td>
-                <td>15</td>
-                <td>95</td>
-                <td>Keeping track of changing numbers in a sequence.</td>
-              </tr>
-              <tr>
-                <td>D-KEFS Trailmaking Visual Scanning</td>
-                <td>13</td>
-                <td>84</td>
-                <td>
-                  Crossing out specific visual targets from a large array.
-                </td>
-              </tr>
               <tr>
                 <td>WAIS-5 Digit Sequencing</td>
                 <td>12</td>
@@ -449,6 +427,28 @@ function LandingPage() {
                   Identifying whether a symbol is present in a set of symbols.
                 </td>
               </tr>
+              <tr>
+                <td>D-KEFS Trailmaking Visual Scanning</td>
+                <td>13</td>
+                <td>84</td>
+                <td>
+                  Crossing out specific visual targets from a large array.
+                </td>
+              </tr>
+              <tr>
+                <td>WAIS-5 Running Digits</td>
+                <td>15</td>
+                <td>95</td>
+                <td>Keeping track of changing numbers in a sequence.</td>
+              </tr>
+              <tr>
+                <td>CPT-3 HRT ISI Change</td>
+                <td>77</td>
+                <td>—</td>
+                <td>
+                  Pressing a key when a specific letter appears on a screen.
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -470,10 +470,13 @@ function LandingPage() {
             </thead>
             <tbody>
               <tr>
-                <td>WAIS-5 Vocabulary</td>
-                <td>13</td>
-                <td>84</td>
-                <td>Defining the meanings of presented words.</td>
+                <td>D-KEFS Verbal Fluency Category</td>
+                <td>8</td>
+                <td>25</td>
+                <td>
+                  Naming as many words as possible that fit into a given
+                  category (e.g., animals) within a time limit.
+                </td>
               </tr>
               <tr>
                 <td>WAIS-5 Similarities</td>
@@ -485,13 +488,10 @@ function LandingPage() {
                 </td>
               </tr>
               <tr>
-                <td>D-KEFS Verbal Fluency Category</td>
-                <td>8</td>
-                <td>25</td>
-                <td>
-                  Naming as many words as possible that fit into a given
-                  category (e.g., animals) within a time limit.
-                </td>
+                <td>WAIS-5 Vocabulary</td>
+                <td>13</td>
+                <td>84</td>
+                <td>Defining the meanings of presented words.</td>
               </tr>
             </tbody>
           </table>
@@ -516,6 +516,31 @@ function LandingPage() {
             </thead>
             <tbody>
               <tr>
+                <td>D-KEFS Motor Speed</td>
+                <td>13</td>
+                <td>84</td>
+                <td>
+                  Tracing patterns or completing fine motor tasks as quickly as
+                  possible.
+                </td>
+              </tr>
+              <tr>
+                <td>WAIS-5 Matrix Reasoning</td>
+                <td>14</td>
+                <td>91</td>
+                <td>
+                  Identifying the missing piece in a visual pattern or sequence.
+                </td>
+              </tr>
+              <tr>
+                <td>WAIS-5 Visual Puzzles</td>
+                <td>15</td>
+                <td>95</td>
+                <td>
+                  Selecting pieces that complete a puzzle from a set of options.
+                </td>
+              </tr>
+              <tr>
                 <td>WAIS-5 Block Design</td>
                 <td>16</td>
                 <td>98</td>
@@ -528,31 +553,6 @@ function LandingPage() {
                 <td>
                   Balancing scales by selecting weights that equalize both
                   sides.
-                </td>
-              </tr>
-              <tr>
-                <td>WAIS-5 Visual Puzzles</td>
-                <td>15</td>
-                <td>95</td>
-                <td>
-                  Selecting pieces that complete a puzzle from a set of options.
-                </td>
-              </tr>
-              <tr>
-                <td>WAIS-5 Matrix Reasoning</td>
-                <td>14</td>
-                <td>91</td>
-                <td>
-                  Identifying the missing piece in a visual pattern or sequence.
-                </td>
-              </tr>
-              <tr>
-                <td>D-KEFS Motor Speed</td>
-                <td>13</td>
-                <td>84</td>
-                <td>
-                  Tracing patterns or completing fine motor tasks as quickly as
-                  possible.
                 </td>
               </tr>
             </tbody>
