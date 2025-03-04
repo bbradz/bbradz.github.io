@@ -4,11 +4,11 @@
     "title": "From Softmax to Sparsemax",
     "author": "Martins et. al",
     "description":
-      "Proposes sparsemax, a new activation function similar to the traditional softmax, but able to output sparse probabilities.",
+      "Proposes equivalent runtime sparse version of softmax which yield higher accuracy *before* considering hardware edge.",
     "tags": ["Machine Learning", "Activation Functions", "Arxiv"],
     "readTime": 0.5,
     "releaseDate": "2016-02-08",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/1602.02068"
   },
   {
@@ -48,11 +48,11 @@
       "PowerSGD: Practical Low-Rank Gradient Compression for Distributed Optimization",
     "author": "EPFL",
     "description":
-      "Proposes gradient compressor achieving test performance on par with SGD with consistent wall-clock speedups.",
+      "Proposes low-rank grad compressor with built-in error feedback and spectral regularization while being compatible with fast *reduce* ops rather than slower *gather*s, reducing time to full test quality by 24-55%",
     "tags": ["Optimization", "Distributed Computing", "Arxiv"],
     "readTime": 1,
     "releaseDate": "2020-02-18",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/1905.13727"
   },
   {
@@ -70,11 +70,11 @@
       "A Loss Curvature Perspective on Training Instability in Deep Learning",
     "author": "Google",
     "description":
-      "Combine learning rate, model structure, and weight initialization to analyze the evolution of Hessian loss.",
+      "Analyze the evolution of Hessian loss w Normalization, Init regimes, and LR warmup to empirically navigate towards convergence.",
     "tags": ["Deep Learning", "Optimization", "Arxiv"],
     "readTime": 1,
     "releaseDate": "2020-10-08",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2110.04369"
   },
   {
@@ -97,7 +97,7 @@
     "readTime": 0.6,
     "releaseDate": "2021-01-01",
     "isRead": false,
-    "downloadLink": "https://openreview.net/references/pdf?id=80B6V-eoFP"
+    "downloadLink": "https://arxiv.org/pdf/2002.09018"
   },
   {
     "title": "Deep Bellman Hedging",
