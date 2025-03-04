@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 function Posts() {
   const savedTheme = localStorage.getItem("theme") || "dark";
   const [theme, setTheme] = useState(savedTheme);
-  const [optimizersCollapsed, setOptimizersCollapsed] = useState(false);
-  const [distributedCollapsed, setDistributedCollapsed] = useState(false);
-  const [economicCollapsed, setEconomicCollapsed] = useState(false);
+  const [optimizersCollapsed, setOptimizersCollapsed] = useState(true);
+  const [distributedCollapsed, setDistributedCollapsed] = useState(true);
+  const [economicCollapsed, setEconomicCollapsed] = useState(true);
   const scrollToTopButtonRef = useRef(null);
 
   const toggleTheme = () => {
