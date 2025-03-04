@@ -89,14 +89,14 @@
       "https://www.cs.cornell.edu/home/kleinber/networks-book/networks-book.pdf"
   },
   {
-    "title": "Towards Practical Second Order Optimization for Deep Learning",
-    "author": "Anonymous",
+    "title": "Scalable Second Order Optimization for DeepLearning",
+    "author": "Google",
     "description":
       "Presents a scalable 2nd-order preconditioner with significant convergence and wall-clock time improvements compared to 1st-order methods.",
     "tags": ["Optimization", "Deep Learning", "Site"],
     "readTime": 0.6,
     "releaseDate": "2021-01-01",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2002.09018"
   },
   {
@@ -118,7 +118,7 @@
     "tags": ["Optimization", "Arxiv"],
     "readTime": 0.8,
     "releaseDate": "2021-06-09",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2102.06356"
   },
   {
@@ -134,13 +134,13 @@
   },
   {
     "title": "Vector Quantized Models for Planning",
-    "author": "Not specified",
+    "author": "Ozair et al.",
     "description":
       "Presents using discrete autoencoders to capture the multiple effects of an action in a stochastic environment, using MCTS to plan over both actions and discrete latent variables. Significantly outperforming MuZero on a stochastic interpretation of chess.",
     "tags": ["Reinforcement Learning", "Autoencoders", "Arxiv"],
     "readTime": 0.6,
     "releaseDate": "2021-08-06",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2106.04615"
   },
   {
@@ -158,11 +158,11 @@
     "title": "Hyperparameter Optimization Is Deceiving Us, and How to Stop It",
     "author": "Cornell University",
     "description":
-      "Provides a theoretical grounding for process epistemic hyperparameter optimization (EHPO) to avoid deception by hyperparams.",
+      "Provides a theoretical grounding for logs necessary to avoid deception by how you chose to explore the hyperparams space.",
     "tags": ["Hyperparameter Optimization", "Machine Learning", "Arxiv"],
     "readTime": 1.3,
     "releaseDate": "2021-10-26",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2102.03034"
   },
   {
@@ -176,16 +176,6 @@
     "releaseDate": "2022-03-04",
     "isRead": false,
     "downloadLink": "https://arxiv.org/pdf/2112.08429"
-  },
-  {
-    "title": "Set Theory",
-    "author": "Not specified",
-    "description": "A book on set theory.",
-    "tags": ["Mathematics", "Site"],
-    "readTime": 1,
-    "releaseDate": "Not specified",
-    "isRead": false,
-    "downloadLink": "http://www.alefenu.com/libri/topologymunkres.pdf"
   },
   {
     "title": "Omnigrok: Grokking Beyond Algorithmic Data",
@@ -250,7 +240,7 @@
     "tags": ["Deep Learning", "Optimization", "Arxiv"],
     "readTime": 1.3,
     "releaseDate": "2023-10-06",
-    "isRead": false,
+    "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2310.04415"
   },
   {
