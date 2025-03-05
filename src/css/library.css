@@ -285,8 +285,12 @@ li {
     padding-left: 32px;
   }
 
+  #reading-list .read-indicator {
+    margin-left: 7px;
+  }
+
   #reading-list li[data-read="false"] {
-    padding-left: 32px;
+    padding-left: 16px;
   }
 
   .container.full-width {
@@ -451,10 +455,10 @@ li {
   }
 
   .download-link {
-    margin-top: 8px;
-    font-size: 13px;
-    color: var(--text-color);
-    text-decoration: underline;
+    margin-top: 1px;
+    font-size: 14px;
+    color: #358297;
+    text-decoration: none;
     align-self: flex-start;
   }
 
