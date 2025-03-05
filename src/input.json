@@ -12,7 +12,7 @@
   {
     "title": "Monte Carlo Methods in Financial Engineering",
     "author": "Not specified",
-    "description": "A comprehensive guide on Monte Carlo methods applied in financial engineering.",
+    "description": "<not read>",
     "tags": ["Finance", "Site"],
     "readTime": 16.3,
     "releaseDate": "Not specified",
@@ -22,7 +22,7 @@
   {
     "title": "Information Theory: A Tutorial Introduction",
     "author": "University of Sheffield",
-    "description": "Introduces the main ideas in Shannon’s theory.",
+    "description": "<not read>",
     "tags": ["Information Theory", "Arxiv"],
     "readTime": 0.5,
     "releaseDate": "2019-06-13",
@@ -32,7 +32,7 @@
   {
     "title": "What Every Programmer Should Know About Memory",
     "author": "Redhat",
-    "description": "An in-depth look at memory management for programmers.",
+    "description": "<not read>",
     "tags": ["Programming", "Site"],
     "readTime": 6.5,
     "releaseDate": "Not specified",
@@ -52,7 +52,7 @@
   {
     "title": "Step-by-Step Diffusion: An Elementary Tutorial",
     "author": "University of Montreal",
-    "description": "A tutorial on diffusion models.",
+    "description": "<not read>",
     "tags": ["Diffusion Models", "Tutorial", "Arxiv"],
     "readTime": 1.5,
     "releaseDate": "Not specified",
@@ -72,7 +72,7 @@
   {
     "title": "Networks, Crowds, and Markets",
     "author": "Cornell University",
-    "description": "A book exploring networks, crowds, and markets.",
+    "description": "<not read>",
     "tags": ["Economics", "Site"],
     "readTime": 23.5,
     "releaseDate": "Not specified",
@@ -92,7 +92,7 @@
   {
     "title": "Deep Bellman Hedging",
     "author": "Buehler et al.",
-    "description": "A paper on reinforcement learning and hedging.",
+    "description": "<not read>",
     "tags": ["Reinforcement Learning", "Arxiv"],
     "readTime": 0.6,
     "releaseDate": "Not specified",
@@ -112,7 +112,7 @@
   {
     "title": "Information Theory, Inference, and Learning Algorithms",
     "author": "Cambridge University",
-    "description": "A comprehensive book on information theory, inference, and learning algorithms.",
+    "description": "<not read>",
     "tags": ["Machine Learning", "Algorithms", "Site"],
     "readTime": 19.6,
     "releaseDate": "Not specified",
@@ -132,7 +132,7 @@
   {
     "title": "Programming Massively Parallel Applications",
     "author": "David B. Kirk",
-    "description": "A book on programming massively parallel applications.",
+    "description": "<not read>",
     "tags": ["Parallel Computing", "Site"],
     "readTime": 18.8,
     "releaseDate": "Not specified",
@@ -152,7 +152,7 @@
   {
     "title": "Torch.FX: a Practical Program Capture and Transformation for DL in Python",
     "author": "Horace He",
-    "description": "Studies designs for program capture in the typical deep learning use case to propose a library optimizing for developer productivity.",
+    "description": "<not read>",
     "tags": ["Deep Learning", "Libraries", "Arxiv"],
     "readTime": 0.7,
     "releaseDate": "2022-03-04",
@@ -162,7 +162,7 @@
   {
     "title": "Omnigrok: Grokking Beyond Algorithmic Data",
     "author": "MIT",
-    "description": "Understands grokking by analyzing NN loss landscapes, identifying the mismatch between training and test loss as the cause for grokking.",
+    "description": "<not read>",
     "tags": ["Neural Networks", "Optimization", "Grokking", "Arxiv"],
     "readTime": 0.6,
     "releaseDate": "2023-03-23",
@@ -172,7 +172,7 @@
   {
     "title": "Lie Groups",
     "author": "University of Ottowa",
-    "description": "A book on Lie groups.",
+    "description": "<not read>",
     "tags": ["Mathematics", "Lie Groups", "Site"],
     "readTime": 1,
     "releaseDate": "Not specified",
@@ -182,7 +182,7 @@
   {
     "title": "Finding Neurons in a Haystack",
     "author": "MIT",
-    "description": "Shows the progression of, violation of, and features embedded in neurons at varying depths of LLM.",
+    "description": "<not read>",
     "tags": ["Interpretability", "Neural Networks", "LLMs", "Arxiv"],
     "readTime": 1.3,
     "releaseDate": "2023-06-02",
@@ -192,7 +192,7 @@
   {
     "title": "Meta-Learning",
     "author": "Lilian Weng",
-    "description": "A post on meta-learning.",
+    "description": "<not read>",
     "tags": ["Meta-Learning", "Machine Learning", "Site"],
     "readTime": 2.6,
     "releaseDate": "Not specified",
@@ -202,7 +202,7 @@
   {
     "title": "Uncovering Mesa-optimization algorithms in Transformers",
     "author": "Google",
-    "description": "Reverse engineers Transformers to determine that performance comes from an architectural bias towards mesa-optimization.",
+    "description": "<not read>",
     "tags": ["Transformers", "Optimization", "LLMs", "Arxiv"],
     "readTime": 1.9,
     "releaseDate": "2023-09-11",
@@ -242,7 +242,7 @@
   {
     "title": "Learning to (Learn at Test Time): RNNs with Expressive Hidden States",
     "author": "Sun et al.",
-    "description": "Proposes a new sequence modeling layers with O(n) complexity and an expressive ML model hidden state.",
+    "description": "<not read>",
     "tags": ["RNNs", "Machine Learning", "Arxiv"],
     "readTime": 1.1,
     "releaseDate": "2024-08-11",
@@ -252,7 +252,7 @@
   {
     "title": "Tree Attention: Topology-Aware Decoding for Long-Context Attention on GPU Clusters",
     "author": "EleutherAI",
-    "description": "Reveals a self-attention computation parallelizable across multiple GPUs.",
+    "description": "<not read>",
     "tags": ["Attention Mechanisms", "Parallel Computing", "Arxiv"],
     "readTime": 0.5,
     "releaseDate": "2024-08-14",
@@ -262,7 +262,7 @@
   {
     "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
     "author": "DeepSeek",
-    "description": "Introduces a dataset & RL with proof-solving feedback for fine-tuning on top of MCTS for generating more lush proof paths.",
+    "description": "<not read>",
     "tags": ["Reinforcement Learning", "Arxiv"],
     "readTime": 0.9,
     "releaseDate": "2024-08-15",
@@ -272,7 +272,7 @@
   {
     "title": "The LLama3 herd of models",
     "author": "Meta",
-    "description": "Presents the results of experiments which integrate image, video, and speech capabilities into Llama 3.",
+    "description": "<not read>",
     "tags": ["LLMs", "Arxiv"],
     "readTime": 3.7,
     "releaseDate": "2024-08-15",
@@ -292,7 +292,7 @@
   {
     "title": "Compute Better Spent: Replacing Dense Layers with Structured Matrices",
     "author": "Qiu et al.",
-    "description": "Explores structured matrices as replacements for dense matrices as models scale.",
+    "description": "<not read>",
     "tags": ["Optimization", "Arxiv"],
     "readTime": 0.9,
     "releaseDate": "2024-10-06",
@@ -302,7 +302,7 @@
   {
     "title": "Financial Statement Analysis with Large Language Models",
     "author": "Kim et al.",
-    "description": "Investigates whether LLMs can successfully perform financial statement analysis similarly to professional human analysts.",
+    "description": "<not read>",
     "tags": ["LLMs", "Finance", "Arxiv"],
     "readTime": 1.6,
     "releaseDate": "2024-10-11",
@@ -312,7 +312,7 @@
   {
     "title": "The Surprising Effectiveness of Test-Time Training for Abstract Reasoning",
     "author": "MIT",
-    "description": "Investigates the effectiveness of test-time training (TTT) as a mechanism for improving reasoning capabilities, using ARC as a benchmark.",
+    "description": "<not read>",
     "tags": ["LLMs", "Arxiv"],
     "readTime": 0.7,
     "releaseDate": "2024-11-11",
@@ -322,7 +322,7 @@
   {
     "title": "Transformers meet Neural Algorithmic Reasoners",
     "author": "Google",
-    "description": "Proposes a novel combination of Transformers with GNN-based neural algorithmic reasoners (NARs) as a hybrid architecture demonstrating significant gains over Transformer-only models for algorithmic reasoning.",
+    "description": "<not read>",
     "tags": ["LLMs", "GNNs", "Arxiv"],
     "readTime": 0.4,
     "releaseDate": "2024-06-13",
@@ -342,7 +342,7 @@
   {
     "title": "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence",
     "author": "DeepSeek",
-    "description": "DeepSeek-V2 is pre-trained with 6 trillion additional tokens achieving superior coding performance to closed-source models.",
+    "description": "<not read>",
     "tags": ["LLMs", "Arxiv"],
     "readTime": 0.6,
     "releaseDate": "2024-06-17",
@@ -352,7 +352,7 @@
   {
     "title": "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model",
     "author": "DeepSeek",
-    "description": "Presents DeepSeek-V2, a strong MoE language model characterized by economical training and efficient inference.",
+    "description": "<not read>",
     "tags": ["MoEs", "LLMs", "Arxiv"],
     "readTime": 1.3,
     "releaseDate": "2024-06-19",
@@ -372,7 +372,7 @@
   {
     "title": "Sparse Crosscoders for Cross-Layer Features and Model Diffing",
     "author": "Anthropic",
-    "description": "Introduces sparse crosscoders, a variant of sparse autoencoders or transcoders for understanding models in superposition.",
+    "description": "<not read>",
     "tags": ["Interpretability", "Site"],
     "readTime": 0.6,
     "releaseDate": "2024-10-25",
@@ -382,7 +382,7 @@
   {
     "title": "Beyond A*",
     "author": "Meta",
-    "description": "Shows a Transformer model to optimally solve unseen Sokoban puzzles 93.7% of the time with up to 26.8% fewer steps than the A*.",
+    "description": "<not read>",
     "tags": ["Transformers", "Arxiv"],
     "readTime": 0.8,
     "releaseDate": "2024-04-26",
@@ -432,7 +432,7 @@
   {
     "title": "CUDA Programming Course",
     "author": "freeCodeCamp.org",
-    "description": "Tutorial on the implementation details of coding in the CUDA programming language.",
+    "description": "<not read>",
     "tags": ["Programming", "Parallel Computing", "YT"],
     "readTime": 12,
     "releaseDate": "2024-09-24",
