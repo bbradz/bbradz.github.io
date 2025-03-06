@@ -9,7 +9,8 @@ import LandingPage from "./LandingPage";
 
 function Distributed() {
   // State for theme toggle
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
   const [isTocOpen, setIsTocOpen] = useState(false);
   // State to manage citation button icon and status
   const [isCitationCopied, setIsCitationCopied] = useState(false);

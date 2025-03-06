@@ -5,7 +5,8 @@ import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -224,17 +225,19 @@ function LandingPage() {
           <p>
             I am a third-year undergraduate at Brown University, majoring in
             Computer Science and Applied Mathematics. I'm involved with research
-            in Brown's Physics Department exploring applications of
-            reinforcement learning to navigation in gravitational environments
-            and symbolic regression for scientific discovery under the guidance
-            of Professors Gaitskell and Gouskos.
+            in Brown's Physics Department exploring applications of RL to
+            navigation in gravitational environments and symbolic regression for
+            scientific discovery under the guidance of Professors Gaitskell and
+            Gouskos.
           </p>
           <p>
-            Beyond academics, I manage Business and International Travel for The
-            Brown Derbies, Brown’s oldest continuous tenor-bass a cappella
-            group. I am also an active member of the Brown Debate Union (BDU),
-            the Brown AI Safety Team (BAIST), the Brown Forecasting Club (BFC),
-            and the Brown Investment Group (BIG).
+            Beyond academics, I'm President of The Brown Derbies, Brown’s oldest
+            continuous tenor-bass a cappella group where I've been managing
+            business and international tour planning for 2 years. I am also one
+            of four executives of the Brown AI Safety Team (BAIST) where I teach
+            a weekly meeting for novices on technical papers in AI Safety.
+            Finally I'm an active member of the Brown Debate Union (BDU), Brown
+            Forecasting Club (BFC), and Brown Investment Group (BIG).
           </p>
           <p>
             A defining feature, I think, of my personality is the need for
@@ -311,10 +314,10 @@ function LandingPage() {
             we're actually extremely bad at measuring the complexities of
             different human minds and the different types of behavior which
             different people have learned in order to survive and thrive in
-            their particular place in the world. While there may be a sort of
+            their particular place in the world. While there may be a sort of{" "}
             <a href="https://en.wikipedia.org/wiki/G_factor_(psychometrics)">
-              <i> g factor </i>
-            </a>
+              <i>g factor</i>
+            </a>{" "}
             across minds significant enough to measure on any particular suite
             of tasks I find it extremely hard to believe that it's worthwhile to
             discuss or matters for practical purposes of explaining outcomes.
@@ -626,11 +629,10 @@ function LandingPage() {
           <li>
             <strong>CGP Grey</strong>: Known for extremely high quality
             educational YouTube videos, I fell in love with CGP Grey's content
-            through his podcast{" "}
-            <i>Hello Internet</i> and later more minorly <i>Cortex</i> where he
-            delves in more detail into topics in the systems of politics,
-            transportation, technology, socialization, and the mimetic warfare
-            of the modern internet.
+            through his podcast <i>Hello Internet</i> and later more minorly{" "}
+            <i>Cortex</i> where he delves in more detail into topics in the
+            systems of politics, transportation, technology, socialization, and
+            the mimetic warfare of the modern internet.
           </li>
           <li>
             <strong>Ezra Klein</strong>: Journalist and author, Ezra Klein works
