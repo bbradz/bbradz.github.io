@@ -26,8 +26,6 @@ git push origin main
     git push origin gh-pages --force
 
 
-
-
 How to process Repo:
 
 1. navigate into repo directory
