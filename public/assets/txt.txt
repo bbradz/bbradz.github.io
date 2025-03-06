@@ -12,11 +12,13 @@ https://arxiv.org/pdf/2503.01776
 How To Push:
 
 rm -rf build
-rm -rf node_modules/.cache/gh-pages
+rm -rf node_modules/.cache
+rm -rf node_modules/.parcel-cache
+npm install
 npm run build
 npm run deploy
 git add .
-git commit -m ""
+git commit -m "Update site"
 git push origin main
 
     git branch -D gh-pages
