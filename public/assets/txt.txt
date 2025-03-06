@@ -18,14 +18,12 @@ npm install
 npm run build
 npm run deploy
 git add .
-git commit -m "Update site"
+git commit -m "maintenance"
 git push origin main
 
     git branch -D gh-pages
     git subtree split --prefix build main -b gh-pages
     git push origin gh-pages --force
-OR
-    git push origin git subtree split --prefix build main:gh-pages --force
 
 
 
