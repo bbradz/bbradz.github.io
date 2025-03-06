@@ -9,7 +9,8 @@ import LandingPage from "./LandingPage";
 
 function Energy() {
   // State for theme toggle
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
 
   // State for TOC visibility
   const [isTocOpen, setIsTocOpen] = useState(false);

@@ -167,6 +167,8 @@ body {
 .container li {
   margin: 0px;
   border: 0px;
+  padding: 0px;
+  padding-bottom: 5px;
 }
 
 .container.article-page { /* Styles for article pages specifically */
@@ -641,6 +643,10 @@ sub {
 
 .toc-content {
   display: none;
+}
+
+.toc-content ol {
+  margin-left: 15px;
 }
 
 .toc-content li {
