@@ -609,11 +609,10 @@ function OptimizerTaxonomyArticle() {
           of their surface. These roughly break down into two subfamilies of
           algorithms:
         </p>
-        <ul>
-          <li>SGD (Stochastic Gradient Descent), and,</li>
-          <li>Adam (Adaptive Moment Estimation)</li>
-        </ul>
-
+        <p>
+          SGD (Stochastic Gradient Descent) and Adam (Adaptive Moment
+          Estimation)
+        </p>
         <p>
           First-order optimizers have a very low overhead in terms of
           computation since they only calculate one component of the problem
@@ -631,11 +630,7 @@ function OptimizerTaxonomyArticle() {
           a bit of the fog away from the valley to see the broader shape of the
           territory. These too have two primary subfamilies of algorithms:
         </p>
-        <ul>
-          <li>Netwonian, and,</li>
-          <li>Quasi-Newtonian</li>
-        </ul>
-
+        <p>Netwonian and Quasi-Newtonian</p>
         <p>
           Second-order optimizers seem to have been found to work well on Deep
           CNNs and GNNs but aren't used as much on most of the large networks in
@@ -661,6 +656,7 @@ function OptimizerTaxonomyArticle() {
         </p>
 
         <h3 id="first-order">First-Order Optimizers</h3>
+        <div style={{ "margin-top": "10px" }}></div>
         <h4 id="sgd-type">SGD-Type</h4>
 
         <p>
@@ -901,27 +897,23 @@ function OptimizerTaxonomyArticle() {
           There are a few further SGD-Type optimizers which pop up sporadically
           in the literature:
         </p>
-        <ul className="in-text">
-          <li className="in-text">
-            <MathJax inline>{`\\(L^2\\)`}</MathJax> regularized SGD (SGDW) which
-            decreases the weight additionally based on the scale of that weight,
-            ideally to prevent overfitting, but which often falls down through
-            mucking the signal for actual accuracy convergence.
-          </li>
-          <li className="in-text">
-            SGD with Projection (SGDP) which hypothetically minimizes weight
-            updates in the direction of increasing the norm of the weights (aka
-            regularizing the weights) but which only performs slighly above
-            SGDW.
-          </li>
-          <li className="in-text">
-            and Quasi-hyperbolic momentum (QHM) which uses a weighted sum of
-            pure SGD and a SGD model using momentum and in the process achieves
-            higher avoidance of local minimums over SGD but still falls into the
-            traps of the SGD with momentum models, achieving an unhappy medium.
-          </li>
-        </ul>
-
+        <p>
+          <MathJax inline>{`\\(L^2\\)`}</MathJax> regularized SGD (SGDW) which
+          decreases the weight additionally based on the scale of that weight,
+          ideally to prevent overfitting, but which often falls down through
+          mucking the signal for actual accuracy convergence.
+        </p>
+        <p>
+          SGD with Projection (SGDP) which hypothetically minimizes weight
+          updates in the direction of increasing the norm of the weights (aka
+          regularizing the weights) but which only performs slighly above SGDW.{" "}
+        </p>
+        <p>
+          Finally, Quasi-hyperbolic momentum (QHM) which uses a weighted sum of
+          pure SGD and a SGD model using momentum and in the process achieves
+          higher avoidance of local minimums over SGD but still falls into the
+          traps of the SGD with momentum models, achieving an unhappy medium.
+        </p>
         <p>
           Overall, there's a broad family of optimizers built off the core of
           SGD which develop on each other in very interesting ways to observe
@@ -2436,7 +2428,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>24.</span>
+            <span>24.</span>{" "}
             <a
               href="https://arxiv.org/pdf/2002.09018"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2445,7 +2437,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>25.</span>
+            <span>25.</span>{" "}
             <a
               href="https://arxiv.org/pdf/2309.06497"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2455,7 +2447,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>26.</span>
+            <span>26.</span>{" "}
             <a
               href="https://arxiv.org/pdf/2406.17748"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2464,7 +2456,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>27.</span>
+            <span>27.</span>{" "}
             <a
               href="https://arxiv.org/pdf/1503.05671"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2473,7 +2465,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>28.</span>
+            <span>28.</span>{" "}
             <a
               href="https://kellerjordan.github.io/posts/muon/"
               style={{ color: "inherit", textDecoration: "underline" }}
