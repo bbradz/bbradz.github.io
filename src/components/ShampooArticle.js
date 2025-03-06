@@ -6,10 +6,12 @@ import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts";
 import Library from "./Library";
 import LandingPage from "./LandingPage";
+import TwitterEmbed from "./TwitterEmbed";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function ShampooArticle() {
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
   const citationCopyButtonRef = useRef(null);
   const citationCheckIconRef = useRef(null);
   const tocArrowRef = useRef(null);
@@ -320,7 +322,7 @@ function ShampooArticle() {
           </div>
 
           <p>
-            This is a continuation of my
+            This is a continuation of my{" "}
             <Link to="/posts/optimizers">Optimizers</Link> article.
           </p>
 
@@ -432,7 +434,7 @@ function ShampooArticle() {
           </p>
 
           <p>
-            Shampoo builds on
+            Shampoo builds on{" "}
             <a href="https://arxiv.org/pdf/1503.05671">
               Kronecker-factored approximate Curvature (K-FAC)
             </a>
@@ -570,29 +572,7 @@ function ShampooArticle() {
             as the ideal decay rate for stochastic optimization.
           </p>
 
-          <div className="centered-item-holder">
-            <blockquote className="twitter-tweet">
-              <p lang="en" dir="ltr">
-                So Shampoo has been getting some renewed attention for winning
-                one of the inaugural AlgoPerf challenges. I wanted to understand
-                what the method is doing, so I employed my favourite trick of
-                just ~directly interpreting the pseudocode~
-                <br />
-                <br />
-                (1/8)
-                <a href="https://t.co/0VlJRQ9rt6">pic.twitter.com/0VlJRQ9rt6</a>
-              </p>
-              — Jeremy Bernstein (@jxbz)
-              <a href="https://twitter.com/jxbz/status/1819846348130418706?ref_src=twsrc%5Etfw">
-                August 3, 2024
-              </a>
-            </blockquote>
-            <script
-              async
-              charSet="utf-8"
-              src="https://platform.twitter.com/widgets.js"
-            />
-          </div>
+          <TwitterEmbed />
 
           <p>
             Another little appreciated aspect of this algorithm I've observed is

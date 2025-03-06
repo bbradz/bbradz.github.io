@@ -232,27 +232,6 @@ function Posts() {
                     </div>
                   </div>
                 </Link>
-
-                <Link to="/posts/shampoo" className="post-card">
-                  <div className="post-main">
-                    <h3 className="post-title">
-                      Shampoo clears the competition!
-                    </h3>
-                    <p className="post-description">
-                      Digging into one of the Optimization algorithms making
-                      waves.
-                    </p>
-                    <div className="metadata">
-                      <span>August 19, 2024</span> ·
-                      <span>8 min read (1.5K words)</span>
-                    </div>
-                    <div className="tags">
-                      <span className="tag">Optimization</span>
-                      <span className="tag">Stochastic Calculus</span>
-                      <span className="tag">Research</span>
-                    </div>
-                  </div>
-                </Link>
               </div>
             </div>
           </section>

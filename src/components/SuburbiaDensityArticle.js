@@ -8,7 +8,8 @@ import Library from "./Library";
 import LandingPage from "./LandingPage";
 
 function SuburbiaDensityArticle() {
-  const [theme, setTheme] = useState("dark");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const [theme, setTheme] = useState(savedTheme);
   const [isTocOpen, setIsTocOpen] = useState(false);
   const citationCopyButtonRef = useRef(null);
   const citationCheckIconRef = useRef(null);
