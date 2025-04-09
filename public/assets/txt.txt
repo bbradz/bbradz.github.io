@@ -6,28 +6,24 @@ https://semianalysis.com/2025/01/23/openai-stargate-joint-venture-demystified/?a
 https://stratechery.com/2025/deepseek-faq/?utm_source=tldrproduct
 https://www.theatlantic.com/ideas/archive/2025/01/deepseek-ai-investment-tech/681516/
 https://arxiv.org/pdf/2503.01776
+https://sos-vo.org/sites/sos-vo.org/files/sos_files/mww-distributed-solver-proofspdf.pdf
+https://github.com/domschrei/mallob
+https://arxiv.org/pdf/2312.15796
+https://deepmind.google/discover/blog/gencast-predicts-weather-and-the-risks-of-extreme-conditions-with-sota-accuracy/
+https://www.nature.com/articles/s41586-024-08252-9.pdf
 
 
 
 How To Push:
 
-rm -rf build
-rm -rf node_modules/.cache
-rm -rf node_modules/.parcel-cache
+npm run clean
 npm install
-npm run build
-npm run deploy
 git add .
-git commit -m "maintenance"
+git commit -m "updated library"
 git push origin main
+npm run deploy
 
-    git branch -D gh-pages
-    git subtree split --prefix build main -b gh-pages
-    git push origin gh-pages --force
-
-
-How to process Repo:
-
-1. navigate into repo directory
-repo-to-text
-find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g' > repo_structure.txt
+One time I ran into it hanging on idealTree when trying to npm install, to fix it I ran:
+    npm cache clean --force
+    rm -rf node_modules package-lock.json
+    npm install
