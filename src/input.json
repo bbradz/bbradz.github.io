@@ -53,7 +53,7 @@
     "title": "Step-by-Step Diffusion: An Elementary Tutorial",
     "author": "University of Montreal",
     "description": "<not read>",
-    "tags": ["Diffusion Models", "Tutorial", "Arxiv"],
+    "tags": ["Diffusion", "Tutorial", "Arxiv"],
     "readTime": 1.5,
     "releaseDate": "Not specified",
     "isRead": false,
@@ -460,26 +460,6 @@
     "downloadLink": "https://www.youtube.com/watch?v=pkJkHB_c3nA&t=46s"
   },
   {
-    "title": "AI for physics & physics for AI",
-    "author": "MIT",
-    "description": "Description of the AI Feynman project for Symbolic Regression on Physics Data.",
-    "tags": ["Symbolic Systems", "YT"],
-    "readTime": 1.0,
-    "releaseDate": "2020-06-25",
-    "isRead": true,
-    "downloadLink": "https://www.youtube.com/watch?v=pkJkHB_c3nA&t=46s"
-  },
-  {
-    "title": "Parables on the Power of Planning in AI: From Poker to Diplomacy",
-    "author": "Noam Brown",
-    "description": "OpenAI's Noam Brown explains the story of the power of applying planning to AI in Games.",
-    "tags": ["LLMs", "Reinforcement Learning", "YT"],
-    "readTime": 1.0,
-    "releaseDate": "2024-09-17",
-    "isRead": true,
-    "downloadLink": "https://www.youtube.com/watch?v=eaAonE58sLU"
-  },
-  {
     "title": "The Wisdom (and Madness) of Crowds: Political Markets as Election Predictors",
     "author": "Aswath Damodaran",
     "description": "Examines the history of thought around the conditions under which the crowd or market's judgment becomes wise.",
@@ -683,7 +663,7 @@
     "title": "Good Lord",
     "author": "Benn",
     "description": "essay from the supposed perspective of a tech insider about the internal experience of a newly empowered debaucherous trump-fueled tech vibe",
-    "tags": ["Politics", "Technology", "Site"],
+    "tags": ["Politics", "Tech", "Site"],
     "readTime": 0.5,
     "releaseDate": "2025-01-24",
     "isRead": true,
@@ -851,7 +831,7 @@
   },
   {
     "title": "ZeRO++",
-    "author": "Micorsoft",
+    "author": "Microsoft",
     "description": "A Follow up to ZeRO, this paper introduces additional information about ways to i. offload more memory usage onto local CPU or node-level memory and ii. optimize the communication which is leaned on heavily by these ZeRO techniques.",
     "tags": ["Distributed Computing", "Arxiv"],
     "readTime": 1.0,
@@ -918,5 +898,3820 @@
     "releaseDate": "2019-12-03",
     "isRead": true,
     "downloadLink": "https://arxiv.org/pdf/2003.00295"
+  },
+  {
+    "title": "Monolith: Real Time Recommendation System",
+    "author": "Bytedance",
+    "description": "Did you know TikTok's algorithm is *kinda* opensource? This paper explains their recommendation algorithm and it's SOTA build around online training.",
+    "tags": ["Content Recommendation", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2209.07663"
+  },
+  {
+    "title": "Monte Carlo Methods in Financial Engineering",
+    "author": "Paul Glasserman",
+    "description": "Discusses the theory of Monte Carlo methods, their application to derivative pricing, and a overview of the top models being used in Financial Engineeering.",
+    "tags": ["Finance", "Mathematics", "Markets", "Essay"],
+    "readTime": 12.0,
+    "releaseDate": "2004-01-01",
+    "isRead": false,
+    "downloadLink": "https://www.bauer.uh.edu/spirrong/Monte_Carlo_Methods_In_Financial_Enginee.pdf"
+  },
+  {
+    "title": "Fundamental Concepts of Time-Series Econometrics",
+    "author": "Reed College",
+    "description": "Digs into the ML theory of time-series prediciton. Swap out chapter in url, goes up to 5 chapters",
+    "tags": ["Forecasting", "Essay"],
+    "readTime": 2.0,
+    "releaseDate": "2019-01-01",
+    "isRead": true,
+    "downloadLink": "https://www.reed.edu/economics/parker/312/tschapters/S13_Ch_1.pdf"
+  },
+  {
+    "title": "How I came in first on ARC-AGI-Pub using Sonnet 3.5 with Evolutionary Test-time Compute",
+    "author": "Jeremy Berman",
+    "description": "Digs into the pre o3 SOTA in solving the ARC-AGI becnhmark",
+    "tags": ["LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-06",
+    "isRead": false,
+    "downloadLink": "https://jeremyberman.substack.com/p/how-i-got-a-record-536-on-arc-agi"
+  },
+  {
+    "title": "The definitive guide to market microstructure",
+    "author": "Databento.com",
+    "description": "Dictionary of terms in Market mechanics",
+    "tags": ["Markets", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-03",
+    "isRead": false,
+    "downloadLink": "https://databento.com/microstructure"
+  },
+  {
+    "title": "A scalable framework for learning the geometry-dependent solution operators of PDEs",
+    "author": "Yin et al.",
+    "description": "Introduces a much more efficient method for evaluating PDEs with complex geometries.",
+    "tags": ["Mathematics", "Machine Learning", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2024-07-11",
+    "isRead": false,
+    "downloadLink": "https://www.nature.com/articles/s43588-024-00732-2.pdf"
+  },
+  {
+    "title": "Titans: Learning to Memorize at Test Time",
+    "author": "Google",
+    "description": "Introduces a neural long-term memory module for memorizing context.",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.00663"
+  },
+  {
+    "title": "RoRA: Efficient Fine-Tuning of LLM with Reliability Optimization for Rank Adaptation",
+    "author": "Liu et al.",
+    "description": "Adapts LoRA to improve performance with higher rank size.",
+    "tags": ["Quantization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.04315"
+  },
+  {
+    "title": "The Scaling Paradox",
+    "author": "Toby Ord",
+    "description": "Analyzes the feeling of scaling having halted.",
+    "tags": ["LLMs", "Economics", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2024-08-10",
+    "isRead": false,
+    "downloadLink": "https://www.tobyord.com/writing/the-scaling-paradox"
+  },
+  {
+    "title": "Beating cuBLAS in Single-Precision General Matrix Multiplication",
+    "author": "Aman Salykov",
+    "description": "Practical walkthrough of how to write a GPU GEMM kernel on par with SOTA and what that even means",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-12",
+    "isRead": false,
+    "downloadLink": "https://salykova.github.io/sgemm-gpu"
+  },
+  {
+    "title": "Reversible Computing Escapes the Lab in 2025",
+    "author": "IEEE Spectrum",
+    "description": "Article on a start-up utilizing Reverse Computation (?) for power saving on chips",
+    "tags": ["Hardware", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-02",
+    "isRead": false,
+    "downloadLink": "https://spectrum.ieee.org/reversible-computing"
+  },
+  {
+    "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
+    "author": "MiniMax",
+    "description": "Optimized LLM for long-context tasks via MoE and Lightning Attention",
+    "tags": ["Optimization", "LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.08313"
+  },
+  {
+    "title": "Learning CUDA by optimizing softmax: A worklog",
+    "author": "Maharshi Pandya",
+    "description": "Writes out a optimized softmax in CUDA to practically learn how to use CUDA",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-04",
+    "isRead": false,
+    "downloadLink": "https://maharshi.bearblog.dev/optimizing-softmax-cuda/"
+  },
+  {
+    "title": "Jacobian Descent for Multi-Objective Optimization",
+    "author": "EPFL",
+    "description": "Models multi-objective optimization goal as differing rows of the jacobian, showing strong results.",
+    "tags": ["Mathematics", "Optimizers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2406.16232"
+  },
+  {
+    "title": "Complexity Control Facilitates Reasoning-Based Compositional Generalization in Transformers",
+    "author": "Zhang et al.",
+    "description": "Analyses the role of initialization, weight decay, masking, memory-based solution, and reasoning on allowing Transformers to solve compositional problems.",
+    "tags": ["Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.08537"
+  },
+  {
+    "title": "AI Has Been Surprising for Years",
+    "author": "Carnegie Endowment for International Peace",
+    "description": "Describes how AI has been pushing boundaries over time and the shape of that progress.",
+    "tags": ["Economics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-06",
+    "isRead": false,
+    "downloadLink": "https://carnegieendowment.org/research/2025/01/ai-has-been-surprising-for-years?lang=en"
+  },
+  {
+    "title": "How has DeepSeek improved the Transformer architecture?",
+    "author": "Epoch AI",
+    "description": "Digs into the architectural changes that made the DeepSeek moment pop out.",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-17",
+    "isRead": false,
+    "downloadLink": "https://epoch.ai/gradient-updates/how-has-deepseek-improved-the-transformer-architecture"
+  },
+  {
+    "title": "Evolution as Backstop for Reinforcement Learning",
+    "author": "Gwern",
+    "description": "Great article connecting theories of evolution and industrial organization to RL intutions.",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2021-07-04",
+    "isRead": false,
+    "downloadLink": "https://gwern.net/backstop"
+  },
+  {
+    "title": "TREAD: Token Routing for Efficient Architecture-agnostic Diffusion Training",
+    "author": "MCML",
+    "description": "Achieves 14-37x speedup via efficient routing of tokens from early layers to deeper layers.",
+    "tags": ["Diffusion", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.04765"
+  },
+  {
+    "title": "Regret Minimization in Games with Incomplete Information",
+    "author": "University of Alberta",
+    "description": "Poposes a conterfacutal regret formulation to estimate regret in games with ginormous state spaces.",
+    "tags": ["Reinforcement Learning", "Information Theory", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-20",
+    "isRead": false,
+    "downloadLink": "https://proceedings.neurips.cc/paper/2007/file/08d98638c6fcd194a4b1e6992063e944-Paper.pdf"
+  },
+  {
+    "title": "Mastering Chess and Shogi by Self-Play",
+    "author": "Deepmind",
+    "description": "Generalizes the AlphaZero algorithm to other games",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2017-12-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1712.01815"
+  },
+  {
+    "title": "Multi-Agent Reinforcement Learning",
+    "author": "Zhang et al.",
+    "description": "Reviews the literature in MARL",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2021-04-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1911.10635"
+  },
+  {
+    "title": "Request for research: Monte Carlo Tree Search for reasoning, with PUCT",
+    "author": "Finnbarr Timbers",
+    "description": "Describes the need to invest in the PUCT formula of value estimation over traditional UCT.",
+    "tags": ["Mathematics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://finbarr.ca/request-for-research-puct/"
+  },
+  {
+    "title": "Training LLMs to Reason in Continuous Latent Space",
+    "author": "Meta",
+    "description": "Feeds the prior hidden state into the models reasoning for the next token, allowing thought in latent space.",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.06769"
+  },
+  {
+    "title": "The Land of Greater Fools",
+    "author": "Hamilton Nolan",
+    "description": "Pessimistic --to pessimistic for my taste-- description of America as uncaring of it's citizens.",
+    "tags": ["Politics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-21",
+    "isRead": false,
+    "downloadLink": "https://www.hamiltonnolan.com/p/the-land-of-greater-fools"
+  },
+  {
+    "title": "America is losing the physical technologies of the future",
+    "author": "Noahpinion",
+    "description": "Highlights the importance of a burgeoning wave of Electrical technology in the next age of industry and the lack of that industry in the US",
+    "tags": ["Politics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-18",
+    "isRead": false,
+    "downloadLink": "https://www.noahpinion.blog/p/america-is-losing-the-physical-technologies"
+  },
+  {
+    "title": "DeepSeek-V3 Technical Report",
+    "author": "DeepSeek",
+    "description": "Breaks down the pre-training and post-training to construct the V3 base model.",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.19437"
+  },
+  {
+    "title": "DeepSeek V3 and the actual cost of training frontier AI models",
+    "author": "Nathan Lambert",
+    "description": "Breaks down the cost of training AI models and the true costs of running a AI Lab",
+    "tags": ["Economics", "LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-09",
+    "isRead": false,
+    "downloadLink": "https://www.interconnects.ai/p/deepseek-v3-and-the-actual-cost-of"
+  },
+  {
+    "title": "More Tokens, Lower Precision: Towards the Optimal Token-Precision Trade-off in KV Cache Compression",
+    "author": "Peking University",
+    "description": "Proposes a method of quantized pruning of KV Cache to increase long-context performance of LLMs",
+    "tags": ["LLMs", "Quantization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.12706"
+  },
+  {
+    "title": "Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in SOTA LLMs",
+    "author": "Jeulich Supercomputing Center",
+    "description": "Shows breakdown of foundation models on rather basic tasks",
+    "tags": ["Evals", "LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2406.02061"
+  },
+  {
+    "title": "Compositionality and Ambiguity: Latent Co-occurrence and Interpretable Subspaces",
+    "author": "Clarke et al.",
+    "description": "Analyzes the independence of the latents learned by SAEs",
+    "tags": ["Interpretability", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-20",
+    "isRead": false,
+    "downloadLink": "https://www.lesswrong.com/posts/WNoqEivcCSg8gJe5h/compositionality-and-ambiguity-latent-co-occurrence-and"
+  },
+  {
+    "title": "Autonomy-of-Experts Models",
+    "author": "Lv et al.",
+    "description": "Proposes alternative to MoE where the Experts pick amongst themselves rather than being routed to.",
+    "tags": ["MoEs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-22",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.13074"
+  },
+  {
+    "title": "Janus-Pro: Unified Multimodal Understanding and Generation with Data and Model Scaling",
+    "author": "DeepSeek",
+    "description": "Talks about the challenges of optimizing training for multimodal tasks",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.17811"
+  },
+  {
+    "title": "The Illustrated DeepSeek-R1",
+    "author": "Jay Alammar",
+    "description": "Walks through the training pipeline to produce the R1 Deepseek reasoning model",
+    "tags": ["LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-27",
+    "isRead": false,
+    "downloadLink": "https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1"
+  },
+  {
+    "title": "Interpretability as Compression: Reconsidering SAE Explanations of Neural Activations with MDL-SAEs",
+    "author": "Apollo Research",
+    "description": "Introduces Minimum Decision Length SAEs to refocus the goal of interpretability",
+    "tags": ["Interpretability", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-10-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.11179"
+  },
+  {
+    "title": "AI's Power Requirements Under Exponential Growth",
+    "author": "RAND Corp.",
+    "description": "Breaks down trends in the power usage of AI Data Centers and the challenges in scaling power production in the US to that point.",
+    "tags": ["Economics", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-28",
+    "isRead": false,
+    "downloadLink": "https://www.rand.org/content/dam/rand/pubs/research_reports/RRA3500/RRA3572-1/RAND_RRA3572-1.pdf"
+  },
+  {
+    "title": "Scaling the Tülu 3 post-training recipes to surpass the performance of DeepSeek V3",
+    "author": "Ai2",
+    "description": "Explanation of how the Post-Training was scaled for the Tulu class of models to outperform DeepSeek V3",
+    "tags": ["Optimization", "LLMs", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2025-01-30",
+    "isRead": false,
+    "downloadLink": "https://allenai.org/blog/tulu-3-405B"
+  },
+  {
+    "title": "Advancing Language Model Reasoning through RL and Inference Scaling",
+    "author": "Tsinghua University",
+    "description": "Discusses methods for LLM training for reasoning at scale.",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2025-01-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.11651"
+  },
+  {
+    "title": "DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts",
+    "author": "SemiAnalysis",
+    "description": "Talks about the state of the race to the bottom in costs of models and the chinese market for LLMs",
+    "tags": ["Economics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-31",
+    "isRead": false,
+    "downloadLink": "https://semianalysis.com/2025/01/31/deepseek-debates/"
+  },
+  {
+    "title": "Streaming DiLoCo with overlapping communication",
+    "author": "Google",
+    "description": "Dicusses methods for managing communication in DiLoCo to minimize communication bottleneck.",
+    "tags": ["Distributed Systems", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.18512"
+  },
+  {
+    "title": "Gradual Disempowerment: Systemic Existential Risks from Incremental AI Development",
+    "author": "Kulveit et al.",
+    "description": "Examines how the presense of ASI in society could, even when aligned, move society to prioritize the interests of that ASI",
+    "tags": ["AI Safety", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.16946"
+  },
+  {
+    "title": "A vision researcher’s guide to some RL stuff: PPO & GRPO",
+    "author": "Yuge Shi",
+    "description": "Digs into the math behind GRPO and PPO",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-31",
+    "isRead": false,
+    "downloadLink": "https://yugeten.github.io/posts/2025/01/ppogrpo/"
+  },
+  {
+    "title": "GRPO",
+    "author": "none",
+    "description": "Analyzes GRPO",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://superb-makemake-3a4.notion.site/group-relative-policy-optimization-GRPO-18c41736f0fd806eb39dc35031758885"
+  },
+  {
+    "title": "What fully automated firms will look like",
+    "author": "Dwarkesh Patel",
+    "description": "Talking about the potential of collectives of AIs working together",
+    "tags": ["Economics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-31",
+    "isRead": false,
+    "downloadLink": "https://www.dwarkesh.com/p/ai-firm"
+  },
+  {
+    "title": "Deep Gradient Compression: Reducing Communicaiton Bandwidth for Distributed Training",
+    "author": "Tsinghua University",
+    "description": "Achieves 300-600x gradient compressions without losing accuracy",
+    "tags": ["Distributed Systems", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2020-06-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1712.01887"
+  },
+  {
+    "title": "Memorizing Transformers",
+    "author": "Google",
+    "description": "Allows Transformer to memorize it's internal representation and observes how it impacts loss curve.",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2022-03-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2203.08913"
+  },
+  {
+    "title": "s1: Simple test-time scaling",
+    "author": "Muenninghoff et al.",
+    "description": "Boosts AIME performance by 7% via custom dataset and test-time compute control",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.19393"
+  },
+  {
+    "title": "Scalable-Softmax is Superior for Attention",
+    "author": "Nakanishi et al.",
+    "description": "Shows Scalable-Softmax acheives better generalization across lengths",
+    "tags": [""],
+    "readTime": 0.0,
+    "releaseDate": "2025-01-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.19399"
+  },
+  {
+    "title": "On DeppSekk and Export Controls",
+    "author": "Dario Amodei",
+    "description": "Anthropic CEO explains how DeepSeek impacts his understanding of where models and the industry are going as well as how it thinks it should inform American policy on Tech exports",
+    "tags": ["Politics", "Economics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-01",
+    "isRead": false,
+    "downloadLink": "https://darioamodei.com/on-deepseek-and-export-controls"
+  },
+  {
+    "title": "Language Models Use Trigonometry to Do Addition",
+    "author": "Tegmark et al.",
+    "description": "Reverse engineers how LLMs do addition.",
+    "tags": ["Interpretability", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-02",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.00873"
+  },
+  {
+    "title": "Harmonic Loss Trains Interpretable AI Models",
+    "author": "Tegmark et al.",
+    "description": "Introduces alternative to CE loss which helps to trian more interpretable AI models",
+    "tags": ["Interpretability", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.01628"
+  },
+  {
+    "title": "Scaling Embedding Layers in Language Models",
+    "author": "Yu et al.",
+    "description": "Proposes a method for extending input embeddings layers as layer size increases.",
+    "tags": ["Optimization", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.01637"
+  },
+  {
+    "title": "The chaos has arrived",
+    "author": "Noahpinion",
+    "description": "Poignently describes the anxiety of Trump's second term as a rise of chaos and a return to the laws of Jungle, a receding of global organization and order.",
+    "tags": ["Politics", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2025-02-04",
+    "isRead": false,
+    "downloadLink": "https://www.noahpinion.blog/p/the-chaos-has-arrived"
+  },
+  {
+    "title": "Ladder-Residual: Parallelism-Aware Architecture for LLM Inference",
+    "author": "Zhang et al.",
+    "description": "",
+    "tags": ["Distributed Systems", "Optimization", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.06589"
+  },
+  {
+    "title": "Deepseek's Low Level Hardware Magic",
+    "author": "Meekochii",
+    "description": "Breaks down the methods behind how Deepseek speeds up performance by getting close to the metal.",
+    "tags": ["Hardware", "Optimization", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-05",
+    "isRead": false,
+    "downloadLink": "https://research.meekolab.com/deepseeks-low-level-hardware-magic"
+  },
+  {
+    "title": "In-Context Learning and Induction Heads",
+    "author": "Anthropic",
+    "description": "Analyzes how Transformers learn to make inductive conclusions from the tokens they observe in their context window.",
+    "tags": ["Interpretability", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2022-03-08",
+    "isRead": false,
+    "downloadLink": "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html"
+  },
+  {
+    "title": "The 37 Implementation Details of PPO",
+    "author": "Huang et al.",
+    "description": "",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2022-03-25",
+    "isRead": false,
+    "downloadLink": "https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/"
+  },
+  {
+    "title": "Develop AI Agents for System Engineering in Factorio",
+    "author": "Neel Kant",
+    "description": "Fun paper advocating for using Factorio to evaluate AI agent systems' engineering abilities.",
+    "tags": ["Agents", "Factorio", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.01492"
+  },
+  {
+    "title": "Efficiently Scaling Transformer Inference",
+    "author": "Pope et al.",
+    "description": "Looks into the many different optimizations needed to advance the Pareto frontier of latency and MFU",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2022-11-09",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2211.05102"
+  },
+  {
+    "title": "A comparative analysis of SOTA time-series forecasting algorithsm",
+    "author": "Ulster University",
+    "description": "Looks into the different SOTA methods in time-series forecasting",
+    "tags": ["Forecasting", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2022-02-22",
+    "isRead": false,
+    "downloadLink": "https://american-cse.org/csci2022-ieee/pdfs/CSCI2022-2lPzsUSRQukMlxf8K2x89I/202800a089/202800a089.pdf"
+  },
+  {
+    "title": "A Survey of Deep Learning and Foundation Models for Time-Series Forecasting",
+    "author": "Miller et al.",
+    "description": "Surveys the different applications of DL to forecasting time-series data",
+    "tags": ["Forecasting", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2024-01-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2401.13912"
+  },
+  {
+    "title": "Better Research Workflows: Managing Project Dependencies",
+    "author": "Apoorv Khandelwal",
+    "description": "Dicusses management of project dependencies in the context of working as a NLP researcher.",
+    "tags": ["Iteration", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-07",
+    "isRead": false,
+    "downloadLink": "https://blog.apoorvkh.com/posts/project-dependencies.html"
+  },
+  {
+    "title": "Leveraging the true depth of LLMs",
+    "author": "Gonzalez et al.",
+    "description": "Groups layers into pairs to be ran in parallel in shuffled orders to get 1.2x tokens without re-training or fine-tuning.",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.02790"
+  },
+  {
+    "title": "Value-Based Deep RL Scales Predictably",
+    "author": "UC Berkeley",
+    "description": "Measures how higher budgets for value-based Deep RL scales",
+    "tags": ["Reinforcement Learning", "Economics", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.04327"
+  },
+  {
+    "title": "Transformers from Scratch",
+    "author": "Brandon Rohrer",
+    "description": "Explains the parts of a Transformer from end to end",
+    "tags": ["Transformers", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2021-10-29",
+    "isRead": false,
+    "downloadLink": "https://e2eml.school/transformers.html"
+  },
+  {
+    "title": "Three Observations",
+    "author": "Sam Altman",
+    "description": "Sam Altmans comments on the current path towards AGI",
+    "tags": ["Politics", "Economics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-09",
+    "isRead": false,
+    "downloadLink": "https://blog.samaltman.com/three-observations"
+  },
+  {
+    "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+    "author": "Geiping et al.",
+    "description": "",
+    "tags": ["Transformers", "Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.05171"
+  },
+  {
+    "title": "AGI's Five Hard National Secruity Problems",
+    "author": "RAND Corp.",
+    "description": "Explains the challenges AGI opens up with weapons systems and instability of our systemic order.",
+    "tags": ["Politics", "AI Safety", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-05",
+    "isRead": false,
+    "downloadLink": "https://www.rand.org/content/dam/rand/pubs/perspectives/PEA3600/PEA3691-4/RAND_PEA3691-4.pdf"
+  },
+  {
+    "title": "Harnessing 3200 Gbps Network: A Journey with RDMA, EFA, and libfabric",
+    "author": "Lequn Chen",
+    "description": "15 part series on how to optimize a H100 cluster to 3200 GBPS",
+    "tags": ["HPC", "Site"],
+    "readTime": 2.0,
+    "releaseDate": "2024-12-25",
+    "isRead": false,
+    "downloadLink": "https://le.qun.ch/en/blog/2024/12/25/libfabric-efa-0-intro/"
+  },
+  {
+    "title": "Journey to 3200 Gbps: High-Performance GPU Memory Transfer on AWS Sagemaker Hyperpod",
+    "author": "Perplexity",
+    "description": "Short article from Perplexity on their Journey to 3200 GBPS on a AWS Hyperpod",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://www.perplexity.ai/hub/blog/high-performance-gpu-memory-transfer-on-aws"
+  },
+  {
+    "title": "MARS: Unleashing the Power of Variance Reduction for Training Large Models",
+    "author": "Yuan et al.",
+    "description": "Proposes a shampoo-inspired optimizer built around reducing the variance during training to boost learning",
+    "tags": ["Optimizers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2411.10438"
+  },
+  {
+    "title": "Demystifying Diffusion Models",
+    "author": "Goyal Pramod",
+    "description": "Explains how Diffusion Models work!",
+    "tags": ["Diffusion", "Site"],
+    "readTime": 2.0,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://goyalpramod.github.io/blogs/demysitifying_diffusion_models/"
+  },
+  {
+    "title": "Matryosha Quantization",
+    "author": "Google",
+    "description": "Technique for serving model at the quality required by the task at hand",
+    "tags": ["Quantization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.06786"
+  },
+  {
+    "title": "Ultra-Sparse Memory Network",
+    "author": "Bytedance",
+    "description": "Proposes a sparse memory layer to address limitation of MoE memory costs",
+    "tags": ["MoEs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2411.12364"
+  },
+  {
+    "title": "Reinforced Self-Training (ReST) for Language Modeling",
+    "author": "Google",
+    "description": "Technnique for producing a dataset to RLHF across.",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-08-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2308.08998"
+  },
+  {
+    "title": "Position Coupling: Improving Length Generalization of Arithmetic Transformers Using Task Structure",
+    "author": "Google",
+    "description": "Proposes a position coupling method for improving generalization of Arithmetic Transformer to higher operand lengths.",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2405.20671"
+  },
+  {
+    "title": "Self-Improving Transformers Overcome Easy-to-Hard and Length Generalization Challenges",
+    "author": "University of Wisconsin-Madison",
+    "description": "Proposes self-improvement for Transformers to generate and learn from progressively harder tasks for sequence length generalization",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.01612"
+  },
+  {
+    "title": "The psychology of waiting, loading animations, and Facebook",
+    "author": "Rusty Mitchell",
+    "description": "Small article on the design of waiting screens in the most popular app on earth.",
+    "tags": ["Tech", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-03",
+    "isRead": false,
+    "downloadLink": "https://blog.mercury.io/the-psychology-of-waiting-loading-animations-and-facebook/"
+  },
+  {
+    "title": "DeepCrossAttention: Supercharging Transformer Residual Connections",
+    "author": "Google",
+    "description": "Introduces a method for enhanced residual learning for richer layer interactions",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.06785"
+  },
+  {
+    "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+    "author": "Pethik et al.",
+    "description": "Proposes a new family of stochastic optimization algorithms",
+    "tags": ["Deep Learning", "Optimizers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.07529"
+  },
+  {
+    "title": "Datacenter Anatomy Part 2 – Cooling System",
+    "author": "SemiAnalysis",
+    "description": "Breaks down the nuances of cooling systems across the Mag 7 Data Center Arms Race",
+    "tags": ["Hardware", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-12",
+    "isRead": false,
+    "downloadLink": "https://semianalysis.com/2025/02/13/datacenter-anatomy-part-2-cooling-systems/"
+  },
+  {
+    "title": "Learning CUDA by optimizing matrix-vector multiplication",
+    "author": "Maharshi Pandya",
+    "description": "Implements SGEMV on par with cuBLAS as a lesson in CUDA programming",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-18",
+    "isRead": false,
+    "downloadLink": "https://maharshi.bearblog.dev/optimizing-sgemv-cuda/"
+  },
+  {
+    "title": "Any-Precision Deep Neural Networks",
+    "author": "UIUC",
+    "description": "Teach models to have flexible bit-widths during inference",
+    "tags": ["Quantization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2021-01-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1911.07346"
+  },
+  {
+    "title": "On becoming competitive when joining a new company",
+    "author": "Ludwig",
+    "description": "talks about ludwig's experience joining a company and how to join a company successfully",
+    "tags": ["Self-Help", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-05-25",
+    "isRead": false,
+    "downloadLink": "https://ludwigabap.bearblog.dev/on-becoming-competitive-when-joining-a-new-company/"
+  },
+  {
+    "title": "Machine Teaching: What I Learned From My Optimizer",
+    "author": "D.E. Shaw",
+    "description": "Talks about the strategic application of Optimization algorithms in trading algorithms",
+    "tags": ["Finance", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2018-01-01",
+    "isRead": false,
+    "downloadLink": "https://www.deshaw.com/library/machine-teaching"
+  },
+  {
+    "title": "Extending Language Model Context Up to 3 Million Tokens on a Single GPU",
+    "author": "Lee et al.",
+    "description": "Talks about various techniques for how to get a LM to run on context lenghts up to 3e6 tokens on a single GPU",
+    "tags": ["Optimization", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.08910"
+  },
+  {
+    "title": "Reevaluating Policy Gradient Methods for Imperfect-Information Games",
+    "author": "Rudolph et al.",
+    "description": "Looks at the difficulties of applying RL to games with uncertain states",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.08938"
+  },
+  {
+    "title": "Statistical physics, Bayesian inference and neural information processing",
+    "author": "Grant et al.",
+    "description": "Breakdown of 3 lectures on Statistical physics, Bayesian inference and neural information processing",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-09-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2309.17006"
+  },
+  {
+    "title": "TransMLA: Multi-Head Latent Attention Is All You Need",
+    "author": "Peking University",
+    "description": "Proposes a method for converting pre-trained models in MLA-based models plus further training to boost model expressiveness",
+    "tags": ["Optimization", "Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.07864"
+  },
+  {
+    "title": "Generalized Transformers from Applicative Functors",
+    "author": "Tuomas Laakkonen",
+    "description": "Produces a basic model of the generalized functional form of Transformers",
+    "tags": ["Transformers", "Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-12",
+    "isRead": false,
+    "downloadLink": "https://cybercat.institute/2025/02/12/transformers-applicative-functors/#:~:text=Transformers%20are%20a%20machine%2Dlearning,in%20%5BarXiv%3A1706.03762%5D."
+  },
+  {
+    "title": "Distillation Scaling Laws",
+    "author": "Busbridge et al.",
+    "description": "Observes how well you can distill models.",
+    "tags": ["Distillation", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.08606"
+  },
+  {
+    "title": "LLM-SR: Scientific Equation Discovery via Programming with LLMs",
+    "author": "CMU",
+    "description": "Proposes a method of treating equations as sequences for LLMs to generate and rewarding the model based on accuracy of the equation generated on the data at hand.",
+    "tags": ["Symbolic Systems", "Reinforcement Learning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2404.18400"
+  },
+  {
+    "title": "In-Context Symbolic Regression",
+    "author": "Aalto University",
+    "description": "SOTA method using a LLM to iteratively refine a function",
+    "tags": ["Symbolic Systems", "LLMs", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2024-07-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2404.19094"
+  },
+  {
+    "title": "Approximating KL Divergence",
+    "author": "John Schulman",
+    "description": "Proposes more computationally efficient ways to approximate KL Divergence",
+    "tags": ["Machine Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2020-03-07",
+    "isRead": false,
+    "downloadLink": "http://joschu.net/blog/kl-approx.html"
+  },
+  {
+    "title": "Information Entropy Invariance: Enhancing Length Extrapolation in Attention Mechanisms",
+    "author": "Li et al.",
+    "description": "Identifies entropy as a source of difficulty extrapolating across sequence lengths",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.08570"
+  },
+  {
+    "title": "Exploring Grokking: Experimental and Mechanistic Investigations",
+    "author": "Hu et al.",
+    "description": "Explores the phenomenon of grokking into perfect generalization",
+    "tags": ["Deep Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.10898"
+  },
+  {
+    "title": "Competition Dynamics Shape Algorithmic Phases of In-Context Learning",
+    "author": "Harvard University",
+    "description": "Interprets ICL as a mixture of sub-algorithms learned in the weights of your model.",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.01003"
+  },
+  {
+    "title": "Cache Me If You Must: Adaptive Key-Value Quantization for LLMs",
+    "author": "Shutova et al.",
+    "description": "Protocol for adaptively Quantizing KV to compress LLM context",
+    "tags": ["Quantization", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.19392"
+  },
+  {
+    "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
+    "author": "Miserendino et al.",
+    "description": "Proposes a model eval whereby the performance of a model is definitionally how well it can earn money over human workers on SWE tasks",
+    "tags": ["Evals", "LLMs", "Agents", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12115"
+  },
+  {
+    "title": "Rethinking Personalized Ranking at Pinterest: An End-to-End Approach",
+    "author": "Pinterest",
+    "description": "Describes how to efficiently learn user preferences on mixed platforms.",
+    "tags": ["Tech", "Deep Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2022-09-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2209.08435"
+  },
+  {
+    "title": "TokenSkip: Controllable Chain-of-Thought Compression in LLMs",
+    "author": "Hong Kong Polytechnic University",
+    "description": "Outlines a method for cutting CoT length",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12067"
+  },
+  {
+    "title": "Scaling Test-Time Compute Without Verification or RL is Suboptimal",
+    "author": "Sethur et al.",
+    "description": "Digs into how verfication helps in the scaling of performance for LLM RL.",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12118"
+  },
+  {
+    "title": "Don’t Get Lost in the Trees: Streamlining LLM Reasoning by Over-coming Tree Search Exploration Pitfalls",
+    "author": "Tencent",
+    "description": "Shows framework for plugging in various tree search algorithms for better LLM reasoning",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-22",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.11183"
+  },
+  {
+    "title": "Implementing LLaMA3 in 100 Lines of Pure Jax",
+    "author": "Saura Halone",
+    "description": "Digs into the code of the LLama family of models and usage of JAX for LLM usecases.",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://saurabhalone.com/blogs/llama3/web"
+  },
+  {
+    "title": "High-Dimensional Data Analysis with Low-Dimensional Models: Principles, Computation, and Applications",
+    "author": "John Wrights & Yi Ma",
+    "description": "Textbook on methods for ability to efficiently understand high dimensional data using low-dimensional models",
+    "tags": ["Machine Learning", "Essay"],
+    "readTime": 20.0,
+    "releaseDate": "2020-12-01",
+    "isRead": false,
+    "downloadLink": "https://book-wright-ma.github.io/Book-WM-20210422.pdf"
+  },
+  {
+    "title": "Build a Pairs Trading Strategy in Python: A Step-by-Step Guide",
+    "author": "Databento.com",
+    "description": "Step-by-Step guide to implementing a Pairs Trading Strategy in Python",
+    "tags": ["Finance", "Tutorial", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-16",
+    "isRead": false,
+    "downloadLink": "https://databento.com/blog/build-a-pairs-trading-strategy-in-python"
+  },
+  {
+    "title": "A Flag Decomposition for Hierarchical Datasets",
+    "author": "Mankovich et al.",
+    "description": "Dicusses the challenges of training models to learn hierarchically nested datasets",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.07782"
+  },
+  {
+    "title": "Rethink LoRA initialisations for faster convergence",
+    "author": "Datta Nimmaturi",
+    "description": "Shows that there are weight intialization regimes which make convergence of LoRA training faster",
+    "tags": ["Quantization", "Optimization", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-06",
+    "isRead": false,
+    "downloadLink": "https://datta0.github.io/posts/rethink-lora-init/"
+  },
+  {
+    "title": "Learning to Reason at the Frontier of Learnability",
+    "author": "Foster et al.",
+    "description": "Introduces a technique to sample based on learnability for more efficient learning trajectory.",
+    "tags": ["Reasoning", "LLMs", "Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12272"
+  },
+  {
+    "title": "Eager Updates For Overlapped Communication and Computation in DiLoCo",
+    "author": "Google",
+    "description": "Enables lower bandwidth transmission between workers without hurting training performance",
+    "tags": ["Optimizers", "Distributed Systems", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12996"
+  },
+  {
+    "title": "Exploiting Sparsity for Long Context Inference: 1M Token Contexts on Commodity GPUs",
+    "author": "Synk et al.",
+    "description": "Outlines tunable mechanism for attending to the most relevant tokens at every step achieving over 95% of model performance on 2% of input tokens.",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.06766"
+  },
+  {
+    "title": "Long-context GRPO",
+    "author": "Daniel & Michael",
+    "description": "Shows how to optimize the GRPO algorithm to use 90% less VRAM, thus enabling 10x context lengths.",
+    "tags": ["Reinforcement Learning", "Optimization", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-20",
+    "isRead": false,
+    "downloadLink": "https://unsloth.ai/blog/grpo"
+  },
+  {
+    "title": "How to think about derivatives through best linear approximation",
+    "author": "Damek Davis",
+    "description": "Fresh description of understanding derivative and linear approximatins of higher dimensions higher-order derivatives.",
+    "tags": ["Mathematics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-09",
+    "isRead": false,
+    "downloadLink": "https://damek.github.io/STAT-4830/section/5/notes.html"
+  },
+  {
+    "title": "Please Stop Talking About AGI",
+    "author": "Jack Morris",
+    "description": "Builds an alternative reason why talking about some measurable on-coming AGI doesn't make much sense.",
+    "tags": ["AI Safety", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-21",
+    "isRead": false,
+    "downloadLink": "https://substack.com/home/post/p-157633768"
+  },
+  {
+    "title": "S*: Test Time Scaling for Code Generation",
+    "author": "UC Berkeley",
+    "description": "Beneficial test-time training method for generating code",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.14382"
+  },
+  {
+    "title": "Logic-RL: Unleashing LLM Reasoning with Rule-Based RL",
+    "author": "Microsoft",
+    "description": "Build on DeepSeek-R1 to explore rules-based RL for LLMs",
+    "tags": ["Reinforcement Learning", "LLMs", "Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.14768"
+  },
+  {
+    "title": "Distributed GEMM",
+    "author": "SHI Labs",
+    "description": "Implements tnesor-parallel GEMM with NVLind and CUTLASS",
+    "tags": ["HPC", "Parallel Computing", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-01",
+    "isRead": false,
+    "downloadLink": "https://blog.shi-labs.com/distributed-gemm-88be6a481e2b"
+  },
+  {
+    "title": "Introduction to CUDA Programming for Python Developers",
+    "author": "PySpur",
+    "description": "Teaches Python Programmers about how to use CUDA for programming higher performance projects",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://www.pyspur.dev/blog/introduction_cuda_programming"
+  },
+  {
+    "title": "Introduction to Stochastic Calculus",
+    "author": "Ji-Ha Kim",
+    "description": "Explains in simple terms the intution behind methods in stochastic calculus",
+    "tags": ["Mathematics", "Site"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://jiha-kim.github.io/posts/introduction-to-stochastic-calculus/"
+  },
+  {
+    "title": "Algorithms for Optimization",
+    "author": "Mykel J. Kochenderfer & Tim A. Wheeler",
+    "description": "Textbook to explain, in deep detail, the main optimization algorithms out there in the world.",
+    "tags": ["Optimizers", "Essay"],
+    "readTime": 22.0,
+    "releaseDate": "2019-06-08",
+    "isRead": false,
+    "downloadLink": "https://algorithmsbook.com/optimization/files/optimization.pdf"
+  },
+  {
+    "title": "Efficient Transformers: A Survey",
+    "author": "Google",
+    "description": "Breaks down the many different types of transformers looking to improve on the bottlenecks of the Transformer architecture",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2022-03-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2009.06732"
+  },
+  {
+    "title": "Only fools think Elon is incompetent",
+    "author": "Noahpinion",
+    "description": "Talks about the need to not underestimate Elon as he steps into American politics...",
+    "tags": ["Politics", "Essay"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-23",
+    "isRead": false,
+    "downloadLink": "https://www.noahpinion.blog/p/only-fools-think-elon-is-incompetent"
+  },
+  {
+    "title": "Various approaches to parallelizing Muon",
+    "author": "none",
+    "description": "Discusses attempts being made to do Newton-Schulz optimization in a distributed manor",
+    "tags": ["Optimizers", "Parallel Computing", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-23",
+    "isRead": false,
+    "downloadLink": "https://main-horse.github.io/posts/parallelizing-muon/"
+  },
+  {
+    "title": "On the consistent reasoning paradox of intelligence and optimal trust in AI: The power of ‘I don’t know’",
+    "author": "Bastounis et al.",
+    "description": "Deeply questions the nature of intelligence and the power of human reasoning over what current LLMs are structured to do.",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-08-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2408.02357"
+  },
+  {
+    "title": "SWE-RL: Advancing LLM Reasoning via RL on Open Software Evolution",
+    "author": "Meta",
+    "description": "Outlines a self-play loop for teaching a model to learn to write effective software",
+    "tags": ["Reinforcement Learning", "LLMs", "Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.18449"
+  },
+  {
+    "title": "How to Make Superbabies",
+    "author": "GeneSmith et al.",
+    "description": "Digs into the current state of embryonic selection",
+    "tags": ["Tech", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-19",
+    "isRead": false,
+    "downloadLink": "https://www.lesswrong.com/posts/DfrSZaf3JC8vJdbZL/how-to-make-superbabies"
+  },
+  {
+    "title": "Forecasting Rare Language Model Behaviors",
+    "author": "Anthropic",
+    "description": "Fits a scaling law to forecast the risk of high-risk queries given number of queries",
+    "tags": ["AI Safety", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.16797"
+  },
+  {
+    "title": "On the Parameterization of Second-Order Optimization Effective Towards the Infinite Width",
+    "author": "Ishikawa et al.",
+    "description": "Defines an optimizer inspired by K-FAC and Shampoo which generalizes across varying model widths better than both",
+    "tags": ["Optimizers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-08",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2312.12226"
+  },
+  {
+    "title": "Why does GRPO work?",
+    "author": "kalomaze",
+    "description": "Digs into the math behind GRPO",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-27",
+    "isRead": false,
+    "downloadLink": "https://kalomaze.bearblog.dev/why-does-grpo-work/"
+  },
+  {
+    "title": "Infinite Retrieval: Attention Enhanced LLMs in Long-Context Processing",
+    "author": "Ye et al.",
+    "description": "Outlines a method for 288% improvement of retrieval on tasks up to 1M tokens",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2025-02-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12962"
+  },
+  {
+    "title": "Triton Linear Layout: Concept",
+    "author": "Lei Zhang",
+    "description": "Teaches about the layout of memory in OpenAI's Triton library",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-31",
+    "isRead": false,
+    "downloadLink": "https://www.lei.chat/posts/triton-linear-layout-concept/"
+  },
+  {
+    "title": "Tensor Parallelism with jax.pjit",
+    "author": "Irhum Shafkat",
+    "description": "Shows how to shard LLMs across GPUs and TPUs with JAX/Flax",
+    "tags": ["Parallel Computing", "HPC", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2022-08-10",
+    "isRead": false,
+    "downloadLink": "https://irhum.github.io/blog/pjit/"
+  },
+  {
+    "title": "What Every Developer Should Know About GPU Computing",
+    "author": "Abhinav Upadhyay",
+    "description": "Primr on GPU architecture and computing",
+    "tags": ["HPC", "Hardware", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2023-10-18",
+    "isRead": false,
+    "downloadLink": "https://blog.codingconfessions.com/p/gpu-computing"
+  },
+  {
+    "title": "ByteScale: Efficient Scaling of LLM Training with a 2048K Context Length on More Than 12,000 GPUs",
+    "author": "Bytedance",
+    "description": "",
+    "tags": ["LLMs", "Distributed Systems", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.21231"
+  },
+  {
+    "title": "Predictable Scale: Part I — Optimal Hyperparameter Scaling Law in LLM Pretraining",
+    "author": "Li et al.",
+    "description": "Spends tremendous resources to map out the empirical trajectory to change different hyperparameters along as you scale your training",
+    "tags": ["Hyperparameter Optimization", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.04715"
+  },
+  {
+    "title": "Demystify OpenAI Triton",
+    "author": "Fei Kong",
+    "description": "Digs into how OpenAI Triton library works and how to use it to accelerate your programs",
+    "tags": ["HPC", "Libraries", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2023-04-23",
+    "isRead": false,
+    "downloadLink": "https://fkong.tech/posts/2023-04-23-triton-cuda/"
+  },
+  {
+    "title": "Understanding Attention in LLMs",
+    "author": "Bartosz Milewski",
+    "description": "Tries to give another intepretation of what is happening in the Attention mechanism",
+    "tags": ["Transformers", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-06",
+    "isRead": false,
+    "downloadLink": "https://bartoszmilewski.com/2025/03/06/understanding-attention-in-llms/"
+  },
+  {
+    "title": "DeepSeek, Huawei, Export Controls, and the Future of the U.S.-China AI Race",
+    "author": "CSIS",
+    "description": "Talks about the policy landscape of US-China technological exchange restrictions",
+    "tags": ["Politics", "Tech", "Essay"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://csis-website-prod.s3.amazonaws.com/s3fs-public/2025-03/250307_Allen_AI_Race.pdf?VersionId=8Qpp5OWwGj9OKB25qzQX4tQ_DzIZ9NS_"
+  },
+  {
+    "title": "Deriving Muon",
+    "author": "Describes the logic behind the design of the Muon optimization algorithm",
+    "description": "Jeremy Bernstein",
+    "tags": ["Optimizers", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://jeremybernste.in/writing/deriving-muon"
+  },
+  {
+    "title": "A Little Depth Goes a Long Way: The Expressive Power of Log-Depth Transformers",
+    "author": "William Merrill & Ashish Sabharwal",
+    "description": "Shows that depth scales very favorably for LLMs",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-05",
+    "isRead": false,
+    "downloadLink": "https://www.arxiv.org/pdf/2503.03961"
+  },
+  {
+    "title": "Speculative Thinking: Large Models Mentoring Small Models for Efficient Reasoning",
+    "author": "Yang et al.",
+    "description": "Experiments with using large models to mentor small models to reason better",
+    "tags": ["Reasoning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://ahxt.github.io/blog/2025-03-07-spculative-thinking/"
+  },
+  {
+    "title": "Domain specific architectures for AI inference",
+    "author": "Chris Fleetwood",
+    "description": "Digs into design choices for hardware based on what Transformer workloads require",
+    "tags": ["Hardware", "Transformers", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-08-03",
+    "isRead": false,
+    "downloadLink": "https://fleetwood.dev/posts/domain-specific-architectures"
+  },
+  {
+    "title": "Understanding Transformers... (beyond the Math)",
+    "author": "kalomaze",
+    "description": "Another useful explanation of Transformers",
+    "tags": ["Transformers", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-08",
+    "isRead": false,
+    "downloadLink": "https://kalomaze.bearblog.dev/understanding-transformers-beyond-the-math/"
+  },
+  {
+    "title": "The State of LLM Reasoning Models",
+    "author": "Sebastian Raschka",
+    "description": "Digs into the varying method for Inference-Time Compute Scaling",
+    "tags": ["LLMs", "Reasoning", "Site"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-08",
+    "isRead": false,
+    "downloadLink": "https://magazine.sebastianraschka.com/p/state-of-llm-reasoning-and-inference-scaling?r=1csfkw&utm_campaign=post&utm_medium=web"
+  },
+  {
+    "title": "Liberals Only Censor. Musk Seeks to Lobotomize.",
+    "author": "Richard Hanania",
+    "description": "Comment on the grotesque idocracy of Musk's vision of the public square",
+    "tags": ["Politics", "Essay"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-08",
+    "isRead": false,
+    "downloadLink": "https://www.richardhanania.com/p/liberals-only-censor-musk-seeks-to"
+  },
+  {
+    "title": "Every FLOP Counts: Scaling a 300B MoE LLM without premium GPUs",
+    "author": "Ant Group",
+    "description": "Shows how to train a 300M MoE LLM on lower-performance devices",
+    "tags": ["Distributed Systems", "Parallel Computing", "MoEs", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.05139"
+  },
+  {
+    "title": "Generalized Interpolating Discrete Diffusion",
+    "author": "Rutte et al.",
+    "description": "Shows how to improve Diffusion learning via uniform noise",
+    "tags": ["Diffusion", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2025-03-06",
+    "isRead": false,
+    "downloadLink": "https://www.arxiv.org/pdf/2503.04482"
+  },
+  {
+    "title": "Elicitation, the simplest way to understand post-training",
+    "author": "Nathan Lambert",
+    "description": "Another perspective on the shape of post-training improvements in the field recently",
+    "tags": ["LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://www.interconnects.ai/p/elicitation-theory-of-post-training"
+  },
+  {
+    "title": "Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts",
+    "author": "Bytedance",
+    "description": "Outlines a MoE system to accelerate performance over standard MoE by a factor of 1.71x",
+    "tags": ["MoEs", "Parallel Computing", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.19811"
+  },
+  {
+    "title": "Optimizing Test-Time Compute via Meta Reinforcement Fine-Tuning",
+    "author": "Qu et al.",
+    "description": "Shows how to use Meta RL to do better fine-tuning",
+    "tags": ["Reinforcement Learning", "LLMs", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.07572"
+  },
+  {
+    "title": "A Survey on Post-Training of LLMs",
+    "author": "Tie et al.",
+    "description": "Digs into the many different manors for post-training of LLMs",
+    "tags": ["LLMs", "Reasoning", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-08",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.06072"
+  },
+  {
+    "title": "Contextualization Machines",
+    "author": "stochasm",
+    "description": "Explains how context is instilled via the architecture of Transformers",
+    "tags": ["Transformers", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://stochasm.blog/posts/contextualization-machines/"
+  },
+  {
+    "title": "Policy Gradient Algorithms",
+    "author": "Nathan Lambert",
+    "description": "Very well explains the math of different RL methods",
+    "tags": ["Reinforcement Learning", "Mathematics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-01",
+    "isRead": true,
+    "downloadLink": "https://rlhfbook.com/c/11-policy-gradients.html#vanilla-policy-gradient"
+  },
+  {
+    "title": "What if Neural Networks had SVDs?",
+    "author": "Mathiasen et al.",
+    "description": "Hypothesizes an alternate type of NN",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2020-08-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2009.13977"
+  },
+  {
+    "title": "The Architecture of Groq's LPU",
+    "author": "Abhinav Upadhyay",
+    "description": "Understanding the structure of the Groq LPU",
+    "tags": ["Hardware", "LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-03-01",
+    "isRead": false,
+    "downloadLink": "https://blog.codingconfessions.com/p/groq-lpu-design"
+  },
+  {
+    "title": "Actual LLM agents are coming. They will be trained",
+    "author": "Alexander Doria",
+    "description": "A bold take for optimism that LLM agents will be possible",
+    "tags": ["Agents", "LLMs", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://vintagedata.org/blog/posts/designing-llm-agents"
+  },
+  {
+    "title": "Learning values across many orders of magnitude",
+    "author": "Google",
+    "description": "Looks into a method for learning various OOMs of output values through Deep RL",
+    "tags": ["Machine Learning", "Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2016-08-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1602.07714"
+  },
+  {
+    "title": "Loss Spike in Training Neural Networks",
+    "author": "Shanghai Jiao Tong University",
+    "description": "Investigates the mechanism behind loss spikes during training",
+    "tags": ["Mathematics", "Deep Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-10-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2305.12133"
+  },
+  {
+    "title": "Softmax Attention is a Fluke",
+    "author": "Ethan Smith",
+    "description": "Answering: Why Softmax?",
+    "tags": ["Transformers", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://www.ethansmith2000.com/post/softmax-attention-is-a-fluke"
+  },
+  {
+    "title": "Transformers without Normalization",
+    "author": "Meta",
+    "description": "Introduces a drop-in activation function which normalizes for you and allows the removal of normalization layers",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.10622"
+  },
+  {
+    "title": "Benchmarking the performance of genetic algorithms on constrained dynamic problems",
+    "author": "Grudniewski et al.",
+    "description": "Compares different Genetic algorithms",
+    "tags": ["Evals", "Machine Learning", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "2020-06-22",
+    "isRead": false,
+    "downloadLink": "https://link.springer.com/content/pdf/10.1007/s11047-020-09799-y.pdf"
+  },
+  {
+    "title": "IO devices and latency",
+    "author": "Benjamin Dicken",
+    "description": "Breaks down how IO and latency come from the memory layout of a CPU",
+    "tags": ["Hardware", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-13",
+    "isRead": false,
+    "downloadLink": "https://planetscale.com/blog/io-devices-and-latency"
+  },
+  {
+    "title": "Chain-of-Experts: Unlocking the Communication Power of MoEs",
+    "author": "Wang et al.",
+    "description": "Proposes a fundamentally sparse LLM via adding sequential MoE",
+    "tags": ["MoEs", "Optimization", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-15",
+    "isRead": false,
+    "downloadLink": "https://sandy-server-87f.notion.site/Chain-of-Experts-Unlocking-the-Communication-Power-of-MoEs-1ab9bb750b7980048d43e6aab3537cea"
+  },
+  {
+    "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+    "author": "Google",
+    "description": "Introduces the concept of Federated Learning undergirding modern DiLoCo research",
+    "tags": ["Parallel Computing", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-01-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1602.05629"
+  },
+  {
+    "title": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+    "author": "Bengio et al.",
+    "description": "Uses Flow Network for learning diverse group of molecules, leveraging Flow Nets inherent balancing of exploration & exploitation",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2021-11-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2106.04399"
+  },
+  {
+    "title": "Operationalizing Machine Learning: An Interview Study",
+    "author": "UC Berkeley",
+    "description": "Looks at the minutia of ML Experimentation, Deployment, and Sustained Performance",
+    "tags": ["Machine Learning", "Interation", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2022-09-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2209.09125"
+  },
+  {
+    "title": "My notes while reading about GPUs",
+    "author": "minami",
+    "description": "Writes about distilled takeaways of what GPUs are and how to use them effectively",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2025-03-15",
+    "isRead": false,
+    "downloadLink": "https://minami.bearblog.dev/gpu/"
+  },
+  {
+    "title": "Compute Optimal Scaling of Skills: Knowledge vs Reasoning",
+    "author": "Meta",
+    "description": "Shows how knowledge --aka memorization-- scales different to how well a model is reasoning",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.10061"
+  },
+  {
+    "title": "TFB: Towards Comprehensive and Fair Benchmarking of Time Series Forecasting Methods",
+    "author": "East China Normal University",
+    "description": "Tries to develop a benchmarking suite for Forecasting models",
+    "tags": ["Evals", "Forecasting", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-06-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2403.20150"
+  },
+  {
+    "title": "Mathematical Foundations of Prophet Forecasting: Applied to GB Power Demand",
+    "author": "Pablo Paredes",
+    "description": "Explains the algorithm behind the Prophet forecasting algorithm",
+    "tags": ["Forecasting", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2024-10-04",
+    "isRead": false,
+    "downloadLink": "https://medium.com/@pcparedesp/mathematical-foundations-of-prophet-forecasting-applied-to-gb-power-demand-a2a825b380e2"
+  },
+  {
+    "title": "DAPO: An Open-Source LLM RL System at Scale",
+    "author": "Bytedance",
+    "description": "Open Source system for teaching LLMs to Reason at Scale",
+    "tags": ["Reinforcement Learning", "Distributed Systems", "LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.14476"
+  },
+  {
+    "title": "Label Unbalance in HFT",
+    "author": "Zhao et al.",
+    "description": "Shows improved trading performance with the addition of a label imbalance adjustment method",
+    "tags": ["Finance", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.09988"
+  },
+  {
+    "title": "APB: Accelerating Distributed Long-Context Inference by Passing Compressed Context Blocks across GPUs",
+    "author": "Tsinghua University",
+    "description": "Outlines a method for incorporating Flash Attention with parallelism strategies to achieve a 9.2-1.6x speedup over traditional attention mechanisms",
+    "tags": ["LLMs", "Distributed Systems", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.12085"
+  },
+  {
+    "title": "Optimizing ML Training with Metagradient Descent",
+    "author": "Engstrom et al.",
+    "description": "Utilizes metagradients to avoid data poisonings effect by OOMs",
+    "tags": ["Optimizers", "Parallel Computing", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.13751"
+  },
+  {
+    "title": "Diffusion Meets Flow Matching: Two Sides of the Same Coin",
+    "author": "Google",
+    "description": "Explains the theoretical connection between Flow Matching and traditional Diffusion methods",
+    "tags": ["Diffusion", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-02",
+    "isRead": false,
+    "downloadLink": "https://diffusionflow.github.io"
+  },
+  {
+    "title": "Tapered Off-Policy REINFORCE: Stable and Efficient RL for LLMs",
+    "author": "Roux et al.",
+    "description": "Proposes a new RL method for offline learning",
+    "tags": ["Reinforcement Learning", "LLMs", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.14286"
+  },
+  {
+    "title": "A Review of DeepSeek Models’ Key Innovative Techniques",
+    "author": "Wang et al.",
+    "description": "Breaks down the many changes which DeepSeek made in V3 and R1 to eek out performance",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.11486"
+  },
+  {
+    "title": "TPU Architecture",
+    "author": "Google",
+    "description": "Explains the layout of the TPU chip",
+    "tags": ["Hardware", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-01",
+    "isRead": false,
+    "downloadLink": "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm"
+  },
+  {
+    "title": "Scaling RL Compute",
+    "author": "General Reasoning",
+    "description": "Shows the different ways to do RL on LLMs at scale",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-21",
+    "isRead": false,
+    "downloadLink": "https://gr.inc/blog/scaling-rl-compute/"
+  },
+  {
+    "title": "Lyra: An Efficient and Expressive Subquadratic Architecture for Modeling Biological Sequences",
+    "author": "Harvard University",
+    "description": "Outlines a SOTA biological sequence modeller that speeds up inference by 120,000x!",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 2.5,
+    "releaseDate": "2025-03-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.16351"
+  },
+  {
+    "title": "Analyzing Modern NVIDIA GPU cores",
+    "author": "University of Catalonia",
+    "description": "Reverse engineers the particular layout of the A100 GPU Cores",
+    "tags": ["Hardware", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.20481"
+  },
+  {
+    "title": "Nemotron-H: A Family of Accurate, Efficient Hybrid Mamba-Transformer Models",
+    "author": "NVIDIA",
+    "description": "Unveils a functionally useful Mamba-Transformer hybrid model",
+    "tags": ["Transformers", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-21",
+    "isRead": false,
+    "downloadLink": "https://research.nvidia.com/labs/adlr/nemotronh/"
+  },
+  {
+    "title": "EAGLE-3: Scaling up Inference Acceleration of LLMs via Training-Time Test",
+    "author": "Peking University",
+    "description": "Another example of techniques for speeding of inference",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.01840"
+  },
+  {
+    "title": "Bridging Continuous and Discrete Tokens for Autoregressive Visual Generation",
+    "author": "Wang et al.",
+    "description": "Shows how to do Visual Generation with Transformers via continuous and discrete tokens",
+    "tags": ["Transformers", "Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-22",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.16430"
+  },
+  {
+    "title": "Understanding Solar Energy",
+    "author": "Brian Potter",
+    "description": "Looks into the economics of Solar Energy",
+    "tags": ["Economics", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://www.construction-physics.com/p/understanding-solar-energy"
+  },
+  {
+    "title": "Quantum circuit optimization with AlphaTensor",
+    "author": "Google",
+    "description": "Utilizes LLM to discover optimization of quantum circuits",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2024-03-08",
+    "isRead": false,
+    "downloadLink": "https://www.nature.com/articles/s42256-025-01001-1.pdf"
+  },
+  {
+    "title": "Distributed Systems",
+    "author": "Cambridge University",
+    "description": "Textbook on methods in Distributed Systems",
+    "tags": ["Distributed Computing", "Essay"],
+    "readTime": 10.0,
+    "releaseDate": "2022-01-01",
+    "isRead": false,
+    "downloadLink": "https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf"
+  },
+  {
+    "title": "A friendly introduction to machine learning compilers and optimizers",
+    "author": "Chip Huyen",
+    "description": "Digs into the different software & tricks used that ML compilers use to speed up workflows",
+    "tags": ["Machine Learning", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2021-09-07",
+    "isRead": false,
+    "downloadLink": "https://huyenchip.com/2021/09/07/a-friendly-introduction-to-machine-learning-compilers-and-optimizers.html"
+  },
+  {
+    "title": "Improving Recommendation Systems & Search in the Age of LLMs",
+    "author": "Eugene Yan",
+    "description": "Looks into the progress on actually using LLMs for recommendation algorithms",
+    "tags": ["Tech", "LLMs", "Site"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-01",
+    "isRead": false,
+    "downloadLink": "https://eugeneyan.com/writing/recsys-llm/"
+  },
+  {
+    "title": "RL for Reasoning in Small LLMs: What Works and What Doesn’t",
+    "author": "Quy-Anh Dang & Chris Ngo",
+    "description": "Talks about how to do RL for LLMs without the base abilities of foundation models",
+    "tags": ["LLMs", "Reinforcement Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.16219"
+  },
+  {
+    "title": "NdLinear Is All You Need for Representation Learning",
+    "author": "Ensemble AI",
+    "description": "New layer for transformers which preserves latent data structure",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.17353"
+  },
+  {
+    "title": "Preparing for the Intelligence Explosion",
+    "author": "Fin Moorhouse & Will MacAskill",
+    "description": "Thinks about what someone who expects AI takeoff should be doing at this moment",
+    "tags": ["AI Safety", "Essay"],
+    "readTime": 5.0,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://www.forethought.org/research/preparing-for-the-intelligence-explosion.pdf"
+  },
+  {
+    "title": "A Theory of Usable Information under Computaitonal Constraints",
+    "author": "Xu et al.",
+    "description": "Builds up a way for deep NNs to extract hierarchies of progressively informative features",
+    "tags": ["Information Theory", "Machine Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2020-02-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2002.10689"
+  },
+  {
+    "title": "Evolutionary Policy Optimization",
+    "author": "Wang et al.",
+    "description": "Brings Genetic evolution to RL",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.19037"
+  },
+  {
+    "title": "Parameters vs FLOPs: Scaling Laws for Optimal Sparsity for MoE LMs",
+    "author": "Apple",
+    "description": "Determines how the sparsity of the MoE should change with the number of FLOPs available",
+    "tags": ["MoEs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.12370"
+  },
+  {
+    "title": "Learning Theory from First Principles",
+    "author": "Francis Bach",
+    "description": "Textbook explaining ML as a field from the ground up",
+    "tags": ["Machine Learning", "Essay"],
+    "readTime": 24.0,
+    "releaseDate": "2024-08-27",
+    "isRead": false,
+    "downloadLink": "https://www.di.ens.fr/~fbach/ltfp_book.pdf"
+  },
+  {
+    "title": "Scaling Laws of Synthetic Data for Language Models",
+    "author": "Qin et al.",
+    "description": "Looks into how the usage of synthetic data can be scaled",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.19551"
+  },
+  {
+    "title": "Reasoning to Learn from Latent Thoughts",
+    "author": "Ruan et al.",
+    "description": "Looks into additional ways to teach models to reason better by exposing their latent thought stream",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.18866"
+  },
+  {
+    "title": "Scaling Evaluation-time Compute with Reasoning Models as Process Evaluators",
+    "author": "Kim et al.",
+    "description": "Figures out methods to do evaluation of models at scale",
+    "tags": ["Evals", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.19877"
+  },
+  {
+    "title": "Tracing the Thoughts of LLMs",
+    "author": "Anthropic",
+    "description": "Unveils some of the internal mechanisms of Claude via circuit tracing techniques",
+    "tags": ["Interpretability", "Arxiv"],
+    "readTime": 5.0,
+    "releaseDate": "2025-03-27",
+    "isRead": false,
+    "downloadLink": "https://transformer-circuits.pub/2025/attribution-graphs/biology.html"
+  },
+  {
+    "title": "Command A: An Enterprise-Ready LLM",
+    "author": "Cohere",
+    "description": "Explains the results and process behind the training of Cohere's foundation model",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 7.0,
+    "releaseDate": "2025-03-28",
+    "isRead": false,
+    "downloadLink": "https://cohere.com/research/papers/command-a-technical-report.pdf"
+  },
+  {
+    "title": "The Mean-ing of Loss Functions",
+    "author": "Ji-Ha Kim",
+    "description": "Introduction to Bregman projections in information geometry, exploration connections between basic loss functions and the mean as a predictor.",
+    "tags": ["Mathematics", "Machine Learning", "Site"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-29",
+    "isRead": false,
+    "downloadLink": "https://jiha-kim.github.io/posts/the-mean-ing-of-loss-functions/"
+  },
+  {
+    "title": "Cut Your Losses in Large-Vocabulary LMs",
+    "author": "Apple",
+    "description": "Reduced memory footprint of loss computation by 25x",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2411.09009"
+  },
+  {
+    "title": "STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving",
+    "author": "Stanford University",
+    "description": "Outlines a Self-Play loop for teaching a LLM to write theorems",
+    "tags": ["LLMs", "Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.00212"
+  },
+  {
+    "title": "UB-Mesh: a Hierarchically Localized nD-FullMesh Datacenter Network Architecture",
+    "author": "Huawei",
+    "description": "Provides a datacenter network architecture for cost-effective scalable performance",
+    "tags": ["Distributed Computing", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-03-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.20377"
+  },
+  {
+    "title": "PilotANN: Memory-Bounded GPU Acceleration for Vector Search",
+    "author": "Gui et al.",
+    "description": "Proposes a distributed CPU-GPU based algorithm for Approximat Nearest Neighbor Vector Search with 5x speedup and 12x memory footprint reduction",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-27",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.21206"
+  },
+  {
+    "title": "LLM Embeddings Explianed: A Visual and Intuitive Guide",
+    "author": "University of Bologna",
+    "description": "Explains how embeddings work in LLMs",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-28",
+    "isRead": false,
+    "downloadLink": "https://huggingface.co/spaces/hesamation/primer-llm-embedding?section=bert_%28bidirectional_encoder_representations_from_transformers%29"
+  },
+  {
+    "title": "DeltaProduct: Increasing Expressivity of DeltaNet through Products of Householders",
+    "author": "Siems et al.",
+    "description": "Proposes a novel architecture for linear RNNs",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.10297"
+  },
+  {
+    "title": "ϕ-Decoding: Adaptive Foresight Sampling for Balanced Inference-Time Exploration and Exploitation",
+    "author": "Xu et al.",
+    "description": "Looks at how to boost inference sampling through adaptive exploration and exploitation balancing",
+    "tags": ["Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.13288"
+  },
+  {
+    "title": "DeltaNet Explained (Part 1, 2, 3)",
+    "author": "Sonlin Yang",
+    "description": "Digs into the DeltaNet linear RNN alternative to Transformers",
+    "tags": ["Transformers", "Site"],
+    "readTime": 2.0,
+    "releaseDate": "2024-12-03",
+    "isRead": false,
+    "downloadLink": "https://sustcsonglin.github.io/blog/2024/deltanet-1/"
+  },
+  {
+    "title": "Relative Fisher Information and Natural Gradient for Learning Large Modular Models",
+    "author": "Ke Sun & Frank Nielsen",
+    "description": "Digs into information-geometric metrics for optimization and definition of loss surfaces",
+    "tags": ["Mathematics", "Optimizers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-29",
+    "isRead": false,
+    "downloadLink": "https://proceedings.mlr.press/v70/sun17b/sun17b.pdf"
+  },
+  {
+    "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation",
+    "author": "UC Berkeley",
+    "description": "Explains how to generalize GAE for better performance in Continuous Control",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2018-10-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1506.02438"
+  },
+  {
+    "title": "Reinforcement Learning: Theory and Algorithms",
+    "author": "Agarwal et al.",
+    "description": "First-Principles explanation of the field of RL",
+    "tags": ["Reinforcement Learning", "Essay"],
+    "readTime": 0.0,
+    "releaseDate": "2022-01-31",
+    "isRead": false,
+    "downloadLink": "https://rltheorybook.github.io/rltheorybook_AJKS.pdf"
+  },
+  {
+    "title": "Megablocks: Efficient Sparse Training with MoEs",
+    "author": "Gale et al.",
+    "description": "Defines system for efficient MoE on GPUs",
+    "tags": ["MoEs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2022-11-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2211.15841"
+  },
+  {
+    "title": "The State of Sparsity in Deep Neural Networks",
+    "author": "Gale et al.",
+    "description": "Looks into benchmarking of sparsity in LMs",
+    "tags": ["Machine Learning", "Evals", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2019-02-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1902.09574"
+  },
+  {
+    "title": "Rigging the Lottery: Making All Tickets Winners",
+    "author": "Gale et al.",
+    "description": "Looks into finding the sparse networks within models while preserving accuracy",
+    "tags": ["Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2021-07-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1911.11134"
+  },
+  {
+    "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity",
+    "author": "Google",
+    "description": "",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2022-06-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2101.03961"
+  },
+  {
+    "title": "FACTS: A Factored State-Space Framework for World Modelling",
+    "author": "Nanbo et al.",
+    "description": "Alternative model to Transformers for SSM",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.20922"
+  },
+  {
+    "title": "Advances and Challenges in Foundation Models",
+    "author": "Liu et al.",
+    "description": "Looks into techniques for foundation models",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.01990"
+  },
+  {
+    "title": "SimPO: Simple Preference Optimization with Preference-Free Reward",
+    "author": "Meng et al.",
+    "description": "Proposes an alternative to DPO which doesn't require a reference model",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-11-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2405.14734"
+  },
+  {
+    "title": "Inference-Time Scaling for Generalist Reward Modeling",
+    "author": "Liu et al.",
+    "description": "On building towards RL capable of excelling on non-verifiable tasks",
+    "tags": ["Reasoning", "Reinforcement Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-04-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.02495"
+  },
+  {
+    "title": "Inference-Time Scaling for Complex Tasks: Where We Stand and What Lies Ahead",
+    "author": "Microsoft",
+    "description": "On building towards RL capable of excelling on multi-step tasks",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.00294"
+  },
+  {
+    "title": "A Survey of Meta-Reinforcement Learning",
+    "author": "Oxford University",
+    "description": "Looks into methods for meta RL",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 3.0,
+    "releaseDate": "2024-08-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2301.08028"
+  },
+  {
+    "title": "Deep Learning-Driven Protein Structure Prediction and Design",
+    "author": "Yang et al.,",
+    "description": "Analyzes trends in self-play generation of protein structures",
+    "tags": ["Reasoning", "GenAI", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.01490"
+  },
+  {
+    "title": "MoE++: Zero-Computation Experts",
+    "author": "Jin et al.",
+    "description": "Efficient MoE delivery",
+    "tags": ["MoEs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://openreview.net/pdf?id=t7P5BUKcYv"
+  },
+  {
+    "title": "TC-MoE: Ternary Expert Choice",
+    "author": "Yan et al.",
+    "description": "Changes expert selection from probabilities to ternary",
+    "tags": ["MoEs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://openreview.net/pdf?id=dsP91M4hDL"
+  },
+  {
+    "title": "NoProp: Training NNs without Backprop",
+    "author": "Oxford University",
+    "description": "Sets up training such that there's no need for waiting on Backpropogation of gradients",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.24322"
+  },
+  {
+    "title": "Device Placement with Reinforcement Learning",
+    "author": "Mirhoseini et al.",
+    "description": "Looks into optimizing placement of processes across devices using RL",
+    "tags": ["Reinforcement Learning", "Distributed Computing", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2017-06-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1706.04972"
+  },
+  {
+    "title": "Langevin Soft Actor-Critic",
+    "author": "McGill University",
+    "description": "Looks into usage of LMC based sampling for better exploration, especially in continuous action spaces",
+    "tags": ["Reinforcement Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.17827"
+  },
+  {
+    "title": "SeedLM: Compressing LLM weights into seeds of Pseudo-Random Generators",
+    "author": "Apple",
+    "description": "Ability to compress params through a seed",
+    "tags": ["Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-08-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.10714"
+  },
+  {
+    "title": "CoLoR-Filter: Selecting Data for Language Model Pre-training",
+    "author": "Harvard University",
+    "description": "Method for selecting data to train LM on to accelerate pre-training",
+    "tags": ["Optimization", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-29",
+    "isRead": false,
+    "downloadLink": "https://www.blackhc.net/blog/2025/colorfilter/"
+  },
+  {
+    "title": "A Unified Approach to Analysis and Design of Denoising Markov Models",
+    "author": "Stanford University",
+    "description": "Interesting stats work on markov models",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-04-02",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.01938"
+  },
+  {
+    "title": "XAttention: Block Sparse Attention with Antidiagonal Scoring",
+    "author": "Xu et al.",
+    "description": "Attention mechanism based around diagonals",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.16428"
+  },
+  {
+    "title": "Multi-Token Attention",
+    "author": "Meta",
+    "description": "Floats an Attention mechanism built around prediction of multiple tokens at once",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.00927"
+  },
+  {
+    "title": "Slim attention: cut your context memory in half without loss of accuracy",
+    "author": "Graef et al.",
+    "description": "Reduces KV Cache memory dramatically in MHA",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.05840"
+  },
+  {
+    "title": "Effective Approaches to Attention-based Neural Machine Translation",
+    "author": "Stanford University",
+    "description": "Looks into different methods for Attention",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2015-09-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1508.04025"
+  },
+  {
+    "title": "Kolmogorov-Arnold Attention",
+    "author": "Maity et al.",
+    "description": "Uses KAN for the Attention in a ViT",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.10632"
+  },
+  {
+    "title": "RL backlog: OpenAI's many RLs, clarifying distillation, and latent reasoning",
+    "author": "Nathan Lambert",
+    "description": "Just little notes on RL",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-05",
+    "isRead": false,
+    "downloadLink": "https://www.interconnects.ai/p/rl-backlog-openais-many-rls-clarifying"
+  },
+  {
+    "title": "LongNet: Scaling Transformers to 1B Tokens",
+    "author": "Microsoft",
+    "description": "Wild research on context length extension techniques",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-07-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2307.02486"
+  },
+  {
+    "title": "Parameter-Efficient Fine-Tuning for Foundation Models",
+    "author": "Tsinghua University",
+    "description": "Current explanation of the parameter efficient fine tuning techniques proposed in many papers",
+    "tags": ["Transformers", "Optimization", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-01-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2501.13787"
+  },
+  {
+    "title": "Algorithms You Should Know Before System Design Interviews",
+    "author": "ByteByteGo",
+    "description": "Bite-sized runthrough of algorithms relevant in the design of consumer application systems",
+    "tags": ["Algorithms", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-02-10",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=xbgzl2maQUU"
+  },
+  {
+    "title": "Gauge Theory, Geometric Langlands, and All That",
+    "author": "Edward Witten",
+    "description": "Description of some high level math that I enjoyed",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2021-10-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=8Pkw25J-Bg0"
+  },
+  {
+    "title": "Why Does Diffusion Work Better than Auto-Regression?",
+    "author": "Algorithmic Simplicity",
+    "description": "Compares AR to Diffusion",
+    "tags": ["GenAI", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-02-16",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=zc5NTeJbk-k"
+  },
+  {
+    "title": "xLSTM: Extended Long Short-Term Memory",
+    "author": "Yannic Kilcher",
+    "description": "Explains and paper behind the xLSTM ssm",
+    "tags": ["Machine Learning", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-07-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=0OaEv1a5jUM"
+  },
+  {
+    "title": "The Definition of the Gamma function",
+    "author": "William Tu",
+    "description": "Fun math video on what the gamma function is",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-08",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=dVoMqV2qRjs"
+  },
+  {
+    "title": "Mathematics of Maximizing Profit in Gambling/Investing",
+    "author": "EpsilonDelta",
+    "description": "Breakdown of the meaning of the Kelly Criterion for optimal trading",
+    "tags": ["Finance", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2023-07-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=-X9u9oYvGYk&t=63s"
+  },
+  {
+    "title": "A Swift Introduction to Projective Geometric Algebra",
+    "author": "sudgylacmoe",
+    "description": "Part II in series on Geometric Algebra",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2023-08-13",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=0i3ocLhbxJ4"
+  },
+  {
+    "title": "A Swift Introduction to Geometric Algebra",
+    "author": "sudgylacmoe",
+    "description": "Part I in series on Geometric Algebra",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2020-08-17",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=60z_hpEAtD8&t=8s"
+  },
+  {
+    "title": "What does larger scale software development look like?",
+    "author": "Web Dev Cody",
+    "description": "Fun walkthrough of one guys description of working on large scale software in a team",
+    "tags": ["Git", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2023-07-10",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Dl-BdxNRUqs&t=662s"
+  },
+  {
+    "title": "An impossible game at the heart of math",
+    "author": "SackVideo",
+    "description": "Information video on the axiom of determinancy",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2023-08-18",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Kj5RCs1FHcc"
+  },
+  {
+    "title": "Alphafold 3 Deep Dive",
+    "author": "Looking Glass Universe",
+    "description": "Tries to explain the architecture of AlphaFold 3 from First-Principles",
+    "tags": ["GenAI", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-06-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Or3iq4_9-wA&t=1400s"
+  },
+  {
+    "title": "Mixture of Sparse Attention for Automatic LLM Compression",
+    "author": "Tunadorable",
+    "description": "Reads through method for compresing LLMs",
+    "tags": ["Transformers", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-08-02",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Q2RKLwDzCpc&t=931s"
+  },
+  {
+    "title": "Exponentially Faster Language Modeling",
+    "author": "Tunadorable",
+    "description": "Looks into a reformulation of the AST of language modeling",
+    "tags": ["Transformers", "Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-07-31",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=cXOrGVk1y20&t=5s"
+  },
+  {
+    "title": "Information over-squashing in language tasks",
+    "author": "Tunadorable",
+    "description": "Analyzes how the residual streams of LLMs may make them brittle to certain tasks",
+    "tags": ["LLMs", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-07-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=B6YxQrj0Rsk&t=1s"
+  },
+  {
+    "title": "Mamba 2 - Transformers are SSMs",
+    "author": "Gabriel Mongaras",
+    "description": "Lecture on the motivation for Mamba 2",
+    "tags": ["LLMs", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2024-06-16",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=EtnSexLgQMc"
+  },
+  {
+    "title": "Parallel Job Workflows",
+    "author": "FASRC",
+    "description": "Explanation of OpenMP and other libraries were used to do massively parallel computing on the Harvard computers",
+    "tags": ["HPC", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2024-07-16",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=_8ap3sMS3nU"
+  },
+  {
+    "title": "Market Algorithms for Autobidding",
+    "author": "Simons Institute",
+    "description": "Lecture on computational finance",
+    "tags": ["Finance", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2023-11-13",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Yl-b94rk-84"
+  },
+  {
+    "title": "Do we need Attention? A Mamba Primer",
+    "author": "Sasha Rush",
+    "description": "Description of the purpose behind the Attention mechanism and attempts to overcome it",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-04-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=dVH1dRoMPBc"
+  },
+  {
+    "title": "Compilers, How They Work, And Writing Them From Scratch",
+    "author": "Adam McDaniel",
+    "description": "Walking through an explanation of Compilers today",
+    "tags": ["Computer Systems", "YT"],
+    "readTime": 0.0,
+    "releaseDate": "2024-06-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=QdnxjYj1pS0"
+  },
+  {
+    "title": "Multi-Head Mixture-of-Experts",
+    "author": "Tunadorable",
+    "description": "Reading a paper on MHA x MoE",
+    "tags": ["MoEs", "Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=8wLG3TIcCXk&t=8s"
+  },
+  {
+    "title": "Latent Space Visualisation: PCA, t-SNE, UMAP",
+    "author": "Deepia",
+    "description": "Visualizes the difference between different algorithms for showing high dimensional data",
+    "tags": ["Machine Learning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=o_cAOa5fMhE"
+  },
+  {
+    "title": "auto-regressive decoders 'think ahead' with embedding diffusion",
+    "author": "Tunadorable",
+    "description": "Reads through integrating diffusion in AR LMs",
+    "tags": ["GenAI", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-09-15",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=z7d0_dLTtLw"
+  },
+  {
+    "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Paper)",
+    "author": "Yannic Kilcher",
+    "description": "Reads through paper on how Test-Time Compute was beginning to win",
+    "tags": ["LLMs", "Reasoning", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-10-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=AfAmwIP2ntY&t=944s"
+  },
+  {
+    "title": "Diffusion Models From Scratch",
+    "author": "Outlier",
+    "description": "Description of the basic mechanisms of Diffusion models",
+    "tags": ["GenAI", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-10-09",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=B4oHJpEJBAA"
+  },
+  {
+    "title": "GPU Programming Series",
+    "author": "Simon Oz",
+    "description": "11-part series on how GPUs work and how to program them",
+    "tags": ["HPC", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2024-01-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PL5XwKDZZlwaY7t0M5OLprpkJUIrF8Lc9j"
+  },
+  {
+    "title": "All Optimizers in One Video",
+    "author": "Krish Naik",
+    "description": "Runs through a few optimization algorithms and describes the motivation behind their update rule",
+    "tags": ["Optimizers", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2020-11-04",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=TudQZtgpoHk"
+  },
+  {
+    "title": "My favorite ML Ops tools",
+    "author": "Mark Saroufim",
+    "description": "Anecdotal descriptions of ML Ops tools useful for one man",
+    "tags": ["Iteration", "Machine Learning", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2021-06-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=jmd-U-myaQY"
+  },
+  {
+    "title": "Generalization in RL",
+    "author": "Mark Saroufim",
+    "description": "One guy's description of the state of interesting research into generalization in RL",
+    "tags": ["Reinforcement Learning", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2022-01-08",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=f_NFavDdPKg"
+  },
+  {
+    "title": "Distributed Pytorch",
+    "author": "Mark Saroufim",
+    "description": "PyTorch dev explains the features in the PyTorch library for distributed training of networks",
+    "tags": ["Distributed Systems", "Libraries", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2021-03-12",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=79zW4SQ4SHU&t=658s"
+  },
+  {
+    "title": "A new way to compare high dimensional vectors",
+    "author": "Tunadorable",
+    "description": "Proposes a method for comparing high dimensional vectors better than traditional methods",
+    "tags": ["Machine Learning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-26",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=TOo7WE1oSJU"
+  },
+  {
+    "title": "A casual intro to recommendation models",
+    "author": "Tunadorable",
+    "description": "Reads through a comprehensive review paper of how different recommendation algorithms are written",
+    "tags": ["Computer Systems", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-27",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=jXpu13OeClI"
+  },
+  {
+    "title": "Low-rank Adaption of LLMs",
+    "author": "Chris Alexiuk",
+    "description": "Shows algorithm for compressing the weights of LLMs for lighter inference",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2023-04-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=dA-NhCtrrVE"
+  },
+  {
+    "title": "GPU Series: Multi-GPU Programming Part 1",
+    "author": "NCAR",
+    "description": "Lecture on concepts for how to program on parallel GPUs",
+    "tags": ["HPC", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2022-07-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=U7e7R-3pdpk"
+  },
+  {
+    "title": "Regularizing Trajectory Optimization with Denoising Autoencoders",
+    "author": "Yannic Kilcher",
+    "description": "Critiques and explains a suggested method for learning trajectories",
+    "tags": ["Reinforcement Learning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2020-05-24",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=UjJU13GdL94"
+  },
+  {
+    "title": "Enter The Arena: Simplifying Memory Management",
+    "author": "Ryan Fleury",
+    "description": "Lecture on the state of malloc",
+    "tags": ["Computer Systems", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2024-05-17",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=TZ5a3gCCZYo"
+  },
+  {
+    "title": "Hardware-aware Algorithms for Sequence Modeling",
+    "author": "Tri Dao",
+    "description": "Talks about how to make sequence modeling run very quick on an algorithm codesign method",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2024-01-17",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=foG0ebzuw34"
+  },
+  {
+    "title": "Mixture of Experts Series",
+    "author": "Tunadorable",
+    "description": "8-part series on different papers around MoE models",
+    "tags": ["MoEs", "YT"],
+    "readTime": 3.0,
+    "releaseDate": "2024-11-13",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PLPefVKO3tDxMR3dWIJ762eiUVA0yISnog"
+  },
+  {
+    "title": "Efficient LLM Inference",
+    "author": "Noble Saji Matthews",
+    "description": "Description of the many methods for making the inference of a model run quicker",
+    "tags": ["Transformers", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-03-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=yVXtLTcdO1Q"
+  },
+  {
+    "title": "Variational Autoencoders",
+    "author": "Deepia",
+    "description": "Describes what a Variational Autoencoder is",
+    "tags": ["GenAI", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-09-09",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=qJeaCHQ1k2w&t=2s"
+  },
+  {
+    "title": "Creating new tokens out of internal representations",
+    "author": "Tunadorable",
+    "description": "Reads a paper on challenges and benefits of allowing dynamic vocab",
+    "tags": ["Machine Learning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-26",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=D_x10KkmePQ"
+  },
+  {
+    "title": "Trustworthy LLMs",
+    "author": "Jieyu Zhao",
+    "description": "Lecture on how to try to reduce bias in LLMs in practice",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-25",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=8eoTc2AJXEo"
+  },
+  {
+    "title": "What is Data Pipeline? | Why Is It So Popular?",
+    "author": "ByteByteGo",
+    "description": "Explainer on what Data Pipelines are and do",
+    "tags": ["Computer Systems", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=kGT4PcTEPP8&t=93s"
+  },
+  {
+    "title": "Efficient Programming on Heterogeneous Accelerators",
+    "author": "Rutgers University",
+    "description": "Advice on workload optimizing given serial and parallel devices",
+    "tags": ["Distributed Systems", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2024-12-26",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=oFHkC_eiYcU&t=967s"
+  },
+  {
+    "title": "How DeepSeek Rewrote the Transformer",
+    "author": "Welch Labs",
+    "description": "Talks a bit about the MLA trick",
+    "tags": ["LLMs", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=0VLAoVGf_74"
+  },
+  {
+    "title": "The Dark Matter of AI",
+    "author": "Welch Labs",
+    "description": "Looking into what in NNs we're still not catching",
+    "tags": ["Interpretability", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-12-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=UGO_Ehywuxc"
+  },
+  {
+    "title": "CUDA Programming (7 Part)",
+    "author": "0Mean1Sigma",
+    "description": "Analyses on how to optimize the runtime of CUDA kernels",
+    "tags": ["HPC", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PLU0zjpa44nPXddA_hWV1U8oO7AevFgXnT"
+  },
+  {
+    "title": "Reinforcement Learning Series: Overview of Methods",
+    "author": "Steve Brunton",
+    "description": "Talks about many of the different methods for implementing RL algorithms",
+    "tags": ["Reinforcement Learning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2022-01-03",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=i7q8bISGwMQ"
+  },
+  {
+    "title": "The Math behind Hedging",
+    "author": "QuantIntuition",
+    "description": "Explains some concepts in mathematical finance",
+    "tags": ["Mathematics", "Finance", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-27",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Q7RUnxQBS5U"
+  },
+  {
+    "title": "Parables on the Power of Planning in AI",
+    "author": "Noam Brown",
+    "description": "Stories of how test-time compute has pushed base models to superhuman levels in many different areas",
+    "tags": ["Reasoning", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-09-17",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=eaAonE58sLU"
+  },
+  {
+    "title": "How 1 Software Engineer Outperforms 138",
+    "author": "Tom Delalande",
+    "description": "On understanding productive utilization of Engineering talent",
+    "tags": ["Tech", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-09-29",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=7VSVfQcaxFY"
+  },
+  {
+    "title": "Deep Learning for Symbolic Mathematics",
+    "author": "Yannic Kilcher",
+    "description": "Reading into limitations of LLMs on generating mathematical symbolic formulaes",
+    "tags": ["Transformers", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2020-02-24",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=p3sAF3gVMMA"
+  },
+  {
+    "title": "Neuro-Symbolic Learning Algorithms for Automated Reasoning",
+    "author": "Forough Arabshahi",
+    "description": "Looks into how to play around with tokens as ideas",
+    "tags": ["Symbolic Systems", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2020-03-27",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=83sTGeR6kdg"
+  },
+  {
+    "title": "Decision Transformer: Reinforcement Learning via Sequence Modeling",
+    "author": "Stanford University",
+    "description": "Explains the decision transformer model for N^2 action policies",
+    "tags": ["Reinforcement Learning", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2022-07-13",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=w4Bw8WYL8Ps&t=29s"
+  },
+  {
+    "title": "Scaling LLM Test-Time Compute",
+    "author": "UC Berkeley",
+    "description": "Explains concepts in how to have a model reason through to an answer over time",
+    "tags": ["Reasoning", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-08",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=OXwGp9YeuBg&t=2377s"
+  },
+  {
+    "title": "Building Machine Learning Systems for a Trillion Trillion Floating Point Operations",
+    "author": "Jane Street",
+    "description": "",
+    "tags": ["HPC", "Distributed Computing", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-09",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=139UPjoq7Kw"
+  },
+  {
+    "title": "Deep Dive: Optimizing LLM inference",
+    "author": "Julien Simon",
+    "description": "Methods for speeding up LLM inference for cheap",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-03-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=hMs8VNRy5Ys"
+  },
+  {
+    "title": "Hidden Beauty Behind Generative AI",
+    "author": "Artem Kirsanov",
+    "description": "Explains some of the motivation behind GenAI models",
+    "tags": ["GenAI", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-18",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=laaBLUxJUMY"
+  },
+  {
+    "title": "Neural and Non-Neural AI, Reasoning, Transformers, and LSTMs",
+    "author": "Jurgen Schmidhuber",
+    "description": "Interview where Schmidhuber expounds on his views on the future of AI",
+    "tags": ["Symbolic Systems", "LLMs", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2024-08-28",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=DP454c1K_vQ"
+  },
+  {
+    "title": "Problems in the current research on forecasting with transformers",
+    "author": "Christoph Bergmeir",
+    "description": "Looks into where LLMs are good and poor at forecasting",
+    "tags": ["Forecasting", "Transformers", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-21",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=vNul_AjRPFw&t=213s"
+  },
+  {
+    "title": "What is the i really doing in Schrödinger's equation?",
+    "author": "Welch Labs",
+    "description": "Great visualization of the Schrodinger equation term-by-term!",
+    "tags": ["Mathematics", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-11-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=uVKMY-WTrVo"
+  },
+  {
+    "title": "Byte Latent Transformer: Patches Scale Better Than Tokens",
+    "author": "Meta",
+    "description": "Measures the scaling of using byte patches over tokens",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2024-12-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.09871"
+  },
+  {
+    "title": "You Don’t Understand How Language Works",
+    "author": "Fractal Philosophy",
+    "description": "Fun vid on the mechanics and history of language",
+    "tags": ["YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-03-15",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=wE8GTZ6YaZ8"
+  },
+  {
+    "title": "The Uncertain Art of Accelerating ML Models",
+    "author": "Jane Street",
+    "description": "Really fascinating podcast from Jane Street on the practical process of iterating ML Model performance and tools / best practices for doing that",
+    "tags": ["Iteration", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-08-14",
+    "isRead": true,
+    "downloadLink": "https://www.youtube.com/watch?v=da2GO5XYJ4U&t=2716s"
+  },
+  {
+    "title": "Has It All Been Solved?",
+    "author": "Cohere",
+    "description": "Where do Transformers fail...",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-08-21",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=g3yoZZSI3Io"
+  },
+  {
+    "title": "Initializing large models with weights from smaller ones",
+    "author": "Tunadorable",
+    "description": "Maybe a smarter method for weight initialization",
+    "tags": ["Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-16",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=CgzWjhHVCng"
+  },
+  {
+    "title": "Reward is not enough",
+    "author": "John Tan Chong Min",
+    "description": "PhD thesis statement on whrr",
+    "tags": ["Symbolic Systems", "Reinforcement Learning", "YT"],
+    "readTime": 2.0,
+    "releaseDate": "2025-01-20",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=2tQl-N35DBM"
+  },
+  {
+    "title": "Titans by Google",
+    "author": "AI Papers Explained",
+    "description": "Relays the message and insight of Google's Titan paper",
+    "tags": ["LLMs", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-17",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=dQxjM1ZwiNw"
+  },
+  {
+    "title": "Dylan Patel on New AI Regulations, Chinese AI & xAI's Surge to Hyperscale",
+    "author": "SemiAnalysis",
+    "description": "Interview where Dylan explains his view of the trajector of AI build-out plans nationally and in-industry",
+    "tags": ["Tech", "Economics", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2025-01-21",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=7EH0VjM3dTk&t=183s"
+  },
+  {
+    "title": "Every HARVARD Negotiation Tactic Explained in 15 Minutes",
+    "author": "Growth Summary",
+    "description": "Ideas on how to negotiate",
+    "tags": ["Self-Help", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-12",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=uwwezLD4MgY"
+  },
+  {
+    "title": "A Universal Theory of Brain Function",
+    "author": "Artem Kirsanov",
+    "description": "Fun video on brains",
+    "tags": ["Neuroscience", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-21",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=iPj9D9LgK2A"
+  },
+  {
+    "title": "Pre-train with patches for huge compute savings",
+    "author": "Tunadorable",
+    "description": "Data selection for quick pretraining",
+    "tags": ["Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-23",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=8sy70MrR1gk"
+  },
+  {
+    "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning",
+    "author": "Yannic Kilcher",
+    "description": "Reading and explaining the GRPO paper from DeepSeek",
+    "tags": ["Reasoning", "Reinforcement Learning", "LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-26",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=bAWV_yrqx4w"
+  },
+  {
+    "title": "MAJOR inference efficiency gain for diffusion models",
+    "author": "Tunadorable",
+    "description": "How to speed up diffusion models",
+    "tags": ["Diffusion", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-27",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=gHYy0zalMSA"
+  },
+  {
+    "title": "RTX 5090 Chip Deep-Dive",
+    "author": "High Yield",
+    "description": "Explanation of the layout and breakthroughs of the RTX5090 chip",
+    "tags": ["Hardware", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=rCwgAGG2sZQ&t=9s"
+  },
+  {
+    "title": "Efficiently Modeling Long Sequences with Structured State Spaces",
+    "author": "Stanford University",
+    "description": "Looking into improvements over Attention",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2022-04-21",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=luCBXCErkCs"
+  },
+  {
+    "title": "The Breakthrough Behind Modern AI Image Generators",
+    "author": "Depth First",
+    "description": "How image gen got sped up so dramatically",
+    "tags": ["GenAI", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-08-19",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=1pgiu--4W3I"
+  },
+  {
+    "title": "TOTEM: TOkenized Time Series EMbeddings for General Time Series Analysis",
+    "author": "Steve Brunton",
+    "description": "On a method for putting time series embedding into tokens for better time series forecasting",
+    "tags": ["Forecasting", "Transformers", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-03",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=AH2_Aq9_4R8&t=77s"
+  },
+  {
+    "title": "In search of the perfect dynamic array growth factor",
+    "author": "Kay Lack",
+    "description": "Working through how to resize arrays at the optimal rate",
+    "tags": ["Computer Systems", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-01-24",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=GZPqDvG615k&t=7s"
+  },
+  {
+    "title": "Large Concept Models",
+    "author": "Meta",
+    "description": "Moving from thoughts in residual space to making the intermediate thoughts organized concepts",
+    "tags": ["Transformers", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2024-12-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.08821"
+  },
+  {
+    "title": "How DeepSeek learns: GRPO explained",
+    "author": "Dr Mihai Nica",
+    "description": "Walkthrough of how GRPO works",
+    "tags": ["Reasoning", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-22",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=wXEvvg4YJ9I"
+  },
+  {
+    "title": "Linear Attention and Beyond",
+    "author": "Sonlin Yang",
+    "description": "Looking into improvements over Attention",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2025-02-24",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=d0HJvGSWw8A"
+  },
+  {
+    "title": "Linformer: Self-Attention with Linear Complexity",
+    "author": "Yannic Kilcher",
+    "description": "Another method for trying to dampen the quadratic attention dynamic",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2020-06-11",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=-_2AF9Lhweo&t=2403s"
+  },
+  {
+    "title": "Transformers are RNNs",
+    "author": "Yannic Kilcher",
+    "description": "Trying to bridge from Transformers to RNNs",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2020-06-04",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=hAooAOFRsYc"
+  },
+  {
+    "title": "Advances in AI ML",
+    "author": "Quantopian",
+    "description": "Talking about some of the techniques for more performance in Forecasting",
+    "tags": ["Finance", "Forecasting", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-28",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=FJYgrkVbpEE"
+  },
+  {
+    "title": "Rust is the New C",
+    "author": "No Boilerplate",
+    "description": "Rust propaganda",
+    "tags": ["Programming", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-12",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=3e-nauaCkgo"
+  },
+  {
+    "title": "Efficient Inference",
+    "author": "CMU",
+    "description": "Talking about methods for running LLMs at scale for cheap",
+    "tags": ["Transformers", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-27",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=jbHgzU4r7yU&t=10s"
+  },
+  {
+    "title": "Understanding DeepSeek V3 from Scratch",
+    "author": "Tunadorable",
+    "description": "Step-by-Step explanation of how DeepSeek V3 works and pushed boundaries",
+    "tags": ["LLMs", "YT"],
+    "readTime": 4.0,
+    "releaseDate": "2025-03-28",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=4YC8LsuFe7s"
+  },
+  {
+    "title": "RX 9070 XT",
+    "author": "High Yield",
+    "description": "A look at the hardware transistors of the RX 9070",
+    "tags": ["Hardware", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=u8cfrJTdo0E&t=3s"
+  },
+  {
+    "title": "2027 Intelligence Explosion",
+    "author": "Dwarkesh Patel",
+    "description": "Scott Alexander interview with very interesting comparisons of diverging paths for an AI takeoff",
+    "tags": ["AI Safety", "Forecasting", "YT"],
+    "readTime": 3.0,
+    "releaseDate": "2025-04-03",
+    "isRead": true,
+    "downloadLink": "https://www.youtube.com/watch?v=htOvH12T7mU"
+  },
+  {
+    "title": "How are Images Compressed?",
+    "author": "Branch Education",
+    "description": "Explaining the beauty of the JPEG image compression algorithm",
+    "tags": ["Algorithms", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2021-12-31",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Kv1Hiv3ox8I"
+  },
+  {
+    "title": "Deep dive: model merging",
+    "author": "Julien Simon",
+    "description": "Looks into research on how to merge models while preserving capabilities",
+    "tags": ["LLMs", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-03-18",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=cvOpX75Kz4M"
+  },
+  {
+    "title": "Quantizing Large Language Models Part 1",
+    "author": "Julien Simon",
+    "description": "How to compress LLMs into less space",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-03-06",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=kw7S-3s50uk"
+  },
+  {
+    "title": "Quantizing Large Language Models Part 2",
+    "author": "Julien Simon",
+    "description": "How to compress LLMs into less space",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2024-03-06",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=fXBBwCIA0Ds"
+  },
+  {
+    "title": "Compiling deep learning models, from XLA to PyTorch",
+    "author": "Julien Simon",
+    "description": "Looks into practical tools for compiling deep learning models",
+    "tags": ["Machine Learning", "Libraries", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-02-28",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=Oo07fFb-aH0"
+  },
+  {
+    "title": "Better Attention layers for Transformer models",
+    "author": "Julien Simon",
+    "description": "attempts to defeat the quadratic",
+    "tags": ["LLMs", "Optimization", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2024-02-12",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=2TT384U4vQg"
+  },
+  {
+    "title": "How to Trade with the Black-Scholes Model",
+    "author": "Quant Guild",
+    "description": "Implementation guide for functionally using Black-Scholes",
+    "tags": ["Finance", "Tutorial", "YT"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-07",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=0x-Pc-Z3wu4&t=12s"
+  },
+  {
+    "title": "Quant Finance Advent of Code (25 part series)",
+    "author": "Scorsone Enterprises",
+    "description": "Deep explanations of topics in Finance",
+    "tags": ["Finance", "Tutorial", "YT"],
+    "readTime": 6.5,
+    "releaseDate": "2024-12-20",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PLaXsBdJZLRmXC1uFWqh7l_q-468vq-tDq"
+  },
+  {
+    "title": "Lectures in Quantitative Trading",
+    "author": "HangukQuant",
+    "description": "Deep explanations of topics in Finance",
+    "tags": ["Finance", "Tutorial", "YT"],
+    "readTime": 10.0,
+    "releaseDate": "2024-02-15",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PLs6THB5KHWo2k0OdWXbu_pB_0n2KzpGC1"
+  },
+  {
+    "title": "Behavior of Markets and Trading Risks",
+    "author": "Fractal Manhattan",
+    "description": "Series on the math of the market",
+    "tags": ["Finance", "YT"],
+    "readTime": 0.0,
+    "releaseDate": "2025-01-01",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/playlist?list=PLoRGpcIhBxNQ9qwJ2xAItdF9cqGNqFJTk"
+  },
+  {
+    "title": "When Nanoseconds Matter",
+    "author": "CppCon",
+    "description": "Streamlining the runtime of algorithms in C++",
+    "tags": ["HPC", "Programming", "YT"],
+    "readTime": 1.5,
+    "releaseDate": "2025-02-28",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=sX2nF1fW7kI"
+  },
+  {
+    "title": "On the Biology of a LLMs",
+    "author": "Yannic Kilcher",
+    "description": "Reading through Anthropic paper on identifying circuits of thought inside LLMs",
+    "tags": ["LLMs", "Interpretability", "YT"],
+    "readTime": 1.0,
+    "releaseDate": "2025-04-05",
+    "isRead": false,
+    "downloadLink": "https://www.youtube.com/watch?v=mU3g2YPKlsA"
+  },
+  {
+    "title": "Self-Supervised Dataset Distillation for Transfer Learning",
+    "author": "Lee et al.",
+    "description": "Proposes method for distilling from a large dataset into a few samples",
+    "tags": ["Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-01-01",
+    "isRead": false,
+    "downloadLink": "https://openreview.net/pdf?id=h57gkDO2Yg"
+  },
+  {
+    "title": "Terraform-- Automating Infrastructure As A Service",
+    "author": "Michael Howard",
+    "description": "Devlops the terraform tool for ML infrastructure management",
+    "tags": ["Libraries", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2022-05-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2205.10676"
+  },
+  {
+    "title": "Learning to Reason for Long-Form Story Generation",
+    "author": "University of Edinburgh",
+    "description": "Proposes a new RL method for long horizon sequence generation",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.22828"
+  },
+  {
+    "title": "VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks",
+    "author": "Bytedance",
+    "description": "SOTA RL method for training reliable reasoning",
+    "tags": ["Reinforcement Learning", "Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-04-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.05118"
+  },
+  {
+    "title": "Quamba2",
+    "author": "Chiang et al.",
+    "description": "Scalable Post-Training Quantiation for SSMs",
+    "tags": ["LLMs", "Quantization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.22879"
+  },
+  {
+    "title": "Deriving Muon",
+    "author": "Jeremy Bernstein",
+    "description": "Shows the motivation behind the Muon optimization algorithm",
+    "tags": ["Optimizers", "Mathematics", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-07",
+    "isRead": false,
+    "downloadLink": "https://jeremybernste.in/writing/deriving-muon"
+  },
+  {
+    "title": "From REINFORCE to Dr. GRPO",
+    "author": "Qinfeng",
+    "description": "Builds intuitions behind the mathematical structure of different RL techniques of LLMs on verifiabel rewards",
+    "tags": ["Reinforcement Learning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-27",
+    "isRead": false,
+    "downloadLink": "https://lancelqf.github.io/note/llm_post_training/"
+  },
+  {
+    "title": "How to Optimize Data Transfers in CUDA C/C++",
+    "author": "NVIDIA",
+    "description": "Code walkthrough and benchmarking of how to think about making data transfer better in CUDA kernel",
+    "tags": ["Tutorial", "HPC", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2012-12-04",
+    "isRead": false,
+    "downloadLink": "https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory"
+  },
+  {
+    "title": "GraphCast: Learning skillful medium-range global weather forecasting",
+    "author": "Google",
+    "description": "SOTA Weather prediction",
+    "tags": ["Forecasting", "LLMs", "Arxiv"],
+    "readTime": 5.0,
+    "releaseDate": "2023-08-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2212.12794"
+  },
+  {
+    "title": "Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking",
+    "author": "Citadel",
+    "description": "3rd party breakdown of how the Volta GPU Architecture functions",
+    "tags": ["Hardware", "HPC", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2018-04-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1804.06826"
+  },
+  {
+    "title": "Mixture of Routers",
+    "author": "Zhang et al.",
+    "description": "New alternative to MoEs whereby each expert is itself a router",
+    "tags": ["MoEs", "Optimization", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.23362"
+  },
+  {
+    "title": "Interpretable Machine Learning in Physics: A Review",
+    "author": "Wetzel et al.",
+    "description": "Breakdown of many mehtods for using ML for Physics",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 3.0,
+    "releaseDate": "2025-03-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.23616"
+  },
+  {
+    "title": "When To Solve, When To Verify: Compute-Optimal Problem Solving and Generative Verification for LLM Reasoning",
+    "author": "Singhi et al.",
+    "description": "Balancing exploration and verification in LLM reasoning process",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.01005"
+  },
+  {
+    "title": "A Survey on Test-Time Scaling in Large Language Models",
+    "author": "Zhang et al.",
+    "description": "Breakdown of many methods in test-time scaling of LLM outputs",
+    "tags": ["Reasoning", "LLMs", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.24235"
+  },
+  {
+    "title": "TransMamba: Flexibly Switching between Transformer and Mamba",
+    "author": "Tencent",
+    "description": "Hybrid of mambda and transformers",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.24067"
+  },
+  {
+    "title": "Muon and a Selective Survey on Steepest Descent in Riemannian and Non-Riemannian Manifolds",
+    "author": "Franz Louis Cesista",
+    "description": "Broad discussion about how Muon reflects on the theory of surface optimization",
+    "tags": ["Mathematics", "Optimizers", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-03",
+    "isRead": false,
+    "downloadLink": "https://leloykun.github.io/ponder/steepest-descent-non-riemannian/"
+  },
+  {
+    "title": "Recent reasoning research: GRPO tweaks, base model RL, and data curation",
+    "author": "Nathan Lambert",
+    "description": "Explains a few papers in RL on LLMs",
+    "tags": ["Reinforcement Learning", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-31",
+    "isRead": false,
+    "downloadLink": "https://www.interconnects.ai/p/papers-im-reading-base-model-rl-grpo"
+  },
+  {
+    "title": "CPPO: Accelerating the Training of GRPO-Based Reasoning Models",
+    "author": "Lin et al.",
+    "description": "Outlines an alternative to GRPO",
+    "tags": ["Reinforcement Learning", "LLMs", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.22342"
+  },
+  {
+    "title": "SGD: The general problem and implementation details",
+    "author": "Damek Davis",
+    "description": "Looks into the math behind SGD and general stochastic optimization",
+    "tags": ["Optimizers", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-19",
+    "isRead": false,
+    "downloadLink": "https://damek.github.io/STAT-4830/section/8/notes.html"
+  },
+  {
+    "title": "TVM: An Automated End-to-End Optimizing Compiler for DL",
+    "author": "Chen et al.",
+    "description": "ML Compiler optimizing workloads on diverse hardware",
+    "tags": ["HPC", "Distributed Computing", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2018-10-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1802.04799"
+  },
+  {
+    "title": "TASO: Optimizing Deep Learning Computation with Automatic Generation of Graph Substitutions",
+    "author": "Stanford University",
+    "description": "ML Compiler built to trim out parts of the computation graph to speed up operations",
+    "tags": ["Distributed Systems", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2019-10-28",
+    "isRead": false,
+    "downloadLink": "https://www.wisdom.weizmann.ac.il/~padon/taso-sosp19.pdf"
+  },
+  {
+    "title": "NNSight and NDIF: Democratizing Access to Open-Weight Foundation Model Internals",
+    "author": "Loftus et al.",
+    "description": "Explains how to use new library for interpretability research",
+    "tags": ["Libraries", "Interpretability", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-04-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2407.14561"
+  },
+  {
+    "title": "Superintelligence Strategy",
+    "author": "Eric Schmidt",
+    "description": "Introduces the idea of Mutually Assured AI Malfunction as a Game Theory argument against AGI development",
+    "tags": ["Politics", "AI Safety", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-14",
+    "isRead": false,
+    "downloadLink": "https://files.nationalsecurity.ai/Superintelligence_Strategy.pdf"
+  },
+  {
+    "title": "Jacobian Sparse Autoencoders: Sparsify Computations, Not Just Activations",
+    "author": "Farnik et al.",
+    "description": "Proposes method for learning interpretable circuit from a LLM weights",
+    "tags": ["Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.18147"
+  },
+  {
+    "title": "Memory Augmented RNNs",
+    "author": "Arabshahi et al.",
+    "description": "Trying to adapt LSTMs to have access to a stack of memory",
+    "tags": ["LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2019-11-05",
+    "isRead": false,
+    "downloadLink": "https://www.arxiv.org/pdf/1911.01545v1"
+  },
+  {
+    "title": "The Ultra-Scale Playbook: Training LLMs on GPU Clusters",
+    "author": "Tazi et al.",
+    "description": "Exhaustive look at how to train LLMs across a huge amount of GPUs",
+    "tags": ["Distributed Computing", "LLMs", "Site"],
+    "readTime": 8.0,
+    "releaseDate": "2025-02-19",
+    "isRead": false,
+    "downloadLink": "https://huggingface.co/spaces/nanotron/ultrascale-playbook?section=high_level_overview"
+  },
+  {
+    "title": "MoBA: Mixture of Block attention for Long-Context LLMs",
+    "author": "Tsinghua University",
+    "description": "Method for mixing linear attention in MoE architectures",
+    "tags": ["LLMs", "Optimization", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.13189"
+  },
+  {
+    "title": "Gemstones: A Model Suite for Multi-Faceted Scaling Laws",
+    "author": "McLeish et al.",
+    "description": "Scaling laws of hyperparameters of LLMs",
+    "tags": ["Deep Learning", "LLMs", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.06857"
+  },
+  {
+    "title": "Curvature Tuning: Provable Training-Free Model Steering from a Single Parameter",
+    "author": "Hu et al.",
+    "description": "Integrates splines into model",
+    "tags": ["Deep Learning", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.07783"
+  },
+  {
+    "title": "Old Optimizer, New Norm: An Anthology",
+    "author": "Jeremy Bernstein",
+    "description": "More of the math on the basis of optimizers in a choice of norm",
+    "tags": ["Mathematics", "Optimizers", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2409.20325"
+  },
+  {
+    "title": "HOG-Diff: Higher-Order Guided Diffusion for Graph Generation",
+    "author": "Huang et al.",
+    "description": "New method for learning the structure of graphs",
+    "tags": ["GenAI", "Machine Learning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.04308"
+  },
+  {
+    "title": "JAX Scaling Book (11 Part)",
+    "author": "Google",
+    "description": "Amazing series on JAX & TPUs and general scaling / model optimization tips",
+    "tags": ["Distributed Computing", "HPC", "Tutorial", "Site"],
+    "readTime": 10.0,
+    "releaseDate": "2025-02-04",
+    "isRead": false,
+    "downloadLink": "https://jax-ml.github.io/scaling-book/roofline/"
+  },
+  {
+    "title": "Optimizing Test-Time Compute via Meta Reinforcement Fine-Tuning",
+    "author": "CMU",
+    "description": "Reformulation of how proper test-time reasoning is a pareto meta-RL problem",
+    "tags": [
+      "Reinforcement Learning",
+      "Machine Learning",
+      "Reasoning",
+      "Arxiv"
+    ],
+    "readTime": 2.0,
+    "releaseDate": "2025-03-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.07572"
+  },
+  {
+    "title": "GFlowNets and Variational Inference",
+    "author": "University of Montreal",
+    "description": "Cutting work on bridging VI and GFlow methods of non-LLM generative models",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-03-02",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2210.00580"
+  },
+  {
+    "title": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
+    "author": "Bengio et al.",
+    "description": "Analysis of pareto frontier superioroity of Flownets for candidate generation",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2021-11-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2106.04399"
+  },
+  {
+    "title": "GFlowNet Foundations",
+    "author": "Bengio et al.",
+    "description": "Theoretical explanation of the FlowNet model",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 6.0,
+    "releaseDate": "2023-07-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2111.09266"
+  },
+  {
+    "title": "GFlowNet-EM for Learning Compositional Latent Variable Models",
+    "author": "Bengio et al.",
+    "description": "Learning compositional structures via Flow Nets",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2023-06-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2302.06576"
+  },
+  {
+    "title": "Biological Sequence Design with GFlowNets",
+    "author": "Bengio et al.",
+    "description": "Looking at how to make molecules with Flow Nets",
+    "tags": ["GenAI", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-05-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2203.04115"
+  },
+  {
+    "title": "Learning to Solve and Verify: A Self-Play Framework for Code and Test Generation",
+    "author": "Lin et al.",
+    "description": "Using LLM self-play to make code that works",
+    "tags": ["Reasoning", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-02-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.14948"
+  },
+  {
+    "title": "The GFlowNet Tutorial",
+    "author": "Gengio et al.",
+    "description": "How to make GFlowNet work-- a walktrhough",
+    "tags": ["GenAI", "Tutorial", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2022-02-10",
+    "isRead": false,
+    "downloadLink": "https://milayb.notion.site/The-GFlowNet-Tutorial-95434ef0e2d94c24aab90e69b30be9b3"
   }
 ]

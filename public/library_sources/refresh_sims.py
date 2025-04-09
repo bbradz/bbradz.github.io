@@ -127,14 +127,27 @@ if __name__ == "__main__":
 Site, Arxiv, YT
 
 Tags = Activation Functions, AI Safety, Architecture, Arxiv, Autoencoders,
-Deep Learning, Diffusion Models, Distributed Computing, Distributed Systems,
+Deep Learning, Diffusion, Distributed Computing, Distributed Systems,
 Economics, Essay, Factorio, Finance, Git, GNNs, Grokking, Hardware,
 Hyperparameter Optimization, Information Theory, Interpretability,
 Libraries, Lie Groups, LLMs, Machine Learning, Markets, Mathematics,
 Meta-Learning, Minecraft, MoEs, Neural Networks, Optimization, Optimizers,
 Parallel Computing, Philosophy, Policy, Politics, Programming,
-Reinforcement Learning, Site, Symbolic Systems, Technology,
-Transformers, Tutorial
+Reinforcement Learning, Site, Symbolic Systems, Tech, Neuroscience,
+Transformers, Tutorial, Content Recommendation, Forecasting, Quantization, 
+HPC, Reasoning, Evals, Iteration, Self-Help, Distillation, GenAI,
+Computer Systems, 
+
+Maybe I should do:
+- pre-training
+- post-training
+- sft
+- rlhf
+- test-time compute
+- reinforcement learning
+- optimizers
+- flow nets
+- self-play
 
 
 {
