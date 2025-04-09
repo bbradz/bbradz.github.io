@@ -18,12 +18,7 @@ How To Push:
 
 npm run clean
 npm install
+npm run deploy
 git add .
 git commit -m "updated library"
 git push origin main
-npm run deploy
-
-One time I ran into it hanging on idealTree when trying to npm install, to fix it I ran:
-    npm cache clean --force
-    rm -rf node_modules package-lock.json
-    npm install
