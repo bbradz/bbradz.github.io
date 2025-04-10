@@ -69,7 +69,7 @@ def generate_embeddings(input_filepath="input.json"):
 
     return updated_reading_list_data
 
-def generate_document_similarity_data(sources_data, output_filepath="document_similarities.json", similarity_threshold=0.5):
+def generate_document_similarity_data(sources_data, output_filepath="document_similarities.json", similarity_threshold=0.6):
     """
     Calculates cosine similarities between document embeddings from provided data,
     and writes a JSON file (document_similarities.json) containing the similarity links
@@ -124,31 +124,24 @@ if __name__ == "__main__":
 
 """
 \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
-Site, Arxiv, YT
 
-Tags = Activation Functions, AI Safety, Architecture, Arxiv, Autoencoders,
-Deep Learning, Diffusion, Distributed Computing, Distributed Systems,
-Economics, Essay, Factorio, Finance, Git, GNNs, Grokking, Hardware,
-Hyperparameter Optimization, Information Theory, Interpretability,
-Libraries, Lie Groups, LLMs, Machine Learning, Markets, Mathematics,
-Meta-Learning, Minecraft, MoEs, Neural Networks, Optimization, Optimizers,
-Parallel Computing, Philosophy, Policy, Politics, Programming,
-Reinforcement Learning, Site, Symbolic Systems, Tech, Neuroscience,
-Transformers, Tutorial, Content Recommendation, Forecasting, Quantization, 
-HPC, Reasoning, Evals, Iteration, Self-Help, Distillation, GenAI,
-Computer Systems, 
+The following is the list of all of the current Tags:
 
-Maybe I should do:
-- pre-training
-- post-training
-- sft
-- rlhf
-- test-time compute
-- reinforcement learning
-- optimizers
-- flow nets
-- self-play
-
+Tags = 
+Information Theory, Statistics, Linear Algebra, Stochastic Calculus, Misc Math,
+GPU, ASIC, HPC, Distributed Techniques,
+Time-Series Forecasting, Monte Carlo Methods, Finance,
+Compilers, ProgLangs, Version Control, System Design, DevOps, Infrastructure, 
+SWE Best Practices, Benchmarking, Libraries
+Alignment, Governance, X-Risk,
+Interpretability, CV, NLP, CompBio, Control, Game,
+Career Advice,
+Architecture, SSM, MoE, Transformer, Attention, Generative Methods
+Training, Scaling, Inference, Test-Time Methods, RL for Test-Time, Context Length
+Quantization, Sparsity, Distillation, Optimizer, Hyperparams
+RL, Symbolic AI, ML,
+Econ, Wonky, Politiking, Philosophy
+Arxiv, Site, YT, Essay
 
 {
   "title": "",
