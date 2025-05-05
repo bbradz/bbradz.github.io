@@ -157,8 +157,7 @@ Time-Series Forecasting, Monte Carlo Methods, Finance,
 Compilers, ProgLangs, Version Control, System Design, DevOps, Infrastructure, 
 SWE Best Practices, Benchmarking, Libraries
 Alignment, Governance, X-Risk,
-Interpretability, CV, NLP, CompBio, Control, Game,
-Career Advice,
+Interpretability, CV, NLP, CompBio, Control, Game, Career Advice,
 Architecture, SSM, MoE, Transformer, Attention, Generative Methods
 Training, Scaling, Inference, Test-Time Methods, RL for Test-Time, Context Length
 Quantization, Sparsity, Distillation, Optimizer, Hyperparams
