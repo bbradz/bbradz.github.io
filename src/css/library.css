@@ -11,10 +11,12 @@
 **********************/
 .reading-list-layout {
   display: flex;
+  flex-direction: row; /* Ensure horizontal direction */
   align-items: flex-start; /* Keep if you want items aligned to the top */
   padding: 20px;
   width: 80%; /* Keep the width at 80% */
   margin-left: auto;
+  flex-wrap: nowrap;
 }
 
 #reading-list li {
@@ -247,13 +249,19 @@ li {
 .graph-container {
   max-width: 400px; /* Ensure graph container is square */
   height: 400px;
-  margin-left: auto; /* Push graph to the right */
-  margin-right: 10px; /* Set the 10px right margin */
+  background-color: var(--graph-background) !important;
   border-top-right-radius: 0px !important;
   border-top-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
+
+  position: sticky; /* To keep it on screen while scrolling */
+  top: 110px;       /* Distance from the top when it starts sticking, adjust as needed */
+  align-self: flex-start; /* Align to the start of the flex container */
+  margin-left: auto;     /* Push graph to the right within the flex layout */
+  margin-right: 10px;    /* Set the 10px right margin */
 }
+
 
 .graph-inner {
   width: 100%; /* Make the graph inner fill the graph container */
@@ -407,7 +415,16 @@ li {
   }
 
   .item-tags li.tag-site {
-    background-color: #4caf50; /* Example Site color - Green */
+    background-color: #da8fff; /* Example Site color - Green */
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-right: 5px;
+  }
+
+  .item-tags li.tag-essay {
+    background-color: #f5f5dc; /* Example Site color - Green */
     color: white;
     padding: 2px 5px;
     border-radius: 3px;

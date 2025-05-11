@@ -1,6 +1,6 @@
-// library.js - DEBUGGING VERSION - PLEASE RUN THIS AND CHECK CONSOLE
 import React from "react";
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo, startTransition } from "react";
+import deepEqual from "fast-deep-equal";
 import { Link } from "react-router-dom";
 import * as d3 from "d3";
 import {
@@ -25,7 +25,7 @@ const Tag = React.memo(({ tag, onTagFilter, isFirst }) => {
         color: getTextColor(tag),
         cursor: "pointer",
         marginRight: "4px",
-        marginLeft: isFirst ? "0px" : undefined, 
+        marginLeft: isFirst ? "0px" : undefined,
         padding: "2px 6px",
         borderRadius: "3px",
         fontSize: "0.85em",
@@ -85,6 +85,29 @@ ReadingListItem.displayName = "ReadingListItem";
 function Library() {
   console.log("Library Component RENDER");
 
+  // --- Hyperparameters for DocumentGraph ---
+  const graphHyperparameters = {
+    zoomScaleExtent: [0.2, 5],
+    initialZoomScale: 0.2,
+    initialZoomTranslateFactor: 1.2,
+    linkDistance: 100,
+    linkStrength: 0.8,
+    chargeStrength: -300,
+    centerStrength: 0.5,
+    xForceStrength: 0.1,
+    yForceStrength: 0.1,
+    collideStrength: 0.1,
+    collideRadiusPadding: 5,
+    boundaryStrength: 0.05,
+    simulationAlpha: 0.3,
+    velocityDecay: 0.4,
+    alphaDecay: 0.03,
+    alphaMin: 0.001,
+    nodeMinRadius: 5,
+    nodeMaxRadius: 20,
+    graphSizePadding: 780, // Used for bounding box calculations in graph forces
+  };
+
   // --- State Declarations ---
   const savedTheme = localStorage.getItem("theme") || "dark";
   const [theme, setTheme] = useState(savedTheme);
@@ -117,12 +140,15 @@ function Library() {
   // --- 1st useEffect: Load raw data only ---
   useEffect(() => {
     try {
-      const initialReadingListData = sourcesRawData.map((item, index) => ({
-        ...item,
-        embedding: item.embedding || [],
-        originalIndex: index,
-      }));
-      originalSourcesRawData.current = [...initialReadingListData];
+      const initialReadingListData = sourcesRawData.map((item, index) => {
+        const cachedItem = {
+          ...item,
+          embedding: item.embedding || [],
+          originalIndex: index,
+        };
+        return cachedItem;
+      });
+      originalSourcesRawData.current = initialReadingListData;
       console.log("1st useEffect - sourcesRawData loaded:", sourcesRawData);
     } catch (error) {
       console.error(
@@ -133,33 +159,30 @@ function Library() {
   }, []); // Empty dependency array - runs only once on mount
 
   // --- 2nd useEffect: Apply initial filters and set states based on loaded data ---
-  useEffect(() => {
-    if (originalSourcesRawData.current) {
-      // Ensure data is loaded
-      console.log(
-        "2nd useEffect - originalSourcesRawData.current is now available, applying initial filters."
-      );
+  const filteredData = useMemo(() => {
+    if (!originalSourcesRawData.current) return [];
 
-      let filteredData = applyTagFilters(originalSourcesRawData.current); // Pass data explicitly
-      filteredData = filterByType("all", filteredData); // Ensure "all" types are shown initially, pass data
-      filteredData = filterReadStatus(undefined, filteredData); // Ensure all read statuses are shown initially, pass data
+    let data = [...originalSourcesRawData.current];
 
-      console.log(
-        "2nd useEffect - finalFilteredData after initial filters:",
-        filteredData
-      );
-      setReadingListData(filteredData); // Set readingListData with final filtered data
-      setGraphData(filteredData); // *Now* set graphData using the *same* final filtered data
-      setDisplayedReadingListData([...filteredData]); // Initialize displayed list as a copy
-      console.log(
-        "2nd useEffect - readingListData, graphData, and displayedReadingListData states updated."
-      );
-    } else {
-      console.log(
-        "2nd useEffect - originalSourcesRawData.current is not yet available."
+    if (activeTagFilters.length > 0) {
+      data = data.filter((item) =>
+        activeTagFilters.every((tag) => item.tags.includes(tag))
       );
     }
-  }, [originalSourcesRawData]); // Dependency on originalSourcesRawData - runs after data loads
+
+    if (readFilterState === 1) {
+      data = data.filter((item) => item.isRead);
+    } else if (readFilterState === 2) {
+      data = data.filter((item) => !item.isRead);
+    }
+
+    return data;
+  }, [originalSourcesRawData.current, activeTagFilters, readFilterState]);
+
+  useEffect(() => {
+    updateGraphDataIfNeeded(filteredData);
+    setDisplayedReadingListData(filteredData);
+  }, [filteredData]);
 
   const debounceFunc = (func, wait) => {
     let timeout;
@@ -168,6 +191,24 @@ function Library() {
       timeout = setTimeout(() => func.apply(this, args), wait);
     };
   };
+
+  const updateGraphDataIfNeeded = useCallback(
+    (newData) => {
+      if (!deepEqual(newData, graphData)) {
+        setGraphData(newData);
+      }
+    },
+    [graphData]
+  );
+
+  const updateDisplayedReadingListIfNeeded = useCallback(
+    (newData) => {
+      if (!deepEqual(newData, displayedReadingListData)) {
+        setDisplayedReadingListData(newData);
+      }
+    },
+    [displayedReadingListData]
+  );
 
   const performSearch = (query, data) => {
     if (!query) return data;
@@ -178,14 +219,7 @@ function Library() {
 
   const handleSearchInput = (e) => {
     const query = e.target.value;
-    const filteredData = performSearch(
-      query,
-      originalSourcesRawData.current.map((item, index) => ({
-        ...item,
-        embedding: item.embedding || [],
-        originalIndex: index,
-      }))
-    );
+    const filteredData = performSearch(query, originalSourcesRawData.current);
     console.log(
       "handleSearchInput - Before setReadingListData, readingListData:",
       readingListData
@@ -199,8 +233,10 @@ function Library() {
       graphData
     ); // DEBUG LOG
     setReadingListData(filteredData);
-    setGraphData(filteredData); // Update graph data on search
-    setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
+    if (!deepEqual(filteredData, graphData)) {
+      updateGraphDataIfNeeded(filteredData);
+    }
+    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
     console.log(
       "graphData state after setGraphData in handleSearchInput:",
       graphData
@@ -246,19 +282,9 @@ function Library() {
     const dataToFilter = currentData || originalSourcesRawData.current; // Use currentData or original
     let filteredData;
     if (filterType === "all") {
-      filteredData = dataToFilter.map((item, index) => ({
-        ...item,
-        embedding: item.embedding || [],
-        originalIndex: index,
-      }));
+      filteredData = dataToFilter;
     } else {
-      filteredData = dataToFilter
-        .map((item, index) => ({
-          ...item,
-          embedding: item.embedding || [],
-          originalIndex: index,
-        }))
-        .filter((item) => item.tags.includes(filterType));
+      filteredData = dataToFilter.filter((item) => item.tags.includes(filterType));
     }
     console.log(
       "filterByType - Before setReadingListData, readingListData:",
@@ -270,8 +296,10 @@ function Library() {
       graphData
     ); // DEBUG LOG
     setReadingListData(filteredData);
-    setGraphData(filteredData); // Update graph data on type filter
-    setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
+    if (!deepEqual(filteredData, graphData)) {
+      updateGraphDataIfNeeded(filteredData);
+    }
+    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
     console.log(
       "graphData state after setGraphData in filterByType:",
       graphData
@@ -289,27 +317,11 @@ function Library() {
     const dataToFilter = currentData || originalSourcesRawData.current; // Use currentData or original
     let filteredData;
     if (onlyUnread === true) {
-      filteredData = dataToFilter
-        .map((item, index) => ({
-          ...item,
-          embedding: item.embedding || [],
-          originalIndex: index,
-        }))
-        .filter((item) => !item.isRead);
+      filteredData = dataToFilter.filter((item) => !item.isRead);
     } else if (onlyUnread === false) {
-      filteredData = dataToFilter
-        .map((item, index) => ({
-          ...item,
-          embedding: item.embedding || [],
-          originalIndex: index,
-        }))
-        .filter((item) => item.isRead);
+      filteredData = dataToFilter.filter((item) => item.isRead);
     } else {
-      filteredData = dataToFilter.map((item, index) => ({
-        ...item,
-        embedding: item.embedding || [],
-        originalIndex: index,
-      }));
+      filteredData = dataToFilter;
     }
     console.log(
       "filterReadStatus - Before setReadingListData, readingListData:",
@@ -324,8 +336,10 @@ function Library() {
       graphData
     ); // DEBUG LOG
     setReadingListData(filteredData);
-    setGraphData(filteredData); // Update graph data on read status filter
-    setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
+    if (!deepEqual(filteredData, graphData)) {
+      updateGraphDataIfNeeded(filteredData);
+    }
+    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
     console.log(
       "graphData state after setGraphData in filterReadStatus:",
       graphData
@@ -362,12 +376,7 @@ function Library() {
     const dataToFilter = originalSourcesRawData.current; // Always filter against original data
     if (!dataToFilter) return []; // Handle no data case
 
-    let filteredData = dataToFilter.map((item, index) => ({
-      // Filter original data
-      ...item,
-      embedding: item.embedding || [],
-      originalIndex: index,
-    }));
+    let filteredData = dataToFilter;
     if (activeTagFilters.length > 0) {
       filteredData = filteredData.filter((item) => {
         return activeTagFilters.every((filterTag) =>
@@ -385,8 +394,10 @@ function Library() {
       graphData
     ); // DEBUG LOG
     setReadingListData(filteredData);
-    setGraphData(filteredData); // Update graph data on tag filter change
-    setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
+    if (!deepEqual(filteredData, graphData)) {
+      updateGraphDataIfNeeded(filteredData);
+    }
+    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
     console.log(
       "graphData state after setGraphData in applyTagFilters:",
       graphData
@@ -413,10 +424,13 @@ function Library() {
         filteredData = filterReadStatus(true, filteredData); // Pass tag-filtered data
       } else {
         filteredData = filterByType("all", filteredData); // Get data from filterByType, pass tag-filtered data
-        // filteredData = applyTagFilters(filteredData); // Then refine by tags, get data - redundant, remove this line - already tag filtered
       }
-      setGraphData(filteredData); // Update graph data on read filter change
-      setDisplayedReadingListData([...filteredData]); // Update displayed list as a copy
+      if (!deepEqual(filteredData, graphData)) {
+        startTransition(() => {
+          updateGraphDataIfNeeded(filteredData);
+        });
+      }
+      updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
     }
   }, [readFilterState, originalSourcesRawData, activeTagFilters]); // Added originalSourcesRawData and activeTagFilters dependencies
 
@@ -476,6 +490,10 @@ function Library() {
           button.style.setProperty("--active-text-color", "#FFFFFF");
           break;
         case "Site":
+          button.style.setProperty("--active-color", "#DA8FFF");
+          button.style.setProperty("--active-text-color", "#FFFFFF");
+          break;
+        case "Essay":
           button.style.setProperty("--active-color", "#F5F5DC");
           button.style.setProperty("--active-text-color", "#000000");
           break;
@@ -499,7 +517,14 @@ function Library() {
 
   // ===================== DocumentGraph Component =====================
   const DocumentGraph = React.memo(
-    ({ width, height, graphDisplayData, documentSimilaritiesData }) => {
+    ({
+      width,
+      height,
+      graphDisplayData,
+      documentSimilaritiesData,
+      graphParams,
+    }) => {
+      // Pass graphParams
       console.count("DocumentGraph RENDER"); // <--- Add render counter
       console.log(
         "DocumentGraph RENDER - graphDisplayData prop received:",
@@ -512,6 +537,7 @@ function Library() {
       const simulationRef = useRef(null);
       const nodeTitleGroupRef = useRef(null);
       const prevGraphDataRef = useRef(graphDisplayData); // Ref to store previous prop
+      const graphSize = graphParams.graphSizePadding; // Use hyperparameter
 
       useEffect(() => {
         if (
@@ -534,7 +560,7 @@ function Library() {
       const checkScreenSize = () => {
         setIsSmallScreen(window.innerWidth <= 768);
       };
-      const debouncedCheckScreenSize = debounceFunc(checkScreenSize, 100);
+      const debouncedCheckScreenSize = debounceFunc(checkScreenSize, 1000);
 
       useEffect(() => {
         checkScreenSize();
@@ -619,6 +645,7 @@ function Library() {
         height,
         documentSimilaritiesData,
         memoizedGraphData,
+        graphParams, // Add graphParams dependency
       ]);
 
       const cleanupGraph = useCallback(() => {
@@ -639,6 +666,7 @@ function Library() {
 
         try {
           const container = d3.select(containerRef.current);
+          // Create the SVG element
           const svg = container
             .append("svg")
             .attr("width", width)
@@ -646,6 +674,7 @@ function Library() {
             .attr("className", "rounded-lg");
           svgRef.current = svg;
 
+          // Add background rect
           svg
             .append("rect")
             .attr("width", "100%")
@@ -664,29 +693,49 @@ function Library() {
             return;
           }
 
-          const initialTranslateX = width / 3 - 25;
-          const initialTranslateY = height / 4 + 10;
-          const initialScale = 0.45;
-
+          // Group to be transformed by zoom & pan
           const g = svg.append("g");
-          const zoom = d3
+
+          // Create zoom behavior and attach it to the SVG.
+          // Note: We use broader scaleExtent and translateExtent values so users
+          // can pan the entire graph and zoom fully in/out.
+          const baseExtent = [
+            [-width, -height],
+            [2 * width, 2 * height],
+          ];
+          const zoomBehavior = d3
             .zoom()
-            .scaleExtent([initialScale, 3])
-            .translateExtent([
-              [0, 0],
-              [width, height],
-            ])
+            .scaleExtent(graphParams.zoomScaleExtent) // Use hyperparameter
             .on("zoom", (event) => {
+              // Update g transform as usual
               g.attr("transform", event.transform);
+
+              // Calculate dynamic extent based on scale
+              const scale = event.transform.k;
+              const scaleFactor = 1 / graphParams.zoomScaleExtent[0]; // Use hyperparameter
+              const multiplier = scale * scaleFactor;
+
+              const txExtent = [
+                [baseExtent[0][0] * multiplier, baseExtent[0][1] * multiplier],
+                [baseExtent[1][0] * multiplier, baseExtent[1][1] * multiplier],
+              ];
+
+              // Dynamically update the translateExtent
+              zoomBehavior.translateExtent(txExtent);
             });
 
+          // Apply the zoom behavior to the svg element
+          svg.call(zoomBehavior);
+          const initialScale = graphParams.initialZoomScale; // Use hyperparameter
           svg.call(
-            zoom.transform,
+            zoomBehavior.transform,
             d3.zoomIdentity
-              .translate(initialTranslateX, initialTranslateY)
+              .translate(
+                (width / 3) * graphParams.initialZoomTranslateFactor, // Use hyperparameter
+                (height / 3) * graphParams.initialZoomTranslateFactor
+              ) // Use hyperparameter
               .scale(initialScale)
           );
-          svg.call(zoom);
 
           const visibleDocIndicesMap = {};
           visibleDocsForGraph.forEach((doc, index) => {
@@ -727,7 +776,8 @@ function Library() {
             height,
             g,
             svg,
-            visibleDocsForGraph.map((doc) => doc.readTime)
+            visibleDocsForGraph.map((doc) => doc.readTime),
+            graphParams // Pass graphParams
           );
         } catch (error) {
           setError("Error initializing graph. See console for details.");
@@ -741,7 +791,8 @@ function Library() {
         height,
         g,
         svg,
-        readTimes
+        readTimes,
+        graphParams // Receive graphParams
       ) => {
         nodes.forEach((node) => {
           node.x = width / 2 + (Math.random() - 0.5) * 40;
@@ -756,32 +807,44 @@ function Library() {
             d3
               .forceLink(links)
               .id((d) => d.id)
-              .distance(50)
-              .strength(0.5)
+              .distance(graphParams.linkDistance) // Use hyperparameter
+              .strength(graphParams.linkStrength) // Use hyperparameter
           )
-          .force("charge", d3.forceManyBody().strength(-300))
-          .force("center", d3.forceCenter(width / 2, height / 2))
-          .force("x", d3.forceX(width / 2).strength(0.1))
-          .force("y", d3.forceY(height / 2).strength(0.1))
+          .force(
+            "charge",
+            d3.forceManyBody().strength(graphParams.chargeStrength)
+          ) // Use hyperparameter
+          .force(
+            "center",
+            d3
+              .forceCenter(width / 2, height / 2)
+              .strength(graphParams.centerStrength)
+          ) // Use hyperparameter
+          .force("x", d3.forceX(width / 2).strength(graphParams.xForceStrength)) // Use hyperparameter
+          .force(
+            "y",
+            d3.forceY(height / 2).strength(graphParams.yForceStrength)
+          ) // Use hyperparameter
           .force(
             "collision",
             d3
               .forceCollide()
-              .strength(0.1)
+              .strength(graphParams.collideStrength) // Use hyperparameter
               .radius(
                 (d) =>
                   normalizeReadTime(
                     d.readTime,
                     Math.min(...readTimes),
-                    Math.max(...readTimes)
-                  ) + 10
+                    Math.max(...readTimes),
+                    graphParams // Pass graphParams
+                  ) + graphParams.collideRadiusPadding // Use hyperparameter
               )
           )
-          .force("boundary", forceBoundary(width, height, nodes))
-          .alpha(0.3)
-          .velocityDecay(0.4)
-          .alphaDecay(0.05)
-          .alphaMin(0.001);
+          .force("boundary", forceBoundary(width, height, nodes, graphParams)) // Pass graphParams
+          .alpha(graphParams.simulationAlpha) // Use hyperparameter
+          .velocityDecay(graphParams.velocityDecay) // Use hyperparameter
+          .alphaDecay(graphParams.alphaDecay) // Use hyperparameter
+          .alphaMin(graphParams.alphaMin); // Use hyperparameter
 
         const link = g
           .append("g")
@@ -812,7 +875,8 @@ function Library() {
             normalizeReadTime(
               d.readTime,
               Math.min(...readTimes),
-              Math.max(...readTimes)
+              Math.max(...readTimes),
+              graphParams // Pass graphParams
             )
           )
           .attr("fill", (d) => (d.isRead ? "#4a9eff" : "var(--node-color)"))
@@ -857,13 +921,21 @@ function Library() {
 
         simulationRef.current.on("tick", () => {
           link
-            .attr("x1", (d) => boundPosition(d.source.x, width, -200))
-            .attr("y1", (d) => boundPosition(d.source.y, height, -200))
-            .attr("x2", (d) => boundPosition(d.target.x, width, -200))
-            .attr("y2", (d) => boundPosition(d.target.y, height, -200));
+            .attr("x1", (d) =>
+              boundPosition(d.source.x, width, -graphParams.graphSizePadding)
+            ) // Use hyperparameter
+            .attr("y1", (d) =>
+              boundPosition(d.source.y, height, -graphParams.graphSizePadding)
+            ) // Use hyperparameter
+            .attr("x2", (d) =>
+              boundPosition(d.target.x, width, -graphParams.graphSizePadding)
+            ) // Use hyperparameter
+            .attr("y2", (d) =>
+              boundPosition(d.target.y, height, -graphParams.graphSizePadding)
+            ); // Use hyperparameter
           node.attr("transform", (d) => {
-            const x = boundPosition(d.x, width, -200);
-            const y = boundPosition(d.y, height, -200);
+            const x = boundPosition(d.x, width, -graphParams.graphSizePadding); // Use hyperparameter
+            const y = boundPosition(d.y, height, -graphParams.graphSizePadding); // Use hyperparameter
             return `translate(${x},${y})`;
           });
         });
@@ -879,8 +951,8 @@ function Library() {
 
       const dragged = (event, d) => {
         simulationRef.current.alphaTarget(0.01);
-        d.fx = boundPosition(event.x, width, -200);
-        d.fy = boundPosition(event.y, height, -200);
+        d.fx = boundPosition(event.x, width, -graphParams.graphSizePadding); // Use hyperparameter
+        d.fy = boundPosition(event.y, height, -graphParams.graphSizePadding); // Use hyperparameter
       };
 
       const dragended = (event, d) => {
@@ -889,13 +961,14 @@ function Library() {
         d.fy = null;
       };
 
-      const forceBoundary = (width, height, nodes) => {
+      const forceBoundary = (width, height, nodes, graphParams) => {
+        // Receive graphParams
         const padding = 4;
         const xMin = padding;
         const xMax = width - padding;
         const yMin = padding;
         const yMax = height - padding;
-        const strength = 0.05;
+        const strength = graphParams.boundaryStrength; // Use hyperparameter
 
         function force(alpha) {
           nodes.forEach((node) => {
@@ -912,9 +985,15 @@ function Library() {
         return Math.max(padding, Math.min(dimension - padding, position));
       };
 
-      const normalizeReadTime = (readTime, minReadTime, maxReadTime) => {
-        const minRadius = 5;
-        const maxRadius = 20;
+      const normalizeReadTime = (
+        readTime,
+        minReadTime,
+        maxReadTime,
+        graphParams
+      ) => {
+        // Receive graphParams
+        const minRadius = graphParams.nodeMinRadius; // Use hyperparameter
+        const maxRadius = graphParams.nodeMaxRadius; // Use hyperparameter
         if (maxReadTime === minReadTime) return (minRadius + maxRadius) / 2;
         const logMin = Math.log(minReadTime + 1);
         const logMax = Math.log(maxReadTime + 1);
@@ -1046,13 +1125,17 @@ function Library() {
             <div className="sort-bar-buttons">
               <button
                 id="sort-release"
-                onClick={(event) => toggleSort(event.target, "release")}
+                onClick={(event) =>
+                  debounceFunc(toggleSort(event.target, "release"), 1000)
+                }
               >
                 Sort by Release Date <span className="sort-arrow"></span>
               </button>
               <button
                 id="sort-time"
-                onClick={(event) => toggleSort(event.target, "time")}
+                onClick={(event) =>
+                  debounceFunc(toggleSort(event.target, "time"), 1000)
+                }
               >
                 Sort by Time to Read <span className="sort-arrow"></span>
               </button>
@@ -1070,21 +1153,35 @@ function Library() {
               </button>
               <button
                 id="filter-YT"
-                onClick={(event) => toggleFilterType(event.target, "YT")}
+                onClick={(event) =>
+                  debounceFunc(toggleFilterType(event.target, "YT"), 1000)
+                }
               >
                 YT
               </button>
               <button
                 id="filter-Arxiv"
-                onClick={(event) => toggleFilterType(event.target, "Arxiv")}
+                onClick={(event) =>
+                  debounceFunc(toggleFilterType(event.target, "Arxiv"), 1000)
+                }
               >
                 Arxiv
               </button>
               <button
                 id="filter-Site"
-                onClick={(event) => toggleFilterType(event.target, "Site")}
+                onClick={(event) =>
+                  debounceFunc(toggleFilterType(event.target, "Site"), 1000)
+                }
               >
                 Site
+              </button>
+              <button
+                id="filter-Essay"
+                onClick={(event) =>
+                  debounceFunc(toggleFilterType(event.target, "Essay"), 1000)
+                }
+              >
+                Essay
               </button>
             </div>
             <div id="active-tags" className="active-tag">
@@ -1126,6 +1223,7 @@ function Library() {
                 height={400}
                 graphDisplayData={memoizedGraphData} // Use memoizedGraphData
                 documentSimilaritiesData={similaritiesRawData}
+                graphParams={graphHyperparameters} // Pass hyperparameters
               />
             </div>
           </div>
@@ -1135,7 +1233,7 @@ function Library() {
       <button
         ref={scrollToTopButtonRef}
         onClick={scrollToTop}
-        className="scroll-to-top fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer" // Added classes here
+        className="scroll-to-top fixed bottom-6 right-6 opacity-0 transition-opacity duration-200 cursor-pointer"
         aria-label="Scroll to top"
       >
         <div className="bg-white-800 hover:bg-white-700 rounded-full p-3 shadow-lg">

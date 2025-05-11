@@ -69,16 +69,18 @@ def generate_embeddings(input_filepath="input.json"):
 
     return updated_reading_list_data
 
-def generate_document_similarity_data(sources_data, output_filepath="document_similarities.json", similarity_threshold=0.5):
+def generate_document_similarity_data(sources_data, output_filepath="document_similarities.json", similarity_threshold=0.6, tag_weight=0.5, embedding_weight=0.5):
     """
-    Calculates cosine similarities between document embeddings from provided data,
-    and writes a JSON file (document_similarities.json) containing the similarity links
+    Calculates similarity between documents based on shared tags and sentence embeddings.
+    Writes a JSON file (document_similarities.json) containing the similarity links
     suitable for direct loading in library.js.
 
     Args:
         sources_data (list): List of document data with embeddings.
         output_filepath (str): Path to the output JSON file for similarities (default: "document_similarities.json").
-        similarity_threshold (float): Threshold for cosine similarity to create a link (default: 0.75).
+        similarity_threshold (float): Threshold for the combined similarity to create a link (default: 0.6).
+        tag_weight (float): Weight for tag similarity in the combined score (default: 0.5).
+        embedding_weight (float): Weight for embedding similarity in the combined score (default: 0.5).
     """
     documents = sources_data
     links = []
@@ -93,14 +95,35 @@ def generate_document_similarity_data(sources_data, output_filepath="document_si
                 print(f"Warning: Embedding missing or invalid for document '{doc1['title']}' or '{doc2['title']}'. Skipping similarity calculation.")
                 continue
 
-            similarity = cosine_similarity(doc1['embedding'], doc2['embedding'])
+            # Calculate Tag Similarity
+            shared_tags = set(doc1['tags']).intersection(set(doc2['tags']))
+            shared_tag_count = len(shared_tags)
 
-            if similarity > similarity_threshold:
+            min_tag_len = min(len(doc1['tags']), len(doc2['tags']))
+            max_tag_len = max(len(doc1['tags']), len(doc2['tags']))
+
+            if min_tag_len > 0:
+                tag_similarity = shared_tag_count / min_tag_len
+            elif max_tag_len == 0: # Both have no tags, consider them tag-similar in this context (can be adjusted)
+                tag_similarity = 1.0
+            else: # One has tags, the other doesn't, and no shared tags, so not tag-similar
+                tag_similarity = 0.0
+
+
+            # Calculate Embedding Similarity
+            embedding_similarity = cosine_similarity(doc1['embedding'], doc2['embedding'])
+
+            # Calculate Combined Similarity
+            combined_similarity = (tag_weight * tag_similarity) + (embedding_weight * embedding_similarity)
+
+            if combined_similarity > similarity_threshold:
                 links.append({
                     "source": i,  # Use index as source ID
                     "target": j,  # Use index as target ID
-                    "similarity": similarity,
-                    "width": 1 + (similarity - similarity_threshold) * (4 / (1 - similarity_threshold)) # Width calculation from library.js
+                    "combined_similarity": combined_similarity,
+                    "tag_similarity": tag_similarity,
+                    "embedding_similarity": embedding_similarity,
+                    "width": 1 + (combined_similarity - similarity_threshold) * (4 / (1 - similarity_threshold)) # Width calculation from library.js, now based on combined similarity
                 })
 
     # Write the similarity links to src/document_similarities.json
@@ -124,31 +147,30 @@ if __name__ == "__main__":
 
 """
 \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
-Site, Arxiv, YT
 
-Tags = Activation Functions, AI Safety, Architecture, Arxiv, Autoencoders,
-Deep Learning, Diffusion, Distributed Computing, Distributed Systems,
-Economics, Essay, Factorio, Finance, Git, GNNs, Grokking, Hardware,
-Hyperparameter Optimization, Information Theory, Interpretability,
-Libraries, Lie Groups, LLMs, Machine Learning, Markets, Mathematics,
-Meta-Learning, Minecraft, MoEs, Neural Networks, Optimization, Optimizers,
-Parallel Computing, Philosophy, Policy, Politics, Programming,
-Reinforcement Learning, Site, Symbolic Systems, Tech, Neuroscience,
-Transformers, Tutorial, Content Recommendation, Forecasting, Quantization, 
-HPC, Reasoning, Evals, Iteration, Self-Help, Distillation, GenAI,
-Computer Systems, 
+Ideas:
+- Timeseries forecasting breakdown
+- Breakdown of financial engineering ML methods
+- AI for Balatro
+- SSMs
+- Breakdown of the PyTorch Library
 
-Maybe I should do:
-- pre-training
-- post-training
-- sft
-- rlhf
-- test-time compute
-- reinforcement learning
-- optimizers
-- flow nets
-- self-play
+The following is the list of all of the current Tags:
 
+Tags = 
+Information Theory, Statistics, Linear Algebra, Stochastic Calculus, Misc Math,
+GPU, ASIC, HPC, Distributed Techniques,
+Time-Series Forecasting, Monte Carlo Methods, Finance,
+Compilers, ProgLangs, Version Control, System Design, DevOps, Infrastructure, 
+SWE Best Practices, Benchmarking, Libraries
+Alignment, Governance, X-Risk,
+Interpretability, CV, NLP, CompBio, Control, Game, Career Advice,
+Architecture, SSM, MoE, Transformer, Attention, Generative Methods
+Training, Scaling, Inference, Test-Time Methods, RL for Test-Time, Context Length
+Quantization, Sparsity, Distillation, Optimizer, Hyperparams
+RL, Symbolic AI, ML,
+Econ, Wonky, Politiking, Philosophy
+Arxiv, Site, YT, Essay
 
 {
   "title": "",

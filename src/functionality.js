@@ -593,6 +593,8 @@ export const getTagColor = function (tag) { // Changed to export const
     case "Arxiv":
       return "#A51C30";
     case "Site":
+      return "#DA8FFF";
+    case "Essay":
       return "#F5F5DC";
     default:
       const hash = hashString(tag);
@@ -604,7 +606,7 @@ export const getTagColor = function (tag) { // Changed to export const
 };
 
 export const getTextColor = function (tag) { // Changed to export const
-  if (tag === "Site") {
+  if (tag === "Essay") {
     return "#000000";
   }
   return "#FFFFFF";
