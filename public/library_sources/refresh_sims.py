@@ -148,6 +148,13 @@ if __name__ == "__main__":
 """
 \\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
 
+Ideas:
+- Timeseries forecasting breakdown
+- Breakdown of financial engineering ML methods
+- AI for Balatro
+- SSMs
+- Breakdown of the PyTorch Library
+
 The following is the list of all of the current Tags:
 
 Tags = 
