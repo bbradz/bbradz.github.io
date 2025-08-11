@@ -308,7 +308,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
 
 .post-description {
   color: var(--nav-color);
-  font-size: 0.8rem;
+  font-size: 1.0rem;
   margin-bottom: 0.5rem;
 }
 

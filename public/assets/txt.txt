@@ -3,7 +3,7 @@ npm install
 npm run build
 npm run deploy
 git add .
-git commit -m "switch to default light theme"
+git commit -m "css fontsize change"
 git push origin main
 
 
