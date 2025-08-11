@@ -46,7 +46,7 @@ function Posts() {
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
+    setTheme(theme);
     runGameOfLife("gameOfLife");
   }, []);
 

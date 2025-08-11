@@ -93,7 +93,7 @@ function AlgoperfArticle() {
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
+    setTheme(theme);
     runGameOfLife("gameOfLife");
   }, []);
 

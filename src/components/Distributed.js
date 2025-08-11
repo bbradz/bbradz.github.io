@@ -76,7 +76,7 @@ function Distributed() {
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
+    setTheme(theme);
     runGameOfLife("gameOfLife");
   }, []);
 

@@ -93,7 +93,7 @@ function OptimizerTaxonomyArticle() {
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
+    setTheme(theme);
     runGameOfLife("gameOfLife");
   }, []);
 

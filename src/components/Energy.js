@@ -93,7 +93,7 @@ function Energy() {
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
+    setTheme(theme);
     runGameOfLife("gameOfLife");
   }, []);
 
