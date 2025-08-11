@@ -5,10 +5,15 @@ import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
-  const savedTheme = localStorage.getItem("theme") || "light";
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored) {
+      return stored;
+    }
+    // no theme stored yet — set default and save it
+    localStorage.setItem("theme", "light");
+    return "light";
+  });
 
   useEffect(() => {
     const imgLight = new Image();
@@ -20,15 +25,15 @@ function LandingPage() {
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
   };
 
+  // Whenever theme changes, persist and update DOM
   useEffect(() => {
+    localStorage.setItem("theme", theme);
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 
