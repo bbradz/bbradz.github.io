@@ -1,8 +1,36 @@
-How To Push:
-
+PUSH===
 npm run clean
 npm install
 npm run deploy
 git add .
-git commit -m "updated library"
+git commit -m "updating description txt file"
 git push origin main
+
+RESET==
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+
+
+MISC===
+conda deactivate
+which python3
+python3 -m venv .venv
+source .venv/bin/activate
+which python
+python -m pip --version
+python -m pip install "numpy<2" pandas scikit-learn scipy pyarrow numexpr bottleneck sentence-transformers
+
+python - <<'PY'
+import sys, numpy, pandas
+print("PY:", sys.executable)
+print("numpy:", numpy.__version__)
+print("pandas:", pandas.__version__)
+PY
+npm run clean
+npm install
+npm run deploy
+
+cd public/assets
+python refresh_sims.py
+python condense_inputs.py
