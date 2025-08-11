@@ -1,1 +1,13 @@
-node_modules/.cache/
+# OS/editor
+.DS_Store
+*.log
+
+# Node
+node_modules/
+build/
+dist/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
