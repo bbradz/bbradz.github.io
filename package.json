@@ -11,7 +11,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "gen:sims": "./.venv/bin/python public/library_sources/refresh_sims.py",
+    "prebuild": "npm run gen:sim"
   },
   "keywords": [],
   "author": "",
