@@ -9,8 +9,10 @@ import LandingPage from "./LandingPage";
 
 function Distributed() {
   // State for theme toggle
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   const [isTocOpen, setIsTocOpen] = useState(false);
   // State to manage citation button icon and status
   const [isCitationCopied, setIsCitationCopied] = useState(false);
@@ -74,7 +76,6 @@ function Distributed() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);

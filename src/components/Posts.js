@@ -4,8 +4,9 @@ import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
 function Posts() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   const [optimizersCollapsed, setOptimizersCollapsed] = useState(true);
   const [distributedCollapsed, setDistributedCollapsed] = useState(true);
   const [economicCollapsed, setEconomicCollapsed] = useState(true);
@@ -45,7 +46,6 @@ function Posts() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);

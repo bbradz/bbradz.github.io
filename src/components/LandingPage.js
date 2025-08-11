@@ -6,13 +6,16 @@ import { Link } from "react-router-dom";
 
 function LandingPage() {
   const savedTheme = localStorage.getItem("theme") || "light";
-  const [theme, setTheme] = useState(savedTheme);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
-  const selfieLight = new Image();
-  selfieLight.src = "/assets/pics/selfie_8-2.jpg";
-
-  const selfieDark = new Image();
-  selfieDark.src = "/assets/pics/selfie_7.jpg";
+  useEffect(() => {
+    const imgLight = new Image();
+    imgLight.src = "/assets/pics/selfie_8-2.jpg";
+    const imgDark = new Image();
+    imgDark.src = "/assets/pics/selfie_7.jpg";
+  }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -25,12 +28,14 @@ function LandingPage() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
 
-  const selfieSrc = theme === "light" ? selfieLight.src : selfieDark.src;
+  const selfieSrc =
+    theme === "light"
+      ? "/assets/pics/selfie_8-2.jpg"
+      : "/assets/pics/selfie_7.jpg";
 
   return (
     <>

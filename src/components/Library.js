@@ -1,5 +1,12 @@
 import React from "react";
-import { useState, useRef, useEffect, useCallback, useMemo, startTransition } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+  startTransition,
+} from "react";
 import deepEqual from "fast-deep-equal";
 import { Link } from "react-router-dom";
 import * as d3 from "d3";
@@ -109,8 +116,10 @@ function Library() {
   };
 
   // --- State Declarations ---
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   const scrollToTopButtonRef = useRef(null);
   const [readingListData, setReadingListData] = useState([]);
   const [graphData, setGraphData] = useState([]); // Keep graphData state
@@ -284,7 +293,9 @@ function Library() {
     if (filterType === "all") {
       filteredData = dataToFilter;
     } else {
-      filteredData = dataToFilter.filter((item) => item.tags.includes(filterType));
+      filteredData = dataToFilter.filter((item) =>
+        item.tags.includes(filterType)
+      );
     }
     console.log(
       "filterByType - Before setReadingListData, readingListData:",

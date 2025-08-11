@@ -10,8 +10,9 @@ import TwitterEmbed from "./TwitterEmbed";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function ShampooArticle() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   const citationCopyButtonRef = useRef(null);
   const citationCheckIconRef = useRef(null);
   const tocArrowRef = useRef(null);
@@ -78,7 +79,6 @@ function ShampooArticle() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);

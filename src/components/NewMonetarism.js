@@ -10,8 +10,10 @@ import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function NewMonetarismArticle() {
   // State for theme toggle
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   // State for TOC visibility
   const [isTocOpen, setIsTocOpen] = useState(false);
   // Ref for citation copy button to manage icons
@@ -89,7 +91,6 @@ function NewMonetarismArticle() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
@@ -821,8 +822,7 @@ function NewMonetarismArticle() {
           money becomes some measure of the size of the total assets being
           traded, adjusted for the liquidity of each of those assets. Debt and
           equity become not mere additions and subtractions from the size of the
-          economy but, as beautifully shown in the
-          {" "}
+          economy but, as beautifully shown in the{" "}
           <a
             href="https://en.wikipedia.org/wiki/Modigliani–Miller_theorem"
             style={{ color: "inherit", textDecoration: "underline" }}
@@ -846,8 +846,8 @@ function NewMonetarismArticle() {
           depends on the exercising of non-uniform embedded options markets,
           although some starter concepts within Fed circles on how to account
           for this difference discuss reformulating the growth rate formula from
-          being expressed in terms of the sheer sum of M2 money supply sources
-          {" "}<a
+          being expressed in terms of the sheer sum of M2 money supply sources{" "}
+          <a
             href="https://en.wikipedia.org/wiki/Divisia_monetary_aggregates_index#:~:text=That%20approach%20to%20monetary%20aggregation,aggregates%20or%20Monetary%20Services%20Indexes."
             style={{ color: "inherit", textDecoration: "underline" }}
             target="_blank"
@@ -941,8 +941,8 @@ function NewMonetarismArticle() {
           to be. The role of banks as the sole source of lending by the Federal
           Reserve maybe ought to be abandoned. Viewed through the lens of who is
           providing liquidity in the market, banks shrink to only around 20
-          percent of the whole asset stock, and the rest of the economy—like the
-          {" "}<i>insurance</i> industry, where the crisis of 2008 really started—
+          percent of the whole asset stock, and the rest of the economy—like the{" "}
+          <i>insurance</i> industry, where the crisis of 2008 really started—
           becomes far more important. Maybe quite the thing to consider given
           the collapse in home insurance across the US from Climate Change and
           in-coming defunding of government agencies responsible for predicting

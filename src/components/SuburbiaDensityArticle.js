@@ -8,8 +8,9 @@ import Library from "./Library";
 import LandingPage from "./LandingPage";
 
 function SuburbiaDensityArticle() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
   const [isTocOpen, setIsTocOpen] = useState(false);
   const citationCopyButtonRef = useRef(null);
   const citationCheckIconRef = useRef(null);
@@ -73,7 +74,6 @@ function SuburbiaDensityArticle() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);

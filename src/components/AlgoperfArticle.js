@@ -10,8 +10,10 @@ import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 function AlgoperfArticle() {
   // State for theme toggle
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const [theme, setTheme] = useState(savedTheme);
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
   // State for TOC visibility
   const [isTocOpen, setIsTocOpen] = useState(false);
@@ -91,7 +93,6 @@ function AlgoperfArticle() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);
