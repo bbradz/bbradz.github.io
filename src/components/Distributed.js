@@ -3423,7 +3423,7 @@ function Distributed() {
           <h2 id="M">Sources</h2>
           <div className="references">
             <div className="bullet">
-              <span>1.</span>
+              <span>1. </span>
               <a
                 href="https://arxiv.org/pdf/2001.08361"
                 target="_blank"
@@ -3433,7 +3433,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>2.</span>
+              <span>2. </span>
               <a
                 href="https://www.constellationr.com/blog-news/insights/meta-launches-llama-31-450b-and-zuckerberg-its-personal"
                 target="_blank"
@@ -3443,7 +3443,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>3.</span>
+              <span>3. </span>
               <a
                 href="https://the-decoder.com/gpt-4-architecture-datasets-costs-and-more-leaked/"
                 target="_blank"
@@ -3453,7 +3453,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>4.</span>
+              <span>4. </span>
               <a
                 href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf"
                 target="_blank"
@@ -3463,7 +3463,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>5.</span>
+              <span>5. </span>
               <a
                 href="https://openreview.net/pdf?id=cw-EmNq5zfD"
                 target="_blank"
@@ -3474,7 +3474,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>6.</span>
+              <span>6. </span>
               <a
                 href="https://arxiv.org/pdf/1909.08053"
                 target="_blank"
@@ -3485,7 +3485,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>7.</span>
+              <span>7. </span>
               <a
                 href="https://arxiv.org/pdf/2402.17764"
                 target="_blank"
@@ -3495,7 +3495,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>8.</span>
+              <span>8. </span>
               <a
                 href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus"
                 target="_blank"
@@ -3505,7 +3505,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>9.</span>
+              <span>9. </span>
               <a
                 href="https://arxiv.org/pdf/1910.02054"
                 target="_blank"
@@ -3516,7 +3516,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>10.</span>
+              <span>10. </span>
               <a
                 href="https://arxiv.org/pdf/2306.10209"
                 target="_blank"
@@ -3527,7 +3527,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>11.</span>
+              <span>11. </span>
               <a
                 href="https://arxiv.org/pdf/2104.07857"
                 target="_blank"
@@ -3538,7 +3538,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>12.</span>
+              <span>12. </span>
               <a
                 href="https://www.microsoft.com/en-us/research/blog/zero-infinity-and-deepspeed-unlocking-unprecedented-model-scale-for-deep-learning-training/"
                 target="_blank"
@@ -3549,7 +3549,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>13.</span>
+              <span>13. </span>
               <a
                 href="https://arxiv.org/pdf/2101.06840"
                 target="_blank"
@@ -3560,7 +3560,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>14.</span>
+              <span>14. </span>
               <a
                 href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/"
                 target="_blank"
@@ -3570,7 +3570,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>15.</span>
+              <span>15. </span>
               <a
                 href="https://medium.com/@vishal09vns/sparse-attention-dad17691478c"
                 target="_blank"
@@ -3581,7 +3581,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>16.</span>
+              <span>16. </span>
               <a
                 href="https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/"
                 target="_blank"
@@ -3592,7 +3592,7 @@ function Distributed() {
               </a>
             </div>
             <div className="bullet">
-              <span>17.</span>
+              <span>17. </span>
               <a
                 href="https://www.youtube.com/watch?v=zqsOEzKZX2Y"
                 target="_blank"

@@ -742,7 +742,7 @@ function Energy() {
           <h2 id="F">References</h2>
           <div className="references">
             <div className="bullet">
-              <span>1.</span>
+              <span>1. </span>
               <a
                 href="https://rameznaam.com/2015/10/14/how-cheap-can-energy-storage-get/"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -753,7 +753,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>2.</span>
+              <span>2. </span>
               <a
                 href="https://rameznaam.com/2020/05/14/solars-future-is-insanely-cheap-2020/"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -764,7 +764,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>3.</span>
+              <span>3. </span>
               <a
                 href="https://noahpinion.substack.com/p/answering-the-techno-pessimists-part-a3b"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -775,7 +775,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>4.</span>
+              <span>4. </span>
               <a
                 href="https://noahpinion.substack.com/p/techno-optimism-for-2023"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -786,7 +786,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>5.</span>
+              <span>5. </span>
               <a
                 href="https://www.youtube.com/watch?v=h7EAfUeSBSQ&t=15s"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -797,7 +797,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>6.</span>
+              <span>6. </span>
               <a
                 href="https://noahpinion.substack.com/p/solar-is-happening-nuclear-is-mostly"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -808,7 +808,7 @@ function Energy() {
             </div>
 
             <div className="bullet">
-              <span>7.</span>
+              <span>7. </span>
               <a
                 href="https://www.bloomberg.com/opinion/articles/2023-03-26/nuclear-power-is-just-as-green-as-solar-and-wind?leadSource=uverify%20wall"
                 style={{ color: "inherit", textDecoration: "underline" }}

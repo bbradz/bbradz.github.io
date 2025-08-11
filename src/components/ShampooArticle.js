@@ -683,7 +683,7 @@ function ShampooArticle() {
           <h2 id="reading">References</h2>
           <div className="references">
             <div className="bullet">
-              <span>1.</span>
+              <span>1. </span>
               <a
                 href="https://arxiv.org/pdf/2002.09018"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -693,7 +693,7 @@ function ShampooArticle() {
               . The original paper introducing the Shampoo optimizer.
             </div>
             <div className="bullet">
-              <span>2.</span>
+              <span>2. </span>
               <a
                 href="https://arxiv.org/pdf/2309.06497"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -704,7 +704,7 @@ function ShampooArticle() {
               . Details on the distributed implementation.
             </div>
             <div className="bullet">
-              <span>3.</span>
+              <span>3. </span>
               <a
                 href="https://arxiv.org/pdf/2406.17748"
                 style={{ color: "inherit", textDecoration: "underline" }}
@@ -714,7 +714,7 @@ function ShampooArticle() {
               . Recent theoretical analysis of Shampoo's properties.
             </div>
             <div className="bullet">
-              <span>4.</span>
+              <span>4. </span>
               <a
                 href="https://arxiv.org/pdf/1503.05671"
                 style={{ color: "inherit", textDecoration: "underline" }}

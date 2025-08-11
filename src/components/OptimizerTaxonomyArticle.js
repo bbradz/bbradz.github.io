@@ -2221,7 +2221,7 @@ function OptimizerTaxonomyArticle() {
         <h2 id="sources">References</h2>
         <div className="references">
           <div className="bullet">
-            <span>1.</span>{" "}
+            <span>1. </span>{" "}
             <a
               href="https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2230,7 +2230,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>2.</span>{" "}
+            <span>2. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1212.5701"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2239,7 +2239,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>3.</span>{" "}
+            <span>3. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1711.05101"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2248,7 +2248,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>4.</span>{" "}
+            <span>4. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1412.6980"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2257,7 +2257,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>5.</span>{" "}
+            <span>5. </span>{" "}
             <a
               href="https://openreview.net/pdf/OM0jvwB8jIp57ZJjtNEZ.pdf"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2266,7 +2266,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>6.</span>{" "}
+            <span>6. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1908.03265"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2275,7 +2275,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>7.</span>{" "}
+            <span>7. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1909.11015"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2284,7 +2284,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>8.</span>{" "}
+            <span>8. </span>{" "}
             <a
               href="https://proceedings.neurips.cc/paper_files/paper/2018/file/90365351ccc7437a1309dc64e4db32a3-Paper.pdf"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2293,7 +2293,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>9.</span>{" "}
+            <span>9. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2010.07468"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2302,7 +2302,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>10.</span>{" "}
+            <span>10. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2103.17182"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2311,7 +2311,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>11.</span>{" "}
+            <span>11. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2208.06677"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2320,7 +2320,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>12.</span>
+            <span>12. </span>
             <a
               href="https://arxiv.org/pdf/2409.03137"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2329,7 +2329,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>13.</span>{" "}
+            <span>13. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1810.00303"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2338,7 +2338,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>14.</span>{" "}
+            <span>14. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1802.05374"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2347,7 +2347,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>15.</span>{" "}
+            <span>15. </span>{" "}
             <a
               href="https://openreview.net/pdf?id=By1snw5gl"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2356,7 +2356,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>16.</span>{" "}
+            <span>16. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2009.13586"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2365,7 +2365,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>17.</span>{" "}
+            <span>17. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2006.00719"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2374,7 +2374,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>18.</span>{" "}
+            <span>18. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2110.15412"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2383,7 +2383,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>19.</span>{" "}
+            <span>19. </span>{" "}
             <a
               href="https://www.researchgate.net/publication/370177400_Survey_of_Optimization_Algorithms_in_Modern_Neural_Networks"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2392,7 +2392,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>20.</span>{" "}
+            <span>20. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2405.15682"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2401,7 +2401,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>21.</span>{" "}
+            <span>21. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2207.14484"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2410,7 +2410,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>22.</span>{" "}
+            <span>22. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2110.04369"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2419,7 +2419,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>23.</span>{" "}
+            <span>23. </span>{" "}
             <a
               href="https://openmdao.github.io/PracticalMDO/Notebooks/Optimization/types_of_gradient_free_methods.html"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2428,7 +2428,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>24.</span>{" "}
+            <span>24. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2002.09018"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2437,7 +2437,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>25.</span>{" "}
+            <span>25. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2309.06497"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2447,7 +2447,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>26.</span>{" "}
+            <span>26. </span>{" "}
             <a
               href="https://arxiv.org/pdf/2406.17748"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2456,7 +2456,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>27.</span>{" "}
+            <span>27. </span>{" "}
             <a
               href="https://arxiv.org/pdf/1503.05671"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2465,7 +2465,7 @@ function OptimizerTaxonomyArticle() {
             </a>
           </div>
           <div className="bullet">
-            <span>28.</span>{" "}
+            <span>28. </span>{" "}
             <a
               href="https://kellerjordan.github.io/posts/muon/"
               style={{ color: "inherit", textDecoration: "underline" }}

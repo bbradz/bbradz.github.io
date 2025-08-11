@@ -2275,7 +2275,7 @@ function SuburbiaDensityArticle() {
         <h2 id="U">References</h2>
         <div className="references">
           <div className="bullet">
-            <span>1.</span>
+            <span>1. </span>
             Smith, N.
             <a
               href="https://www.theatlantic.com/ideas/archive/2021/03/signature-environmental-law-hurts-housing/618264/"
@@ -2287,7 +2287,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>2.</span>
+            <span>2. </span>
             <a
               href="http://file///Users/benbradley/Zotero/storage/WMXTMX94/proxy.html"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2298,7 +2298,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>3.</span>
+            <span>3. </span>
             <a
               href="https://www.theatlantic.com/ideas/archive/2022/10/environmentalists-nimby-permitting-reform-nepa/671775/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2309,7 +2309,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>4.</span>
+            <span>4. </span>
             <a
               href="https://www.niskanencenter.org/wp-content/uploads/2021/08/CATF_Niskanen_CleanEnergyInfrastructure_Report.pdf"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2320,7 +2320,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>5.</span>
+            <span>5. </span>
             <a
               href="https://www.rstreet.org/research/addressing-nepa-related-infrastructure-delays/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2331,7 +2331,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>6.</span>
+            <span>6. </span>
             <a
               href="https://www.liberalcurrents.com/the-case-for-abolishing-the-national-environmental-policy-act/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2342,7 +2342,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>7.</span>
+            <span>7. </span>
             <a
               href="https://progress.institute/environmental-review/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2353,7 +2353,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>8.</span>
+            <span>8. </span>
             <a
               href="https://www.thecgo.org/benchmark/much-more-than-you-ever-wanted-to-know-about-nepa/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2364,7 +2364,7 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>9.</span>
+            <span>9. </span>
             Bledsoe, P., Sykes, J.
             <a
               href="https://www.progressivepolicy.org/wp-content/uploads/2022/09/Americas-Clean-Energy-Transition-Requires-Permitting-Reform-Bledsoe-Sykes-21.9.22.pdf"

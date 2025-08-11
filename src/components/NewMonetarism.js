@@ -632,7 +632,7 @@ function NewMonetarismArticle() {
         </p>
         <p>
           This combined into the neoliberal equilibrium of
-          <b>Supply-Side Economics</b>. While the Federal Reserve would manage
+          <b> Supply-Side Economics</b>. While the Federal Reserve would manage
           monetary policy—the supply of money—the rest of the government was
           handling fiscal policy. Arguments that economic activity was being
           stymied by excessive taxation began to dominate. Taxes were slashed as
@@ -663,7 +663,7 @@ function NewMonetarismArticle() {
           manufacture imaginary bubbles of economic growth detached from reality
           and bound to eventually pop. Economic thought began to understand that
           certain private organizations had grown to become
-          <b>"too big to fail"</b>, and that neither the Monetarist school had
+          <b> "too big to fail"</b>, and that neither the Monetarist school had
           the conceptual tools to tackle the shortfalls of financial
           mismanagement nor could the Austrian method of letting the free market
           fail be allowed to drag the global economy into its greatest crisis
@@ -822,6 +822,7 @@ function NewMonetarismArticle() {
           traded, adjusted for the liquidity of each of those assets. Debt and
           equity become not mere additions and subtractions from the size of the
           economy but, as beautifully shown in the
+          {" "}
           <a
             href="https://en.wikipedia.org/wiki/Modigliani–Miller_theorem"
             style={{ color: "inherit", textDecoration: "underline" }}
@@ -846,7 +847,7 @@ function NewMonetarismArticle() {
           although some starter concepts within Fed circles on how to account
           for this difference discuss reformulating the growth rate formula from
           being expressed in terms of the sheer sum of M2 money supply sources
-          <a
+          {" "}<a
             href="https://en.wikipedia.org/wiki/Divisia_monetary_aggregates_index#:~:text=That%20approach%20to%20monetary%20aggregation,aggregates%20or%20Monetary%20Services%20Indexes."
             style={{ color: "inherit", textDecoration: "underline" }}
             target="_blank"
@@ -941,7 +942,7 @@ function NewMonetarismArticle() {
           Reserve maybe ought to be abandoned. Viewed through the lens of who is
           providing liquidity in the market, banks shrink to only around 20
           percent of the whole asset stock, and the rest of the economy—like the
-          <i>insurance</i> industry, where the crisis of 2008 really started—
+          {" "}<i>insurance</i> industry, where the crisis of 2008 really started—
           becomes far more important. Maybe quite the thing to consider given
           the collapse in home insurance across the US from Climate Change and
           in-coming defunding of government agencies responsible for predicting
@@ -1073,7 +1074,7 @@ function NewMonetarismArticle() {
         <h2 id="E">References</h2>
         <div className="references">
           <div className="bullet">
-            <span>1.</span>
+            <span>1. </span>
             <Link
               to="https://www.youtube.com/watch?v=M0jKuL_DElE&t=1183s"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -1085,7 +1086,7 @@ function NewMonetarismArticle() {
             .
           </div>
           <div className="bullet">
-            <span>2.</span>
+            <span>2. </span>
             <Link
               to="https://youtu.be/fadKwsA3TnA?t=624"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -1097,7 +1098,7 @@ function NewMonetarismArticle() {
             .
           </div>
           <div className="bullet">
-            <span>3.</span>
+            <span>3. </span>
             <Link
               to="https://www.youtube.com/watch?v=PbS5npUI4vU&t=1876s"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -1109,7 +1110,7 @@ function NewMonetarismArticle() {
             .
           </div>
           <div className="bullet">
-            <span>4.</span>
+            <span>4. </span>
             <Link
               to="https://www.youtube.com/watch?v=NY34Em7Mjf4&t=2005s"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -1121,7 +1122,7 @@ function NewMonetarismArticle() {
             .
           </div>
           <div className="bullet">
-            <span>5.</span>
+            <span>5. </span>
             <Link
               to="https://www.ft.com/content/e8ac09ea-c300-4249-af7d-109003afb893"
               style={{ color: "inherit", textDecoration: "underline" }}
