@@ -3,8 +3,8 @@
         "title": "From Softmax to Sparsemax",
         "description": "Proposes equivalent runtime sparse version of softmax which yield higher accuracy *before* considering hardware edge.",
         "tags": [
-            "Machine Learning",
-            "Activation Functions",
+            "ML",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -12,8 +12,9 @@
         "title": "Monte Carlo Methods in Financial Engineering",
         "description": "<not read>",
         "tags": [
+            "Monte Carlo Methods",
             "Finance",
-            "Site"
+            "Essay"
         ]
     },
     {
@@ -28,7 +29,7 @@
         "title": "What Every Programmer Should Know About Memory",
         "description": "<not read>",
         "tags": [
-            "Programming",
+            "HPC",
             "Site"
         ]
     },
@@ -36,8 +37,8 @@
         "title": "PowerSGD: Practical Low-Rank Gradient Compression for Distributed Optimization",
         "description": "Proposes low-rank grad compressor with built-in error feedback and spectral regularization while being compatible with fast *reduce* ops rather than slower *gather*s, reducing time to full test quality by 24-55%",
         "tags": [
-            "Optimization",
-            "Distributed Computing",
+            "Stochastic Calculus",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -45,8 +46,7 @@
         "title": "Step-by-Step Diffusion: An Elementary Tutorial",
         "description": "<not read>",
         "tags": [
-            "Diffusion",
-            "Tutorial",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -54,8 +54,8 @@
         "title": "A Loss Curvature Perspective on Training Instability in Deep Learning",
         "description": "Analyze the evolution of Hessian loss w Normalization, Init regimes, and LR warmup to empirically navigate towards convergence.",
         "tags": [
-            "Deep Learning",
-            "Optimization",
+            "Stochastic Calculus",
+            "Training",
             "Arxiv"
         ]
     },
@@ -63,16 +63,17 @@
         "title": "Networks, Crowds, and Markets",
         "description": "<not read>",
         "tags": [
-            "Economics",
-            "Site"
+            "Finance",
+            "Essay"
         ]
     },
     {
         "title": "Scalable Second Order Optimization for DeepLearning",
         "description": "Presents a scalable 2nd-order preconditioner with significant convergence and wall-clock time improvements compared to 1st-order methods.",
         "tags": [
-            "Optimization",
-            "Deep Learning",
+            "Stochastic Calculus",
+            "Optimizer",
+            "Training",
             "Site"
         ]
     },
@@ -80,7 +81,8 @@
         "title": "Deep Bellman Hedging",
         "description": "<not read>",
         "tags": [
-            "Reinforcement Learning",
+            "Finance",
+            "ML",
             "Arxiv"
         ]
     },
@@ -88,7 +90,8 @@
         "title": "A Large Batch Optimizer Reality Check: Traditional, Generic Optimizers Suffice Across Batch Sizes",
         "description": "Refutes performance claims of optimizers built around large batch sizes.",
         "tags": [
-            "Optimization",
+            "Training",
+            "ML",
             "Arxiv"
         ]
     },
@@ -96,17 +99,16 @@
         "title": "Information Theory, Inference, and Learning Algorithms",
         "description": "<not read>",
         "tags": [
-            "Machine Learning",
-            "Algorithms",
-            "Site"
+            "Information Theory",
+            "Inference",
+            "Essay"
         ]
     },
     {
         "title": "Vector Quantized Models for Planning",
         "description": "Presents using discrete autoencoders to capture the multiple effects of an action in a stochastic environment, using MCTS to plan over both actions and discrete latent variables. Significantly outperforming MuZero on a stochastic interpretation of chess.",
         "tags": [
-            "Reinforcement Learning",
-            "Autoencoders",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -114,16 +116,17 @@
         "title": "Programming Massively Parallel Applications",
         "description": "<not read>",
         "tags": [
-            "Parallel Computing",
-            "Site"
+            "GPU",
+            "HPC",
+            "Essay"
         ]
     },
     {
         "title": "Hyperparameter Optimization Is Deceiving Us, and How to Stop It",
         "description": "Provides a theoretical grounding for logs necessary to avoid deception by how you chose to explore the hyperparams space.",
         "tags": [
-            "Hyperparameter Optimization",
-            "Machine Learning",
+            "Benchmarking",
+            "Hyperparams",
             "Arxiv"
         ]
     },
@@ -131,8 +134,8 @@
         "title": "Torch.FX: a Practical Program Capture and Transformation for DL in Python",
         "description": "<not read>",
         "tags": [
-            "Deep Learning",
             "Libraries",
+            "Compilers",
             "Arxiv"
         ]
     },
@@ -140,9 +143,8 @@
         "title": "Omnigrok: Grokking Beyond Algorithmic Data",
         "description": "<not read>",
         "tags": [
-            "Neural Networks",
-            "Optimization",
-            "Grokking",
+            "Training",
+            "ML",
             "Arxiv"
         ]
     },
@@ -150,8 +152,7 @@
         "title": "Lie Groups",
         "description": "<not read>",
         "tags": [
-            "Mathematics",
-            "Lie Groups",
+            "Misc Math",
             "Site"
         ]
     },
@@ -159,9 +160,7 @@
         "title": "Finding Neurons in a Haystack",
         "description": "<not read>",
         "tags": [
-            "Interpretability",
-            "Neural Networks",
-            "LLMs",
+            "ML",
             "Arxiv"
         ]
     },
@@ -169,8 +168,7 @@
         "title": "Meta-Learning",
         "description": "<not read>",
         "tags": [
-            "Meta-Learning",
-            "Machine Learning",
+            "ML",
             "Site"
         ]
     },
@@ -178,9 +176,7 @@
         "title": "Uncovering Mesa-optimization algorithms in Transformers",
         "description": "<not read>",
         "tags": [
-            "Transformers",
-            "Optimization",
-            "LLMs",
+            "Alignment",
             "Arxiv"
         ]
     },
@@ -188,8 +184,8 @@
         "title": "Why do we need Weight Decay in modern Deep Learning?",
         "description": "Explains how weight decay serves to moderate the Spectral Norm of weights and in the process stabilize loss level-- as opposed to the usual explanation of it's service to regularization.",
         "tags": [
-            "Deep Learning",
-            "Optimization",
+            "Training",
+            "ML",
             "Arxiv"
         ]
     },
@@ -197,8 +193,8 @@
         "title": "DiLoCo: Distributed Low-Communication Training of Language Models",
         "description": "Model Parallelism with High Stepcount Inner Optimizer (AdamW) per Island connected by Lower (1:~500) Stepcount Outer Optimizer (Nesterov + M) across Islands.",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Distributed Techniques",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -206,7 +202,7 @@
         "title": "Literature Review of Sampling Techniques",
         "description": "Explains the many types of Sampling techniques for ML Models and their differing strengths.",
         "tags": [
-            "Machine Learning",
+            "ML",
             "Site"
         ]
     },
@@ -214,8 +210,8 @@
         "title": "Learning to (Learn at Test Time): RNNs with Expressive Hidden States",
         "description": "<not read>",
         "tags": [
-            "RNNs",
-            "Machine Learning",
+            "SSM",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -223,8 +219,9 @@
         "title": "Tree Attention: Topology-Aware Decoding for Long-Context Attention on GPU Clusters",
         "description": "<not read>",
         "tags": [
-            "Attention Mechanisms",
-            "Parallel Computing",
+            "GPU",
+            "Attention",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -232,7 +229,8 @@
         "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
         "description": "<not read>",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -240,7 +238,9 @@
         "title": "The LLama3 herd of models",
         "description": "<not read>",
         "tags": [
-            "LLMs",
+            "DevOps",
+            "Transformer",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -248,8 +248,8 @@
         "title": "The AdeMAMix optimizer: Better, Faster, Older",
         "description": "Halves tokens to train LLM by leveraging 2 different time-horizon EMAs.",
         "tags": [
-            "Optimization",
-            "LLMs",
+            "Training",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -257,7 +257,8 @@
         "title": "Compute Better Spent: Replacing Dense Layers with Structured Matrices",
         "description": "<not read>",
         "tags": [
-            "Optimization",
+            "Quantization",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -265,8 +266,8 @@
         "title": "Financial Statement Analysis with Large Language Models",
         "description": "<not read>",
         "tags": [
-            "LLMs",
             "Finance",
+            "NLP",
             "Arxiv"
         ]
     },
@@ -274,7 +275,7 @@
         "title": "The Surprising Effectiveness of Test-Time Training for Abstract Reasoning",
         "description": "<not read>",
         "tags": [
-            "LLMs",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -282,8 +283,7 @@
         "title": "Transformers meet Neural Algorithmic Reasoners",
         "description": "<not read>",
         "tags": [
-            "LLMs",
-            "GNNs",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -291,8 +291,8 @@
         "title": "On Empirical Comparison of Optimizers",
         "description": "Raises concerns about fairly benchmarking optimizers with different hyperparameters & how much information is necessary to conclude you should prefer one over the other.",
         "tags": [
-            "Optimization",
-            "Deep Learning",
+            "Benchmarking",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -300,7 +300,10 @@
         "title": "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence",
         "description": "<not read>",
         "tags": [
-            "LLMs",
+            "DevOps",
+            "NLP",
+            "Architecture",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -308,8 +311,9 @@
         "title": "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model",
         "description": "<not read>",
         "tags": [
-            "MoEs",
-            "LLMs",
+            "DevOps",
+            "Training",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -317,7 +321,9 @@
         "title": "Why Transformers need Adam: A Hessian Perspective",
         "description": "Argues you should prefer Adam over SGD when the shape of the spectrum of Hessian eigenvalues across blocks varies greatly (as in Transformers)",
         "tags": [
-            "Optimization",
+            "Stochastic Calculus",
+            "Transformer",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -333,7 +339,8 @@
         "title": "Beyond A*",
         "description": "<not read>",
         "tags": [
-            "Transformers",
+            "Transformer",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -341,7 +348,7 @@
         "title": "Beating SPACE EXPLORATION | The 300 Hour Factorio Mod",
         "description": "Playthrough of the Space Exploration Modpack for the base-building logistics management game, Factorio.",
         "tags": [
-            "Factorio",
+            "Game",
             "YT"
         ]
     },
@@ -349,8 +356,7 @@
         "title": "LPUs, TPUs & GPUs w/ Jonathan Ross, Founder Groq",
         "description": "Interview with the founder of breakout AI Accelerator lab Groq on the state of the art in LLM Hardware.",
         "tags": [
-            "Parallel Computing",
-            "Hardware",
+            "ASIC",
             "YT"
         ]
     },
@@ -358,9 +364,8 @@
         "title": "o3 - Tradeoffs of Heuristics, Tree Search, External Memory, In-built Bias",
         "description": "Slideshow lecture from John about the SOTA and limitations in LLM Reasoning.",
         "tags": [
-            "LLMs",
-            "Reinforcement Learning",
-            "Meta-Learning",
+            "Test-Time Methods",
+            "Architecture",
             "YT"
         ]
     },
@@ -368,7 +373,7 @@
         "title": "The State of Reasoning",
         "description": "How models begin to be trained on their thought process, especially with reward on verfiable results.",
         "tags": [
-            "LLMs",
+            "RL for Test-Time",
             "YT"
         ]
     },
@@ -376,8 +381,8 @@
         "title": "CUDA Programming Course",
         "description": "<not read>",
         "tags": [
-            "Programming",
-            "Parallel Computing",
+            "GPU",
+            "HPC",
             "YT"
         ]
     },
@@ -385,7 +390,8 @@
         "title": "Deep Symbolic Regression: Recovering Math Expressions from Data via Risk-Seeking Policy Gradients",
         "description": "Brenden Petersen explains how symbolic regression transforms data-fitting into a problem of Reinforcement Learning over language space.",
         "tags": [
-            "Symbolic Systems",
+            "Transformer",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -393,7 +399,7 @@
         "title": "AI for physics & physics for AI",
         "description": "Description of the AI Feynman project for Symbolic Regression on Physics Data.",
         "tags": [
-            "Symbolic Systems",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -401,7 +407,6 @@
         "title": "The Wisdom (and Madness) of Crowds: Political Markets as Election Predictors",
         "description": "Examines the history of thought around the conditions under which the crowd or market's judgment becomes wise.",
         "tags": [
-            "Markets",
             "Finance",
             "YT"
         ]
@@ -410,8 +415,9 @@
         "title": "@Asianometry & Dylan Patel \u2013 How the Semiconductor Industry Actually Works",
         "description": "Conversation between two Industry watchdogs on the state of play in US-China AI Race.",
         "tags": [
-            "Distributed Computing",
-            "Hardware",
+            "GPU",
+            "HPC",
+            "Econ",
             "YT"
         ]
     },
@@ -419,7 +425,7 @@
         "title": "The Insane Engineering of Minecraft's Most Powerful Mobfarm",
         "description": "exploring the End of Light mobfarm and how it pushes mobfarming in Minecraft to the game's absolute limits.",
         "tags": [
-            "Minecraft",
+            "Game",
             "YT"
         ]
     },
@@ -427,7 +433,7 @@
         "title": "Sun Valley Writers' Conference with Ezra Klein",
         "description": "Discussion on AI, the tie between zoning and homelessness, polarizing politics, and the intersection of government and technology.",
         "tags": [
-            "Policy",
+            "Wonky",
             "YT"
         ]
     },
@@ -435,7 +441,7 @@
         "title": "A Conversation with Ezra Klein about Liberalism",
         "description": "Reflecting on Democratic governments inability to build real things in the real world quickly and affordably.",
         "tags": [
-            "Policy",
+            "Politiking",
             "YT"
         ]
     },
@@ -451,9 +457,7 @@
         "title": "How massive Cerebras chips rival Nvidia GPUs for AI",
         "description": "Discussion with key engineer at Cerebras AI Accelerator on their unique memory architectures unique use-case in LLMs.",
         "tags": [
-            "Parallel Computing",
-            "LLMs",
-            "Hardware",
+            "ASIC",
             "YT"
         ]
     },
@@ -461,7 +465,7 @@
         "title": "Populism, Media Revolutions, and Our Terrible Moment",
         "description": "Rant from Hank Green on the destruction of trust & reality in society by the Internet's revolutionary Algorithmic Realities.",
         "tags": [
-            "Politics",
+            "Politiking",
             "YT"
         ]
     },
@@ -469,8 +473,7 @@
         "title": "o-models, beyond classical DL",
         "description": "Description of the ARG-AGI model evaluation test set and how current Deep Learning Architectures fail to encapsulate Symbolic reasoning",
         "tags": [
-            "Deep Learning",
-            "Symbolic Systems",
+            "Test-Time Methods",
             "YT"
         ]
     },
@@ -478,7 +481,8 @@
         "title": "Let this method tune hyper-parameters for you!",
         "description": "Stepping through, analyzing, and explaining the muP method for controlling optimal hyperparameter divergence with model scaling.",
         "tags": [
-            "Hyperparameter Optimization",
+            "DevOps",
+            "Hyperparams",
             "YT"
         ]
     },
@@ -486,8 +490,9 @@
         "title": "The Practitioner's Guide to the Maximal Update Parameterization",
         "description": "Explores the implementation details of mutransfer & basis it's in statistical properties as well as empirically tests to verify the technique.",
         "tags": [
-            "Hyperparameter Optimization",
-            "Deep Learning",
+            "DevOps",
+            "SWE Best Practices",
+            "Hyperparams",
             "Site"
         ]
     },
@@ -495,7 +500,8 @@
         "title": "Git Version Control-- CS61",
         "description": "Harvard CS61 Introductory Guide to Git Version Control, read this for CS30 Course at Brown University",
         "tags": [
-            "Git",
+            "Version Control",
+            "SWE Best Practices",
             "Site"
         ]
     },
@@ -503,14 +509,16 @@
         "title": "git - the simple guide",
         "description": "beautifully designed scroll-based description of git which specializes in simple descriptions of complex commands",
         "tags": [
-            "Roger Dudler"
+            "Version Control",
+            "Site"
         ]
     },
     {
         "title": "Treadmill: Attributing the Source of Tail Latency",
         "description": "decomposes features of request tail latency into an evaluation methodology to reduce the 99th-percentile latency by 43% and its variance by 93%",
         "tags": [
-            "Distributed Systems",
+            "System Design",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -518,7 +526,7 @@
         "title": "Open Versus Closed: A Cautionary Tale",
         "description": "Illustrates the behavior differences b/w closed & open sourced models in real-world settings to motivate a proposed partly open system model for diagnostic workload generation",
         "tags": [
-            "Distributed Systems",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -526,7 +534,9 @@
         "title": "Quantile Regression",
         "description": "Quick description of the math behind & motivation behind Quantile Regression (as opposed to OLS Linear Regression, and how to use sklearn to implement it.",
         "tags": [
-            "Machine Learning",
+            "Statistics",
+            "Libraries",
+            "ML",
             "Site"
         ]
     },
@@ -535,6 +545,7 @@
         "description": "Introduced method to decompose a NN params into components",
         "tags": [
             "Interpretability",
+            "ML",
             "Arxiv"
         ]
     },
@@ -550,7 +561,7 @@
         "title": "The Leaky Bucket Theory of Network Effects",
         "description": "A framework for understanding the strength of a marketplace\u2019s network effect",
         "tags": [
-            "Economics",
+            "Econ",
             "Site"
         ]
     },
@@ -558,7 +569,7 @@
         "title": "Why Did DoorDash Win?",
         "description": "A rough description of the process by which Doordash rose to dominate the food delivery market",
         "tags": [
-            "Economics",
+            "Finance",
             "Site"
         ]
     },
@@ -566,8 +577,7 @@
         "title": "Good Lord",
         "description": "essay from the supposed perspective of a tech insider about the internal experience of a newly empowered debaucherous trump-fueled tech vibe",
         "tags": [
-            "Politics",
-            "Tech",
+            "Politiking",
             "Site"
         ]
     },
@@ -576,6 +586,8 @@
         "description": "Critically reviews probing classifiers as a framework for understanding learned information in models, highlighting their promises, shortcomings, and advances. [CS2222]",
         "tags": [
             "Interpretability",
+            "CV",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -583,7 +595,6 @@
         "title": "Mechanistic?",
         "description": "Explains the many meanings behind *mechinterp* as a product of a critical confluence of communities of varying degrees of credentials [CS2222]",
         "tags": [
-            "AI Safety",
             "Interpretability",
             "Arxiv"
         ]
@@ -592,7 +603,7 @@
         "title": "escaping flatland: career advice for CS undergrads",
         "description": "A message to CS undergrads about the unmentioned mimetic vortex of prestige and narrow set of allowed passions which university can distract you with.",
         "tags": [
-            "Essay",
+            "Career Advice",
             "Site"
         ]
     },
@@ -600,7 +611,7 @@
         "title": "Violence and the Sacred: College as an incubator of Girardian terror",
         "description": "Commentary on the social pressures of college through the lens of Ren\u00e9 Girard's concept of mimetic desire",
         "tags": [
-            "Politics",
+            "Politiking",
             "Site"
         ]
     },
@@ -608,8 +619,9 @@
         "title": "The Linear Representation Hypothesis and the Geometry of LLMs",
         "description": "Attempts to formalize the concept of a linear representation and associated geometric notions of relation in that linear subspace [CS2222]",
         "tags": [
+            "Linear Algebra",
             "Interpretability",
-            "LLMs",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -618,7 +630,6 @@
         "description": "observations about how intermediate representations adapt as you track them from input to output of GPT2&3",
         "tags": [
             "Interpretability",
-            "Transformers",
             "Site"
         ]
     },
@@ -627,7 +638,7 @@
         "description": "Proposes the Integrated Gradients technique for model-ambiguously attributing input features to model output [CS2222]",
         "tags": [
             "Interpretability",
-            "LLMs",
+            "CV",
             "Arxiv"
         ]
     },
@@ -636,7 +647,7 @@
         "description": "Digs into testing why in-context learning works in LLMs [CS2222]",
         "tags": [
             "Interpretability",
-            "LLMs",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -645,7 +656,7 @@
         "description": "Decomposes FFN updates into sub-updates corresponding to single vectors corresponding to human intepretable features",
         "tags": [
             "Interpretability",
-            "Transformers",
+            "NLP",
             "Arxiv"
         ]
     },
@@ -654,6 +665,7 @@
         "description": "blog page implementing and briefly explaining saliency maps for understanding which features of a input most contributed to the output",
         "tags": [
             "Interpretability",
+            "CV",
             "Site"
         ]
     },
@@ -661,8 +673,9 @@
         "title": "Privileged vs non-privileged bases in ML",
         "description": "Provides a geometric intuition for how architectural choices restrain & nudge models towards aligning features internally aligned in forseeable & interpretable ways.",
         "tags": [
-            "Architecture",
+            "Linear Algebra",
             "Interpretability",
+            "ML",
             "Site"
         ]
     },
@@ -670,7 +683,7 @@
         "title": "What is self-supervised learning?",
         "description": "Describes briefly a few classes of self-supervised learning from encoders to autoregressive models to contrastic & non-constrastive learning.",
         "tags": [
-            "Machine Learning",
+            "ML",
             "Site"
         ]
     },
@@ -679,6 +692,8 @@
         "description": "provides very high quality analysis of navigating across a CNN activation atlas to understand how different layers visualize different classes of output.",
         "tags": [
             "Interpretability",
+            "CV",
+            "ML",
             "Site"
         ]
     },
@@ -686,7 +701,7 @@
         "title": "GPipe",
         "description": "Outlines a scheduling routine for distributing computation of NN pipelines across multiple devices using micro-batches of data",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
             "Arxiv"
         ]
     },
@@ -694,7 +709,8 @@
         "title": "PyTorch FSDP",
         "description": "Outlines Meta's Fully-Sharded Data Parallel for achieving nearly-linear TFLOP scaling with worker count",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
+            "DevOps",
             "Arxiv"
         ]
     },
@@ -702,7 +718,7 @@
         "title": "ZeRO",
         "description": "A Fundamental paper for me and the field of Distributed Model Parallelism techniques, ZeRO outlines how to shard parameters, gradients, and optimizer states across devices to minimize memory usage.",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
             "Arxiv"
         ]
     },
@@ -710,7 +726,7 @@
         "title": "ZeRO++",
         "description": "A Follow up to ZeRO, this paper introduces additional information about ways to i. offload more memory usage onto local CPU or node-level memory and ii. optimize the communication which is leaned on heavily by these ZeRO techniques.",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
             "Arxiv"
         ]
     },
@@ -718,15 +734,15 @@
         "title": "PipeDream: Generalized Pipeline Parallelism for DNN Training",
         "description": "Describes a method for automatically partitioning NN layers among workers to balance work & minimize communication, stashing weights to achieve 100% hardware utilization, yielding 5.3X clocktime speedup over naive data-batch parallelism",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
             "Arxiv"
         ]
     },
     {
-        "title": "Autonomous GUidance for Multi-Body Orbital Transfers using RL",
+        "title": "Autonomous Guidance for Multi-Body Orbital Transfers using RL",
         "description": "Explains a technique for teaching RL models to enter desired periodic orbits using comparison to a learned reference variable.",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Arxiv"
         ]
     },
@@ -742,7 +758,9 @@
         "title": "Efficient Large-Scale Language Model Training on GPU Clusters",
         "description": "Proposes a novel interleaved pipelining schedule that can improve throughput by 10+% allowing for 1T model training at 502 petaFLOP/s on 3072 GPUs (per-GPU throughput of 52% of theoretical peak).",
         "tags": [
-            "Distributed Computing",
+            "GPU",
+            "Distributed Techniques",
+            "DevOps",
             "Arxiv"
         ]
     },
@@ -750,8 +768,7 @@
         "title": "Model soups",
         "description": "Analyzes different methods (Ensemble, Param averaging, and Greedy approaches) for aggregating multiple parameter sets trained on different datasets into one parameter set to perform maximally on all datasets.",
         "tags": [
-            "Distributed Computing",
-            "Meta-Learning",
+            "Distillation",
             "Arxiv"
         ]
     },
@@ -759,7 +776,8 @@
         "title": "Lookahead Optimizer: k steps forward, 1 step back",
         "description": "Proposes an optimizer which updates a 'fast' set of weights for k steps as a inner loop, updating outer loops to reconcile old weights with the new result of 'fast' weights. Building theory & showing example landscapes where this would lead to improved performace.",
         "tags": [
-            "Optimization",
+            "Training",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -767,7 +785,7 @@
         "title": "Monolith: Real Time Recommendation System",
         "description": "Did you know TikTok's algorithm is *kinda* opensource? This paper explains their recommendation algorithm and it's SOTA build around online training.",
         "tags": [
-            "Content Recommendation",
+            "System Design",
             "Arxiv"
         ]
     },
@@ -775,9 +793,8 @@
         "title": "Monte Carlo Methods in Financial Engineering",
         "description": "Discusses the theory of Monte Carlo methods, their application to derivative pricing, and a overview of the top models being used in Financial Engineeering.",
         "tags": [
+            "Monte Carlo Methods",
             "Finance",
-            "Mathematics",
-            "Markets",
             "Essay"
         ]
     },
@@ -785,7 +802,7 @@
         "title": "Fundamental Concepts of Time-Series Econometrics",
         "description": "Digs into the ML theory of time-series prediciton. Swap out chapter in url, goes up to 5 chapters",
         "tags": [
-            "Forecasting",
+            "Time-Series Forecasting",
             "Essay"
         ]
     },
@@ -793,7 +810,8 @@
         "title": "How I came in first on ARC-AGI-Pub using Sonnet 3.5 with Evolutionary Test-time Compute",
         "description": "Digs into the pre o3 SOTA in solving the ARC-AGI becnhmark",
         "tags": [
-            "LLMs",
+            "Benchmarking",
+            "Test-Time Methods",
             "Site"
         ]
     },
@@ -801,7 +819,7 @@
         "title": "The definitive guide to market microstructure",
         "description": "Dictionary of terms in Market mechanics",
         "tags": [
-            "Markets",
+            "Finance",
             "Site"
         ]
     },
@@ -809,8 +827,9 @@
         "title": "A scalable framework for learning the geometry-dependent solution operators of PDEs",
         "description": "Introduces a much more efficient method for evaluating PDEs with complex geometries.",
         "tags": [
-            "Mathematics",
-            "Machine Learning",
+            "Misc Math",
+            "Scaling",
+            "ML",
             "Arxiv"
         ]
     },
@@ -818,7 +837,8 @@
         "title": "Titans: Learning to Memorize at Test Time",
         "description": "Introduces a neural long-term memory module for memorizing context.",
         "tags": [
-            "LLMs",
+            "NLP",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -834,8 +854,8 @@
         "title": "The Scaling Paradox",
         "description": "Analyzes the feeling of scaling having halted.",
         "tags": [
-            "LLMs",
-            "Economics",
+            "Scaling",
+            "Econ",
             "Site"
         ]
     },
@@ -843,6 +863,7 @@
         "title": "Beating cuBLAS in Single-Precision General Matrix Multiplication",
         "description": "Practical walkthrough of how to write a GPU GEMM kernel on par with SOTA and what that even means",
         "tags": [
+            "GPU",
             "HPC",
             "Site"
         ]
@@ -851,7 +872,7 @@
         "title": "Reversible Computing Escapes the Lab in 2025",
         "description": "Article on a start-up utilizing Reverse Computation (?) for power saving on chips",
         "tags": [
-            "Hardware",
+            "HPC",
             "Site"
         ]
     },
@@ -859,8 +880,9 @@
         "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
         "description": "Optimized LLM for long-context tasks via MoE and Lightning Attention",
         "tags": [
-            "Optimization",
-            "LLMs",
+            "DevOps",
+            "Attention",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -868,6 +890,7 @@
         "title": "Learning CUDA by optimizing softmax: A worklog",
         "description": "Writes out a optimized softmax in CUDA to practically learn how to use CUDA",
         "tags": [
+            "GPU",
             "HPC",
             "Site"
         ]
@@ -876,8 +899,8 @@
         "title": "Jacobian Descent for Multi-Objective Optimization",
         "description": "Models multi-objective optimization goal as differing rows of the jacobian, showing strong results.",
         "tags": [
-            "Mathematics",
-            "Optimizers",
+            "Stochastic Calculus",
+            "RL",
             "Arxiv"
         ]
     },
@@ -885,7 +908,9 @@
         "title": "Complexity Control Facilitates Reasoning-Based Compositional Generalization in Transformers",
         "description": "Analyses the role of initialization, weight decay, masking, memory-based solution, and reasoning on allowing Transformers to solve compositional problems.",
         "tags": [
-            "Optimization",
+            "DevOps",
+            "NLP",
+            "Training",
             "Arxiv"
         ]
     },
@@ -893,7 +918,8 @@
         "title": "AI Has Been Surprising for Years",
         "description": "Describes how AI has been pushing boundaries over time and the shape of that progress.",
         "tags": [
-            "Economics",
+            "X-Risk",
+            "Econ",
             "Site"
         ]
     },
@@ -901,8 +927,7 @@
         "title": "How has DeepSeek improved the Transformer architecture?",
         "description": "Digs into the architectural changes that made the DeepSeek moment pop out.",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -910,7 +935,7 @@
         "title": "Evolution as Backstop for Reinforcement Learning",
         "description": "Great article connecting theories of evolution and industrial organization to RL intutions.",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Site"
         ]
     },
@@ -918,17 +943,19 @@
         "title": "TREAD: Token Routing for Efficient Architecture-agnostic Diffusion Training",
         "description": "Achieves 14-37x speedup via efficient routing of tokens from early layers to deeper layers.",
         "tags": [
-            "Diffusion",
-            "Optimization",
+            "Architecture",
+            "Generative Methods",
+            "Sparsity",
             "Arxiv"
         ]
     },
     {
         "title": "Regret Minimization in Games with Incomplete Information",
-        "description": "Poposes a conterfacutal regret formulation to estimate regret in games with ginormous state spaces.",
+        "description": "Proposes a conterfactual regret formulation to estimate regret in games with ginormous state spaces.",
         "tags": [
-            "Reinforcement Learning",
             "Information Theory",
+            "Game",
+            "RL",
             "Arxiv"
         ]
     },
@@ -936,7 +963,8 @@
         "title": "Mastering Chess and Shogi by Self-Play",
         "description": "Generalizes the AlphaZero algorithm to other games",
         "tags": [
-            "Reinforcement Learning",
+            "Game",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -944,7 +972,7 @@
         "title": "Multi-Agent Reinforcement Learning",
         "description": "Reviews the literature in MARL",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Arxiv"
         ]
     },
@@ -952,7 +980,7 @@
         "title": "Request for research: Monte Carlo Tree Search for reasoning, with PUCT",
         "description": "Describes the need to invest in the PUCT formula of value estimation over traditional UCT.",
         "tags": [
-            "Mathematics",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -960,7 +988,8 @@
         "title": "Training LLMs to Reason in Continuous Latent Space",
         "description": "Feeds the prior hidden state into the models reasoning for the next token, allowing thought in latent space.",
         "tags": [
-            "Reasoning",
+            "Architecture",
+            "Training",
             "Arxiv"
         ]
     },
@@ -968,7 +997,6 @@
         "title": "The Land of Greater Fools",
         "description": "Pessimistic --to pessimistic for my taste-- description of America as uncaring of it's citizens.",
         "tags": [
-            "Politics",
             "Site"
         ]
     },
@@ -976,7 +1004,8 @@
         "title": "America is losing the physical technologies of the future",
         "description": "Highlights the importance of a burgeoning wave of Electrical technology in the next age of industry and the lack of that industry in the US",
         "tags": [
-            "Politics",
+            "Wonky",
+            "Econ",
             "Site"
         ]
     },
@@ -984,8 +1013,10 @@
         "title": "DeepSeek-V3 Technical Report",
         "description": "Breaks down the pre-training and post-training to construct the V3 base model.",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Distributed Techniques",
+            "DevOps",
+            "NLP",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -993,8 +1024,10 @@
         "title": "DeepSeek V3 and the actual cost of training frontier AI models",
         "description": "Breaks down the cost of training AI models and the true costs of running a AI Lab",
         "tags": [
-            "Economics",
-            "LLMs",
+            "DevOps",
+            "MoE",
+            "Scaling",
+            "Econ",
             "Site"
         ]
     },
@@ -1002,8 +1035,7 @@
         "title": "More Tokens, Lower Precision: Towards the Optimal Token-Precision Trade-off in KV Cache Compression",
         "description": "Proposes a method of quantized pruning of KV Cache to increase long-context performance of LLMs",
         "tags": [
-            "LLMs",
-            "Quantization",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -1011,8 +1043,7 @@
         "title": "Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in SOTA LLMs",
         "description": "Shows breakdown of foundation models on rather basic tasks",
         "tags": [
-            "Evals",
-            "LLMs",
+            "Benchmarking",
             "Arxiv"
         ]
     },
@@ -1028,7 +1059,7 @@
         "title": "Autonomy-of-Experts Models",
         "description": "Proposes alternative to MoE where the Experts pick amongst themselves rather than being routed to.",
         "tags": [
-            "MoEs",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -1036,7 +1067,8 @@
         "title": "Janus-Pro: Unified Multimodal Understanding and Generation with Data and Model Scaling",
         "description": "Talks about the challenges of optimizing training for multimodal tasks",
         "tags": [
-            "LLMs",
+            "Transformer",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -1044,7 +1076,7 @@
         "title": "The Illustrated DeepSeek-R1",
         "description": "Walks through the training pipeline to produce the R1 Deepseek reasoning model",
         "tags": [
-            "LLMs",
+            "Transformer",
             "Site"
         ]
     },
@@ -1053,6 +1085,7 @@
         "description": "Introduces Minimum Decision Length SAEs to refocus the goal of interpretability",
         "tags": [
             "Interpretability",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -1060,7 +1093,9 @@
         "title": "AI's Power Requirements Under Exponential Growth",
         "description": "Breaks down trends in the power usage of AI Data Centers and the challenges in scaling power production in the US to that point.",
         "tags": [
-            "Economics",
+            "Infrastructure",
+            "Scaling",
+            "Econ",
             "Arxiv"
         ]
     },
@@ -1068,8 +1103,9 @@
         "title": "Scaling the T\u00fclu 3 post-training recipes to surpass the performance of DeepSeek V3",
         "description": "Explanation of how the Post-Training was scaled for the Tulu class of models to outperform DeepSeek V3",
         "tags": [
-            "Optimization",
-            "LLMs",
+            "DevOps",
+            "Architecture",
+            "Scaling",
             "Site"
         ]
     },
@@ -1077,7 +1113,9 @@
         "title": "Advancing Language Model Reasoning through RL and Inference Scaling",
         "description": "Discusses methods for LLM training for reasoning at scale.",
         "tags": [
-            "Reasoning",
+            "Inference",
+            "Scaling",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -1085,7 +1123,7 @@
         "title": "DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts",
         "description": "Talks about the state of the race to the bottom in costs of models and the chinese market for LLMs",
         "tags": [
-            "Economics",
+            "Econ",
             "Site"
         ]
     },
@@ -1093,7 +1131,8 @@
         "title": "Streaming DiLoCo with overlapping communication",
         "description": "Dicusses methods for managing communication in DiLoCo to minimize communication bottleneck.",
         "tags": [
-            "Distributed Systems",
+            "Distributed Techniques",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -1101,7 +1140,8 @@
         "title": "Gradual Disempowerment: Systemic Existential Risks from Incremental AI Development",
         "description": "Examines how the presense of ASI in society could, even when aligned, move society to prioritize the interests of that ASI",
         "tags": [
-            "AI Safety",
+            "Alignment",
+            "X-Risk",
             "Arxiv"
         ]
     },
@@ -1109,7 +1149,7 @@
         "title": "A vision researcher\u2019s guide to some RL stuff: PPO & GRPO",
         "description": "Digs into the math behind GRPO and PPO",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Site"
         ]
     },
@@ -1117,7 +1157,7 @@
         "title": "GRPO",
         "description": "Analyzes GRPO",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -1125,7 +1165,6 @@
         "title": "What fully automated firms will look like",
         "description": "Talking about the potential of collectives of AIs working together",
         "tags": [
-            "Economics",
             "Site"
         ]
     },
@@ -1133,7 +1172,8 @@
         "title": "Deep Gradient Compression: Reducing Communicaiton Bandwidth for Distributed Training",
         "description": "Achieves 300-600x gradient compressions without losing accuracy",
         "tags": [
-            "Distributed Systems",
+            "Distributed Techniques",
+            "Quantization",
             "Arxiv"
         ]
     },
@@ -1141,8 +1181,8 @@
         "title": "Memorizing Transformers",
         "description": "Allows Transformer to memorize it's internal representation and observes how it impacts loss curve.",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "Architecture",
+            "ML",
             "Arxiv"
         ]
     },
@@ -1150,7 +1190,8 @@
         "title": "s1: Simple test-time scaling",
         "description": "Boosts AIME performance by 7% via custom dataset and test-time compute control",
         "tags": [
-            "Reasoning",
+            "Inference",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -1158,15 +1199,19 @@
         "title": "Scalable-Softmax is Superior for Attention",
         "description": "Shows Scalable-Softmax acheives better generalization across lengths",
         "tags": [
-            ""
+            "Statistics",
+            "Scaling",
+            "ML",
+            "Arxiv"
         ]
     },
     {
-        "title": "On DeppSekk and Export Controls",
+        "title": "On DeepSeek and Export Controls",
         "description": "Anthropic CEO explains how DeepSeek impacts his understanding of where models and the industry are going as well as how it thinks it should inform American policy on Tech exports",
         "tags": [
-            "Politics",
-            "Economics",
+            "Governance",
+            "Scaling",
+            "Econ",
             "Site"
         ]
     },
@@ -1175,6 +1220,7 @@
         "description": "Reverse engineers how LLMs do addition.",
         "tags": [
             "Interpretability",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -1183,6 +1229,7 @@
         "description": "Introduces alternative to CE loss which helps to trian more interpretable AI models",
         "tags": [
             "Interpretability",
+            "Training",
             "Arxiv"
         ]
     },
@@ -1190,8 +1237,8 @@
         "title": "Scaling Embedding Layers in Language Models",
         "description": "Proposes a method for extending input embeddings layers as layer size increases.",
         "tags": [
-            "Optimization",
-            "LLMs",
+            "Architecture",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -1199,7 +1246,7 @@
         "title": "The chaos has arrived",
         "description": "Poignently describes the anxiety of Trump's second term as a rise of chaos and a return to the laws of Jungle, a receding of global organization and order.",
         "tags": [
-            "Politics",
+            "Politiking",
             "Site"
         ]
     },
@@ -1207,9 +1254,8 @@
         "title": "Ladder-Residual: Parallelism-Aware Architecture for LLM Inference",
         "description": "",
         "tags": [
-            "Distributed Systems",
-            "Optimization",
-            "LLMs",
+            "Distributed Techniques",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -1217,8 +1263,8 @@
         "title": "Deepseek's Low Level Hardware Magic",
         "description": "Breaks down the methods behind how Deepseek speeds up performance by getting close to the metal.",
         "tags": [
-            "Hardware",
-            "Optimization",
+            "GPU",
+            "HPC",
             "Site"
         ]
     },
@@ -1227,14 +1273,16 @@
         "description": "Analyzes how Transformers learn to make inductive conclusions from the tokens they observe in their context window.",
         "tags": [
             "Interpretability",
+            "Attention",
             "Site"
         ]
     },
     {
         "title": "The 37 Implementation Details of PPO",
-        "description": "",
+        "description": "Explains a bunch of tricks and tips in how to use PPO",
         "tags": [
-            "Reinforcement Learning",
+            "SWE Best Practices",
+            "RL",
             "Site"
         ]
     },
@@ -1242,8 +1290,8 @@
         "title": "Develop AI Agents for System Engineering in Factorio",
         "description": "Fun paper advocating for using Factorio to evaluate AI agent systems' engineering abilities.",
         "tags": [
-            "Agents",
-            "Factorio",
+            "System Design",
+            "Game",
             "Arxiv"
         ]
     },
@@ -1251,8 +1299,9 @@
         "title": "Efficiently Scaling Transformer Inference",
         "description": "Looks into the many different optimizations needed to advance the Pareto frontier of latency and MFU",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "Transformer",
+            "Scaling",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -1260,7 +1309,7 @@
         "title": "A comparative analysis of SOTA time-series forecasting algorithsm",
         "description": "Looks into the different SOTA methods in time-series forecasting",
         "tags": [
-            "Forecasting",
+            "Time-Series Forecasting",
             "Arxiv"
         ]
     },
@@ -1268,7 +1317,8 @@
         "title": "A Survey of Deep Learning and Foundation Models for Time-Series Forecasting",
         "description": "Surveys the different applications of DL to forecasting time-series data",
         "tags": [
-            "Forecasting",
+            "Time-Series Forecasting",
+            "ML",
             "Arxiv"
         ]
     },
@@ -1276,7 +1326,7 @@
         "title": "Better Research Workflows: Managing Project Dependencies",
         "description": "Dicusses management of project dependencies in the context of working as a NLP researcher.",
         "tags": [
-            "Iteration",
+            "SWE Best Practices",
             "Site"
         ]
     },
@@ -1284,8 +1334,7 @@
         "title": "Leveraging the true depth of LLMs",
         "description": "Groups layers into pairs to be ran in parallel in shuffled orders to get 1.2x tokens without re-training or fine-tuning.",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -1293,8 +1342,8 @@
         "title": "Value-Based Deep RL Scales Predictably",
         "description": "Measures how higher budgets for value-based Deep RL scales",
         "tags": [
-            "Reinforcement Learning",
-            "Economics",
+            "Scaling",
+            "RL",
             "Arxiv"
         ]
     },
@@ -1302,7 +1351,7 @@
         "title": "Transformers from Scratch",
         "description": "Explains the parts of a Transformer from end to end",
         "tags": [
-            "Transformers",
+            "Transformer",
             "Site"
         ]
     },
@@ -1310,17 +1359,17 @@
         "title": "Three Observations",
         "description": "Sam Altmans comments on the current path towards AGI",
         "tags": [
-            "Politics",
-            "Economics",
+            "Governance",
+            "Politiking",
             "Site"
         ]
     },
     {
         "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
-        "description": "",
+        "description": "Looping through layers rather than just sequentially for better results",
         "tags": [
-            "Transformers",
-            "Reasoning",
+            "Transformer",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -1328,8 +1377,8 @@
         "title": "AGI's Five Hard National Secruity Problems",
         "description": "Explains the challenges AGI opens up with weapons systems and instability of our systemic order.",
         "tags": [
-            "Politics",
-            "AI Safety",
+            "Governance",
+            "Wonky",
             "Site"
         ]
     },
@@ -1345,6 +1394,7 @@
         "title": "Journey to 3200 Gbps: High-Performance GPU Memory Transfer on AWS Sagemaker Hyperpod",
         "description": "Short article from Perplexity on their Journey to 3200 GBPS on a AWS Hyperpod",
         "tags": [
+            "GPU",
             "HPC",
             "Site"
         ]
@@ -1353,7 +1403,9 @@
         "title": "MARS: Unleashing the Power of Variance Reduction for Training Large Models",
         "description": "Proposes a shampoo-inspired optimizer built around reducing the variance during training to boost learning",
         "tags": [
-            "Optimizers",
+            "Statistics",
+            "Stochastic Calculus",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -1361,7 +1413,7 @@
         "title": "Demystifying Diffusion Models",
         "description": "Explains how Diffusion Models work!",
         "tags": [
-            "Diffusion",
+            "Generative Methods",
             "Site"
         ]
     },
@@ -1377,7 +1429,8 @@
         "title": "Ultra-Sparse Memory Network",
         "description": "Proposes a sparse memory layer to address limitation of MoE memory costs",
         "tags": [
-            "MoEs",
+            "MoE",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -1385,7 +1438,8 @@
         "title": "Reinforced Self-Training (ReST) for Language Modeling",
         "description": "Technnique for producing a dataset to RLHF across.",
         "tags": [
-            "Reasoning",
+            "NLP",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -1393,8 +1447,8 @@
         "title": "Position Coupling: Improving Length Generalization of Arithmetic Transformers Using Task Structure",
         "description": "Proposes a position coupling method for improving generalization of Arithmetic Transformer to higher operand lengths.",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "Architecture",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -1402,8 +1456,7 @@
         "title": "Self-Improving Transformers Overcome Easy-to-Hard and Length Generalization Challenges",
         "description": "Proposes self-improvement for Transformers to generate and learn from progressively harder tasks for sequence length generalization",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "",
             "Arxiv"
         ]
     },
@@ -1411,7 +1464,7 @@
         "title": "The psychology of waiting, loading animations, and Facebook",
         "description": "Small article on the design of waiting screens in the most popular app on earth.",
         "tags": [
-            "Tech",
+            "System Design",
             "Site"
         ]
     },
@@ -1419,8 +1472,7 @@
         "title": "DeepCrossAttention: Supercharging Transformer Residual Connections",
         "description": "Introduces a method for enhanced residual learning for richer layer interactions",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -1428,8 +1480,8 @@
         "title": "Training Deep Learning Models with Norm-Constrained LMOs",
         "description": "Proposes a new family of stochastic optimization algorithms",
         "tags": [
-            "Deep Learning",
-            "Optimizers",
+            "Stochastic Calculus",
+            "ML",
             "Arxiv"
         ]
     },
@@ -1437,7 +1489,7 @@
         "title": "Datacenter Anatomy Part 2 \u2013 Cooling System",
         "description": "Breaks down the nuances of cooling systems across the Mag 7 Data Center Arms Race",
         "tags": [
-            "Hardware",
+            "HPC",
             "Site"
         ]
     },
@@ -1445,7 +1497,7 @@
         "title": "Learning CUDA by optimizing matrix-vector multiplication",
         "description": "Implements SGEMV on par with cuBLAS as a lesson in CUDA programming",
         "tags": [
-            "HPC",
+            "GPU",
             "Site"
         ]
     },
@@ -1453,6 +1505,7 @@
         "title": "Any-Precision Deep Neural Networks",
         "description": "Teach models to have flexible bit-widths during inference",
         "tags": [
+            "Architecture",
             "Quantization",
             "Arxiv"
         ]
@@ -1461,15 +1514,16 @@
         "title": "On becoming competitive when joining a new company",
         "description": "talks about ludwig's experience joining a company and how to join a company successfully",
         "tags": [
-            "Self-Help",
+            "Career Advice",
             "Site"
         ]
     },
     {
         "title": "Machine Teaching: What I Learned From My Optimizer",
-        "description": "Talks about the strategic application of Optimization algorithms in trading algorithms",
+        "description": "Talks about the inherent flaws in using one suite of rules to constraint and optimize your trading strategy, that they can be intelligently deployed and obey underlying tendencies but can often be wrong when trusted blindly",
         "tags": [
-            "Finance",
+            "Career Advice",
+            "Optimizer",
             "Site"
         ]
     },
@@ -1477,8 +1531,7 @@
         "title": "Extending Language Model Context Up to 3 Million Tokens on a Single GPU",
         "description": "Talks about various techniques for how to get a LM to run on context lenghts up to 3e6 tokens on a single GPU",
         "tags": [
-            "Optimization",
-            "LLMs",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -1486,7 +1539,8 @@
         "title": "Reevaluating Policy Gradient Methods for Imperfect-Information Games",
         "description": "Looks at the difficulties of applying RL to games with uncertain states",
         "tags": [
-            "Reinforcement Learning",
+            "Information Theory",
+            "RL",
             "Arxiv"
         ]
     },
@@ -1494,7 +1548,8 @@
         "title": "Statistical physics, Bayesian inference and neural information processing",
         "description": "Breakdown of 3 lectures on Statistical physics, Bayesian inference and neural information processing",
         "tags": [
-            "Machine Learning",
+            "Statistics",
+            "ML",
             "Arxiv"
         ]
     },
@@ -1502,8 +1557,7 @@
         "title": "TransMLA: Multi-Head Latent Attention Is All You Need",
         "description": "Proposes a method for converting pre-trained models in MLA-based models plus further training to boost model expressiveness",
         "tags": [
-            "Optimization",
-            "Transformers",
+            "Attention",
             "Arxiv"
         ]
     },
@@ -1511,8 +1565,8 @@
         "title": "Generalized Transformers from Applicative Functors",
         "description": "Produces a basic model of the generalized functional form of Transformers",
         "tags": [
-            "Transformers",
-            "Machine Learning",
+            "Misc Math",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -1520,6 +1574,7 @@
         "title": "Distillation Scaling Laws",
         "description": "Observes how well you can distill models.",
         "tags": [
+            "Scaling",
             "Distillation",
             "Arxiv"
         ]
@@ -1528,9 +1583,9 @@
         "title": "LLM-SR: Scientific Equation Discovery via Programming with LLMs",
         "description": "Proposes a method of treating equations as sequences for LLMs to generate and rewarding the model based on accuracy of the equation generated on the data at hand.",
         "tags": [
-            "Symbolic Systems",
-            "Reinforcement Learning",
-            "LLMs",
+            "Transformer",
+            "RL",
+            "Symbolic AI",
             "Arxiv"
         ]
     },
@@ -1538,8 +1593,8 @@
         "title": "In-Context Symbolic Regression",
         "description": "SOTA method using a LLM to iteratively refine a function",
         "tags": [
-            "Symbolic Systems",
-            "LLMs",
+            "Transformer",
+            "Symbolic AI",
             "Arxiv"
         ]
     },
@@ -1547,7 +1602,7 @@
         "title": "Approximating KL Divergence",
         "description": "Proposes more computationally efficient ways to approximate KL Divergence",
         "tags": [
-            "Machine Learning",
+            "Statistics",
             "Site"
         ]
     },
@@ -1555,7 +1610,8 @@
         "title": "Information Entropy Invariance: Enhancing Length Extrapolation in Attention Mechanisms",
         "description": "Identifies entropy as a source of difficulty extrapolating across sequence lengths",
         "tags": [
-            "Transformers",
+            "Information Theory",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -1563,7 +1619,8 @@
         "title": "Exploring Grokking: Experimental and Mechanistic Investigations",
         "description": "Explores the phenomenon of grokking into perfect generalization",
         "tags": [
-            "Deep Learning",
+            "Interpretability",
+            "ML",
             "Arxiv"
         ]
     },
@@ -1571,7 +1628,7 @@
         "title": "Competition Dynamics Shape Algorithmic Phases of In-Context Learning",
         "description": "Interprets ICL as a mixture of sub-algorithms learned in the weights of your model.",
         "tags": [
-            "LLMs",
+            "Interpretability",
             "Arxiv"
         ]
     },
@@ -1579,8 +1636,8 @@
         "title": "Cache Me If You Must: Adaptive Key-Value Quantization for LLMs",
         "description": "Protocol for adaptively Quantizing KV to compress LLM context",
         "tags": [
+            "Inference",
             "Quantization",
-            "LLMs",
             "Arxiv"
         ]
     },
@@ -1588,9 +1645,8 @@
         "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
         "description": "Proposes a model eval whereby the performance of a model is definitionally how well it can earn money over human workers on SWE tasks",
         "tags": [
-            "Evals",
-            "LLMs",
-            "Agents",
+            "Benchmarking",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -1598,8 +1654,7 @@
         "title": "Rethinking Personalized Ranking at Pinterest: An End-to-End Approach",
         "description": "Describes how to efficiently learn user preferences on mixed platforms.",
         "tags": [
-            "Tech",
-            "Deep Learning",
+            "System Design",
             "Arxiv"
         ]
     },
@@ -1607,8 +1662,8 @@
         "title": "TokenSkip: Controllable Chain-of-Thought Compression in LLMs",
         "description": "Outlines a method for cutting CoT length",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "NLP",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -1616,8 +1671,8 @@
         "title": "Scaling Test-Time Compute Without Verification or RL is Suboptimal",
         "description": "Digs into how verfication helps in the scaling of performance for LLM RL.",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "Scaling",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -1625,8 +1680,7 @@
         "title": "Don\u2019t Get Lost in the Trees: Streamlining LLM Reasoning by Over-coming Tree Search Exploration Pitfalls",
         "description": "Shows framework for plugging in various tree search algorithms for better LLM reasoning",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -1634,7 +1688,7 @@
         "title": "Implementing LLaMA3 in 100 Lines of Pure Jax",
         "description": "Digs into the code of the LLama family of models and usage of JAX for LLM usecases.",
         "tags": [
-            "Transformers",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -1642,7 +1696,8 @@
         "title": "High-Dimensional Data Analysis with Low-Dimensional Models: Principles, Computation, and Applications",
         "description": "Textbook on methods for ability to efficiently understand high dimensional data using low-dimensional models",
         "tags": [
-            "Machine Learning",
+            "Statistics",
+            "ML",
             "Essay"
         ]
     },
@@ -1651,24 +1706,16 @@
         "description": "Step-by-Step guide to implementing a Pairs Trading Strategy in Python",
         "tags": [
             "Finance",
-            "Tutorial",
+            "ML",
             "Site"
-        ]
-    },
-    {
-        "title": "A Flag Decomposition for Hierarchical Datasets",
-        "description": "Dicusses the challenges of training models to learn hierarchically nested datasets",
-        "tags": [
-            "Machine Learning",
-            "Arxiv"
         ]
     },
     {
         "title": "Rethink LoRA initialisations for faster convergence",
         "description": "Shows that there are weight intialization regimes which make convergence of LoRA training faster",
         "tags": [
+            "Training",
             "Quantization",
-            "Optimization",
             "Site"
         ]
     },
@@ -1676,9 +1723,7 @@
         "title": "Learning to Reason at the Frontier of Learnability",
         "description": "Introduces a technique to sample based on learnability for more efficient learning trajectory.",
         "tags": [
-            "Reasoning",
-            "LLMs",
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -1686,8 +1731,8 @@
         "title": "Eager Updates For Overlapped Communication and Computation in DiLoCo",
         "description": "Enables lower bandwidth transmission between workers without hurting training performance",
         "tags": [
-            "Optimizers",
-            "Distributed Systems",
+            "Distributed Techniques",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -1695,8 +1740,8 @@
         "title": "Exploiting Sparsity for Long Context Inference: 1M Token Contexts on Commodity GPUs",
         "description": "Outlines tunable mechanism for attending to the most relevant tokens at every step achieving over 95% of model performance on 2% of input tokens.",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Inference",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -1704,8 +1749,8 @@
         "title": "Long-context GRPO",
         "description": "Shows how to optimize the GRPO algorithm to use 90% less VRAM, thus enabling 10x context lengths.",
         "tags": [
-            "Reinforcement Learning",
-            "Optimization",
+            "Context Length",
+            "RL",
             "Site"
         ]
     },
@@ -1713,7 +1758,7 @@
         "title": "How to think about derivatives through best linear approximation",
         "description": "Fresh description of understanding derivative and linear approximatins of higher dimensions higher-order derivatives.",
         "tags": [
-            "Mathematics",
+            "Stochastic Calculus",
             "Site"
         ]
     },
@@ -1721,7 +1766,7 @@
         "title": "Please Stop Talking About AGI",
         "description": "Builds an alternative reason why talking about some measurable on-coming AGI doesn't make much sense.",
         "tags": [
-            "AI Safety",
+            "X-Risk",
             "Site"
         ]
     },
@@ -1729,7 +1774,7 @@
         "title": "S*: Test Time Scaling for Code Generation",
         "description": "Beneficial test-time training method for generating code",
         "tags": [
-            "Reasoning",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -1737,9 +1782,8 @@
         "title": "Logic-RL: Unleashing LLM Reasoning with Rule-Based RL",
         "description": "Build on DeepSeek-R1 to explore rules-based RL for LLMs",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
-            "Reasoning",
+            "RL for Test-Time",
+            "Symbolic AI",
             "Arxiv"
         ]
     },
@@ -1747,8 +1791,8 @@
         "title": "Distributed GEMM",
         "description": "Implements tnesor-parallel GEMM with NVLind and CUTLASS",
         "tags": [
-            "HPC",
-            "Parallel Computing",
+            "Distributed Techniques",
+            "GPU",
             "Site"
         ]
     },
@@ -1756,7 +1800,7 @@
         "title": "Introduction to CUDA Programming for Python Developers",
         "description": "Teaches Python Programmers about how to use CUDA for programming higher performance projects",
         "tags": [
-            "HPC",
+            "GPU",
             "Site"
         ]
     },
@@ -1764,7 +1808,7 @@
         "title": "Introduction to Stochastic Calculus",
         "description": "Explains in simple terms the intution behind methods in stochastic calculus",
         "tags": [
-            "Mathematics",
+            "Stochastic Calculus",
             "Site"
         ]
     },
@@ -1772,7 +1816,9 @@
         "title": "Algorithms for Optimization",
         "description": "Textbook to explain, in deep detail, the main optimization algorithms out there in the world.",
         "tags": [
-            "Optimizers",
+            "Statistics",
+            "Stochastic Calculus",
+            "Optimizer",
             "Essay"
         ]
     },
@@ -1780,8 +1826,7 @@
         "title": "Efficient Transformers: A Survey",
         "description": "Breaks down the many different types of transformers looking to improve on the bottlenecks of the Transformer architecture",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -1789,7 +1834,6 @@
         "title": "Only fools think Elon is incompetent",
         "description": "Talks about the need to not underestimate Elon as he steps into American politics...",
         "tags": [
-            "Politics",
             "Essay"
         ]
     },
@@ -1797,8 +1841,8 @@
         "title": "Various approaches to parallelizing Muon",
         "description": "Discusses attempts being made to do Newton-Schulz optimization in a distributed manor",
         "tags": [
-            "Optimizers",
-            "Parallel Computing",
+            "Distributed Techniques",
+            "Optimizer",
             "Site"
         ]
     },
@@ -1806,7 +1850,7 @@
         "title": "On the consistent reasoning paradox of intelligence and optimal trust in AI: The power of \u2018I don\u2019t know\u2019",
         "description": "Deeply questions the nature of intelligence and the power of human reasoning over what current LLMs are structured to do.",
         "tags": [
-            "Reasoning",
+            "Symbolic AI",
             "Arxiv"
         ]
     },
@@ -1814,9 +1858,7 @@
         "title": "SWE-RL: Advancing LLM Reasoning via RL on Open Software Evolution",
         "description": "Outlines a self-play loop for teaching a model to learn to write effective software",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
-            "Reasoning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -1824,7 +1866,6 @@
         "title": "How to Make Superbabies",
         "description": "Digs into the current state of embryonic selection",
         "tags": [
-            "Tech",
             "Site"
         ]
     },
@@ -1832,7 +1873,8 @@
         "title": "Forecasting Rare Language Model Behaviors",
         "description": "Fits a scaling law to forecast the risk of high-risk queries given number of queries",
         "tags": [
-            "AI Safety",
+            "DevOps",
+            "Inference",
             "Arxiv"
         ]
     },
@@ -1840,7 +1882,8 @@
         "title": "On the Parameterization of Second-Order Optimization Effective Towards the Infinite Width",
         "description": "Defines an optimizer inspired by K-FAC and Shampoo which generalizes across varying model widths better than both",
         "tags": [
-            "Optimizers",
+            "Stochastic Calculus",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -1848,7 +1891,7 @@
         "title": "Why does GRPO work?",
         "description": "Digs into the math behind GRPO",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -1856,8 +1899,8 @@
         "title": "Infinite Retrieval: Attention Enhanced LLMs in Long-Context Processing",
         "description": "Outlines a method for 288% improvement of retrieval on tasks up to 1M tokens",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Attention",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -1865,6 +1908,7 @@
         "title": "Triton Linear Layout: Concept",
         "description": "Teaches about the layout of memory in OpenAI's Triton library",
         "tags": [
+            "ASIC",
             "HPC",
             "Site"
         ]
@@ -1873,8 +1917,7 @@
         "title": "Tensor Parallelism with jax.pjit",
         "description": "Shows how to shard LLMs across GPUs and TPUs with JAX/Flax",
         "tags": [
-            "Parallel Computing",
-            "HPC",
+            "Libraries",
             "Site"
         ]
     },
@@ -1882,17 +1925,18 @@
         "title": "What Every Developer Should Know About GPU Computing",
         "description": "Primr on GPU architecture and computing",
         "tags": [
-            "HPC",
-            "Hardware",
+            "GPU",
             "Site"
         ]
     },
     {
         "title": "ByteScale: Efficient Scaling of LLM Training with a 2048K Context Length on More Than 12,000 GPUs",
-        "description": "",
+        "description": "Explains how the ByteDance Foundation model scaled",
         "tags": [
-            "LLMs",
-            "Distributed Systems",
+            "System Design",
+            "Transformer",
+            "Scaling",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -1900,8 +1944,8 @@
         "title": "Predictable Scale: Part I \u2014 Optimal Hyperparameter Scaling Law in LLM Pretraining",
         "description": "Spends tremendous resources to map out the empirical trajectory to change different hyperparameters along as you scale your training",
         "tags": [
-            "Hyperparameter Optimization",
-            "LLMs",
+            "Scaling",
+            "Hyperparams",
             "Arxiv"
         ]
     },
@@ -1910,7 +1954,6 @@
         "description": "Digs into how OpenAI Triton library works and how to use it to accelerate your programs",
         "tags": [
             "HPC",
-            "Libraries",
             "Site"
         ]
     },
@@ -1918,7 +1961,7 @@
         "title": "Understanding Attention in LLMs",
         "description": "Tries to give another intepretation of what is happening in the Attention mechanism",
         "tags": [
-            "Transformers",
+            "Attention",
             "Site"
         ]
     },
@@ -1926,25 +1969,15 @@
         "title": "DeepSeek, Huawei, Export Controls, and the Future of the U.S.-China AI Race",
         "description": "Talks about the policy landscape of US-China technological exchange restrictions",
         "tags": [
-            "Politics",
-            "Tech",
+            "Governance",
             "Essay"
-        ]
-    },
-    {
-        "title": "Deriving Muon",
-        "description": "Jeremy Bernstein",
-        "tags": [
-            "Optimizers",
-            "Site"
         ]
     },
     {
         "title": "A Little Depth Goes a Long Way: The Expressive Power of Log-Depth Transformers",
         "description": "Shows that depth scales very favorably for LLMs",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -1952,7 +1985,7 @@
         "title": "Speculative Thinking: Large Models Mentoring Small Models for Efficient Reasoning",
         "description": "Experiments with using large models to mentor small models to reason better",
         "tags": [
-            "Reasoning",
+            "Inference",
             "Site"
         ]
     },
@@ -1960,8 +1993,8 @@
         "title": "Domain specific architectures for AI inference",
         "description": "Digs into design choices for hardware based on what Transformer workloads require",
         "tags": [
-            "Hardware",
-            "Transformers",
+            "ASIC",
+            "Inference",
             "Site"
         ]
     },
@@ -1969,7 +2002,7 @@
         "title": "Understanding Transformers... (beyond the Math)",
         "description": "Another useful explanation of Transformers",
         "tags": [
-            "Transformers",
+            "Transformer",
             "Site"
         ]
     },
@@ -1977,8 +2010,8 @@
         "title": "The State of LLM Reasoning Models",
         "description": "Digs into the varying method for Inference-Time Compute Scaling",
         "tags": [
-            "LLMs",
-            "Reasoning",
+            "Scaling",
+            "Test-Time Methods",
             "Site"
         ]
     },
@@ -1986,7 +2019,7 @@
         "title": "Liberals Only Censor. Musk Seeks to Lobotomize.",
         "description": "Comment on the grotesque idocracy of Musk's vision of the public square",
         "tags": [
-            "Politics",
+            "Politiking",
             "Essay"
         ]
     },
@@ -1994,9 +2027,9 @@
         "title": "Every FLOP Counts: Scaling a 300B MoE LLM without premium GPUs",
         "description": "Shows how to train a 300M MoE LLM on lower-performance devices",
         "tags": [
-            "Distributed Systems",
-            "Parallel Computing",
-            "MoEs",
+            "GPU",
+            "Distributed Techniques",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -2004,7 +2037,7 @@
         "title": "Generalized Interpolating Discrete Diffusion",
         "description": "Shows how to improve Diffusion learning via uniform noise",
         "tags": [
-            "Diffusion",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -2012,7 +2045,7 @@
         "title": "Elicitation, the simplest way to understand post-training",
         "description": "Another perspective on the shape of post-training improvements in the field recently",
         "tags": [
-            "LLMs",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -2020,8 +2053,8 @@
         "title": "Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts",
         "description": "Outlines a MoE system to accelerate performance over standard MoE by a factor of 1.71x",
         "tags": [
-            "MoEs",
-            "Parallel Computing",
+            "Distributed Techniques",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -2029,8 +2062,8 @@
         "title": "Optimizing Test-Time Compute via Meta Reinforcement Fine-Tuning",
         "description": "Shows how to use Meta RL to do better fine-tuning",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
+            "Test-Time Methods",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2038,8 +2071,7 @@
         "title": "A Survey on Post-Training of LLMs",
         "description": "Digs into the many different manors for post-training of LLMs",
         "tags": [
-            "LLMs",
-            "Reasoning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2047,7 +2079,7 @@
         "title": "Contextualization Machines",
         "description": "Explains how context is instilled via the architecture of Transformers",
         "tags": [
-            "Transformers",
+            "Transformer",
             "Site"
         ]
     },
@@ -2055,8 +2087,7 @@
         "title": "Policy Gradient Algorithms",
         "description": "Very well explains the math of different RL methods",
         "tags": [
-            "Reinforcement Learning",
-            "Mathematics",
+            "RL",
             "Site"
         ]
     },
@@ -2064,7 +2095,8 @@
         "title": "What if Neural Networks had SVDs?",
         "description": "Hypothesizes an alternate type of NN",
         "tags": [
-            "Machine Learning",
+            "Statistics",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2072,8 +2104,7 @@
         "title": "The Architecture of Groq's LPU",
         "description": "Understanding the structure of the Groq LPU",
         "tags": [
-            "Hardware",
-            "LLMs",
+            "ASIC",
             "Site"
         ]
     },
@@ -2081,8 +2112,8 @@
         "title": "Actual LLM agents are coming. They will be trained",
         "description": "A bold take for optimism that LLM agents will be possible",
         "tags": [
-            "Agents",
-            "LLMs",
+            "Test-Time Methods",
+            "Symbolic AI",
             "Site"
         ]
     },
@@ -2090,8 +2121,7 @@
         "title": "Learning values across many orders of magnitude",
         "description": "Looks into a method for learning various OOMs of output values through Deep RL",
         "tags": [
-            "Machine Learning",
-            "Reinforcement Learning",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2099,8 +2129,8 @@
         "title": "Loss Spike in Training Neural Networks",
         "description": "Investigates the mechanism behind loss spikes during training",
         "tags": [
-            "Mathematics",
-            "Deep Learning",
+            "Stochastic Calculus",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2108,7 +2138,7 @@
         "title": "Softmax Attention is a Fluke",
         "description": "Answering: Why Softmax?",
         "tags": [
-            "Transformers",
+            "ML",
             "Site"
         ]
     },
@@ -2116,7 +2146,8 @@
         "title": "Transformers without Normalization",
         "description": "Introduces a drop-in activation function which normalizes for you and allows the removal of normalization layers",
         "tags": [
-            "Transformers",
+            "Architecture",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2124,8 +2155,8 @@
         "title": "Benchmarking the performance of genetic algorithms on constrained dynamic problems",
         "description": "Compares different Genetic algorithms",
         "tags": [
-            "Evals",
-            "Machine Learning",
+            "Benchmarking",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2133,7 +2164,8 @@
         "title": "IO devices and latency",
         "description": "Breaks down how IO and latency come from the memory layout of a CPU",
         "tags": [
-            "Hardware",
+            "HPC",
+            "System Design",
             "Site"
         ]
     },
@@ -2141,8 +2173,8 @@
         "title": "Chain-of-Experts: Unlocking the Communication Power of MoEs",
         "description": "Proposes a fundamentally sparse LLM via adding sequential MoE",
         "tags": [
-            "MoEs",
-            "Optimization",
+            "Architecture",
+            "MoE",
             "Site"
         ]
     },
@@ -2150,7 +2182,9 @@
         "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
         "description": "Introduces the concept of Federated Learning undergirding modern DiLoCo research",
         "tags": [
-            "Parallel Computing",
+            "Distributed Techniques",
+            "Sparsity",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -2158,7 +2192,7 @@
         "title": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
         "description": "Uses Flow Network for learning diverse group of molecules, leveraging Flow Nets inherent balancing of exploration & exploitation",
         "tags": [
-            "Machine Learning",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -2166,8 +2200,7 @@
         "title": "Operationalizing Machine Learning: An Interview Study",
         "description": "Looks at the minutia of ML Experimentation, Deployment, and Sustained Performance",
         "tags": [
-            "Machine Learning",
-            "Interation",
+            "DevOps",
             "Arxiv"
         ]
     },
@@ -2175,7 +2208,7 @@
         "title": "My notes while reading about GPUs",
         "description": "Writes about distilled takeaways of what GPUs are and how to use them effectively",
         "tags": [
-            "HPC",
+            "GPU",
             "Site"
         ]
     },
@@ -2183,8 +2216,8 @@
         "title": "Compute Optimal Scaling of Skills: Knowledge vs Reasoning",
         "description": "Shows how knowledge --aka memorization-- scales different to how well a model is reasoning",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "Transformer",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -2192,8 +2225,8 @@
         "title": "TFB: Towards Comprehensive and Fair Benchmarking of Time Series Forecasting Methods",
         "description": "Tries to develop a benchmarking suite for Forecasting models",
         "tags": [
-            "Evals",
-            "Forecasting",
+            "Time-Series Forecasting",
+            "Benchmarking",
             "Arxiv"
         ]
     },
@@ -2201,7 +2234,7 @@
         "title": "Mathematical Foundations of Prophet Forecasting: Applied to GB Power Demand",
         "description": "Explains the algorithm behind the Prophet forecasting algorithm",
         "tags": [
-            "Forecasting",
+            "Time-Series Forecasting",
             "Site"
         ]
     },
@@ -2209,9 +2242,8 @@
         "title": "DAPO: An Open-Source LLM RL System at Scale",
         "description": "Open Source system for teaching LLMs to Reason at Scale",
         "tags": [
-            "Reinforcement Learning",
-            "Distributed Systems",
-            "LLMs",
+            "Scaling",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2220,6 +2252,7 @@
         "description": "Shows improved trading performance with the addition of a label imbalance adjustment method",
         "tags": [
             "Finance",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2227,8 +2260,8 @@
         "title": "APB: Accelerating Distributed Long-Context Inference by Passing Compressed Context Blocks across GPUs",
         "description": "Outlines a method for incorporating Flash Attention with parallelism strategies to achieve a 9.2-1.6x speedup over traditional attention mechanisms",
         "tags": [
-            "LLMs",
-            "Distributed Systems",
+            "Inference",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -2236,8 +2269,7 @@
         "title": "Optimizing ML Training with Metagradient Descent",
         "description": "Utilizes metagradients to avoid data poisonings effect by OOMs",
         "tags": [
-            "Optimizers",
-            "Parallel Computing",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -2245,7 +2277,7 @@
         "title": "Diffusion Meets Flow Matching: Two Sides of the Same Coin",
         "description": "Explains the theoretical connection between Flow Matching and traditional Diffusion methods",
         "tags": [
-            "Diffusion",
+            "Generative Methods",
             "Site"
         ]
     },
@@ -2253,8 +2285,7 @@
         "title": "Tapered Off-Policy REINFORCE: Stable and Efficient RL for LLMs",
         "description": "Proposes a new RL method for offline learning",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2262,8 +2293,10 @@
         "title": "A Review of DeepSeek Models\u2019 Key Innovative Techniques",
         "description": "Breaks down the many changes which DeepSeek made in V3 and R1 to eek out performance",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "HPC",
+            "Architecture",
+            "MoE",
+            "Attention",
             "Arxiv"
         ]
     },
@@ -2271,7 +2304,7 @@
         "title": "TPU Architecture",
         "description": "Explains the layout of the TPU chip",
         "tags": [
-            "Hardware",
+            "ASIC",
             "Arxiv"
         ]
     },
@@ -2279,7 +2312,8 @@
         "title": "Scaling RL Compute",
         "description": "Shows the different ways to do RL on LLMs at scale",
         "tags": [
-            "Reinforcement Learning",
+            "Scaling",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -2287,7 +2321,9 @@
         "title": "Lyra: An Efficient and Expressive Subquadratic Architecture for Modeling Biological Sequences",
         "description": "Outlines a SOTA biological sequence modeller that speeds up inference by 120,000x!",
         "tags": [
-            "Transformers",
+            "CompBio",
+            "SSM",
+            "Attention",
             "Arxiv"
         ]
     },
@@ -2295,7 +2331,7 @@
         "title": "Analyzing Modern NVIDIA GPU cores",
         "description": "Reverse engineers the particular layout of the A100 GPU Cores",
         "tags": [
-            "Hardware",
+            "GPU",
             "Arxiv"
         ]
     },
@@ -2303,15 +2339,24 @@
         "title": "Nemotron-H: A Family of Accurate, Efficient Hybrid Mamba-Transformer Models",
         "description": "Unveils a functionally useful Mamba-Transformer hybrid model",
         "tags": [
-            "Transformers",
+            "SSM",
             "Site"
+        ]
+    },
+    {
+        "title": "Nemotron-H: A Family of Accurate, Efficient Hybrid Mamba-Transformer Models",
+        "description": "Unveils a functionally useful Mamba-Transformer hybrid model",
+        "tags": [
+            "SSM",
+            "Arxiv"
         ]
     },
     {
         "title": "EAGLE-3: Scaling up Inference Acceleration of LLMs via Training-Time Test",
         "description": "Another example of techniques for speeding of inference",
         "tags": [
-            "Reasoning",
+            "Inference",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2319,8 +2364,7 @@
         "title": "Bridging Continuous and Discrete Tokens for Autoregressive Visual Generation",
         "description": "Shows how to do Visual Generation with Transformers via continuous and discrete tokens",
         "tags": [
-            "Transformers",
-            "Reasoning",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -2328,7 +2372,7 @@
         "title": "Understanding Solar Energy",
         "description": "Looks into the economics of Solar Energy",
         "tags": [
-            "Economics",
+            "Econ",
             "Site"
         ]
     },
@@ -2336,7 +2380,6 @@
         "title": "Quantum circuit optimization with AlphaTensor",
         "description": "Utilizes LLM to discover optimization of quantum circuits",
         "tags": [
-            "LLMs",
             "Arxiv"
         ]
     },
@@ -2344,7 +2387,7 @@
         "title": "Distributed Systems",
         "description": "Textbook on methods in Distributed Systems",
         "tags": [
-            "Distributed Computing",
+            "Distributed Techniques",
             "Essay"
         ]
     },
@@ -2352,7 +2395,8 @@
         "title": "A friendly introduction to machine learning compilers and optimizers",
         "description": "Digs into the different software & tricks used that ML compilers use to speed up workflows",
         "tags": [
-            "Machine Learning",
+            "Compilers",
+            "Optimizer",
             "Site"
         ]
     },
@@ -2360,8 +2404,8 @@
         "title": "Improving Recommendation Systems & Search in the Age of LLMs",
         "description": "Looks into the progress on actually using LLMs for recommendation algorithms",
         "tags": [
-            "Tech",
-            "LLMs",
+            "System Design",
+            "Test-Time Methods",
             "Site"
         ]
     },
@@ -2369,8 +2413,7 @@
         "title": "RL for Reasoning in Small LLMs: What Works and What Doesn\u2019t",
         "description": "Talks about how to do RL for LLMs without the base abilities of foundation models",
         "tags": [
-            "LLMs",
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2378,7 +2421,7 @@
         "title": "NdLinear Is All You Need for Representation Learning",
         "description": "New layer for transformers which preserves latent data structure",
         "tags": [
-            "Transformers",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -2386,7 +2429,7 @@
         "title": "Preparing for the Intelligence Explosion",
         "description": "Thinks about what someone who expects AI takeoff should be doing at this moment",
         "tags": [
-            "AI Safety",
+            "X-Risk",
             "Essay"
         ]
     },
@@ -2395,7 +2438,6 @@
         "description": "Builds up a way for deep NNs to extract hierarchies of progressively informative features",
         "tags": [
             "Information Theory",
-            "Machine Learning",
             "Arxiv"
         ]
     },
@@ -2403,7 +2445,7 @@
         "title": "Evolutionary Policy Optimization",
         "description": "Brings Genetic evolution to RL",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2411,7 +2453,8 @@
         "title": "Parameters vs FLOPs: Scaling Laws for Optimal Sparsity for MoE LMs",
         "description": "Determines how the sparsity of the MoE should change with the number of FLOPs available",
         "tags": [
-            "MoEs",
+            "MoE",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -2419,7 +2462,7 @@
         "title": "Learning Theory from First Principles",
         "description": "Textbook explaining ML as a field from the ground up",
         "tags": [
-            "Machine Learning",
+            "ML",
             "Essay"
         ]
     },
@@ -2427,7 +2470,7 @@
         "title": "Scaling Laws of Synthetic Data for Language Models",
         "description": "Looks into how the usage of synthetic data can be scaled",
         "tags": [
-            "LLMs",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -2435,8 +2478,8 @@
         "title": "Reasoning to Learn from Latent Thoughts",
         "description": "Looks into additional ways to teach models to reason better by exposing their latent thought stream",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "Architecture",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2444,7 +2487,8 @@
         "title": "Scaling Evaluation-time Compute with Reasoning Models as Process Evaluators",
         "description": "Figures out methods to do evaluation of models at scale",
         "tags": [
-            "Evals",
+            "Scaling",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2460,7 +2504,8 @@
         "title": "Command A: An Enterprise-Ready LLM",
         "description": "Explains the results and process behind the training of Cohere's foundation model",
         "tags": [
-            "LLMs",
+            "DevOps",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -2468,8 +2513,7 @@
         "title": "The Mean-ing of Loss Functions",
         "description": "Introduction to Bregman projections in information geometry, exploration connections between basic loss functions and the mean as a predictor.",
         "tags": [
-            "Mathematics",
-            "Machine Learning",
+            "ML",
             "Site"
         ]
     },
@@ -2477,7 +2521,7 @@
         "title": "Cut Your Losses in Large-Vocabulary LMs",
         "description": "Reduced memory footprint of loss computation by 25x",
         "tags": [
-            "LLMs",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2485,8 +2529,8 @@
         "title": "STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving",
         "description": "Outlines a Self-Play loop for teaching a LLM to write theorems",
         "tags": [
-            "LLMs",
-            "Reasoning",
+            "RL for Test-Time",
+            "Symbolic AI",
             "Arxiv"
         ]
     },
@@ -2494,7 +2538,7 @@
         "title": "UB-Mesh: a Hierarchically Localized nD-FullMesh Datacenter Network Architecture",
         "description": "Provides a datacenter network architecture for cost-effective scalable performance",
         "tags": [
-            "Distributed Computing",
+            "HPC",
             "Arxiv"
         ]
     },
@@ -2502,15 +2546,16 @@
         "title": "PilotANN: Memory-Bounded GPU Acceleration for Vector Search",
         "description": "Proposes a distributed CPU-GPU based algorithm for Approximat Nearest Neighbor Vector Search with 5x speedup and 12x memory footprint reduction",
         "tags": [
-            "Machine Learning",
+            "GPU",
+            "ML",
             "Arxiv"
         ]
     },
     {
-        "title": "LLM Embeddings Explianed: A Visual and Intuitive Guide",
+        "title": "LLM Embeddings Explained: A Visual and Intuitive Guide",
         "description": "Explains how embeddings work in LLMs",
         "tags": [
-            "LLMs",
+            "Transformer",
             "Arxiv"
         ]
     },
@@ -2518,7 +2563,7 @@
         "title": "DeltaProduct: Increasing Expressivity of DeltaNet through Products of Householders",
         "description": "Proposes a novel architecture for linear RNNs",
         "tags": [
-            "Transformers",
+            "SSM",
             "Arxiv"
         ]
     },
@@ -2526,7 +2571,8 @@
         "title": "\u03d5-Decoding: Adaptive Foresight Sampling for Balanced Inference-Time Exploration and Exploitation",
         "description": "Looks at how to boost inference sampling through adaptive exploration and exploitation balancing",
         "tags": [
-            "Optimization",
+            "Inference",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2534,7 +2580,7 @@
         "title": "DeltaNet Explained (Part 1, 2, 3)",
         "description": "Digs into the DeltaNet linear RNN alternative to Transformers",
         "tags": [
-            "Transformers",
+            "SSM",
             "Site"
         ]
     },
@@ -2542,8 +2588,8 @@
         "title": "Relative Fisher Information and Natural Gradient for Learning Large Modular Models",
         "description": "Digs into information-geometric metrics for optimization and definition of loss surfaces",
         "tags": [
-            "Mathematics",
-            "Optimizers",
+            "Stochastic Calculus",
+            "Optimizer",
             "Arxiv"
         ]
     },
@@ -2551,7 +2597,8 @@
         "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation",
         "description": "Explains how to generalize GAE for better performance in Continuous Control",
         "tags": [
-            "Reinforcement Learning",
+            "Control",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2559,7 +2606,7 @@
         "title": "Reinforcement Learning: Theory and Algorithms",
         "description": "First-Principles explanation of the field of RL",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Essay"
         ]
     },
@@ -2567,7 +2614,9 @@
         "title": "Megablocks: Efficient Sparse Training with MoEs",
         "description": "Defines system for efficient MoE on GPUs",
         "tags": [
-            "MoEs",
+            "MoE",
+            "Inference",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -2575,8 +2624,7 @@
         "title": "The State of Sparsity in Deep Neural Networks",
         "description": "Looks into benchmarking of sparsity in LMs",
         "tags": [
-            "Machine Learning",
-            "Evals",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -2584,6 +2632,7 @@
         "title": "Rigging the Lottery: Making All Tickets Winners",
         "description": "Looks into finding the sparse networks within models while preserving accuracy",
         "tags": [
+            "ML",
             "Arxiv"
         ]
     },
@@ -2591,7 +2640,9 @@
         "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and E\ufb03cient Sparsity",
         "description": "",
         "tags": [
-            "Transformers",
+            "Transformer",
+            "Scaling",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -2599,7 +2650,7 @@
         "title": "FACTS: A Factored State-Space Framework for World Modelling",
         "description": "Alternative model to Transformers for SSM",
         "tags": [
-            "Transformers",
+            "SSM",
             "Arxiv"
         ]
     },
@@ -2607,7 +2658,7 @@
         "title": "Advances and Challenges in Foundation Models",
         "description": "Looks into techniques for foundation models",
         "tags": [
-            "LLMs",
+            "Scaling",
             "Arxiv"
         ]
     },
@@ -2615,7 +2666,7 @@
         "title": "SimPO: Simple Preference Optimization with Preference-Free Reward",
         "description": "Proposes an alternative to DPO which doesn't require a reference model",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2623,8 +2674,7 @@
         "title": "Inference-Time Scaling for Generalist Reward Modeling",
         "description": "On building towards RL capable of excelling on non-verifiable tasks",
         "tags": [
-            "Reasoning",
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2632,7 +2682,9 @@
         "title": "Inference-Time Scaling for Complex Tasks: Where We Stand and What Lies Ahead",
         "description": "On building towards RL capable of excelling on multi-step tasks",
         "tags": [
-            "Reasoning",
+            "Scaling",
+            "Inference",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -2640,7 +2692,7 @@
         "title": "A Survey of Meta-Reinforcement Learning",
         "description": "Looks into methods for meta RL",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2648,8 +2700,8 @@
         "title": "Deep Learning-Driven Protein Structure Prediction and Design",
         "description": "Analyzes trends in self-play generation of protein structures",
         "tags": [
-            "Reasoning",
-            "GenAI",
+            "CompBio",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -2657,8 +2709,8 @@
         "title": "MoE++: Zero-Computation Experts",
         "description": "Efficient MoE delivery",
         "tags": [
-            "MoEs",
-            "Optimization",
+            "Architecture",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -2666,8 +2718,8 @@
         "title": "TC-MoE: Ternary Expert Choice",
         "description": "Changes expert selection from probabilities to ternary",
         "tags": [
-            "MoEs",
-            "Optimization",
+            "MoE",
+            "Quantization",
             "Arxiv"
         ]
     },
@@ -2675,7 +2727,7 @@
         "title": "NoProp: Training NNs without Backprop",
         "description": "Sets up training such that there's no need for waiting on Backpropogation of gradients",
         "tags": [
-            "Machine Learning",
+            "Training",
             "Arxiv"
         ]
     },
@@ -2683,8 +2735,8 @@
         "title": "Device Placement with Reinforcement Learning",
         "description": "Looks into optimizing placement of processes across devices using RL",
         "tags": [
-            "Reinforcement Learning",
-            "Distributed Computing",
+            "Distributed Techniques",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2692,7 +2744,8 @@
         "title": "Langevin Soft Actor-Critic",
         "description": "Looks into usage of LMC based sampling for better exploration, especially in continuous action spaces",
         "tags": [
-            "Reinforcement Learning",
+            "Statistics",
+            "RL",
             "Arxiv"
         ]
     },
@@ -2700,7 +2753,7 @@
         "title": "SeedLM: Compressing LLM weights into seeds of Pseudo-Random Generators",
         "description": "Ability to compress params through a seed",
         "tags": [
-            "Optimization",
+            "Quantization",
             "Arxiv"
         ]
     },
@@ -2708,7 +2761,7 @@
         "title": "CoLoR-Filter: Selecting Data for Language Model Pre-training",
         "description": "Method for selecting data to train LM on to accelerate pre-training",
         "tags": [
-            "Optimization",
+            "Training",
             "Site"
         ]
     },
@@ -2716,7 +2769,7 @@
         "title": "A Unified Approach to Analysis and Design of Denoising Markov Models",
         "description": "Interesting stats work on markov models",
         "tags": [
-            "GenAI",
+            "Monte Carlo Methods",
             "Arxiv"
         ]
     },
@@ -2724,8 +2777,8 @@
         "title": "XAttention: Block Sparse Attention with Antidiagonal Scoring",
         "description": "Attention mechanism based around diagonals",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Attention",
+            "Sparsity",
             "Arxiv"
         ]
     },
@@ -2733,8 +2786,8 @@
         "title": "Multi-Token Attention",
         "description": "Floats an Attention mechanism built around prediction of multiple tokens at once",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Architecture",
+            "Attention",
             "Arxiv"
         ]
     },
@@ -2742,8 +2795,8 @@
         "title": "Slim attention: cut your context memory in half without loss of accuracy",
         "description": "Reduces KV Cache memory dramatically in MHA",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Attention",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -2751,8 +2804,8 @@
         "title": "Effective Approaches to Attention-based Neural Machine Translation",
         "description": "Looks into different methods for Attention",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "NLP",
+            "Attention",
             "Arxiv"
         ]
     },
@@ -2760,8 +2813,8 @@
         "title": "Kolmogorov-Arnold Attention",
         "description": "Uses KAN for the Attention in a ViT",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Attention",
+            "ML",
             "Arxiv"
         ]
     },
@@ -2769,7 +2822,9 @@
         "title": "RL backlog: OpenAI's many RLs, clarifying distillation, and latent reasoning",
         "description": "Just little notes on RL",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
+            "RL",
+            "Distillation",
             "Site"
         ]
     },
@@ -2777,8 +2832,9 @@
         "title": "LongNet: Scaling Transformers to 1B Tokens",
         "description": "Wild research on context length extension techniques",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Transformer",
+            "Scaling",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -2786,8 +2842,8 @@
         "title": "Parameter-Efficient Fine-Tuning for Foundation Models",
         "description": "Current explanation of the parameter efficient fine tuning techniques proposed in many papers",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Training",
+            "Quantization",
             "Arxiv"
         ]
     },
@@ -2795,7 +2851,7 @@
         "title": "Algorithms You Should Know Before System Design Interviews",
         "description": "Bite-sized runthrough of algorithms relevant in the design of consumer application systems",
         "tags": [
-            "Algorithms",
+            "System Design",
             "YT"
         ]
     },
@@ -2803,7 +2859,7 @@
         "title": "Gauge Theory, Geometric Langlands, and All That",
         "description": "Description of some high level math that I enjoyed",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -2811,7 +2867,7 @@
         "title": "Why Does Diffusion Work Better than Auto-Regression?",
         "description": "Compares AR to Diffusion",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "YT"
         ]
     },
@@ -2819,7 +2875,7 @@
         "title": "xLSTM: Extended Long Short-Term Memory",
         "description": "Explains and paper behind the xLSTM ssm",
         "tags": [
-            "Machine Learning",
+            "SSM",
             "YT"
         ]
     },
@@ -2827,7 +2883,7 @@
         "title": "The Definition of the Gamma function",
         "description": "Fun math video on what the gamma function is",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -2835,6 +2891,7 @@
         "title": "Mathematics of Maximizing Profit in Gambling/Investing",
         "description": "Breakdown of the meaning of the Kelly Criterion for optimal trading",
         "tags": [
+            "Misc Math",
             "Finance",
             "YT"
         ]
@@ -2843,7 +2900,7 @@
         "title": "A Swift Introduction to Projective Geometric Algebra",
         "description": "Part II in series on Geometric Algebra",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -2851,7 +2908,7 @@
         "title": "A Swift Introduction to Geometric Algebra",
         "description": "Part I in series on Geometric Algebra",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -2859,7 +2916,7 @@
         "title": "What does larger scale software development look like?",
         "description": "Fun walkthrough of one guys description of working on large scale software in a team",
         "tags": [
-            "Git",
+            "Version Control",
             "YT"
         ]
     },
@@ -2867,7 +2924,7 @@
         "title": "An impossible game at the heart of math",
         "description": "Information video on the axiom of determinancy",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -2875,7 +2932,8 @@
         "title": "Alphafold 3 Deep Dive",
         "description": "Tries to explain the architecture of AlphaFold 3 from First-Principles",
         "tags": [
-            "GenAI",
+            "CompBio",
+            "Transformer",
             "YT"
         ]
     },
@@ -2883,8 +2941,8 @@
         "title": "Mixture of Sparse Attention for Automatic LLM Compression",
         "description": "Reads through method for compresing LLMs",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Attention",
+            "Sparsity",
             "YT"
         ]
     },
@@ -2892,8 +2950,8 @@
         "title": "Exponentially Faster Language Modeling",
         "description": "Looks into a reformulation of the AST of language modeling",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Transformer",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -2901,7 +2959,7 @@
         "title": "Information over-squashing in language tasks",
         "description": "Analyzes how the residual streams of LLMs may make them brittle to certain tasks",
         "tags": [
-            "LLMs",
+            "Transformer",
             "YT"
         ]
     },
@@ -2909,7 +2967,7 @@
         "title": "Mamba 2 - Transformers are SSMs",
         "description": "Lecture on the motivation for Mamba 2",
         "tags": [
-            "LLMs",
+            "SSM",
             "YT"
         ]
     },
@@ -2917,7 +2975,7 @@
         "title": "Parallel Job Workflows",
         "description": "Explanation of OpenMP and other libraries were used to do massively parallel computing on the Harvard computers",
         "tags": [
-            "HPC",
+            "Distributed Techniques",
             "YT"
         ]
     },
@@ -2933,7 +2991,7 @@
         "title": "Do we need Attention? A Mamba Primer",
         "description": "Description of the purpose behind the Attention mechanism and attempts to overcome it",
         "tags": [
-            "LLMs",
+            "SSM",
             "YT"
         ]
     },
@@ -2941,7 +2999,7 @@
         "title": "Compilers, How They Work, And Writing Them From Scratch",
         "description": "Walking through an explanation of Compilers today",
         "tags": [
-            "Computer Systems",
+            "Compilers",
             "YT"
         ]
     },
@@ -2949,8 +3007,8 @@
         "title": "Multi-Head Mixture-of-Experts",
         "description": "Reading a paper on MHA x MoE",
         "tags": [
-            "MoEs",
-            "Optimization",
+            "Attention",
+            "MoE",
             "YT"
         ]
     },
@@ -2958,7 +3016,7 @@
         "title": "Latent Space Visualisation: PCA, t-SNE, UMAP",
         "description": "Visualizes the difference between different algorithms for showing high dimensional data",
         "tags": [
-            "Machine Learning",
+            "ML",
             "YT"
         ]
     },
@@ -2966,7 +3024,8 @@
         "title": "auto-regressive decoders 'think ahead' with embedding diffusion",
         "description": "Reads through integrating diffusion in AR LMs",
         "tags": [
-            "GenAI",
+            "Generative Methods",
+            "Inference",
             "YT"
         ]
     },
@@ -2974,8 +3033,7 @@
         "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Paper)",
         "description": "Reads through paper on how Test-Time Compute was beginning to win",
         "tags": [
-            "LLMs",
-            "Reasoning",
+            "Test-Time Methods",
             "YT"
         ]
     },
@@ -2983,7 +3041,7 @@
         "title": "Diffusion Models From Scratch",
         "description": "Description of the basic mechanisms of Diffusion models",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "YT"
         ]
     },
@@ -2991,6 +3049,7 @@
         "title": "GPU Programming Series",
         "description": "11-part series on how GPUs work and how to program them",
         "tags": [
+            "GPU",
             "HPC",
             "YT"
         ]
@@ -2999,7 +3058,7 @@
         "title": "All Optimizers in One Video",
         "description": "Runs through a few optimization algorithms and describes the motivation behind their update rule",
         "tags": [
-            "Optimizers",
+            "Optimizer",
             "YT"
         ]
     },
@@ -3007,8 +3066,8 @@
         "title": "My favorite ML Ops tools",
         "description": "Anecdotal descriptions of ML Ops tools useful for one man",
         "tags": [
-            "Iteration",
-            "Machine Learning",
+            "DevOps",
+            "SWE Best Practices",
             "YT"
         ]
     },
@@ -3016,7 +3075,7 @@
         "title": "Generalization in RL",
         "description": "One guy's description of the state of interesting research into generalization in RL",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "YT"
         ]
     },
@@ -3024,7 +3083,7 @@
         "title": "Distributed Pytorch",
         "description": "PyTorch dev explains the features in the PyTorch library for distributed training of networks",
         "tags": [
-            "Distributed Systems",
+            "Distributed Techniques",
             "Libraries",
             "YT"
         ]
@@ -3033,7 +3092,7 @@
         "title": "A new way to compare high dimensional vectors",
         "description": "Proposes a method for comparing high dimensional vectors better than traditional methods",
         "tags": [
-            "Machine Learning",
+            "ML",
             "YT"
         ]
     },
@@ -3041,7 +3100,7 @@
         "title": "A casual intro to recommendation models",
         "description": "Reads through a comprehensive review paper of how different recommendation algorithms are written",
         "tags": [
-            "Computer Systems",
+            "System Design",
             "YT"
         ]
     },
@@ -3049,8 +3108,7 @@
         "title": "Low-rank Adaption of LLMs",
         "description": "Shows algorithm for compressing the weights of LLMs for lighter inference",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Quantization",
             "YT"
         ]
     },
@@ -3058,7 +3116,8 @@
         "title": "GPU Series: Multi-GPU Programming Part 1",
         "description": "Lecture on concepts for how to program on parallel GPUs",
         "tags": [
-            "HPC",
+            "GPU",
+            "Distributed Techniques",
             "YT"
         ]
     },
@@ -3066,7 +3125,8 @@
         "title": "Regularizing Trajectory Optimization with Denoising Autoencoders",
         "description": "Critiques and explains a suggested method for learning trajectories",
         "tags": [
-            "Reinforcement Learning",
+            "Control",
+            "RL",
             "YT"
         ]
     },
@@ -3074,7 +3134,7 @@
         "title": "Enter The Arena: Simplifying Memory Management",
         "description": "Lecture on the state of malloc",
         "tags": [
-            "Computer Systems",
+            "Infrastructure",
             "YT"
         ]
     },
@@ -3082,7 +3142,8 @@
         "title": "Hardware-aware Algorithms for Sequence Modeling",
         "description": "Talks about how to make sequence modeling run very quick on an algorithm codesign method",
         "tags": [
-            "LLMs",
+            "GPU",
+            "SSM",
             "YT"
         ]
     },
@@ -3090,7 +3151,8 @@
         "title": "Mixture of Experts Series",
         "description": "8-part series on different papers around MoE models",
         "tags": [
-            "MoEs",
+            "Architecture",
+            "MoE",
             "YT"
         ]
     },
@@ -3098,8 +3160,7 @@
         "title": "Efficient LLM Inference",
         "description": "Description of the many methods for making the inference of a model run quicker",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Inference",
             "YT"
         ]
     },
@@ -3107,7 +3168,7 @@
         "title": "Variational Autoencoders",
         "description": "Describes what a Variational Autoencoder is",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "YT"
         ]
     },
@@ -3115,7 +3176,7 @@
         "title": "Creating new tokens out of internal representations",
         "description": "Reads a paper on challenges and benefits of allowing dynamic vocab",
         "tags": [
-            "Machine Learning",
+            "ML",
             "YT"
         ]
     },
@@ -3123,7 +3184,7 @@
         "title": "Trustworthy LLMs",
         "description": "Lecture on how to try to reduce bias in LLMs in practice",
         "tags": [
-            "LLMs",
+            "Alignment",
             "YT"
         ]
     },
@@ -3131,7 +3192,8 @@
         "title": "What is Data Pipeline? | Why Is It So Popular?",
         "description": "Explainer on what Data Pipelines are and do",
         "tags": [
-            "Computer Systems",
+            "System Design",
+            "DevOps",
             "YT"
         ]
     },
@@ -3139,7 +3201,7 @@
         "title": "Efficient Programming on Heterogeneous Accelerators",
         "description": "Advice on workload optimizing given serial and parallel devices",
         "tags": [
-            "Distributed Systems",
+            "Distributed Techniques",
             "YT"
         ]
     },
@@ -3147,7 +3209,8 @@
         "title": "How DeepSeek Rewrote the Transformer",
         "description": "Talks a bit about the MLA trick",
         "tags": [
-            "LLMs",
+            "Architecture",
+            "Transformer",
             "YT"
         ]
     },
@@ -3163,6 +3226,7 @@
         "title": "CUDA Programming (7 Part)",
         "description": "Analyses on how to optimize the runtime of CUDA kernels",
         "tags": [
+            "GPU",
             "HPC",
             "YT"
         ]
@@ -3171,7 +3235,7 @@
         "title": "Reinforcement Learning Series: Overview of Methods",
         "description": "Talks about many of the different methods for implementing RL algorithms",
         "tags": [
-            "Reinforcement Learning",
+            "RL",
             "YT"
         ]
     },
@@ -3179,7 +3243,7 @@
         "title": "The Math behind Hedging",
         "description": "Explains some concepts in mathematical finance",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "Finance",
             "YT"
         ]
@@ -3188,15 +3252,17 @@
         "title": "Parables on the Power of Planning in AI",
         "description": "Stories of how test-time compute has pushed base models to superhuman levels in many different areas",
         "tags": [
-            "Reasoning",
+            "Game",
+            "RL for Test-Time",
             "YT"
         ]
     },
     {
         "title": "How 1 Software Engineer Outperforms 138",
-        "description": "On understanding productive utilization of Engineering talent",
+        "description": "Talks about the failures of chess.com with 800 employees compares to lichess ran by 1 man and his experience having ran the app / how he structured it",
         "tags": [
-            "Tech",
+            "SWE Best Practices",
+            "Career Advice",
             "YT"
         ]
     },
@@ -3204,7 +3270,7 @@
         "title": "Deep Learning for Symbolic Mathematics",
         "description": "Reading into limitations of LLMs on generating mathematical symbolic formulaes",
         "tags": [
-            "Transformers",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -3212,7 +3278,7 @@
         "title": "Neuro-Symbolic Learning Algorithms for Automated Reasoning",
         "description": "Looks into how to play around with tokens as ideas",
         "tags": [
-            "Symbolic Systems",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -3220,7 +3286,8 @@
         "title": "Decision Transformer: Reinforcement Learning via Sequence Modeling",
         "description": "Explains the decision transformer model for N^2 action policies",
         "tags": [
-            "Reinforcement Learning",
+            "Transformer",
+            "RL",
             "YT"
         ]
     },
@@ -3228,16 +3295,16 @@
         "title": "Scaling LLM Test-Time Compute",
         "description": "Explains concepts in how to have a model reason through to an answer over time",
         "tags": [
-            "Reasoning",
+            "Test-Time Methods",
             "YT"
         ]
     },
     {
         "title": "Building Machine Learning Systems for a Trillion Trillion Floating Point Operations",
-        "description": "",
+        "description": "Seeping out as much performance for high volume models as possible",
         "tags": [
             "HPC",
-            "Distributed Computing",
+            "Distributed Techniques",
             "YT"
         ]
     },
@@ -3245,8 +3312,7 @@
         "title": "Deep Dive: Optimizing LLM inference",
         "description": "Methods for speeding up LLM inference for cheap",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Inference",
             "YT"
         ]
     },
@@ -3254,7 +3320,7 @@
         "title": "Hidden Beauty Behind Generative AI",
         "description": "Explains some of the motivation behind GenAI models",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "YT"
         ]
     },
@@ -3262,8 +3328,8 @@
         "title": "Neural and Non-Neural AI, Reasoning, Transformers, and LSTMs",
         "description": "Interview where Schmidhuber expounds on his views on the future of AI",
         "tags": [
-            "Symbolic Systems",
-            "LLMs",
+            "ML",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -3271,8 +3337,8 @@
         "title": "Problems in the current research on forecasting with transformers",
         "description": "Looks into where LLMs are good and poor at forecasting",
         "tags": [
-            "Forecasting",
-            "Transformers",
+            "Time-Series Forecasting",
+            "Transformer",
             "YT"
         ]
     },
@@ -3280,7 +3346,7 @@
         "title": "What is the i really doing in Schr\u00f6dinger's equation?",
         "description": "Great visualization of the Schrodinger equation term-by-term!",
         "tags": [
-            "Mathematics",
+            "Misc Math",
             "YT"
         ]
     },
@@ -3288,7 +3354,7 @@
         "title": "Byte Latent Transformer: Patches Scale Better Than Tokens",
         "description": "Measures the scaling of using byte patches over tokens",
         "tags": [
-            "Transformers",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -3303,7 +3369,9 @@
         "title": "The Uncertain Art of Accelerating ML Models",
         "description": "Really fascinating podcast from Jane Street on the practical process of iterating ML Model performance and tools / best practices for doing that",
         "tags": [
-            "Iteration",
+            "DevOps",
+            "Infrastructure",
+            "SWE Best Practices",
             "YT"
         ]
     },
@@ -3311,7 +3379,7 @@
         "title": "Has It All Been Solved?",
         "description": "Where do Transformers fail...",
         "tags": [
-            "LLMs",
+            "Transformer",
             "YT"
         ]
     },
@@ -3319,7 +3387,7 @@
         "title": "Initializing large models with weights from smaller ones",
         "description": "Maybe a smarter method for weight initialization",
         "tags": [
-            "Optimization",
+            "Scaling",
             "YT"
         ]
     },
@@ -3327,8 +3395,9 @@
         "title": "Reward is not enough",
         "description": "PhD thesis statement on whrr",
         "tags": [
-            "Symbolic Systems",
-            "Reinforcement Learning",
+            "Test-Time Methods",
+            "RL",
+            "Symbolic AI",
             "YT"
         ]
     },
@@ -3336,7 +3405,7 @@
         "title": "Titans by Google",
         "description": "Relays the message and insight of Google's Titan paper",
         "tags": [
-            "LLMs",
+            "Architecture",
             "YT"
         ]
     },
@@ -3344,8 +3413,8 @@
         "title": "Dylan Patel on New AI Regulations, Chinese AI & xAI's Surge to Hyperscale",
         "description": "Interview where Dylan explains his view of the trajector of AI build-out plans nationally and in-industry",
         "tags": [
-            "Tech",
-            "Economics",
+            "Governance",
+            "Econ",
             "YT"
         ]
     },
@@ -3353,7 +3422,7 @@
         "title": "Every HARVARD Negotiation Tactic Explained in 15 Minutes",
         "description": "Ideas on how to negotiate",
         "tags": [
-            "Self-Help",
+            "Career Advice",
             "YT"
         ]
     },
@@ -3361,7 +3430,6 @@
         "title": "A Universal Theory of Brain Function",
         "description": "Fun video on brains",
         "tags": [
-            "Neuroscience",
             "YT"
         ]
     },
@@ -3369,7 +3437,7 @@
         "title": "Pre-train with patches for huge compute savings",
         "description": "Data selection for quick pretraining",
         "tags": [
-            "Optimization",
+            "Training",
             "YT"
         ]
     },
@@ -3377,9 +3445,7 @@
         "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning",
         "description": "Reading and explaining the GRPO paper from DeepSeek",
         "tags": [
-            "Reasoning",
-            "Reinforcement Learning",
-            "LLMs",
+            "RL for Test-Time",
             "YT"
         ]
     },
@@ -3387,7 +3453,8 @@
         "title": "MAJOR inference efficiency gain for diffusion models",
         "description": "How to speed up diffusion models",
         "tags": [
-            "Diffusion",
+            "Generative Methods",
+            "Inference",
             "YT"
         ]
     },
@@ -3395,7 +3462,7 @@
         "title": "RTX 5090 Chip Deep-Dive",
         "description": "Explanation of the layout and breakthroughs of the RTX5090 chip",
         "tags": [
-            "Hardware",
+            "ASIC",
             "YT"
         ]
     },
@@ -3403,8 +3470,8 @@
         "title": "Efficiently Modeling Long Sequences with Structured State Spaces",
         "description": "Looking into improvements over Attention",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "SSM",
+            "Attention",
             "YT"
         ]
     },
@@ -3412,7 +3479,7 @@
         "title": "The Breakthrough Behind Modern AI Image Generators",
         "description": "How image gen got sped up so dramatically",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "YT"
         ]
     },
@@ -3420,8 +3487,8 @@
         "title": "TOTEM: TOkenized Time Series EMbeddings for General Time Series Analysis",
         "description": "On a method for putting time series embedding into tokens for better time series forecasting",
         "tags": [
-            "Forecasting",
-            "Transformers",
+            "Time-Series Forecasting",
+            "ML",
             "YT"
         ]
     },
@@ -3429,7 +3496,6 @@
         "title": "In search of the perfect dynamic array growth factor",
         "description": "Working through how to resize arrays at the optimal rate",
         "tags": [
-            "Computer Systems",
             "YT"
         ]
     },
@@ -3437,7 +3503,7 @@
         "title": "Large Concept Models",
         "description": "Moving from thoughts in residual space to making the intermediate thoughts organized concepts",
         "tags": [
-            "Transformers",
+            "Architecture",
             "Arxiv"
         ]
     },
@@ -3445,7 +3511,7 @@
         "title": "How DeepSeek learns: GRPO explained",
         "description": "Walkthrough of how GRPO works",
         "tags": [
-            "Reasoning",
+            "RL for Test-Time",
             "YT"
         ]
     },
@@ -3453,7 +3519,8 @@
         "title": "Linear Attention and Beyond",
         "description": "Looking into improvements over Attention",
         "tags": [
-            "LLMs",
+            "SSM",
+            "Attention",
             "YT"
         ]
     },
@@ -3461,7 +3528,7 @@
         "title": "Linformer: Self-Attention with Linear Complexity",
         "description": "Another method for trying to dampen the quadratic attention dynamic",
         "tags": [
-            "LLMs",
+            "SSM",
             "YT"
         ]
     },
@@ -3469,7 +3536,7 @@
         "title": "Transformers are RNNs",
         "description": "Trying to bridge from Transformers to RNNs",
         "tags": [
-            "LLMs",
+            "SSM",
             "YT"
         ]
     },
@@ -3477,8 +3544,7 @@
         "title": "Advances in AI ML",
         "description": "Talking about some of the techniques for more performance in Forecasting",
         "tags": [
-            "Finance",
-            "Forecasting",
+            "Time-Series Forecasting",
             "YT"
         ]
     },
@@ -3486,7 +3552,7 @@
         "title": "Rust is the New C",
         "description": "Rust propaganda",
         "tags": [
-            "Programming",
+            "ProgLangs",
             "YT"
         ]
     },
@@ -3494,8 +3560,7 @@
         "title": "Efficient Inference",
         "description": "Talking about methods for running LLMs at scale for cheap",
         "tags": [
-            "Transformers",
-            "Optimization",
+            "Inference",
             "YT"
         ]
     },
@@ -3503,7 +3568,10 @@
         "title": "Understanding DeepSeek V3 from Scratch",
         "description": "Step-by-Step explanation of how DeepSeek V3 works and pushed boundaries",
         "tags": [
-            "LLMs",
+            "GPU",
+            "HPC",
+            "Architecture",
+            "MoE",
             "YT"
         ]
     },
@@ -3511,7 +3579,7 @@
         "title": "RX 9070 XT",
         "description": "A look at the hardware transistors of the RX 9070",
         "tags": [
-            "Hardware",
+            "ASIC",
             "YT"
         ]
     },
@@ -3519,8 +3587,9 @@
         "title": "2027 Intelligence Explosion",
         "description": "Scott Alexander interview with very interesting comparisons of diverging paths for an AI takeoff",
         "tags": [
-            "AI Safety",
-            "Forecasting",
+            "Alignment",
+            "Governance",
+            "X-Risk",
             "YT"
         ]
     },
@@ -3528,7 +3597,7 @@
         "title": "How are Images Compressed?",
         "description": "Explaining the beauty of the JPEG image compression algorithm",
         "tags": [
-            "Algorithms",
+            "CV",
             "YT"
         ]
     },
@@ -3536,7 +3605,7 @@
         "title": "Deep dive: model merging",
         "description": "Looks into research on how to merge models while preserving capabilities",
         "tags": [
-            "LLMs",
+            "Distillation",
             "YT"
         ]
     },
@@ -3544,8 +3613,7 @@
         "title": "Quantizing Large Language Models Part 1",
         "description": "How to compress LLMs into less space",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Quantization",
             "YT"
         ]
     },
@@ -3553,8 +3621,7 @@
         "title": "Quantizing Large Language Models Part 2",
         "description": "How to compress LLMs into less space",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "Quantization",
             "YT"
         ]
     },
@@ -3562,8 +3629,7 @@
         "title": "Compiling deep learning models, from XLA to PyTorch",
         "description": "Looks into practical tools for compiling deep learning models",
         "tags": [
-            "Machine Learning",
-            "Libraries",
+            "Compilers",
             "YT"
         ]
     },
@@ -3571,8 +3637,8 @@
         "title": "Better Attention layers for Transformer models",
         "description": "attempts to defeat the quadratic",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "SSM",
+            "Attention",
             "YT"
         ]
     },
@@ -3581,7 +3647,6 @@
         "description": "Implementation guide for functionally using Black-Scholes",
         "tags": [
             "Finance",
-            "Tutorial",
             "YT"
         ]
     },
@@ -3590,7 +3655,7 @@
         "description": "Deep explanations of topics in Finance",
         "tags": [
             "Finance",
-            "Tutorial",
+            "ML",
             "YT"
         ]
     },
@@ -3599,7 +3664,6 @@
         "description": "Deep explanations of topics in Finance",
         "tags": [
             "Finance",
-            "Tutorial",
             "YT"
         ]
     },
@@ -3616,15 +3680,14 @@
         "description": "Streamlining the runtime of algorithms in C++",
         "tags": [
             "HPC",
-            "Programming",
+            "Finance",
             "YT"
         ]
     },
     {
-        "title": "On the Biology of a LLMs",
+        "title": "On the Biology of LLMs",
         "description": "Reading through Anthropic paper on identifying circuits of thought inside LLMs",
         "tags": [
-            "LLMs",
             "Interpretability",
             "YT"
         ]
@@ -3633,7 +3696,7 @@
         "title": "Self-Supervised Dataset Distillation for Transfer Learning",
         "description": "Proposes method for distilling from a large dataset into a few samples",
         "tags": [
-            "Optimization",
+            "Distillation",
             "Arxiv"
         ]
     },
@@ -3641,7 +3704,7 @@
         "title": "Terraform-- Automating Infrastructure As A Service",
         "description": "Devlops the terraform tool for ML infrastructure management",
         "tags": [
-            "Libraries",
+            "Infrastructure",
             "Arxiv"
         ]
     },
@@ -3649,7 +3712,7 @@
         "title": "Learning to Reason for Long-Form Story Generation",
         "description": "Proposes a new RL method for long horizon sequence generation",
         "tags": [
-            "Reasoning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -3657,8 +3720,7 @@
         "title": "VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks",
         "description": "SOTA RL method for training reliable reasoning",
         "tags": [
-            "Reinforcement Learning",
-            "Reasoning",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -3666,7 +3728,7 @@
         "title": "Quamba2",
         "description": "Scalable Post-Training Quantiation for SSMs",
         "tags": [
-            "LLMs",
+            "SSM",
             "Quantization",
             "Arxiv"
         ]
@@ -3675,8 +3737,8 @@
         "title": "Deriving Muon",
         "description": "Shows the motivation behind the Muon optimization algorithm",
         "tags": [
-            "Optimizers",
-            "Mathematics",
+            "Stochastic Calculus",
+            "Optimizer",
             "Site"
         ]
     },
@@ -3684,8 +3746,7 @@
         "title": "From REINFORCE to Dr. GRPO",
         "description": "Builds intuitions behind the mathematical structure of different RL techniques of LLMs on verifiabel rewards",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -3693,7 +3754,6 @@
         "title": "How to Optimize Data Transfers in CUDA C/C++",
         "description": "Code walkthrough and benchmarking of how to think about making data transfer better in CUDA kernel",
         "tags": [
-            "Tutorial",
             "HPC",
             "Arxiv"
         ]
@@ -3702,8 +3762,7 @@
         "title": "GraphCast: Learning skillful medium-range global weather forecasting",
         "description": "SOTA Weather prediction",
         "tags": [
-            "Forecasting",
-            "LLMs",
+            "Time-Series Forecasting",
             "Arxiv"
         ]
     },
@@ -3711,8 +3770,7 @@
         "title": "Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking",
         "description": "3rd party breakdown of how the Volta GPU Architecture functions",
         "tags": [
-            "Hardware",
-            "HPC",
+            "GPU",
             "Arxiv"
         ]
     },
@@ -3720,8 +3778,7 @@
         "title": "Mixture of Routers",
         "description": "New alternative to MoEs whereby each expert is itself a router",
         "tags": [
-            "MoEs",
-            "Optimization",
+            "MoE",
             "Arxiv"
         ]
     },
@@ -3729,7 +3786,7 @@
         "title": "Interpretable Machine Learning in Physics: A Review",
         "description": "Breakdown of many mehtods for using ML for Physics",
         "tags": [
-            "Machine Learning",
+            "ML",
             "Arxiv"
         ]
     },
@@ -3737,7 +3794,7 @@
         "title": "When To Solve, When To Verify: Compute-Optimal Problem Solving and Generative Verification for LLM Reasoning",
         "description": "Balancing exploration and verification in LLM reasoning process",
         "tags": [
-            "Reasoning",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -3745,8 +3802,8 @@
         "title": "A Survey on Test-Time Scaling in Large Language Models",
         "description": "Breakdown of many methods in test-time scaling of LLM outputs",
         "tags": [
-            "Reasoning",
-            "LLMs",
+            "Scaling",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -3754,7 +3811,7 @@
         "title": "TransMamba: Flexibly Switching between Transformer and Mamba",
         "description": "Hybrid of mambda and transformers",
         "tags": [
-            "LLMs",
+            "SSM",
             "Arxiv"
         ]
     },
@@ -3762,8 +3819,8 @@
         "title": "Muon and a Selective Survey on Steepest Descent in Riemannian and Non-Riemannian Manifolds",
         "description": "Broad discussion about how Muon reflects on the theory of surface optimization",
         "tags": [
-            "Mathematics",
-            "Optimizers",
+            "Stochastic Calculus",
+            "Optimizer",
             "Site"
         ]
     },
@@ -3771,7 +3828,7 @@
         "title": "Recent reasoning research: GRPO tweaks, base model RL, and data curation",
         "description": "Explains a few papers in RL on LLMs",
         "tags": [
-            "Reinforcement Learning",
+            "RL for Test-Time",
             "Site"
         ]
     },
@@ -3779,8 +3836,7 @@
         "title": "CPPO: Accelerating the Training of GRPO-Based Reasoning Models",
         "description": "Outlines an alternative to GRPO",
         "tags": [
-            "Reinforcement Learning",
-            "LLMs",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
@@ -3788,7 +3844,7 @@
         "title": "SGD: The general problem and implementation details",
         "description": "Looks into the math behind SGD and general stochastic optimization",
         "tags": [
-            "Optimizers",
+            "Optimizer",
             "Site"
         ]
     },
@@ -3796,8 +3852,7 @@
         "title": "TVM: An Automated End-to-End Optimizing Compiler for DL",
         "description": "ML Compiler optimizing workloads on diverse hardware",
         "tags": [
-            "HPC",
-            "Distributed Computing",
+            "Compilers",
             "Arxiv"
         ]
     },
@@ -3805,7 +3860,7 @@
         "title": "TASO: Optimizing Deep Learning Computation with Automatic Generation of Graph Substitutions",
         "description": "ML Compiler built to trim out parts of the computation graph to speed up operations",
         "tags": [
-            "Distributed Systems",
+            "Compilers",
             "Arxiv"
         ]
     },
@@ -3813,7 +3868,6 @@
         "title": "NNSight and NDIF: Democratizing Access to Open-Weight Foundation Model Internals",
         "description": "Explains how to use new library for interpretability research",
         "tags": [
-            "Libraries",
             "Interpretability",
             "Arxiv"
         ]
@@ -3822,8 +3876,7 @@
         "title": "Superintelligence Strategy",
         "description": "Introduces the idea of Mutually Assured AI Malfunction as a Game Theory argument against AGI development",
         "tags": [
-            "Politics",
-            "AI Safety",
+            "Governance",
             "Arxiv"
         ]
     },
@@ -3831,7 +3884,7 @@
         "title": "Jacobian Sparse Autoencoders: Sparsify Computations, Not Just Activations",
         "description": "Proposes method for learning interpretable circuit from a LLM weights",
         "tags": [
-            "Machine Learning",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3839,7 +3892,7 @@
         "title": "Memory Augmented RNNs",
         "description": "Trying to adapt LSTMs to have access to a stack of memory",
         "tags": [
-            "LLMs",
+            "SSM",
             "Arxiv"
         ]
     },
@@ -3847,8 +3900,8 @@
         "title": "The Ultra-Scale Playbook: Training LLMs on GPU Clusters",
         "description": "Exhaustive look at how to train LLMs across a huge amount of GPUs",
         "tags": [
-            "Distributed Computing",
-            "LLMs",
+            "Distributed Techniques",
+            "DevOps",
             "Site"
         ]
     },
@@ -3856,8 +3909,9 @@
         "title": "MoBA: Mixture of Block attention for Long-Context LLMs",
         "description": "Method for mixing linear attention in MoE architectures",
         "tags": [
-            "LLMs",
-            "Optimization",
+            "MoE",
+            "Attention",
+            "Context Length",
             "Arxiv"
         ]
     },
@@ -3865,8 +3919,8 @@
         "title": "Gemstones: A Model Suite for Multi-Faceted Scaling Laws",
         "description": "Scaling laws of hyperparameters of LLMs",
         "tags": [
-            "Deep Learning",
-            "LLMs",
+            "Scaling",
+            "Hyperparams",
             "Arxiv"
         ]
     },
@@ -3874,7 +3928,7 @@
         "title": "Curvature Tuning: Provable Training-Free Model Steering from a Single Parameter",
         "description": "Integrates splines into model",
         "tags": [
-            "Deep Learning",
+            "ML",
             "Arxiv"
         ]
     },
@@ -3882,8 +3936,7 @@
         "title": "Old Optimizer, New Norm: An Anthology",
         "description": "More of the math on the basis of optimizers in a choice of norm",
         "tags": [
-            "Mathematics",
-            "Optimizers",
+            "Stochastic Calculus",
             "Arxiv"
         ]
     },
@@ -3891,8 +3944,9 @@
         "title": "HOG-Diff: Higher-Order Guided Diffusion for Graph Generation",
         "description": "New method for learning the structure of graphs",
         "tags": [
-            "GenAI",
-            "Machine Learning",
+            "CompBio",
+            "Generative Methods",
+            "Test-Time Methods",
             "Arxiv"
         ]
     },
@@ -3900,9 +3954,8 @@
         "title": "JAX Scaling Book (11 Part)",
         "description": "Amazing series on JAX & TPUs and general scaling / model optimization tips",
         "tags": [
-            "Distributed Computing",
-            "HPC",
-            "Tutorial",
+            "DevOps",
+            "Scaling",
             "Site"
         ]
     },
@@ -3910,9 +3963,8 @@
         "title": "Optimizing Test-Time Compute via Meta Reinforcement Fine-Tuning",
         "description": "Reformulation of how proper test-time reasoning is a pareto meta-RL problem",
         "tags": [
-            "Reinforcement Learning",
-            "Machine Learning",
-            "Reasoning",
+            "Test-Time Methods",
+            "RL",
             "Arxiv"
         ]
     },
@@ -3920,7 +3972,7 @@
         "title": "GFlowNets and Variational Inference",
         "description": "Cutting work on bridging VI and GFlow methods of non-LLM generative models",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3928,7 +3980,7 @@
         "title": "Flow Network based Generative Models for Non-Iterative Diverse Candidate Generation",
         "description": "Analysis of pareto frontier superioroity of Flownets for candidate generation",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3936,7 +3988,7 @@
         "title": "GFlowNet Foundations",
         "description": "Theoretical explanation of the FlowNet model",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3944,7 +3996,7 @@
         "title": "GFlowNet-EM for Learning Compositional Latent Variable Models",
         "description": "Learning compositional structures via Flow Nets",
         "tags": [
-            "GenAI",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3952,7 +4004,8 @@
         "title": "Biological Sequence Design with GFlowNets",
         "description": "Looking at how to make molecules with Flow Nets",
         "tags": [
-            "GenAI",
+            "CompBio",
+            "Generative Methods",
             "Arxiv"
         ]
     },
@@ -3960,16 +4013,1537 @@
         "title": "Learning to Solve and Verify: A Self-Play Framework for Code and Test Generation",
         "description": "Using LLM self-play to make code that works",
         "tags": [
-            "Reasoning",
+            "Generative Methods",
+            "RL for Test-Time",
             "Arxiv"
         ]
     },
     {
         "title": "The GFlowNet Tutorial",
-        "description": "How to make GFlowNet work-- a walktrhough",
+        "description": "How to make GFlowNet work-- a walkthrough",
         "tags": [
-            "GenAI",
-            "Tutorial",
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Using Attention Sinks to Identify and Evaluate Dormant Heads in Pretrained LLMs",
+        "description": "Looks into pruning LLMs during training through simple tests of attention heads",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Dion: A Communication-Efficient Optimizer for Large Models",
+        "description": "Attempt to make Muon more distributed",
+        "tags": [
+            "Stochastic Calculus",
+            "Distributed Techniques",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "ARC-AGI Without Pretraining",
+        "description": "Looks into a information compression architecture for ARC-AGI",
+        "tags": [
+            "Information Theory",
+            "Benchmarking",
+            "Architecture",
+            "Site"
+        ]
+    },
+    {
+        "title": "One-Minute Video Generation with Test-Time Training",
+        "description": "Uses expressive TTT layers to get incredible video gen results",
+        "tags": [
+            "Architecture",
+            "Test-Time Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MoEUT: Mixture-of-Experts Universal Transformers",
+        "description": "Recurrent depth MoE",
+        "tags": [
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Why do LLMs attend to the first token?",
+        "description": "Looks into the attendance patterns of Transformers and attention sinks",
+        "tags": [
+            "Interpretability",
+            "Transformer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Strong Model Collapse",
+        "description": "Talks about how synthetic model can destroy model performance.",
+        "tags": [
+            "Training",
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MegaScale-Infer: Serving MoEs at Scale with Disaggregated Expert Parallelism",
+        "description": "Looking into inference at extreme scale ",
+        "tags": [
+            "Distributed Techniques",
+            "System Design",
+            "MoE",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mastering Diverse Domains through World Models",
+        "description": "Looks into how to supercharge RL performance",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers",
+        "description": "",
+        "tags": [
+            "Generative Methods",
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "QuestBench: Can LLMs ask the right question to acquire information in reasoning tasks?",
+        "description": "Reformulates finding missing information for reasoning as a CSP",
+        "tags": [
+            "Test-Time Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Flavors of Margin: Implicit Bias of Steepest Descent in Homogenous NNs",
+        "description": "Studies implicit bias in stochastic descent algos",
+        "tags": [
+            "Stochastic Calculus",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Concise Reasoning via Reinforcement Learning",
+        "description": "Looking to do Reasoning in more concise way",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MVDRAM: Enabling GeMV Execution in Unmodified DRAM for Low-Bit LLM Acceleration",
+        "description": "",
+        "tags": [
+            "Linear Algebra",
+            "HPC",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "A Precision-Optimized Fixed-Point Near-Memory Digital Processing Unit for Analog In-Memory Computing",
+        "description": "Doing operations in-memory to speed up computing",
+        "tags": [
+            "ASIC",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "The AI Scientist-v2: Automated Scientific Discovery via Agentic Tree Search",
+        "description": "",
+        "tags": [
+            "Test-Time Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "SWAN-GPT: Efficient Scalable Long-Context Language Modelling",
+        "description": "Architecture changes for expanding LLMs to long-context",
+        "tags": [
+            "Transformer",
+            "Scaling",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "China is trying to create a national network of cloud computing centers",
+        "description": "Analyzing the unorthodox national computing strategy in China",
+        "tags": [
+            "Governance",
+            "Econ",
+            "Site"
+        ]
+    },
+    {
+        "title": "Pre-Training GPT-4.5",
+        "description": "Sit-down analysis of training GPT 4.5 from the heads of the project",
+        "tags": [
+            "Training",
+            "Scaling",
+            "YT"
+        ]
+    },
+    {
+        "title": "Learning-Order AR Models for Molecular Graph Generation",
+        "description": "Algorithm for generating Molecular Graphs through selecitng ordering of tokens",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Simplified and Generalized Masked Diffusion for Discrete Data",
+        "description": "Demonstrates superior perofrmance for generalized diffusion",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Closing the ODE-SDE gap through Fokker-Planck Equation",
+        "description": "New mathematical method for unifying ODE and SDE distributions in ML",
+        "tags": [
+            "Misc Math",
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory",
+        "description": "Giving models a small working memory",
+        "tags": [
+            "Test-Time Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "KeepKV: Eliminating Out Perturbation in KV Cache Compression for Efficient LLMs Inference",
+        "description": "Reduces KV Cache memory 2x",
+        "tags": [
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "The Second Half",
+        "description": "A theory that we're at the midpoint, halftime, in the intelligence explosion",
+        "tags": [
+            "X-Risk",
+            "Site"
+        ]
+    },
+    {
+        "title": "Generative Modelling in Latent Space",
+        "description": "Overview of building latent space representations",
+        "tags": [
+            "Architecture",
+            "Generative Methods",
+            "Site"
+        ]
+    },
+    {
+        "title": "Distributional Scaling Laws for Emergent Capabilities",
+        "description": "How OOD behavior erupts as you scale the model",
+        "tags": [
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fire-Flyer AI-HPC: A Cost-Effective Software-Hardware Co-Design for Deep Learning",
+        "description": "Distributed computing system from DeepSeek",
+        "tags": [
+            "Infrastructure",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Markov Chain Monte Carlo Without all the Bullshit",
+        "description": "Explains on a theory-level the intuition of MCMC",
+        "tags": [
+            "Monte Carlo Methods",
+            "Test-Time Methods",
+            "Site"
+        ]
+    },
+    {
+        "title": "Synthetic Data Generation & Multi-Step RL for Reasoning & Tool Use",
+        "description": "Using LLM to generated it's own data for multiple steps to train on",
+        "tags": [
+            "Scaing",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "M+: Extending MemoryLLM with Scalable Long-Term Memory",
+        "description": "Techiqnues for extend LLM context length",
+        "tags": [
+            "Architecture",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "E\ufb03cient Content-Based Sparse Attention with Routing Transformers",
+        "description": "MoE preliminary",
+        "tags": [
+            "Architecture",
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "UIUC Massively Parallel Programming",
+        "description": "Programming ways to get a process to run on one or many parallel platforms as fast as possible",
+        "tags": [
+            "HPC",
+            "Distributed Techniques",
+            "YT"
+        ]
+    },
+    {
+        "title": "Advancing Performance with NVIDIA SHARP In-Network Computing",
+        "description": "Speed-up method for All-Reduce",
+        "tags": [
+            "Distributed Techniques",
+            "Infrastructure",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "A Modern Introduction to Online Learning",
+        "description": "Lots of optimization algorithms explained",
+        "tags": [
+            "Stochastic Calculus",
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Inference-Time Scaling for Generalist Reward Modeling",
+        "description": "Improved version of RL tuning inspired by self-consistency",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Can We Achieve Efficient Diffusion without Self-Attention?",
+        "description": "6000x speedup via converting Transformer blocks in Convolutions",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast LLM Inference From Scratch",
+        "description": "Workthrough of code for optimizing inference of Transformer",
+        "tags": [
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "My Mandarin Learning Journey",
+        "description": "Some guy describes how he learend Mandarin",
+        "tags": [
+            "Essay",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation",
+        "description": "Really cool context about feature learning",
+        "tags": [
+            "Interpretability",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "NeuralGrok: Accelerate Grokking by Neural Gradient Transformation",
+        "description": "Not really sure what this, meta system to bring out Grokking?",
+        "tags": [
+            "Training",
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Towards Understanding the Nature of Attention with Low-Rank Sparse Decomposition",
+        "description": "Attempts to get around the quadratic",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "softmax is not enough (for sharp out-of-distribution)",
+        "description": "Highlights an error in softmax",
+        "tags": [
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Improving the Scaling Laws of Synthetic Data with Deliberate Practice",
+        "description": "More RL for models on verifiable domains",
+        "tags": [
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Optimizing Temperature for Language Models with Multi-Sample Inference",
+        "description": "Multi-Step Inference seems like a really cool field to read in on a bit",
+        "tags": [
+            "Hyperparams",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "ReasonIR: Training Retrievers for Reasoning Tasks",
+        "description": "What is a retriever? I'll see when I read this!",
+        "tags": [
+            "Test-Time Methods",
+            "Training",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "AlphaVerus: Bootstrapping Formally Verified Code Generation through Self-Improving Translation and Treefinement",
+        "description": "Interesting usage of Tree based edits",
+        "tags": [
+            "Generative Methods",
+            "RL for Test-Time",
+            "Symbolic AI",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Process Reward Models That Think",
+        "description": "TBD",
+        "tags": [
+            "Training",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scalable Reinforcement Post-Training Beyond Static Human Prompts",
+        "description": "Expands the scope of RLHF into a process of self-play through time",
+        "tags": [
+            "Scaling",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Topics In Mathematics With Applications In Finance",
+        "description": "Course slides",
+        "tags": [
+            "Misc Math",
+            "Finance",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Thermodynamic Linear Algebra",
+        "description": "Speed-up method for linear system solving",
+        "tags": [
+            "Linear Algebra",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "CUTLASS: Fast Linear Algebra in CUDA C++",
+        "description": "Explanation of optimizing GEMM",
+        "tags": [
+            "Linear Algebra",
+            "GPU",
+            "HPC",
+            "Site"
+        ]
+    },
+    {
+        "title": "RWKV-X: A Linear Complexity Hybrid Language Model",
+        "description": "Model of sparse attention",
+        "tags": [
+            "SSM",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Prover-V2 from DeepSeek",
+        "description": "New pipeline from deepseek for theorem prover LLM training",
+        "tags": [
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "What is MoE 2.0? Update Your Knowledge about Mixture-of-experts",
+        "description": "Cool cutting edge variants of MoE",
+        "tags": [
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Analyzing and Improving the Training Dynamics of Diffusion Models",
+        "description": "Optimizing the training of Diffusion",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "RL for Reasoning in LLM with One Training Example",
+        "description": "Tons of training on just one example",
+        "tags": [
+            "Transformer",
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Self-Improvement in Language Models: The Sharpening Mechanism",
+        "description": "New Theory on the nature of SFT/RLHF",
+        "tags": [
+            "Transformer",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MiMo-- Unlocking reasoning in LLMs",
+        "description": "Good method, better than Deepseek GRPO seemingly, for trainign LLM to reason",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Forecasting: Principles and Practice",
+        "description": "Explains elements of time-series forecasting",
+        "tags": [
+            "Time-Series Forecasting",
+            "Site"
+        ]
+    },
+    {
+        "title": "Memory Layers at Scale",
+        "description": "How to run memory layers across devices",
+        "tags": [
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+        "description": "",
+        "tags": [
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Taming the Titans: A Survey of Efficient LLM Inference Serving",
+        "description": "How to do inference on LLMs, from Huawei",
+        "tags": [
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Go With The Flow",
+        "description": "Flow Models",
+        "tags": [
+            "Generative Methods",
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Cross-region Model Training with Communication-Computation Overlapping and Delay Compensation",
+        "description": "Improve on DiLoCo via adding compensation term for stale weights",
+        "tags": [
+            "Distributed Techniques",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "GVPO: Group Variance Policy Optimization for LLM Post-Training",
+        "description": "Constrain KL of GRPO",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Towards Internet-Scale Training for Agents",
+        "description": "Looking at how to do Agents on the whole internet",
+        "tags": [
+            "Training",
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "C++ design patterns for low-latency applications",
+        "description": "How to write blazingly fast code",
+        "tags": [
+            "HPC",
+            "Finance",
+            "SWE Best Practices",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "BitNet v2: Native 4-bit Activations with Hadamard Transformation",
+        "description": "Follow up to the famous bitnet paper",
+        "tags": [
+            "Quantization",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Learning to Reason under Off-Policy Guidance",
+        "description": "Trying to get OOD",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast Autoregressive Models for Continuous Latent Generation",
+        "description": "2.3x faster inference",
+        "tags": [
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mathematics of Continual Learning",
+        "description": "TBD",
+        "tags": [
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Optimizing LMs for Inference Time Objectives using RL",
+        "description": "Breaks from traditional RL (top-1) to prepare for test-time methods",
+        "tags": [
+            "Inference",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Inference-Aware Fine-Tuning for Best-of-N Sampling in LLMs",
+        "description": "Fine-tuning model to sample better",
+        "tags": [
+            "Training",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Understanding R1-Zero-Like Training: A Critical Perspective",
+        "description": "Analyzing the training dynamics of R1-Zero",
+        "tags": [
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Why Momentum Really Works",
+        "description": "Explains the math behind how momentum minimizes loss",
+        "tags": [
+            "Stochastic Calculus",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Towards System 2 Reasoning in LLMs",
+        "description": "Meta Chain of Thought",
+        "tags": [
+            "RL",
+            "Symbolic AI",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "An Extensible Software Transport Layer for GPU Networking",
+        "description": "Writes a interface for NCCL commands",
+        "tags": [
+            "GPU",
+            "Infrastructure",
+            "Libraries",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scaling Transformers: Parallelism Strategies",
+        "description": "More ways to run transformers in parallel",
+        "tags": [
+            "Distributed Techniques",
+            "Site"
+        ]
+    },
+    {
+        "title": "SplitReason: Learning To Offload Reasoning",
+        "description": "Experiments in delegation",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Flow Matching Guide and Code",
+        "description": "Tutorial and explanation of Flow Matching",
+        "tags": [
+            "Generative Methods",
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MagiAttention",
+        "description": "SandAI",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Nemotron-Crossthink: Scaling Self-Learning beyond Math Reasoning",
+        "description": "Trying to do better RL for non hard-verifiable tasks on non-quardratic SSMs",
+        "tags": [
+            "SSM",
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "SRPO: A Cross-Domain Implementation of Large-Scale RL on LLM",
+        "description": "Looking into improvements for GRPO",
+        "tags": [
+            "Scaling",
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "TAXI: Hierarchical Clustering",
+        "description": "Interesting algorithm for the Travelling Salesman Problem",
+        "tags": [
+            "Misc Math",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "PagedAttention",
+        "description": "Compressing memory for Attention to run model quicker during Inference",
+        "tags": [
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "ThunderKittens: Simple, Fast, and Adorable AI Kernels",
+        "description": "Library for writing quicke, better, GPU kernels",
+        "tags": [
+            "Compilers",
+            "Libraries",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast AI Deep Learning Curse",
+        "description": "25 part series on many DL architectures",
+        "tags": [
+            "Architecture",
+            "ML",
+            "Site"
+        ]
+    },
+    {
+        "title": "Backpropogation and the Brain",
+        "description": "Small article on the difference between backprop in NNs versus in the Brain",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Robust Agents Learn Causal World Models",
+        "description": "On how a sufficiently powerful agent needs to have a causal world model learned",
+        "tags": [
+            "Alignment",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "TrueTheta Writings",
+        "description": "Huge series on Information Theory, ML, and RL topics",
+        "tags": [
+            "Information Theory",
+            "RL",
+            "ML",
+            "Site"
+        ]
+    },
+    {
+        "title": "Function-Space Learning Rates",
+        "description": "How to get better learning rates",
+        "tags": [
+            "Hyperparams",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Don\u2019t be lazy: CompleteP enables compute-efficient deep transformers",
+        "description": "How to adjust hyperparams with model scaling",
+        "tags": [
+            "Hyperparams",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "AbsoluteZero: Reinforced Self-play Reasoning with Zero Data",
+        "description": "How to do RL without human annotated in-domain examples",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Optimizing Chain-of-Thought Reasoners via Gradient Variance Minimization in Rejection Sampling and RL",
+        "description": "Through minimizing the gradient variance in rejection sampling",
+        "tags": [
+            "Statistics",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Pang Ultra MoE: How to train your MoE on Ascend NPUs",
+        "description": "Automatic configuration search to arrive at best model architecture",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Flow-GRPO: Training Flow Matching Models via Online RL",
+        "description": "Applying GRPO to a Flow Model",
+        "tags": [
+            "Generative Methods",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scalable CoT via Elastic Reasoning",
+        "description": "Explicitly seperate out thinking and solution",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Once-for-All: Train One Network and Specialize it for Efficient Deployment",
+        "description": "Talks about how to fine-tune a model for efficient inference on many devices",
+        "tags": [
+            "DevOps",
+            "Training",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MatFormer: Nested Transformer for Elastic Inference",
+        "description": "Putting models into your model...",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MatMamba: A Matryosha State Space Model",
+        "description": "On using nested models in mamba",
+        "tags": [
+            "SSM",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Lexico: Extreme KV Cache compression via Sparse Coding over Universal Dictionaries",
+        "description": "New method for KV Cache quantization",
+        "tags": [
+            "Transformer",
+            "Quantization",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "DiPaCo: Distributed Path Composition",
+        "description": "Picking a path through a set of modules",
+        "tags": [
+            "Distributed Techniques",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mixture-of-Transformers: A Sparse and Scalable Architecture for Multi-Modal Foundation Models",
+        "description": "Nesting transformers in your transformer",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Intra-Layer Recurrence in Transformers for Language Modeling",
+        "description": "Using recurrence to increase performance of the model as necessary",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "GenAI Handbook",
+        "description": "Hope notebook on inference, training, multimodal, and other tips for sequence learning",
+        "tags": [
+            "Generative Methods",
+            "Site"
+        ]
+    },
+    {
+        "title": "Algebra, Topology, Di\ufb00erential Calculus, and Optimization Theory For CS and ML",
+        "description": "2200 page textbook on Spectral Methods, Projective Geometry, and Optimization Theory",
+        "tags": [
+            "Linear Algebra",
+            "Stochastic Calculus",
+            "ML",
+            "Essay"
+        ]
+    },
+    {
+        "title": "High-Accuracy Low-Precision Training",
+        "description": "Low precision SGD variant which converges 4x faster on CPU than traditional SGD",
+        "tags": [
+            "Stochastic Calculus",
+            "Quantization",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Neuro-Symbolic Program Synthesis",
+        "description": "Train LSTM to model a continuous representation of discrete I/O examples and then incrementally synthesize a program for that continuous representation.",
+        "tags": [
+            "Monte Carlo Methods",
+            "Symbolic AI",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Smoothing Variances Across Time: Adaptive Stochastic Volatility",
+        "description": "Extends existing stochastic volatility model with dynamic bayesian log-variance shrinkage.",
+        "tags": [
+            "Stochastic Calculus",
+            "Time-Series Forecasting",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Pre-training Large Memory LMs with Internal and External Knowledge",
+        "description": "Masks externally retrieved values from training loss, discouraging memorization and rewarding targetted lookups, achieving better performance than memorization based models.",
+        "tags": [
+            "Transformer",
+            "Training",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scalpel: Customizing DNN Pruning to the Underlying Hardware Parallelism",
+        "description": "Combats hardware unaware sparsity eating into efficiency gains",
+        "tags": [
+            "GPU",
+            "Sparsity",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Scaling Offline RL via Efficient and Expressive Shortcut Models",
+        "description": "Proposes offline version of shortcut model for infinite-horizon flow models.",
+        "tags": [
+            "Generative Methods",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Designing Markets for Prediction",
+        "description": "Describes the inverse game theory of market design",
+        "tags": [
+            "Finance",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "How To Scale",
+        "description": "MuP",
+        "tags": [
+            "Distributed Techniques",
+            "Scaling",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+        "description": "Pipeline for evolving programs to improve model performance",
+        "tags": [
+            "Infrastructure",
+            "Test-Time Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures",
+        "description": "Underscores the technical insights which delivered some performance boost in DeepSeek V3 base model",
+        "tags": [
+            "Distributed Techniques",
+            "Infrastructure",
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Attention2D: Communication Efficient Distributed Self-Attention Mechanism",
+        "description": "Asymptotically faster computation over Ring Attention via a new parallel dimension",
+        "tags": [
+            "GPU",
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "MegaScale-MoE: Large-Scale Communication-Efficient Training of MoE Models in Production",
+        "description": "1.88x Speedup over Megatron-LM",
+        "tags": [
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Strategic Collusion of LLM Agents: Market Division in Multi-Commodity Competition",
+        "description": "Proves that LLMs are capable of independently colluding for monopolistic division of multi-commodity markets.",
+        "tags": [
+            "Finance",
+            "Alignment",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Optimizing Anytime Reasoning via Budget Relative Policy Optimization",
+        "description": "Budget aware optimization of LLM",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "DeepSpeed Inference: Enabling Efficient Inference of Transformer Models at Unprecedented Scale",
+        "description": "More low level optimizations for delivering MoE models at scale",
+        "tags": [
+            "Distributed Techniques",
+            "MoE",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Gated Attention for LLMs: Non-linearity, Sparsity, and Attention-Sink-Free",
+        "description": "Develops sophisticated gating methods for models",
+        "tags": [
+            "Architecture",
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Reinforcing Multi-Turn Reasoning in LLM Agents via Turn-Level Credit Assignment",
+        "description": "Reinforcing RL signal via method of turn-level perturbation",
+        "tags": [
+            "Transformer",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Diffusion is spectral autoregression",
+        "description": "One view on the nature of Diffusion models",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Diffusion is not necessarily Spectral Autoregression",
+        "description": "Refutes the sander.ai claim of diffusion as spectral AR",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "This Time is Different: An Observability Perspective on Time Series Foundaiton Models",
+        "description": "SOTA Time-Series LLM :o",
+        "tags": [
+            "Time-Series Forecasting",
+            "Transformer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Long-Context State-Space Video World Models",
+        "description": "Leverages SSM for temporal memory and causal sequence modeling for long video generation",
+        "tags": [
+            "SSM",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B",
+        "description": "First Principles building of a megakernel to improve runtime and memory usage",
+        "tags": [
+            "HPC",
+            "LLM",
+            "Site"
+        ]
+    },
+    {
+        "title": "Hardware-Efficient Attention for Fast Decoding",
+        "description": "2x faster Attention than FlashMLA",
+        "tags": [
+            "HPC",
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "GSM-inf: How do your LLMs behave over Infinitely Increasing CL and Reasoning Complexity",
+        "description": "Underscores challenges in extending reasoning to long context lengths",
+        "tags": [
+            "Scaing",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Accelerating Diffusion LM Inferences via Efficient KV Caching and Guided Diffusion",
+        "description": "34x end-to-end speedup of token generation",
+        "tags": [
+            "HPC",
+            "Generative Methods",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast-dLLM: Training-free Acceleration of Diffusion LLM by Enabling KV Cache and Parallel Decoding",
+        "description": "27.6x end-to-end speedup of token generation",
+        "tags": [
+            "HPC",
+            "Generative Methods",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Atlas: Learning to Optimally Memorize the Context at Test Time",
+        "description": "Learning how to memorize better",
+        "tags": [
+            "Architecture",
+            "SSM",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Arctic Inference with Shift Parallelism",
+        "description": "New form of parallelism which shifts around for throughput purposes",
+        "tags": [
+            "Distributed Techniques",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "How much do language models memorize?",
+        "description": "Estimating memorization capacity per parameter of LMs",
+        "tags": [
+            "Transformer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Writing-Zero: Bridge the Gap Between Non-verifiable Tasks and VRs",
+        "description": "Introduces pairwise generative reward model and corresponding boostrap policy optimization",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Esoteric LMs",
+        "description": "Parallelizing the KV Cache of Masked Diffusion Models",
+        "tags": [
+            "Generative Methods",
+            "Inference",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Why Gradients Rapidly Increase Near the End of Training",
+        "description": "Simple correction to avoid unintended interactions which increase gradient norm",
+        "tags": [
+            "Stochastic Calculus",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Log-Linear Attention",
+        "description": "Fixed hiddem dim and logarithmically growing set of hidden states",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Cartridges: Lightweight and general-purpose long context representations via self-study",
+        "description": "Self-Study to learn what to store in memory",
+        "tags": [
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "A Stable Whitening Optimizer for Efficient Neural Network Training",
+        "description": "Finds that Shampoo is prone to divergence when matrix-inverses are cached too long",
+        "tags": [
+            "Stochastic Calculus",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Is there a Half-Life ofr the Sucess Rates of AI Agents",
+        "description": "Developing a model of tool use in agents",
+        "tags": [
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Sequential-Parallel Duality in Prefix-Scannable Models",
+        "description": "Evaluating SSM methods",
+        "tags": [
+            "SSM",
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast Monte Carlo Tree Diffusion: 100\u00d7 Speedup via Parallel Sparse Planning",
+        "description": "Parallel coarsened rollouts of Monte Carlo Tree Diffusion",
+        "tags": [
+            "Monte Carlo Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Radial Attention: nlogn Sparse Attention with Energy Decay for Long Video Generation",
+        "description": "How to compute long videos more efficiently",
+        "tags": [
+            "Attention",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Tensor Parallelism and Sequence Parallelism: Detailed Analysis",
+        "description": "Breakdown of how the two methods of parallelism work",
+        "tags": [
+            "Distributed Techniques",
+            "Site"
+        ]
+    },
+    {
+        "title": "Introducing Context Parallelism",
+        "description": "Breaking down how to parallelize the context length parallel computation",
+        "tags": [
+            "Distributed Techniques",
+            "Context Length",
+            "Site"
+        ]
+    },
+    {
+        "title": "The Era of Exploration",
+        "description": "Topical essay on the RL / Thinking oriented era of LLM Post-Training",
+        "tags": [
+            "RL",
+            "Site"
+        ]
+    },
+    {
+        "title": "Inference-Time Scaling and Collective Intelligence for Frontier AI",
+        "description": "Miscellaneous experiment in using combination of foundation models to get outputs greater than the sum of the whole",
+        "tags": [
+            "ML",
+            "Site"
+        ]
+    },
+    {
+        "title": "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search",
+        "description": "Proposes Adaptive Branching Monte Carlo Tree Search for LLM",
+        "tags": [
+            "Monte Carlo Methods",
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "The Curse of Depth in Large Language Models",
+        "description": "On issues with making the model deeper.",
+        "tags": [
+            "Transformer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "On the Tradeoffs of SSMs and Transformers",
+        "description": "Challenges in overcoming N^2",
+        "tags": [
+            "SSM",
+            "Site"
+        ]
+    },
+    {
+        "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+        "description": "Claims tremendous recall advantage over tremendously longer context lengths over traditional LLMs",
+        "tags": [
+            "Context Length",
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Fast and Simplex: 2-Simplicial Attention in Triton",
+        "description": "Super interesting article about theoretical expansions on the 2-way relation in Attention",
+        "tags": [
+            "Architecture",
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Helix Parallelism: Rethinking Sharding Strategies for Interactive Multi-Million-Token LLM Decoding",
+        "description": "Proposes a new paralleism for utilizing KV Cache to train on dramatically longer sequences",
+        "tags": [
+            "Distributed Techniques",
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "First Return, Entropy-Eliciting Explor",
+        "description": "RLVR for unstable exploration",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "description": "Dynamic chunking of tokens to chunk together tokens and streamline runtime",
+        "tags": [
+            "NLP",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "From Language to Logic: A Bi-Level Framework for Structured Reasoning",
+        "description": "Mapping language to logic",
+        "tags": [
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation",
+        "description": "Dynamic depth for different sequence position",
+        "tags": [
+            "Architecture",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mixture of Raytraced Experts",
+        "description": "Dynamically produce computation graphis of varying width and depth composed of experts",
+        "tags": [
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Group Sequence Policy Optimization",
+        "description": "Sequence level likelihood and clipping adapted from GRPO",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Distributed Training Lexicon",
+        "description": "Presents a bunch of forms of parallelism and library functionalities for better distributed LLM training",
+        "tags": [
+            "Distributed Techniques",
+            "Scaling",
+            "Site"
+        ]
+    },
+    {
+        "title": "Checklists Are Better Than Reward Models For Aligning Language Models",
+        "description": "Extract and evaluate how well responses satisfy each item using specialized verifier programs.",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "An overview of gradient descent optimization algorithms\u2217",
+        "description": "Runs through and explains a large amount of optimization algorithms",
+        "tags": [
+            "Stochastic Calculus",
+            "Optimizer",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Iterated Q-Network: Beyond One-Step Bellman Updates in Deep Reinforcement Learning",
+        "description": "Learns multiple steps at once.",
+        "tags": [
+            "RL",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "What to do to scale up?",
+        "description": "more information on muP method",
+        "tags": [
+            "Scaling",
+            "Site"
+        ]
+    },
+    {
+        "title": "Attention is Off by One",
+        "description": "Shows a numerical issue with the structure of traditional Attention layers",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Extrapolation by Association: Length Generalization Transfer in Transformers",
+        "description": "Experiments in trasferring length generalization across tasks",
+        "tags": [
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Found in the Middle: Calibrating Positional Attention Bias Improves Long Context Utilization",
+        "description": "Method for calibraring attention and positional bias to help with long context functionality",
+        "tags": [
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Efficient Streaming Language Models with Attention Sinks",
+        "description": "22.2x speedup over sliding window recomputation",
+        "tags": [
+            "Attention",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Go With The Flow",
+        "description": "Understanding flow networks better",
+        "tags": [
+            "Generative Methods",
+            "Site"
+        ]
+    },
+    {
+        "title": "A Survey of Context Engineering for Large Language Models",
+        "description": "Explains many methods for making the most of the information you present to the model",
+        "tags": [
+            "Context Length",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "How Attention Sinks Keep Language Models Stable",
+        "description": "More writing on errors with Attention",
+        "tags": [
+            "Attention",
+            "Site"
+        ]
+    },
+    {
+        "title": "Achieving 10,000x training data reduction with high-fidelity labels",
+        "description": "Active Learning model for getting better performance with less labels",
+        "tags": [
+            "ML",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "RL with VRs: GRPOs Effective Loss, Dynamics, and Success Amplification",
+        "description": "Digs into the statistical behavior of GRPO",
+        "tags": [
+            "RL for Test-Time",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Mixture-of-Experts with Expert Choice Routing",
+        "description": "Experts select the tokens rather than the other way around",
+        "tags": [
+            "MoE",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Breaking the Sorting Barrier for Directed Single-Source Shortest Paths",
+        "description": "Outperforms Djikstra's algorithm (nlogn -> mlog^2/3n) for the first time in 32 years",
+        "tags": [
+            "Misc Math",
             "Arxiv"
         ]
     }

@@ -24,6 +24,11 @@ function LandingPage() {
     runGameOfLife("gameOfLife");
   }, []);
 
+  const selfieSrc =
+    theme === "light"
+      ? "/assets/pics/selfie_8-2.jpg"
+      : "/assets/pics/selfie_7.jpg";
+
   return (
     <>
       <meta charSet="UTF-8" />
@@ -85,9 +90,9 @@ function LandingPage() {
             About Me
           </h1>
           <img
-            src="/assets/pics/selfie_7.jpg"
+            src={selfieSrc}
             className="selfie"
-            alt="Selfie"
+            alt={theme === "light" ? "Selfie 8" : "Selfie 7"}
           />
           <p style={{ textAlign: "center" }}>
             <i>~ aim, with patience, at the highest bearable path ~</i>

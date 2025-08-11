@@ -5786,5 +5786,715 @@
     "releaseDate": "2024-10-10",
     "isRead": false,
     "downloadLink": "https://www.cis.upenn.edu/~jean/math-deep.pdf"
+  },
+  {
+    "title": "High-Accuracy Low-Precision Training",
+    "author": "De Sa et al.",
+    "description": "Low precision SGD variant which converges 4x faster on CPU than traditional SGD",
+    "tags": ["Stochastic Calculus", "Quantization", "Optimizer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2018-03-09",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1803.03383"
+  },
+  {
+    "title": "Neuro-Symbolic Program Synthesis",
+    "author": "Parisotto et al.",
+    "description": "Train LSTM to model a continuous representation of discrete I/O examples and then incrementally synthesize a program for that continuous representation.",
+    "tags": ["Monte Carlo Methods", "Symbolic AI", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2016-11-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1611.01855"
+  },
+  {
+    "title": "Smoothing Variances Across Time: Adaptive Stochastic Volatility",
+    "author": "Cornell University",
+    "description": "Extends existing stochastic volatility model with dynamic bayesian log-variance shrinkage.",
+    "tags": ["Stochastic Calculus", "Time-Series Forecasting", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2408.11315"
+  },
+  {
+    "title": "Pre-training Large Memory LMs with Internal and External Knowledge",
+    "author": "Cornell University",
+    "description": "Masks externally retrieved values from training loss, discouraging memorization and rewarding targetted lookups, achieving better performance than memorization based models.",
+    "tags": ["Transformer", "Training", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-07-02",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.15962"
+  },
+  {
+    "title": "Scalpel: Customizing DNN Pruning to the Underlying Hardware Parallelism",
+    "author": "Yu et al.",
+    "description": "Combats hardware unaware sparsity eating into efficiency gains",
+    "tags": ["GPU", "Sparsity", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-01-01",
+    "isRead": false,
+    "downloadLink": "https://jiecaoyu.github.io/papers/jiecaoyu-isca17.pdf"
+  },
+  {
+    "title": "Scaling Offline RL via Efficient and Expressive Shortcut Models",
+    "author": "Cornell University",
+    "description": "Proposes offline version of shortcut model for infinite-horizon flow models.",
+    "tags": ["Generative Methods", "RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.22866"
+  },
+  {
+    "title": "Designing Markets for Prediction",
+    "author": "Yiling Chen and David M. Pennock",
+    "description": "Describes the inverse game theory of market design",
+    "tags": ["Finance", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-01-01",
+    "isRead": false,
+    "downloadLink": "https://bpb-us-e1.wpmucdn.com/sites.harvard.edu/dist/b/845/files/2025/01/aim10.pdf"
+  },
+  {
+    "title": "How To Scale",
+    "author": "Seunghyun Seo",
+    "description": "MuP",
+    "tags": ["Distributed Techniques", "Scaling", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-05-05",
+    "isRead": false,
+    "downloadLink": "https://howtoscalenn.github.io"
+  },
+  {
+    "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+    "author": "Google",
+    "description": "Pipeline for evolving programs to improve model performance",
+    "tags": ["Infrastructure", "Test-Time Methods", "Arxiv"],
+    "readTime": 3.0,
+    "releaseDate": "2025-06-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.13131"
+  },
+  {
+    "title": "Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures",
+    "author": "DeepSeek",
+    "description": "Underscores the technical insights which delivered some performance boost in DeepSeek V3 base model",
+    "tags": ["Distributed Techniques", "Infrastructure", "MoE", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2025-05-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.09343"
+  },
+  {
+    "title": "Attention2D: Communication Efficient Distributed Self-Attention Mechanism",
+    "author": "Venmugil Elango",
+    "description": "Asymptotically faster computation over Ring Attention via a new parallel dimension",
+    "tags": ["GPU", "Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.15758"
+  },
+  {
+    "title": "MegaScale-MoE: Large-Scale Communication-Efficient Training of MoE Models in Production",
+    "author": "Bytedance",
+    "description": "1.88x Speedup over Megatron-LM",
+    "tags": ["Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-05-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.11432"
+  },
+  {
+    "title": "Strategic Collusion of LLM Agents: Market Division in Multi-Commodity Competition",
+    "author": "Lin et al.",
+    "description": "Proves that LLMs are capable of independently colluding for monopolistic division of multi-commodity markets.",
+    "tags": ["Finance", "Alignment", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.00031"
+  },
+  {
+    "title": "Optimizing Anytime Reasoning via Budget Relative Policy Optimization",
+    "author": "Qi et al.",
+    "description": "Budget aware optimization of LLM",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.13438"
+  },
+  {
+    "title": "DeepSpeed Inference: Enabling Efficient Inference of Transformer Models at Unprecedented Scale",
+    "author": "Microsoft",
+    "description": "More low level optimizations for delivering MoE models at scale",
+    "tags": ["Distributed Techniques", "MoE", "Inference", "Arxiv"],
+    "readTime": 2.0,
+    "releaseDate": "2022-06-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2207.00032"
+  },
+  {
+    "title": "Gated Attention for LLMs: Non-linearity, Sparsity, and Attention-Sink-Free",
+    "author": "Qiu et al.",
+    "description": "Develops sophisticated gating methods for models",
+    "tags": ["Architecture", "MoE", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.06708"
+  },
+  {
+    "title": "Reinforcing Multi-Turn Reasoning in LLM Agents via Turn-Level Credit Assignment",
+    "author": "Zeng et al.",
+    "description": "Reinforcing RL signal via method of turn-level perturbation",
+    "tags": ["Transformer", "RL", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.11821"
+  },
+  {
+    "title": "Diffusion is spectral autoregression",
+    "author": "sander.ai",
+    "description": "One view on the nature of Diffusion models",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-09-02",
+    "isRead": false,
+    "downloadLink": "https://sander.ai/2024/09/02/spectral-autoregression.html"
+  },
+  {
+    "title": "Diffusion is not necessarily Spectral Autoregression",
+    "author": "Fabian Falck",
+    "description": "Refutes the sander.ai claim of diffusion as spectral AR",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-24",
+    "isRead": false,
+    "downloadLink": "https://www.fabianfalck.com/posts/spectralauto/"
+  },
+  {
+    "title": "This Time is Different: An Observability Perspective on Time Series Foundaiton Models",
+    "author": "Datadog",
+    "description": "SOTA Time-Series LLM :o",
+    "tags": ["Time-Series Forecasting", "Transformer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.14766"
+  },
+  {
+    "title": "Long-Context State-Space Video World Models",
+    "author": "Po et al.",
+    "description": "Leverages SSM for temporal memory and causal sequence modeling for long video generation",
+    "tags": ["SSM", "Context Length", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-05-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.20171"
+  },
+  {
+    "title": "Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B",
+    "author": "Spector et al.",
+    "description": "First Principles building of a megakernel to improve runtime and memory usage",
+    "tags": ["HPC", "LLM", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-27",
+    "isRead": false,
+    "downloadLink": "https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles"
+  },
+  {
+    "title": "Hardware-Efficient Attention for Fast Decoding",
+    "author": "Tri Dao et al.",
+    "description": "2x faster Attention than FlashMLA",
+    "tags": ["HPC", "Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-27",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.21487"
+  },
+  {
+    "title": "GSM-inf: How do your LLMs behave over Infinitely Increasing CL and Reasoning Complexity",
+    "author": "Zhou et al.",
+    "description": "Underscores challenges in extending reasoning to long context lengths",
+    "tags": ["Scaing", "Context Length", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.05252"
+  },
+  {
+    "title": "Accelerating Diffusion LM Inferences via Efficient KV Caching and Guided Diffusion",
+    "author": "Cornell University",
+    "description": "34x end-to-end speedup of token generation",
+    "tags": ["HPC", "Generative Methods", "Inference", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-27",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.21467"
+  },
+  {
+    "title": "Fast-dLLM: Training-free Acceleration of Diffusion LLM by Enabling KV Cache and Parallel Decoding",
+    "author": "NVIDIA",
+    "description": "27.6x end-to-end speedup of token generation",
+    "tags": ["HPC", "Generative Methods", "Inference", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.22618"
+  },
+  {
+    "title": "Atlas: Learning to Optimally Memorize the Context at Test Time",
+    "author": "Google",
+    "description": "Learning how to memorize better",
+    "tags": ["Architecture", "SSM", "Context Length", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.23735"
+  },
+  {
+    "title": "Arctic Inference with Shift Parallelism",
+    "author": "Snowflake",
+    "description": "New form of parallelism which shifts around for throughput purposes",
+    "tags": ["Distributed Techniques", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-16",
+    "isRead": false,
+    "downloadLink": "https://www.arxiv.org/pdf/2507.11830"
+  },
+  {
+    "title": "How much do language models memorize?",
+    "author": "Meta",
+    "description": "Estimating memorization capacity per parameter of LMs",
+    "tags": ["Transformer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.24832"
+  },
+  {
+    "title": "Writing-Zero: Bridge the Gap Between Non-verifiable Tasks and VRs",
+    "author": "Alibaba",
+    "description": "Introduces pairwise generative reward model and corresponding boostrap policy optimization",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.00103"
+  },
+  {
+    "title": "Esoteric LMs",
+    "author": "Cornell University",
+    "description": "Parallelizing the KV Cache of Masked Diffusion Models",
+    "tags": ["Generative Methods", "Inference", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-02",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.01928"
+  },
+  {
+    "title": "Why Gradients Rapidly Increase Near the End of Training",
+    "author": "Meta",
+    "description": "Simple correction to avoid unintended interactions which increase gradient norm",
+    "tags": ["Stochastic Calculus", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-09",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.02285"
+  },
+  {
+    "title": "Log-Linear Attention",
+    "author": "Tri Dao et al.",
+    "description": "Fixed hiddem dim and logarithmically growing set of hidden states",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.04761"
+  },
+  {
+    "title": "Cartridges: Lightweight and general-purpose long context representations via self-study",
+    "author": "Stanford University",
+    "description": "Self-Study to learn what to store in memory",
+    "tags": ["Context Length", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.06266"
+  },
+  {
+    "title": "A Stable Whitening Optimizer for Efficient Neural Network Training",
+    "author": "UC Berkeley",
+    "description": "Finds that Shampoo is prone to divergence when matrix-inverses are cached too long",
+    "tags": ["Stochastic Calculus", "Optimizer", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.07254"
+  },
+  {
+    "title": "Is there a Half-Life ofr the Sucess Rates of AI Agents",
+    "author": "Toby Ord",
+    "description": "Developing a model of tool use in agents",
+    "tags": ["Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-10",
+    "isRead": false,
+    "downloadLink": "https://www.tobyord.com/writing/half-life"
+  },
+  {
+    "title": "Sequential-Parallel Duality in Prefix-Scannable Models",
+    "author": "Yau et al.",
+    "description": "Evaluating SSM methods",
+    "tags": ["SSM", "Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.10918"
+  },
+  {
+    "title": "Fast Monte Carlo Tree Diffusion: 100× Speedup via Parallel Sparse Planning",
+    "author": "KAIST",
+    "description": "Parallel coarsened rollouts of Monte Carlo Tree Diffusion",
+    "tags": ["Monte Carlo Methods", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.09498"
+  },
+  {
+    "title": "Radial Attention: nlogn Sparse Attention with Energy Decay for Long Video Generation",
+    "author": "NVIDIA",
+    "description": "How to compute long videos more efficiently",
+    "tags": ["Attention", "Context Length", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.19852"
+  },
+  {
+    "title": "Tensor Parallelism and Sequence Parallelism: Detailed Analysis",
+    "author": "Insujang",
+    "description": "Breakdown of how the two methods of parallelism work",
+    "tags": ["Distributed Techniques", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-01-11",
+    "isRead": false,
+    "downloadLink": "https://insujang.github.io/2024-01-11/tensor-parallelism-and-sequence-parallelism-detailed-analysis/"
+  },
+  {
+    "title": "Introducing Context Parallelism",
+    "author": "Insujang",
+    "description": "Breaking down how to parallelize the context length parallel computation",
+    "tags": ["Distributed Techniques", "Context Length", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2024-09-20",
+    "isRead": false,
+    "downloadLink": "https://insujang.github.io/2024-09-20/introducing-context-parallelism/"
+  },
+  {
+    "title": "The Era of Exploration",
+    "author": "Yidang Jiang",
+    "description": "Topical essay on the RL / Thinking oriented era of LLM Post-Training",
+    "tags": ["RL", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-25",
+    "isRead": false,
+    "downloadLink": "https://yidingjiang.github.io/blog/post/exploration/"
+  },
+  {
+    "title": "Inference-Time Scaling and Collective Intelligence for Frontier AI",
+    "author": "Sakana AI",
+    "description": "Miscellaneous experiment in using combination of foundation models to get outputs greater than the sum of the whole",
+    "tags": ["ML", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-01",
+    "isRead": false,
+    "downloadLink": "https://sakana.ai/ab-mcts/"
+  },
+  {
+    "title": "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search",
+    "author": "Sakana AI",
+    "description": "Proposes Adaptive Branching Monte Carlo Tree Search for LLM",
+    "tags": ["Monte Carlo Methods", "RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-27",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.04412"
+  },
+  {
+    "title": "The Curse of Depth in Large Language Models",
+    "author": "Sun et al.",
+    "description": "On issues with making the model deeper.",
+    "tags": ["Transformer", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2502.05795"
+  },
+  {
+    "title": "On the Tradeoffs of SSMs and Transformers",
+    "author": "Albert Gu",
+    "description": "Challenges in overcoming N^2",
+    "tags": ["SSM", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-08",
+    "isRead": false,
+    "downloadLink": "https://goombalab.github.io/blog/2025/tradeoffs/"
+  },
+  {
+    "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+    "author": "Bytedance",
+    "description": "Claims tremendous recall advantage over tremendously longer context lengths over traditional LLMs",
+    "tags": ["Context Length", "RL", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.02259"
+  },
+  {
+    "title": "Fast and Simplex: 2-Simplicial Attention in Triton",
+    "author": "Meta",
+    "description": "Super interesting article about theoretical expansions on the 2-way relation in Attention",
+    "tags": ["Architecture", "Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.02754"
+  },
+  {
+    "title": "Helix Parallelism: Rethinking Sharding Strategies for Interactive Multi-Million-Token LLM Decoding",
+    "author": "NVIDIA",
+    "description": "Proposes a new paralleism for utilizing KV Cache to train on dramatically longer sequences",
+    "tags": ["Distributed Techniques", "Context Length", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-05",
+    "isRead": false,
+    "downloadLink": "https://d1qx31qr3h6wln.cloudfront.net/publications/Helix_0.pdf"
+  },
+  {
+    "title": "First Return, Entropy-Eliciting Explor",
+    "author": "Bytedance",
+    "description": "RLVR for unstable exploration",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.07017"
+  },
+  {
+    "title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+    "author": "CMU",
+    "description": "Dynamic chunking of tokens to chunk together tokens and streamline runtime",
+    "tags": ["NLP", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.07955"
+  },
+  {
+    "title": "From Language to Logic: A Bi-Level Framework for Structured Reasoning",
+    "author": "Tongji University",
+    "description": "Mapping language to logic",
+    "tags": ["ML", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.08501"
+  },
+  {
+    "title": "Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation",
+    "author": "Bae et al.",
+    "description": "Dynamic depth for different sequence position",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.10524v1"
+  },
+  {
+    "title": "Mixture of Raytraced Experts",
+    "author": "Perin et al.",
+    "description": "Dynamically produce computation graphis of varying width and depth composed of experts",
+    "tags": ["MoE", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.12419"
+  },
+  {
+    "title": "Group Sequence Policy Optimization",
+    "author": "Alibaba",
+    "description": "Sequence level likelihood and clipping adapted from GRPO",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.18071"
+  },
+  {
+    "title": "Distributed Training Lexicon",
+    "author": "",
+    "description": "Presents a bunch of forms of parallelism and library functionalities for better distributed LLM training",
+    "tags": ["Distributed Techniques", "Scaling", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-18",
+    "isRead": false,
+    "downloadLink": "https://distributedlexicon.com"
+  },
+  {
+    "title": "Checklists Are Better Than Reward Models For Aligning Language Models",
+    "author": "Apple",
+    "description": "Extract and evaluate how well responses satisfy each item using specialized verifier programs.",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-06-24",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.18624"
+  },
+  {
+    "title": "An overview of gradient descent optimization algorithms∗",
+    "author": "Sabastian Ruder",
+    "description": "Runs through and explains a large amount of optimization algorithms",
+    "tags": ["Stochastic Calculus", "Optimizer", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2017-06-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1609.04747"
+  },
+  {
+    "title": "Iterated Q-Network: Beyond One-Step Bellman Updates in Deep Reinforcement Learning",
+    "author": "Vincent et al.",
+    "description": "Learns multiple steps at once.",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2403.02107"
+  },
+  {
+    "title": "What to do to scale up?",
+    "author": "cloneofsimo",
+    "description": "more information on muP method",
+    "tags": ["Scaling", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-04-15",
+    "isRead": false,
+    "downloadLink": "https://cloneofsimo.notion.site/What-to-do-to-scale-up-09e469d7c3444d6a90305397c38a46f5"
+  },
+  {
+    "title": "Attention is Off by One",
+    "author": "Evan Miller",
+    "description": "Shows a numerical issue with the structure of traditional Attention layers",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-06-24",
+    "isRead": false,
+    "downloadLink": "https://www.evanmiller.org/attention-is-off-by-one.html"
+  },
+  {
+    "title": "Extrapolation by Association: Length Generalization Transfer in Transformers",
+    "author": "Cai et al.",
+    "description": "Experiments in trasferring length generalization across tasks",
+    "tags": ["Context Length", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-08-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.09251"
+  },
+  {
+    "title": "Found in the Middle: Calibrating Positional Attention Bias Improves Long Context Utilization",
+    "author": "Hsieh et al.",
+    "description": "Method for calibraring attention and positional bias to help with long context functionality",
+    "tags": ["Context Length", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-06-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2406.16008"
+  },
+  {
+    "title": "Efficient Streaming Language Models with Attention Sinks",
+    "author": "Xiao et al.",
+    "description": "22.2x speedup over sliding window recomputation",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-04-07",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2309.17453"
+  },
+  {
+    "title": "Go With The Flow",
+    "author": "yadnyesh",
+    "description": "Understanding flow networks better",
+    "tags": ["Generative Methods", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-04-27",
+    "isRead": false,
+    "downloadLink": "https://ydnyshhh.github.io/posts/go_with_the_flow/"
+  },
+  {
+    "title": "A Survey of Context Engineering for Large Language Models",
+    "author": "Mei et al.",
+    "description": "Explains many methods for making the most of the information you present to the model",
+    "tags": ["Context Length", "Arxiv"],
+    "readTime": 3.0,
+    "releaseDate": "2025-06-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.13334"
+  },
+  {
+    "title": "How Attention Sinks Keep Language Models Stable",
+    "author": "Guangxuan Xiao",
+    "description": "More writing on errors with Attention",
+    "tags": ["Attention", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-08-07",
+    "isRead": false,
+    "downloadLink": "https://hanlab.mit.edu/blog/streamingllm"
+  },
+  {
+    "title": "Achieving 10,000x training data reduction with high-fidelity labels",
+    "author": "Google",
+    "description": "Active Learning model for getting better performance with less labels",
+    "tags": ["ML", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-08-07",
+    "isRead": false,
+    "downloadLink": "https://research.google/blog/achieving-10000x-training-data-reduction-with-high-fidelity-labels/"
+  },
+  {
+    "title": "RL with VRs: GRPOs Effective Loss, Dynamics, and Success Amplification",
+    "author": "IBM Research",
+    "description": "Digs into the statistical behavior of GRPO",
+    "tags": ["RL for Test-Time", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-05-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2503.06639"
+  },
+  {
+    "title": "Mixture-of-Experts with Expert Choice Routing",
+    "author": "Google",
+    "description": "Experts select the tokens rather than the other way around",
+    "tags": ["MoE", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2022-10-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2202.09368"
+  },
+  {
+    "title": "Breaking the Sorting Barrier for Directed Single-Source Shortest Paths",
+    "author": "Duan et al.",
+    "description": "Outperforms Djikstra's algorithm (nlogn -> mlog^2/3n) for the first time in 32 years",
+    "tags": ["Misc Math", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-30",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2504.17033"
   }
 ]
