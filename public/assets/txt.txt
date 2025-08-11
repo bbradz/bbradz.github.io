@@ -1,5 +1,6 @@
 PUSH===
-npm run reinstall 
+npm install
+npm run build
 npm run deploy
 git add .
 git commit -m "switch to default light theme"
