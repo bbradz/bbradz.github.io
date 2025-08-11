@@ -5,7 +5,7 @@ import { runGameOfLife } from "../functionality.js";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
+  const savedTheme = localStorage.getItem("theme") || "light";
   const [theme, setTheme] = useState(savedTheme);
 
   const toggleTheme = () => {
@@ -19,7 +19,7 @@ function LandingPage() {
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
+    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     runGameOfLife("gameOfLife");
   }, []);

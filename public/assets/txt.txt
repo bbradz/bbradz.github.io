@@ -2,7 +2,7 @@ PUSH===
 npm run reinstall 
 npm run deploy
 git add .
-git commit -m "updating description txt file"
+git commit -m "switch to default light theme"
 git push origin main
 
 
