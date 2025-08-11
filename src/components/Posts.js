@@ -275,7 +275,7 @@ function Posts() {
                     <h3 className="post-title">From Jobs To Jensen</h3>
                     <p className="post-description">
                       A little explainer on some of the Distributed Training
-                      techniques undergirding the new LLM Era
+                      techniques undergirding the new LLM Era.
                     </p>
                     <div className="metadata">
                       <span>October 13th, 2024</span> ·
@@ -331,7 +331,7 @@ function Posts() {
                     </h3>
                     <p className="post-description">
                       On the history of Economic Thought and it's next step
-                      forward
+                      forward.
                     </p>
                     <div className="metadata">
                       <span>December 2nd, 2024</span> ·
@@ -349,7 +349,7 @@ function Posts() {
                     <h3 className="post-title">Matter & Motion</h3>
                     <p className="post-description">
                       On Wright's Law, Energy trends, and the mechanics of our
-                      modern world
+                      modern world.
                     </p>
                     <div className="metadata">
                       <span>February 21st, 2024</span> ·
@@ -368,7 +368,7 @@ function Posts() {
                     <h3 className="post-title">Suburbia 🤮 → Density 🔥</h3>
                     <p className="post-description">
                       Applying the lens of Economics to exhaustively break down
-                      the failure of America's car-centric sprawl
+                      the failure of America's car-centric sprawl.
                     </p>
                     <div className="metadata">
                       <span>February 17th, 2022</span> ·
