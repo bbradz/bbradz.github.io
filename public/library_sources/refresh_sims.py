@@ -2,6 +2,19 @@ import json
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
+def print_json_error(path, err, text, context=2):
+    print(f"{path}:{err.lineno}:{err.colno}: {err.msg} (char {err.pos})")
+    lines = text.splitlines()
+    i = err.lineno - 1
+    start = max(0, i - context)
+    end = min(len(lines), i + context + 1)
+    for k in range(start, end):
+        prefix = ">" if k == i else " "
+        print(f"{prefix}{k+1:6} | {lines[k]}")
+        if k == i:
+            caret = " " * (err.colno - 1)
+            print(" " * 8 + caret + "^")
+
 def cosine_similarity(vec_a, vec_b):
     """
     Calculates the cosine similarity between two vectors.
@@ -34,14 +47,17 @@ def generate_embeddings(input_filepath="input.json"):
         list: List of items with embeddings, or None if an error occurred.
     """
     try:
-        # Load data from input.json
-        with open(input_filepath, 'r') as f:
-            reading_list_data = json.load(f)
+        with open(input_filepath, 'r', encoding='utf-8') as f:
+            raw = f.read()
+        reading_list_data = json.loads(raw)
     except FileNotFoundError:
         print(f"Error: Input file not found at '{input_filepath}'. Please make sure input.json exists in the same directory.")
         return None
-    except json.JSONDecodeError:
-        print(f"Error: Invalid JSON format in '{input_filepath}'. Please check the JSON syntax.")
+    except json.JSONDecodeError as e:
+        with open(input_filepath, 'r', encoding='utf-8') as f:
+            raw = f.read()
+        print("Error: Invalid JSON format.\n")
+        print_json_error(input_filepath, e, raw, context=2)
         return None
 
     # Load a high-quality sentence embedding model (Sentence-BERT - all-mpnet-base-v2 is a good choice)
@@ -146,7 +162,7 @@ if __name__ == "__main__":
 
 
 """
-\\\\\\\\\\\\\\\\\\\\\ TEMPLATE & RUNNING LIST OF TAGS \\\\\\\\\\\\\\\\\\\\\
+TEMPLATE & RUNNING LIST OF TAGS
 
 Ideas:
 - Timeseries forecasting breakdown

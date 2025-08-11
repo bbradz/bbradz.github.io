@@ -4,5 +4,5 @@ npm run clean
 npm install
 npm run deploy
 git add .
-git commit -m "updated library"
+git commit -m "couple of changes"
 git push origin main
