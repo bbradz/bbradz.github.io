@@ -8,6 +8,12 @@ function LandingPage() {
   const savedTheme = localStorage.getItem("theme") || "light";
   const [theme, setTheme] = useState(savedTheme);
 
+  const selfieLight = new Image();
+  selfieLight.src = "/assets/pics/selfie_8-2.jpg";
+
+  const selfieDark = new Image();
+  selfieDark.src = "/assets/pics/selfie_7.jpg";
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
@@ -24,10 +30,7 @@ function LandingPage() {
     runGameOfLife("gameOfLife");
   }, []);
 
-  const selfieSrc =
-    theme === "light"
-      ? "/assets/pics/selfie_8-2.jpg"
-      : "/assets/pics/selfie_7.jpg";
+  const selfieSrc = theme === "light" ? selfieLight.src : selfieDark.src;
 
   return (
     <>
