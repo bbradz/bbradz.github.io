@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf node_modules package-lock.json build && npm cache clean --force",
+    "clean": "rm -rf node_modules package-lock.json build && (npm cache clean --force || true)",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build --no-history",
     "start": "react-scripts start",
