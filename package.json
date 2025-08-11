@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf node_modules package-lock.json build && npm cache clean --force",
+    "clean:fast": "rimraf node_modules build && rimraf package-lock.json",
+    "clean:hard": "rimraf node_modules build && rimraf package-lock.json && npm cache verify",
+    "reinstall": "npm run clean:fast && npm ci",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build --no-history",
     "start": "react-scripts start",
@@ -32,7 +34,8 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "gh-pages": "^6.3.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "rimraf": "^5.0.0"
   },
   "browserslist": {
     "production": [

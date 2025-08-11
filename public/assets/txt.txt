@@ -1,10 +1,10 @@
 PUSH===
-npm run clean
-npm install
+npm run reinstall 
 npm run deploy
 git add .
 git commit -m "updating description txt file"
 git push origin main
+
 
 RESET==
 git fetch origin
