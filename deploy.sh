@@ -12,15 +12,6 @@ npm install
 echo "Building project with Vite..."
 npm run build
 
-echo "Building project with Vite..."
-npm run build
-
-echo "Creating a 404.html fallback for GitHub Pages..."
-cp dist/index.html dist/404.html
-
-echo "Deploying to GitHub Pages..."
-npm run deploy
-
 echo "Deploying to GitHub Pages..."
 npm run deploy
 
