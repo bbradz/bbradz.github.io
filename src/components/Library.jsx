@@ -494,10 +494,10 @@ function Library() {
       nodeMinRadius: 5,
       nodeMaxRadius: 20,
       graphSizePadding: 780,
-      edgeRepelMargin: 4, // treat this as the "hard" wall inside the svg
-      edgeRepelDistance: 60, // px within which the push ramps up
-      edgeRepelStrength: 1.0, // overall scale (tweak up/down)
-      edgeRepelExponent: 1.5, // 1 = linear, >1 = more push near the wall
+      edgeRepelMargin: 4,
+      edgeRepelDistance: 60,
+      edgeRepelStrength: 1.0,
+      edgeRepelExponent: 1.5,
     }),
     []
   );
