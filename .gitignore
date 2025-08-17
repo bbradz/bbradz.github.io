@@ -11,7 +11,15 @@ build/
 __pycache__/
 *.pyc
 
-.env
+venv/
 
 # Vite
-.vite
+.vitevenv/
+__pycache__/
+*.pyc
+venv/
+.venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]

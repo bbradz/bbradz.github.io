@@ -17,7 +17,7 @@ npm run deploy
 
 echo "Committing and pushing changes..."
 git add .
-git commit -m "maintenance: migrate to vite and update deployment script"
+git commit -m "vite changes pt 2"
 git push origin main
 
 echo "Deployment complete!"

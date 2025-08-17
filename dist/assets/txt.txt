@@ -1,8 +1,5 @@
 PUSH===
-npm run dev
-git add .
-git commit -m "vite reorganization"
-git push origin main
+./deploy.sh
 
 
 RESET==
