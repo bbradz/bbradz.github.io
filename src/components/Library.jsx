@@ -1,13 +1,11 @@
-import React from "react";
-import {
+import React, {
   useState,
   useRef,
   useEffect,
   useCallback,
   useMemo,
-  startTransition,
 } from "react";
-import deepEqual from "fast-deep-equal";
+import deepEqual from "fast-deep-equal"; // kept, but barely needed now
 import { Link } from "react-router-dom";
 import * as d3 from "d3";
 import {
@@ -19,6 +17,21 @@ import {
 import sourcesRawData from "../input.json";
 import similaritiesRawData from "../document_similarities.json";
 import "../css/library.css";
+
+// ===================== Utility =====================
+function useDebouncedCallback(fn, delay) {
+  const fnRef = useRef(fn);
+  fnRef.current = fn;
+  const timeoutRef = useRef(null);
+
+  return useCallback(
+    (...args) => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => fnRef.current(...args), delay);
+    },
+    [delay]
+  );
+}
 
 // ===================== Tag Component =====================
 const Tag = React.memo(({ tag, onTagFilter, isFirst }) => {
@@ -88,969 +101,428 @@ const ReadingListItem = React.memo(({ item, onTagFilter }) => {
 });
 ReadingListItem.displayName = "ReadingListItem";
 
+// ===================== DocumentGraph Component =====================
+const DocumentGraph = React.memo(function DocumentGraph({
+  width,
+  height,
+  graphDisplayData,
+  documentSimilaritiesData,
+  graphParams,
+}) {
+  const containerRef = useRef(null);
+  const svgRef = useRef(null);
+  const simulationRef = useRef(null);
+  const nodeTitleGroupRef = useRef(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  // Resize listener (debounced)
+  useEffect(() => {
+    const check = () => setIsSmallScreen(window.innerWidth <= 768);
+    check();
+    const onResize = () => {
+      if (onResize._t) cancelAnimationFrame(onResize._t);
+      onResize._t = requestAnimationFrame(check);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const cleanupGraph = useCallback(() => {
+    if (simulationRef.current) {
+      simulationRef.current.stop();
+      simulationRef.current = null;
+    }
+    if (containerRef.current) {
+      d3.select(containerRef.current).selectAll("*").remove();
+    }
+  }, []);
+
+  // Initialize (or re-init) graph when data or size change
+  useEffect(() => {
+    if (isSmallScreen) {
+      cleanupGraph();
+      return;
+    }
+    if (!containerRef.current) return;
+
+    cleanupGraph();
+
+    const data = graphDisplayData || [];
+    const container = d3.select(containerRef.current);
+    const svg = container
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("class", "rounded-lg")
+      // prevents browser-native pinch-zoom fighting d3.zoom (esp. Safari/iOS)
+      .style("touch-action", "none");
+    svgRef.current = svg;
+
+    // background
+    svg
+      .append("rect")
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("fill", "var(--graph-background)");
+
+    if (data.length === 0 || !documentSimilaritiesData) {
+      const textGroup = svg
+        .append("g")
+        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+      textGroup
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("fill", "var(--text-color)")
+        .text("No documents to display");
+      return;
+    }
+
+    // Zoom & pan (SMOOTHER + proper roaming space)
+    const g = svg.append("g");
+    const pad = graphParams.graphSizePadding; // allows roaming beyond viewport
+
+    const zoomBehavior = d3
+      .zoom()
+      .extent([
+        [0, 0],
+        [width, height],
+      ])
+      .translateExtent([
+        [-pad, -pad],
+        [width + pad, height + pad],
+      ])
+      .scaleExtent(graphParams.zoomScaleExtent)
+      .wheelDelta((event) => {
+        const dy = event.deltaY;
+        return event.deltaMode === 1 ? -dy * 0.05 : -dy * 0.002;
+      })
+      .on("start", () => {
+        if (simulationRef.current) simulationRef.current.alphaTarget(0);
+      })
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      })
+      .on("end", () => {
+        if (simulationRef.current) simulationRef.current.alphaTarget(0);
+      });
+
+    svg.call(zoomBehavior);
+
+    // Center the view nicely with your initial scale
+    const initial = d3.zoomIdentity
+      .translate(width / 2, height / 2)
+      .scale(graphParams.initialZoomScale)
+      .translate(-width / 2, -height / 2);
+    svg.call(zoomBehavior.transform, initial);
+
+    // Map originals to visible indices
+    const visibleMap = {};
+    data.forEach((doc, idx) => {
+      visibleMap[doc.originalIndex] = idx;
+    });
+
+    // Build links
+    let links = (documentSimilaritiesData || [])
+      .filter(
+        (l) =>
+          l.source in visibleMap &&
+          l.target in visibleMap &&
+          visibleMap[l.source] !== visibleMap[l.target]
+      )
+      .map((l) => ({
+        ...l,
+        source: String(visibleMap[l.source]),
+        target: String(visibleMap[l.target]),
+      }));
+    if (!links || links.length === 0) links = [];
+
+    // ----- Size-aware radius mapping (log scale) -----
+    const readTimes = data.map((d) => d.readTime);
+    const minRT = Math.min(...readTimes);
+    const maxRT = Math.max(...readTimes);
+
+    const normalizeReadTime = (rt) => {
+      const minR = graphParams.nodeMinRadius;
+      const maxR = graphParams.nodeMaxRadius;
+      if (maxRT === minRT) return (minR + maxR) / 2;
+      const logMin = Math.log(minRT + 1);
+      const logMax = Math.log(maxRT + 1);
+      const lr = Math.log(rt + 1);
+      return ((lr - logMin) / (logMax - logMin)) * (maxR - minR) + minR;
+    };
+
+    // Nodes (with precomputed radius)
+    const nodes = data.map((doc, i) => ({
+      id: String(i),
+      title: doc.title,
+      fullText: doc.description,
+      tags: doc.tags,
+      readTime: doc.readTime,
+      releaseDate: doc.releaseDate,
+      isRead: doc.isRead,
+      r: normalizeReadTime(doc.readTime),
+      x: width / 2 + (Math.random() - 0.5) * 40,
+      y: height / 2 + (Math.random() - 0.5) * 40,
+    }));
+
+    const padClamp = (pos, dim) =>
+      Math.max(
+        -graphParams.graphSizePadding,
+        Math.min(dim + graphParams.graphSizePadding, pos)
+      );
+
+    // --------- Custom Edge-Repulsion Force (soft push from box walls) ---------
+    function edgeRepelForce() {
+      const margin = graphParams.edgeRepelMargin;
+      const falloff = graphParams.edgeRepelDistance; // px within which the push ramps up
+      const exponent = graphParams.edgeRepelExponent; // curve shape
+      const base = graphParams.edgeRepelStrength; // overall scale
+
+      // helper: normalized push strength in [0,1]
+      const pushScale = (d) => {
+        // d is distance from node edge to box edge (>=0 means inside)
+        const s = Math.max(0, (falloff - Math.max(0, d)) / falloff);
+        return Math.pow(s, exponent);
+      };
+
+      return (alpha) => {
+        const k = base * alpha;
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+
+          // distances from node's edge to each boundary
+          const left = n.x - n.r - margin; // distance to left wall
+          const right = width - margin - (n.x + n.r); // to right wall
+          const top = n.y - n.r - margin; // to top wall
+          const bottom = height - margin - (n.y + n.r); // to bottom wall
+
+          let fx = 0,
+            fy = 0;
+
+          if (left < falloff) fx += pushScale(left); // push right
+          if (right < falloff) fx -= pushScale(right); // push left
+          if (top < falloff) fy += pushScale(top); // push down
+          if (bottom < falloff) fy -= pushScale(bottom); // push up
+
+          n.vx = (n.vx || 0) + fx * k;
+          n.vy = (n.vy || 0) + fy * k;
+        }
+      };
+    }
+
+    // Simulation
+    const simulation = d3
+      .forceSimulation()
+      .nodes(nodes)
+      .force(
+        "link",
+        d3
+          .forceLink(links)
+          .id((d) => d.id)
+          .distance(graphParams.linkDistance)
+          .strength(graphParams.linkStrength)
+      )
+      .force("charge", d3.forceManyBody().strength(graphParams.chargeStrength))
+      .force(
+        "center",
+        d3
+          .forceCenter(width / 2, height / 2)
+          .strength(graphParams.centerStrength)
+      )
+      .force("x", d3.forceX(width / 2).strength(graphParams.xForceStrength))
+      .force("y", d3.forceY(height / 2).strength(graphParams.yForceStrength))
+      .force(
+        "collision",
+        d3
+          .forceCollide()
+          .strength(graphParams.collideStrength)
+          .radius((d) => d.r + graphParams.collideRadiusPadding)
+      )
+      // Soft repulsion from edges (new)
+      .force("edgeRepel", edgeRepelForce())
+      // Hard containment if something flies outside
+      .force("boundary", (alpha) => {
+        nodes.forEach((node) => {
+          const padding = 4;
+          const xMin = padding,
+            xMax = width - padding;
+          const yMin = padding,
+            yMax = height - padding;
+          const s = graphParams.boundaryStrength * alpha;
+          if (node.x < xMin) node.vx += (xMin - node.x) * s;
+          if (node.x > xMax) node.vx += (xMax - node.x) * s;
+          if (node.y < yMin) node.vy += (yMin - node.y) * s;
+          if (node.y > yMax) node.vy += (yMax - node.y) * s;
+        });
+      })
+      .alpha(graphParams.simulationAlpha)
+      .velocityDecay(graphParams.velocityDecay)
+      .alphaDecay(graphParams.alphaDecay)
+      .alphaMin(graphParams.alphaMin);
+
+    simulationRef.current = simulation;
+
+    // Edges
+    const link = g
+      .append("g")
+      .selectAll("line")
+      .data(links)
+      .join("line")
+      .attr("stroke", "var(--edge-color)")
+      .attr("stroke-width", (d) => d.width)
+      .attr("stroke-opacity", "var(--edge-opacity)");
+
+    // Nodes
+    const nodeGroup = g.append("g").attr("class", "nodes");
+    const node = nodeGroup
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
+      .attr("transform", (d) => `translate(${d.x},${d.y})`)
+      .call(
+        d3
+          .drag()
+          .on("start", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.1).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on("drag", (event, d) => {
+            d.fx = padClamp(event.x, width);
+            d.fy = padClamp(event.y, height);
+          })
+          .on("end", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          })
+      );
+
+    node
+      .append("circle")
+      .attr("r", (d) => d.r)
+      .attr("fill", (d) => (d.isRead ? "#4a9eff" : "var(--node-color)"))
+      .attr("stroke", "var(--node-stroke-color)")
+      .on("mouseover", function (event, d) {
+        d3.select(this).attr("fill", "#8ACE00");
+        link
+          .attr("stroke", (l) =>
+            l.source.id === d.id || l.target.id === d.id
+              ? "#8ACE00"
+              : "var(--edge-color)"
+          )
+          .attr("stroke-width", (l) =>
+            l.source.id === d.id || l.target.id === d.id ? 3 : l.width
+          );
+
+        const titleGroup = nodeGroup
+          .append("g")
+          .attr("class", "node-title-group")
+          .attr("transform", `translate(${d.x},${d.y})`);
+        nodeTitleGroupRef.current = titleGroup;
+        titleGroup
+          .append("text")
+          .attr("class", "node-title")
+          .attr("x", 10)
+          .attr("y", 5)
+          .attr("fill", "var(--text-color)")
+          .text(d.title);
+      })
+      .on("mouseout", function () {
+        d3.select(this).attr("fill", (d) =>
+          d.isRead ? "#4a9eff" : "var(--node-color)"
+        );
+        link
+          .attr("stroke", "var(--edge-color)")
+          .attr("stroke-width", (l) => l.width);
+        if (nodeTitleGroupRef.current) {
+          nodeTitleGroupRef.current.remove();
+          nodeTitleGroupRef.current = null;
+        }
+      });
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", (d) => padClamp(d.source.x, width))
+        .attr("y1", (d) => padClamp(d.source.y, height))
+        .attr("x2", (d) => padClamp(d.target.x, width))
+        .attr("y2", (d) => padClamp(d.target.y, height));
+
+      node.attr(
+        "transform",
+        (d) => `translate(${padClamp(d.x, width)},${padClamp(d.y, height)})`
+      );
+    });
+
+    return cleanupGraph;
+  }, [
+    graphDisplayData, // re-init when FILTERED DATA changes (not sort)
+    documentSimilaritiesData,
+    width,
+    height,
+    isSmallScreen,
+    cleanupGraph,
+    graphParams, // stable via useMemo in parent
+  ]);
+
+  if (isSmallScreen) return null;
+  return <div ref={containerRef} className="w-full h-full" />;
+});
+DocumentGraph.displayName = "DocumentGraph";
+
 // ===================== Library Component =====================
 function Library() {
-  console.log("Library Component RENDER");
+  // --- Hyperparameters for DocumentGraph (memoized for stability) ---
+  const graphHyperparameters = useMemo(
+    () => ({
+      zoomScaleExtent: [0.2, 5],
+      initialZoomScale: 0.2,
+      initialZoomTranslateFactor: 1.2, // no longer used for init; kept for compatibility
+      linkDistance: 100,
+      linkStrength: 0.8,
+      chargeStrength: -300,
+      centerStrength: 0.5,
+      xForceStrength: 0.1,
+      yForceStrength: 0.1,
+      collideStrength: 0.1,
+      collideRadiusPadding: 5,
+      boundaryStrength: 0.05,
+      simulationAlpha: 0.3,
+      velocityDecay: 0.4,
+      alphaDecay: 0.03,
+      alphaMin: 0.001,
+      nodeMinRadius: 5,
+      nodeMaxRadius: 20,
+      graphSizePadding: 780,
 
-  // --- Hyperparameters for DocumentGraph ---
-  const graphHyperparameters = {
-    zoomScaleExtent: [0.2, 5],
-    initialZoomScale: 0.2,
-    initialZoomTranslateFactor: 1.2,
-    linkDistance: 100,
-    linkStrength: 0.8,
-    chargeStrength: -300,
-    centerStrength: 0.5,
-    xForceStrength: 0.1,
-    yForceStrength: 0.1,
-    collideStrength: 0.1,
-    collideRadiusPadding: 5,
-    boundaryStrength: 0.05,
-    simulationAlpha: 0.3,
-    velocityDecay: 0.4,
-    alphaDecay: 0.03,
-    alphaMin: 0.001,
-    nodeMinRadius: 5,
-    nodeMaxRadius: 20,
-    graphSizePadding: 780, // Used for bounding box calculations in graph forces
-  };
+      // Edge-repulsion tuning
+      edgeRepelMargin: 4, // treat this as the "hard" wall inside the svg
+      edgeRepelDistance: 60, // px within which the push ramps up
+      edgeRepelStrength: 0.25, // overall scale (tweak up/down)
+      edgeRepelExponent: 1.5, // 1 = linear, >1 = more push near the wall
+    }),
+    []
+  );
 
-  // --- State Declarations ---
-
+  // --- Theme ---
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "light"
   );
-  const scrollToTopButtonRef = useRef(null);
-  const [readingListData, setReadingListData] = useState([]);
-  const [graphData, setGraphData] = useState([]); // Keep graphData state
-  const [displayedReadingListData, setDisplayedReadingListData] = useState([]); // New state for list display
-  const originalSourcesRawData = useRef(null); // Ref to store initial data
-  const [activeTagFilters, setActiveTagFilters] = useState([]);
-  const [readFilterState, setReadFilterState] = useState(0);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
-
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
-
-  useEffect(() => {
-    runGameOfLife("gameOfLife");
-  }, []);
-
-  // --- 1st useEffect: Load raw data only ---
-  useEffect(() => {
-    try {
-      const initialReadingListData = sourcesRawData.map((item, index) => {
-        const cachedItem = {
-          ...item,
-          embedding: item.embedding || [],
-          originalIndex: index,
-        };
-        return cachedItem;
-      });
-      originalSourcesRawData.current = initialReadingListData;
-      console.log("1st useEffect - sourcesRawData loaded:", sourcesRawData);
-    } catch (error) {
-      console.error(
-        "Library useEffect (data load) - Error importing reading list data:",
-        error
-      );
-    }
-  }, []); // Empty dependency array - runs only once on mount
-
-  // --- 2nd useEffect: Apply initial filters and set states based on loaded data ---
-  const filteredData = useMemo(() => {
-    if (!originalSourcesRawData.current) return [];
-
-    let data = [...originalSourcesRawData.current];
-
-    if (activeTagFilters.length > 0) {
-      data = data.filter((item) =>
-        activeTagFilters.every((tag) => item.tags.includes(tag))
-      );
-    }
-
-    if (readFilterState === 1) {
-      data = data.filter((item) => item.isRead);
-    } else if (readFilterState === 2) {
-      data = data.filter((item) => !item.isRead);
-    }
-
-    return data;
-  }, [originalSourcesRawData.current, activeTagFilters, readFilterState]);
-
-  useEffect(() => {
-    updateGraphDataIfNeeded(filteredData);
-    setDisplayedReadingListData(filteredData);
-  }, [filteredData]);
-
-  const debounceFunc = (func, wait) => {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  };
-
-  const updateGraphDataIfNeeded = useCallback(
-    (newData) => {
-      if (!deepEqual(newData, graphData)) {
-        setGraphData(newData);
-      }
-    },
-    [graphData]
-  );
-
-  const updateDisplayedReadingListIfNeeded = useCallback(
-    (newData) => {
-      if (!deepEqual(newData, displayedReadingListData)) {
-        setDisplayedReadingListData(newData);
-      }
-    },
-    [displayedReadingListData]
-  );
-
-  const performSearch = (query, data) => {
-    if (!query) return data;
-    return data.filter((item) =>
-      item.title.toLowerCase().includes(query.toLowerCase())
-    );
-  };
-
-  const handleSearchInput = (e) => {
-    const query = e.target.value;
-    const filteredData = performSearch(query, originalSourcesRawData.current);
-    console.log(
-      "handleSearchInput - Before setReadingListData, readingListData:",
-      readingListData
-    );
-    console.log(
-      "handleSearchInput - Before setGraphData, graphData:",
-      graphData
-    );
-    console.log(
-      "graphData state before setGraphData in handleSearchInput:",
-      graphData
-    ); // DEBUG LOG
-    setReadingListData(filteredData);
-    if (!deepEqual(filteredData, graphData)) {
-      updateGraphDataIfNeeded(filteredData);
-    }
-    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
-    console.log(
-      "graphData state after setGraphData in handleSearchInput:",
-      graphData
-    ); // DEBUG LOG
-    console.log(
-      "handleSearchInput - After setReadingListData, readingListData:",
-      readingListData
-    );
-    console.log(
-      "handleSearchInput - After setGraphData, graphData:",
-      graphData
-    );
-  };
-
-  const sortReadingList = (sortBy, sortOrder) => {
-    let sortedData = [...displayedReadingListData]; // Sort based on displayed list
-    sortedData.sort((a, b) => {
-      let comparison = 0;
-      if (sortBy === "release") {
-        const dateA = new Date(a.releaseDate);
-        const dateB = new Date(b.releaseDate);
-        comparison = dateA - dateB;
-      } else if (sortBy === "time") {
-        comparison = a.readTime - b.readTime;
-      }
-      return sortOrder === "asc" ? comparison : comparison * -1;
-    });
-    console.log(
-      "sortReadingList - Before setDisplayedReadingListData, displayedReadingListData:",
-      displayedReadingListData
-    );
-    console.log("graphData state in sortReadingList:", graphData); // DEBUG LOG
-    setDisplayedReadingListData(sortedData); // Update ONLY displayed list
-    console.log(
-      "sortReadingList - After setDisplayedReadingListData, displayedReadingListData:",
-      sortedData
-    );
-    // DO NOT UPDATE graphData or readingListData
-  };
-
-  const filterByType = (filterType, currentData) => {
-    // Modified: Accepts currentData
-    const dataToFilter = currentData || originalSourcesRawData.current; // Use currentData or original
-    let filteredData;
-    if (filterType === "all") {
-      filteredData = dataToFilter;
-    } else {
-      filteredData = dataToFilter.filter((item) =>
-        item.tags.includes(filterType)
-      );
-    }
-    console.log(
-      "filterByType - Before setReadingListData, readingListData:",
-      readingListData
-    );
-    console.log("filterByType - Before setGraphData, graphData:", graphData);
-    console.log(
-      "graphData state before setGraphData in filterByType:",
-      graphData
-    ); // DEBUG LOG
-    setReadingListData(filteredData);
-    if (!deepEqual(filteredData, graphData)) {
-      updateGraphDataIfNeeded(filteredData);
-    }
-    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
-    console.log(
-      "graphData state after setGraphData in filterByType:",
-      graphData
-    ); // DEBUG LOG
-    console.log(
-      "filterByType - After setReadingListData, readingListData:",
-      filteredData
-    );
-    console.log("filterByType - After setGraphData, graphData:", graphData);
-    return filteredData; // Modified: Return filteredData
-  };
-
-  const filterReadStatus = (onlyUnread, currentData) => {
-    // Modified: Accepts currentData
-    const dataToFilter = currentData || originalSourcesRawData.current; // Use currentData or original
-    let filteredData;
-    if (onlyUnread === true) {
-      filteredData = dataToFilter.filter((item) => !item.isRead);
-    } else if (onlyUnread === false) {
-      filteredData = dataToFilter.filter((item) => item.isRead);
-    } else {
-      filteredData = dataToFilter;
-    }
-    console.log(
-      "filterReadStatus - Before setReadingListData, readingListData:",
-      readingListData
-    );
-    console.log(
-      "filterReadStatus - Before setGraphData, graphData:",
-      graphData
-    );
-    console.log(
-      "graphData state before setGraphData in filterReadStatus:",
-      graphData
-    ); // DEBUG LOG
-    setReadingListData(filteredData);
-    if (!deepEqual(filteredData, graphData)) {
-      updateGraphDataIfNeeded(filteredData);
-    }
-    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
-    console.log(
-      "graphData state after setGraphData in filterReadStatus:",
-      graphData
-    ); // DEBUG LOG
-    console.log(
-      "filterReadStatus - After setReadingListData, readingListData:",
-      filteredData
-    );
-    console.log("filterReadStatus - After setGraphData, graphData:", graphData);
-    return filteredData; // Modified: Return filteredData
-  };
-
-  const handleTagFilter = (tag) => {
-    let newActiveTagFilters = [...activeTagFilters];
-    if (newActiveTagFilters.includes(tag)) {
-      newActiveTagFilters = newActiveTagFilters.filter(
-        (activeTag) => activeTag !== tag
-      );
-    } else {
-      newActiveTagFilters = [...newActiveTagFilters, tag];
-    }
-    setActiveTagFilters(newActiveTagFilters);
-  };
-
-  useEffect(() => {
-    if (originalSourcesRawData.current) {
-      // Ensure data is loaded before applying tag filters
-      applyTagFilters(originalSourcesRawData.current);
-    }
-  }, [activeTagFilters, originalSourcesRawData]); // Added originalSourcesRawData dependency
-
-  const applyTagFilters = () => {
-    // Modified: No arguments needed - always uses original data
-    const dataToFilter = originalSourcesRawData.current; // Always filter against original data
-    if (!dataToFilter) return []; // Handle no data case
-
-    let filteredData = dataToFilter;
-    if (activeTagFilters.length > 0) {
-      filteredData = filteredData.filter((item) => {
-        return activeTagFilters.every((filterTag) =>
-          item.tags.includes(filterTag)
-        );
-      });
-    }
-    console.log(
-      "applyTagFilters - Before setReadingListData, readingListData:",
-      readingListData
-    );
-    console.log("applyTagFilters - Before setGraphData, graphData:", graphData);
-    console.log(
-      "graphData state before setGraphData in applyTagFilters:",
-      graphData
-    ); // DEBUG LOG
-    setReadingListData(filteredData);
-    if (!deepEqual(filteredData, graphData)) {
-      updateGraphDataIfNeeded(filteredData);
-    }
-    updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
-    console.log(
-      "graphData state after setGraphData in applyTagFilters:",
-      graphData
-    ); // DEBUG LOG
-    console.log(
-      "applyTagFilters - After setReadingListData, readingListData:",
-      filteredData
-    );
-    console.log("applyTagFilters - After setGraphData, graphData:", graphData);
-    return filteredData;
-  };
-
-  const toggleReadFilter = (button) => {
-    setReadFilterState((prevState) => (prevState + 1) % 3);
-  };
-
-  useEffect(() => {
-    if (originalSourcesRawData.current) {
-      // Ensure data is loaded before applying read filter
-      let filteredData = applyTagFilters(originalSourcesRawData.current); // Start with tag-filtered data
-      if (readFilterState === 1) {
-        filteredData = filterReadStatus(false, filteredData); // Pass tag-filtered data
-      } else if (readFilterState === 2) {
-        filteredData = filterReadStatus(true, filteredData); // Pass tag-filtered data
-      } else {
-        filteredData = filterByType("all", filteredData); // Get data from filterByType, pass tag-filtered data
-      }
-      if (!deepEqual(filteredData, graphData)) {
-        startTransition(() => {
-          updateGraphDataIfNeeded(filteredData);
-        });
-      }
-      updateDisplayedReadingListIfNeeded(filteredData); // Update displayed list as a copy
-    }
-  }, [readFilterState, originalSourcesRawData, activeTagFilters]); // Added originalSourcesRawData and activeTagFilters dependencies
-
-  const toggleSort = (button, criteria) => {
-    const currentOrder = button.dataset.order || "unsorted";
-    let newOrder;
-
-    if (currentOrder === "unsorted") {
-      newOrder = "asc";
-    } else if (currentOrder === "asc") {
-      newOrder = "desc";
-    } else {
-      newOrder = "unsorted";
-    }
-
-    const buttons = document.querySelectorAll(".sort-bar button");
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-      const arrowSpan = btn.querySelector(".sort-arrow");
-      if (arrowSpan) arrowSpan.textContent = "";
-    });
-
-    if (newOrder !== "unsorted") {
-      button.classList.add("active");
-      button.dataset.order = newOrder;
-      const arrowSpan = button.querySelector(".sort-arrow");
-      if (arrowSpan) {
-        arrowSpan.textContent = newOrder === "asc" ? "↑" : "↓";
-      }
-      sortReadingList(criteria, newOrder);
-    } else {
-      button.dataset.order = "unsorted";
-      setDisplayedReadingListData([...readingListData]); // Reset displayed list using copy from readingListData
-    }
-  };
-
-  const toggleFilterType = (button, type) => {
-    const isActive = button.classList.contains("active");
-    const buttons = document.querySelectorAll(".sort-bar button");
-    buttons.forEach((btn) => {
-      if (btn !== document.getElementById("filter-read")) {
-        btn.classList.remove("active");
-        btn.style.removeProperty("--active-color");
-        btn.style.removeProperty("--active-text-color");
-      }
-    });
-
-    if (!isActive) {
-      button.classList.add("active");
-      switch (type) {
-        case "YT":
-          button.style.setProperty("--active-color", "#FF0000");
-          button.style.setProperty("--active-text-color", "#FFFFFF");
-          break;
-        case "Arxiv":
-          button.style.setProperty("--active-color", "#A51C30");
-          button.style.setProperty("--active-text-color", "#FFFFFF");
-          break;
-        case "Site":
-          button.style.setProperty("--active-color", "#DA8FFF");
-          button.style.setProperty("--active-text-color", "#FFFFFF");
-          break;
-        case "Essay":
-          button.style.setProperty("--active-color", "#F5F5DC");
-          button.style.setProperty("--active-text-color", "#000000");
-          break;
-        default:
-          break;
-      }
-      filterByType(type);
-    } else {
-      button.style.removeProperty("--active-color");
-      button.style.removeProperty("--active-text-color");
-      filterByType("all");
-      setActiveTagFilters([]);
-    }
-  };
-
-  // Memoize graphData to prevent unnecessary re-renders of DocumentGraph
-  const memoizedGraphData = useMemo(() => {
-    console.log("memoizedGraphData useMemo called, graphData:", graphData); // DEBUG LOG
-    return graphData;
-  }, [graphData]);
-
-  // ===================== DocumentGraph Component =====================
-  const DocumentGraph = React.memo(
-    ({
-      width,
-      height,
-      graphDisplayData,
-      documentSimilaritiesData,
-      graphParams,
-    }) => {
-      // Pass graphParams
-      console.count("DocumentGraph RENDER"); // <--- Add render counter
-      console.log(
-        "DocumentGraph RENDER - graphDisplayData prop received:",
-        graphDisplayData
-      );
-      const containerRef = useRef(null);
-      const [error, setError] = useState(null);
-      const [isSmallScreen, setIsSmallScreen] = useState(false);
-      const svgRef = useRef(null);
-      const simulationRef = useRef(null);
-      const nodeTitleGroupRef = useRef(null);
-      const prevGraphDataRef = useRef(graphDisplayData); // Ref to store previous prop
-      const graphSize = graphParams.graphSizePadding; // Use hyperparameter
-
-      useEffect(() => {
-        if (
-          JSON.stringify(graphDisplayData) !==
-          JSON.stringify(prevGraphDataRef.current)
-        ) {
-          console.log(
-            "DocumentGraph useEffect - graphDisplayData prop CHANGED:",
-            graphDisplayData
-          );
-          prevGraphDataRef.current = graphDisplayData; // Update previous prop
-        } else {
-          console.log(
-            "DocumentGraph useEffect - graphDisplayData prop UNCHANGED (shallowly equal):",
-            graphDisplayData
-          );
-        }
-      }, [graphDisplayData]);
-
-      const checkScreenSize = () => {
-        setIsSmallScreen(window.innerWidth <= 768);
-      };
-      const debouncedCheckScreenSize = debounceFunc(checkScreenSize, 1000);
-
-      useEffect(() => {
-        checkScreenSize();
-        window.addEventListener("resize", debouncedCheckScreenSize);
-        return () => {
-          window.removeEventListener("resize", debouncedCheckScreenSize);
-        };
-      }, []);
-
-      useEffect(() => {
-        console.log(
-          "DocumentGraph useEffect - graphDisplayData prop in useEffect:",
-          graphDisplayData
-        ); // Log renamed prop
-        if (!documentSimilaritiesData) {
-          console.log(
-            "DocumentGraph useEffect - No documentSimilaritiesData, returning early."
-          );
-          return;
-        }
-
-        if (!isSmallScreen && graphDisplayData && graphDisplayData.length > 0) {
-          console.log(
-            "DocumentGraph useEffect - Initializing graph with graphDisplayData:",
-            graphDisplayData
-          );
-          initializeGraph(graphDisplayData);
-        } else if (
-          !isSmallScreen &&
-          (!graphDisplayData || graphDisplayData.length === 0)
-        ) {
-          console.log(
-            "DocumentGraph useEffect - Cleaning up graph - No data or small screen."
-          );
-          cleanupGraph();
-          if (svgRef.current) {
-            const svg = d3.select(svgRef.current);
-            svg.selectAll("*").remove();
-            svg
-              .append("rect")
-              .attr("width", "400px")
-              .attr("height", "400px")
-              .attr("fill", "var(--graph-background)");
-            const textGroup = svg
-              .append("g")
-              .attr("transform", `translate(${width / 2}, ${height / 2})`);
-            textGroup
-              .append("text")
-              .attr("text-anchor", "middle")
-              .attr("fill", "var(--text-color)")
-              .text("No documents to display");
-          } else if (containerRef.current) {
-            const container = d3.select(containerRef.current);
-            container.selectAll("*").remove();
-            const svg = container
-              .append("svg")
-              .attr("width", "400px")
-              .attr("height", "400px")
-              .attr("className", "rounded-lg");
-            svg
-              .append("rect")
-              .attr("width", "400px")
-              .attr("height", "400px")
-              .attr("fill", "var(--graph-background)");
-            const textGroup = svg
-              .append("g")
-              .attr("transform", `translate(${width / 2}, ${height / 2})`);
-            textGroup
-              .append("text")
-              .attr("text-anchor", "middle")
-              .attr("fill", "var(--text-color)")
-              .text("No documents to display");
-          }
-        } else {
-          console.log(
-            "DocumentGraph useEffect - Condition not met - No graph update."
-          );
-        }
-      }, [
-        isSmallScreen,
-        width,
-        height,
-        documentSimilaritiesData,
-        memoizedGraphData,
-        graphParams, // Add graphParams dependency
-      ]);
-
-      const cleanupGraph = useCallback(() => {
-        if (simulationRef.current) {
-          simulationRef.current.stop();
-          simulationRef.current = null;
-        }
-        if (containerRef.current) {
-          const container = d3.select(containerRef.current);
-          container.selectAll("*").remove();
-        }
-      }, []);
-
-      const initializeGraph = async (visibleDocsForGraph) => {
-        if (!containerRef.current) return;
-        if (!documentSimilaritiesData) return;
-        cleanupGraph();
-
-        try {
-          const container = d3.select(containerRef.current);
-          // Create the SVG element
-          const svg = container
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("className", "rounded-lg");
-          svgRef.current = svg;
-
-          // Add background rect
-          svg
-            .append("rect")
-            .attr("width", "100%")
-            .attr("height", "100%")
-            .attr("fill", "var(--graph-background)");
-
-          if (!visibleDocsForGraph.length) {
-            const textGroup = svg
-              .append("g")
-              .attr("transform", `translate(${width / 2}, ${height / 2})`);
-            textGroup
-              .append("text")
-              .attr("text-anchor", "middle")
-              .attr("fill", "var(--text-color)")
-              .text("No documents to display");
-            return;
-          }
-
-          // Group to be transformed by zoom & pan
-          const g = svg.append("g");
-
-          // Create zoom behavior and attach it to the SVG.
-          // Note: We use broader scaleExtent and translateExtent values so users
-          // can pan the entire graph and zoom fully in/out.
-          const baseExtent = [
-            [-width, -height],
-            [2 * width, 2 * height],
-          ];
-          const zoomBehavior = d3
-            .zoom()
-            .scaleExtent(graphParams.zoomScaleExtent) // Use hyperparameter
-            .on("zoom", (event) => {
-              // Update g transform as usual
-              g.attr("transform", event.transform);
-
-              // Calculate dynamic extent based on scale
-              const scale = event.transform.k;
-              const scaleFactor = 1 / graphParams.zoomScaleExtent[0]; // Use hyperparameter
-              const multiplier = scale * scaleFactor;
-
-              const txExtent = [
-                [baseExtent[0][0] * multiplier, baseExtent[0][1] * multiplier],
-                [baseExtent[1][0] * multiplier, baseExtent[1][1] * multiplier],
-              ];
-
-              // Dynamically update the translateExtent
-              zoomBehavior.translateExtent(txExtent);
-            });
-
-          // Apply the zoom behavior to the svg element
-          svg.call(zoomBehavior);
-          const initialScale = graphParams.initialZoomScale; // Use hyperparameter
-          svg.call(
-            zoomBehavior.transform,
-            d3.zoomIdentity
-              .translate(
-                (width / 3) * graphParams.initialZoomTranslateFactor, // Use hyperparameter
-                (height / 3) * graphParams.initialZoomTranslateFactor
-              ) // Use hyperparameter
-              .scale(initialScale)
-          );
-
-          const visibleDocIndicesMap = {};
-          visibleDocsForGraph.forEach((doc, index) => {
-            visibleDocIndicesMap[doc.originalIndex] = index;
-          });
-
-          const nodes = visibleDocsForGraph.map((doc, i) => ({
-            id: String(i),
-            title: doc.title,
-            fullText: doc.description,
-            tags: doc.tags,
-            readTime: doc.readTime,
-            releaseDate: doc.releaseDate,
-            isRead: doc.isRead,
-          }));
-
-          let links = documentSimilaritiesData
-            .filter((link) => {
-              return (
-                link.source in visibleDocIndicesMap &&
-                link.target in visibleDocIndicesMap
-              );
-            })
-            .map((link) => ({
-              ...link,
-              source: String(visibleDocIndicesMap[link.source]),
-              target: String(visibleDocIndicesMap[link.target]),
-            }));
-
-          if (!links || links.length === 0) {
-            links = [];
-          }
-
-          initializeSimulation(
-            nodes,
-            links,
-            width,
-            height,
-            g,
-            svg,
-            visibleDocsForGraph.map((doc) => doc.readTime),
-            graphParams // Pass graphParams
-          );
-        } catch (error) {
-          setError("Error initializing graph. See console for details.");
-        }
-      };
-
-      const initializeSimulation = (
-        nodes,
-        links,
-        width,
-        height,
-        g,
-        svg,
-        readTimes,
-        graphParams // Receive graphParams
-      ) => {
-        nodes.forEach((node) => {
-          node.x = width / 2 + (Math.random() - 0.5) * 40;
-          node.y = height / 2 + (Math.random() - 0.5) * 40;
-        });
-
-        simulationRef.current = d3
-          .forceSimulation()
-          .nodes(nodes)
-          .force(
-            "link",
-            d3
-              .forceLink(links)
-              .id((d) => d.id)
-              .distance(graphParams.linkDistance) // Use hyperparameter
-              .strength(graphParams.linkStrength) // Use hyperparameter
-          )
-          .force(
-            "charge",
-            d3.forceManyBody().strength(graphParams.chargeStrength)
-          ) // Use hyperparameter
-          .force(
-            "center",
-            d3
-              .forceCenter(width / 2, height / 2)
-              .strength(graphParams.centerStrength)
-          ) // Use hyperparameter
-          .force("x", d3.forceX(width / 2).strength(graphParams.xForceStrength)) // Use hyperparameter
-          .force(
-            "y",
-            d3.forceY(height / 2).strength(graphParams.yForceStrength)
-          ) // Use hyperparameter
-          .force(
-            "collision",
-            d3
-              .forceCollide()
-              .strength(graphParams.collideStrength) // Use hyperparameter
-              .radius(
-                (d) =>
-                  normalizeReadTime(
-                    d.readTime,
-                    Math.min(...readTimes),
-                    Math.max(...readTimes),
-                    graphParams // Pass graphParams
-                  ) + graphParams.collideRadiusPadding // Use hyperparameter
-              )
-          )
-          .force("boundary", forceBoundary(width, height, nodes, graphParams)) // Pass graphParams
-          .alpha(graphParams.simulationAlpha) // Use hyperparameter
-          .velocityDecay(graphParams.velocityDecay) // Use hyperparameter
-          .alphaDecay(graphParams.alphaDecay) // Use hyperparameter
-          .alphaMin(graphParams.alphaMin); // Use hyperparameter
-
-        const link = g
-          .append("g")
-          .selectAll("line")
-          .data(links)
-          .join("line")
-          .attr("stroke", "var(--edge-color)")
-          .attr("stroke-width", (d) => d.width)
-          .attr("stroke-opacity", "var(--edge-opacity)");
-
-        const nodeGroup = g.append("g").attr("className", "nodes");
-        const node = nodeGroup
-          .selectAll("g")
-          .data(nodes)
-          .join("g")
-          .attr("transform", (d) => `translate(${d.x},${d.y})`)
-          .call(
-            d3
-              .drag()
-              .on("start", dragstarted)
-              .on("drag", dragged)
-              .on("end", dragended)
-          );
-
-        node
-          .append("circle")
-          .attr("r", (d) =>
-            normalizeReadTime(
-              d.readTime,
-              Math.min(...readTimes),
-              Math.max(...readTimes),
-              graphParams // Pass graphParams
-            )
-          )
-          .attr("fill", (d) => (d.isRead ? "#4a9eff" : "var(--node-color)"))
-          .attr("stroke", "var(--node-stroke-color)")
-          .on("mouseover", function (event, d) {
-            d3.select(this).attr("fill", "#8ACE00");
-            link
-              .attr("stroke", (l) =>
-                l.source.id === d.id || l.target.id === d.id
-                  ? "#8ACE00"
-                  : "var(--edge-color)"
-              )
-              .attr("stroke-width", (l) =>
-                l.source.id === d.id || l.target.id === d.id ? 3 : l.width
-              );
-            const titleGroup = nodeGroup
-              .append("g")
-              .attr("className", "node-title-group")
-              .attr("transform", `translate(${d.x},${d.y})`);
-            nodeTitleGroupRef.current = titleGroup;
-
-            titleGroup
-              .append("text")
-              .attr("className", "node-title")
-              .attr("x", 10)
-              .attr("y", 5)
-              .attr("fill", "var(--text-color)")
-              .text(d.title);
-          })
-          .on("mouseout", function (event, d) {
-            d3.select(this).attr("fill", (d) =>
-              d.isRead ? "#4a9eff" : "var(--node-color)"
-            );
-            link
-              .attr("stroke", "var(--edge-color)")
-              .attr("stroke-width", (l) => l.width);
-            if (nodeTitleGroupRef.current) {
-              nodeTitleGroupRef.current.remove();
-              nodeTitleGroupRef.current = null;
-            }
-          });
-
-        let lastTickTime = performance.now();
-
-        simulationRef.current.on("tick", () => {
-          const currentTime = performance.now();
-          const frameTime = currentTime - lastTickTime;
-          console.log(`Graph frame time: ${frameTime.toFixed(2)} ms`);
-          lastTickTime = currentTime;
-
-          link
-            .attr("x1", (d) =>
-              boundPosition(d.source.x, width, -graphParams.graphSizePadding)
-            ) // Use hyperparameter
-            .attr("y1", (d) =>
-              boundPosition(d.source.y, height, -graphParams.graphSizePadding)
-            ) // Use hyperparameter
-            .attr("x2", (d) =>
-              boundPosition(d.target.x, width, -graphParams.graphSizePadding)
-            ) // Use hyperparameter
-            .attr("y2", (d) =>
-              boundPosition(d.target.y, height, -graphParams.graphSizePadding)
-            ); // Use hyperparameter
-          node.attr("transform", (d) => {
-            const x = boundPosition(d.x, width, -graphParams.graphSizePadding); // Use hyperparameter
-            const y = boundPosition(d.y, height, -graphParams.graphSizePadding); // Use hyperparameter
-            return `translate(${x},${y})`;
-          });
-        });
-      };
-
-      const dragstarted = (event, d) => {
-        if (!event.active) simulationRef.current.alphaTarget(0.01).restart();
-        d.fx = d.x;
-        d.fy = d.y;
-        simulationRef.current.force("link").strength(0.8);
-        simulationRef.current.alphaTarget(0.3).restart();
-      };
-
-      const dragged = (event, d) => {
-        simulationRef.current.alphaTarget(0.01);
-        d.fx = boundPosition(event.x, width, -graphParams.graphSizePadding); // Use hyperparameter
-        d.fy = boundPosition(event.y, height, -graphParams.graphSizePadding); // Use hyperparameter
-      };
-
-      const dragended = (event, d) => {
-        if (!event.active) simulationRef.current.alphaTarget(0.01);
-        d.fx = null;
-        d.fy = null;
-      };
-
-      const forceBoundary = (width, height, nodes, graphParams) => {
-        // Receive graphParams
-        const padding = 4;
-        const xMin = padding;
-        const xMax = width - padding;
-        const yMin = padding;
-        const yMax = height - padding;
-        const strength = graphParams.boundaryStrength; // Use hyperparameter
-
-        function force(alpha) {
-          nodes.forEach((node) => {
-            if (node.x < xMin) node.vx += (xMin - node.x) * strength * alpha;
-            if (node.x > xMax) node.vx += (xMax - node.x) * strength * alpha;
-            if (node.y < yMin) node.vy += (yMin - node.y) * strength * alpha;
-            if (node.y > yMax) node.vy += (yMax - node.y) * strength * alpha;
-          });
-        }
-        return force;
-      };
-
-      const boundPosition = (position, dimension, padding) => {
-        return Math.max(padding, Math.min(dimension - padding, position));
-      };
-
-      const normalizeReadTime = (
-        readTime,
-        minReadTime,
-        maxReadTime,
-        graphParams
-      ) => {
-        // Receive graphParams
-        const minRadius = graphParams.nodeMinRadius; // Use hyperparameter
-        const maxRadius = graphParams.nodeMaxRadius; // Use hyperparameter
-        if (maxReadTime === minReadTime) return (minRadius + maxRadius) / 2;
-        const logMin = Math.log(minReadTime + 1);
-        const logMax = Math.log(maxReadTime + 1);
-        const logReadTime = Math.log(readTime + 1);
-        return (
-          ((logReadTime - logMin) / (logMax - logMin)) *
-            (maxRadius - minRadius) +
-          minRadius
-        );
-      };
-
-      if (isSmallScreen) return null;
-
-      if (error) {
-        return (
-          <div
-            className="flex items-center justify-center h-32 rounded-lg"
-            style={{
-              backgroundColor: "var(--graph-background)",
-              color: "var(--text-color)",
-            }}
-          >
-            <p className="text-red-600">{error}</p>
-          </div>
-        );
-      }
-
-      return <div ref={containerRef} className="w-full h-full" />;
-    }
-  );
-  DocumentGraph.displayName = "DocumentGraph";
-
-  // --- useEffect for Scroll to Top Button Visibility ---
+  const toggleTheme = useCallback(() => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    localStorage.setItem("theme", next);
+  }, [theme]);
+
+  // --- Scroll to top ---
+  const scrollToTopButtonRef = useRef(null);
   useEffect(() => {
     const button = scrollToTopButtonRef.current;
-
     const handleScroll = () => {
       if (window.scrollY > 300) {
-        // Adjust scroll threshold as needed
         button.classList.remove("opacity-0");
         button.classList.add("opacity-100");
       } else {
@@ -1058,12 +530,157 @@ function Library() {
         button.classList.add("opacity-0");
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check on mount
-
-    return () => window.removeEventListener("scroll", handleScroll); // Cleanup on unmount
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  // --- Game of Life canvas ---
+  useEffect(() => {
+    runGameOfLife("gameOfLife");
+  }, []);
+
+  // --- Data prep (once) ---
+  const originalData = useMemo(() => {
+    return sourcesRawData.map((item, index) => ({
+      ...item,
+      embedding: item.embedding || [],
+      originalIndex: index,
+    }));
+  }, []);
+
+  // --- UI State ---
+  const [activeTagFilters, setActiveTagFilters] = useState([]);
+  const [readFilterState, setReadFilterState] = useState(0); // 0=all,1=read,2=unread
+  const [typeFilter, setTypeFilter] = useState("all"); // "all", "YT", "Arxiv", "Site", "Essay"
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSetSearch = useDebouncedCallback(setSearchQuery, 180);
+
+  // Sorting state
+  const [sortBy, setSortBy] = useState(null); // "release" | "time" | null
+  const [sortOrder, setSortOrder] = useState("asc"); // "asc" | "desc"
+
+  // Tag toggle
+  const handleTagFilter = useCallback(
+    (tag) => {
+      setActiveTagFilters((prev) =>
+        prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+      );
+    },
+    [setActiveTagFilters]
+  );
+
+  // Read filter toggle
+  const toggleReadFilter = useCallback(() => {
+    setReadFilterState((prev) => (prev + 1) % 3);
+  }, []);
+
+  // Type filter toggle
+  const toggleFilterType = useCallback(
+    (newType) => {
+      setTypeFilter((prev) => (prev === newType ? "all" : newType));
+      // Clear tag filters when turning a type off (mirrors previous behavior)
+      if (typeFilter === newType) {
+        setActiveTagFilters([]);
+      }
+    },
+    [typeFilter]
+  );
+
+  // Sort toggle helpers (cycles asc -> desc -> unsorted)
+  const toggleSort = useCallback(
+    (criteria) => {
+      if (sortBy !== criteria) {
+        setSortBy(criteria);
+        setSortOrder("asc");
+      } else if (sortOrder === "asc") {
+        setSortOrder("desc");
+      } else if (sortOrder === "desc") {
+        setSortBy(null);
+        setSortOrder("asc"); // reset default for next time
+      }
+    },
+    [sortBy, sortOrder]
+  );
+
+  // ===== Derived lists =====
+  // Base filtered list (NO SORT) -> drives the graph (won't change on sort)
+  const baseFilteredList = useMemo(() => {
+    let data = originalData;
+
+    // type filter
+    if (typeFilter !== "all") {
+      data = data.filter((item) => item.tags.includes(typeFilter));
+    }
+
+    // tag AND filter
+    if (activeTagFilters.length > 0) {
+      data = data.filter((item) =>
+        activeTagFilters.every((t) => item.tags.includes(t))
+      );
+    }
+
+    // read filter
+    if (readFilterState === 1) {
+      data = data.filter((item) => item.isRead);
+    } else if (readFilterState === 2) {
+      data = data.filter((item) => !item.isRead);
+    }
+
+    // search by title
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      data = data.filter((item) => item.title.toLowerCase().includes(q));
+    }
+
+    // IMPORTANT: no sorting here
+    return data;
+  }, [
+    originalData,
+    typeFilter,
+    activeTagFilters,
+    readFilterState,
+    searchQuery,
+  ]);
+
+  // Sorted list for UI only (graph not affected)
+  const sortedList = useMemo(() => {
+    if (!sortBy) return baseFilteredList;
+
+    const data = [...baseFilteredList].sort((a, b) => {
+      if (sortBy === "release") {
+        const da = new Date(a.releaseDate).getTime();
+        const db = new Date(b.releaseDate).getTime();
+        return da - db;
+      } else if (sortBy === "time") {
+        return a.readTime - b.readTime;
+      }
+      return 0;
+    });
+    if (sortOrder === "desc") data.reverse();
+    return data;
+  }, [baseFilteredList, sortBy, sortOrder]);
+
+  // Active style for type buttons
+  const typeBtnStyle = (type) =>
+    typeFilter === type
+      ? {
+          "--active-text-color": "#FFFFFF",
+          "--active-color":
+            type === "YT"
+              ? "#FF0000"
+              : type === "Arxiv"
+              ? "#A51C30"
+              : type === "Site"
+              ? "#DA8FFF"
+              : "#F5F5DC",
+          color: "var(--active-text-color)",
+          backgroundColor: "var(--active-color)",
+        }
+      : {};
 
   // --- JSX Markup ---
   return (
@@ -1077,7 +694,7 @@ function Library() {
         className="game-of-life"
         width="200"
         height="400"
-      ></canvas>
+      />
 
       <header className="header">
         <div className="logo-section">
@@ -1131,31 +748,43 @@ function Library() {
           <h1 className="name" style={{ marginBottom: "10px" }}>
             Library
           </h1>
+
           <div className="search-bar">
             <input
               type="text"
               id="search"
               placeholder="Search by term..."
-              onInput={handleSearchInput}
+              onInput={(e) => debouncedSetSearch(e.target.value)}
             />
           </div>
+
           <div className="sort-bar">
             <div className="sort-bar-buttons">
               <button
                 id="sort-release"
-                onClick={(event) =>
-                  debounceFunc(toggleSort(event.target, "release"), 1000)
-                }
+                onClick={() => toggleSort("release")}
+                className={sortBy === "release" ? "active" : ""}
+                data-order={sortBy === "release" ? sortOrder : "unsorted"}
               >
-                Sort by Release Date <span className="sort-arrow"></span>
+                Sort by Release Date{" "}
+                <span className="sort-arrow">
+                  {sortBy === "release"
+                    ? sortOrder === "asc"
+                      ? "↑"
+                      : "↓"
+                    : ""}
+                </span>
               </button>
               <button
                 id="sort-time"
-                onClick={(event) =>
-                  debounceFunc(toggleSort(event.target, "time"), 1000)
-                }
+                onClick={() => toggleSort("time")}
+                className={sortBy === "time" ? "active" : ""}
+                data-order={sortBy === "time" ? sortOrder : "unsorted"}
               >
-                Sort by Time to Read <span className="sort-arrow"></span>
+                Sort by Time to Read{" "}
+                <span className="sort-arrow">
+                  {sortBy === "time" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+                </span>
               </button>
               <button
                 id="filter-read"
@@ -1169,39 +798,41 @@ function Library() {
                   ? "Read"
                   : "Unread"}
               </button>
+
               <button
                 id="filter-YT"
-                onClick={(event) =>
-                  debounceFunc(toggleFilterType(event.target, "YT"), 1000)
-                }
+                onClick={() => toggleFilterType("YT")}
+                style={typeBtnStyle("YT")}
+                className={typeFilter === "YT" ? "active" : ""}
               >
                 YT
               </button>
               <button
                 id="filter-Arxiv"
-                onClick={(event) =>
-                  debounceFunc(toggleFilterType(event.target, "Arxiv"), 1000)
-                }
+                onClick={() => toggleFilterType("Arxiv")}
+                style={typeBtnStyle("Arxiv")}
+                className={typeFilter === "Arxiv" ? "active" : ""}
               >
                 Arxiv
               </button>
               <button
                 id="filter-Site"
-                onClick={(event) =>
-                  debounceFunc(toggleFilterType(event.target, "Site"), 1000)
-                }
+                onClick={() => toggleFilterType("Site")}
+                style={typeBtnStyle("Site")}
+                className={typeFilter === "Site" ? "active" : ""}
               >
                 Site
               </button>
               <button
                 id="filter-Essay"
-                onClick={(event) =>
-                  debounceFunc(toggleFilterType(event.target, "Essay"), 1000)
-                }
+                onClick={() => toggleFilterType("Essay")}
+                style={typeBtnStyle("Essay")}
+                className={typeFilter === "Essay" ? "active" : ""}
               >
                 Essay
               </button>
             </div>
+
             <div id="active-tags" className="active-tag">
               {activeTagFilters.map((tag, index) => (
                 <Tag
@@ -1215,33 +846,25 @@ function Library() {
           </div>
 
           <ul id="reading-list">
-            {console.log(
-              "displayedReadingListData before render:",
-              displayedReadingListData
-            )}
-            {displayedReadingListData.map(
-              (
-                item // Use displayedReadingListData here
-              ) => (
-                <ReadingListItem
-                  key={item.originalIndex}
-                  item={item}
-                  onTagFilter={handleTagFilter}
-                />
-              )
-            )}
+            {sortedList.map((item) => (
+              <ReadingListItem
+                key={item.originalIndex}
+                item={item}
+                onTagFilter={handleTagFilter}
+              />
+            ))}
           </ul>
         </div>
 
         <div className="graph-container">
-          <div id="root" className="graph-inner">
+          <div className="graph-inner">
             <div className="space-y-6">
               <DocumentGraph
                 width={400}
                 height={400}
-                graphDisplayData={memoizedGraphData} // Use memoizedGraphData
+                graphDisplayData={baseFilteredList} // <-- filters only; ignores sort
                 documentSimilaritiesData={similaritiesRawData}
-                graphParams={graphHyperparameters} // Pass hyperparameters
+                graphParams={graphHyperparameters}
               />
             </div>
           </div>
