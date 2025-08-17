@@ -1,0 +1,16 @@
+PUSH===
+npm run dev
+git add .
+git commit -m "vite reorganization"
+git push origin main
+
+
+RESET==
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+
+
+MISC===
+python refresh_sims.py
+python condense_inputs.py

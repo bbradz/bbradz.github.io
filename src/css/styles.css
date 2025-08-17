@@ -29,12 +29,13 @@
 
 @font-face {
   font-family: "default";
-  src: url("../../public/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
+  src: url("../assets/fonts/SpaceGrotesk-VariableFont_wght.ttf")
+    format("opentype");
 }
 
 @font-face {
   font-family: "IcelandWinterstorm";
-  src: url("../../public/assets/fonts/Roman SD.ttf") format("opentype");
+  src: url("../assets/fonts/Roman SD.ttf") format("opentype");
 }
 
 * {
@@ -54,9 +55,9 @@ body {
   line-height: 1.5;
   margin: 0;
   padding-top: 50px;
-  transition: background-color 0.0s, color 0.0s;
+  transition: background-color 0s, color 0s;
   min-height: 100vh; /* Ensure body is at least the height of the viewport */
-  display: flex;       /* Use flexbox to control layout */
+  display: flex; /* Use flexbox to control layout */
   flex-direction: column; /* Stack header, container, etc. vertically */
 }
 
@@ -103,7 +104,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  transition: background-color 0.0s;
+  transition: background-color 0s;
 }
 
 .theme-toggle svg {
@@ -171,13 +172,14 @@ body {
   padding-bottom: 5px;
 }
 
-.container.article-page { /* Styles for article pages specifically */
+.container.article-page {
+  /* Styles for article pages specifically */
   max-width: 960px; /* Or your preferred max width */
   margin: 20px auto; /* Center the container on the page and add top/bottom margin */
   padding: 20px;
   box-sizing: border-box; /* Include padding in width calculation */
   overflow-x: hidden; /* Prevent horizontal scrollbar */
-  overflow-y: auto;   /* Enable vertical scrollbar if content overflows */
+  overflow-y: auto; /* Enable vertical scrollbar if content overflows */
   flex: 1; /* Allow container to grow and take available vertical space */
 }
 
@@ -246,7 +248,7 @@ h2 {
 }
 
 .back-link {
-  background-color: var(--bg-color); 
+  background-color: var(--bg-color);
 }
 
 .back-link:hover {
@@ -377,7 +379,7 @@ sub {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: background-color 0.0s;
+  transition: background-color 0s;
   position: relative;
   flex-grow: 1;
   font-size: 1rem;
@@ -629,7 +631,7 @@ sub {
   border-radius: 8px;
   margin: 1rem 0;
   cursor: pointer;
-  transition: background-color 0.0s;
+  transition: background-color 0s;
   font-size: 0.9rem;
   margin-bottom: 32px;
 }
@@ -679,12 +681,12 @@ sub {
 .sidebar-toc {
   /* --- Positioning and Visibility --- */
   position: fixed; /* Fixed position relative to the viewport */
-  right: 2rem;      /* Distance from the right edge of the viewport */
-  top: 8rem;        /* Distance from the top of the viewport - adjust as needed */
-  width: 16rem;      /* Fixed width of the sidebar */
+  right: 2rem; /* Distance from the right edge of the viewport */
+  top: 8rem; /* Distance from the top of the viewport - adjust as needed */
+  width: 16rem; /* Fixed width of the sidebar */
   max-height: calc(100vh - 12rem); /* Maximum height to fit within viewport */
 
-  opacity: 0;         /* Initially hidden - for fade-in effect */
+  opacity: 0; /* Initially hidden - for fade-in effect */
   visibility: hidden; /* Initially hidden - prevents interaction */
   pointer-events: none; /* Initially non-interactive */
 
@@ -696,7 +698,7 @@ sub {
 .sidebar-toc.visible {
   /* --- When Sidebar is Visible (Class 'visible' is added) --- */
   visibility: visible; /* Make the sidebar visible */
-  opacity: 1;         /* Fade in to full opacity */
+  opacity: 1; /* Fade in to full opacity */
   pointer-events: auto; /* Make the sidebar interactive */
   display: block; /* Make sure it's displayed when visible class is added */
 }
@@ -706,16 +708,16 @@ sub {
   background-color: var(--toc-bg); /* Background color from theme variables */
   border: 1px solid var(--table-border); /* Border from theme variables */
   border-radius: 8px; /* Rounded corners */
-  display: flex;        /* Use flexbox for layout */
+  display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Stack header and links vertically */
-  max-height: inherit;  /* Inherit max-height from .sidebar-toc */
+  max-height: inherit; /* Inherit max-height from .sidebar-toc */
   overflow: hidden; /* Prevent content from overflowing rounded corners */
 }
 
 /* --- Sidebar Header --- */
 .sidebar-toc-header {
   font-weight: 600; /* Bold font weight */
-  padding: 1rem;      /* Padding around the header text */
+  padding: 1rem; /* Padding around the header text */
   color: var(--text-color); /* Text color from theme variables */
   border-bottom: none; /* No bottom border (already has container border) */
   background-color: var(--toc-bg); /* Match container background */
@@ -725,12 +727,12 @@ sub {
 
 /* --- Sidebar Links Container --- */
 .sidebar-toc-links {
-  padding: 1rem;         /* Padding around the links */
-  padding-top: 0rem;    /* No top padding to align with header visually */
-  flex-grow: 1;         /* Allow links to take up remaining space in container */
-  overflow-y: auto;      /* Enable vertical scrolling if content overflows */
+  padding: 1rem; /* Padding around the links */
+  padding-top: 0rem; /* No top padding to align with header visually */
+  flex-grow: 1; /* Allow links to take up remaining space in container */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
   scrollbar-width: thin; /* Make scrollbar thinner for aesthetics (Firefox) */
-  font-size: 0.875rem;  /* Slightly smaller font size for links */
+  font-size: 0.875rem; /* Slightly smaller font size for links */
   max-height: calc(100vh - 16rem); /* Adjust max-height for scrollable area */
   box-sizing: border-box; /* Include padding in element's total width and height */
 }
@@ -738,12 +740,12 @@ sub {
 /* --- Sidebar Link Styles --- */
 .sidebar-toc-links a {
   color: var(--nav-color); /* Link color from theme variables */
-  text-decoration: none;   /* Remove default underline */
-  display: block;         /* Make each link a block element for full width click area */
-  white-space: nowrap;    /* Prevent text from wrapping */
-  overflow: hidden;      /* Hide overflowing text */
+  text-decoration: none; /* Remove default underline */
+  display: block; /* Make each link a block element for full width click area */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowing text */
   text-overflow: ellipsis; /* Ellipsis (...) for overflowing text */
-  transition: color 0.0s; /* Smooth color transition on hover */
+  transition: color 0s; /* Smooth color transition on hover */
 }
 
 .sidebar-toc-links a:hover {
@@ -752,42 +754,42 @@ sub {
 
 .sidebar-toc-links a.active {
   color: var(--text-color); /* Active link text color from theme variables */
-  font-weight: 1000;      /* Make active link bolder */
+  font-weight: 1000; /* Make active link bolder */
 }
 
 .sidebar-toc-links a.active-parent {
   color: var(--text-color); /* Active parent link text color */
-  opacity: 1;             /* Ensure full opacity for active parent */
+  opacity: 1; /* Ensure full opacity for active parent */
 }
 
 /* --- Sidebar Link List (OL) --- */
 .sidebar-toc-links ol {
   list-style-type: none; /* Remove default list bullets/numbers */
-  padding-left: 0;       /* Reset left padding */
-  margin: 0px;             /* Reset margins */
+  padding-left: 0; /* Reset left padding */
+  margin: 0px; /* Reset margins */
   border: 0px;
-  display: flex;        /* Use flexbox for list items */
+  display: flex; /* Use flexbox for list items */
   flex-direction: column; /* Stack list items vertically */
-  gap: 0.3rem;         /* Reduced gap for more compressed list items */
+  gap: 0.3rem; /* Reduced gap for more compressed list items */
 }
 
 /* --- Nested List (Sub-levels) --- */
 .sidebar-toc-links ol ol {
-  padding-left: 1rem;       /* Indent nested lists */
-  margin-top: 0.3rem;     /* Reduced margin-top for less vertical space */
+  padding-left: 1rem; /* Indent nested lists */
+  margin-top: 0.3rem; /* Reduced margin-top for less vertical space */
   border-left: none; /* Removed border-left to remove colored line */
 }
 
 /* --- Even Deeper Nesting (Level 3) --- */
 .sidebar-toc-links ol ol ol {
-  padding-left: 2rem;       /* Further indent for deeper levels */
+  padding-left: 2rem; /* Further indent for deeper levels */
 }
 
 /* --- List Item (LI) --- */
 .sidebar-toc-links li {
-  line-height: 1.3;      /* Slightly reduced line height for more compression */
-  display: block;         /* Ensure list items are block level */
-  width: 100%;          /* Full width within the list */
+  line-height: 1.3; /* Slightly reduced line height for more compression */
+  display: block; /* Ensure list items are block level */
+  width: 100%; /* Full width within the list */
   margin: 0px;
   border: 0px;
   padding-bottom: 0px;
@@ -801,12 +803,12 @@ sub {
 
 .sidebar-toc-links::-webkit-scrollbar-track {
   background: var(--toc-bg); /* Track background color */
-  border-radius: 3px;      /* Rounded corners for the track */
+  border-radius: 3px; /* Rounded corners for the track */
 }
 
 .sidebar-toc-links::-webkit-scrollbar-thumb {
   background: var(--table-border); /* Thumb background color */
-  border-radius: 3px;      /* Rounded corners for the thumb */
+  border-radius: 3px; /* Rounded corners for the thumb */
 }
 
 /* --- Media Queries for Responsiveness --- */

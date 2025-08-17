@@ -5,7 +5,6 @@
 # Node
 node_modules/
 build/
-dist/
 
 # Python
 .venv/
@@ -13,3 +12,6 @@ __pycache__/
 *.pyc
 
 .env
+
+# Vite
+.vite

@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: "loading";
-  src: url("../../public/assets/fonts/Sligoil-Micro.otf") format("opentype");
+  src: url("../assets/fonts/Sligoil-Micro.otf") format("opentype");
 }
 
 .loading {
@@ -38,7 +38,7 @@
 
 @font-face {
   font-family: "default";
-  src: url("../../public/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf")
+  src: url("../assets/fonts/SpaceGrotesk-VariableFont_wght.ttf")
     format("opentype");
 }
 
@@ -133,7 +133,7 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  transition: background-color 0.0s;
+  transition: background-color 0s;
 }
 
 .theme-toggle svg {
@@ -256,7 +256,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   width: 24px;
   height: 24px;
   opacity: 0.7;
-  transition: all 0.0s ease;
+  transition: all 0s ease;
 }
 
 .social-link:hover {
@@ -283,7 +283,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   padding: 0.75rem;
   text-decoration: none;
   color: inherit;
-  transition: all 0.0s ease;
+  transition: all 0s ease;
   margin-top: 0.2rem;
 }
 
@@ -308,7 +308,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
 
 .post-description {
   color: var(--nav-color);
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -346,7 +346,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   width: 20px;
   height: 20px;
   opacity: 0.7;
-  transition: all 0.0s ease;
+  transition: all 0s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -415,7 +415,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
   background-color: var(--header-bg);
   border: 1px solid var(--table-border);
   margin-bottom: 1rem;
-  transition: background-color 0.0s;
+  transition: background-color 0s;
 }
 
 .series-header:hover {
@@ -462,7 +462,7 @@ html[data-theme="dark"] .theme-toggle .sun-icon {
 
 @font-face {
   font-family: "IcelandWinterstorm";
-  src: url("../../public/assets/fonts/Roman SD.ttf") format("opentype");
+  src: url("../assets/fonts/Roman SD.ttf") format("opentype");
 }
 
 /* New styles for requested changes */
