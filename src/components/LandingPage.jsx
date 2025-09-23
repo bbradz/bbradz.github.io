@@ -243,7 +243,7 @@ function LandingPage() {
             <b>The Elevator Pitch...</b>
           </p>
           <p>
-            I am a third-year undergraduate at Brown University, majoring in
+            I am a fourth-year undergraduate at Brown University, majoring in
             Computer Science and Applied Mathematics. I'm involved with research
             in Brown's Physics Department exploring applications of RL to
             navigation in gravitational environments and symbolic regression for

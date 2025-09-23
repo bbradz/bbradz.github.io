@@ -1663,7 +1663,7 @@
     "title": "Self-Improving Transformers Overcome Easy-to-Hard and Length Generalization Challenges",
     "author": "University of Wisconsin-Madison",
     "description": "Proposes self-improvement for Transformers to generate and learn from progressively harder tasks for sequence length generalization",
-    "tags": ["", "Arxiv"],
+    "tags": ["Arxiv"],
     "readTime": 1.0,
     "releaseDate": "2025-02-13",
     "isRead": false,
@@ -6496,5 +6496,55 @@
     "releaseDate": "2025-06-30",
     "isRead": false,
     "downloadLink": "https://arxiv.org/pdf/2504.17033"
+  },
+  {
+    "title": "Probabilistic Inference in Language Models via Twisted Sequential Monte Carlo",
+    "author": "Zhao et al.",
+    "description": "<not read>",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2024-04-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2404.17546"
+  },
+  {
+    "title": "Estimating the probabilities of rare outputs in LMs",
+    "author": "Gabriel Wu et al.",
+    "description": "<not read>",
+    "tags": ["Alignment", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-02-06",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.13211"
+  },
+  {
+    "title": "Critic Sequential Monte Carlo",
+    "author": "Lioutas et al.",
+    "description": "<not read>",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-02-21",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2205.15460"
+  },
+  {
+    "title": "A Systematic Analysis of Hybrid Linear Attention",
+    "author": "Bytedance",
+    "description": "Comparing and explaining the many options for sub-quadratic sequence connection",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2025-07-08",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.06457"
+  },
+  {
+    "title": "Trajectory Balance: Improved Credit Analysis in GFlowNets",
+    "author": "University of Montreal",
+    "description": "Reformatting the sequence generation exploration as being at the entire trajectory level rather than step-level",
+    "tags": ["Generative Methods", "RL", "Arxiv"],
+    "readTime": 0.5,
+    "releaseDate": "2023-10-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2201.13259"
   }
 ]

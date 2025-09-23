@@ -5546,5 +5546,29 @@
             "Misc Math",
             "Arxiv"
         ]
+    },
+    {
+        "title": "Probabilistic Inference in Language Models via Twisted Sequential Monte Carlo",
+        "description": "<not read>",
+        "tags": [
+            "Generative Methods",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Estimating the probabilities of rare outputs in LMs",
+        "description": "<not read>",
+        "tags": [
+            "Alignment",
+            "Arxiv"
+        ]
+    },
+    {
+        "title": "Critic Sequential Monte Carlo",
+        "description": "<not read>",
+        "tags": [
+            "RL",
+            "Arxiv"
+        ]
     }
 ]

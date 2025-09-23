@@ -1,0 +1,119 @@
+Active-set methods
+Adam (Adaptive Moment Estimation)
+Adadelta
+Adagrad (Adaptive Gradient Algorithm)
+AdaMax
+AdamW
+AMSGrad
+Anarchic Society Optimization (ASO)
+Ant Colony Optimization (ACO)
+Ant Lion Optimizer (ALO)
+Anticipatory Learning
+Artificial Bee Colony (ABC) Algorithm
+Augmented Lagrangian methods
+Barzilai-Borwein Method
+Bat Algorithm (BA)
+Bacterial Foraging Optimization (BFO)
+Bayesian Optimization
+Benders' Decomposition
+BFGS (Broyden–Fletcher–Goldfarb–Shanno)
+Big Bang-Big Crunch (BB-BC)
+Black Hole (BH) Algorithm
+BOBYQA (Bound Optimization BY Quadratic Approximation)
+Branch and Bound
+Branch and Cut
+Branch and Price
+Broyden's Method
+Central Force Optimization (CFO)
+Charged System Search (CSS)
+Chicken Swarm Optimization (CSO)
+CMA-ES (Covariance Matrix Adaptation Evolution Strategy)
+COBYLA (Constrained Optimization BY Linear Approximation)
+Conjugate Gradient Method
+Coordinate Descent
+Criss-cross algorithm
+Cross-Entropy Method
+Cuckoo Search (CS)
+Cultural Algorithm (CA)
+Cutting-Plane methods
+Dantzig-Wolfe Decomposition
+Davidon–Fletcher–Powell (DFP)
+Differential Evolution (DE)
+Dividing Rectangles (DIRECT) Algorithm
+Dragonfly Algorithm (DA)
+Dynamic Programming
+Elephant Herding Optimization (EHO)
+Ellipsoid method
+Evolution Strategy (ES)
+Evolutionary Programming (EP)
+Extremal Optimization (EO)
+Firefly Algorithm (FA)
+Fish School Search (FSS)
+Fletcher-Reeves Method
+Flower Pollination Algorithm (FPA)
+Follow The Regularized Leader (FTRL)
+Galaxy-based Search Algorithm (GbSA)
+Genetic Algorithm (GA)
+Genetic Programming (GP)
+Geometric Programming
+Glowworm Swarm Optimization (GSO)
+Gomory's cut
+Gradient Descent
+Grammatical Evolution (GE)
+Grasshopper Optimisation Algorithm (GOA)
+Gravitational Search Algorithm (GSA)
+Greedy Randomized Adaptive Search Procedure (GRASP)
+Grey Wolf Optimizer (GWO)
+Harmony Search (HS)
+Harris Hawks Optimization (HHO)
+Hestenes-Stiefel Method
+Hooke-Jeeves Pattern Search
+Imperialist Competitive Algorithm (ICA)
+Interior-Point Methods
+Interactive Evolutionary Computation (IEC)
+Invasive Weed Optimization (IWO)
+Iterated Local Search (ILS)
+Jaya Algorithm
+Karmarkar's Algorithm
+Krill Herd (KH) Algorithm
+L-BFGS (Limited-memory BFGS)
+Lagrangian Relaxation
+Levenberg-Marquardt Algorithm (LMA)
+LINCOA (LINearly Constrained Optimization Algorithm)
+Momentum
+Monte Carlo Methods
+Moth-Flame Optimization (MFO)
+Multilevel Coordinate Search (MCS)
+Nadam (Nesterov-accelerated Adam)
+Nelder-Mead Method
+Nesterov Accelerated Gradient (NAG)
+Neuroevolution of Augmenting Topologies (NEAT)
+NEWUOA (NEW Unconstrained Optimization Algorithm)
+Newton's Method
+Pareto Archived Evolution Strategy (PAES)
+Particle Swarm Optimization (PSO)
+Pattern Search
+Polak-Ribière Method
+Powell's Conjugate Direction Method
+Powell's Method
+Random Search
+Ray Optimization Algorithm
+RMSprop
+Salp Swarm Algorithm (SSA)
+Sequential Linear Programming (SLP)
+Sequential Quadratic Programming (SQP)
+Sid-Ahmed's Direct Search
+Simplex Algorithm
+Simulated Annealing (SA)
+Slime Mould Algorithm (SMA)
+Socio-Political Optimization (SPO)
+Stochastic Dual Dynamic Programming (SDDP)
+Stochastic Gradient Descent (SGD)
+Stochastic Programming
+Stochastic Tunneling (STUN)
+Tabu Search (TS)
+Teaching-Learning-Based Optimization (TLBO)
+Trust-Region Methods
+Variable Neighborhood Search (VNS)
+Water Cycle Algorithm (WCA)
+Whale Optimization Algorithm (WOA)
