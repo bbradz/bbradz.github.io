@@ -10,6 +10,7 @@ function Posts() {
   const [optimizersCollapsed, setOptimizersCollapsed] = useState(true);
   const [distributedCollapsed, setDistributedCollapsed] = useState(true);
   const [economicCollapsed, setEconomicCollapsed] = useState(true);
+  const [miscCollapsed, setMiscCollapsed] = useState(true);
   const scrollToTopButtonRef = useRef(null);
 
   const toggleTheme = () => {
@@ -35,6 +36,9 @@ function Posts() {
         break;
       case "economic":
         setEconomicCollapsed(!economicCollapsed);
+        break;
+      case "misc":
+        setMiscCollapsed(!miscCollapsed);
         break;
       default:
         break;
@@ -81,6 +85,8 @@ function Posts() {
             ? distributedCollapsed
             : sectionName === "economicissues"
             ? economicCollapsed
+            : sectionName === "misc"
+            ? miscCollapsed
             : false;
 
         const plusIcon = section.querySelector(".plus-icon");
@@ -99,7 +105,12 @@ function Posts() {
     };
 
     updateCollapseIcons();
-  }, [optimizersCollapsed, distributedCollapsed, economicCollapsed]);
+  }, [
+    optimizersCollapsed,
+    distributedCollapsed,
+    economicCollapsed,
+    miscCollapsed,
+  ]);
 
   return (
     <>
@@ -378,6 +389,62 @@ function Posts() {
                       <span className="tag">Housing</span>
                       <span className="tag">Urban Planning</span>
                       <span className="tag">Economics</span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className={`series ${miscCollapsed ? "collapsed" : ""}`}>
+            <div
+              className="series-header"
+              onClick={() => toggleSection("misc")}
+            >
+              <h2 className="series-title">Misc</h2>
+              <svg
+                className="collapse-icon plus-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg
+                className="collapse-icon minus-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+            <div className="series-content">
+              <div className="posts">
+                <Link to="/posts/elevators" className="post-card">
+                  <div className="post-main">
+                    <h3 className="post-title">Elevators :jazz-hands:</h3>
+                    <p className="post-description">
+                      Falling down the rabbit hole of Elevator Scheduling
+                      algorithms — from FIFO/LIFO through SCAN/LOOK to
+                      destination dispatch and reinforcement learning, with
+                      proofs along the way.
+                    </p>
+                    <div className="metadata">
+                      <span>August 22nd, 2026</span> ·
+                      <span>22 min read (4.3K words)</span>
+                    </div>
+                    <div className="tags">
+                      <span className="tag">Computer Science</span>
+                      <span className="tag">Algorithms</span>
+                      <span className="tag">Systems Design</span>
                     </div>
                   </div>
                 </Link>

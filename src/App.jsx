@@ -10,6 +10,7 @@ import Energy from "./components/Energy";
 import NewMonetarism from "./components/NewMonetarism";
 import OptimizerTaxonomyArticle from "./components/OptimizerTaxonomyArticle";
 import SuburbiaDensityArticle from "./components/SuburbiaDensityArticle";
+import Elevators from "./components/Elevators";
 
 function App() {
   const toggleTheme = () => {
@@ -88,6 +89,7 @@ function App() {
           element={<OptimizerTaxonomyArticle />}
         />
         <Route path="/posts/suburbia" element={<SuburbiaDensityArticle />} />
+        <Route path="/posts/elevators" element={<Elevators />} />
       </Routes>
       <canvas
         id="gameOfLife"
