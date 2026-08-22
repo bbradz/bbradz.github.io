@@ -2435,41 +2435,14 @@ function SuburbiaDensityArticle() {
           <div className="citation-content">
             <pre>
               <code>
-                <span className="keyword">@misc</span>
-                <span className="operator">{`{`}</span>
-                <span className="string">bradley-suburbia-density-2022</span>,
-                <br /> {/* Line break for better formatting */}
-                <span className="parameter">title</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">
-                  Suburbia → Density: The Case Against Car-Based Urban Sprawl
-                </span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">author</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">Bradley, Ben</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">howpublished</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">bbradz.github.com</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">year</span>=
-                <span className="operator">{`{`}</span>
-                <span className="number">2022</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">month</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">feb</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">note</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">Blog post</span>
-                <span className="operator">{`}`}</span>
+                {`@misc{bradley-suburbia-density-2022,
+  title={Suburbia → Density: The Case Against Car-Based Urban Sprawl},
+  author={Bradley, Ben},
+  howpublished={bbradz.github.com},
+  year={2022},
+  month={feb},
+  note={Blog post}
+}`}
               </code>
             </pre>
           </div>

@@ -989,39 +989,14 @@ function AlgoperfArticle() {
               <div className="citation-content">
                 <pre>
                   <code>
-                    <span className="keyword">@misc</span>
-                    <span className="operator">{"{"}</span>
-                    <span className="parameter">
-                      bradley-optimizer-benchmarking-2024
-                    </span>
-                    ,<br />
-                    <span className="parameter">title</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="string">
-                      Challenges in Optimizer Benchmarking
-                    </span>
-                    <span className="operator">{"}"}</span>,<br />
-                    <span className="parameter">author</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="string">Bradley, Ben</span>
-                    <span className="operator">{"}"}</span>,<br />
-                    <span className="parameter">year</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="number">2025</span>
-                    <span className="operator">{"}"}</span>,<br />
-                    <span className="parameter">month</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="string">jan</span>
-                    <span className="operator">{"}"}</span>,<br />
-                    <span className="parameter">note</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="string">Blog post</span>
-                    <span className="operator">{"}"}</span>,<br />
-                    <span className="parameter">howpublished</span>=
-                    <span className="operator">{"{"}</span>
-                    <span className="string">bbradz.github.com</span>
-                    <span className="operator">{"}"}</span>
-                    <span className="operator">{"}"}</span>
+                    {`@misc{bradley-optimizer-benchmarking-2024,
+  title={Challenges in Optimizer Benchmarking},
+  author={Bradley, Ben},
+  year={2025},
+  month={jan},
+  note={Blog post},
+  howpublished={bbradz.github.com}
+}`}
                   </code>
                 </pre>
               </div>

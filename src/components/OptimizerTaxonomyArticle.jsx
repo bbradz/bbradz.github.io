@@ -2499,42 +2499,14 @@ function OptimizerTaxonomyArticle() {
           <div className="citation-content">
             <pre>
               <code>
-                <span className="keyword">@misc</span>
-                <span className="operator">{`{`}</span>
-                <span className="parameter">bradley-optimizers-2024</span>,
-                <br />
-                <span className="parameter">title</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">
-                  Optimizers 🥾 ⎯ Towards a full Taxonomy
-                </span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">author</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">Bradley, Ben</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">year</span>=
-                <span className="operator">{`{`}</span>
-                <span className="number">2024</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">month</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">sep</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">note</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">Blog post</span>
-                <span className="operator">{`}`}</span>,
-                <br />
-                <span className="parameter">howpublished</span>=
-                <span className="operator">{`{`}</span>
-                <span className="string">bbradz.github.com</span>
-                <span className="operator">{`}`}</span>
-                <span className="operator">{`}`}</span>
+                {`@misc{bradley-optimizers-2024,
+  title={Optimizers 🥾 ⎯ Towards a full Taxonomy},
+  author={Bradley, Ben},
+  year={2024},
+  month={sep},
+  note={Blog post},
+  howpublished={bbradz.github.com}
+}`}
               </code>
             </pre>
           </div>
