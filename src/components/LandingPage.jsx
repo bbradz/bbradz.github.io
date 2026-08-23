@@ -286,6 +286,7 @@ function LandingPage() {
             </i>
           </p>
 
+          {/*
           <h2
             id="cognitive-assessment"
             style={{ marginBottom: "16px !important" }}
@@ -580,8 +581,10 @@ function LandingPage() {
               </tr>
             </tbody>
           </table>
+          */}
         </div>
 
+        {/*
         <h2 style={{ marginBottom: "16px !important" }}>
           Analysis By Influences
         </h2>
@@ -676,6 +679,7 @@ function LandingPage() {
             be expressed through a loss curve reign supreme.
           </li>
         </ul>
+        */}
         <div className="welcome-section">
           <p>
             It would also probably be informative to describe myself as a child
