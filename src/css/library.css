@@ -204,40 +204,7 @@ li {
   color: inherit;
 }
 
-/*************
-* THEME VARS
-*************/
-:root[data-theme="dark"] {
-  --background-color: #1a1a1a;
-  --text-color: #ffffff;
-  --text-secondary: #999999;
-  --border-color: #333333;
-  --button-bg: #333333;
-  --button-hover-bg: #444444;
-  --graph-background: rgb(14, 14, 14);
-
-  /* Graph colors for dark mode */
-  --node-color: #e0e0e0;
-  --node-stroke-color: #999999;
-  --edge-color: #666666;
-  --edge-opacity: 0.8;
-}
-
-:root[data-theme="light"] {
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --text-secondary: #666666;
-  --border-color: #dddddd;
-  --button-bg: #e0e0e0;
-  --button-hover-bg: #bbbbbb;
-  --graph-background: #ffffff;
-
-  /* Graph colors for light mode */
-  --node-color: #adadad;
-  --node-stroke-color: #999999;
-  --edge-color: #cccccc;
-  --edge-opacity: 0.8;
-}
+/* Theme variables live in tokens.css */
 
 .no-break {
   white-space: nowrap;

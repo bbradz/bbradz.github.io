@@ -1,0 +1,64 @@
+/*
+ * Design tokens — the single source of truth for theme colors and fonts.
+ * Imported first (src/index.jsx) so every other stylesheet can use these.
+ * Do not redefine these variables in other stylesheets.
+ */
+
+/* Dark theme (default) */
+:root {
+  --bg-color: rgb(15, 14, 15);
+  --text-color: rgb(244, 244, 245);
+  --nav-color: rgba(255, 255, 255, 0.7);
+  --header-bg: rgb(15, 14, 15);
+  --toc-bg: rgb(39, 39, 42);
+  --toc-hover: rgb(63, 63, 70);
+  --code-bg: #1a1b26;
+  --table-border: rgba(40, 40, 45, 0.7);
+  --table-header-bg: rgb(18, 18, 20);
+  --table-row-odd: rgb(25, 25, 28);
+  --table-row-even: rgb(35, 35, 38);
+
+  /* Library page */
+  --background-color: #1a1a1a;
+  --text-secondary: #999999;
+  --border-color: #333333;
+  --button-bg: #333333;
+  --button-hover-bg: #444444;
+  --graph-background: rgb(14, 14, 14);
+  --node-color: #e0e0e0;
+  --node-stroke-color: #999999;
+  --edge-color: #666666;
+  --edge-opacity: 0.8;
+
+  /* Typography */
+  --font-ui: "default", sans-serif;
+  --font-prose: "Newsreader", Georgia, "Times New Roman", serif;
+  --measure: 40rem; /* ~70 characters of prose per line */
+}
+
+/* Light theme — articles also set data-theme on their .container */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --nav-color: rgba(36, 41, 47, 0.7);
+  --header-bg: #ffffff;
+  --toc-bg: #f6f8fa;
+  --toc-hover: #ebedef;
+  --code-bg: #f0f0f0;
+  --table-border: #d0d7de;
+  --table-header-bg: #f6f8fa;
+  --table-row-odd: #ffffff;
+  --table-row-even: #f6f8fa;
+
+  /* Library page */
+  --background-color: #ffffff;
+  --text-secondary: #666666;
+  --border-color: #dddddd;
+  --button-bg: #e0e0e0;
+  --button-hover-bg: #bbbbbb;
+  --graph-background: #ffffff;
+  --node-color: #adadad;
+  --node-stroke-color: #999999;
+  --edge-color: #cccccc;
+  --edge-opacity: 0.8;
+}

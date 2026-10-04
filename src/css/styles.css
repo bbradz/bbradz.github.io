@@ -1,31 +1,4 @@
-/* Theme variables */
-:root {
-  --bg-color: rgb(15, 14, 15);
-  --text-color: rgb(244, 244, 245);
-  --nav-color: rgba(255, 255, 255, 0.7);
-  --header-bg: rgb(15, 14, 15);
-  --toc-bg: rgb(39, 39, 42);
-  --toc-hover: rgb(63, 63, 70);
-  --code-bg: #1a1b26;
-  --table-border: rgba(40, 40, 45, 0.7);
-  --table-header-bg: rgb(18, 18, 20);
-  --table-row-odd: rgb(25, 25, 28);
-  --table-row-even: rgb(35, 35, 38);
-}
-
-[data-theme="light"] {
-  --bg-color: #ffffff;
-  --text-color: #24292f;
-  --nav-color: rgba(36, 41, 47, 0.7);
-  --header-bg: #ffffff;
-  --toc-bg: #f6f8fa;
-  --toc-hover: #ebedef;
-  --code-bg: #f0f0f0; /* Slightly lighter code background for light theme */
-  --table-border: #d0d7de;
-  --table-header-bg: #f6f8fa;
-  --table-row-odd: #ffffff;
-  --table-row-even: #f6f8fa;
-}
+/* Theme variables live in tokens.css */
 
 @font-face {
   font-family: "default";
@@ -912,4 +885,41 @@ sub {
   text-align: center;
   margin-top: 2rem;
   visibility: hidden;
+}
+
+/* --- Article prose ---
+ * Articles are the only pages whose .container has a .header-content child.
+ * Body text uses a reading serif at a comfortable line length; headings, nav,
+ * tags, TOC, code and citations keep the UI font.
+ *
+ * The font selectors are wrapped in :where() so they have zero specificity:
+ * they only beat the global `* { font-family }` reset (by coming later), while
+ * .monospace, MathJax glyph classes, etc. still win.
+ */
+.container:has(> .header-content) {
+  max-width: calc(var(--measure) + 40px);
+}
+
+:where(.container:has(> .header-content))
+  :where(p, li, blockquote, dd):where(
+    :not(.toc-container *, .sidebar-toc *, .citation-container *, .collapsible-code-container *)
+  ) {
+  font-family: var(--font-prose);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  hyphens: auto;
+}
+
+:where(.container:has(> .header-content))
+  :where(p, li, blockquote, dd):where(
+    :not(.toc-container *, .sidebar-toc *, .citation-container *, .collapsible-code-container *)
+  )
+  :where(:not(code, pre, kbd, samp, svg, svg *, mjx-container, mjx-container *)) {
+  font-family: var(--font-prose);
+}
+
+.centered-item-holder iframe {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
