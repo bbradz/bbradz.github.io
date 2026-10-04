@@ -413,7 +413,7 @@ function SuburbiaDensityArticle() {
             />
             <p className="small-text">
               Pictured: The most in-demand & valuable land in the US (aka SF),
-              lovingly covered in 1 to 2 story relics of the 60s— just
+              lovingly covered in 1 to 2 story relics of the 60s— just{" "}
               <em>itching</em> to be developed 🤤
             </p>
           </div>
@@ -665,10 +665,10 @@ function SuburbiaDensityArticle() {
             </strong>{" "}
             since as long as a road exists connecting residential areas to
             commercial areas, it takes comparatively much longer distances until
-            commute issues to being to matter. This
+            commute issues to being to matter. This{" "}
             <strong>incentivized the abandonment of urban centers</strong> in
             favor of building spread-out neighborhoods and strip-malls on
-            previously cheap land, in the process making driving a
+            previously cheap land, in the process making driving a{" "}
             <strong>necessity to get around</strong> and causing societal
             changes that can be seen everywhere.
           </p>
@@ -695,7 +695,7 @@ function SuburbiaDensityArticle() {
               <p className="small-text" style={{ maxWidth: "760px" }}>
                 Despite <em>higher</em> costs for maintain servicing
                 infrastructure, property taxes on lower-density housing results
-                in <em>lower</em>
+                in <em>lower</em>{" "}
                 effective taxes per acre on larger plots
               </p>
             </div>
@@ -710,7 +710,7 @@ function SuburbiaDensityArticle() {
             to actually pay for all of it.
           </p>
           <p>
-            It’s not hard to see why either, the more spread out home’s are,
+            It’s not hard to see why either, the more spread out home’s are,{" "}
             <strong>by their very nature</strong>, the more (1) water pipes &
             treatment centers, (2) electric lines, (3) internet wires, and
             crucially (4) roads need to be built in order to get each of those
@@ -784,9 +784,8 @@ function SuburbiaDensityArticle() {
           <ul>
             <li>
               <strong>
-                50% (for roads) and 83% (for highways) more than Franc
+                50% (for roads) and 83% (for highways) more than France
               </strong>
-              e
             </li>
             <li>
               <strong>3 and 2 times more than Germany</strong>
@@ -823,7 +822,7 @@ function SuburbiaDensityArticle() {
           </p>
           <p>
             Suburban sprawl is extremely costly to the economy broadly.
-            Infrastructure and vital services like water &amp; energy are
+            Infrastructure and vital services like water &amp; energy are{" "}
             <strong>
               {" "}
               <a href="https://time.com/3031079/suburbs-will-die-sprawl/">
@@ -832,8 +831,8 @@ function SuburbiaDensityArticle() {
               </a>{" "}
             </strong>{" "}
             and, in total, sprawl costs the U.S. economy roughly{" "}
-            <strong>$600 billion a year in direct costs</strong>
-            because of inefficient land usage and car dependency, and another
+            <strong>$600 billion a year in direct costs</strong>{" "}
+            because of inefficient land usage and car dependency, and another{" "}
             <strong>$400 billion in indirect costs</strong> from traffic
             congestion, pollution, and the like, at least according to a 2015
             study from the London School of Economics{" "}
@@ -865,7 +864,7 @@ function SuburbiaDensityArticle() {
                 <a href="https://infrastructurereportcard.org/cat-item/roads/">
                   $768 billion
                 </a>{" "}
-              </strong>
+              </strong>{" "}
               in accrued Infrastructure repair cost’s which are increasingly
               coming due.
             </li>
@@ -894,7 +893,7 @@ function SuburbiaDensityArticle() {
           <p>
             Malls, the bygone economic focal points of suburban Americas
             consumer economy (although arguably a cheap knock-off of the active
-            town centers which they replaced) as well as the crucial
+            town centers which they replaced) as well as the crucial{" "}
             <strong>tax-bases</strong> of Suburbia, are shuttering their doors
             now more than ever in American history{" "}
             <a href="https://www.washingtonpost.com/business/2019/11/22/malls-are-dying-only-these-ones-have-figured-out-secrets-success-internet-age/">
@@ -914,18 +913,18 @@ function SuburbiaDensityArticle() {
           <p>
             The bottom line is that Suburbia is{" "}
             <strong>financially impossible to justify</strong>, and the American
-            people and country
+            people and country{" "}
             <strong>lose money</strong> on <strong>every</strong> new Suburban
             development we <strong>build</strong> or even just{" "}
             <strong>continue to utilize</strong>. A study by a Milwaukee suburb
-            in 1992 found that while a new single-family home will pay
+            in 1992 found that while a new single-family home will pay{" "}
             <strong>
               {" "}
               <a href="https://www.amazon.com/Suburban-Nation-Sprawl-Decline-American/dp/0865477507">
                 less than $5,000 in taxes per year
               </a>{" "}
-            </strong>
-            it will cost its local governments nearly
+            </strong>{" "}
+            it will cost its local governments nearly{" "}
             <strong>
               {" "}
               <a href="https://www.amazon.com/Suburban-Nation-Sprawl-Decline-American/dp/0865477507">
@@ -933,16 +932,16 @@ function SuburbiaDensityArticle() {
               </a>{" "}
             </strong>
             , with newer estimates even more pessimistically finding that over
-            the course of their entire lifetime, Suburbs
+            the course of their entire lifetime, Suburbs{" "}
             <strong>
               {" "}
               <a href="https://www.strongtowns.org/the-growth-ponzi-scheme">
                 pay only a FIFTH of their long-run infrastructure costs through
                 taxes
               </a>{" "}
-            </strong>
+            </strong>{" "}
             leaving local governments saddled with footing the rest of the bill.
-            This ends out driving up public debt and
+            This ends out driving up public debt and{" "}
             <strong>
               {" "}
               <a href="https://www.strongtowns.org/journal/2017/1/10/poor-neighborhoods-make-the-best-investment">
@@ -950,7 +949,7 @@ function SuburbiaDensityArticle() {
                 those inefficient suburban outgrowths from going under
               </a>{" "}
             </strong>
-            .
+            .{" "}
             <a href="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3b150481-a87f-435e-868d-54ce91d8ddea_750x682.png"></a>
           </p>
           <div className="centered-item-holder">
@@ -986,7 +985,7 @@ function SuburbiaDensityArticle() {
             report that poverty has grown by <strong>54%</strong>{" "}
             <strong>in the Suburbs</strong> compared to only{" "}
             <strong>18% in cities</strong>, while PBS Newshour puts that number
-            as high as <strong>65%.</strong>
+            as high as <strong>65%.</strong>{" "}
             In addition, between 2000 and 2015 poverty in Atlanta, Austin, and
             Las Vegas grew by <strong>126%, 129%, and 139%</strong> respectively
             with Rustbelt cities like Detroit, Chicago, and Cleveland seeing
@@ -1006,7 +1005,7 @@ function SuburbiaDensityArticle() {
             </div>
           </p>
           <p>
-            <strong>7 out of 8 Americans drive to commute in to work</strong>
+            <strong>7 out of 8 Americans drive to commute in to work</strong>{" "}
             and anyone who lives in Suburbia (or has seen it) knows why. These
             communities are intentionally regularly built 10+ miles and 30+
             minutes from the places where they work (see chart above). All of
@@ -1143,7 +1142,7 @@ function SuburbiaDensityArticle() {
             growth for the past 80 years and made the apt point to slow economic
             growth or even shrinking the economy for the sake of the environment
             but abandoning the Suburban experiment could help to continue our
-            societal need to
+            societal need to{" "}
             <strong>
               {" "}
               <a href="https://ourworldindata.org/co2-gdp-decoupling">
@@ -1224,7 +1223,7 @@ function SuburbiaDensityArticle() {
             once),{" "}
             <strong>
               every unit is exposed to the outside air on every side
-            </strong>
+            </strong>{" "}
             meaning,{" "}
             <strong>
               from a pure physics standpoint, that there are up to 5 additional
@@ -1272,7 +1271,7 @@ function SuburbiaDensityArticle() {
             storing empty cars in the 90% of time when they aren’t being used.
             If all of those parking spots and roads, which make up nearly{" "}
             <strong>30% of the land</strong> area in most America’s cities,
-            where put together they’d have concrete to cover
+            where put together they’d have concrete to cover{" "}
             <strong>
               {" "}
               <a href="https://www.strongtowns.org/journal/2019/11/27/parking-dominates-our-cities-but-do-we-really-see-it#:~:text=There%20are%20somewhere%20between%20800,land%20in%20the%20United%20States.">
@@ -1325,7 +1324,7 @@ function SuburbiaDensityArticle() {
             A 2012 study which looked at the US East of the Mississippi, where
             Suburbs might even be expected to be growing slower than out West,
             found that between 1992 and 2001 all urban areas combined expanded
-            by around
+            by around{" "}
             <strong>
               {" "}
               <a href="https://link.springer.com/article/10.1007/s10980-012-9766-8">
@@ -1378,7 +1377,7 @@ function SuburbiaDensityArticle() {
               <a href="https://www.tandfonline.com/doi/abs/10.1080/08941920.2015.1062946">
                 of land nationally
               </a>{" "}
-            </strong>
+            </strong>{" "}
             equivalent to the size of <strong>Ohio</strong> and{" "}
             <strong>2% of the entire US</strong>. In addition, not only do
             forest{" "}
@@ -1410,7 +1409,7 @@ function SuburbiaDensityArticle() {
                   International Joint Commission water quality guidelines”
                 </a>
               </strong>{" "}
-              and were even, “typically
+              and were even, “typically{" "}
               <strong>
                 {" "}
                 <a href="https://ascelibrary.org/doi/abs/10.1061/%28ASCE%290733-9372%282007%29133%3A4%28435%29">
@@ -1421,7 +1420,7 @@ function SuburbiaDensityArticle() {
             </p>
           </blockquote>
           <p>
-            Suburban developments, largely purposefully,
+            Suburban developments, largely purposefully,{" "}
             <strong>
               {" "}
               <a href="https://phys.org/news/2018-07-decline-biodiversity-suburban-ecosystems.html">
@@ -1452,14 +1451,14 @@ function SuburbiaDensityArticle() {
 
           <h4 id="J">(ii-c) Water:</h4>
           <p>
-            Outdoor water usage to maintain lawns and gardens gobbles up
+            Outdoor water usage to maintain lawns and gardens gobbles up{" "}
             <strong>
               {" "}
               <a href="https://www.epa.gov/watersense/outdoors">
                 more than 7 billion gallons of water
               </a>
             </strong>{" "}
-            every single day and account for, depending on the region, between
+            every single day and account for, depending on the region, between{" "}
             <strong>
               {" "}
               <a href="https://19january2017snapshot.epa.gov/www3/watersense/pubs/outdoor.html">
@@ -1468,7 +1467,7 @@ function SuburbiaDensityArticle() {
             </strong>{" "}
             All in a country where the Oglala Aquifer, which single handedly
             supplies at least a fifth of all U.S. agricultural harvests and is
-            worth almost $35 billion dollars annually, is set to be be
+            worth almost $35 billion dollars annually, is set to be be{" "}
             <strong>
               {" "}
               <a href="https://www.kansas.com/news/article1121517.html">
@@ -1561,7 +1560,7 @@ function SuburbiaDensityArticle() {
                 </strong>
                 . We’ve got absolutely NO Carbon Taxes, NO Energy Taxes, NO
                 Nitrogen Oxide Taxes and all of it adds up to mean that there’s
-                not only <strong>less money collected to maintain roads</strong>
+                not only <strong>less money collected to maintain roads</strong>{" "}
                 than in other those other countries, but that individuals and
                 companies are given blank checks to drive around, running up
                 their emissions and <strong>hurting everyone</strong>.
@@ -1745,10 +1744,10 @@ function SuburbiaDensityArticle() {
           </p>
           <p>
             Putting some numbers to that, the Public Policy Institute of
-            California analyzed data from the 2020 US Census and
+            California analyzed data from the 2020 US Census and{" "}
             <a href="https://www.ppic.org/blog/new-housing-fails-to-make-up-for-decades-of-undersupply/?utm_source=ppic&amp;utm_medium=email&amp;utm_campaign=blog_subscriber">
               found
-            </a>
+            </a>{" "}
             that over the last 10 years{" "}
             <strong>
               California added 3.2 times more people than it did housing units
@@ -1756,7 +1755,7 @@ function SuburbiaDensityArticle() {
             , causing there to currently be{" "}
             <strong>2.93 Californians for every occupied housing unit</strong>.
             And although coastal housing is the most expensive, the biggest
-            percent change in housing undersupply has actually occurred in
+            percent change in housing undersupply has actually occurred in{" "}
             <strong>inland regions</strong> where, to avoid higher coastal
             prices, many people moved to the Central Valley, east of the Bay
             Area, and the Inland Empire east of Los Angeles. In the process,
@@ -1827,7 +1826,7 @@ function SuburbiaDensityArticle() {
             com bubble causing the city to get so prohibitively expensive at
             this point that even someone making $100K per year could now find it
             difficult to pay for the cost of living. It’s to the point where not
-            only are our countries largest cities seeing
+            only are our countries largest cities seeing{" "}
             <strong>
               {" "}
               <a href="https://www.washingtonpost.com/business/2022/01/30/rent-inflation-housing/">
@@ -1844,7 +1843,7 @@ function SuburbiaDensityArticle() {
             Even worse, those who traditionally lived in these cities before
             these housing shortages who can’t afford the soaring costs of living
             are increasingly finding it impossible to put a roof over their
-            heads, leading to nearly
+            heads, leading to nearly{" "}
             <strong>
               {" "}
               <a href="https://www.forbes.com/sites/niallmccarthy/2021/04/16/the-us-cities-with-the-highest-homeless-populations-in-2020-infographic/">
@@ -1974,7 +1973,7 @@ function SuburbiaDensityArticle() {
           <p>
             Which, if anything, shows even more why the housing crisis in these
             countries is so alarming. Because of that housing shortage,
-            up-and-coming innovators are forced to pay
+            up-and-coming innovators are forced to pay{" "}
             <strong>
               {" "}
               <a href="https://www.worksinprogress.co/issue/clusters-rule-everything-around-me/">
@@ -2291,8 +2290,8 @@ function SuburbiaDensityArticle() {
         <h2 id="U">References</h2>
         <div className="references">
           <div className="bullet">
-            <span>1. </span>
-            Smith, N.
+            <span>1. </span>{" "}
+            Smith, N.{" "}
             <a
               href="https://www.theatlantic.com/ideas/archive/2021/03/signature-environmental-law-hurts-housing/618264/"
               style={{ color: "inherit", textDecoration: "underline" }}
@@ -2380,8 +2379,8 @@ function SuburbiaDensityArticle() {
           </div>
 
           <div className="bullet">
-            <span>9. </span>
-            Bledsoe, P., Sykes, J.
+            <span>9. </span>{" "}
+            Bledsoe, P., Sykes, J.{" "}
             <a
               href="https://www.progressivepolicy.org/wp-content/uploads/2022/09/Americas-Clean-Energy-Transition-Requires-Permitting-Reform-Bledsoe-Sykes-21.9.22.pdf"
               style={{ color: "inherit", textDecoration: "underline" }}

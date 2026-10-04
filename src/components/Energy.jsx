@@ -398,11 +398,11 @@ function Energy() {
           </p>
           <p>~Matter and Motion~</p>
           <p>
-            Maybe you like to turn to
+            Maybe you like to turn to{" "}
             <a href="https://www.pnas.org/doi/10.1073/pnas.1011492107">
               empirical observations on life satisfaction
-            </a>
-            and the globally nearly presupposed capitalist growth imperative if
+            </a>{" "}
+            and the globally nearly presupposed capitalist growth imperative if{" "}
             <em>that</em> appeals to you. Or turn to the 4+ billion people
             around the world living on $6.85 or less in income every day for
             whom global material abundance means the most. Regardless, if you
@@ -472,7 +472,7 @@ function Energy() {
             These dynamics are everywhere with most products falling between the
             20 and 10 percent range in price for every doubling in scale and
             Wind & Solar energy are no different. Rapid scaling in productive
-            capacity is beginning to plot a<em>Wright’s Law of Green Energy</em>
+            capacity is beginning to plot a <em>Wright’s Law of Green Energy</em>{" "}
             tracking how the scaling of Wind & Solar is reducing the cost of
             renewables to astonishing degrees.
           </p>
@@ -487,7 +487,7 @@ function Energy() {
             prices (
             <a href="https://www.energy.gov/eere/wind/articles/learning-better-way-forecast-wind-and-solar-energy-costs">
               15%
-            </a>
+            </a>{" "}
             in the case of wind)
           </p>
           <div className="centered-item-holder">
@@ -521,16 +521,16 @@ function Energy() {
             />
           </div>
           <p>
-            Solar costs already outcompete nearly
+            Solar costs already outcompete nearly{" "}
             <a href="https://www.theguardian.com/us-news/2023/jan/30/us-coal-more-expensive-than-renewable-energy-study">
               99% of coal plants
-            </a>
+            </a>{" "}
             but with this continued scaling up we’ll begin to be see sustainable
             energy as the only economically relevant choice simultaneously
             causing the cost of energy to be driven down for everyone.
           </p>
           <p>
-            Dealing with a water crisis? Energy is
+            Dealing with a water crisis? Energy is{" "}
             <a href="https://www.bloomberg.com/news/articles/2013-05-01/energy-makes-up-half-of-desalination-plant-costs-study#xj4y7vzkg">
               1/2 of the price of desalination plants
             </a>
@@ -550,10 +550,10 @@ function Energy() {
             energy consumption peaks as people are getting home from work and
             turn on their Kitchens and TVs to kick back for the night. Because
             of that, the cost of energy in the future relies not only on the
-            abundance of solar capacity but also on the cost of
+            abundance of solar capacity but also on the cost of{" "}
             <a href="https://qz.com/1950381/the-case-for-producing-way-more-solar-energy-than-we-need">
               storing that energy
-            </a>
+            </a>{" "}
             from the peak hours until when it becomes needed.
           </p>
           <div className="centered-item-holder">
@@ -568,14 +568,14 @@ function Energy() {
           <p>
             The price of Lithium-Ion batteries dropped by a factor of 40 between
             1992 and 2016 with a 5.5 fold increase in cumulative installed
-            capacity, working out to a
+            capacity, working out to a{" "}
             <a href="https://www.epri.com/research/products/1013947">
               15% learning rate
-            </a>
-            or
+            </a>{" "}
+            or{" "}
             <a href="https://about.bnef.com/blog/behind-scenes-take-lithium-ion-battery-prices/">
               21%
-            </a>
+            </a>{" "}
             when looking at post-EV years only.
           </p>
           <div className="centered-item-holder">
@@ -598,7 +598,7 @@ function Energy() {
           </p>
           <p>
             At the point of being able to store an hour of electricity demand
-            (which projections estimate will happen sometime around
+            (which projections estimate will happen sometime around{" "}
             <a href="https://www.woodmac.com/press-releases/global-lithium-ion-battery-capacity-to-rise-five-fold-by-2030/">
               2030
             </a>
@@ -636,15 +636,15 @@ function Energy() {
             increasingly efficient is key in unlocking the electrification of
             parts of the global economy currently locked into emitting CO2 by
             the limitations of the batteries we’re stuck with today.
-            Transportation makes up nearly
+            Transportation makes up nearly{" "}
             <a href="https://ourworldindata.org/co2-emissions-from-transport">
               1/5 of global CO2 emissions
-            </a>
+            </a>{" "}
             and while we’ve already began electrifying cars and are making real
-            progress on trucking,
+            progress on trucking,{" "}
             <a href="https://www.wired.com/story/want-electric-ships-build-a-better-battery/">
               shipping
-            </a>
+            </a>{" "}
             and aviation both need the resources and attention of a tremendously
             scaled battery industry in order to have the resources to make
             battery innovations which make electric boats and planes possible.
@@ -681,7 +681,7 @@ function Energy() {
             <li>They take up huge amounts of land</li>
           </ol>
           <p>
-            Nuclear takes up <strong>very</strong> little land and runs
+            Nuclear takes up <strong>very</strong> little land and runs{" "}
             <strong>very</strong> consistently which makes it a perfect low
             environmental impact option for:
           </p>

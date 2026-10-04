@@ -523,7 +523,7 @@ function OptimizerTaxonomyArticle() {
           uncomplicated from a computational cost perspective to have our model
           look at the exact point where it's standing and figure out which
           direction directly adjacent to it will get it most instantly downhill
-          it's
+          it's{" "}
           <i>tremendously</i> expensive to look forward and observe the shape of
           the hill as a whole, again imagine the valley as being covered in a
           thick fog drowning out all visibility. Since analyzing the whole
@@ -588,8 +588,8 @@ function OptimizerTaxonomyArticle() {
           <img src={screenshot2Img} alt="" className="responsive-image-large" />
           <p className="small-text responsive-text-large">
             Source of this chart (and much of the inspiration for this article)
-            was
-            <i>Survey of Optimization Algorithms in Modern Neural Networks</i>
+            was{" "}
+            <i>Survey of Optimization Algorithms in Modern Neural Networks</i>{" "}
             (Abdulkadirov et al. 2023).
           </p>
         </div>
@@ -665,7 +665,7 @@ function OptimizerTaxonomyArticle() {
           know by heart if you know a thing or two about NNs, is Stochastic
           Gradient Descent (SGD). Stochastic Gradient Descent is named such
           because the weight adjustment it returns at any given moment is based
-          on
+          on{" "}
           <i>descending</i> the surface of our model's weight space using only
           the information we can glean from the instantaneous <i>gradient</i> of
           our model's position in that weight space derived from a random (aka{" "}
@@ -880,7 +880,7 @@ function OptimizerTaxonomyArticle() {
           more often in comparison to weights which have rarer distinct
           gradients, the update rule compensates to make larger adjustments to
           those weights which rarely show up as relevant compared to those let's
-          say
+          say{" "}
           <i>overexposed</i> weights, this allows for a higher proportional
           consideration of those niche weights which filters down into higher
           performance on the deep networks which we see everywhere nowadays.
@@ -1123,7 +1123,7 @@ function OptimizerTaxonomyArticle() {
           undesirably large variance in step sizes which can drive it into
           suspicious / bad local optima (this is the whole origin for the{" "}
           <MathJax inline>{"\\( \\hat{m}_t \\)"}</MathJax> and{" "}
-          <MathJax inline>{"\\( \\hat{v}_t \\)"}</MathJax>
+          <MathJax inline>{"\\( \\hat{v}_t \\)"}</MathJax>{" "}
           corrective factors in the first place). They propose{" "}
           <MathJax inline>{"\\(\\rho \\)"}</MathJax> as a characteristic of a{" "}
           <i>non-exponential</i> simple moving average to approximate how much
@@ -1365,7 +1365,7 @@ function OptimizerTaxonomyArticle() {
         </div>
         <p>
           The final of the three triple-moment optimizers I would mention is one
-          released <i>very</i> recently,
+          released <i>very</i> recently,{" "}
           <a href="https://arxiv.org/pdf/2409.03137">September 2024</a>, by a
           team of researchers at Apple: AdEMAMix...
         </p>
@@ -1583,7 +1583,7 @@ function OptimizerTaxonomyArticle() {
           which, instead of storing all three{" "}
           <MathJax inline>{"\\( V_t \\)"}</MathJax>,{" "}
           <MathJax inline>{"\\( \\rho_t \\)"}</MathJax>, and{" "}
-          <MathJax inline>{"\\( H_t \\)"}</MathJax>
+          <MathJax inline>{"\\( H_t \\)"}</MathJax>{" "}
           matrices between updates instead performs{" "}
           <MathJax inline>{"m"}</MathJax> BFGS updates using only the{" "}
           <MathJax inline>{"m"}</MathJax> most recent curvature pairs to
@@ -1888,7 +1888,7 @@ function OptimizerTaxonomyArticle() {
           , provably the best possible bound for all stochastic optimizers.
           Through raising it's submatrices to the{" "}
           <MathJax inline>{`\\(-1/4 \\)`}</MathJax> as an exponent Shampoo
-          helpfully obtains a learning rate decay rate of
+          helpfully obtains a learning rate decay rate of{" "}
           <MathJax inline>{`\\(O(1/\\sqrt{t}) \\)`}</MathJax> commonly viewed as
           the ideal decay rate for stochastic optimization.
         </p>
@@ -1937,7 +1937,7 @@ function OptimizerTaxonomyArticle() {
           That near-equivalent runtime per iteration, combined with increased
           convergence rate, translates into the distributed implementation of
           Shampoo having been measured to yield a{" "}
-          <MathJax inline>{`\\(\\times 1.35 \\)`}</MathJax>
+          <MathJax inline>{`\\(\\times 1.35 \\)`}</MathJax>{" "}
           improvement in wall-clock time to achieve validation accuracy over SGD
           and Adam type alternatives. A different experiment looking at machine
           translation found that distributed Shampoo reached the particular
@@ -1954,7 +1954,7 @@ function OptimizerTaxonomyArticle() {
           <p className="small-text responsive-text-med">
             Accuracy of Shampoo vs. Adam vs. AdaGrad on 93.3M parameter
             Transformer (6 encoder & decoder layers, 512 model dimension, 2048
-            hidden dimension, 8 attention heads)
+            hidden dimension, 8 attention heads){" "}
             <a href="https://arxiv.org/pdf/2002.09018">(Source)</a>
           </p>
         </div>
@@ -1985,7 +1985,7 @@ function OptimizerTaxonomyArticle() {
           <MathJax inline>{`\\( \\text{ortho}(G) \\)`}</MathJax> and runs with
           it. Muon takes gradient updates generated by SGD-Momentum and
           iteratively applies the Newton-Schulz (NS) at each step (usually
-          around 5 times) to develop an approximately
+          around 5 times) to develop an approximately{" "}
           <i>orthogonalized</i> update matrix.
         </p>
         <p>
@@ -2104,7 +2104,7 @@ function OptimizerTaxonomyArticle() {
           <img src={screenshot6Img} alt="" className="responsive-image-med" />
           <p className="small-text responsive-text-med">
             Schematic representation of stochastic mirror descent's dual space
-            navigation
+            navigation{" "}
             <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/e6ba70fc093b4ce912d769ede1ceeba8-Paper.pdf">
               (Source)
             </a>

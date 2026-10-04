@@ -436,7 +436,7 @@ function NewMonetarismArticle() {
           follows: A whipsaw of society reopening after COVID-19, brittle
           globalized supply chains, and built-up consumer savings gluts caused
           trillions of dollars to flood into a restricted supply pool. This
-          surge led to inflation spiking and price levels increasing by some
+          surge led to inflation spiking and price levels increasing by some{" "}
           <a
             href="https://www.bankrate.com/banking/federal-reserve/latest-inflation-statistics/"
             style={{ color: "inherit", textDecoration: "underline" }}
@@ -481,8 +481,8 @@ function NewMonetarismArticle() {
           outside the halls of academia, one of which I happen to give a whole
           lot of stock in as explaining how the economy has expanded in
           complexity beyond what our archaic models properly captured. Trying to
-          articulate
-          <b>with theory</b>
+          articulate{" "}
+          <b>with theory</b>{" "}
           the ghost in the machine pointing all our indicators of how we would
           project the American people to be perceiving their economic well-being
           off from reality.
@@ -640,7 +640,7 @@ function NewMonetarismArticle() {
           adjustments.
         </p>
         <p>
-          This combined into the neoliberal equilibrium of
+          This combined into the neoliberal equilibrium of{" "}
           <b> Supply-Side Economics</b>. While the Federal Reserve would manage
           monetary policy—the supply of money—the rest of the government was
           handling fiscal policy. Arguments that economic activity was being
@@ -671,7 +671,7 @@ function NewMonetarismArticle() {
           engaged in risky lending, and indulged in greed-fueled speculation to
           manufacture imaginary bubbles of economic growth detached from reality
           and bound to eventually pop. Economic thought began to understand that
-          certain private organizations had grown to become
+          certain private organizations had grown to become{" "}
           <b> "too big to fail"</b>, and that neither the Monetarist school had
           the conceptual tools to tackle the shortfalls of financial
           mismanagement nor could the Austrian method of letting the free market
@@ -686,10 +686,10 @@ function NewMonetarismArticle() {
           crisis like this again.
         </p>
         <p>
-          Out of this grew entirely new fields of economics. One was
+          Out of this grew entirely new fields of economics. One was{" "}
           <i>Behavioral Economics</i>, which analyzed the psychological dynamics
           behind how humans act irrationally and how that translates into
-          unhealthy market equilibriums and financial bubbles. Another was
+          unhealthy market equilibriums and financial bubbles. Another was{" "}
           <i>Post-Keynesian Theory</i>, which built on Hyman Minsky's Financial
           Instability Hypothesis to describe how stability breeds instability
           through increased risk-taking in financial markets. This emphasized
@@ -809,9 +809,9 @@ function NewMonetarismArticle() {
         </div>
         <p>
           Neo-Monetarism grows out of the finance crowd and the economic ideas
-          of
+          of{" "}
           <b>Fisher Black</b>—one of the creators of the Black-Scholes model for
-          financial markets containing derivative investment instruments—and
+          financial markets containing derivative investment instruments—and{" "}
           <b>Eugene Fama</b>, an expert on modern portfolio management theory.
           Much like how Post-Keynesianism incorporated financial markets as an
           exogenous supply outside the direct endogenous M2 money supply,
@@ -896,7 +896,7 @@ function NewMonetarismArticle() {
         </p>
         <p>
           with <MathJax inline>{`\\(R_t\\)`}</MathJax> as the benchmark yield
-          and <MathJax inline>{`\\(r_{jt}\\)`}</MathJax> the yield of the
+          and <MathJax inline>{`\\(r_{jt}\\)`}</MathJax> the yield of the{" "}
           <MathJax inline>{`\\(j\\)`}</MathJax>th asset. Thus making{" "}
           <MathJax inline>{`\\(\\pi_{jt}\\)`}</MathJax> the opportunity cost of
           holding a unit's worth of the{" "}

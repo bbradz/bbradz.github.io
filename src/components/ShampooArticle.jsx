@@ -374,7 +374,7 @@ function ShampooArticle() {
             these types of well-rounded optimizer benchmarks. This, combined
             with social media picking up on Shampoo as having been the little
             recognized optimizer of choice for training Google's Ad
-            recommendation pipeline
+            recommendation pipeline{" "}
             <a href="https://arxiv.org/pdf/2209.05310">(Anil et al. 2022)</a>,
             has really super charged my questions about this pop-up innovator in
             the field of optimizers. If Shampoo truly tops both the public &
@@ -441,7 +441,7 @@ function ShampooArticle() {
             Shampoo builds on{" "}
             <a href="https://arxiv.org/pdf/1503.05671">
               Kronecker-factored approximate Curvature (K-FAC)
-            </a>
+            </a>{" "}
             (Martens and Grosse, 2020) an efficient method for approximation of
             the Fisher information matrix of a Neural Network through the
             Kronecker product of two smaller matrices. In this way Shampoo
@@ -465,7 +465,7 @@ function ShampooArticle() {
             <MathJax inline>{`\\(L, R\\)`}</MathJax> which serve as running sums
             of distinct mappings of the gradient, together preconditioning the
             rows and columns of our gradient matrix{" "}
-            <MathJax inline>{`\\(G_t\\)`}</MathJax>
+            <MathJax inline>{`\\(G_t\\)`}</MathJax>{" "}
             at each step.
           </p>
 
@@ -505,7 +505,7 @@ function ShampooArticle() {
 
           <p>
             Put into maybe more direct terms (at the expense of obfuscating some
-            details), that translates into the following simpler update rule
+            details), that translates into the following simpler update rule{" "}
             <a href="https://proceedings.mlr.press/v80/gupta18a/gupta18a.pdf">
               (Gupta et al. 2018)
             </a>
@@ -548,14 +548,14 @@ function ShampooArticle() {
           </p>
 
           <p>
-            In fact, Shampoo's update rule can be
+            In fact, Shampoo's update rule can be{" "}
             <a href="https://arxiv.org/pdf/2406.17748">proven</a> (Morwani et
             al. 2024) to not only to preserve particularly well the small
             eigenvalues of the full Kronecker matrix preconditioner which are
             often thought to be the most important ones for effective
             preconditioning but work out of Harvard shows that{" "}
             <MathJax inline>{`\\(L \\)`}</MathJax> and{" "}
-            <MathJax inline>{`\\( R \\)`}</MathJax>
+            <MathJax inline>{`\\( R \\)`}</MathJax>{" "}
             upper bound the true Hessian by approximating a Kronecker product
             equal to approximately the square root of the optimal Kronecker
             approximation, a remarkably accurate approximation.
@@ -571,7 +571,7 @@ function ShampooArticle() {
             , provably the best possible bound for stochastic optimizers. On top
             of that, through raising it's submatrices to the{" "}
             <MathJax inline>{`\\(-1/4 \\)`}</MathJax> as an exponent Shampoo
-            helpfully obtains a learning rate decay rate of
+            helpfully obtains a learning rate decay rate of{" "}
             <MathJax inline>{`\\(O(1/\\sqrt{t}) \\)`}</MathJax> commonly viewed
             as the ideal decay rate for stochastic optimization.
           </p>
@@ -594,16 +594,16 @@ function ShampooArticle() {
             of all the singular values towards one accounting for sampling
             variance. This borrows in large part from a technique called
             Spectral Normalization which has gained attention in GANs for
-            controlling the
+            controlling the{" "}
             <a href="https://www.linkedin.com/pulse/understanding-lipschitz-constant-yeshwanth-n-gdplc">
               Lipschitz constant
-            </a>
+            </a>{" "}
             of the model's layers, a useful signal for encouraging better weight
             arrangments.
           </p>
 
           <p>
-            At it's core, Shampoo is all about picking the right pre-conditioner
+            At it's core, Shampoo is all about picking the right pre-conditioner{" "}
             <i>(pun very much intended by it's creators)</i>. It breaks down the
             memory expensive Hessian downstream of the high parameter counts
             dominating the modern NN applications through composing an
@@ -637,7 +637,7 @@ function ShampooArticle() {
             according to that pooled gradient. Together this implementation
             reduces the runtime of Shampoo down to only about 10% more than
             implementations of first-order optimizers, breaking the barrier of
-            second-order approximators significant runtime bottleneck
+            second-order approximators significant runtime bottleneck{" "}
             <a href="https://arxiv.org/pdf/2309.06497">(Shi et al 2023)</a>.
           </p>
 
@@ -645,15 +645,15 @@ function ShampooArticle() {
             That near-equivalent runtime per iteration, combined with increased
             convergence rate, translates into the distributed implementation of
             Shampoo having been measured to yield a{" "}
-            <MathJax inline>{`\\(\\times 1.35 \\)`}</MathJax>
+            <MathJax inline>{`\\(\\times 1.35 \\)`}</MathJax>{" "}
             improvement in wall-clock time to achieve validation accuracy over
             SGD and Adam type alternatives. A different experiment looking at
             machine translation found that distributed Shampoo reached the
             particular log-perplexity of that dataset in{" "}
             <MathJax inline>{`\\(40\% \\)`}</MathJax> less wall-clock time than
-            Adam and AdaGrad
+            Adam and AdaGrad{" "}
             <a href="https://arxiv.org/pdf/2002.09018">(Anil et al. 2021)</a>,
-            largely on the back of the minimally higher iteration runtime and
+            largely on the back of the minimally higher iteration runtime and{" "}
             <MathJax inline>{`\\(\\times 1.95 \\)`}</MathJax> faster convergence
             in stepcount to reach that ideal perplexity.
           </p>
@@ -663,7 +663,7 @@ function ShampooArticle() {
             <p className="small-text responsive-text-med">
               Accuracy of Shampoo vs. Adam vs. AdaGrad on 93.3M parameter
               Transformer (6 encoder & decoder layers, 512 model dimension, 2048
-              hidden dimension, 8 attention heads)
+              hidden dimension, 8 attention heads){" "}
               <a href="https://arxiv.org/pdf/2002.09018">(Source)</a>
             </p>
           </div>

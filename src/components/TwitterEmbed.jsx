@@ -28,10 +28,10 @@ const TwitterEmbed = () => {
           interpreting the pseudocode~
           <br />
           <br />
-          (1/8)
+          (1/8){" "}
           <a href="https://t.co/0VlJRQ9rt6">pic.twitter.com/0VlJRQ9rt6</a>
         </p>
-        — Jeremy Bernstein (@jxbz)
+        — Jeremy Bernstein (@jxbz){" "}
         <a href="https://twitter.com/jxbz/status/1819846348130418706?ref_src=twsrc%5Etfw">
           August 3, 2024
         </a>

@@ -382,7 +382,7 @@ function Distributed() {
         <p>
           Seven giants, congregated around immense moats of network effects,
           wells of proprietary data, CAPEX equivalent to G7 economies, and
-          little helpings of
+          little helpings of{" "}
           <a
             href="https://www.theverge.com/2024/8/5/24155520/judge-rules-on-us-doj-v-google-antitrust-search-suit"
             target="_blank"
@@ -404,14 +404,14 @@ function Distributed() {
           so topsy-turvy. How and when exactly did we move away from a world
           where the peak of The Valley was Apple's compressions of all the
           world's information into our pockets and return to an IBM-style
-          centralization of compute power so swift that it renders even the
+          centralization of compute power so swift that it renders even the{" "}
           <a
             href="https://www.washingtonpost.com/business/2024/03/07/ai-data-centers-power/"
             target="_blank"
             rel="noopener noreferrer"
           >
             electric grid
-          </a>
+          </a>{" "}
           itself dwarfed? When did we move from the era of Jobs to that of
           Jensen?
         </p>
@@ -431,14 +431,14 @@ function Distributed() {
           In the early 2020s, the literature around model performance began to
           shift. Researchers at firms like Google and OpenAI (where the
           executives seemed to catch on the quickest) discovered the now
-          ever-present
+          ever-present{" "}
           <a
             href="https://arxiv.org/pdf/2001.08361"
             target="_blank"
             rel="noopener noreferrer"
           >
             <b>Model Scaling Laws</b>
-          </a>
+          </a>{" "}
           (Kaplan et al. 2020). Deep Learning had been picking up steam since
           2012 when AlexNet topped ImageNet and proved deep models able to
           displace expert systems on complex image recognition tasks. But the
@@ -463,22 +463,22 @@ function Distributed() {
         </p>
         <p>
           We'll focus particularly on that ballooning in model size since the
-          cutting-edge Large Language Models of today contain
+          cutting-edge Large Language Models of today contain{" "}
           <a
             href="https://www.constellationr.com/blog-news/insights/meta-launches-llama-31-450b-and-zuckerberg-its-personal"
             target="_blank"
             rel="noopener noreferrer"
           >
             450 billion
-          </a>
-          and
+          </a>{" "}
+          and{" "}
           <a
             href="https://the-decoder.com/gpt-4-architecture-datasets-costs-and-more-leaked/"
             target="_blank"
             rel="noopener noreferrer"
           >
             1.7 trillion
-          </a>
+          </a>{" "}
           parameters, roughly between Meta and OpenAI. The issue? Given the
           standard FP32 datatype for each parameter (i.e., 4 bytes of memory per
           weight), that translates into some 14.4 to 54.4TB for storing model
@@ -506,7 +506,7 @@ function Distributed() {
           brain fades away and loses interest because{" "}
           <i>
             ~HEY~ I'm into AI for the mental models, for abstracting
-            problem-solving, not for the
+            problem-solving, not for the{" "}
             <a
               href="https://www.youtube.com/@Asianometry"
               target="_blank"
@@ -514,7 +514,7 @@ function Distributed() {
             >
               photolithography
             </a>{" "}
-            or
+            or{" "}
             <a
               href="https://en.wikipedia.org/wiki/InfiniBand"
               target="_blank"
@@ -543,14 +543,14 @@ function Distributed() {
           we rise to the highest unit: connecting together multiple DGX-2 rigs
           as one, where the memory scales up to the 100TB levels of
           Trillion-dollar Hyperscalers, but where the transfer speed of data
-          between rigs comes down to a mere 100GB/s. These numbers
+          between rigs comes down to a mere 100GB/s. These numbers{" "}
           <a
             href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/dgx-1/dgx-2-datasheet-us-nvidia-955420-r2-web-new.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
             [1]
-          </a>
+          </a>{" "}
           change, and if I were writing this article in four years, then NVIDIA
           would be multiple generations of exponential improvement ahead on all
           these numbers. The point is that the physics of data transfer and
@@ -635,14 +635,14 @@ function Distributed() {
         <p style={{ marginBottom: "25px" }}>
           The following is an implementation of data paralleism including
           buckets of data being communicaited and full gradient synchronization,
-          inspired by the Hugging Face's
+          inspired by the Hugging Face's{" "}
           <a
             href="https://github.com/huggingface/picotron"
             target="_blank"
             rel="noopener noreferrer"
           >
             Picotron repository
-          </a>
+          </a>{" "}
           implementation. Don't stress the details necessarily but it may be
           useful for you if your trying to implement this yourself or get a
           better feel for the exact mechanics...
@@ -1505,14 +1505,14 @@ function Distributed() {
             The following is an implementation of pipeline parallelism, which
             splits a model's layers across multiple GPUs to enable efficient
             training of large models. This approach is once again lifted from
-            Hugging Face's informative
+            Hugging Face's informative{" "}
             <a
               href="https://github.com/huggingface/picotron"
               target="_blank"
               rel="noopener noreferrer"
             >
               Picotron repository
-            </a>
+            </a>{" "}
             and includes features like bidirectional communication, gradient
             accumulation, and support for the 1F1B (One Forward One Backward)
             scheduling strategy.
@@ -2911,7 +2911,7 @@ function Distributed() {
           <p>
             Of course, not all of the Bwd &amp; Fwd passes necessarily should be
             converted into FP16, and the authors of{" "}
-            <i>Mixed Precision Training</i>
+            <i>Mixed Precision Training</i>{" "}
             make a point to highlight that, of the three categories of Neural
             Network arithmetic operations—Vector dot-products, Reductions (i.e.,
             Poolings), and Point-wise operations—both Reductions &amp; Vector
@@ -2919,7 +2919,7 @@ function Distributed() {
             FP32. That being said, there are a variety of papers coming out in
             these past months (realize that Mixed Precision is a 6-year-old
             paper at this point) that have been showing further memory advances
-            without sacrificing accuracy achieved over training, such as
+            without sacrificing accuracy achieved over training, such as{" "}
             <a
               href="https://arxiv.org/pdf/2402.17764"
               target="_blank"
@@ -2929,14 +2929,14 @@ function Distributed() {
             </a>
             , and there has even been experimentation around reconfiguring how
             we allocate bits within the two bytes taken up by an FP16. Google
-            introduced the
+            introduced the{" "}
             <a
               href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus"
               target="_blank"
               rel="noopener noreferrer"
             >
               BFloat16 data type
-            </a>
+            </a>{" "}
             which, while taking up two bytes just the same as FP16, trades off
             precision in value for a larger range of exponent, allowing for
             further integration of those low-value gradients without increasing
@@ -2964,7 +2964,7 @@ function Distributed() {
             ZeRO is a tremendously impactful project out of Microsoft's research
             team that anyone involved in implementing these distributed training
             regimes would be bound to come across, thanks to the incredibly
-            helpful
+            helpful{" "}
             <i>Deepseek</i> library. Deepseek took off because it's a super
             simple interface built around the popular PyTorch ML library, but
             also because the team behind Deepseek introduced a huge number of
@@ -3219,7 +3219,7 @@ function Distributed() {
             quantization, which amounts to mapping our high precision values
             into a smaller lower precision range, then mapping them back up to
             the high precision range at their destination with a small error of
-            information lost in compression. In an extension of ZeRO called
+            information lost in compression. In an extension of ZeRO called{" "}
             <a
               href="https://arxiv.org/pdf/2306.10209"
               target="_blank"

@@ -213,7 +213,7 @@ function Posts() {
                       Optimizers.
                     </p>
                     <div className="metadata">
-                      <span>January 5, 2025</span> ·
+                      <span>January 5, 2025</span> ·{" "}
                       <span>14 min read (2.9K words)</span>
                     </div>
                     <div className="tags">
@@ -234,7 +234,7 @@ function Posts() {
                       Algorithms.
                     </p>
                     <div className="metadata">
-                      <span>September 14, 2024</span> ·
+                      <span>September 14, 2024</span> ·{" "}
                       <span>37 min read (7.4K words)</span>
                     </div>
                     <div className="tags">
@@ -289,7 +289,7 @@ function Posts() {
                       techniques undergirding the new LLM Era.
                     </p>
                     <div className="metadata">
-                      <span>October 13th, 2024</span> ·
+                      <span>October 13th, 2024</span> ·{" "}
                       <span>37 min read (7.2K words)</span>
                     </div>
                     <div className="tags">
@@ -345,7 +345,7 @@ function Posts() {
                       forward.
                     </p>
                     <div className="metadata">
-                      <span>December 2nd, 2024</span> ·
+                      <span>December 2nd, 2024</span> ·{" "}
                       <span>21 min read (4K words)</span>
                     </div>
                     <div className="tags">
@@ -363,7 +363,7 @@ function Posts() {
                       modern world.
                     </p>
                     <div className="metadata">
-                      <span>February 21st, 2024</span> ·
+                      <span>February 21st, 2024</span> ·{" "}
                       <span>9 min read (1.7K words)</span>
                     </div>
                     <div className="tags">
@@ -382,7 +382,7 @@ function Posts() {
                       the failure of America's car-centric sprawl.
                     </p>
                     <div className="metadata">
-                      <span>February 17th, 2022</span> ·
+                      <span>February 17th, 2022</span> ·{" "}
                       <span>35 min read (7.8K words)</span>
                     </div>
                     <div className="tags">
@@ -438,7 +438,7 @@ function Posts() {
                       proofs along the way.
                     </p>
                     <div className="metadata">
-                      <span>August 22nd, 2026</span> ·
+                      <span>August 22nd, 2026</span> ·{" "}
                       <span>22 min read (4.3K words)</span>
                     </div>
                     <div className="tags">

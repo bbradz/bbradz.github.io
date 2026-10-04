@@ -748,10 +748,10 @@ function AlgoperfArticle() {
               hyperparameter choice within <MathJax inline>{`\\(H\\)`}</MathJax>
               . A naive approach to choosing{" "}
               <MathJax inline>{`\\(h\\)`}</MathJax> would be picking some{" "}
-              <MathJax inline>{`\\(h \\in H\\)`}</MathJax>
+              <MathJax inline>{`\\(h \\in H\\)`}</MathJax>{" "}
               which minimizes how far that choice puts error from the optimal on
               all of the available workloads. In this way{" "}
-              <MathJax inline>{`\\(\\Phi(H)\\)`}</MathJax>
+              <MathJax inline>{`\\(\\Phi(H)\\)`}</MathJax>{" "}
               essentially puts a value to how sensitive a given optimizer
               algorithm is to the specific workload it's being applied to.
             </p>
@@ -824,7 +824,7 @@ function AlgoperfArticle() {
               <MathJax inline>{`\\(\\bar s\\)`}</MathJax> will have a
               performance ratio{" "}
               <MathJax inline>{`\\(r_{\\bar s, \\bar w}\\)`}</MathJax> of at
-              most <MathJax inline>{`\\(\\tau\\)`}</MathJax>
+              most <MathJax inline>{`\\(\\tau\\)`}</MathJax>{" "}
               (where <MathJax inline>{`\\(\\tau \\in [1, \\infty)\\)`}</MathJax>
               ):
             </p>

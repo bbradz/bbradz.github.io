@@ -75,7 +75,7 @@ const ReadingListItem = React.memo(({ item, onTagFilter }) => {
             className="meta"
             style={{ whiteSpace: "nowrap", display: "inline-block" }}
           >
-            {item.isRead ? "Released: " : null} {formatDate(item.releaseDate)} |
+            {item.isRead ? "Released: " : null} {formatDate(item.releaseDate)} |{" "}
             <span className="no-break"> Est. Time {item.readTime} hours</span>
           </span>
         </div>
