@@ -1,0 +1,8 @@
+How To Push:
+
+npm run clean
+npm install
+npm run deploy
+git add .
+git commit -m "updated library"
+git push origin main

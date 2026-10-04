@@ -1,0 +1,13 @@
+PUSH===
+./deploy.sh
+
+
+RESET==
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+
+
+MISC===
+python refresh_sims.py
+python condense_inputs.py
