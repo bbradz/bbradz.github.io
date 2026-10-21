@@ -6546,5 +6546,565 @@
     "releaseDate": "2023-10-04",
     "isRead": false,
     "downloadLink": "https://arxiv.org/pdf/2201.13259"
+  },
+  {
+    "title": "EEmicroGPT",
+    "author": "Unknown",
+    "description": "GPT Training optimized for Apple Silicon",
+    "tags": ["NLP", "Training", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2026-03-02",
+    "isRead": false,
+    "downloadLink": "https://entrpi.github.io/eemicrogpt/"
+  },
+  {
+    "title": "From Slow Bidirectional to Fast Autoregressive Video Diffusion Models",
+    "author": "Yin et al.",
+    "description": "On improving quality of images generated for longer timespans (30 seconds)",
+    "tags": ["CV", "Generative Methods", "Arxiv"],
+    "readTime": 1.5,
+    "releaseDate": "2025-09-23",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2412.07772"
+  },
+  {
+    "title": "Progress Measures for Grokking Via MechInterp",
+    "author": "Nanda et al.",
+    "description": "Examines the conditions for grokking to occur",
+    "tags": ["Interpretability", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-10-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2301.05217"
+  },
+  {
+    "title": "Lost in Backpropagation: The LM Head is a Gradient Bottleneck",
+    "author": "Godey et al.",
+    "description": "96-99% of the Gradient norm is lost in the LM Head",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.10145"
+  },
+  {
+    "title": "Pretraining under Infinite Compute",
+    "author": "Stanford",
+    "description": "17.5x data efficiency through ensemble distillation",
+    "tags": ["Training", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-09-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2509.14786"
+  },
+  {
+    "title": "Diffusion beats AR in Data-Constrained Settings",
+    "author": "CMU",
+    "description": "Past a critical point of FLOPs, Diffusion achieves lower loss on identical data",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-10-26",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.15857"
+  },
+  {
+    "title": "Diffusion Language Models are Super Data Learners",
+    "author": "Ni et al.",
+    "description": "Given more epochs, eventually the similar param Diffusion model surpasses the AR model",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-11-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2511.03276"
+  },
+  {
+    "title": "Model Soups",
+    "author": "Wortsman et al.",
+    "description": "averaging weights of multiple fine-tuned models improves accuracy without increasing inference time",
+    "tags": ["Scaling", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2022-07-01",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2203.05482"
+  },
+  {
+    "title": "Delightful Policy Gradient",
+    "author": "Ian Osband",
+    "description": "Introduces the Delightful Policy Gradient (DG), which gates each term with a sigmoid of delight, the product of advantage and action surprisal (negative log-probability)",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.14608v1"
+  },
+  {
+    "title": "Beyond GPT-5: Making LLMs Cheaper and Better via Performance–Efficiency Optimized Routing",
+    "author": "Shanghai Artificial Intelligence Laboratory",
+    "description": "Task conditioned routing of LLMs to achieve better performance-efficiency trade-off",
+    "tags": ["Scaling", "Inference", "Sparsity", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-10-22",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2508.12631"
+  },
+  {
+    "title": "GRPO++: Tricks for Making RL Actually Work",
+    "author": "Cameron Wolfe",
+    "description": "Tricks for RL on LLMs",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-01-05",
+    "isRead": false,
+    "downloadLink": "https://cameronrwolfe.substack.com/p/grpo-tricks"
+  },
+  {
+    "title": "The Big World Hypothesis and its Ramifications for AI",
+    "author": "Richard Sutton",
+    "description": "When your system cannot model the world",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-06-04",
+    "isRead": false,
+    "downloadLink": "https://openreview.net/pdf?id=Sv7DazuCn8"
+  },
+  {
+    "title": "Early Weight Averaging meets High Learning Rates for LLM Pre-training",
+    "author": "Sanyal et al.",
+    "description": "Better curriculum for converging quickly",
+    "tags": ["Training", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-12-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2306.03241"
+  },
+  {
+    "title": "ShinkaEvolve: Towards Open-Ended And Sample-Efficient Program Evolution",
+    "author": "Sakana Inc.",
+    "description": "Evolutionary Code Optimization",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-09-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2509.19349"
+  },
+  {
+    "title": "GPU Networking Basics, Pt. 1",
+    "author": "Austin Lyons",
+    "description": "Communication during Training, Scale Out, Scale Up, Network Architectures, Switches, etc.",
+    "tags": ["HPC", "Scaling", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-03-19",
+    "isRead": false,
+    "downloadLink": "https://www.chipstrat.com/p/gpu-networking-basics-part-1?r=4pkows&utm_medium=ios&triedRedirect=true"
+  },
+  {
+    "title": "Understanding Optimization in Deep Learning with Central Flows",
+    "author": "CMU",
+    "description": "Visualizations I find helpful.",
+    "tags": ["Stochastic Calculus", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-09-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2410.24206"
+  },
+  {
+    "title": "Ray Interference: a Source of Plateaus in Deep RL",
+    "author": "Deepmind",
+    "description": "Task decomposition in series versus parallel",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 0.0,
+    "releaseDate": "XXXX-XX-XX",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1904.11455"
+  },
+  {
+    "title": "Smol Training Playbook",
+    "author": "Hugging Face",
+    "description": "Tips for training smaller models",
+    "tags": ["Training", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-10-30",
+    "isRead": false,
+    "downloadLink": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook"
+  },
+  {
+    "title": "MatFormer: Nested Transformer for Elastic Inference",
+    "author": "Deepmind",
+    "description": "Putting models into your model...",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2310.07707"
+  },
+  {
+    "title": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+    "author": "MIT CSAIL",
+    "description": "Finding the circuits within models",
+    "tags": ["ML", "Interpretability", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2019-03-04",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1803.03635"
+  },
+  {
+    "title": "The Bayesian Geometry of Transformer Attention",
+    "author": "Agarwal et al.",
+    "description": "The geometric interpretation of attention",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2512.22471"
+  },
+  {
+    "title": "MHc Explained",
+    "author": "arjun",
+    "description": "Explains the MHc attention mechanism",
+    "tags": ["Transformer", "Attention", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-10",
+    "isRead": false,
+    "downloadLink": "https://www.k-a.in/mHC.html"
+  },
+  {
+    "title": "An Empirical Model of Large-Batch Training",
+    "author": "OpenAI",
+    "description": "Predicting largest useful batch size",
+    "tags": ["Training", "Scaling", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2018-12-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1812.06162"
+  },
+  {
+    "title": "Measuring the Eﬀects of Data Parallelism on NN Training",
+    "author": "Google",
+    "description": "On whether data parallelism degrades training or not",
+    "tags": ["Distributed Techniques", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2019-07-19",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/1811.03600"
+  },
+  {
+    "title": "The Potential of 2nd Order Optimization for LLMs",
+    "author": "Harvard",
+    "description": "How much juice is in the idea.",
+    "tags": ["Optimizer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-10-10",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2510.09378"
+  },
+  {
+    "title": "Small Batch Size Training for Language Models",
+    "author": "NYU",
+    "description": "Intersection of optimizer design and batch size",
+    "tags": ["Training", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-12-15",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2507.07101"
+  },
+  {
+    "title": "Practical Efficiency of Muon for Pretraining",
+    "author": "Essential AI",
+    "description": "Muon expands the Pareto frontier over AdamW on the compute-time tradeoff.",
+    "tags": ["Optimizer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-05-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.02222"
+  },
+  {
+    "title": "Critical Batch Size Revisited",
+    "author": "Allen Institute for AI",
+    "description": "Batch Size Warmup",
+    "tags": ["Training", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-11-05",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2505.23971"
+  },
+  {
+    "title": "A Deep Dive into NVIDIA Rubin CPX",
+    "author": "Chiplog",
+    "description": "Breaks down the architecture of the Rubin CPX",
+    "tags": ["HPC", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-12-27",
+    "isRead": false,
+    "downloadLink": "https://www.chiplog.io/p/a-deep-dive-into-nvidia-rubin-cpx"
+  },
+  {
+    "title": "NVIDIA’s B200 costs around $6,400 to produce, with memory accounting for half",
+    "author": "Epoch AI",
+    "description": "Cost breakdown of the B200",
+    "tags": ["HPC", "Site"],
+    "readTime": 0.5,
+    "releaseDate": "2025-12-10",
+    "isRead": false,
+    "downloadLink": "https://epoch.ai/data-insights/b200-cost-breakdown"
+  },
+  {
+    "title": "Sparse attention 2 -- Unattention head, branching dynamics",
+    "author": "Ziming Liu",
+    "description": "More thoughts on attention dynamics",
+    "tags": ["Attention", "SSM", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-01-26",
+    "isRead": false,
+    "downloadLink": "https://kindxiaoming.github.io/blog/2026/sparse-attention-2/"
+  },
+  {
+    "title": "End-to-End Test-Time Training for Long Context",
+    "author": "Tandon et al.",
+    "description": "Using SSM for training at long Context",
+    "tags": ["Test-Time Methods", "Context Length", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-12-31",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2512.23675"
+  },
+  {
+    "title": "Conditional Advantage Estimation for RL in LRMs",
+    "author": "Chen et al.",
+    "description": "Using conditional advantage estimation for RL in LRMs",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-09-28",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2509.23962"
+  },
+  {
+    "title": "Learning Latent Action World Models In The Wild",
+    "author": "META",
+    "description": "LeCun verse",
+    "tags": ["ML", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-01-20",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2601.05230"
+  },
+  {
+    "title": "Discrete Calculus",
+    "author": "Ji-Ha Kim",
+    "description": "a theory for sums and differences of sequences as opposed to derivatives and integrals of functions",
+    "tags": ["Misc Math", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2025-11-26",
+    "isRead": false,
+    "downloadLink": "https://jiha-kim.github.io/posts/discrete-calculus/"
+  },
+  {
+    "title": "What would Non-Linear Features actually Look Like",
+    "author": "Liv Forton",
+    "description": "Examining the assumptions of most feature extraction methods.",
+    "tags": ["Interpretability", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2026-01-27",
+    "isRead": false,
+    "downloadLink": "https://livgorton.com/non-linear-feature-reps"
+  },
+  {
+    "title": "Attention is not what you need",
+    "author": "Zhang Chong",
+    "description": "Trying to find theoretical alternatives",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-12-25",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2512.19428"
+  },
+  {
+    "title": "Gradient Routing",
+    "author": "Jacob G-W",
+    "description": "Masking gradients to localize computation",
+    "tags": ["Interpretability", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2024-12-06",
+    "isRead": false,
+    "downloadLink": "https://www.lesswrong.com/posts/nLRKKCTtwQgvozLTN/gradient-routing-masking-gradients-to-localize-computation"
+  },
+  {
+    "title": "Understanding the Skill Gap in Recurrent Language Models",
+    "author": "CMU",
+    "description": "in-context retrieval",
+    "tags": ["Transformer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-11",
+    "isRead": false,
+    "downloadLink": "https://www.lesswrong.com/posts/nLRKKCTtwQgvozLTN/gradient-routing-masking-gradients-to-localize-computation"
+  },
+  {
+    "title": "On Surprising Effectiveness of Masking Updates in Adaptive Optimizers",
+    "author": "Joo et al.",
+    "description": "Masking updates to achieve better convergence",
+    "tags": ["Optimizer", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-02-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2602.15322"
+  },
+  {
+    "title": "Your Transformer is Secretly an EOT Solver",
+    "author": "Elon Litman",
+    "description": "Another view on Attention",
+    "tags": ["Transformer", "Site"],
+    "readTime": 0.0,
+    "releaseDate": "2025-11-21",
+    "isRead": false,
+    "downloadLink": "https://elonlit.com/scrivings/your-transformer-is-secretly-an-eot-solver/"
+  },
+  {
+    "title": "KromHC: Manifold-Constrained Hyper-Connections with Kronecker-Product Residual Matrices",
+    "author": "Zhou et al.",
+    "description": "Parametrizing the residual matrix in mHC",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-01-29",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2601.21579"
+  },
+  {
+    "title": "Speculative Speculative Decoding",
+    "author": "Tri Dao",
+    "description": "2x faster than optimized speculative decoding baselines and up to 5x faster than autoregressive decoding",
+    "tags": ["Inference", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-03",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.03251"
+  },
+  {
+    "title": "Reward Respecting Subtasks for Model-Based RL",
+    "author": "Richard Yue",
+    "description": "",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-09-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2202.03466"
+  },
+  {
+    "title": "Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture",
+    "author": "LeCun et al.",
+    "description": "A self-supervised learning framework for images",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2023-04-13",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2301.08243"
+  },
+  {
+    "title": "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning",
+    "author": "Meta",
+    "description": "Refining JEPA further",
+    "tags": ["Architecture", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2025-06-11",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2506.09985"
+  },
+  {
+    "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
+    "author": "Finzi et al.",
+    "description": "Trying to Explore Better",
+    "tags": ["ML", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2601.03220"
+  },
+  {
+    "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
+    "author": "Tsinghua University",
+    "description": "partitioning layers into a small set of Full layers that run their own indexers and a majority of Shared layers that simply reuse the nearest Full layer’s top-k indices",
+    "tags": ["Attention", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-12",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.12201"
+  },
+  {
+    "title": "Optimizers and ODEs",
+    "author": "Ji-Ha Kim",
+    "description": "continuous-time view of gradient-based optimization",
+    "tags": ["Stochastic Calculus", "Optimizer", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-16",
+    "isRead": false,
+    "downloadLink": "https://jiha-kim.github.io/posts/optimizers-and-odes/"
+  },
+  {
+    "title": "State of RL for LLM Reasoning",
+    "author": "A. Weers",
+    "description": "A Bunch of REINFORCE iterations",
+    "tags": ["RL", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-16",
+    "isRead": false,
+    "downloadLink": "https://aweers.de/blog/2026/rl-for-llms/"
+  },
+  {
+    "title": "Mamba-3: Improved Sequence Modeling using State Space Principles",
+    "author": "Tri Dao et al.",
+    "description": "Improving Mamba 2",
+    "tags": ["SSM", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-16",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.15569"
+  },
+  {
+    "title": "MDM-Prime-v2: Binary Encoding and Index Shuffling Enable Compute-optimal Scaling of Diffusion Language Models",
+    "author": "Chao et al.",
+    "description": "21.8× more compute-efficient than autoregressive models (ARM)",
+    "tags": ["Generative Methods", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-17",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.16077"
+  },
+  {
+    "title": "Path-Constrained Mixture-of-Experts",
+    "author": "Apple",
+    "description": "Constrains possible expert paths to allow better learnign",
+    "tags": ["MoE", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-18",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.18297"
+  },
+  {
+    "title": "GradMem: Learning to Write Context into Memory with Test-Time Gradient Descent",
+    "author": "Kuratov et al.",
+    "description": "Writing context into memory with test-time gradient descent",
+    "tags": ["Context Length", "Arxiv"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-14",
+    "isRead": false,
+    "downloadLink": "https://arxiv.org/pdf/2603.13875"
+  },
+  {
+    "title": "Gram Newton-Schulz: A Fast, Hardware-Aware Newton-Schulz Algorithm for Muon",
+    "author": "Princeton University",
+    "description": "Breaking apart the Hessian",
+    "tags": ["Linear Algebra", "Optimizer", "Site"],
+    "readTime": 1.0,
+    "releaseDate": "2026-03-30",
+    "isRead": false,
+    "downloadLink": "https://dao-lab.ai/blog/2026/gram-newton-schulz/"
+  },
+  {
+    "title": "Neural Networks Are Already Clean",
+    "author": "Goodfire",
+    "description": "Argues that polysemanticity mostly came from weak architectures, tools and metrics, plus neurons gradually extending to related meanings, not from superposition; re-reads the famous cat/car neuron and claims ~90% of Qwen3-32B neuron poles have one main job",
+    "tags": ["Interpretability", "Site"],
+    "readTime": 1.5,
+    "releaseDate": "2026-10-13",
+    "isRead": true,
+    "downloadLink": "https://already-clean.goodfire.com"
   }
 ]
