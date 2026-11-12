@@ -12,6 +12,10 @@
   var path = location.pathname.replace(/\/+$/, "") || "/";
   location.replace("https://bens-macbook-pro.tailde6603.ts.net" + path + location.search + location.hash);
 </script>
+<!-- Backstop for clients that skip or block the script above. The 2s delay lets the script win first (it keeps the
+     deep-link path); a 0s refresh could fire before it and send everyone to the home page. Plain no-JS browsers
+     get the immediate version below. -->
+<meta http-equiv="refresh" content="2; url=https://bens-macbook-pro.tailde6603.ts.net/">
 <noscript><meta http-equiv="refresh" content="0; url=https://bens-macbook-pro.tailde6603.ts.net/"></noscript>
 <style>body{font:16px/1.5 system-ui,sans-serif;max-width:32rem;margin:20vh auto;padding:0 1rem;color:#24292f}</style>
 </head>
